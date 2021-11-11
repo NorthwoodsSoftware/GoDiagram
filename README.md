@@ -1,11 +1,11 @@
-GoDiagram, a .NET Library for Diagrams
+GoDiagram — .NET Library for Interactive Diagrams
 ============================================
 
-<h1><i>Note: GoDiagram is currently in pre-alpha</i></h1>
+# *GoDiagram is currently in pre-alpha*
 
 <img align="right" height="150" src="https://www.nwoods.com/images/go.png">
 
-[GoDiagram](https://gojs.net) is a .NET library for creating and manipulating diagrams, charts, and graphs.
+[GoDiagram](https://godiagram.com) is a .NET library for creating interactive diagrams, charts, and graphs. It is based on the [GoJS](https://gojs.net) JavaScript diagramming library, also from Northwoods Software.
 
 [![open issues](https://img.shields.io/github/issues-raw/NorthwoodsSoftware/GoDiagram.svg)](https://github.com/NorthwoodsSoftware/GoDiagram/issues)
 [![last commit](https://img.shields.io/github/last-commit/NorthwoodsSoftware/GoDiagram.svg)](https://github.com/NorthwoodsSoftware/GoDiagram/commits/master)
@@ -19,9 +19,9 @@ GoDiagram is a flexible library that can be used to create a number of different
 Read more about GoDiagram at [godiagram.com](https://godiagram.com)
 
 This repository contains the sources for all samples and extensions.
-You can use the GitHub repository to quickly [search through all of the sources](https://github.com/NorthwoodsSoftware/GoDiagram/search?q=FindNodeDataForKey&type=Code).
+You can use the GitHub repository to quickly [search through the sample sources](https://github.com/NorthwoodsSoftware/GoDiagram/search?q=FindNodeDataForKey&type=Code).
 
-<h2>Minimal Sample</h2>
+## Minimal Sample
 
 Graphs are constructed by creating one or more templates, with desired properties data-bound, and adding model data.
 
@@ -82,9 +82,9 @@ The above diagram and model code creates the following graph.
 <img width="200" height="200" src="https://godiagram.com/assets/images/screenshots/minimal.png">
 
 
-<h2>License</h2>
+## License
 
 The GoDiagram <a href="https://godiagram.com/license.html">software license</a>.
 
 
-Copyright (c) Northwoods Software Corporation
+Copyright (c) 2021 Northwoods Software Corporation
