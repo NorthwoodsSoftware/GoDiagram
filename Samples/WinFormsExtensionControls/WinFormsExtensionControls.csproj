@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Use C# preview to enable net6.0 features -->
+    <LangVersion>preview</LangVersion>
+    <TargetFrameworks>net6.0-windows;net5.0-windows;net48</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!-- Conditionally obtain references for the .NET Framework 4.8 target -->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\GraphObjects\BalloonLink\BalloonLinkWinForms\BalloonLinkWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\DimensioningLink\DimensioningLinkWinForms\DimensioningLinkWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\Figures\FiguresWinForms\FiguresWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\HyperlinkText\HyperlinkTextWinForms\HyperlinkTextWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLinkWinForms\ParallelRouteLinkWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Input\DrawCommandHandler\DrawCommandHandlerWinForms\DrawCommandHandlerWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Input\Robot\RobotWinForms\RobotWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Input\ZoomSlider\ZoomSliderWinForms\ZoomSliderWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Arranging\ArrangingWinForms\ArrangingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\DoubleTree\DoubleTreeWinForms\DoubleTreeWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Fishbone\FishboneWinForms\FishboneWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Packed\PackedWinForms\PackedWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Parallel\ParallelWinForms\ParallelWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Radial\RadialWinForms\RadialWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Serpentine\SerpentineWinForms\SerpentineWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Spiral\SpiralWinForms\SpiralWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\SwimLane\SwimLaneWinForm\SwimLaneWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Table\TableWinForms\TableWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\TreeMap\TreeMapWinForms\TreeMapWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\VirtualizedPacked\VirtualizedPackedWinForms\VirtualizedPackedWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\ColumnResizing\ColumnResizingWinForms\ColumnResizingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshapingWinForms\CurvedLinkReshapingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\DragCreating\DragCreatingWinForms\DragCreatingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\DragZooming\DragZoomingWinForms\DragZoomingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\FreehandDrawing\FreehandDrawingWinForms\FreehandDrawingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\GeometryReshaping\GeometryReshapingWinForms\GeometryReshapingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\GuidedDragging\GuidedDraggingWinForms\GuidedDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\LinkLabelDragging\LinkLabelDraggingWinForms\LinkLabelDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDraggingWinForms\LinkLabelOnPathDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\LinkShifting\LinkShiftingWinForms\LinkShiftingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\NodeLabelDragging\NodeLabelDraggingWinForms\NodeLabelDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\NonRealtimeDragging\NonRealtimeDraggingWinForms\NonRealtimeDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshapingWinForms\OrthogonalLinkReshapingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\OverviewResizing\OverviewResizingWinForms\OverviewResizingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\PolygonDrawing\PolygonDrawingWinForms\PolygonDrawingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\PolylineLinking\PolylineLinkingWinForms\PolylineLinkingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\PortShifting\PortShiftingWinForms\PortShiftingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelectingWinForms\RealtimeDragSelectingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\Rescaling\RescalingWinForms\RescalingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\ResizeMultiple\ResizeMultipleWinForms\ResizeMultipleWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\RotateMultiple\RotateMultipleWinForms\RotateMultipleWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\RowResizing\RowResizingWinForms\RowResizingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\SectorReshaping\SectorReshapingWinForms\SectorReshapingWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingWinForms\SnapLinkReshapingWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\Circular\CircularWinForms\CircularWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\ForceDirected\ForceDirectedWinForms\ForceDirectedWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\Tree\TreeWinForms\TreeWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\WinForms\GoWinForms.csproj" />
+    <ProjectReference Include="..\WinFormsSharedControls\WinFormsSharedControls.csproj" />
+  </ItemGroup>
+
+</Project>

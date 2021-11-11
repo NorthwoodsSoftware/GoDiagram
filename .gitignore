@@ -1,0 +1,9 @@
+**/node_modules/
+**/bin
+**/obj
+**/.vs
+*.user
+**/public/build
+yarn.lock
+debug.log
+*.log

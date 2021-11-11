@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Use C# preview to enable net6.0 features -->
+    <LangVersion>preview</LangVersion>
+    <TargetFrameworks>net6.0-windows;net5.0-windows;net48</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <!-- Conditionally obtain references for the .NET Framework 4.8 target -->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\GraphObjects\BalloonLink\BalloonLinkWinForms\BalloonLinkWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\Figures\FiguresWinForms\FiguresWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\GraphObjects\HyperlinkText\HyperlinkTextWinForms\HyperlinkTextWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Input\DataInspector\DataInspectorWinForms\DataInspectorWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Input\DrawCommandHandler\DrawCommandHandlerWinForms\DrawCommandHandlerWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\DoubleTree\DoubleTreeWinForms\DoubleTreeWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Packed\PackedWinForms\PackedWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Parallel\ParallelWinForms\ParallelWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\Radial\RadialWinForms\RadialWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Tools\NodeLabelDragging\NodeLabelDraggingWinForms\NodeLabelDraggingWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\Circular\CircularWinForms\CircularWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\ForceDirected\ForceDirectedWinForms\ForceDirectedWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\Layouts\Tree\TreeWinForms\TreeWinForms.csproj" />
+    <ProjectReference Include="..\..\Go\WinForms\GoWinForms.csproj" />
+    <ProjectReference Include="..\WinFormsSharedControls\WinFormsSharedControls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

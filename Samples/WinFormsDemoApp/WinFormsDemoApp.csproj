@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- Use C# preview to enable net6.0 features -->
+    <LangVersion>preview</LangVersion>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WinFormsExtensionControls\WinFormsExtensionControls.csproj" />
+    <ProjectReference Include="..\WinFormsSampleControls\WinFormsSampleControls.csproj" />
+    <ProjectReference Include="..\WinFormsSharedControls\WinFormsSharedControls.csproj" />
+  </ItemGroup>
+
+</Project>

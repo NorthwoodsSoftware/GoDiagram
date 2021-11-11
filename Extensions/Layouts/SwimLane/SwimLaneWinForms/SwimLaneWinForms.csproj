@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Use C# preview to enable net6.0 features -->
+    <LangVersion>preview</LangVersion>
+    <TargetFrameworks>net5.0-windows;net6.0-windows;net48</TargetFrameworks>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Import Project="..\SwimLane.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
+    <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
+  </ItemGroup>
+
+</Project>

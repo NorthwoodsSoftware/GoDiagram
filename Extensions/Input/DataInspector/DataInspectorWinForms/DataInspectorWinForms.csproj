@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Use C# preview to enable net6.0 features -->
+    <LangVersion>preview</LangVersion>
+    <TargetFrameworks>net5.0-windows;net6.0-windows;net48</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\DataInspector.projitems" Label="Shared" />
+
+</Project>
