@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- Use C# preview to enable net6.0 features -->
-    <LangVersion>preview</LangVersion>
+    <!-- Use C# latest to enable net6.0 features -->
+    <LangVersion>latest</LangVersion>
     <TargetFrameworks>net5.0-windows;net6.0-windows;net48</TargetFrameworks>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <Import Project="..\SwimLane.projitems" Label="Shared" />
 
-  <ItemGroup>
+  <!-- Conditionally obtain references for the .NET Framework 4.8 target -->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
 

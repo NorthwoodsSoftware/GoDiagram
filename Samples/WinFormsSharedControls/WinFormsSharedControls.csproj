@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- Use C# preview to enable net6.0 features -->
-    <LangVersion>preview</LangVersion>
+    <!-- Use C# latest to enable net6.0 features -->
+    <LangVersion>latest</LangVersion>
     <TargetFrameworks>net5.0-windows;net6.0-windows;net48</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.955-prerelease" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1056-prerelease" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <!-- Use C# preview to enable net6.0 features -->
-    <LangVersion>preview</LangVersion>
+    <!-- Use C# latest to enable net6.0 features -->
+    <LangVersion>latest</LangVersion>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
