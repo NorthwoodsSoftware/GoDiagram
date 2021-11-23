@@ -7,3 +7,8 @@
 yarn.lock
 debug.log
 *.log
+DocFX/
+Go/
+Internal Samples/
+Kit/
+Tests/
