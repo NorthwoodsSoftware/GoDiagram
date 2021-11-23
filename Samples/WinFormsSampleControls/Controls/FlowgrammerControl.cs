@@ -21,6 +21,10 @@ namespace WinFormsSampleControls.Flowgrammer {
     public FlowgrammerControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
+      myPalette = paletteControl1.Diagram as Palette;
+      myOverview = overviewControl1.Diagram as Overview;
+
       diagramControl1.AfterRender = Setup;
       paletteControl1.AfterRender = SetupPalette;
       overviewControl1.AfterRender = SetupOverview;
@@ -85,7 +89,6 @@ namespace WinFormsSampleControls.Flowgrammer {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
       myDiagram.AllowCopy = false;
       myDiagram.AllowMove = false;
       myDiagram.Layout = new ParallelLayout {
@@ -212,7 +215,6 @@ namespace WinFormsSampleControls.Flowgrammer {
 
     private void SetupPalette() {
       // initialize Palette
-      myPalette = paletteControl1.Diagram as Palette;
       myPalette.MaxSelectionCount = 1;
       // define templates for the Palette
       DefineNodeTemplates();
@@ -231,8 +233,7 @@ namespace WinFormsSampleControls.Flowgrammer {
 
     private void SetupOverview() {
       // initialize Overview
-      myOverview = overviewControl1.Diagram as Overview;
-      myOverview.ObservedControl = diagramControl1;
+      myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
     }
 

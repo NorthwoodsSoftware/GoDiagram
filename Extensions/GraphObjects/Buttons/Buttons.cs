@@ -354,7 +354,7 @@ namespace Northwoods.Go.Extensions {
           IsShadowed = true,
           ShadowColor = "rgba(0, 0, 0, .4)",
           ShadowOffset = new Point(0, 3),
-          ShadowBlur = 5
+          ShadowBlur = 0
         }.Add(
           new Shape("RoundedRectangle") {
             Name = "Border",
@@ -387,7 +387,7 @@ namespace Northwoods.Go.Extensions {
           IsShadowed = true,
           ShadowColor = "rgba(0, 0, 0, .4)",
           ShadowOffset = new Point(0, 3),
-          ShadowBlur = 5
+          ShadowBlur = 0
         }
         // don't set the background if the ContextMenu is adorning something and there's a Placeholder
         .Bind("Background", "", (obj, data) => {

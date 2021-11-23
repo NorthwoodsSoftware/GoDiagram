@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;
-using Northwoods.Go.WinForms;
 
 namespace WinFormsSampleControls.AddToPalette {
   [ToolboxItem(false)]
@@ -19,6 +16,10 @@ namespace WinFormsSampleControls.AddToPalette {
 
     public AddToPaletteControl() {
       InitializeComponent();
+
+      myDiagram = diagramControl1.Diagram;
+      myPalette = paletteControl1.Diagram as Palette;
+      myOverview = overviewControl1.Diagram as Overview;
 
       diagramControl1.AfterRender = Setup;
       paletteControl1.AfterRender = SetupPalette;
@@ -102,8 +103,6 @@ namespace WinFormsSampleControls.AddToPalette {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -116,7 +115,6 @@ namespace WinFormsSampleControls.AddToPalette {
     }
 
     private void SetupPalette() {
-      myPalette = paletteControl1.Diagram as Palette;
       // initialize Palette
       DefineNodeTemplates();
       myPalette.NodeTemplate = sharedNodeTemplate;
@@ -146,9 +144,8 @@ namespace WinFormsSampleControls.AddToPalette {
     }
 
     private void SetupOverview() {
-      myOverview = overviewControl1.Diagram as Overview;
       // overview properties
-      myOverview.ObservedControl = diagramControl1;
+      myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
     }
 

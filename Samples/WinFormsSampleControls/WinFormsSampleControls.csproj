@@ -3,12 +3,12 @@
   <PropertyGroup>
     <!-- Use C# latest to enable net6.0 features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net6.0-windows;net5.0-windows;net48</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <!-- Conditionally obtain references for the .NET Framework 4.8 target -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+  <!-- Conditionally obtain references for older targets -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 

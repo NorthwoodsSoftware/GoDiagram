@@ -224,7 +224,7 @@ namespace WinFormsSampleControls.DynamicPieChart {
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
           new NodeData {
-            Key = 0,
+            Key = 1,
             Text = "Sample Poll",
             Slices = new List<SliceData> {
               new SliceData { Text = "Option 1", Count = 21, Color = "#B378C1" },

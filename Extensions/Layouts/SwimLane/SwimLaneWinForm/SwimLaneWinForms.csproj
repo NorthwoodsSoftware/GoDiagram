@@ -7,9 +7,15 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <Import Project="..\DrawCommandHandler.projitems" Label="Shared" />
+  <Import Project="..\SwimLane.projitems" Label="Shared" />
+
+  <!-- Conditionally obtain references for older targets -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
     <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
   </ItemGroup>
 

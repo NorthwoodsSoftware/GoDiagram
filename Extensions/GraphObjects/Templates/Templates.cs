@@ -348,15 +348,17 @@ namespace Northwoods.Go.Extensions {
 
     /// This static function can be used to convert an object to a string,
     /// looking for commonly defined data properties, such as "Text", "Name", "Key", or "Id".
-    public static string ToString(object val, object unused = null) {
-      if (val == null) return "null";
-      var prop = GetProp(val, "Text");
-      if (prop == null) prop = GetProp(val, "Name");
-      if (prop == null) prop = GetProp(val, "Key");
-      if (prop == null) prop = GetProp(val, "Id");
-      if (prop == null) prop = GetProp(val, "ID");
-      if (prop == null) return "";
-      return prop.ToString();
+    public static string ToString(object val) {
+      var v = val;
+      if (!Util.IsSimpleType(val)) {
+        v = SafePropertyValue(val, "Text", ErrorMode.Off);
+        if (v == null) v = SafePropertyValue(val, "Name", ErrorMode.Off);
+        if (v == null) v = SafePropertyValue(val, "Key", ErrorMode.Off);
+        if (v == null) v = SafePropertyValue(val, "Id", ErrorMode.Off);
+        if (v == null) v = SafePropertyValue(val, "ID", ErrorMode.Off);
+      }
+      if (v == null) return "null";
+      return v.ToString();
     }
 
     /// This is a simplified version of the normal property getter.

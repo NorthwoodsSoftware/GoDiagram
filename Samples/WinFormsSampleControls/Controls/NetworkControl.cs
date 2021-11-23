@@ -19,6 +19,10 @@ namespace WinFormsSampleControls.Network {
     public NetworkControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
+      myPalette = paletteControl1.Diagram as Palette;
+      myOverview = overviewControl1.Diagram as Overview;
+
       diagramControl1.AfterRender = Setup;
       paletteControl1.AfterRender = SetupPalette;
       overviewControl1.AfterRender = SetupOverview;
@@ -29,22 +33,22 @@ namespace WinFormsSampleControls.Network {
       saveLoadModel1.ModelJson = @"
     {
       ""NodeDataSource"": [
-        {""Key"":0, ""Text"":""Gen1"", ""Category"":""Generator"", ""Loc"":""300 0""},
-        {""Key"":1, ""Text"":""Bar1"", ""Category"":""HBar"", ""Loc"":""100 100"", ""Size"":""500 4"", ""Fill"":""green""},
-        { ""Key"":3, ""Text"":""Cons1"", ""Category"":""Consumer"", ""Loc"":""53 234""},
-        { ""Key"":2, ""Text"":""Bar2"", ""Category"":""HBar"", ""Loc"":""0 300"", ""Size"":""600 4"", ""Fill"":""orange""},
-        { ""Key"":4, ""Text"":""Conn1"", ""Category"":""Connector"", ""Loc"":""232.5 207.75""},
-        { ""Key"":5, ""Text"":""Cons3"", ""Category"":""Consumer"", ""Loc"":""357.5 230.75""},
-        { ""Key"":6, ""Text"":""Cons2"", ""Category"":""Consumer"", ""Loc"":""484.5 164.75""}
+        { ""Key"":1, ""Text"":""Gen1"", ""Category"":""Generator"", ""Loc"":""300 0""},
+        { ""Key"":2, ""Text"":""Bar1"", ""Category"":""HBar"", ""Loc"":""100 100"", ""Size"":""500 4"", ""Fill"":""green""},
+        { ""Key"":4, ""Text"":""Cons1"", ""Category"":""Consumer"", ""Loc"":""53 234""},
+        { ""Key"":3, ""Text"":""Bar2"", ""Category"":""HBar"", ""Loc"":""0 300"", ""Size"":""600 4"", ""Fill"":""orange""},
+        { ""Key"":5, ""Text"":""Conn1"", ""Category"":""Connector"", ""Loc"":""232.5 207.75""},
+        { ""Key"":6, ""Text"":""Cons3"", ""Category"":""Consumer"", ""Loc"":""357.5 230.75""},
+        { ""Key"":7, ""Text"":""Cons2"", ""Category"":""Consumer"", ""Loc"":""484.5 164.75""}
      ],
       ""LinkDataSource"": [
-        {""From"":0, ""To"":1},
-        { ""From"":0, ""To"":2},
-        { ""From"":3, ""To"":2},
-        { ""From"":4, ""To"":1},
-        { ""From"":4, ""To"":2},
+        { ""From"":1, ""To"":2},
+        { ""From"":1, ""To"":3},
+        { ""From"":4, ""To"":3},
         { ""From"":5, ""To"":2},
-        { ""From"":6, ""To"":1}
+        { ""From"":5, ""To"":3},
+        { ""From"":6, ""To"":3},
+        { ""From"":7, ""To"":2}
      ]}
     ";
 
@@ -212,8 +216,6 @@ namespace WinFormsSampleControls.Network {
       });
       */
 
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.ToolManager.LinkingTool.Direction = LinkingDirection.ForwardsOnly;
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -236,7 +238,6 @@ namespace WinFormsSampleControls.Network {
 
     private void SetupPalette() {
       // initialize Palette
-      myPalette = paletteControl1.Diagram as Palette;
       DefineNodeTemplate();
       myPalette.NodeTemplateMap = sharedNodeTemplateMap;
       myPalette.Layout = new GridLayout {
@@ -267,8 +268,7 @@ namespace WinFormsSampleControls.Network {
 
     private void SetupOverview() {
       // initialize Overview
-      myOverview = overviewControl1.Diagram as Overview;
-      myOverview.ObservedControl = diagramControl1;
+      myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
     }
 

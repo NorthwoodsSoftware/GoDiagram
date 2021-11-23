@@ -6,7 +6,6 @@ using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;
 using Northwoods.Go.Tools.Extensions;
-using Northwoods.Go.WinForms;
 
 namespace WinFormsExtensionControls.OverviewResizing {
   [ToolboxItem(false)]
@@ -18,6 +17,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
 
     public OverviewResizingControl() {
       InitializeComponent();
+
+      myDiagram = diagramControl1.Diagram;
+      myOverview = overviewControl1.Diagram as Overview;
 
       diagramControl1.AfterRender = Setup;
       overviewControl1.AfterRender = SetupOverview;
@@ -35,7 +37,6 @@ namespace WinFormsExtensionControls.OverviewResizing {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
       myDiagram.Layout = new ForceDirectedLayout();
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -80,9 +81,7 @@ namespace WinFormsExtensionControls.OverviewResizing {
     }
 
     private void SetupOverview() {
-      myOverview = overviewControl1.Diagram as Overview;
-
-      myOverview.ObservedControl = diagramControl1;
+      myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
       myOverview.Box.Resizable = true;
       myOverview.ToolManager.ResizingTool = new OverviewResizingTool();

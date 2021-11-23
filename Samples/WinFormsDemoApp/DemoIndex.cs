@@ -11,10 +11,10 @@ namespace WinFormsDemoApp {
 
   static class DemoIndex {
     // Map short names to NavItems
-    public static Dictionary<string, NavItem> Samples = new() {
+    public static Dictionary<string, NavItem> Samples = new(StringComparer.InvariantCultureIgnoreCase) {
       // Samples on short List corresponding to GoJS order
-      { "OrgChartStatic", new NavItem("Org Chart (Static)", typeof(WinFormsSampleControls.OrgChartStatic.OrgChartStaticControl)) },
       { "OrgChartEditor", new NavItem("OrgChart Editor", typeof(WinFormsSampleControls.OrgChartEditor.OrgChartEditorControl)) },
+      { "OrgChartStatic", new NavItem("Org Chart (Static)", typeof(WinFormsSampleControls.OrgChartStatic.OrgChartStaticControl)) },
       { "FamilyTree", new NavItem("Family Tree", typeof(WinFormsSampleControls.FamilyTree.FamilyTreeControl)) },
       { "Genogram", new NavItem("Genogram", typeof(WinFormsSampleControls.Genogram.GenogramControl)) },
       { "DoubleTree", new NavItem("Double Tree", typeof(WinFormsSampleControls.DoubleTree.DoubleTreeControl)) },
@@ -143,7 +143,7 @@ namespace WinFormsDemoApp {
       { "WordCloud", new NavItem("Word Cloud", typeof(WinFormsSampleControls.WordCloud.WordCloudControl)) }
     };
 
-    public static Dictionary<string, NavItem> Extensions = new() {
+    public static Dictionary<string, NavItem> Extensions = new(StringComparer.InvariantCultureIgnoreCase) {
       /****** LAYOUTS ******/
       { "Arranging", new NavItem("Arranging Layout", typeof(WinFormsExtensionControls.Arranging.ArrangingControl)) },
       { "Fishbone", new NavItem("Fishbone Layout", typeof(WinFormsExtensionControls.Fishbone.FishboneControl)) },

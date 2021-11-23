@@ -16,6 +16,8 @@ namespace WinFormsSampleControls.OrgChartStatic {
     public OrgChartStaticControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
+      myOverview = overviewControl1.Diagram as Overview;
       diagramControl1.AfterRender = Setup;
       overviewControl1.AfterRender = SetupOverview;
       searchBtn.Click += (sender, e) => SearchDiagram();
@@ -44,8 +46,6 @@ namespace WinFormsSampleControls.OrgChartStatic {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // some constants that will be reused within templates
       var mt8 = new Margin(8, 0, 0, 0);
       var mr8 = new Margin(0, 8, 0, 0);
@@ -245,8 +245,7 @@ namespace WinFormsSampleControls.OrgChartStatic {
     }
 
     private void SetupOverview() {
-      myOverview = overviewControl1.Diagram as Overview;
-      myOverview.ObservedControl = diagramControl1;
+      myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
     }
 

@@ -125,7 +125,7 @@ namespace WinFormsSampleControls.IncrementalTree {
       // create the model with a root node data
       MyDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = 0, Color = blues[0], EverExpanded = false, RootDistance = 0 }
+          new NodeData { Key = -1, Color = blues[0], EverExpanded = false, RootDistance = 0 }
         }
       };
     }
