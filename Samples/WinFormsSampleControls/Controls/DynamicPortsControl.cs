@@ -40,11 +40,11 @@ namespace WinFormsSampleControls.DynamicPorts {
   </p>
   <p>
     The diagram also uses a custom link to allow for special routing to help parallel links avoid each other
-    using overridden <a>Link.computeEndSegmentLength</a>, <a>Link.hasCurviness</a>, and <a>Link.computeCurviness</a>
+    using overridden <a>Link.ComputeEndSegmentLength</a>, <a>Link.HasCurviness</a>, and <a>Link.ComputeCurviness</a>
     functions.
   </p>
   <p>
-    See the <a href="".. /intro/ports.html"">Ports Intro page</a> for an explanation of GoDiagram ports.
+    See the <a href=""intro/ports.html"">Ports Intro page</a> for an explanation of GoDiagram ports.
       </p>
 ";
       saveLoadModel1.ModelJson = @"{
@@ -99,11 +99,11 @@ namespace WinFormsSampleControls.DynamicPorts {
       myDiagram.UndoManager.IsEnabled = true;
 
       // To simplify this code we define a function for creating a context menu button:
-      Panel makeButton(string text, Action<InputEvent, GraphObject> action, Func<GraphObject, object, bool> visiblePredicate = null) {
-        var converter = new Func<object, object, object>((obj, _) => {
+      Panel makeButton(string text, Action<InputEvent, GraphObject> action, Func<GraphObject, bool> visiblePredicate = null) {
+        object converter(object obj) {
           var elt = obj as GraphObject;
-          return elt.Diagram != null && visiblePredicate(elt, _);
-        });
+          return elt.Diagram != null && visiblePredicate(elt);
+        }
 
         return Builder.Make<Panel>("ContextMenuButton")
           .Add(new TextBlock(text))
@@ -116,10 +116,10 @@ namespace WinFormsSampleControls.DynamicPorts {
           .Add(
             makeButton("Copy",
               (e, obj) => { e.Diagram.CommandHandler.CopySelection(); },
-              (o, _) => { return o.Diagram.CommandHandler.CanCopySelection(); }),
+              (o) => { return o.Diagram.CommandHandler.CanCopySelection(); }),
             makeButton("Delete",
               (e, obj) => { e.Diagram.CommandHandler.DeleteSelection(); },
-              (o, _) => { return o.Diagram.CommandHandler.CanDeleteSelection(); }),
+              (o) => { return o.Diagram.CommandHandler.CanDeleteSelection(); }),
             new Shape("LineH") { StrokeWidth = 2, Height = 1, Stretch = Stretch.Horizontal },
             makeButton("Add top port",
               (e, obj) => { AddPort("Top"); }),
@@ -246,13 +246,13 @@ namespace WinFormsSampleControls.DynamicPorts {
           .Add(
             makeButton("Paste",
               (e, obj) => { e.Diagram.CommandHandler.PasteSelection(e.Diagram.ToolManager.ContextMenuTool.MouseDownPoint); },
-              (o, _) => { return o.Diagram.CommandHandler.CanPasteSelection(o.Diagram.ToolManager.ContextMenuTool.MouseDownPoint); }),
+              (o) => { return o.Diagram.CommandHandler.CanPasteSelection(o.Diagram.ToolManager.ContextMenuTool.MouseDownPoint); }),
             makeButton("Undo",
               (e, obj) => { e.Diagram.CommandHandler.Undo(); },
-              (o, _) => { return o.Diagram.CommandHandler.CanUndo(); }),
+              (o) => { return o.Diagram.CommandHandler.CanUndo(); }),
             makeButton("Redo",
               (e, obj) => { e.Diagram.CommandHandler.Redo(); },
-              (o, _) => { return o.Diagram.CommandHandler.CanRedo(); })
+              (o) => { return o.Diagram.CommandHandler.CanRedo(); })
           );
 
       // load the diagram from JSON data

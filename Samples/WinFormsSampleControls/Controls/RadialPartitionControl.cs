@@ -21,11 +21,11 @@ namespace WinFormsSampleControls.RadialPartition {
       Click on a Node to center it and show its relationships.
         </p>
         <p>
-      The <code>RadialLayout</code> class is an extension defined at <a href="".. / extensions / RadialLayout.js"">RadialLayout.js</a>.
-      The override of the <code>RadialLayout.rotateNode</code> sets the <code>angle</code>,
-      <code>sweep</code>, and <code>radius</code> data properties.
-      Bindings in the node template use those properties to produce the appropriate <a href=""https://gojs.net/latest/intro/geometry.html#:~:text=The%20GoJS%20Geometry%20class%20controls,be%20used%20by%20setting%20Shape."">Shape.geometry</a>
-      and the <a href=""https://gojs.net/latest/intro/sizing.html"">GraphObject.alignment</a> and <a href=""https://gojs.net/latest/api/symbols/RotatingTool.html"">GraphObject.angle</a> for each <a href=""https://gojs.net/latest/intro/textblocks.html"">TextBlock</a>.
+      The <code>RadialLayout</code> class is an extension defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Radial/RadialLayout.cs"">RadialLayout.cs</a>.
+      The override of the <code>RadialLayout.RotateNode</code> sets the <code>Angle</code>,
+      <code>Sweep</code>, and <code>Radius</code> data properties.
+      Bindings in the node template use those properties to produce the appropriate <a>Shape.Geometry</a>
+      and the <a>GraphObject.Alignment</a> and <a>GraphObject.Angle</a> for each <a>TextBlock</a>.
         </p>
 ";
 

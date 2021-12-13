@@ -15,7 +15,7 @@ namespace WinFormsExtensionControls.Spiral {
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom Layout, SpiralLayout, which assumes the graph consists of a chain of nodes.
-          The layout is defined in its own file, as <a href=""SpiralLayout.js"">SpiralLayout.js</a>.
+          The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Spiral/SpiralLayout.cs"">SpiralLayout.cs</a>.
           </p>
 ";
     }

@@ -26,8 +26,8 @@ namespace WinFormsSampleControls.RegroupingTreeView {
       This sample demonstrates the synchronization of two different models, necessitated by their being different types:
       <a>TreeModel</a> for the tree view and <a>GraphLinksModel</a> for the general diagram on the right.
       Normally in such situations one would have a single model with two diagrams showing the shared model.
-      However in this case there are two separate models but the model data, including the <a>Model.nodeDataArray</a>, are shared.
-      That means the ""group"" property is used in the normal fashion in the GraphLinksModel but is used as the ""parent""
+      However in this case there are two separate models but the model data, including the <a>Model.NodeDataSource</a>, are shared.
+      That means the ""Group"" property is used in the normal fashion in the GraphLinksModel but is used as the ""Parent""
       reference in the TreeModel.
         </p>
         <p>

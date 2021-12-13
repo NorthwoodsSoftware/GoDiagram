@@ -25,25 +25,20 @@ namespace WinFormsSampleControls.SharedStates {
       saveLoadModel1.LoadClick += (e, obj) => _Load();
 
       goWebBrowser1.Html = @"
-
-   <p>
-  This demonstrates the ability to simulate having nodes be members of multiple ""groups"".
-  Regular<a> Group</a> s only support a single<a>Part.containingGroup</a> for nodes.
-      This sample does not make use of <a> Group </a> s at all, but simulates one possible ""grouping"" relationship
-      using a custom <a> Layout </a> and a custom<a>DraggingTool</a>.
-     
-       </p>
-     
-       <p>
-       The CustomLayout assumes regular nodes already have real locations, and only assigns<a>Part.location</a> to ""Super"" nodes.
-  It also sets the<a>GraphObject.desiredSize</a> on the ""BODY"" element of each ""Super"" node, based on the area occupied by all of its member nodes.
-  The CustomDraggingTool overrides the<a>DraggingTool.computeEffectiveCollection</a> method to determine what nodes to drag around.
-   </p>
- 
-   <p>
-   This sample does not support dynamic restructuring of the relationships in the graph.
-  </p>
-
+        <p>
+          This demonstrates the ability to simulate having nodes be members of multiple ""groups"".
+          Regular <a>Group</a> s only support a single <a>Part.ContainingGroup</a> for nodes.
+          This sample does not make use of <a>Group</a>s at all, but simulates one possible ""grouping"" relationship
+          using a custom <a>Layout</a> and a custom <a>DraggingTool</a>.
+        </p>
+        <p>
+          The CustomLayout assumes regular nodes already have real locations, and only assigns <a>Part.Location</a> to ""Super"" nodes.
+          It also sets the <a>GraphObject.DesiredSize</a> on the ""BODY"" element of each ""Super"" node, based on the area occupied by all of its member nodes.
+          The CustomDraggingTool overrides the <a>DraggingTool.ComputeEffectiveCollection</a> method to determine what nodes to drag around.
+        </p>
+        <p>
+          This sample does not support dynamic restructuring of the relationships in the graph.
+        </p>
 ";
 
       saveLoadModel1.ModelJson = @"

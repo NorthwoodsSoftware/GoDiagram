@@ -27,23 +27,23 @@ namespace WinFormsExtensionControls.SnapLinkReshape {
 
       goWebBrowser2.Html = @"
           <p>
-           This sample is a simplified version of the <a href="".. /samples /draggableLink.html"">Draggable Link</a> sample.
-           Links are not draggable, there are no custom<a> Adornment</a> s, nodes are not rotatable, and links
+           This sample is a simplified version of the <a href=""DraggableLink"">Draggable Link</a> sample.
+           Links are not draggable, there are no custom <a>Adornment</a>s, nodes are not rotatable, and links
            do not have text labels.
           </p>
           <p>
-           Its purpose is to demonstrate the <a href = ""SnapLinkReshapingTool.js""> SnapLinkReshapingTool </a>,
-           an extension of<a> LinkReshapingTool</a> that snaps each dragged reshape handle of selected Links to
-           the nearest grid point.If the<a>SnapLinkReshapingTool.avoidsNodes</a> option is true,
+           Its purpose is to demonstrate the <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/SnapLinkReshaping/SnapLinkReshapingTool.cs"">SnapLinkReshapingTool</a>,
+           an extension of <a>LinkReshapingTool</a> that snaps each dragged reshape handle of selected Links to
+           the nearest grid point.If the <a>SnapLinkReshapingTool.AvoidsNodes</a> option is true,
            as it is by default, then the reshaping is limited to points where the adjacent segments would not
            be crossing over any avoidable nodes.
           </p>
           <p>
-           Note how the ""LinkReshaped"" DiagramEvent listener changes the<a>Link.routing</a> of the reshaped Link,
+           Note how the ""LinkReshaped"" DiagramEvent listener changes the <a>Link.Routing</a> of the reshaped Link,
            so that it is no longer AvoidsNodes routing but simple Orthogonal routing.
-           This combined with<a> Link.adjusting </a> being End permits the middle points of the link route to be
+           This combined with <a>Link.Adjusting</a> being End permits the middle points of the link route to be
            retained even after the user moves or resizes nodes.
-           Furthermore there is a TwoWay <a> Binding </a> on <a> Link.routing </a>, so that the model remembers
+           Furthermore there is a TwoWay <a>Binding</a> on <a>Link.Routing</a>, so that the model remembers
            whether the link route had ever been reshaped manually.
           </p>
 ";

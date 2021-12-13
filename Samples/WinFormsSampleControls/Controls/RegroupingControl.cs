@@ -54,7 +54,7 @@ namespace WinFormsSampleControls.Regrouping {
         <p>
           This sample allows the user to drag nodes, including groups, into and out of groups,
           both from the Palette as well as from within the Diagram.
-          See the <a href=""../intro/groups.html"">Groups Intro page</a> for an explanation of GoDiagram Groups.
+          See the <a href=""intro/groups.html"">Groups Intro page</a> for an explanation of GoDiagram Groups.
         </p>
         <p>
           Highlighting to show feedback about potential addition to a group during a drag is implemented

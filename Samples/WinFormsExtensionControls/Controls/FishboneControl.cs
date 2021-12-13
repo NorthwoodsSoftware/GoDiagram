@@ -23,11 +23,11 @@ namespace WinFormsExtensionControls.Fishbone {
         <p>
           This sample shows a ""fishbone"" layout of a tree model of cause-and-effect relationships.
           This type of layout is often seen in root cause analysis, or RCA.
-          The layout is defined in its own file, as <a href=""FishboneLayout.js"">FishboneLayout.js</a>.
+          The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Fishbone/FishboneLayout.cs"">FishboneLayout.cs</a>.
           When using FishboneLayout the diagram uses FishboneLink in order to get custom routing for the links.
         </p>
         <p>
-        The buttons each set the <a>Diagram.layout</a> within a transaction.
+        The buttons each set the <a>Diagram.Layout</a> within a transaction.
         </p>
       ";
     }

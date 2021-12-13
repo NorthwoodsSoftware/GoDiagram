@@ -21,26 +21,23 @@ namespace WinFormsSampleControls.TreeView {
       There are 500 nodes in the tree.
         </p>
         <p>
-      Look at this page's source code to see how the properties on the <a>TreeLayout</a> are set.
-        </p>
-        <p>
-      The node template makes use of a ""TreeExpanderButton"" panel to implement the expand / collapse button.
-      It also implements a custom doubleClick function to allow nodes to be expanded / collapsed on double-click.
-      Lastly, the source of the picture on each node is bound to two different properties, <a>Node.isTreeLeaf</a> and
-      <a> Node.isTreeExpanded </a>; the <b>imageConverter</b> function is used to select the correct image
+      The node template makes use of a ""TreeExpanderButton"" panel to implement the expand/collapse button.
+      It also implements a custom DoubleClick function to allow nodes to be expanded/collapsed on double-click.
+      Lastly, the source of the picture on each node is bound to two different properties, <a>Node.IsTreeLeaf</a> and
+      <a>Node.IsTreeExpanded</a>; the <b>imageConverter</b> function is used to select the correct image
       based on these properties.
         </p>
         <p>
       There are two link templates in the source code, one which uses no lines, and one which connects the items with dotted lines.
         </p>  
         <p>
-      See the <a href = ""../intro/buttons.html"" target = ""_blank""> Intro page on Buttons </a> for more GoDiagram button information.
-      The <a href = ""triStateCheckBoxTree.html"" target = ""_blank""> Tri - state CheckBox Tree</a> sample demonstrates a ""tree view"" where each item           
-      has a three - state checkbox. The <a href = ""treeMapper.html"" target = ""_blank""> Tree Mapper </a> sample demonstrates how to map(draw associations) between items in two trees.
-      The <a href = ""updateDemo.html"" target = ""_blank""> Update Demo </a> sample also uses a ""tree view"" for its own purposes.       
+      See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
+      The <a href=""TriStateCheckBoxTree"">Tri-state CheckBox Tree</a> sample demonstrates a ""tree view"" where each item           
+      has a three - state checkbox. The <a href=""TreeMapper"">Tree Mapper</a> sample demonstrates how to map (draw associations) between items in two trees.
+      The <a href=""UpdateDemo"">Update Demo</a> sample also uses a ""tree view"" for its own purposes.       
         </p>      
         <p> 
-      The icons in this sample are from <a href = ""https://icons8.com/"" target = ""blank""> icons8.com </a>
+      The icons in this sample are from <a href=""https://icons8.com/"">icons8.com</a>
         </p>                      
 ";
 

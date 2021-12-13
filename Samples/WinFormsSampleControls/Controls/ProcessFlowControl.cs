@@ -24,12 +24,12 @@ namespace WinFormsSampleControls.ProcessFlow {
       A simple SCADA diagram, with animation of the flow along the pipes, is implemented here.
         </p>
         <p>
-      The diagram displays the background grid layer by setting <b>grid.visible</b> to true,
-      and also allows snapping to the grid using <a>DraggingTool.isGridSnapEnabled</a>,
-      <a>ResizingTool.isGridSnapEnabled</a>, and <a>RotatingTool.snapAngleMultiple</a> alongside <a>RotatingTool.snapAngleEpsilon</a>.
+      The diagram displays the background grid layer by setting <b>Grid.Visible</b> to true,
+      and also allows snapping to the grid using <a>DraggingTool.IsGridSnapEnabled</a>,
+      <a>ResizingTool.IsGridSnapEnabled</a>, and <a>RotatingTool.SnapAngleMultiple</a> alongside <a>RotatingTool.SnapAngleEpsilon</a>.
         </p>
         <p>
-      There is also a custom animation that modifies the <a>Shape.strokeDashOffset</a> for each link.
+      There is also a custom animation that modifies the <a>Shape.StrokeDashOffset</a> for each link.
         </p>
 ";
 

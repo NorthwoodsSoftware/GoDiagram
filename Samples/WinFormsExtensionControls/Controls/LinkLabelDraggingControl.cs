@@ -19,21 +19,22 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
-   <p>
-    This sample is a modification of the <a href="".. / samples / stateChart.html"">State Chart</a> sample
-    that makes use of the LinkLabelDraggingTool that is defined in its own file, as <a href = ""LinkLabelDraggingTool.js"">LinkLabelDraggingTool.js</a>.
-   </p>
+        <p>
+          This sample is a modification of the <a href=""StateChart"">State Chart</a> sample
+          that makes use of the LinkLabelDraggingTool that is defined in its own file,
+          as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/LinkLabelDragging/LinkLabelDraggingTool.cs"">LinkLabelDraggingTool.cs</a>.
+        </p>
  
-   <p>
-    Note that after dragging a link label you can move a node connected by that link and the label maintains the same position relative to the link route.
-    That relative position is specified by the <a>GraphObject.segmentOffset</a> property.
-    This sample also saves any changes to that property by means of a TwoWay <a>Binding</a>.
-   </p>
+        <p>
+          Note that after dragging a link label you can move a node connected by that link and the label maintains the same position relative to the link route.
+          That relative position is specified by the <a>GraphObject.SegmentOffset</a> property.
+          This sample also saves any changes to that property by means of a TwoWay <a>Binding</a>.
+        </p>
 
-   <p>
-    See also the similar <a href = ""LinkLabelOnPathDragging.html"" target = ""_blank"">Link Label On Path Dragging sample</a>,
-    where the label is constrained to remain on the path of the link.
-   </p>
+        <p>
+          See also the similar <a href=""LinkLabelOnPathDragging"">Link Label On Path Dragging sample</a>,
+          where the label is constrained to remain on the path of the link.
+        </p>
 ";
 
       saveLoadModel1.ModelJson = @"{ 

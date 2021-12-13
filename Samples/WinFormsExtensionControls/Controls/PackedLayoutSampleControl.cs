@@ -97,13 +97,13 @@ namespace WinFormsExtensionControls.PackedLayoutSample {
       goWebBrowser1.Html = @"
    <p>
     This sample demonstrates a custom Layout, PackedLayout, which attempts to pack nodes as close together as possible without overlap.
-    Each node is assumed to be either rectangular or circular (dictated by the 'nodesAreCircles' property). This layout supports packing
+    Each node is assumed to be either rectangular or circular (dictated by the 'NodesAreCircles' property). This layout supports packing
     nodes into either a rectangle or an ellipse, with the shape determined by the PackShape and the aspect ratio determined by either the
     aspectRatio property, or the specified width and height (depending on the PackMode).
   </p>
   <p>
-    This extension's code is TypeScript-only and the source files can be found in the <code>extensionsTS</code> directory.
-    The layout is defined in its own file, as <a href="".. / extensionsTS / PackedLayout.ts"">extensionsTS/PackedLayout.ts</a>, with an additional dependency on <a href="".. / extensionsTS / Quadtree.ts"">extensionsTS/Quadtree.ts</a>.
+    The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Packed/PackedLayout.cs"">PackedLayout.cs</a>,
+    with an additional dependency on <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Packed/Quadtree.cs"">Quadtree.cs</a>.
   </p>
 ";
 

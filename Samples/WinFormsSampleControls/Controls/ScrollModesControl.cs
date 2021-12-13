@@ -16,7 +16,7 @@ namespace WinFormsSampleControls.ScrollModes {
 
       goWebBrowser1.Html = @"
         <p>
-      This demonstrates new scrolling and scaling options available in <strong>GoDiagram 1.5</strong>.
+      This demonstrates scrolling and scaling options available in <b>GoDiagram</b>.
         </p>
 ";
 

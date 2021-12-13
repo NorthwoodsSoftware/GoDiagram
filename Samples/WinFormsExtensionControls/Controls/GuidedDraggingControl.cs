@@ -17,11 +17,8 @@ namespace WinFormsExtensionControls.GuidedDragging {
       goWebBrowser1.Html = @"
    <p>
     This custom <a>DraggingTool</a> class makes guidelines visible as a Part is dragged around a Diagram and is nearly aligned with another Part.
-    If a locationObjectName is set, then this aligns <a>Part.locationObject</a>s instead.
-    The tool is defined in its own file, as <a href=""GuidedDraggingTool.js"">GuidedDraggingTool.js</a>.
-  </p>
-  <p>
-    Usage can also be seen in the <a href = ""FloorPlanEditor.html""> Floor Plan Editor</a> sample.
+    If a LocationElementName is set, then this aligns <a>Part.LocationElement</a>s instead.
+    The tool is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GuidedDragging/GuidedDraggingTool.cs"">GuidedDraggingTool.cs</a>.
   </p>
 ";
 

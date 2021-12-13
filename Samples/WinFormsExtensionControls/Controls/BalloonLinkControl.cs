@@ -16,13 +16,13 @@ namespace WinFormsExtensionControls.BalloonLink {
 
       goWebBrowser1.Html = @"
    <p>
-    A <b>BalloonLink</b> is a custom <a>Link</a> that draws a ""balloon"" shape around the Link.fromNode.
-    It will create a triangular shape with the base at the fromNode and the other point at the toNode.
-    It is defined in its own file, as <a href = ""BalloonLink.js""> BalloonLink.js </a>.
+    A <b>BalloonLink</b> is a custom <a>Link</a> that draws a ""balloon"" shape around the Link.FromNode.
+    It will create a triangular shape with the base at the FromNode and the other point at the ToNode.
+    It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/BalloonLink/BalloonLink.cs"">BalloonLink.cs</a>.
    </p>
  
    <p>
-     Usage can also be seen in the <a href = ""../samples/comments.html""> Comments </a> sample.
+     Usage can also be seen in the <a href=""Comments"">Comments</a> sample.
    </p>
 ";
 

@@ -21,7 +21,7 @@ namespace WinFormsExtensionControls.NonRealtimeDragging {
     Only when the mouse up occurs does the move happen.
   </p>
   <p>
-    This tool is defined in its own file, as <a href=""NonRealtimeDraggingTool.js"">NonRealtimeDraggingTool.js</a>
+    This tool is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/NonRealtimeDragging/NonRealtimeDraggingTool.cs"">NonRealtimeDraggingTool.cs</a>
   </p>
 ";
 

@@ -25,9 +25,9 @@ namespace WinFormsExtensionControls.PortShifting {
 
       goWebBrowser1.Html = @"
            <p>
-      This is exactly like the <a href="".. /samples /LogicCircuit.html"">Logic Circuit sample</a>
+      This is exactly like the <a href=""LogicCircuit"">Logic Circuit sample</a>
       but also makes use of the PortShiftingTool,
-      which is defined in <a href = ""PortShiftingTool.js""> PortShiftingTool.js </a>
+      which is defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/PortShifting/PortShiftingTool.cs"">PortShiftingTool.cs</a>
           </p>
             <p>
       When the user wants to shift the position of a port on a node,
@@ -38,12 +38,12 @@ namespace WinFormsExtensionControls.PortShifting {
       Note how the relative position of the port within the node is maintained as you resize the node.
             </p>
             <p>
-      If you want to persist the port's spot, you should add a TwoWay Binding of the <a>GraphObject.alignment</a>
+      If you want to persist the port's spot, you should add a TwoWay Binding of the <a>GraphObject.Alignment</a>
       property with a property that you define on the node data for each port.
             </p>
             <p>
       This sample does not constrain the position of the port within the node,
-      but you could adapt the PortShiftingTool.updateAlignment method to do so.
+      but you could adapt the PortShiftingTool.UpdateAlignment method to do so.
       For example if you wanted, you could keep a port stuck along one edge of the node.
             </p>
 ";

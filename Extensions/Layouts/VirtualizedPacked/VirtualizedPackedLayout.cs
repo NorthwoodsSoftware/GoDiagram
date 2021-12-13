@@ -1,13 +1,13 @@
 /*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
-* This is an extension and not part of the main GoJS library.
+* This is an extension and not part of the main GoDiagram library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
-* Extensions can be found in the GoJS kit under the extensions or extensionsTS folders.
-* See the Extensions intro page (https://gojs.Net/latest/intro/extensions.Html) for more information.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 using System;
@@ -109,17 +109,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       Cost = cost;
       S1 = s1;
       S2 = s2;
-    }
-  }
-
-  internal class FuncComparer<T> : IComparer<T> {
-    private Func<T, T, double> _Func;
-    public int Compare(T x, T y) {
-      return (int)_Func(x, y);
-    }
-
-    public FuncComparer(Func<T, T, double> func) {
-      _Func = func;
     }
   }
 
@@ -289,7 +278,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     ///   )
     /// </code>
     /// </summary>
-    public Func<IBounded, IBounded, double> Comparer {
+    public Comparison<IBounded> Comparer {
       get {
         return _Comparer;
       }
@@ -501,7 +490,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /** @hidden @internal */
     private VSortOrder _SortOrder = VSortOrder.Descending;
     /** @hidden @internal */
-    private Func<IBounded, IBounded, double> _Comparer = null;
+    private Comparison<IBounded> _Comparer = null;
     /** @hidden @internal */
     private double _AspectRatio = 1;
     /** @hidden @internal */
@@ -617,7 +606,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             return 0;
           };
         }
-        nodes.Sort(new FuncComparer<IBounded>(Comparer));
+        nodes.Sort(Comparer);
       }
 
       var targetWidth = Size.Width != 0 ? Size.Width : 1;
@@ -973,9 +962,9 @@ namespace Northwoods.Go.Layouts.Extensions {
           j++;
         } while (s != segments.Start);
 
-        possibleFits.Sort(new FuncComparer<Fit>((a, b) => {
-          return a.Cost - b.Cost;
-        }));
+        possibleFits.Sort((a, b) => {
+          return (int)(a.Cost - b.Cost);
+        });
 
         /* scales the cost of skip fits. a double below
          * one makes skip fits more likely to appear,

@@ -20,7 +20,7 @@ namespace WinFormsSampleControls.FriendWheel {
   <p>
   This ""friend wheel"" demonstrates the use of <a>CircularLayout</a>.
   The layout has been customized to make sure each node is considered to have a fixed diameter,
-  ignoring the size of any<a>TextBlock</a>.
+  ignoring the size of any <a>TextBlock</a>.
 
  </p>
 
@@ -29,10 +29,10 @@ namespace WinFormsSampleControls.FriendWheel {
   This information is available on the <a>CircularVertex</a> used by the <a>LayoutNetwork</a> that
   the <a>CircularLayout</a> constructs from the nodes and links of the diagram.
   Furthermore, when laying out the nodes it also flips the angle of the <a>TextBlock</a> so that the
-  text is not upside - down.
+  text is not upside-down.
   </p>
   <p>
-  <a>GraphObject.mouseEnter</a> and <a>GraphObject.mouseLeave</a> event handlers on the <a>Node</a> template
+  <a>GraphObject.MouseEnter</a> and <a>GraphObject.MouseLeave</a> event handlers on the <a>Node</a> template
   highlight both the Node and all of the Links that connect with the Node.
   The same event handlers on the <a>Links</a> highlight that Link and both connected Nodes.
 

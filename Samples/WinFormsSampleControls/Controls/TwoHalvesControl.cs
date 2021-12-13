@@ -21,8 +21,8 @@ namespace WinFormsSampleControls.TwoHalves {
       </p>
       <p>
     The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are defined in
-    <a href = ""../extensions/RoundedRectangles.js""> RoundedRectangles.js </a> in the extensions directory.
-    See also the <a href = ""roundedGroups.html"" target = ""_blank""> Rounded Groups </a> sample.
+    <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> in the extensions directory.
+    See also the <a href=""RoundedGroups"">Rounded Groups</a> sample.
       </p>
 ";
 

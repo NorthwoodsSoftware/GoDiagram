@@ -32,17 +32,17 @@ namespace WinFormsSampleControls.ProductionEditor {
 
       goWebBrowser1.Html = @"
         <p>
-      This process flow editor lets the user design diagrams to be shown by <a href=""productionProcess.html"">Production Process</a>.
+      This process flow editor lets the user design diagrams to be shown by <a href=""ProductionProcess"">Production Process</a>.
         </p>
         <p>
-      At the top is a<a> Palette </a>, from which the designer can drag-and - drop nodes down into the main<a> Diagram</a>.
+      At the top is a <a>Palette</a>, from which the designer can drag-and-drop nodes down into the main <a>Diagram</a>.
       When the end - user selects a Node, more information is shown in the gray area below the diagram.
-      For the designer, the<a> Inspector</a> also shows details about a selected Node or Link below the diagram,
+      For the designer, the <a>Inspector</a> also shows details about a selected Node or Link below the diagram,
       where the designer may modify some of the properties.
         </p>
         <p>
-      Each <a> Node </a> consists of an SVG<a> Shape</a> at the top and a rectangular port at the bottom.
-      The designer can draw new pipes(<a> Link </a> s) by dragging from a port to a different node's port.
+      Each <a>Node</a> consists of an SVG <a>Shape</a> at the top and a rectangular port at the bottom.
+      The designer can draw new pipes (<a>Link</a>s) by dragging from a port to a different node's port.
         </p>
         <p> 
       Below is the JSON data for the model:

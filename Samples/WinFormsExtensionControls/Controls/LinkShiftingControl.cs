@@ -24,7 +24,7 @@ namespace WinFormsExtensionControls.LinkShifting {
   <p>
     This only looks good for ports that occupy the whole of a rectangular node.
     If you want to restrict the user's permitted sides, you can adapt the
-    <code>LinkShiftingTool.doReshape</code> method to do what you want.
+    <code>LinkShiftingTool.DoReshape</code> method to do what you want.
   </p>
 ";
 

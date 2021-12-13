@@ -32,7 +32,7 @@ namespace WinFormsSampleControls.DragUnoccupied {
     except when forced to be shifted in order to avoid overlapping other nodes.
   </p>
   <p>
-    This functionality is implemented by a custom <a>Part.dragComputation</a> property function,
+    This functionality is implemented by a custom <a>Part.DragComputation</a> property function,
     which affects how the <a>DraggingTool</a> can move selected nodes.
     You will want to adjust how it finds an empty spot for the dragged node when dragging from another Diagram.
   </p>

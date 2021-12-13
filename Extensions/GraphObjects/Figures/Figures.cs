@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 /*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 // This file holds definitions of all standard shape figures -- string values for Shape.Figure.
@@ -896,8 +896,8 @@ namespace Northwoods.Go.Extensions {
           var param1 = shape.Parameter1;
           if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
         }
-        p1 = Math.Min(p1, w / 2);
-        p1 = Math.Min(p1, h / 2);  // limit by whole height or by half height?
+        p1 = Math.Min(p1, w / 3);  // limit by width & height
+        p1 = Math.Min(p1, h);
         var geo = new Geometry();
         // a single figure consisting of straight lines and quarter-circle arcs
         geo.Add(new PathFigure(0, p1)
@@ -919,8 +919,8 @@ namespace Northwoods.Go.Extensions {
           var param1 = shape.Parameter1;
           if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
         }
-        p1 = Math.Min(p1, w / 2);
-        p1 = Math.Min(p1, h / 2);  // limit by whole height or by half height?
+        p1 = Math.Min(p1, w / 3);  // limit by width & height
+        p1 = Math.Min(p1, h);
         var geo = new Geometry();
         // a single figure consisting of straight lines and quarter-circle arcs
         geo.Add(new PathFigure(0, 0)
@@ -929,6 +929,52 @@ namespace Northwoods.Go.Extensions {
           .Add(new PathSegment(SegmentType.Arc, 0, 90, w - p1, h - p1, p1, p1))
           .Add(new PathSegment(SegmentType.Line, p1, h))
           .Add(new PathSegment(SegmentType.Arc, 90, 90, p1, h - p1, p1, p1).Close()));
+        // don't intersect with two bottom corners when used in an "Auto" Panel
+        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0);
+        geo.Spot2 = new Spot(1, 1, -0.3 * p1, -0.3 * p1);
+        return geo;
+      });
+
+      Shape.DefineFigureGenerator("RoundedLeftRectangle", (shape, w, h) => {
+        // this figure takes one parameter, the size of the corner
+        var p1 = 5.0;  // default corner size
+        if (shape != null) {
+          var param1 = shape.Parameter1;
+          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
+        }
+        p1 = Math.Min(p1, w);  // limit by width & height
+        p1 = Math.Min(p1, h / 3);
+        var geo = new Geometry();
+        // a single figure consisting of straight lines and quarter-circle arcs
+        geo.Add(new PathFigure(w, 0)
+          .Add(new PathSegment(SegmentType.Line, w, h))
+          .Add(new PathSegment(SegmentType.Line, p1, h))
+          .Add(new PathSegment(SegmentType.Arc, 90, 90, p1, h - p1, p1, p1))
+          .Add(new PathSegment(SegmentType.Line, 0, p1))
+          .Add(new PathSegment(SegmentType.Arc, 180, 90, p1, p1, p1, p1).Close()));
+        // don't intersect with two top corners when used in an "Auto" Panel
+        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0.3 * p1);
+        geo.Spot2 = new Spot(1, 1, -0.3 * p1, 0);
+        return geo;
+      });
+
+      Shape.DefineFigureGenerator("RoundedRightRectangle", (shape, w, h) => {
+        // this figure takes one parameter, the size of the corner
+        var p1 = 5.0;  // default corner size
+        if (shape != null) {
+          var param1 = shape.Parameter1;
+          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
+        }
+        p1 = Math.Min(p1, w);  // limit by width & height
+        p1 = Math.Min(p1, h / 3);
+        var geo = new Geometry();
+        // a single figure consisting of straight lines and quarter-circle arcs
+        geo.Add(new PathFigure(0, 0)
+          .Add(new PathSegment(SegmentType.Line, w - p1, 0))
+          .Add(new PathSegment(SegmentType.Arc, 270, 90, w - p1, p1, p1, p1))
+          .Add(new PathSegment(SegmentType.Line, w, h - p1))
+          .Add(new PathSegment(SegmentType.Arc, 0, 90, w - p1, h - p1, p1, p1))
+          .Add(new PathSegment(SegmentType.Line, 0, h).Close()));
         // don't intersect with two bottom corners when used in an "Auto" Panel
         geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0);
         geo.Spot2 = new Spot(1, 1, -0.3 * p1, -0.3 * p1);

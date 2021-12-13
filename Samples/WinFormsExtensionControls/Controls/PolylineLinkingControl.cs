@@ -20,26 +20,26 @@ namespace WinFormsExtensionControls.PolylineLinking {
       goWebBrowser1.Html = @"
           <p>
     This sample demonstrates the PolylineLinkingTool, which replaces the standard LinkingTool.
-    The tool is defined in its own file, as <a href=""PolylineLinkingTool.js"">PolylineLinkingTool.js</a>.
+    The tool is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/PolylineLinking/PolylineLinkingTool.cs"">PolylineLinkingTool.cs</a>.
           </p>
            <p>
     The user starts drawing a new link from a node in the normal manner, by dragging from a port,
     which for feedback purposes has a ""pointer"" cursor.
-    Normally the user would have to release the mouse near the target port /node.
+    Normally the user would have to release the mouse near the target port/node.
     However with the PolylineLinkingTool the user may click at various points to cause the new link
     to be routed along those points.
     Clicking on the target port completes the new link.
-    Press<b>Escape </b> to cancel, or <b> Z </b> to remove the last point.
+    Press <b>Escape</b> to cancel, or <b>Z</b> to remove the last point.
           </p>
            <p>
-    Furthermore, because <a> Link.resegmentable </a> is true, the user can easily add or remove segments
-    from the route of a selected link.To insert a segment, the user can start dragging the small
-    diamond resegmenting handle.To remove a segment, the user needs to move a regular reshaping handle
+    Furthermore, because <a>Link.Resegmentable</a> is true, the user can easily add or remove segments
+    from the route of a selected link. To insert a segment, the user can start dragging the small
+    diamond resegmenting handle. To remove a segment, the user needs to move a regular reshaping handle
     to cause the adjacent two segments to be in a straight line.
           </p>
            <p>
     The PolylineLinkingTool also works with orthogonally routed links.
-    To demonstrate this, uncomment the two lines that initialize <a> Link.routing </a> to be <a> Link, Orthogonal </a>.
+    To demonstrate this, uncomment the two lines that initialize <a>Link.Routing</a> to be <a>LinkRounting.Orthogonal</a>.
           </p>
 ";
       saveLoadModel1.ModelJson = @"

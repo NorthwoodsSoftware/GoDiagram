@@ -18,7 +18,6 @@ namespace WinFormsDemoApp {
       }
 
       Diagram.ResourceManager = WinFormsSampleControls.Properties.Resources.ResourceManager;
-      //Diagram.LicenseKey = "eolaYRvpVthgXeXXAdW7IEDU+nB4nyBMz/z//CSrBv1A/Ac9fjdl2YyAwe6PFLBvcg3XIrf1om5+L4OQnP7JAGQUlQJw/dcyNz8irG8jnIAM2TtDLGbPRnH7MKPdl0UW";
 
 #if NET5_0_OR_GREATER
       Application.SetHighDpiMode(HighDpiMode.SystemAware);
@@ -28,7 +27,7 @@ namespace WinFormsDemoApp {
       Application.Run(new App(openTo));
     }
 
-    static (DemoType, string) ProcessInput(string s) {
+    public static (DemoType, string) ProcessInput(string s) {
       s = s.Substring(s.IndexOf(':') + 1);
       // unfortunately, original keys must be iterated to match given string
       // https://stackoverflow.com/questions/1619090/getting-a-keyvaluepair-directly-from-a-dictionary

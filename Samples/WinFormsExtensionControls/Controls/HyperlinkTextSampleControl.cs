@@ -17,7 +17,7 @@ namespace WinFormsExtensionControls.HyperlinkTextSample {
 
       goWebBrowser1.Html = @"
   <p>
-    This uses the ""HyperlinkText"" builder defined in <a href=""HyperlinkText.js"">HyperlinkText.js</a>.
+    This uses the ""HyperlinkText"" builder defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/HyperlinkText/HyperlinkTextWinForms/HyperlinkText.cs"">HyperlinkText.cs</a>.
   </p>
   <p>
     Click on the text to open a window to a computed URL.

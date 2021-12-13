@@ -25,8 +25,10 @@ namespace WinFormsExtensionControls.FreehandDrawing {
 
       goWebBrowser1.Html = @"
   <p>
-    This sample demonstrates the FreehandDrawingTool. It is defined in its own file, as <a href=""FreehandDrawingTool.js"">FreehandDrawingTool.js</a>.
-    It also demonstrates the GeometryReshapingTool, another custom tool, defined in <a href = ""GeometryReshapingTool.js"">GeometryReshapingTool.js</a>.
+    This sample demonstrates the FreehandDrawingTool. It is defined in its own file,
+    as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/FreehandDrawing/FreehandDrawingTool.cs"">FreehandDrawingTool.cs</a>.
+    It also demonstrates the GeometryReshapingTool, another custom tool,
+    defined in <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>.
   </p>
  
   <p>
@@ -34,7 +36,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
   </p>
   <p>
     Click the ""Select"" button to switch back to the normal selection behavior, so that you can select, resize, and rotate the shapes.
-    The checkboxes control whether you can resize, reshape, and / or rotate selected shapes.
+    The checkboxes control whether you can resize, reshape, and/or rotate selected shapes.
    </p>
 ";
 

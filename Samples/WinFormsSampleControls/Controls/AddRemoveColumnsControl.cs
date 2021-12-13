@@ -33,7 +33,7 @@ namespace WinFormsSampleControls.AddRemoveColumns {
 
       goWebBrowser2.Html = @"
 
-   <p>Add a column or Remove the fourth column from the table of the selected node:</p>
+   <p>Add a column or remove the fourth column from the table of the selected node:</p>
 
 ";
 
@@ -44,7 +44,7 @@ namespace WinFormsSampleControls.AddRemoveColumns {
 
       goWebBrowser4.Html = @"
 
-   <p>See also the <a href="".. / extensions / ColumnResizing.html"">Column and Row Resizing Tools</a></p>
+   <p>See also the <a href=""ColumnResizing"">Column and Row Resizing Tools</a></p>
 ";
 
     }

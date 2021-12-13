@@ -19,16 +19,17 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
-    <p>
-    This sample is a modification of the <a href="".. / samples / stateChart.html"">State Chart</a> sample
-    that makes use of the NodeLabelDraggingTool that is defined in its own file, as <a href = ""NodeLabelDraggingTool.js"">NodeLabelDraggingTool.js</a>.
-   </p>
+        <p>
+          This sample is a modification of the <a href=""StateChart"">State Chart</a> sample
+          that makes use of the NodeLabelDraggingTool that is defined in its own file,
+          as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/NodeLabelDragging/NodeLabelDraggingTool.cs"">NodeLabelDraggingTool.cs</a>.
+        </p>
  
-   <p>
-     Note that after dragging a node label you can move that node and the label maintains the same position relative to the node.
-    That relative position is specified by the <a>GraphObject.alignment</a> property, used by the ""Spot"" <a>Panel</a>.
-    This sample also saves any changes to that property by means of a TwoWay <a>Binding</a>.
- </p>
+        <p>
+          Note that after dragging a node label you can move that node and the label maintains the same position relative to the node.
+          That relative position is specified by the <a>GraphObject.Alignment</a> property, used by the ""Spot"" <a>Panel</a>.
+          This sample also saves any changes to that property by means of a TwoWay <a>Binding</a>.
+        </p>
 ";
 
       saveLoadModel1.ModelJson = @"{

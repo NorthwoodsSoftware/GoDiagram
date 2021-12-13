@@ -19,7 +19,7 @@ namespace WinFormsSampleControls.MultipleArrowheads {
       This sample demonstrates customization of the <a>Link</a> <a>Shape</a>'s <a>Geometry</a>.
         </p>
         <p>
-      The MultiArrowLink class in this sample inherits from Link and overrides the <a>Link.makeGeometry</a> method
+      The MultiArrowLink class in this sample inherits from Link and overrides the <a>Link.MakeGeometry</a> method
       to add arrowheads at the end of each interior segment, assuming that the route is orthogonal.
         </p>
 ";

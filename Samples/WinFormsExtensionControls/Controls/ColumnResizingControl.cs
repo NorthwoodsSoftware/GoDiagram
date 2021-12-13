@@ -17,16 +17,18 @@ namespace WinFormsExtensionControls.ColumnResizing {
 
       goWebBrowser1.Html = @"
   <p>
-    This makes use of two tools, defined in their own files: <a href=""ColumnResizingTool.js"">ColumnResizingTool.js</a> and <a href=""RowResizingTool.js"">RowResizingTool.js</a>.
-    Each tool adds an<a>Adornment</a> to a selected node that has a resize handle for each column or each row of a ""Table"" <a> Panel </a>.
+    This makes use of two tools, defined in their own files:
+    <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/ColumnResizing/ColumnResizingTool.cs"">ColumnResizingTool.cs</a> and
+    <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/RowResizing/RowResizingTool.cs"">RowResizingTool.cs</a>.
+    Each tool adds an <a>Adornment</a> to a selected node that has a resize handle for each column or each row of a ""Table"" <a>Panel</a>.
     While resizing, you can press the Tab or the Delete key in order to stop the tool and restore the column or row to its natural size.
   </p>
  
   <p>
-    This sample also adds TwoWay Bindings to the <a> RowColumnDefinition.width </a> property for the columns.
-    Each column width is stored in the corresponding index of the node data's ""widths"" property, which must be an Array of numbers.    
+    This sample also adds TwoWay Bindings to the <a>RowColumnDefinition.Width</a> property for the columns.
+    Each column width is stored in the corresponding index of the node data's ""Widths"" property, which must be an Array of numbers.    
     The default value is NaN, allowing the column to occupy its natural width.      
-    Note that there are <b> no </b> Bindings for the row heights.            
+    Note that there are <b>no</b> Bindings for the row heights.            
   </p>
              
   <p> 
@@ -35,7 +37,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
 ";
       goWebBrowser2.Html = @"
   <p> 
-    See also the <a href = ""../samples/addRemoveColumns.html""> Add & Remove Rows & Columns </a> sample.
+    See also the <a href=""AddRemoveColumns"">Add & Remove Rows & Columns</a> sample.
   </p>
 ";
 

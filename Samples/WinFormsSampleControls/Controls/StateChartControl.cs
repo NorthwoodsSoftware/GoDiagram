@@ -30,17 +30,17 @@ namespace WinFormsSampleControls.StateChart {
       The mouse wheel is set to zoom in and out instead of scroll.
         </p>
         <p>
-      This sample customizes the <a>Part.selectionAdornmentTemplate</a>
+      This sample customizes the <a>Part.SelectionAdornmentTemplate</a>
       of the node to a template that contains a button
       The button is positioned to be at the Top-Right corner of the node by
-      being in a Spot Panel with its <a>GraphObject.alignment</a> property set to Spot.TopRight.
+      being in a Spot Panel with its <a>GraphObject.Alignment</a> property set to Spot.TopRight.
         </p>
         <p>
-      The Button's <a>GraphObject.click</a> method creates a new node data,
+      The Button's <a>GraphObject.Click</a> method creates a new node data,
       adds it to the model, and creates a link from the original node data to the new node data.
       All of this is done inside a transaction, so that it can be undone by the user
       (Ctrl+Z and Ctrl+Y will undo and redo transactions). After the node is created,
-      <a>Diagram.scrollToRect</a> is called in case it is off-screen.
+      <a>Diagram.ScrollToRect</a> is called in case it is off-screen.
         </p>
 ";
 

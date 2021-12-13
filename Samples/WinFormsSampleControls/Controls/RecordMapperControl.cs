@@ -18,11 +18,11 @@ namespace WinFormsSampleControls.RecordMapper {
         <p>
       Draw new links by dragging from the background of any field.
       Reconnect a selected link by dragging its diamond-shaped handle.
-      The ""record"" Nodes use a<a> Panel, Table</a> to place the various fields into rows.
+      The ""record"" Nodes use a <a>PanelLayoutTable</a> to place the various fields into rows.
       Records are not copyable or deletable.
         </p>
         <p>
-      For a variation on this sample with selectable fields in the record nodes, see the<a href= ""selectableFields.html""> selectable fields</a> sample.
+      For a variation on this sample with selectable fields in the record nodes, see the <a href=""SelectableFields"">selectable fields</a> sample.
         </p>
         <p>
       Diagram Model saved in JSON format, automatically updated after each change or undo or redo:

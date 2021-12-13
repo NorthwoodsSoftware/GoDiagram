@@ -13,15 +13,16 @@ namespace WinFormsExtensionControls.GeometryReshaping {
 
       diagramControl1.AfterRender = Setup;
       goWebBrowser1.Html = @"
-          <p>
-    The GeometryReshapingTool class allows for a Shape's Geometry to be modified by the user via the dragging of tool handles.
-    Reshape handles are drawn as Adornments at each point in the geometry.
-    It is defined in its own file, as <a href=""GeometryReshapingTool.js"">GeometryReshapingTool.js</a>.
+        <p>
+          The GeometryReshapingTool class allows for a Shape's Geometry to be modified by the user via the dragging of tool handles.
+          Reshape handles are drawn as Adornments at each point in the geometry.
+          It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>.
         </p>
         <p>
-    Usage can also be seen in the <a href = ""FreehandDrawing.html""> Freehand Drawing </a> and <a href = ""PolygonDrawing.html""> Polygon Drawing </a> samples.             
+          Usage can also be seen in the <a href=""FreehandDrawing"">Freehand Drawing</a>
+          and <a href=""PolygonDrawing"">Polygon Drawing</a> samples.             
         </p>       
-";
+      ";
     }
 
     private void Setup() {

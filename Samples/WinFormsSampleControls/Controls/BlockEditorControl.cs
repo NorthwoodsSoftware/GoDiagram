@@ -40,31 +40,27 @@ namespace WinFormsSampleControls.BlockEditor {
 ";
 
       saveLoadModel1.ModelJson = @"{
-  { ""class"": ""go.GraphLinksModel"",
-  ""nodeDataArray"": [
-{""key"":""P1"", ""category"":""Process"", ""pos"":""150 120"", ""text"":""Process""},
-{""key"":""P2"", ""category"":""Process"", ""pos"":""330 320"", ""text"":""Tank""},
-{ ""key"":""V1"", ""category"":""Valve"", ""pos"":""270 120"", ""text"":""V1""},
-{ ""key"":""P3"", ""category"":""Process"", ""pos"":""150 420"", ""text"":""Pump""},
-{ ""key"":""V2"", ""category"":""Valve"", ""pos"":""150 280"", ""text"":""VM"", ""angle"":270},
-{ ""key"":""V3"", ""category"":""Valve"", ""pos"":""270 420"", ""text"":""V2"", ""angle"":180},
-{ ""key"":""P4"", ""category"":""Process"", ""pos"":""450 140"", ""text"":""Reserve Tank""},
-{ ""key"":""V4"", ""category"":""Valve"", ""pos"":""390 60"", ""text"":""VA""},
-{ ""key"":""V5"", ""category"":""Valve"", ""pos"":""450 260"", ""text"":""VB"", ""angle"":90}
+  ""NodeDataSource"": [
+{ ""Key"": 1, ""Loc"": ""0 0"", ""Text"": ""Alpha"", ""Details"": ""some information about Alpha and its importance"" },
+{ ""Key"": 2, ""Loc"": ""170 0"", ""Text"": ""Beta"", ""Color"": ""blue"", ""Thickness"": 2, ""Figure"": ""Procedure"" },
+{ ""Key"": 3, ""Loc"": ""0 100"", ""Text"": ""Gamma"", ""Color"": ""green"", ""Figure"": ""Cylinder1"" },
+{ ""Key"": 4, ""Loc"": ""80 180"", ""Text"": ""Delta"", ""Color"": ""red"", ""Figure"": ""Terminator"", ""size"":""80 40"" },
+{ ""Key"": 5, ""Loc"": ""350 -50"", ""Text"": ""Zeta"", ""Group"": 7, ""Color"": ""blue"", ""Figure"": ""CreateRequest"" },
+{ ""Key"": 6, ""Loc"": ""350 50"", ""Text"": ""Eta"", ""Group"": 7, ""Figure"": ""Document"", ""Fill"": ""lightyellow"" },
+{ ""Key"": 7, ""IsGroup"": true, ""Text"": ""Theta"", ""Color"": ""green"", ""Fill"": ""lightgreen"" },
+{ ""Key"": 8, ""Loc"": ""520 50"", ""Text"": ""Iota"", ""Fill"": ""pink""}
  ],
-  ""linkDataArray"": [
-{""from"":""P1"", ""to"":""V1""},
-{ ""from"":""P3"", ""to"":""V2""},
-{ ""from"":""V2"", ""to"":""P1""},
-{ ""from"":""P2"", ""to"":""V3""},
-{ ""from"":""V3"", ""to"":""P3""},
-{ ""from"":""V1"", ""to"":""V4""},
-{ ""from"":""V4"", ""to"":""P4""},
-{ ""from"":""V1"", ""to"":""P2""},
-{ ""from"":""P4"", ""to"":""V5""},
-{ ""from"":""V5"", ""to"":""P2""}
- ]}
-
+  ""LinkDataSource"": [
+{ ""From"": 1, ""To"": 2, ""Dash"": [ 6,3 ], ""Thickness"": 4 },
+{ ""From"": 1, ""To"": 3, ""Dash"": [ 2,4 ], ""Color"": ""green"", ""Text"": ""label"" },
+{ ""From"": 3, ""To"": 4, ""Color"": ""red"", ""Text"": ""a red label"", ""FromSpot"": ""RightSide"" },
+{ ""From"": 2, ""To"": 1 },
+{ ""From"": 5, ""To"": 6, ""Text"": ""in a group"" },
+{ ""From"": 2, ""To"": 7 },
+{ ""From"": 6, ""To"": 8, ""Dir"": 0 },
+{ ""From"": 6, ""To"": 8, ""Dir"": 1 },
+{ ""From"": 6, ""To"": 8, ""Dir"": 2 }
+ ]
 }";
 
     }
@@ -420,7 +416,7 @@ namespace WinFormsSampleControls.BlockEditor {
               ),
             new TextBlock {
               Alignment = Spot.Top, AlignmentFocus = Spot.Bottom,
-              Font = "bold 12pt sans-serif", Editable = true
+              Font = "Generic Sans Serif, 12pt, style=bold", Editable = true
             }
               .Bind(
                 new Binding("Text"),
@@ -605,33 +601,7 @@ namespace WinFormsSampleControls.BlockEditor {
               )
           );
 
-      // TEMPORARY until loading from page
-      myDiagram.Model = new Model {
-        NodeDataSource = new List<NodeData> {
-          new NodeData { Key = 1, Loc = "0 0", Text = "Alpha", Details = "some information about Alpha and its importance"},
-          new NodeData { Key = 2, Loc = "170 0", Text = "Beta", Color = "blue", Thickness = 2, Figure = "Procedure"},
-          new NodeData { Key = 3, Loc = "0 100", Text = "Gamma", Color = "green", Figure = "Cylinder1"},
-          new NodeData { Key = 4, Loc = "80 180", Text = "Delta", Color = "red", Figure = "Terminator", Size = "80 40"},
-          new NodeData { Key = 5, Loc = "350 -50", Text = "Zeta", Group = 7, Color = "blue", Figure = "CreateRequest"},
-          new NodeData { Key = 6, Loc = "350 50", Text = "Eta", Group = 7, Figure = "Document", Fill = "lightyellow"},
-          new NodeData { Key = 7, IsGroup = true, Text = "Theta", Color = "green", Fill = "lightgreen"},
-          new NodeData { Key = 8, Loc = "520 50", Text = "Iota", Fill = "pink"}
-        },
-        LinkDataSource = new List<LinkData> {
-          new LinkData { From = 1, To = 2, Dash = new float[] { 6, 3 }, Thickness = 4},
-          new LinkData { From = 1, To = 3, Dash = new float[] { 2, 4 }, Color = "green", Text = "label"},
-          new LinkData { From = 3, To = 4, Color = "red", Text = "a red label", FromSpot = "RightSide"},
-          new LinkData { From = 2, To = 1},
-          new LinkData { From = 5, To = 6, Text = "in a group"},
-          new LinkData { From = 2, To = 7},
-          new LinkData { From = 6, To = 8, Dir = 0},
-          new LinkData { From = 6, To = 8, Dir = 1},
-          new LinkData { From = 6, To = 8, Dir = 2}
-        }
-      };
-      // END TEMPORARY
-      // myDiagram.Model = new BlockEditorModel();
-      // Load();
+      LoadModel();
 
     }
 
@@ -649,7 +619,7 @@ namespace WinFormsSampleControls.BlockEditor {
   }
 
   // define the model data
-  public class Model : GraphLinksModel<NodeData, int, object, LinkData, string, string> { }
+  public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
   public class NodeData : Model.NodeData {
     public string Details { get; set; }
     public string Loc { get; set; }

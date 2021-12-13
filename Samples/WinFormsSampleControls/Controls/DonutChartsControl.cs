@@ -27,9 +27,6 @@ namespace WinFormsSampleControls.DonutCharts {
       that show a data value as an annular bar in a circle.  One can also specify the colors of
       the two bars -- the bar showing the value and the rest of the circle.
     </p>
-    <p>
-      For more sophisticated charts within nodes, see the <a href=""canvases.html"">Canvas Charts</a> sample.
-    </p>
 ";
 
     }

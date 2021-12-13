@@ -20,8 +20,8 @@ namespace WinFormsSampleControls.Minimal {
           The whole source for the sample is shown below if you click on the link.
         </p>
         <p>
-          This sample sets the <a>Diagram.nodeTemplate</a>, with a <a>Node</a> template that data binds both the text string and the shape's fill color.
-          For an overview of building your own templates and model data, see the <a href=""../learn/index.html"">Getting Started tutorial.</a>
+          This sample sets the <a>Diagram.NodeTemplate</a>, with a <a>Node</a> template that data binds both the text string and the shape's fill color.
+          For an overview of building your own templates and model data, see the <a href=""learn/index.html"">Getting Started tutorial.</a>
         </p>
         <p>
           Using the mouse and common keyboard commands, you can pan, select, move, copy, delete, and undo/redo.
@@ -30,7 +30,7 @@ namespace WinFormsSampleControls.Minimal {
           are enabled at that time for the selected object.
         </p>
         <p>
-          For a more elaborate and capable sample, see the <a href=""basic.html""> Basic </a> sample.
+          For a more elaborate and capable sample, see the <a href=""Basic"">Basic</a> sample.
         </p>
       ";
     }

@@ -20,10 +20,11 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
 
       goWebBrowser1.Html = @"
    <p>
-    This sample demonstrates the OrthogonalLinkReshapingTool that is defined in its own file, as <a href=""OrthogonalLinkReshapingTool.js"">OrthogonalLinkReshapingTool.js</a>.
+    This sample demonstrates the OrthogonalLinkReshapingTool that is defined in its own file,
+    as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/OrthogonalLinkReshaping/OrthogonalLinkReshapingTool.cs"">OrthogonalLinkReshapingTool.cs</a>.
     This tool allow users to shift the sections of orthogonal links in addition to resegmenting them.
-    The Diagram's <a>ToolManager.linkReshapingTool</a> and link template's <a>Part.reshapable</a> properties must be set to use this tool.
-       The <a>Link.resegmentable</a> property can still optionally be used.
+    The Diagram's <a>ToolManager.LinkReshapingTool</a> and link template's <a>Part.Reshapable</a> properties must be set to use this tool.
+    The <a>Link.Resegmentable</a> property can still optionally be used.
    </p>
 ";
 

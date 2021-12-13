@@ -22,15 +22,10 @@ namespace WinFormsSampleControls.BarCharts {
       goWebBrowser1.Html = @"
 
    <p>
-    Each node contains a Table Panel whose <a>Panel.itemArray</a> is data bound to the ""items"" property which holds an Array of data objects.
-    That Table Panel has an<a> Panel.itemTemplate </a> which creates a bar(a rectangular Shape) and a TextBlock label for each item.
+    Each node contains a Table Panel whose <a>Panel.ItemList</a> is data bound to the ""items"" property which holds a list of data objects.
+    That Table Panel has an <a>Panel.ItemTemplate</a> which creates a bar (a rectangular Shape) and a TextBlock label for each item.
 
-      Each bar also has a tooltip showing the value.
-  
-    </p>
-  
-    <p>
-      For more sophisticated charts within nodes, see the <a href = ""canvases.html""> Canvas Charts </a> sample.
+    Each bar also has a tooltip showing the value.
     </p>
 ";
 

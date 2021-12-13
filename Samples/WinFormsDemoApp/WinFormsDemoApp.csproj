@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <!-- Use C# latest to enable net6.0 features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net462</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 

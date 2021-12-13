@@ -35,8 +35,8 @@ namespace WinFormsSampleControls.ContentAlignment {
       goWebBrowser1.Html = @"
    
            <p>
-        A Diagram's <a>Diagram.contentAlignment</a> property determines how parts are positioned when the
-        <a>Diagram.viewportBounds</a> width or height is different than the <a>Diagram.documentBounds</a> width or height.
+        A Diagram's <a>Diagram.ContentAlignment</a> property determines how parts are positioned when the
+        <a>Diagram.ViewportBounds</a> width or height is different than the <a>Diagram.DocumentBounds</a> width or height.
           </p>
 ";
     }

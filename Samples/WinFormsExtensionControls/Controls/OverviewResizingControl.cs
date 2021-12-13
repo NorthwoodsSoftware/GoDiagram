@@ -31,7 +31,7 @@ namespace WinFormsExtensionControls.OverviewResizing {
       goWebBrowser1.Html = @"
       <p>
         This sample demonstrates a custom <a>ResizingTool</a> which allows the user to resize the overview box.
-        It is defined in its own file, as <a href=""OverviewResizingTool.ts"">OverviewResizingTool.ts</a>.
+        It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/OverviewResizing/OverviewResizingTool.cs"">OverviewResizingTool.cs</a>.
       </p>
 ";
     }

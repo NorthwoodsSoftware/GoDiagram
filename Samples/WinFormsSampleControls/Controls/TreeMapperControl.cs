@@ -17,12 +17,12 @@ namespace WinFormsSampleControls.TreeMapper {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample is like the <a href=""records.html"">Mapping Fields of Records</a> sample,
+      This sample is like the <a href=""Records"">Mapping Fields of Records</a> sample,
       but it has a collapsible tree of nodes on each side, rather than a simple list of items.
-      The implementation of the trees comes from the <a href= ""treeView.html"">Tree View</a> sample.
+      The implementation of the trees comes from the <a href=""TreeView"">Tree View</a> sample.
         </p>
         <p>
-      Draw new links by dragging from any field (i.e.any tree node).
+      Draw new links by dragging from any field (i.e. any tree node).
       Reconnect a selected link by dragging its diamond-shaped handle.
         </p>
         <p> 

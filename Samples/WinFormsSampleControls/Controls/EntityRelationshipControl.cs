@@ -21,12 +21,13 @@ namespace WinFormsSampleControls.EntityRelationship {
       diagramControl1.AfterRender = Setup;
 
       goWebBrowser1.Html = @"
-
-    <p>Sample for representing the relationship between various entities.  Try dragging the nodes -- their links will avoid other nodes, by virtue of the <a>Link.AvoidsNodes</a> property assigned to the
-    custom link template's <a href=""https://gojs.net/latest/intro/links.html"">Link.routing</a>. Also note the use of <a href=""../intro/buttons.html"" target=""_blank"">Panel Expander Buttons</a> to allow for expandable/collapsible node data.
+        <p>
+          Sample for representing the relationship between various entities.  Try dragging the nodes -- their links will avoid other nodes, by virtue of the <a>Link.AvoidsNodes</a> property assigned to the
+          custom link template's <a href=""intro/links.html"">Link.Routing</a>.
+          Also note the use of <a href=""intro/buttons.html"">Panel Expander Buttons</a> to allow for expandable/collapsible node data.
       </p>
     
-      <p> Buttons are defined in <a href = ""../extensions/Buttons.js"">Buttons.js</a>.</p>
+      <p>Buttons are defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Buttons/Buttons.cs"">Buttons.cs</a>.</p>
 ";
 
     }

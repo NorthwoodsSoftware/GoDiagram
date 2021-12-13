@@ -17,7 +17,7 @@ namespace WinFormsSampleControls.MultiNodePathLinks {
       goWebBrowser1.Html = @"
   <p>
   This sample demonstrates customization of the <a>Link</a>'s routing to go through multiple Nodes.
-  The nodes are specified by key in the link data's ""path"" property, which must be an Array of node keys.
+  The nodes are specified by key in the link data's ""Path"" property, which must be a list of node keys.
   </p>
   <p>
   As the user drags around Nodes on the ""path"", the routing is automatically recomputed to maintain a smooth curve.

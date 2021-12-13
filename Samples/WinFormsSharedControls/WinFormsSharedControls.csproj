@@ -3,12 +3,18 @@
   <PropertyGroup>
     <!-- Use C# latest to enable net6.0 features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net6.0-windows;net472</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net462</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1056-prerelease" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1083-prerelease" />
+  </ItemGroup>
+
+  <!-- Conditionally obtain references for older targets -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="System.Text.Json" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

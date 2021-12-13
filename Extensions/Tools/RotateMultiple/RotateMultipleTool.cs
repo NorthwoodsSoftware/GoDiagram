@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 /*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 namespace Northwoods.Go.Tools.Extensions {

@@ -40,15 +40,9 @@ namespace WinFormsSampleControls.GridLayoutSample {
       sorting.SelectedIndexChanged += (s, e) => { Sorting = (GridSorting)Enum.Parse(typeof(GridSorting), (string)sorting.SelectedItem); };
 
       goWebBrowser1.Html = @"
-        <html>
-        <head>
-       </head>
-        <body>
            <p>
             For information on <b>GridLayout</b> and its properties, see the <a>GridLayout</a> documentation page.
           </p>
-        </body>
-        </html>
 ";
     }
 

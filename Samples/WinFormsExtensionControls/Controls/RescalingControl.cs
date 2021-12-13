@@ -15,12 +15,12 @@ namespace WinFormsExtensionControls.Rescaling {
       diagramControl1.AfterRender = Setup;
       goWebBrowser1.Html = @"
         <p>
-      Selecting a node will show a rescaling handle that when dragged will modify the node's <a>GraphObject.scale</a> property.
+      Selecting a node will show a rescaling handle that when dragged will modify the node's <a>GraphObject.Scale</a> property.
         </p>
         <p>
-      Just as the <a>ResizingTool</a> changes the <a>GraphObject.desiredSize</a> of an object,
-      and just as the <a>RotatingTool</a> changes the <a>GraphObject.angle</a> of an object,
-      the <a>RescalingTool</a> changes the <a>GraphObject.scale</a> of an object.
+      Just as the <a>ResizingTool</a> changes the <a>GraphObject.DesiredSize</a> of an object,
+      and just as the <a>RotatingTool</a> changes the <a>GraphObject.Angle</a> of an object,
+      the <a>RescalingTool</a> changes the <a>GraphObject.Scale</a> of an object.
         </p>
 ";
     }

@@ -214,9 +214,9 @@ namespace WinFormsSampleControls.CircularLayoutSample {
 
     private void GenerateCircle(int numNodes, double width, double height, int minLinks, int maxLinks, bool randSizes, bool circ, bool cyclic) {
       myDiagram.StartTransaction("GenerateCircle");
-      // replace the diagram's model's nodeDataArray
+      // replace the diagram's model's NodeDataSource
       GenerateNodeData(numNodes, width, height, randSizes, circ);
-      // replace the diagram's model's nodeDataArray
+      // replace the diagram's model's NodeDataSource
       GenerateLinkData(minLinks, maxLinks, cyclic);
       // force a diagram layout
       _Layout();

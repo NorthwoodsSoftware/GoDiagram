@@ -22,8 +22,8 @@ namespace WinFormsSampleControls.KittenMonitor {
 
  <p>This diagram displays a monitored floor plan with several nodes (representing kittens) to view in real-time.</p>
   <p>Every two seconds the kitten positions are updated</p>
-  <p>The <a href="".. / intro / toolTips.html"">Tooltip</a> for each kitten shows its name and photo.</p>
-      <p> There is a custom <a>Diagram.scaleComputation</a> that limits the <a>Diagram.scale</a> values to multiples of 0.1.</p>
+  <p>The <a href=""intro/toolTips.html"">Tooltip</a> for each kitten shows its name and photo.</p>
+      <p>There is a custom <a>Diagram.ScaleComputation</a> that limits the <a>Diagram.Scale</a> values to multiples of 0.1.</p>
 ";
 
     }
@@ -69,7 +69,7 @@ namespace WinFormsSampleControls.KittenMonitor {
                   DesiredSize = new Size(50, 50),
                   Margin = 3
                 }.Bind(
-                  new Binding("Source", "Src", (s, _) => { return "https://gojs.net/latest/samples/images/" + s + ".png"; })
+                  new Binding("Source", "Src", (s, _) => { return "https://godiagram.com/samples/images/" + s + ".png"; })
                 ),
                 new TextBlock {
                   Margin = 3

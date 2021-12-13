@@ -17,7 +17,7 @@ namespace WinFormsSampleControls.LinksToLinks {
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
-  <p>
+    <p>
       This demonstrates the ability for a <a>Link</a> to appear to connect with another Link.
       Regular links are blue.  Link-connecting links are green.
       Try moving a node around to see how the links adapt.
@@ -26,37 +26,34 @@ namespace WinFormsSampleControls.LinksToLinks {
     </p>
     <p>
       This effect is achieved by using ""label nodes"" that belong to links.
-      Such ""label nodes"" are real<a>Node</ a > s that are referenced from their owning<a>Link</ a >.
-      This sample customizes the ""Link Label"" Node template to allow the user to draw new links to / from such label nodes.
-  
-      </p>
-  
-      <p>
-        Newly drawn links automatically get a label node by the<a> LinkingTool</ a > because this sample initializes
-      the<a> LinkingTool.archetypeLabelNodeData </ a > property of the<a>ToolManager.linkingTool</ a >.
-      The category(i.e.template) of each link is determined by what kinds of nodes the link is connected with.
+      Such ""label nodes"" are real <a>Node</a>s that are referenced from their owning <a>Link</a>.
+      This sample customizes the ""Link Label"" Node template to allow the user to draw new links to/from such label nodes.
+    </p>
+    <p>
+      Newly drawn links automatically get a label node by the <a>LinkingTool</a> because this sample initializes
+      the <a>LinkingTool.ArchetypeLabelNodeData</a> property of the <a>ToolManager.LinkingTool</a>.
+      The category (i.e. template) of each link is determined by what kinds of nodes the link is connected with.
     </p>
 ";
       saveLoadModel1.ModelJson = @"{
-        ""class"": ""go.GraphLinksModel"",
-  ""linkLabelKeysProperty"": ""labelKeys"",
-  ""nodeDataArray"": [
-{ ""key"":""Alpha"", ""color"":""lightblue"", ""loc"":""29 14""},
-{ ""key"":""Beta"", ""color"":""orange"", ""loc"":""129 14""},
-{ ""key"":""Gamma"", ""color"":""lightgreen"", ""loc"":""29 106""},
-{ ""key"":""Delta"", ""color"":""pink"", ""loc"":""129 106""},
-{ ""key"":""A-B"", ""category"":""LinkLabel"" },
-{ ""key"":""G-D"", ""category"":""LinkLabel"" },
-{ ""key"":""A-G"", ""category"":""LinkLabel"" },
-{ ""key"":""A-G-D"", ""category"":""LinkLabel"" },
-{ ""key"":""A-B-G-D"", ""category"":""LinkLabel"" }
+  ""LinkLabelKeysProperty"": ""LabelKeys"",
+  ""NodeDataSource"": [
+{ ""Key"": ""Alpha"", ""Color"": ""lightblue"", ""Loc"": ""29 14"" },
+{ ""Key"": ""Beta"", ""Color"": ""orange"", ""Loc"": ""129 14"" },
+{ ""Key"": ""Gamma"", ""Color"": ""lightgreen"", ""Loc"": ""29 106"" },
+{ ""Key"": ""Delta"", ""Color"": ""pink"", ""Loc"": ""129 106"" },
+{ ""Key"": ""A-B"", ""Category"": ""LinkLabel"" },
+{ ""Key"": ""G-D"", ""Category"": ""LinkLabel"" },
+{ ""Key"": ""A-G"", ""Category"": ""LinkLabel"" },
+{ ""Key"": ""A-G-D"", ""Category"": ""LinkLabel"" },
+{ ""Key"": ""A-B-G-D"", ""Category"": ""LinkLabel"" }
  ],
-  ""linkDataArray"": [
-{ ""from"":""Alpha"", ""to"":""Beta"", ""labelKeys"":[ ""A-B"" ]},
-{ ""from"":""Gamma"", ""to"":""Delta"", ""labelKeys"":[ ""G-D"" ]},
-{ ""from"":""Alpha"", ""to"":""Gamma"", ""labelKeys"":[ ""A-G"" ]},
-{ ""from"":""Alpha"", ""to"":""G-D"", ""labelKeys"":[ ""A-G-D"" ], ""category"":""linkToLink""},
-{ ""from"":""A-B"", ""to"":""G-D"", ""labelKeys"":[ ""A-B-G-D"" ], ""category"":""linkToLink""}
+  ""LinkDataSource"": [
+{ ""From"": ""Alpha"", ""To"": ""Beta"", ""LabelKeys"": [ ""A-B"" ] },
+{ ""From"": ""Gamma"", ""To"": ""Delta"", ""LabelKeys"": [ ""G-D"" ] },
+{ ""From"": ""Alpha"", ""To"": ""Gamma"", ""LabelKeys"": [ ""A-G"" ] },
+{ ""From"": ""Alpha"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-G-D"" ], ""Category"": ""linkToLink"" },
+{ ""From"": ""A-B"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-B-G-D"" ], ""Category"": ""linkToLink"" }
  ]}";
 
     }
@@ -132,32 +129,7 @@ namespace WinFormsSampleControls.LinksToLinks {
         )
       );
 
-      // model
-      var model = new Model {
-        LinkLabelKeysProperty = "LabelKeys"
-      };
-
-      // TEMPORARY until loading from page works
-      model.NodeDataSource = new List<NodeData> {
-        new NodeData { Key = "Alpha", Color = "lightblue", Loc = "29 14"},
-        new NodeData { Key = "Beta", Color = "orange", Loc = "129 14"},
-        new NodeData { Key = "Gamma", Color = "lightgreen", Loc = "29 106"},
-        new NodeData { Key = "Delta", Color = "pink", Loc = "129 106"},
-        new NodeData { Key = "A-B", Category = "LinkLabel" },
-        new NodeData { Key = "G-D", Category = "LinkLabel" },
-        new NodeData { Key = "A-G", Category = "LinkLabel" },
-        new NodeData { Key = "A-G-D", Category = "LinkLabel" },
-        new NodeData { Key = "A-B-G-D", Category = "LinkLabel" }
-      };
-      model.LinkDataSource = new List<LinkData> {
-        new LinkData { From = "Alpha", To = "Beta", LabelKeys = new List<string> { "A-B" } },
-        new LinkData { From = "Gamma", To = "Delta", LabelKeys = new List<string> { "G-D" } },
-        new LinkData { From = "Alpha", To = "Gamma", LabelKeys = new List<string> { "A-G" } },
-        new LinkData { From = "Alpha", To = "G-D", LabelKeys = new List<string> { "A-G-D" } , Category = "linkToLink"},
-        new LinkData { From = "A-B", To = "G-D", LabelKeys = new List<string> { "A-B-G-D" } , Category = "linkToLink"}
-      };
-      myDiagram.Model = model;
-      // END TEMPORARY
+      LoadModel();
 
       void MaybeChangeLinkCategory(object s, DiagramEvent e) {
         var link = e.Subject as Link;

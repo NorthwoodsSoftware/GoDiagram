@@ -22,7 +22,7 @@ namespace WinFormsSampleControls.AdornmentButtons {
       goWebBrowser1.Html = @"
 
   <p>
-    The node template uses a custom <a>Part.selectionAdornmentTemplate</a> to
+    The node template uses a custom <a>Part.SelectionAdornmentTemplate</a> to
     add a row of Buttons when the node is selected.
     Select a node and you will see the Buttons for the node.
   </p>

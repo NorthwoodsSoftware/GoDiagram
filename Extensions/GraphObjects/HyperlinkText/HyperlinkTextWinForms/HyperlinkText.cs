@@ -1,13 +1,13 @@
 ﻿/*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
-* This is an extension and not part of the main GoJS library.
+* This is an extension and not part of the main GoDiagram library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
-* Extensions can be found in the GoJS kit under the extensions or extensionsTS folders.
-* See the Extensions intro page (https://gojs.Net/latest/intro/extensions.Html) for more information.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 using System;
@@ -78,7 +78,7 @@ namespace Northwoods.Go.Extensions {
         // define the click behavior
         Action<InputEvent, GraphObject> click = (e, obj) => {
           var u = obj["_Url"];
-          if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(obj.FindTemplateBinder());
+          if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(obj.FindBindingPanel());
           var uri = u as string;
           if (uri != null) {
             var psi = new ProcessStartInfo { FileName = uri, UseShellExecute = true };
@@ -94,7 +94,7 @@ namespace Northwoods.Go.Extensions {
                 // here OBJ will be in the Adornment, need to get the HyperlinkText/TextBlock
                 var tempobj = ((data as GraphObject).Part as Adornment).AdornedElement;
                 var u = tempobj["_Url"];
-                if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(tempobj.FindTemplateBinder());
+                if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(tempobj.FindBindingPanel());
                 return u;
               }).OfElement()
             )).Bind(new Binding("Visible", "Text", (t, obj) => {
@@ -108,7 +108,7 @@ namespace Northwoods.Go.Extensions {
             Cursor = "pointer",
             MouseEnter = (e, obj, targObj) => {
               var u = (obj as GraphObject)["_Url"];
-              if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(obj.FindTemplateBinder());
+              if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(obj.FindBindingPanel());
               if (u != null && obj is TextBlock) (obj as TextBlock).IsUnderline = true;
             },
             MouseLeave = (e, obj, targObj) => { if (obj is TextBlock) (obj as TextBlock).IsUnderline = false; },
@@ -146,7 +146,7 @@ namespace Northwoods.Go.Extensions {
             MouseEnter = (e, panel, obj) => {
               var tb = findTextBlock(panel);
               var u = (panel as GraphObject)["_Url"];
-              if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(panel.FindTemplateBinder());
+              if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(panel.FindBindingPanel());
               if (tb != null && u != null) tb.IsUnderline = true;
             },
             MouseLeave = (e, panel, obj) => {

@@ -32,7 +32,7 @@ namespace WinFormsSampleControls.InteractiveForceDirected {
     aside or pulled along.
   </p>
   <p>
-    The graph is exactly the same as the <a href=""conceptMap.html"">Concept Map</a> sample.
+    The graph is exactly the same as the <a href=""ConceptMap"">Concept Map</a> sample.
     But the node template is different, and the layout is different.
   </p>
 

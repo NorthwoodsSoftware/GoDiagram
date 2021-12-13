@@ -21,7 +21,7 @@ namespace WinFormsSampleControls.CandleStickCharts {
       goWebBrowser1.Html = @"
 
    <p>
-    For more sophisticated charts within nodes, see the <a href=""canvases.html"">Canvas Charts</a> sample.
+    Demonstrates candlestick charts in GoDiagram.
   </p>
 ";    
       

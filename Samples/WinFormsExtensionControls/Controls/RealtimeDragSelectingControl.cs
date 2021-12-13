@@ -18,11 +18,11 @@ namespace WinFormsExtensionControls.RealtimmeDragSelecting {
            <p>
           This sample demonstrates the RealtimeDragSelectingTool, which replaces the standard <a>DragSelectingTool</a>.
           Press in the background, wait briefly, and then drag to start selecting Nodes or Links that intersect with the box.
-          You can press or release Control (Command on Mac) or Shift while dragging to see how the selection changes.
+          You can press or release Control or Shift while dragging to see how the selection changes.
           </p>
           <p>
-          Load it in your own app by including <a href=""RealtimeDragSelectingTool.js"">RealtimeDragSelectingTool.js</a>.
-          Initialize your Diagram by setting<a> ToolManager.dragSelectingTool </a> to a new instance of this tool.
+          Load it in your own app by including <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/RealtimeDragSelecting/RealtimeDragSelectingTool.cs"">RealtimeDragSelectingTool.cs</a>.
+          Initialize your Diagram by setting <a>ToolManager.DragSelectingTool</a> to a new instance of this tool.
           For example:
           </p>
 ";

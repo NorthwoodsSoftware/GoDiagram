@@ -28,16 +28,17 @@ namespace WinFormsSampleControls.Arrowheads {
       </p>
       <p>
         Each Link shows two arrowheads.
-        The Link template has a Shape whose <a>Shape.toArrow</a> property is bound to an arrowhead name.
-        A different Shape in the template has its <a>Shape.fromArrow</a> property bound to a different arrowhead name.
+        The Link template has a Shape whose <a>Shape.ToArrow</a> property is bound to an arrowhead name.
+        A different Shape in the template has its <a>Shape.FromArrow</a> property bound to a different arrowhead name.
         Each arrowhead has been scaled up to make it more easily visible.
       </p>
       <p>
-        See the definitions of all these arrowheads in the file: <a href="".. / extensions / Arrowheads.js"" target=""_blank"">Arrowheads.js</a>.
+        See the definitions of all these arrowheads in the file:
+        <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Arrowheads/Arrowheads.cs"">Arrowheads.cs</a>.
       </p>
     
       <p>
-        For predefined shape geometries, see the <a href= ""shapes.html"">Shapes</a> sample.
+        For predefined shape geometries, see the <a href=""Shapes"">Shapes</a> sample.
       </p>
     
 ";

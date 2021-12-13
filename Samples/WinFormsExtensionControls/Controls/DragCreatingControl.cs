@@ -18,12 +18,13 @@ namespace WinFormsExtensionControls.DragCreating {
 
       goWebBrowser1.Html = @"
   <p>
-  This sample demonstrates the DragCreatingTool, which replaces the standard DragSelectingTool. It is defined in its own file, as <a href=""DragCreatingTool.js"">DragCreatingTool.js</a>.
+    This sample demonstrates the DragCreatingTool, which replaces the standard DragSelectingTool.
+    It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/DragCreating/DragCreatingTool.cs"">DragCreatingTool.cs</a>.
   </p>
   <p>
-  Press in the background and then drag to show the area to be occupied by the new node.
-  The mouse-up event will add a copy of the DragCreatingTool.archetypeNodeData object, causing a new node to be created.
-    The tool will assign its <a>GraphObject.position</a> and <a>GraphObject.desiredSize</a>.
+    Press in the background and then drag to show the area to be occupied by the new node.
+    The mouse-up event will add a copy of the DragCreatingTool.ArchetypeNodeData object, causing a new node to be created.
+    The tool will assign its <a>GraphObject.Position</a> and <a>GraphObject.DesiredSize</a>.
   </p>
 ";
 

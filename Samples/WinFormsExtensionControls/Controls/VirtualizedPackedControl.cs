@@ -20,10 +20,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
       diagramControl1.AfterRender = Setup;
       goWebBrowser1.Html = @"
            <p>
-            This uses the<a>VirtualizedPackedLayout</a> extension,
-            defined <a href = ""VirtualizedPackedLayout.ts""> VirtualizedPackedLayout.ts </a>,
-            to quickly layout a large graph consisting of
-            nested groups.
+            This uses the <a>VirtualizedPackedLayout</a> extension,
+            defined <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/VirtualizedPacked/VirtualizedPackedLayout.cs"">VirtualizedPackedLayout.cs</a>,
+            to quickly layout a large graph consisting of nested groups.
           </p>
 ";
     }
@@ -49,8 +48,8 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
       string[] myColors = { "0,0,0", "0,255,0", "255,0,0", "0,0,255" };
       int[] myLayoutFactors = { 16, 8, 4, 2 };
 
-      Func<object, object, object> fillBinding = (depth, _) => { if ((int)depth >= myColors.Length) depth = 0; return "rgba(" + myColors[(int)depth] + ",0.1)"; };
-      Func<object, object, object> strokeBinding = (depth, _) => { if ((int)depth >= myColors.Length) depth = 0; return "rgb(" + myColors[(int)depth] + ")"; };
+      object fillBinding(object depth) { if ((int)depth >= myColors.Length) depth = 0; return "rgba(" + myColors[(int)depth] + ",0.1)"; }
+      object strokeBinding(object depth) { if ((int)depth >= myColors.Length) depth = 0; return "rgb(" + myColors[(int)depth] + ")"; }
 
       myDiagram.NodeTemplate =
         new Node("Auto") {
@@ -126,11 +125,11 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 
     // The following code creates a large randomized graph with nested groups in myWholeModel.
 
-    private void _Load() {
+    private void _Load(Diagram diag) {
       // create a lot of data for the myWholeModel
       _AddGraph(myWholeModel, 12345, 50, 4, 1.0);
       // remove the status indicator
-      myDiagram.Remove(myLoading);
+      diag.Remove(myLoading);
     }
 
     // The following code creates a large randomized graph with nested groups in mywholemodel.

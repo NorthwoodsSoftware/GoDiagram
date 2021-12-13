@@ -23,8 +23,8 @@ namespace WinFormsSampleControls.OrgChartStatic {
       searchBtn.Click += (sender, e) => SearchDiagram();
       goWebBrowser1.Html = @"
         <p>
-          This sample shows an organizational chart diagram and uses an in-laid GoJS <a>Overview</a> to aid the user in navigation.
-          The diagram uses a <a>TreeLayout</a> featuring <a>TreeLayout,StyleLastParents</a> to allow for different alignments on the last parents.
+          This sample shows an organizational chart diagram and uses an in-laid GoDiagram <a>Overview</a> to aid the user in navigation.
+          The diagram uses a <a>TreeLayout</a> featuring <a>TreeStyle.LastParents</a> to allow for different alignments on the last parents.
           The data was taken from the UN web site in August 2009.
         </p>
         <p>
@@ -32,11 +32,11 @@ namespace WinFormsSampleControls.OrgChartStatic {
         Note that one can see all of the highlighted nodes in the Overview.
         </p>
         <p>
-          To learn how to build an org chart from scratch with GoJS, see the <a href=""../learn/index.html"">Getting Started tutorial</a>.
+          To learn how to build an org chart from scratch with GoDiagram, see the <a href=""learn/index.html"">Getting Started tutorial</a>.
         </p>
         <p>
           If you want to have some ""assistant"" nodes on the side, above the regular reports,
-          see the <a href=""orgChartAssistants.html"">Org Chart Assistants</a> sample, which is a copy of this sample
+          see the <a href=""OrgChartAssistants"">Org Chart Assistants</a> sample, which is a copy of this sample
           that uses a custom <a>TreeLayout</a> to position ""assistants"" that way.
         </p>
         <p>

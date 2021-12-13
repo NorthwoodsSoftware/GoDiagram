@@ -24,18 +24,18 @@ namespace WinFormsSampleControls.SpacingZoom {
         </p>
         <p>
       This diagram uses a custom <a>CommandHandler</a> to replace the standard zooming behavior.
-      The <a>CommandHandler.decreaseZoom</a>, <a>CommandHandler.increaseZoom</a>, and
-      <a>CommandHandler.resetZoom</a> commands no longer change the <a>Diagram.scale</a>.
-      Instead they change the effective <a>Part.location</a> for all of the <a>Node</a>s by changing
-      the value of the conversion function that is getting the location from the ""loc"" property on the node data.
+      The <a>CommandHandler.DecreaseZoom</a>, <a>CommandHandler.IncreaseZoom</a>, and
+      <a>CommandHandler.ResetZoom</a> commands no longer change the <a>Diagram.Scale</a>.
+      Instead they change the effective <a>Part.Location</a> for all of the <a>Node</a>s by changing
+      the value of the conversion function that is getting the location from the ""Loc"" property on the node data.
         </p>
         <p>
-      As the value of SpacingCommandHandler.space changes, all of the Bindings on ""loc"" are re-evaluated,
-      causing the nodes to get new locations.The value of the ""loc"" data property remains unchanged by the Binding.
-      However the TwoWay Binding does cause the ""loc"" data property to be modified when the user drags a node.
+      As the value of SpacingCommandHandler. Space changes, all of the Bindings on ""Loc"" are re-evaluated,
+      causing the nodes to get new locations. The value of the ""Loc"" data property remains unchanged by the Binding.
+      However the TwoWay Binding does cause the ""Loc"" data property to be modified when the user drags a node.
         </p>
         <p>
-      The conversion functions also depend on the SpacingCommandHandler.isYSpaced property, which can be toggled by the checkbox.
+      The conversion functions also depend on the SpacingCommandHandler.IsYSpaced property, which can be toggled by the checkbox.
       When false the conversion functions do not space along the Y axis, but only along the X axis.
         </p>
         <p>
@@ -44,8 +44,8 @@ namespace WinFormsSampleControls.SpacingZoom {
       the template cannot be used by other Diagrams.
         </p>
         <p>
-      The SpacingCommandHandler.space property is duplicated on the<a> Model.modelData </a> object, both so that the information
-      is saved in the model as well as to support undo/ redo.
+      The SpacingCommandHandler.Space property is duplicated on the <a>Model.SharedData</a> object, both so that the information
+      is saved in the model as well as to support undo/redo.
         </p>
 ";
 

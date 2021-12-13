@@ -21,12 +21,12 @@ namespace WinFormsSampleControls.OrgChartAssistants {
 
       goWebBrowser1.Html = @"
   <p>
-    This editable organizational chart sample was derived from <a href=""orgChartEditor"">Org Chart Editor</a>
+    This editable organizational chart sample was derived from <a href=""OrgChartEditor"">Org Chart Editor</a>
     and adds support for ""assistant"" nodes that are laid out by a custom <a>TreeLayout</a> below the side
     of the parent node and above the regular child nodes.
   </p>
   <p>
-    Whether or not a node is considered to be an ""assistant"" node is determined by the <code>isAssistant</code> property of the node data.
+    Whether or not a node is considered to be an ""assistant"" node is determined by the <code>IsAssistant</code> property of the node data.
     The user can modify this data property via an additional context menu command.
   </p>
   <p>
@@ -139,8 +139,8 @@ namespace WinFormsSampleControls.OrgChartAssistants {
       // This converter is used by the Picture.
       string FindHeadShot(object keyAsObj, object _) {
         var key = (keyAsObj as int? ?? int.MinValue);
-        if (key < 0 || key > 16) return "https://gojs.net/latest/samples/images/HSnopic.png"; // There are only 16 images on the server
-        return "https://gojs.net/latest/samples/images/HS" + key + ".png";
+        if (key < 0 || key > 16) return "HSnopic"; // There are only 16 images
+        return "hs" + key;
       }
 
       // define the Node template

@@ -46,7 +46,7 @@ namespace WinFormsSampleControls.GameOfLife {
       goWebBrowser1.Html = @"
 
   <p>
-                   This sample shows an implementation of <a href = ""https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"">Conway's Game of Life</a> in GoDiagram.
+      This sample shows an implementation of <a href=""https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"">Conway's Game of Life</a> in GoDiagram.
       Conway's Game of Life is a simple cellular automaton devised by British mathematician John Horton Conway in 1970. To start or advance the simulation,
       use the controls above.
     </p>
@@ -55,17 +55,12 @@ namespace WinFormsSampleControls.GameOfLife {
     </p>
     <ul>
       <li>If <i>n</i> <= 1, cell <i>x</i> dies or stays dead (from underpopulation).</li>
-           
-                 <li>If <i>n</i> > 3, cell <i>x</i> dies or stays dead (from overpopulation).</li>
-                      
-                            <li>If <i>n</i> = 3, then <i>x</i> is born or stays alive.</li>
-                                 
-                                       <li> If <i>n</i> = 2, then <i>x</i> maintains its status.</li>
-                                            
-                                                </ul>
-                                            
-                                                <p>
-                                                  Though the rules are simple, they can produce complex patterns, some of which are shown in the dropdown above.
+      <li>If <i>n</i> > 3, cell <i>x</i> dies or stays dead (from overpopulation).</li>
+      <li>If <i>n</i> = 3, then <i>x</i> is born or stays alive.</li>
+      <li>If <i>n</i> = 2, then <i>x</i> maintains its status.</li>
+    </ul>
+    <p>
+      Though the rules are simple, they can produce complex patterns, some of which are shown in the dropdown above.
       To create your own patterns, click or drag anywhere on the grid when the simulation is not running.
     </p>
     <p>

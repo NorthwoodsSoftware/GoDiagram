@@ -20,7 +20,7 @@ namespace WinFormsSampleControls.TaperedLinks {
       This sample demonstrates customization of the <a>Link</a> <a>Shape</a>'s <a>Geometry</a>.
         </p>
         <p>
-      The TaperedLink class in this sample inherits from Link and overrides the makeGeometry method.
+      The TaperedLink class in this sample inherits from Link and overrides the MakeGeometry method.
       For Bezier-curve Links, this computes a Geometry that is thick at the ""from"" end and thin at the ""to"" end.
       The implementation is very simple and does not account for links that
       are coming out from a node at angles that are not a multiple of 90 degrees.

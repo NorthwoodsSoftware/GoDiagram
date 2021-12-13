@@ -27,10 +27,10 @@ namespace WinFormsSampleControls.LogicCircuit {
       goWebBrowser1.Html = @"
     <p>
     The Logic Circuit sample allows the user to make circuits using gates and wires,
-    which are updated whenever a Link is modified and at intervals by a looped setTimeout function.
+    which are updated whenever a Link is modified and at intervals by a looping function.
     </p>
     <p>
-    The <b>updateStates</b> function calls a function to update each node according to type,
+    The <b>UpdateStates</b> function calls a function to update each node according to type,
     which uses the color of the links into the node to determine the color of those exiting it.
     Red means zero or false; green means one or true. Double-clicking an input node will toggle true/false.
     </p>
@@ -39,7 +39,7 @@ namespace WinFormsSampleControls.LogicCircuit {
     A <a>Palette</a> to the left of the main diagram allows the user to drag and drop new nodes.
     These nodes can then be linked using ports which are defined on the various node templates.
     Each input port can only have one input link, while output ports can have many output links.
-    This is controlled by the <a>GraphObject.toMaxLinks</a> property.
+    This is controlled by the <a>GraphObject.ToMaxLinks</a> property.
     </p>
 ";
 

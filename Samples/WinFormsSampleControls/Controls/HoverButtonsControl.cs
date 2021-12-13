@@ -26,15 +26,15 @@ namespace WinFormsSampleControls.HoverButtons {
     That means there are less resources used to create nodes -- only that one adornment can be shown.
   </p>
   <p>
-    However, using a template as the <a>Part.selectionAdornmentTemplate</a> would allow for more
+    However, using a template as the <a>Part.SelectionAdornmentTemplate</a> would allow for more
     than one set of buttons to be shown simultaneously, one set for each selected node.
   </p>
   <p>
     This technique does not work on touch devices.
   </p>
   <p>
-    If you want to show such an Adornment on mouseEnter and mouseLeave, rather than on mouseHover,
-    the code is given in the documentation for the <a>GraphObject.mouseEnter</a> property.
+    If you want to show such an Adornment on MouseEnter and MouseLeave, rather than on MouseHover,
+    the code is given in the documentation for the <a>GraphObject.MouseEnter</a> property.
   </p>
 ";
 

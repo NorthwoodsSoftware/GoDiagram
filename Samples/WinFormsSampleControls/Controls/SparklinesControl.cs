@@ -17,12 +17,12 @@ namespace WinFormsSampleControls.Sparklines {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample shows how to create and align sparkline style charts in a Node, using Spot Panel and <code>Panel.alignmentFocusName</code>.
+      This sample shows how to create and align sparkline style charts in a Node, using Spot Panel and <a>Panel.AlignmentFocusName</a>.
         </p>
         <p>
-      The Spot Panel's main element is a red vertical line, and its other elements are items in an item array. Instead of aligning to these item array items, which are Horizontal Panels, we want to align to the Shape that represents the sparkline, inside of the Panel.
-      To do this we set <code>Panel.alignmentFocusName</code> to <code>""spark""</code>, and then set the <code>alignmentFocus</code> in
-      <code>function makeAlignmentFromValues()</code> to the top left point, plus some offset to normalize the y-axis of the sparklines.
+      The Spot Panel's main element is a red vertical line, and its other elements are items in an item list. Instead of aligning to these item list items, which are Horizontal Panels, we want to align to the Shape that represents the sparkline, inside of the Panel.
+      To do this we set <code>Panel.AlignmentFocusName</code> to <code>""spark""</code>, and then set the <code>AlignmentFocus</code> in
+      <code>makeAlignmentFromValues()</code> to the top left point, plus some offset to normalize the y-axis of the sparklines.
         </p>
         <p>
       The Sparklines exist in a horizontal panel with optional labels at the front, and these sparkline labels also have their alignment computed within the horizontal panel, based on the fractional height of the starting value of the sparkline.

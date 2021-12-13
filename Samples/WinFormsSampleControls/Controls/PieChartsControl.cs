@@ -15,14 +15,11 @@ namespace WinFormsSampleControls.PieCharts {
 
       goWebBrowser1.Html = @"
         <p>
-      Each node has a Position Panel whose <a>Panel.itemArray</a> is data bound to the ""slices"" property of the node data.
-      That ""slices"" property is an Array of data objects; for each item the <a> Panel.itemTemplate </a> produces a Shape whose
-      <a> Shape.geometry </a> is computed using a conversion function to generate a pie - shaped slice given a start angle
-      and a sweep angle from the item data. Note that<a>Shape.isGeometryPositioned</a> is true to make sure all of the Shapes are positioned
+      Each node has a Position Panel whose <a>Panel.ItemList</a> is data bound to the ""Slices"" property of the node data.
+      That ""Slices"" property is a list of data objects; for each item the Panel.ItemTemplate</a> produces a Shape whose
+      <a>Shape.Geometry</a> is computed using a conversion function to generate a pie - shaped slice given a start angle
+      and a sweep angle from the item data. Note that <a>Shape.IsGeometryPositioned</a> is true to make sure all of the Shapes are positioned
       by their computed geometries, independent of any stroke width. Each slice Panel also has a tooltip showing some information.
-        </p>
-        <p>
-      For more sophisticated charts within nodes, see the<a href= ""canvases.html""> Canvas Charts</a> sample.
         </p>
 ";
 

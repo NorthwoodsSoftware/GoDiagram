@@ -21,16 +21,16 @@ namespace WinFormsSampleControls.SequenceDiagram {
 
       goWebBrowser1.Html = @"
         <p>
-      A <em>sequence diagram</em> is an interaction diagram that shows how entities operate with one another and in what order.
-      In this sample, we show the interaction between different people in a restaurant.
+          A <em>sequence diagram</em> is an interaction diagram that shows how entities operate with one another and in what order.
+          In this sample, we show the interaction between different people in a restaurant.
         </p>
         <p>
-      The diagram uses the <a>Diagram.groupTemplate</a> for ""lifelines,""
-      <a> Diagram.nodeTemplate </a> for ""activities,"" and <a> Diagram.linkTemplate </a> for ""messages"" between the entities.
+          The diagram uses the <a>Diagram.GroupTemplate</a> for ""lifelines,""
+          <a>Diagram.NodeTemplate</a> for ""activities,"" and <a>Diagram.LinkTemplate</a> for ""messages"" between the entities.
             
-      Also featured are a custom Link class and custom <a>LinkingTool</a> to draw links
-      between lifelines and create activities at the end of the new link.Nodes use a binding function on the location
-      property to ensure they are anchored to their lifeline.
+          Also featured are a custom Link class and custom <a>LinkingTool</a> to draw links
+          between lifelines and create activities at the end of the new link. Nodes use a binding function on the location
+          property to ensure they are anchored to their lifeline.
         </p>
 ";
 

@@ -18,59 +18,40 @@ namespace WinFormsSampleControls.RuleredDiagram {
       diagramControl1.MouseLeave += (s, e) => HideIndicators();
 
       goWebBrowser1.Html = @"
-   <p>
-    This sample demonstrates a diagram with rulers at its edges and indicators which display the mouse's position.
-  </p>
-  <p>
-    The rulers are implemented using <a href="".. / intro / graduatedPanels.html"">Graduated Panels</a>. The main element of each panel is sized
-    according to the width/ height of the viewport, with the<a>Panel.graduatedMin</a> and <a> Panel.graduatedMax </a>
-    being set to the edges of the viewport.
-  </p>
-  <p>
-    Event listeners and Tool overrides are used to keep the rulers and indicators in sync as the viewport bounds change
-    or the mouse moves around the diagram.
-    <ul>
-      <li>
-        <code> ViewportBoundsChanged </code> listeners are used to keep the rulers and indicators against
-              the edge of the diagram and to update the min and max values of the rulers.
-      
-            </li>
-      
-            <li>
-              An <code> InitialLayoutCompleted </code> listener is used for initial placement after the diagram
-            
-                    has positioned the rest of the nodes.
-            
-                  </li>
-            
-                  <li>
-            
-                    <a> ToolManager.doMouseMove </a>, <a> LinkingTool.doMouseMove </a>, <a> DraggingTool.doMouseMove </a>,
-                    and <a> DragSelectingTool.doMouseMove </a> are overridden to update the mouse indicators after executing
-            
-                    their default behavior.Each is overridden so that whichever tool is active will properly adjust the
-            
-                    indicators in addition to its normal functionality.
-            
-                  </li>
-            
-                  <li>
-                    Finally, the Diagram's div uses <code>onmouseover</code> and <code>onmouseout</code> events to show or hide the
-            
-                    indicators as the mouse moves into or out of the diagram.
-            
-                  </li>
-            
-                </ul>
-            
-              </p>
-            
-              <p>
-                The rulers and the indicators are implemented using simple<a> Part</a> s, not<a> Node</a> s, so that they
-                      are not treated as nodes by some layouts and so that they do not show up in the collection of<a> Diagram.nodes </a>.
-    They are put in the ""Grid"" <a> Layer </a> so that any changes to them are not recorded
-    by the UndoManager, because the ""Grid"" Layer has all of its Parts ignored by the UndoManager.
-  </p>
+        <p>
+          This sample demonstrates a diagram with rulers at its edges and indicators which display the mouse's position.
+        </p>
+        <p>
+          The rulers are implemented using <a href=""intro/graduatedPanels.html"">Graduated Panels</a>. The main element of each panel is sized
+          according to the width/height of the viewport, with the <a>Panel.GraduatedMin</a> and <a>Panel.GraduatedMax</a>
+          being set to the edges of the viewport.
+        </p>
+        <p>
+          Event listeners and Tool overrides are used to keep the rulers and indicators in sync as the viewport bounds change
+          or the mouse moves around the diagram.
+        </p>
+        <ul>
+          <li>
+            <code>ViewportBoundsChanged</code> listeners are used to keep the rulers and indicators against
+            the edge of the diagram and to update the min and max values of the rulers.
+          </li>
+          <li>
+            An <code>InitialLayoutCompleted</code> listener is used for initial placement after the diagram
+            has positioned the rest of the nodes.
+          </li>
+          <li>
+            <a>ToolManager.DoMouseMove</a>, <a>LinkingTool.DoMouseMove</a>, <a>DraggingTool.DoMouseMove</a>,
+            and <a>DragSelectingTool.DoMouseMove</a> are overridden to update the mouse indicators after executing
+            their default behavior. Each is overridden so that whichever tool is active will properly adjust the
+            indicators in addition to its normal functionality.
+          </li>
+        </ul>
+        <p>
+          The rulers and the indicators are implemented using simple <a>Part</a>s, not <a>Node</a>s, so that they
+          are not treated as nodes by some layouts and so that they do not show up in the collection of <a>Diagram.Nodes</a>.
+          They are put in the ""Grid"" <a>Layer</a> so that any changes to them are not recorded
+          by the UndoManager, because the ""Grid"" Layer has all of its Parts ignored by the UndoManager.
+        </p>
 ";
 
     }

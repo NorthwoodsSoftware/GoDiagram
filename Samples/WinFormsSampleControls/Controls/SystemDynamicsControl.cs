@@ -52,12 +52,12 @@ namespace WinFormsSampleControls.SystemDynamics {
       The conventional user interface for building system dynamics diagrams is modal --
       you select a tool in the toolbar, then either click in an empty part of the diagram to add a node
       or drag from one node to another to add a link.
-      That is the approach used in this example, accomplished with the <a>clickCreatingTool</a> and <a>linkingTool</a>.
+      That is the approach used in this example, accomplished with the <a>ClickCreatingTool</a> and <a>LinkingTool</a>.
       Note that you need to click on the Pointer tool to revert to the normal mode.
         </p>
         <p>
-      In addition to the above, the diagram also installs the <a href="".. / extensions / NodeLabelDragging.html"">NodeLabelDraggingTool</a>
-      extension into<a>ToolManager.mouseMoveTools</a>.
+      In addition to the above, the diagram also installs the <a href=""NodeLabelDragging"">NodeLabelDraggingTool</a>
+      extension into <a>ToolManager.MouseMoveTools</a>.
         </p>
         <p>
       This sample is based on a prototype developed by Robert Muetzelfeldt.

@@ -25,7 +25,7 @@ namespace WinFormsSampleControls.DoubleCircle {
   This sample displays a diagram of two sets of nodes intended to be arranged in different circles.
   </p>
   <p>
-  Unlike many <b>GoDiagram</b> apps, there is no <a>Diagram.layout</a> assigned.
+  Unlike many <b>GoDiagram</b> apps, there is no <a>Diagram.Layout</a> assigned.
   Layouts are performed explicitly in code -- a separate <a>CircularLayout</a> for each subset of nodes.
   The code will actually work with a variable number of layers/circles, not just two.
   </p>

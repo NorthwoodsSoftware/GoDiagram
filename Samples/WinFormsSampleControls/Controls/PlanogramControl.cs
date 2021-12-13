@@ -34,22 +34,16 @@ namespace WinFormsSampleControls.Planogram {
   Drag-and-drop ""items"" from the Palette onto ""racks"" in the Diagram.
   ""Items"" are implemented as Nodes; ""racks"" are implemented as Groups.
   Once items have been placed on a rack, they can be resized, if necessary.
-  The <a> DraggingTool.isGridSnapEnabled </a> and <a> ResizingTool.isGridSnapEnabled </a> are both set
+  The <a>DraggingTool.IsGridSnapEnabled</a> and <a>ResizingTool.IsGridSnapEnabled</a> are both set
   to true to allow for snapping to the background grid.
   Node and Group templates both use dragging functions to allow for highlighting so the user knows which
   rack an item will belong to.
 </p>
 ";
       goWebBrowser2.Html = @"
-<html>
-<head>
-</head>
-<body>
   <p>
-  See also Northwoods Software's planogramming services: <a href=""https://goplanogram.com"" target=""_blank"">GoPlanogram</a>.
+  See also Northwoods Software's planogramming services: <a href=""https://goplanogram.com"">GoPlanogram</a>.
 </p>
-</body>
-</html>
 ";
     }
 

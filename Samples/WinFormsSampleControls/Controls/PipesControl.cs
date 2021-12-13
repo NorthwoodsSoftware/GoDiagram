@@ -57,9 +57,9 @@ namespace WinFormsSampleControls.Pipes {
 
       goWebBrowser1.Html = @"
         <p>
-          Nodes in this sample use <a>Shape.geometryString</a> to determine their shape.
-          You can see more custom geometry examples and read about geometryString
-          on the <a href=""../intro/geometry.html"">Geometry Path Strings Introduction page.</a>
+          Nodes in this sample use <a>Shape.GeometryString</a> to determine their shape.
+          You can see more custom geometry examples and read about GeometryString
+          on the <a href=""intro/geometry.html"">Geometry Path Strings Introduction page.</a>
         </p>
         <p>
           As a part's unconnected port (shown by an X) comes close to a stationary port
@@ -72,7 +72,7 @@ namespace WinFormsSampleControls.Pipes {
           These functionalities are also controlled by the custom SnappingTool.
         </p>
         <p>
-          Use the <a>GraphObject.contextMenu</a> to rotate, detach, or delete a node.
+          Use the <a>GraphObject.ContextMenu</a> to rotate, detach, or delete a node.
           If it is connected with other parts, the whole collection rotates.
         </p>
       ";
@@ -81,10 +81,10 @@ namespace WinFormsSampleControls.Pipes {
 
     // To simplify this code we define a function for creating a context menu button:
     Panel MakeButton(string text, Action<InputEvent, GraphObject> action, Func<GraphObject, bool> visiblePredicate = null) {
-      var converter = new Func<object, object, object>((obj, _) => {
+      object converter(object obj) {
         var elt = obj as GraphObject;
         return elt.Diagram != null && visiblePredicate(elt);
-      });
+      }
 
       return Builder.Make<Panel>("ContextMenuButton")
         .Add(new TextBlock(text))
@@ -306,7 +306,7 @@ namespace WinFormsSampleControls.Pipes {
         CellSize = new Size(1, 1),
         Spacing = new Size(5, 5),
         WrappingColumn = 12,
-        Comparer = Comparer<Part>.Create(keyCompare)
+        Comparer = keyCompare
       };
 
       // initialize the Palette with a few "pipe" nodes

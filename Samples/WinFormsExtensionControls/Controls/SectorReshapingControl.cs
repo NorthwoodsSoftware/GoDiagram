@@ -17,9 +17,9 @@ namespace WinFormsExtensionControls.SectorReshaping {
           Two of the handles permit changing the angles of the sector; one handle permits changing the radius of the sector.
           </p>
           <p>
-          Note that the <a>Geometry</a> returned by <code>makeSector</code> always returns a Geometry that
+          Note that the <a>Geometry</a> returned by <code>MakeSector</code> always returns a Geometry that
           occupies the area that would be occupied by a full circle.  That Geometry-creating function also
-          depends on three data properties, <code>radius</code>, <code>angle</code>, and <code>sweep</code>.
+          depends on three data properties, <code>Radius</code>, <code>Angle</code>, and <code>Sweep</code>.
           </p>
 ";
     }

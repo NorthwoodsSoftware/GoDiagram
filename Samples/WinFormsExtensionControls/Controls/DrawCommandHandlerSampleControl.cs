@@ -41,16 +41,13 @@ namespace WinFormsExtensionControls.DrawCommandHandlerSample {
   <p>
     This example demonstrates a custom <a>CommandHandler</a>.
     It allows the user to position selected Parts in a diagram relative to each other,
-    overrides <a>CommandHandler.doKeyDown</a> to allow handling the arrow keys in additional manners,
+    overrides <a>CommandHandler.DoKeyDown</a> to allow handling the arrow keys in additional manners,
     and uses a ""paste offset"" so that pasting objects will cascade them rather than place them on top of one another.
-    It is defined in its own file, as <a href = ""DrawCommandHandler.js"">DrawCommandHandler.js</a>.
+    It is defined in its own file, as <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Input/DrawCommandHandler/DrawCommandHandler.cs"">DrawCommandHandler.cs</a>.
   </p>
  
    <p>
      The above buttons can be used to align Parts, rotate Parts, or change the behavior of the arrow keys.
-  </p>
-  <p>
-    Usage can also be seen in the <a href = ""../projects/bpmn/BPMN.html"">BPMN Editor</a> sample.
   </p>
 ";
 

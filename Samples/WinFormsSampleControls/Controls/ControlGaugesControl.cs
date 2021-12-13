@@ -26,12 +26,11 @@ namespace WinFormsSampleControls.ControlGauges {
   <ul>
     <li>a scale which is a ""Graduated"" Panel showing a possible range of values</li>
     <li> one or more indicators that show the instrument's value</li>
-     </ul>
-   
-     <p>
-       Optionally there are other TextBlocks or Shapes that show additional information.
+  </ul>
+  <p>
+    Optionally there are other TextBlocks or Shapes that show additional information.
     Indicators can be Shapes or TextBlocks or more complicated Panels.
-    For more about scales, please read <a href = ""../intro/graduatedPanels.html""> Graduated Panels </a>.
+    For more about scales, please read <a href=""intro/graduatedPanels.html"">Graduated Panels</a>.
     For simplicity, all of these instruments only show one value.
     But you could define instruments that show multiple values on the same scale,
     or that have multiple scales.
@@ -43,49 +42,37 @@ namespace WinFormsSampleControls.ControlGauges {
   </p>
   <p>
     This sample defines five different types of instruments.
+  </p>
   <ul>
     <li><b>Horizontal</b>, a horizontal scale with a bar indicator and a slider handle</li>
-        
-            <li><b>Vertical</b>, a vertical scale with a bar indicator and a slider handle</li>
-                
-                    <li><b>NeedleMeter</b>, a curved scale with a straight needle indicator</li>
-                        
-                            <li><b>CircularMeter</b>, a circular scale with a polygonal needle indicator</li>
-                                
-                                    <li><b>BarMeter</b>, a circular scale with an annular bar indicator</li>
-                                        
-                                          </ul>
-                                        
-                                          <p>
-                                            The value to be shown by the instrument is assumed to be the <code>data.value</code> property.
+    <li><b>Vertical</b>, a vertical scale with a bar indicator and a slider handle</li>
+    <li><b>NeedleMeter</b>, a curved scale with a straight needle indicator</li>
+    <li><b>CircularMeter</b>, a circular scale with a polygonal needle indicator</li>
+    <li><b>BarMeter</b>, a circular scale with an annular bar indicator</li>
+  </ul>
+  <p>
+    The value to be shown by the instrument is assumed to be the <code>Data.Value</code> property.
     The value is shown both textually in a TextBlock and graphically using an indicator on the scale.
-    If the value of<code>data.editable</code> is true,
+    If the value of<code>Data.Editable</code> is true,
   </p>
   <ul>
     <li>
       the user can drag something to change the instrument's value --
-      the value is limited by the<a>Panel.graduatedMin</a> and <a>Panel.graduatedMax</a> values
+      the value is limited by the<a>Panel.GraduatedMin</a> and <a>Panel.GraduatedMax</a> values
     </li>
-    <li>the user can in-place edit the TextBlock showing the value(if the node is selected, hit the F2 key)</li>
-  
-    </ul>
-  
-    <p>
-      Of course you can change the details of anything you want to use.
+    <li>the user can in-place edit the TextBlock showing the value (if the node is selected, hit the F2 key)</li>
+  </ul>
+  <p>
+    Of course you can change the details of anything you want to use.
     You might want to add more TextBlocks to show more information.
     A few properties already have data Bindings, such as:
   </p>
   <ul>
-    <li><a> TextBlock.text </a> from <code> data.text </code>, for the name of the instrument </li>
-              
-                  <li><a> Panel.graduatedMin </a> from <code> data.min </code>, to control the range of the scale </li>
-              
-                  <li><a> Panel.graduatedMax </a> from <code> data.max </code>, to control the range of the scale </li>
-              
-                  <li> (various)from <code> data.color </code>, to control some colors used by the instrument </li>
-              
-                </ul>
-              
+    <li><a>TextBlock.Text</a> from <code>Data.Text</code>, for the name of the instrument </li>
+    <li><a>Panel.GraduatedMin</a> from <code>Data.Min</code>, to control the range of the scale </li>
+    <li><a>Panel.GraduatedMax</a> from <code>Data.Max</code>, to control the range of the scale </li>
+    <li>(various) from <code>Data.Color</code>, to control some colors used by the instrument </li>
+  </ul>    
 ";
 
     }

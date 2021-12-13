@@ -25,12 +25,12 @@ namespace WinFormsSampleControls.Grafcet {
       goWebBrowser1.Html = @"
 
   <p>
-    A grafcet diagram is similar to a <a href=""sequentialFunction.html"">sequential function chart</a>.
+    A grafcet diagram is similar to a <a href=""SequentialFunction"">sequential function chart</a>.
   </p> 
   <p>
     Select a Node to show a list of Buttons that enable creating new Nodes or drawing new Links.
-    These buttons are defined as an adornment that is used in a common<a>Part.selectionAdornmentTemplate</a>.
-    This diagram uses many custom functions, including an overridden<a>LinkingTool</a> and a special
+    These buttons are defined as an adornment that is used in a common <a>Part.SelectionAdornmentTemplate</a>.
+    This diagram uses many custom functions, including an overridden <a>LinkingTool</a> and a special
     Link class, <b>BarLink</b>.
   </p>
 ";

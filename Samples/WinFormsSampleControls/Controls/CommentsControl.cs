@@ -32,27 +32,28 @@ namespace WinFormsSampleControls.Comments {
       Node and link data are marked as ""Comment""s by specifying ""Comment"" as the category.
       But the ""Comment"" nodes and links have a different default template, and thus a different appearance, than regular nodes and links.
       You can specify your own templates for ""Comment"" nodes and ""Comment"" links.
-      The ""Comment"" link template defined here uses the <code>BalloonLink</code> class defined in <a href = ""../extensions/BalloonLink.js"">BalloonLink.js</a> in the Extensions directory.
+      The ""Comment"" link template defined here uses the <code>BalloonLink</code> class defined in
+      <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/BalloonLink/BalloonLink.cs"">BalloonLink.cs</a> in the Extensions directory.
     </p>
 ";
 
-      textBox1.Text = @"{ ""class"": ""GraphLinksModel"",
-  ""nodeDataArray"": [
-{""key"":""Alpha"",""color"":""orange""},
-{""key"":""Beta"",""color"":""lightgreen""},
-{ ""key"":""Gamma"",""color"":""lightgreen""},
-{ ""key"":""Delta"",""color"":""pink""},
-{ ""key"":""A comment"",""text"":""comment\nabout Alpha"",""category"":""Comment""},
-{ ""key"":""B comment"",""text"":""comment\nabout Beta"",""category"":""Comment""},
-{ ""key"":""G comment"",""text"":""comment about Gamma"",""category"":""Comment""}
+      textBox1.Text = @"{
+  ""NodeDataSource"": [
+{ ""Key"": ""Alpha"", ""Color"": ""orange"" },
+{ ""Key"": ""Beta"", ""Color"": ""lightgreen"" },
+{ ""Key"": ""Gamma"", ""Color"": ""lightgreen"" },
+{ ""Key"": ""Delta"", ""Color"": ""pink"" },
+{ ""Key"": ""A comment"", ""Text"": ""comment\nabout Alpha"", ""Category"": ""Comment"" },
+{ ""Key"": ""B comment"", ""Text"": ""comment\nabout Beta"", ""Category"": ""Comment"" },
+{ ""Key"": ""G comment"", ""Text"": ""comment about Gamma"", ""Category"": ""Comment"" }
 ],
-  ""linkDataArray"": [
-{""from"":""Alpha"",""to"":""Beta""},
-{ ""from"":""Alpha"",""to"":""Gamma""},
-{ ""from"":""Alpha"",""to"":""Delta""},
-{ ""from"":""A comment"",""to"":""Alpha"",""category"":""Comment""},
-{ ""from"":""B comment"",""to"":""Beta"",""category"":""Comment""},
-{ ""from"":""G comment"",""to"":""Gamma"",""category"":""Comment""}
+  ""LinkDataSource"": [
+{ ""From"": ""Alpha"", ""To"": ""Beta"" },
+{ ""From"": ""Alpha"", ""To"": ""Gamma"" },
+{ ""From"": ""Alpha"", ""To"": ""Delta"" },
+{ ""From"": ""A comment"", ""To"": ""Alpha"", ""Category"": ""Comment"" },
+{ ""From"": ""B comment"", ""To"": ""Beta"", ""Category"": ""Comment"" },
+{ ""From"": ""G comment"", ""To"": ""Gamma"", ""Category"": ""Comment"" }
 ]}";
 
     }
@@ -137,26 +138,8 @@ namespace WinFormsSampleControls.Comments {
         )
       );
 
-      myDiagram.Model = new Model {
-        NodeDataSource = new List<NodeData> {
-          new NodeData { Key = "Alpha", Color = "orange" },
-          new NodeData { Key = "Beta", Color = "lightgreen" },
-          new NodeData { Key = "Gamma", Color = "lightgreen" },
-          new NodeData { Key = "Delta", Color = "pink" },
-          new NodeData { Key = "A comment", Text = "comment\nabout Alpha", Category = "Comment" },
-          new NodeData { Key = "B comment", Text = "comment\nabout Beta", Category = "Comment" },
-          new NodeData { Key = "G comment", Text = "comment about Gamma", Category = "Comment" }
-        },
-        LinkDataSource = new List<LinkData> {
-          new LinkData { From = "Alpha", To = "Beta" },
-          new LinkData { From = "Alpha", To = "Gamma" },
-          new LinkData { From = "Alpha", To = "Delta" },
-          new LinkData { From = "A comment", To = "Alpha", Category = "Comment" },
-          new LinkData { From = "B comment", To = "Beta", Category = "Comment" },
-          new LinkData { From = "G comment", To = "Gamma", Category = "Comment" }
-        }
-      };
-
+      myDiagram.Model = Model.FromJson<Model>(textBox1.Text);
+      myDiagram.Model.UndoManager.IsEnabled = true;
     }
 
   }

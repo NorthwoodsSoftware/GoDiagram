@@ -31,11 +31,11 @@ namespace WinFormsSampleControls.ProductionProcess {
         </p>
         <p>
       This diagram cannot be modified by the user, but its model was created in the corresponding editor:
-      <a href=""productionEditor.html"">Production Process Editor</a>, which shares the same templates
+      <a href=""ProductionEditor"">Production Process Editor</a>, which shares the same templates
       and has additional tools for editing diagrams.
         </p>
         <p>
-      This viewer also has some animation of the pipes(links) that the editor does not show, to avoid distractions.
+      This viewer also has some animation of the pipes (links) that the editor does not show, to avoid distractions.
       A real application would also show additional information about the nodes and the links.
         </p>
 ";

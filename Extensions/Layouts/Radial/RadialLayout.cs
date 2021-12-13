@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 
 /*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
 * This is an extension and not part of the main Go library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
-* Extensions can be found in GoExamples under the Extensions folder.
-* See the Extensions intro page (<replace>) for more information.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 namespace Northwoods.Go.Layouts.Extensions {
@@ -107,59 +107,46 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (Network == null) {
         Network = MakeNetwork(coll);
       }
-      if (Network.Vertexes.Count > 0) {
-        if (_Root == null) {
-          //If no root supplied, choose one without any incoming edges
-          foreach (var v in Network.Vertexes) {
-            if (v.Node != null && v.SourceEdges.Count == 0) {
-              _Root = v.Node;
-              break;
-            }
-          }
-        }
-
-        if (_Root == null && Network != null) {
-          //If could not find any default root, choose a random one
-          var first = Network.Vertexes.First();
-          _Root = (first == null) ? null : first.Node;
-        }
-        if (_Root == null) return;
-
-        var rootvert = Network.FindVertex(_Root);
-        if (rootvert == null) throw new Exception("RadialLayout.root must be a Node in the LayoutNetwork that the RadialLayout is opearting on");
-        ArrangementOrigin = InitialOrigin(ArrangementOrigin);
-        findDistances(rootvert);
-        //sort all results into Arrays of RadialVertexes with the same distance
-        var maxlayer = 0;
-        foreach (var v in Network.Vertexes) {
-          v.Laid = false;
-
-          if (v.Distance == int.MaxValue) continue;
-          if (v.Distance > maxlayer) maxlayer = v.Distance;
-        }
-
-        IList<RadialVertex>[] verts = new List<RadialVertex>[1 + maxlayer];
-
-        foreach (var v in Network.Vertexes) {
-          var layer = v.Distance;
-          if (v.Distance == int.MaxValue) continue;
-
-          if (verts[layer] == null) {
-            verts[layer] = new List<RadialVertex>();
-          }
-          verts[layer].Add(v);
-        }
-        //now recursively position nodes (using radlay1()), starting with the root
-        rootvert.CenterX = ArrangementOrigin.X;
-        rootvert.CenterY = ArrangementOrigin.Y;
-        radlay1(rootvert, 1, 0, 360);
-        UpdateParts();
+      if (Network.Vertexes.Count == 0) {
+        Network = null;
+        return;
       }
 
-      // restore in case of future re-use
-      _Root = null;
+      if (_Root == null) {
+        //If no root supplied, choose one without any incoming edges
+        foreach (var v in Network.Vertexes) {
+          if (v.Node != null && v.SourceEdges.Count == 0) {
+            _Root = v.Node;
+            break;
+          }
+        }
+      }
+
+      if (_Root == null && Network != null) {
+        //If could not find any default root, choose a random one
+        var first = Network.Vertexes.First();
+        _Root = (first == null) ? null : first.Node;
+      }
+      if (_Root == null) {
+        Network = null;
+        return;
+      }
+
+      var rootvert = Network.FindVertex(_Root);
+      if (rootvert == null) throw new Exception("RadialLayout.root must be a Node in the LayoutNetwork that the RadialLayout is opearting on");
+
+      ArrangementOrigin = InitialOrigin(ArrangementOrigin);
+      findDistances(rootvert);
+
+      //now recursively position nodes (using radlay1()), starting with the root
+      rootvert.CenterX = ArrangementOrigin.X;
+      rootvert.CenterY = ArrangementOrigin.Y;
+      radlay1(rootvert, 1, 0, 360);
+
+      // Update the "physical" positions of the nodes and links.
+      UpdateParts();
+
       Network = null;
-      IsValidLayout = true;
     }
 
     /*
@@ -167,40 +154,68 @@ namespace Northwoods.Go.Layouts.Extensions {
      */
     private void radlay1(RadialVertex vert, int layer, double angle, double sweep) {
       if (layer > _MaxLayers) return; //no need to position nodes outside of maxLayers
-      IList<RadialVertex> verts = new List<RadialVertex>(); //array of all RadialVertexes connected to 'vert' in layer 'layer'
-
-      foreach (var v in vert.Vertexes) {
-        if (v.Laid) continue;
-        if (v.Distance == layer) verts.Add(v);
-      }
-
+      var verts = vert.Children; //array of all RadialVertexes connected to 'vert' in layer 'layer'
       var found = verts.Count();
       if (found == 0) return;
 
-      var radius = layer * _LayerThickness;
-      var separator = sweep / found; //distance between nodes in their sweep portion
-      var start = angle - sweep / 2 + separator / 2;
-
-      //for each vertex in this layer, place it in its correct layer and position
-      for (var i = 0; i < verts.Count(); i++) {
+      var fracs = new List<double>(); // relative proportions that each child vertex should occupy
+      double tot = 0.0;
+      for (int i = 0; i < found; i++) {
         var v = verts[i];
-        var a = start + i * separator; //the angle to rotate the node to
+        var f = ComputeBreadth(v);
+        fracs.Add(f);
+        tot += f;
+      }
+      if (tot <= 0) return;
+      // convert into fractions 0.0 <= frac <= 1.0
+      for (int i = 0; i < found; i++) fracs[i] /= tot;
+
+      var radius = layer * _LayerThickness;
+      var a = angle - sweep / 2; // the angle to rotate the node to
+      // for each vertex in this layer, place it in its correct layer and position
+      for (int i = 0; i < found; i++) {
+        var v = verts[i];
+        double breadth = fracs[i] * sweep;
+        a += breadth / 2;
         if (a < 0) a += 360; else if (a > 360) a -= 360;
         // the point to place the node at -- this corresponds with the layer the node is in
         // all nodes in the same layer are placed at a constant point, then rotated accordingly
         var p = new Point(radius, 0);
-        p = p.Rotate(a);
-
+        p.Rotate(a);
         v.CenterX = p.X + ArrangementOrigin.X;
         v.CenterY = p.Y + ArrangementOrigin.Y;
-        v.Laid = true;
         v.Angle = a;
-        v.Sweep = separator;
+        v.Sweep = breadth;
         v.Radius = radius;
-
         // keep going for all layers
-        radlay1(v, layer + 1, a, sweep / found);
+        radlay1(v, layer + 1, a, sweep * fracs[i]);
+        a += breadth / 2;
+        if (a < 0) a += 360; else if (a > 360) a -= 360;
       }
+    }
+
+    /// <summary>
+    /// Compute the proportion of arc that the given vertex should take relative to its siblings.
+    /// </summary>
+    /// <remarks>
+    /// The default behavior is to give each child arc according to the sum of the maximum breadths of each of its children.
+    /// This assumes that all nodes have the same breadth -- i.e.that they will occupy the same sweep of arc.
+    /// It does not take the Node.actualBounds into account, nor the angle at which the node will be location relative to the origin,
+    /// nor the distance the node will be from the root node.
+    ///
+    /// In order to give each child of a vertex the same fraction of arc, override this method:
+    /// <code>computeBreadth(v) { return 1; }</code>
+    ///
+    /// In order to give each child of a vertex a fraction of arc proportional to how many children the child has:
+    /// <code>computeBreadth(v) { return Math.max(1, v.children.length); }</code>
+    /// </remarks>
+    /// <param name="v"></param>
+    public double ComputeBreadth(RadialVertex v) {
+      double b = 0;
+      foreach (var w in v.Children) {
+        b += ComputeBreadth(w);  // inefficient
+      }
+      return Math.Max(b, 1);
     }
 
     /*
@@ -212,15 +227,17 @@ namespace Northwoods.Go.Layouts.Extensions {
       //keep track of distances from the source node.
       foreach (var v in Network.Vertexes) {
         v.Distance = int.MaxValue;
+        v.Laid = false;
       }
-
       //the source node starts with distance 0
       source.Distance = 0;
-
-      ISet<RadialVertex> seen = new HashSet<RadialVertex> {
+      // keep track of nodes for we have set a non-Infinity distance,
+      // but which we have not yet finished examining
+      var seen = new HashSet<RadialVertex> {
         source
       };
 
+      // local function for finding a vertex with the smallest distance in a given collection
       LeastVertex leastVertex = (vertexes) => {
         var bestdist = int.MaxValue;
         RadialVertex bestvert = null;
@@ -237,38 +254,52 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       // keep track of vertexes we have finished examining;
       // this avoids unnecessary traversals and helps keep the SEEN collection small
-      ISet<RadialVertex> finished = new HashSet<RadialVertex>();
-
+      var finished = new HashSet<RadialVertex>();
       while (seen.Count() > 0) {
         //look at the unfinished vertex with the shortest distance so far
         var least = leastVertex(seen);
         if (least == null) return;
         var leastdist = least.Distance;
-
+        // by the end of this loop we will have finished examining this LEAST vertex
         seen.Remove(least);
         finished.Add(least);
-
-        //look at all edges connected with this vertex
+        // look at all edges connected with this vertex
         foreach (var edge in least.Edges) {
           if (least == null) return;
           var neighbor = edge.GetOtherVertex(least);
-
-          //skip vertexes that we have finished
+          if (neighbor == null) continue;
+          // skip vertexes that we have finished
           if (finished.Contains(neighbor)) continue;
           var neighbordist = neighbor.Distance;
-
-          //assume "distance" along a link is unitary, but could be any non-negative number.
+          // assume "distance" along a link is unitary, but could be any non-negative number.
           var dist = leastdist + 1;
           if (dist < neighbordist) {
             // if haven't seen that vertex before, add it to the SEEN collection
             if (neighbordist == int.MaxValue) {
               seen.Add(neighbor);
             }
-
-            //record the new best distance so far to that node
+            // record the new best distance so far to that node
             neighbor.Distance = dist;
           }
         }
+      }
+
+      // now update the RadialVertex.children Arrays to form a tree-structure
+      foreach (var v in Network.Vertexes) {
+        var dist = v.Distance;
+        var arr = v.Children;
+        foreach (var w in v.Vertexes) {  // use LayoutVertex.vertexes to remove duplicates
+          // use the RadialVertex.laid property for avoiding already-traversed vertexes
+          if (!w.Laid && w != v && w.Distance == dist + 1) {
+            arr.Add(w);
+            w.Laid = true;
+          }
+        }
+      }
+
+      // reset RadialVertex.laid in case of future use
+      foreach (var v in Network.Vertexes) {
+        v.Laid = false;
       }
     }
 

@@ -25,10 +25,10 @@ namespace WinFormsSampleControls.BeatPaths {
           The JSON data is basically just a list of relationships.
           Unlike most model data, there are no elements describing the nodes --
           the node definitions are implicit in the references from the links.
-          Hence the <a>Diagram.model</a> has <a>GraphLinksModel.archetypeNodeData</a> set to a JavaScript object.
+          Hence the <a>Diagram.Model</a> has <a>GraphLinksModel.ArchetypeNodeData</a> set to an object.
         </p>
         <p>
-          The node template uses the <b>convertKeyImage</b> function to convert the team name
+          The node template uses the <b>ConvertKeyImage</b> function to convert the team name
           into a URI referring to an image on our web site.
         </p>
       ";

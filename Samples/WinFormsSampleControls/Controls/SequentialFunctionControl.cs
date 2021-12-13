@@ -22,7 +22,7 @@ namespace WinFormsSampleControls.SequentialFunction {
         </p>
         <p>
       You can edit text in-place by clicking on the text of a selected node. The diagram uses 3 categories of node,
-      each added to the <a>Diagram.nodeTemplateMap</a>:
+      each added to the <a>Diagram.NodeTemplateMap</a>:
       <ul>
         <li><b>step</b></li>
         <li><b>transition</b></li>
@@ -30,7 +30,7 @@ namespace WinFormsSampleControls.SequentialFunction {
       </ul>
         </p>
         <p>
-      See also the <a href=""grafcet.html"">grafcet diagram sample</a>.
+      See also the <a href=""Grafcet"">grafcet diagram sample</a>.
         </p>
 ";
 

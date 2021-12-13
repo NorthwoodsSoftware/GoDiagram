@@ -60,7 +60,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
     You can also draw a link from a node's background to other nodes that have no ""boss"".
   </p>
   <p>
-    This is the <a href = ""orgChartEditor.html"">Org Chart Editor</a> sample,
+    This is the <a href=""OrgChartEditor"">Org Chart Editor</a> sample,
     but each node includes a TreeExpanderButton,
     and there are additional non-tree links connecting some of the nodes.
   </p>

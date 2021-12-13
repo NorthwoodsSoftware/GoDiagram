@@ -27,7 +27,7 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
 
       goWebBrowser2.Html = @"
         <p>
-      For another monitoring example, see the <a href=""kittenMonitor.html"">Kitten Monitor</a> sample.
+      For another monitoring example, see the <a href=""KittenMonitor"">Kitten Monitor</a> sample.
         </p>
 ";
 
@@ -62,16 +62,16 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
 
       // conversion functions for bindings in the node template
       string NodeTypeImage(object typeAsObj, object _) {
-        var retVal = @"https://gojs.net/latest/samples/";
-        switch (typeAsObj as string) {                                         // Image sizes
-          case "S2": return retVal + "images/voice atm switch.Jpg";      // 55x55
-          case "S3": return retVal + "images/server switch.Jpg";         // 55x55
-          case "P1": return retVal + "images/general processor.Jpg";     // 60x85
-          case "P2": return retVal + "images/storage array.Jpg";         // 55x80
-          case "M4": return retVal + "images/iptv broadcast server.Jpg"; // 80x50
-          case "M5": return retVal + "images/content engine.Jpg";        // 90x65
-          case "I1": return retVal + "images/pc.Jpg";                    // 80x70
-          default: return retVal + "images/pc.Jpg";                    // 80x70
+        var retVal = @"https://godiagram.com/samples/";
+        switch (typeAsObj as string) {                                   // Image sizes
+          case "S2": return retVal + "images/voice atm switch.jpg";      // 55x55
+          case "S3": return retVal + "images/server switch.jpg";         // 55x55
+          case "P1": return retVal + "images/general processor.jpg";     // 60x85
+          case "P2": return retVal + "images/storage array.jpg";         // 55x80
+          case "M4": return retVal + "images/iptv broadcast server.jpg"; // 80x50
+          case "M5": return retVal + "images/content engine.jpg";        // 90x65
+          case "I1": return retVal + "images/pc.jpg";                    // 80x70
+          default: return retVal + "images/pc.jpg";                      // 80x70
         }
       }
 

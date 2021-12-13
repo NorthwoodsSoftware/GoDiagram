@@ -26,11 +26,11 @@ namespace WinFormsSampleControls.LayerBands {
     layer bands run perpendicular to the growth direction of the layout.
   </p>
   <p>
-    This sample uses a custom <a>TreeLayout</a> that overrides the <a>TreeLayout.commitLayers</a> method
+    This sample uses a custom <a>TreeLayout</a> that overrides the <a>TreeLayout.CommitLayers</a> method
     in order to specify the position and size of each ""band"" that surrounds a layer of the tree.
     The ""bands"" are held in a single Part that is bound to a particular node data object whose key is ""_BANDS"".
     The headers, and potentially any other information that you might want to display in the headers,
-    are stored in this ""_BANDS"" object in an Array.
+    are stored in this ""_BANDS"" object in a List.
   </p>
   <p>
     This sample can be adapted to use a <a>GraphLinksModel</a> instead of a <a>TreeModel</a>

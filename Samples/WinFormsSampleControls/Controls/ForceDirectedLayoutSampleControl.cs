@@ -136,7 +136,7 @@ namespace WinFormsSampleControls.ForceDirectedLayoutSample {
         nodeArray[i] = temp;
       }
 
-      // set the nodedataarray to this array of objects
+      // set the NodeDataSource to this array of objects
       myDiagram.Model.NodeDataSource = nodeArray;
     }
 

@@ -15,7 +15,7 @@ namespace WinFormsExtensionControls.ParallelLinkRouting {
       diagramControl1.AfterRender = Setup;
       goWebBrowser1.Html = @"
           <p>
-          A <b>ParallelRouteLink</b> is a custom <a>Link</a> that overrides <a>Link.computePoints</a>
+          A <b>ParallelRouteLink</b> is a custom <a>Link</a> that overrides <a>Link.ComputePoints</a>
           in order to produce a middle segment that is parallel to the routes of other <b>ParallelRouteLink</b>s
           connecting the same two ports.
           </p>

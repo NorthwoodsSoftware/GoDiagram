@@ -35,23 +35,23 @@ namespace WinFormsSampleControls.VisualTree {
       goWebBrowser3.Html = @"
           <p>
         This sample shows the actual visual tree of a running Diagram.
-        The Diagram that we inspect is named ""myDiagramDiv"" and initially contains two simple Nodes and two Links.
-        The Diagram below it is named ""myVisualTree"" and shows the visual tree of ""myDiagramDiv"".
+        The Diagram that we inspect is named ""myDiagram"" and initially contains two simple Nodes and two Links.
+        The Diagram below it is named ""myVisualTree"" and shows the visual tree of ""myDiagram"".
           </p>
           <p>
-        You can also try selecting, copying, and deleting parts in <b> myDiagram </b>
-        and then click on ""Draw Visual Tree"" again to see how the visual tree in <b> myDiagram </b> changes.
+        You can also try selecting, copying, and deleting parts in <b>myDiagram</b>
+        and then click on ""Draw Visual Tree"" again to see how the visual tree in <b>myDiagram</b> changes.
           </p>
           <p>
-        The <b> traverseVisualTree </b> function is what walks the visual tree of ""myDiagramDiv""
+        The <b>TraverseVisualTree</b> function is what walks the visual tree of ""myDiagram""
         and constructs the corresponding Nodes and Links used in ""myVisualTree"".
-        The text for each Node in ""myVisualTree"" is data - bound to the actual Diagram /Layer /Part /GraphObject object.
-        That object is converted to a text string by using the<b> toString</b> method.
+        The text for each Node in ""myVisualTree"" is data - bound to the actual Diagram/Layer/Part/GraphObject object.
+        That object is converted to a text string by using the <b>ToString</b> method.
           </p>
           <p> 
-        See also the<a href= ""visualTreeGrouping.html""> Visual Tree Using Groups</a> sample,
-        to show the same visual tree using nested groups. For more uses of the<a> TreeLayout</a>,
-        see the<a href= ""DOMTree.html""> DOM Tree</a> and <a href = ""classHierarchy.html""> Class Hierarchy Tree</a> samples.
+        See also the <a href=""VisualTreeGrouping"">Visual Tree Using Groups</a> sample,
+        to show the same visual tree using nested groups. For more use of the <a>TreeLayout</a>,
+        see the <a href=""ClassHierarchy"">Class Hierarchy Tree</a> sample.
           </p>        
 ";
     }

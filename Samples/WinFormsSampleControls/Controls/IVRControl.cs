@@ -27,7 +27,7 @@ namespace WinFormsSampleControls.IVR {
         </p>
         <p>
           This Interactive Voice Response Tree (IVR tree) has nodes that contain a collapsible list of actions, controlled by a <b>PanelExpanderButton</b>,
-          with a <b>TreeExpanderButton</b> underneath the body. See the <a href=""../intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
+          with a <b>TreeExpanderButton</b> underneath the body. See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
         </p>
       ";
     }

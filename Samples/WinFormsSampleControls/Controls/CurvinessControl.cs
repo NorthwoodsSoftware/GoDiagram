@@ -21,12 +21,12 @@ namespace WinFormsSampleControls.Curviness {
       goWebBrowser1.Html = @"
 
   <p>
-    This sample explicitly binds the <a>Link.curviness</a> property, so that some links bend out farther than others.
+    This sample explicitly binds the <a>Link.Curviness</a> property, so that some links bend out farther than others.
   </p>
   <p>
     The link template also places an arrowhead at the middle of the link,
-    by explicitly setting the arrowhead's <a>GraphObject.segmentIndex</a> to -Infinity
-    <i>after</i> setting <a>Shape.toArrow</a>.
+    by explicitly setting the arrowhead's <a>GraphObject.SegmentIndex</a> to -Infinity
+    <i>after</i> setting <a>Shape.ToArrow</a>.
   </p>
 ";
 

@@ -28,16 +28,16 @@ namespace WinFormsSampleControls.DataFlow {
     This sample demonstrates labeled ports on nodes, arranged as a data flow or workflow. These ports are set up as panels, created within
     the <b>makePort</b> function. This function sets various properties of the <a>Shape</a> and
     <a>TextBlock</a> that make up the panel, and properties of the panel itself. Most notable are
-    <a>GraphObject.portId</a> to declare the shape as a port, and <a>GraphObject.fromLinkable</a> and
-    <a>GraphObject.toLinkable</a> to set the way the ports can be linked.
+    <a>GraphObject.PortId</a> to declare the shape as a port, and <a>GraphObject.FromLinkable</a> and
+    <a>GraphObject.ToLinkable</a> to set the way the ports can be linked.
   </p>
   <p>
     The diagram also uses the <b>makeTemplate</b> function to create the node templates with shared features.
     This function takes a type, an image, a background color, and arrays of ports to create the node
-    to be added to the <a>Diagram.nodeTemplateMap</a>.
+    to be added to the <a>Diagram.NodeTemplateMap</a>.
   </p>
   <p>
-    For the same data model rendered somewhat differently, see the <a href=""dataFlowVertical.html"">Data Flow (vertical)</a> sample.
+    For the same data model rendered somewhat differently, see the <a href=""DataFlowVertical"">Data Flow (vertical)</a> sample.
   </p>
 ";
 

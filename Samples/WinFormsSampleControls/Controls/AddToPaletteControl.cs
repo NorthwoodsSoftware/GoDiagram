@@ -41,7 +41,7 @@ namespace WinFormsSampleControls.AddToPalette {
     This sample also supports dynamically adding a copy of a selected node in the diagram to the
     palette by the ""Add To Palette"" button.
     See the current state of the palette's model in the top textarea.
-    The palette is <a>Diagram.isReadOnly</a>, so the user cannot delete selected nodes from the palette.
+    The palette is <a>Diagram.IsReadOnly</a>, so the user cannot delete selected nodes from the palette.
     But the ""Delete From Palette"" button removes any selected nodes from the palette.
   </p>
 ";

@@ -20,9 +20,9 @@ namespace WinFormsSampleControls.FamilyTree {
 
       goWebBrowser1.Html = @"
         <p>This family tree diagram shows several generations of British royalty beginning with George V (1865-1936).</p>
-        <p><a>Node</a> data contains information about gender, and a data binding assigns a corresponding color. Additional data is displayed with a tooltip. A key is placed on the diagram using a <a>Panel,Table</a>.</p>
-        <p>For a variation of this tree, see the <a href=""familyTreeJP.html"">Japanese family tree sample</a>.</p>
-        <p>For a more complex family tree see the <a href=""genogram.html"">genogram sample</a>.</p>
+        <p><a>Node</a> data contains information about gender, and a data binding assigns a corresponding color. Additional data is displayed with a tooltip. A key is placed on the diagram using a <a>PanelLayoutTable</a>.</p>
+        <p>For a variation of this tree, see the <a href=""FamilyTreeJP"">Japanese family tree sample</a>.</p>
+        <p>For a more complex family tree see the <a href=""Genogram"">genogram sample</a>.</p>
       ";
     }
 

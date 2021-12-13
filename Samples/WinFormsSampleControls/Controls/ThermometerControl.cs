@@ -18,12 +18,12 @@ namespace WinFormsSampleControls.Thermometer {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample uses <a href="".. / intro / graduatedPanels.html"">Graduated Panels</a> and <code>Panel.alignmentFocusName</code> to line up thermometer scales.
+      This sample uses <a href=""intro/graduatedPanels.html"">Graduated Panels</a> and <code>Panel.AlignmentFocusName</code> to line up thermometer scales.
         </p>
     
         <p>
-      The thermometers are resizable, with two types.For the first two(default), resizing the thermometer reduces
-      or increases the range of the values.For the second two(<code> type: ""scaling"" </code>), resizing
+      The thermometers are resizable, with two types. For the first two (default), resizing the thermometer reduces
+      or increases the range of the values. For the second two (<code>Type = ""scaling""</code>), resizing
       the thermometer keeps the range, and scales the thermometer.
         </p>
 ";

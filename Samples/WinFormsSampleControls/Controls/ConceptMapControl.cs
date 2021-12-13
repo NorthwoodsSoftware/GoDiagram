@@ -18,8 +18,8 @@ namespace WinFormsSampleControls.ConceptMap {
       goWebBrowser1.Html = @"
         <p>
           A concept map sample depicting various suggested relationships between different ideas.
-          See also the <a href=""interactiveForce.html"">Interactive Force</a> sample that uses the exact same data
-          but a different node template and an interactive<a>ForceDirectedLayout</a>.
+          See also the <a href=""InteractiveForce"">Interactive Force</a> sample that uses the exact same data
+          but a different node template and an interactive <a>ForceDirectedLayout</a>.
         </p>
       ";
     }

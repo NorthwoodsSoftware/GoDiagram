@@ -25,19 +25,19 @@ namespace WinFormsSampleControls.MindMap {
   <p>
     The layout is controlled by moving the nodes closest to the tree's root node.
     When one of these nodes is moved horizontally to the other side of the root,
-    all of its children will be sent to <a>Layout.doLayout</a> with a new direction,
+    all of its children will be sent to <a>Layout.DoLayout</a> with a new direction,
     causing text to always be moved outwards from the root. The <b>spotConverter</b> function is used to manage
-    <a>GraphObject.fromSpot</a> and <a>GraphObject.toSpot</a> for nodes manually, so the <a>TreeLayout.setsPortSpot</a> and <a>TreeLayout.setsChildPortSpot</a>
+    <a>GraphObject.FromSpot</a> and <a>GraphObject.ToSpot</a> for nodes manually, so the <a>TreeLayout.SetsPortSpot</a> and <a>TreeLayout.SetsChildPortSpot</a>
     properties are set to false so that laying out the diagram will not overwrite the values.
   </p>
   <p>
-    When a node is deleted the <a>CommandHandler.deletesTree</a> property ensures that
-    all of its children are deleted with it. When a node is dragged the <a>DraggingTool.dragsTree</a>
+    When a node is deleted the <a>CommandHandler.DeletesTree</a> property ensures that
+    all of its children are deleted with it. When a node is dragged the <a>DraggingTool.DragsTree</a>
     property ensures that all its children are dragged with it.
     Both of these are set during the the Diagram's initalization.
   </p>
   <p>
-    Node templates also have a <a>Part.selectionAdornmentTemplate</a> defined to allow for new nodes to be created and a <a>GraphObject.contextMenu</a> with additional commands.
+    Node templates also have a <a>Part.SelectionAdornmentTemplate</a> defined to allow for new nodes to be created and a <a>GraphObject.ContextMenu</a> with additional commands.
   </p>
 ";
 

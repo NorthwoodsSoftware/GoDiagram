@@ -23,7 +23,7 @@ namespace WinFormsExtensionControls.Dimensioning {
 
    <p>
       This sample makes use of the DimensioningLink class, which inherits from the <a>Link</a> class.
-      That class is defined at <a href="".. / extensions / DimensioningLink.js"">DimensioningLink.js</a>.
+      That class is defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/DimensioningLink/DimensioningLink.cs"">DimensioningLink.cs</a>.
    </p> 
 ";
 

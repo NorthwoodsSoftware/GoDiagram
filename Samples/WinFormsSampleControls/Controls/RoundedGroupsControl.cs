@@ -22,13 +22,10 @@ namespace WinFormsSampleControls.RoundedGroups {
         </p>
         <p>
       The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are defined in
-      <a href = ""../extensions/RoundedRectangles.js"" target = ""_blank""> RoundedRectangles.js </a> in the extensions directory.
-      See also the <a href = ""twoHalves.html"" target = ""_blank""> Two Halves </a> sample and
-      the <a href = ""../extensions/Parallel.html"" target = ""_blank""> Parallel Layout </a> sample. 
-        </p>       
-        <p>
-      We also have a <a href = ""../projects/bpmn/BPMN.html"" target = ""_blank""> BPMN Process Editor</a> sample.        
-        </p>      
+      <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> in the extensions directory.
+      See also the <a href=""TwoHalves"">Two Halves</a> sample and
+      the <a href=""Parallel"">Parallel Layout</a> sample. 
+        </p>    
 ";
 
     }

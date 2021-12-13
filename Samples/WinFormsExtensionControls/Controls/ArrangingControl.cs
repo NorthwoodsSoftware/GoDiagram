@@ -24,22 +24,22 @@ namespace WinFormsExtensionControls.Arranging {
       </p>
       <p>
         The first step of ArrangingLayout is that all unconnected nodes are separated out to be laid out later by
-        the <a>ArrangingLayout.sideLayout</a>, which by default is a <a>GridLayout</a>.
+        the <a>ArrangingLayout.SideLayout</a>, which by default is a <a>GridLayout</a>.
       </p>
       <p>
         The remaining nodes and links are partitioned into separate subgraphs with no links between subgraphs.
-        The <a>ArrangingLayout.primaryLayout</a> is performed on each subgraph.
+        The <a>ArrangingLayout.PrimaryLayout</a> is performed on each subgraph.
       </p>
       <p>
         If there is more than one subgraph, those subgraphs are treated as if they were individual nodes and are
-        laid out by the <a>ArrangingLayout.arrangingLayout</a>.
+        laid out by the <a>ArrangingLayout.ArrangingLayout</a>.
       </p>
       <p>
-        Finally the unconnected nodes are laid out by <a>ArrangingLayout.sideLayout</a> and they are all positioned
-        at the <a>ArrangingLayout.side</a> Spot relative to the main body of nodes and links.
+        Finally the unconnected nodes are laid out by <a>ArrangingLayout.SideLayout</a> and they are all positioned
+        at the <a>ArrangingLayout.Side</a> Spot relative to the main body of nodes and links.
       </p>
       <p>
-        This extension layout is defined in its own file, as <a href=""ArrangingLayout.js"">ArrangingLayout.js</a>.
+        This extension layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Arranging/ArrangingLayout.cs"">ArrangingLayout.cs</a>.
       </p>
 ";
     }

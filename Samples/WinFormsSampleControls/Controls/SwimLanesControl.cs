@@ -24,42 +24,42 @@ namespace WinFormsSampleControls.SwimLanes {
       goWebBrowser1.Html = @"
         <p>
       In this design each swimlane is implemented by a <a>Group</a>, and all lanes are inside a ""Pool"" Group.
-      Each lane Group has its own <a>Group.layout</a>, which in this case is a <a>LayeredDigraphLayout</a>.
+      Each lane Group has its own <a>Group.Layout</a>, which in this case is a <a>LayeredDigraphLayout</a>.
       Each pool Group has its own custom <a>GridLayout</a> that arranges all of its lanes in a vertical stack.
       That custom layout makes sure all of the pool's lanes have the same length.
       If you don't want each lane/group to have its own layout,
-      you could use set the lane group's <a>Group.layout</a> to null and set the pool group's 
-      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href= ""../extensions/SwimLaneLayout.html"">Swim Lane Layout</a>.  
+      you could use set the lane group's <a>Group.Layout</a> to null and set the pool group's 
+      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href=""SwimLaneLayout"">Swim Lane Layout</a>.  
         </p>
         <p>
       When dragging nodes note that the nodes are limited to stay within the lanes.
-      This is implemented by a custom <a>Part.dragComputation</a> function, here named <b>stayInGroup</b>.
+      This is implemented by a custom <a>Part.DragComputation</a> function, here named <b>stayInGroup</b>.
       Hold down the Shift key while dragging simple nodes to move the selection to another lane.
       Lane groups cannot be moved between pool groups.
         </p>
         <p>
-      A Group(i.e.swimlane) is movable but not copyable.
-      When the user moves a lane up or down the lanes automatically re - order.
-      You can prevent lanes from being moved and thus re-ordered by setting Group.movable to false.
+      A Group (i.e. swimlane) is movable but not copyable.
+      When the user moves a lane up or down the lanes automatically re-order.
+      You can prevent lanes from being moved and thus re-ordered by setting Group.Movable to false.
         </p>
         <p>
       Each Group is collapsible.
-      The previous breadth of that lane is saved in the savedBreadth property, to be restored when expanded.
+      The previous breadth of that lane is saved in the _SavedBreadth property, to be restored when expanded.
         </p>
         <p>
-      When a Group/lane is selected, its custom <a>Part.resizeAdornmentTemplate</a>
+      When a Group/lane is selected, its custom <a>Part.ResizeAdornmentTemplate</a>
       gives it a broad resize handle at the bottom of the Group
       and a broad resize handle at the right side of the Group.
       This allows the user to resize the ""breadth"" of the selected lane
       as well as the ""length"" of all of the lanes.
       However, the custom <a>ResizingTool</a> prevents the lane from being too narrow
-      to hold the <a>Group.placeholder</a> that represents the subgraph,
+      to hold the <a>Group.Placeholder</a> that represents the subgraph,
       and it prevents the lane from being too short to hold any of the contents of the lanes.
-      Each Group/lane is also has a <a>GraphObject.minSize</a> to keep it from
+      Each Group/lane is also has a <a>GraphObject.MinSize</a> to keep it from
       being too narrow even if there are no member <a>Part</a>s at all.
         </p>
         <p>
-      A different sample has its swim lanes vertically oriented: <a href = ""swimLanesVertical.html"">Swim Lanes(vertical)</a>.
+      A different sample has its swim lanes vertically oriented: <a href=""SwimLanesVertical"">Swim Lanes (vertical)</a>.
        </p>
 ";
     }
@@ -79,14 +79,14 @@ namespace WinFormsSampleControls.SwimLanes {
     }
 
     // this is called after nodes have been moved or lanes resized, to layout all of the Pool Groups again
-    public void RelayoutDiagram() {
-      _Diagram.Layout.InvalidateLayout();
-      var itr = _Diagram.FindTopLevelGroups();
+    public void RelayoutDiagram(Diagram diag) {
+      diag.Layout.InvalidateLayout();
+      var itr = diag.FindTopLevelGroups();
       while (itr.MoveNext()) {
         var g = itr.Current;
         if (g.Category == "Pool") g.Layout.InvalidateLayout();
       }
-      _Diagram.LayoutDiagram();
+      diag.LayoutDiagram();
     }
 
     // compute the minimum size of a Pool Group needed to hold all the Lane Groups
@@ -148,8 +148,8 @@ namespace WinFormsSampleControls.SwimLanes {
       // a clipboard copied node is pasted into the original node's group (i.e. lane)
       _Diagram.CommandHandler.CopiesGroupKey = true;
       // automatically relayout the swim lanes after dragging the selection
-      _Diagram.SelectionMoved += (s, e) => RelayoutDiagram();   // this DiagramEvent listener is
-      _Diagram.SelectionCopied += (s, e) => RelayoutDiagram();  // defined above
+      _Diagram.SelectionMoved += (s, e) => RelayoutDiagram(e.Diagram);   // this DiagramEvent listener is
+      _Diagram.SelectionCopied += (s, e) => RelayoutDiagram(e.Diagram);  // defined above
       _Diagram.AnimationManager.IsEnabled = false;
       // enable undo and redo
       _Diagram.UndoManager.IsEnabled = true;
@@ -484,7 +484,7 @@ namespace WinFormsSampleControls.SwimLanes {
       } else {  // changing the breadth of a single lane
         base.Resize(newr);
       }
-      _App.RelayoutDiagram();  // now that the lane has changed size, layout the pool again
+      _App.RelayoutDiagram(Diagram);  // now that the lane has changed size, layout the pool again
     }
   }
   // end LaneResizingTool class
@@ -492,17 +492,6 @@ namespace WinFormsSampleControls.SwimLanes {
   // define a custom grid layout that makes sure the length of each lane is the same
   // and that each lane is broad enough to hold its subgraph
   public class PoolLayout : GridLayout {
-    class PoolComparer : Comparer<Part> {
-      public override int Compare(Part a, Part b) {
-        var ay = a.Location.Y;
-        var by = b.Location.Y;
-        if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
-        if (ay < by) return -1;
-        if (ay > by) return 1;
-        return 0;
-      }
-    }
-
     public PoolLayout() : base() {
       CellSize = new Size(1, 1);
       WrappingColumn = 1;
@@ -511,7 +500,14 @@ namespace WinFormsSampleControls.SwimLanes {
       Alignment = GridAlignment.Position;
       // This sorts based on the location of each Group.
       // This is useful when Groups can be moved up and down in order to change their order.
-      Comparer = new PoolComparer();
+      Comparer = (a, b) => {
+        var ay = a.Location.Y;
+        var by = b.Location.Y;
+        if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
+        if (ay < by) return -1;
+        if (ay > by) return 1;
+        return 0;
+      };
       BoundsComputation = (part, layout) => {
         var rect = part.GetDocumentBounds();
         return rect.Inflate(-1, -1);  // negative strokeWidth of the border Shape

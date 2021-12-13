@@ -31,21 +31,21 @@ namespace WinFormsExtensionControls.PolygonDrawing {
 
       goWebBrowser1.Html = @"
           <p>
-    This sample demonstrates the PolygonDrawingTool, a custom <a>Tool</a> added to the Diagram's mouseDownTools.
-    It is defined in its own file, as <a href=""PolygonDrawingTool.js"">PolygonDrawingTool.js</a>.
+    This sample demonstrates the PolygonDrawingTool, a custom <a>Tool</a> added to the Diagram's MouseDownTools.
+    It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/PolygonDrawing/PolygonDrawingTool.cs"">PolygonDrawingTool.cs</a>.
     It also demonstrates the GeometryReshapingTool, another custom tool,
-    defined in <a href = ""GeometryReshapingTool.js""> GeometryReshapingTool.js </a>. 
+    defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>. 
           </p>
  
           <p>
-    These extensions serve as examples of features that can be added to GoJS by writing new classes.
+    These extensions serve as examples of features that can be added to GoDiagram by writing new classes.
     With the PolygonDrawingTool, a new mode is supported that allows the user to draw custom shapes.
-    With the GeometryReshapingTool, users can change the geometry(i.e.the ""shape"") of a<a>Shape</a> s in a selected<a>Node</a>.
+    With the GeometryReshapingTool, users can change the geometry (i.e.the ""shape"") of a <a>Shape</a>s in a selected <a>Node</a>.
          </p>
 
           <p>
     Click a ""Draw"" button and then click in the diagram to place a new point in a polygon or polyline shape.
-    Right - click, double-click, or Enter to finish.  Press<b> Escape</b> to cancel, or<b> Z</b> to remove the last point.
+    Right-click, double-click, or Enter to finish.  Press <b>Escape</b> to cancel, or <b>Z</b> to remove the last point.
     Click the ""Select"" button to switch back to the normal selection behavior, so that you can select, resize, and rotate the shapes.
     The checkboxes control whether you can resize, reshape, and /or rotate selected shapes. 
          </p>

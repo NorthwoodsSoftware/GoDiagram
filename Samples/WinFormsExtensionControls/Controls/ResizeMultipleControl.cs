@@ -15,11 +15,8 @@ namespace WinFormsExtensionControls.ResizeMultiple {
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom <a>ResizingTool</a> which allows the user to resize many selected objects at once.
-          It is defined in its own file, as <a href=""ResizeMultipleTool.js"">ResizeMultipleTool.js</a>.
-          </p>
-          <p>
-          Usage can also be seen in the <a href = ""FloorPlanEditor.html""> Floor Plan Editor</a> sample.  
-          </p>    
+          It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/ResizeMultiple/ResizeMultipleTool.cs"">ResizeMultipleTool.cs</a>.
+          </p> 
 ";
     }
 

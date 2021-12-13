@@ -18,15 +18,15 @@ namespace WinFormsSampleControls.Relationships {
       goWebBrowser1.Html = @"
    <p>
     This illustrates how one can define custom strokes for Links (or really any Shape that is relatively straight)
-    by making use of the <a>Shape.pathPattern</a> property to repeatedly draw a small Shape along the stroke path.
+    by making use of the <a>Shape.PathPattern</a> property to repeatedly draw a small Shape along the stroke path.
     These examples may be useful in generating diagrams showing social or emotional relationships or other cases
-    where it is useful to distinguish kinds of relationships in more manners than just by the <a>Shape.stroke</a> (color)
-    or <a>Shape.strokeWidth</a> or <a>Shape.strokeDashArray</a>.
+    where it is useful to distinguish kinds of relationships in more manners than just by the <a>Shape.Stroke</a> (color)
+    or <a>Shape.StrokeWidth</a> or <a>Shape.StrokeDashArray</a>.
   </p>
   <p>
-    The first set of link triplets, at the top, demonstrate the basic pathPatterns defined by the <code>definePathPattern</code> function in this page.
-    The last set of link doublets, at the bottom, demonstrate how those basic pathPatterns can be combined in a single <a>Link</a>
-    that has two <a>Shape</a>s that have <a>GraphObject.isPanelMain</a> set to true, so that both shapes get the same <a>Geometry</a>
+    The first set of link triplets, at the top, demonstrate the basic PathPatterns defined by the <code>DefinePathPattern</code> function in this page.
+    The last set of link doublets, at the bottom, demonstrate how those basic PathPatterns can be combined in a single <a>Link</a>
+    that has two <a>Shape</a>s that have <a>GraphObject.IsPanelMain</a> set to true, so that both shapes get the same <a>Geometry</a>
     computed by the link.  Yet each such link shape draws a different path pattern.
   </p>
 ";

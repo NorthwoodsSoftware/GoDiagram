@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Web.WebView2.Core;
 using WinFormsSharedControls;
 
 namespace WinFormsDemoApp {
@@ -22,12 +24,18 @@ namespace WinFormsDemoApp {
       extensionList.SelectedValueChanged += ExtensionList_SelectedValueChanged;
       extensionList.ClearSelected();
 
+      _SelectDemo(opento);
+    }
+
+    private void _SelectDemo((DemoType, string) opento) {
       var (type, demo) = opento;
       switch (type) {
         case DemoType.Sample:
+          tabControl1.SelectedTab = sampleTab;
           sampleList.SelectedValue = demo;
           break;
         case DemoType.Extension:
+          tabControl1.SelectedTab = extensionTab;
           extensionList.SelectedValue = demo;
           break;
       }
@@ -53,9 +61,13 @@ namespace WinFormsDemoApp {
       _FindWebBrowsers(sample.Controls, ref webBrowsers);
       foreach (var gwb in webBrowsers) {
         gwb.InitializeAsync();
+        gwb.NavigationStarting += _NavigateToUri;
       }
     }
-    private void _ActivateDemo(NavItem nav) {
+
+    private async void _ActivateDemo(NavItem nav) {
+      await GoWebBrowser._InitApiMap();  // ensure API map is initialized for GoWebBrowser before creating any controls
+
       if (Activator.CreateInstance(nav.ControlType) is not UserControl demo) return;
       panel1.Controls.Clear();
       demo.Dock = DockStyle.Fill;
@@ -74,6 +86,17 @@ namespace WinFormsDemoApp {
           continue;
         }
         if (control.Controls.Count > 0) _FindWebBrowsers(control.Controls, ref webBrowsers);
+      }
+    }
+
+    private void _NavigateToUri(object sender, CoreWebView2NavigationStartingEventArgs e) {
+      if (((GoWebBrowser)sender).Html == null) return;
+      if (e.Uri.StartsWith("https://demo/")) {
+        _SelectDemo(Program.ProcessInput(e.Uri.Substring(13)));
+        e.Cancel = true;
+      } else if (e.Uri.StartsWith("http")) {  // web links
+        Process.Start("explorer.exe", e.Uri);
+        e.Cancel = true;
       }
     }
   }

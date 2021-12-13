@@ -38,7 +38,7 @@ namespace WinFormsSampleControls.Gantt {
           <p>
             You can zoom in on the diagram by changing the ""Spacing"" value,
             which scales the diagram using a data binding function for nodes' widths and locations.
-            This is in place of changing the <a> Diagram.scale </a>.
+            This is in place of changing the <a>Diagram.Scale</a>.
           </p>
         ";
     }

@@ -159,7 +159,7 @@ namespace WinFormsSampleControls.DraggablePorts {
                 Stretch = Stretch.Fill
               },
               new Picture {
-                Source = @"https://gojs.net/latest/samples/images/60x90.png",
+                Source = @"https://godiagram.com/samples/images/60x90.png",
                 Width = 60,
                 Height = 90,
                 Scale = 0.5

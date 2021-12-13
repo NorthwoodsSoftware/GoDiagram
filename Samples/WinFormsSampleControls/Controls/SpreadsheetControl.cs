@@ -15,7 +15,7 @@ namespace WinFormsSampleControls.Spreadsheet {
 
       goWebBrowser1.Html = @"
         <p>
-      An example of a single node containing nested Auto Panels surrounding Table Panels whose <a>Panel.itemArray</a> is bound to Arrays of numbers.
+      An example of a single node containing nested Auto Panels surrounding Table Panels whose <a>Panel.ItemList</a> is bound to a list of numbers.
         </p>
 ";
 

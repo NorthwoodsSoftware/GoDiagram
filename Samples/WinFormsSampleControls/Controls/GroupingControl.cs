@@ -26,7 +26,7 @@ namespace WinFormsSampleControls.Grouping {
   </p>
   <p>
   The model is initially a random number of nodes, including some groups, in a tree layout.
-  When a group is expanded, the <a>Group.subGraphExpandedChanged</a> event handler calls a function to generate a random number of nodes
+  When a group is expanded, the <a>Group.SubGraphExpandedChanged</a> event handler calls a function to generate a random number of nodes
   in a tree layout inside the group if it did not contain none any.
   Each non-group node added has a unique random color, and links are added by giving each node one link to another node.
   </p>

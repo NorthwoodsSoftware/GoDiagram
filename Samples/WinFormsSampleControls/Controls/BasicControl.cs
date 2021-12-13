@@ -20,7 +20,7 @@ namespace WinFormsSampleControls.Basic {
           as well as several other powerful <a>Diagram</a> editing abilities.
         </p>
         <p>
-          Unlike the <a href=""samples/Minimal"">Minimal</a> sample, this sample has templates for Links and for Groups,
+          Unlike the <a href=""Minimal"">Minimal</a> sample, this sample has templates for Links and for Groups,
           plus tooltips and context menus for Nodes, for Links, for Groups, and for the Diagram.
         </p>
         <p>This sample has all of the functionality of the Minimal sample, but additionally allows the user to:</p>
@@ -34,7 +34,7 @@ namespace WinFormsSampleControls.Basic {
         </ul>
         <p>
           GoDiagram contains many other possible commands, which can be invoked by either mouse/keyboard/touch or programatically.
-          <a href=""https://gojs.net/intro/commands.html"">See an overview of possible commands here.</a>
+          <a href=""intro/commands.html"">See an overview of possible commands here.</a>
           On a Mac, use CMD instead of Ctrl.
         </p>
         <p>
@@ -68,10 +68,10 @@ namespace WinFormsSampleControls.Basic {
 
       // To simplify this code we define a function for creating a context menu button:
       Panel MakeButton(string text, Action<InputEvent, GraphObject> action, Func<GraphObject, bool> visiblePredicate = null) {
-        var converter = new Func<object, object, object>((obj, _) => {
+        object converter(object obj) {
           var elt = obj as GraphObject;
           return elt.Diagram != null && visiblePredicate(elt);
-        });
+        }
 
         return Builder.Make<Panel>("ContextMenuButton")
           .Add(new TextBlock(text))

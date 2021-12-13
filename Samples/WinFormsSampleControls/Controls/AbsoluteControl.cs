@@ -30,14 +30,14 @@ namespace WinFormsSampleControls.Absolute {
     </p>
     <p>
       Parts may not be dragged outside of the fixed document area of the diagram.
-      This is implemented by a custom<a>Part.dragComputation</a> function.
+      This is implemented by a custom <a>Part.DragComputation</a> function.
    </p>
 
    <p>
      Note that the user may still scroll or zoom the whole page.
    </p>
 
-   <p> The model data, automatically updated after each change or undo or redo:</p>
+   <p>The model data, automatically updated after each change or undo or redo:</p>
 ";
 
     }

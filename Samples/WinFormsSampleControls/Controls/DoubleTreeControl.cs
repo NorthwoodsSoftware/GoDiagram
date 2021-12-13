@@ -21,12 +21,12 @@ namespace WinFormsSampleControls.DoubleTree {
       goWebBrowser1.Html = @"
          <p>
           This sample displays a bow-tie diagram of two trees sharing a single root node growing in opposite directions.
-          The immediate child data of the ROOT node have a ""dir"" property
+          The immediate child data of the root node have a ""Dir"" property
           that describes the direction that subtree should grow.
         </p>
         <p>
-          The <a>Diagram.layout</a> is an instance of the <a>DoubleTreeLayout</a> extension layout,
-          defined in <a href=""../extensions/DoubleTreeLayout.js"">extensions/DoubleTreeLayout.js</a>.
+          The <a>Diagram.Layout</a> is an instance of the <a>DoubleTreeLayout</a> extension layout,
+          defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/DoubleTree/DoubleTreeLayout.cs"">DoubleTreeLayout.cs</a>.
           The layout requires a <a>DoubleTreeLayout.DirectionFunction</a> predicate to decide for a child node
           of the root node which way the subtree should grow.
         </p>

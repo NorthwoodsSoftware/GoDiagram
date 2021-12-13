@@ -19,7 +19,7 @@ namespace WinFormsSampleControls.Tournament {
       goWebBrowser1.Html = @"
         <p>
         Click on the empty score boxes next to names to fill in scores for each player.
-        The scores must be non-negative numbers with at most 3 digits. Scores are validated using a <a>TextEditingTool.textValidation</a> function.
+        The scores must be non-negative numbers with at most 3 digits. Scores are validated using a <a>TextEditingTool.TextValidation</a> function.
         When two players in a ""game"" have a score, one of them will automatically advance to the next round of the bracket.
         </p>
       ";

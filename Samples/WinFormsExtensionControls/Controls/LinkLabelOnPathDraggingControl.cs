@@ -19,16 +19,16 @@ namespace WinFormsExtensionControls.LinkLabelOnPathDragging {
   <p>
     This sample demonstrates a custom Tool, LinkLabelOnPathDraggingTool, that allows the user to drag the label of a Link,
     but that keeps the label exactly on the path of the link.
-    The tool is defined at <a href=""LinkLabelOnPathDraggingTool.js"">LinkLabelOnPathDraggingTool.js</a>.
+    The tool is defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/LinkLabelOnPathDragging/LinkLabelOnPathDraggingTool.cs"">LinkLabelOnPathDraggingTool.cs</a>.
   </p>
   <p>
     The label on the link can be any arbitrarily complex object.
-    It is positioned by the <a>GraphObject.segmentIndex</a> and <a>GraphObject.segmentFraction</a> properties.
-    The segmentIndex is set to NaN such that the whole link path acts as the segment, and the segmentFraction is set by the LinkLabelOnPathDraggingTool.
-    A two-way data binding on segmentFraction automatically remembers any modified value on the link data object in the model.
+    It is positioned by the <a>GraphObject.SegmentIndex</a> and <a>GraphObject.SegmentFraction</a> properties.
+    The SegmentIndex is set to NaN such that the whole link path acts as the segment, and the SegmentFraction is set by the LinkLabelOnPathDraggingTool.
+    A two-way data binding on SegmentFraction automatically remembers any modified value on the link data object in the model.
   </p>
   <p>
-    The tool is derived from a similar tool, <a href = ""LinkLabelDraggingTool.js"">LinkLabelDraggingTool.js</a>,
+    The tool is derived from a similar tool, <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/LinkLabelDragging/LinkLabelDraggingTool.cs"">LinkLabelDraggingTool.cs</a>,
     that allows the user to drag the label in any direction from the mid-point of the Link path.
   </p>
 ";

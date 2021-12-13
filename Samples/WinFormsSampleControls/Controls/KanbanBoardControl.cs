@@ -27,25 +27,18 @@ namespace WinFormsSampleControls.KanbanBoard {
 
    <p>A Kanban board is a work and workflow visualization used to communicate the status and progress of work items. Click on the color of a note to cycle through colors.</p>
   <p>
-    This design and implementation were adapted from the <a href=""swimLanesVertical.html"">Swim Lanes (vertical)</a> sample.
+    This design and implementation were adapted from the <a href=""SwimLanesVertical"">Swim Lanes (vertical)</a> sample.
     Unlike that sample:
-    <ul>
-      <li> there are no Links </li>
-   
-         <li> lanes cannot be nested into ""pools"" </li>
-      
-            <li> lanes cannot be resized </li>
-         
-               <li> the user cannot drop tasks into the diagram's background</li>
-                  <li> all tasks are ordered within a single column; the user can rearrange the order</li>
-               
-                     <li> tasks can freely be moved into other lanes </li>
-                  
-                        <li> lanes are not movable or copyable or deletable </li>
-                     
-                         </ul>
-                     
-                       </p>
+  </p>
+  <ul>
+    <li>there are no Links</li>
+    <li>lanes cannot be nested into ""pools""</li>
+    <li>lanes cannot be resized</li>
+    <li>the user cannot drop tasks into the diagram's background</li>
+    <li>all tasks are ordered within a single column; the user can rearrange the order</li>
+    <li>tasks can freely be moved into other lanes </li>
+    <li>lanes are not movable or copyable or deletable </li>
+  </ul>
 ";
 
       saveLoadModel1.ModelJson = @"{
@@ -192,16 +185,14 @@ namespace WinFormsSampleControls.KanbanBoard {
             CellSize = new Size(1, 1),
             Spacing = new Size(5, 5),
             Alignment = GridAlignment.Position,
-            Comparer = Comparer<Part>.Create(
-                (a, b) => {  // can re-order tasks within a lane
-                  var ay = a.Location.Y;
-                  var by = b.Location.Y;
-                  if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
-                  if (ay < by) return -1;
-                  if (ay > by) return 1;
-                  return 0;
-                }
-              )
+            Comparer = (a, b) => {  // can re-order tasks within a lane
+              var ay = a.Location.Y;
+              var by = b.Location.Y;
+              if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
+              if (ay < by) return -1;
+              if (ay > by) return 1;
+              return 0;
+            }
           },
           Click = (e, grp) => {  // allow simple click on group to clear selection
             if (!e.Shift && !e.Control && !e.Meta) e.Diagram.ClearSelection();
@@ -332,11 +323,11 @@ namespace WinFormsSampleControls.KanbanBoard {
         Spacing = new Size(0, 0);
         Alignment = GridAlignment.Position;
 
-        Comparer = Comparer<Part>.Create((pa, pb) => {
+        Comparer = (pa, pb) => {
           if (pa.Name == "LEGEND") return -1;
           if (pb.Name == "LEGEND") return 1;
           return 0;
-        });
+        };
       }
 
 

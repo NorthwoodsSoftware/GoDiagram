@@ -18,7 +18,8 @@ namespace WinFormsExtensionControls.DragZooming {
 
       goWebBrowser1.Html = @"
   <p>
-  This sample demonstrates the DragZoomingTool, which replaces the standard DragSelectingTool. It is defined in its own file, as <a href=""DragZoomingTool.js"">DragZoomingTool.js</a>.
+  This sample demonstrates the DragZoomingTool, which replaces the standard DragSelectingTool. It is defined in its own file,
+  as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/DragZooming/DragZoomingTool.cs"">DragZoomingTool.cs</a>.
   </p>
   <p>
   Press in the background, wait briefly, and then drag to zoom in to show the area of the drawn rectangle.
@@ -99,7 +100,7 @@ namespace WinFormsExtensionControls.DragZooming {
     }
 
     // make node data
-    private void LoadTree() {
+    private void LoadTree(Diagram diag) {
       // set diagram's model data
       var total = 99;
       var rand = new Random();
@@ -113,12 +114,12 @@ namespace WinFormsExtensionControls.DragZooming {
       }
 
       // give the Diagram's model all the data
-      myDiagram.Model = new Model {
+      diag.Model = new Model {
         NodeDataSource = treedata,
       };
 
       // remove status indicator
-      myDiagram.Remove(myLoading);
+      diag.Remove(myLoading);
     }
 
   }

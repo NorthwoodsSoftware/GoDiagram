@@ -19,26 +19,27 @@ namespace WinFormsSampleControls.Shapes {
       goWebBrowser1.Html = @"
         <p>
       This sample showcases all predefined <b>GoDiagram</b> figures.
-      This sample also makes use of <a href="".. / intro / highlighting.html"">GoDiagram Highlighting</a> data bindings: Mouse-hover over a shape to see its name.
+      This sample also makes use of <a href=""intro/highlighting.html"">GoDiagram Highlighting</a> data bindings: Mouse-hover over a shape to see its name.
         </p>
         <p>
-      You can specify a predefined geometry for a<a> Shape</a> by setting its <a> Shape.figure </a>.
+      You can specify a predefined geometry for a <a>Shape</a> by setting its <a>Shape.Figure</a>.
         </p>
         <p>
-      In order to reduce the size of the GoDiagram library, most predefined figures are in the <a href=""../extensions/Figures.js"" target = ""_blank"">Figures.js</a> file.
+      In order to reduce the size of the GoDiagram library, most predefined figures are in the
+      <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> file.
       You can load this file or simply load only those figures that you want to use by copying their definitions into your code.
         </p>
         <p>
-      A number of very common figures are predefined in go.js: <code>""Rectangle"", ""Square"", ""RoundedRectangle"", ""Border"", ""Ellipse"", ""Circle"", ""TriangleRight"",
-      ""TriangleDown"", ""TriangleLeft"", ""TriangleUp"", ""Triangle"", ""Diamond"", ""LineH"", ""LineV"", ""BarH"", ""BarV"", ""MinusLine"", ""PlusLine"", ""XLine"" </code>.
+      A number of very common figures are predefined in GoDiagram: <code>""Rectangle"", ""Square"", ""RoundedRectangle"", ""Border"", ""Ellipse"", ""Circle"", ""TriangleRight"",
+      ""TriangleDown"", ""TriangleLeft"", ""TriangleUp"", ""Triangle"", ""Diamond"", ""LineH"", ""LineV"", ""BarH"", ""BarV"", ""MinusLine"", ""PlusLine"", ""XLine""</code>.
       These figures are filled green above, instead of pink.
         </p>
         <p>
-      With GoDiagram you can also define your own custom shapes with SVG - like path syntax, see the <a href=""icons.html"">SVG icons</a>
-      sample for examples or the <a href=""../intro/geometry.html""> Geometry Path Strings intro page </a> to learn more.
+      With GoDiagram you can also define your own custom shapes with SVG - like path syntax, see the <a href=""Icons"">SVG icons</a>
+      sample for examples or the <a href=""intro/geometry.html"">Geometry Path Strings intro page</a> to learn more.
         </p>    
         <p>
-      For predefined arrowheads, see the <a href=""arrowheads.html"">Arrowheads</a> sample.
+      For predefined arrowheads, see the <a href=""Arrowheads"">Arrowheads</a> sample.
         </p>
 ";
 
@@ -69,7 +70,7 @@ namespace WinFormsSampleControls.Shapes {
       }
 
       // Names of the built in shapes, which we will color green instead of pink.
-      // The pinks shapes are instead defined in the "../extensions/Figures.Js" file.
+      // The pinks shapes are instead defined in the extensions "Figures.cs" file.
       var builtIn = new HashSet<string>() {
       "Rectangle", "Square", "Roundedrectangle", "Border", "Ellipse", "Circle", "Triangleright", "Triangledown", "Triangleleft", "Triangleup", "Triangle", "Diamond", "Lineh", "Linev", "None", "Barh", "Barv", "Minusline", "Plusline", "Xline"
       };
@@ -100,7 +101,7 @@ namespace WinFormsSampleControls.Shapes {
             Height = 70,
             StrokeWidth = 3
           }.Bind(
-            // Color the built in shapes green, and the figures.Js shapes Pink
+            // Color the built in shapes green, and the Figures.cs shapes Pink
             new Binding("Fill", "Key", (k, _) => {
               return IsBuiltIn(k as string) ? "palegreen" : "lightpink";
             }),

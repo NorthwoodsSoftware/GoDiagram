@@ -21,10 +21,10 @@ namespace WinFormsSampleControls.Flowchart {
       goWebBrowser1.Html = @"
         <p>
           The FlowChart sample demonstrates several key features of GoDiagram,
-          namely <a href=""../intro/palette.html"">Palette</a>s,
-          <a href=""../intro/links.html"">Linkable nodes</a>, Drag/Drop behavior,
-          <a href=""../intro/textBlocks.html"">Text Editing</a>, and the use of
-          <a href=""../intro/templateMaps.html"">Node Template Maps</a> in Diagrams.
+          namely <a href=""intro/palette.html"">Palette</a>s,
+          <a href=""intro/links.html"">Linkable nodes</a>, Drag/Drop behavior,
+          <a href=""intro/textBlocks.html"">Text Editing</a>, and the use of
+          <a href=""intro/templateMaps.html"">Node Template Maps</a> in Diagrams.
         </p>
         <p>
           Mouse-over a Node to view its ports.

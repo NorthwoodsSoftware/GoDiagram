@@ -15,7 +15,7 @@ namespace WinFormsExtensionControls.RotateMultiple {
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom <a>RotatingTool</a> which allows the user to rotate many selected objects at once.
-          It is defined in its own file, as <a href=""RotateMultipleTool.js"">RotateMultipleTool.js</a>.
+          It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/RotateMultiple/RotateMultipleTool.cs"">RotateMultipleTool.cs</a>.
           </p>
           <p>
           Hold down the control key in order to rotate each selected node individually, rather than all of them collectively.

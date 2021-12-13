@@ -24,9 +24,6 @@ namespace WinFormsExtensionControls.ZoomSliderSample {
       goWebBrowser1.Html = @"
           <p>
             This sample demostrates the use of the ZoomSlider extension.
-            When using the ZoomSlider extension, the diagram Div must always be a direct child
-            of a Div using <code>position: relative</code> or <code>position: absolute</code>,
-            so that the ZoomSlider HTML DOM can be positioned correctly relative to the Diagram Div.
           </p>
 ";
     }

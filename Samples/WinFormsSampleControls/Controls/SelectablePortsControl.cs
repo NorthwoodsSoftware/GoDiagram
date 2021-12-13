@@ -115,7 +115,7 @@ namespace WinFormsSampleControls.SelectablePorts {
                 new Binding("Text", "Name")
               ),
               new Picture {
-                Source = "https://gojs.net/latest/samples/images/60x90.Png",
+                Source = "https://godiagram.com/samples/images/60x90.png",
                 Width = 30,
                 Height = 45,
                 Margin = new Margin(10, 10)

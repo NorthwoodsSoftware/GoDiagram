@@ -37,8 +37,8 @@ namespace WinFormsSampleControls.DraggableLink {
   </p>
   <p>
     The link-dragging functionality is enabled by setting some or all of the following properties:
-    <a>DraggingTool.dragsLink</a>, <a>LinkingTool.isUnconnectedLinkValid</a>, and
-    <a>RelinkingTool.isUnconnectedLinkValid</a>.
+    <a>DraggingTool.DragsLink</a>, <a>LinkingTool.IsUnconnectedLinkValid</a>, and
+    <a>RelinkingTool.IsUnconnectedLinkValid</a>.
   </p>
   <p>
     Note that a Link is present in the <a>Palette</a> so that it too can be dragged out and onto
@@ -47,13 +47,13 @@ namespace WinFormsSampleControls.DraggableLink {
   </p>
   <p>
     This also demonstrates several custom Adornments:
-    <a>Part.selectionAdornmentTemplate</a>, <a>Part.resizeAdornmentTemplate</a>, and
-    <a>Part.rotateAdornmentTemplate</a>.
+    <a>Part.SelectionAdornmentTemplate</a>, <a>Part.ResizeAdornmentTemplate</a>, and
+    <a>Part.RotateAdornmentTemplate</a>.
   </p>
   <p>
-    Finally this sample demonstrates saving and restoring the <a>Diagram.position</a> as a property
-    on the <a>Model.modelData</a> object that is automatically saved and restored when calling <a>Model.toJson</a>
-    and <a>Model,fromJson</a>.
+    Finally this sample demonstrates saving and restoring the <a>Diagram.Position</a> as a property
+    on the <a>Model.SharedData</a> object that is automatically saved and restored when calling <a>Model.ToJson</a>
+    and <a>Model.FromJson</a>.
   </p>
 ";
     }

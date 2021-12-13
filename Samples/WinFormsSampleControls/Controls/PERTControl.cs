@@ -20,20 +20,20 @@ namespace WinFormsSampleControls.PERT {
         </p>
         <p>
       Each node represents an activity and displays several pieces of information about each one.
-      The node template is basically a <a>Panel</a> of type <a>Panel.Table</a> holding several <a>TextBlock</a>s
+      The node template is basically a <a>Panel</a> of type <a>PanelLayoutTable</a> holding several <a>TextBlock</a>s
       that are data-bound to properties of the Activity, all surrounded by a rectangular border.
-      The lines separating the text are implemented by setting the <a>RowColumnDefinition.separatorStroke</a>
+      The lines separating the text are implemented by setting the <a>RowColumnDefinition.SeparatorStroke</a>
       for two columns and two rows. The separators are not seen in the middle because the middle row
-      of each node has its <a>RowColumnDefinition.background</a> set to white,
-      and <a>RowColumnDefinition.coversSeparators</a> set to true.
+      of each node has its <a>RowColumnDefinition.Background</a> set to white,
+      and <a>RowColumnDefinition.CoversSeparators</a> set to true.
         </p>
         <p>
-      The ""critical"" property on the activity data object controls whether the node is drawn with a red brush or a blue one.
+      The ""Critical"" property on the activity data object controls whether the node is drawn with a red brush or a blue one.
       There is a special converter that is used to determine the brush used by the links.
         </p>
         <p>
       The light blue legend is implemented by a separate Part implemented in a manner similar to the Node template.
-      However it is not bound to data-- there is no JavaScript object in the model representing the legend.
+      However it is not bound to data -- there is no object in the model representing the legend.
         </p>
 ";
 

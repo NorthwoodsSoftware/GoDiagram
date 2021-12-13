@@ -22,7 +22,7 @@ namespace WinFormsSampleControls.ConstantSize {
       goWebBrowser1.Html = @"
 
    <p>The tooltip for each kitten shows its name and photo.</p>
-  <p>When you zoom in or out the effective size of each Node is kept constant by changing its <a>GraphObject.scale</a>.</p>
+  <p>When you zoom in or out the effective size of each Node is kept constant by changing its <a>GraphObject.Scale</a>.</p>
 
 ";
 
@@ -60,7 +60,7 @@ namespace WinFormsSampleControls.ConstantSize {
             new Panel(PanelLayoutVertical.Instance).Add(
               new Picture().Bind(
                 new Binding("Source", "Src", (s, _) => {
-                  return "https://gojs.net/latest/samples/images/" + (s as string) + ".Png";
+                  return "https://godiagram.com/samples/images/" + (s as string) + ".png";
                 })),
               new TextBlock {
                 Margin = 3

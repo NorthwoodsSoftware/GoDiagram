@@ -30,18 +30,18 @@ namespace WinFormsSampleControls.FaultTree {
   </p>
   <p>
     This diagram uses a basic <a>TreeModel</a> and <a>TreeLayout</a> to layout nodes in a tree structure.
-    The <a>Diagram.nodeTemplate</a> definition allows for text describing the undesirable states and,
+    The <a>Diagram.NodeTemplate</a> definition allows for text describing the undesirable states and,
     when necessary, a figure indicating an event/gate.
   </p>
   <p>
-    The <b>visible</b> property on some of the node template's <a>Shape</a>s is set based on
-    whether a figure is chosen for the node in the <a>Model.nodeDataArray</a>. The nodes also
+    The <b>Visible</b> property on some of the node template's <a>Shape</a>s is set based on
+    whether a figure is chosen for the node in the <a>Model.NodeDataSource</a>. The nodes also
     display a <b>TreeExpanderButton</b> allowing for expanding/collapsing of subtrees.
-    See the <a href="".. / intro / buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
+    See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
       </p>
     
       <p>
-        Related to deductive failure analysis is root cause analysis, or RCA. See the <a href= ""../extensions/Fishbone.html""> fishbone layout</a>
+        Related to deductive failure analysis is root cause analysis, or RCA. See the <a href=""Fishbone"">fishbone layout</a>
           extension page for a diagram format typically used in root cause analysis.
   </p>    
 ";

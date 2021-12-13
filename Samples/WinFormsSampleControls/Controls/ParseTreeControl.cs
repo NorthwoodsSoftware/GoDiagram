@@ -19,7 +19,7 @@ namespace WinFormsSampleControls.ParseTree {
         <p>A <em>parse tree</em> is an ordered, rooted tree representing the structure of a sentence, broken down to parts-of-speech.</p>
         <p>
           This diagram uses a custom <a>TreeLayout</a> called <b>FlatTreeLayout</b> that places all leaf nodes at the same Y position.
-          It also makes use of a <b>TreeExpanderButton</b> on the node template. See the <a href=""../intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
+          It also makes use of a <b>TreeExpanderButton</b> on the node template. See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
         </p>
         <p>
           The abbreviations used in this diagram are:

@@ -24,10 +24,10 @@ namespace WinFormsSampleControls.ClassHierarchy {
 
       goWebBrowser1.Html = @"
 
- <p>The JavaScript class hierarchy defined by the GoDiagram library, laid out by a <a>TreeLayout</a>.
+ <p>The class hierarchy defined by the GoDiagram library, laid out by a <a>TreeLayout</a>.
      Classes that do not have any inheritance relationship are shown at the right.</p>
   <p>Because the node template uses a ""HyperlinkText"", clicking on a node will open the API reference for that class in a new window.</p>
-  <p> For more uses of the Tree Layout, see the <a href=""DOMTree.html""> DOM Tree </a> and <a href = ""visualTree.html""> Visual Tree </a> samples.</p>
+  <p>For more use of the Tree Layout, see the <a href=""VisualTree"">Visual Tree</a> sample.</p>
 ";
 
     }
@@ -54,7 +54,7 @@ namespace WinFormsSampleControls.ClassHierarchy {
       Func<object, string> linkfunc = (object nodeIn) => {
         var node = nodeIn as Node;
         var data = node.Data as NodeData;
-        return "https://gojs.net/latest/api/symbols/" + data.Key + ".Html";
+        return "https://godiagram.com/api/symbols/" + data.Key + ".html";
       };
 
       // hyperlinkText

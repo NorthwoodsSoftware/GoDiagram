@@ -21,13 +21,13 @@ namespace WinFormsSampleControls.StateChartIncremental {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample is derived from the <a href=""stateChart.html"">State Chart</a> sample.
-      This makes use of the new <a>GraphLinksModel.linkKeyProperty</a> property
-      and the <a>Model.toIncrementalJson</a> and <a>Model.applyIncrementalJson</a> methods.
-      It also demonstrates custom functions for <a>Model.makeUniqueKeyFunction</a> and
-      <a>GraphLinksModel.makeUniqueLinkKeyFunction</a>, which assign odd numbers to new node
+      This sample is derived from the <a href=""StateChart"">State Chart</a> sample.
+      This makes use of the <a>GraphLinksModel.LinkKeyProperty</a> property
+      and the <a>Model.ToIncrementalJson</a> method.
+      It also demonstrates custom functions for <a>Model.MakeUniqueKeyFunction</a> and
+      <a>GraphLinksModel.MakeUniqueLinkKeyFunction</a>, which assign odd numbers to new node
       data and even numbers to new link data.
-      Unlike most models, this example uses ""id"" as the name of the <a>Model.nodeKeyProperty</a> rather than ""key"".
+      Unlike most models, this example uses ""Id"" as the name of the <a>Model.NodeKeyProperty</a> rather than ""Key"".
         </p>
         <p>
       Last <a>Transaction</a> saved in incremental JSON format:

@@ -20,16 +20,17 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
 
       goWebBrowser1.Html = @"
    <p>
-    This sample is a modification of the <a href="".. / samples / stateChart.html"">State Chart</a> sample
-    that makes use of the CurvedLinkReshapingTool that is defined in its own file, as <a href = ""CurvedLinkReshapingTool.js"">CurvedLinkReshapingTool.js</a>.
+    This sample is a modification of the <a href=""StateChart"">State Chart</a> sample
+    that makes use of the CurvedLinkReshapingTool that is defined in its own file,
+    as <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshapingTool.cs"">CurvedLinkReshapingTool.cs</a>.
    </p>
  
    <p>
-     Note that unlike the standard case of a Bezier - curved Link that is <a>Part.reshapable</a>, there is only one reshape handle
-    When the user drags that handle, the value of <a>Link.curviness</a> is modified, causing the link to be curved differently.
-    This sample also defines a TwoWay <a>Binding</a> on that property, thereby saving the curviness to the model data.
-     Unlike the regular State Chart sample, there is no Binding on <a>Link.points</a>, which is no longer needed when the curviness is the only modified property.
-  </p>
+     Note that unlike the standard case of a Bezier - curved Link that is <a>Part.Reshapable</a>, there is only one reshape handle
+     When the user drags that handle, the value of <a>Link.Curviness</a> is modified, causing the link to be curved differently.
+     This sample also defines a TwoWay <a>Binding</a> on that property, thereby saving the curviness to the model data.
+     Unlike the regular State Chart sample, there is no Binding on <a>Link.Points</a>, which is no longer needed when the curviness is the only modified property.
+   </p>
 ";
 
       saveLoadModel1.ModelJson = @"{

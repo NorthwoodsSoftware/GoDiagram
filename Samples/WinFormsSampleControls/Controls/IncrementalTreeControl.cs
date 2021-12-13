@@ -27,24 +27,24 @@ namespace WinFormsSampleControls.IncrementalTree {
       goWebBrowser1.Html = @"
         <p>
           This diagram demonstrates the expansion of a tree where nodes are only created ""on-demand"",
-          when the user clicks on the ""expand"" Button.
+          when the user clicks on the ""Expand"" Button.
           As you expand the tree, it automatically performs a force-directed layout,
           which will make some room for the additional nodes.
         </p>
         <p>
-          The data for each node is implemented by a JavaScript object held by the Diagram's model.
-          Each node data has an <b>everExpanded</b> property that indicates whether we have already
+          The data for each node is implemented by an object held by the Diagram's model.
+          Each node data has an <b>EverExpanded</b> property that indicates whether we have already
           created all of its ""child"" data and added them to the model.
-          The <b>everExpanded</b> property defaults to false,
+          The <b>EverExpanded</b> property defaults to false,
           to match the initial value of <a>Node.IsTreeExpanded</a> in the node template,
           which specifies that the nodes start collapsed.
         </p>
         <p>
-          When the user clicks on the ""expand"" Button, the button click event handler finds the corresponding
+          When the user clicks on the ""Expand"" Button, the button click event handler finds the corresponding
           data object by going up the visual tree to find the Node via the <a>GraphObject.Part</a> property
           and then getting the node data that the Node is bound to via <a>Part.Data</a>.
-          If <b>everExpanded</b> is false, the code creates a random number of
-          child data for that node, each with a random <b>color</b> property.
+          If <b>EverExpanded</b> is false, the code creates a random number of
+          child data for that node.
           Then the button click event handler changes the value of <b>Node.IsExpandedTree</b>,
           thereby expanding or collapsing the node.
         </p>
@@ -54,8 +54,8 @@ namespace WinFormsSampleControls.IncrementalTree {
         </p>
         <p>
           All changes are performed within a transaction.
-          You should always surround your code with calls to <a>Model.StartTransaction</a> and <a>Model.CommitTransaction</a>,
-          or the same methods on <a>Diagram</a>.
+          You should always surround your code with calls to <a>Model.Commit</a>,
+          or the same method on <a>Diagram</a>.
         </p>
         <p>
           The diagram's <a>Diagram.Layout</a> is an instance of <a>ForceDirectedLayout</a>.
@@ -125,7 +125,7 @@ namespace WinFormsSampleControls.IncrementalTree {
       // create the model with a root node data
       MyDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = -1, Color = blues[0], EverExpanded = false, RootDistance = 0 }
+          new NodeData { Key = -1, EverExpanded = false, RootDistance = 0 }
         }
       };
     }
@@ -209,7 +209,6 @@ namespace WinFormsSampleControls.IncrementalTree {
 
   public class NodeData : Model.NodeData {
     public int RootDistance { get; set; }
-    public Brush Color { get; set; }
     public bool EverExpanded { get; set; }
   }
 

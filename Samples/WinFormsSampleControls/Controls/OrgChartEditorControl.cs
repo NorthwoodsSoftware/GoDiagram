@@ -67,14 +67,14 @@ namespace WinFormsSampleControls.OrgChartEditor {
           when the parent is removed.
         </p>
         <p>
-          Select a node to edit/update node data values. This sample uses the <a href=""../extensions/DataInspector.html"">Data Inspector</a> extension to display and modify Part data.
+          Select a node to edit/update node data values. This sample uses the <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Input/DataInspector/DataInspector.cs"">Data Inspector</a> extension to display and modify Part data.
         </p>
         <p>
-          To learn how to build an org chart from scratch with GoDiagram, see the <a href=""../learn/index.html"">Getting Started tutorial</a>.
+          To learn how to build an org chart from scratch with GoDiagram, see the <a href=""learn/index.html"">Getting Started tutorial</a>.
         </p>
         <p>
           If you want to have some ""assistant"" nodes on the side, above the regular reports,
-          see the <a href=""orgChartAssistants.html"">Org Chart Assistants</a> sample, which is a copy of this sample
+          see the <a href=""OrgChartAssistants"">Org Chart Assistants</a> sample, which is a copy of this sample
           that uses a custom <a>TreeLayout</a> to position ""assistants"" that way.
         </p>
       ";

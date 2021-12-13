@@ -7,6 +7,7 @@ using Northwoods.Go.WinForms;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Tools;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace WinFormsSampleControls.SeatingChart {
   [ToolboxItem(false)]
@@ -35,16 +36,16 @@ namespace WinFormsSampleControls.SeatingChart {
       sizes and positions of the tables and chairs.
         </p>
         <p>
-      ""Person"" nodes in the<code> myGuests</code> diagram can also represent a group of people,
+      ""Person"" nodes in the <code>myGuests</code> diagram can also represent a group of people,
       for example a named person plus one whose name might not be known.
-      When such a person is dropped onto a table, additional nodes are created in <code> myDiagram </code>.
+      When such a person is dropped onto a table, additional nodes are created in <code>myDiagram</code>.
       Those people are seated at the table if there is room.
         </p>
         <p>
       Tables can be moved or rotated.Moving or rotating a table automatically repositions the people seated at that table.
         </p>
         <p>
-      The <a> UndoManager </a> is shared between the two Diagrams, so that one can undo / redo in either diagram
+      The <a>UndoManager</a> is shared between the two Diagrams, so that one can undo/redo in either diagram
       and have it automatically handle drags between diagrams, as well as the usual changes within the diagram.
         </p>
 ";
@@ -91,11 +92,11 @@ namespace WinFormsSampleControls.SeatingChart {
         Rotatable = true,
         // what to do when a drag-over or a drag-drop occurs on a Node, representing a table
         MouseDragEnter = new Action<InputEvent, GraphObject, GraphObject>((e, node, prev) => {
-          var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToHashSet(); // could be copied from palette
+          var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList(); // could be copied from palette
           _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, true);
         }),
         MouseDragLeave = new Action<InputEvent, GraphObject, GraphObject>((e, node, next) => {
-          var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToHashSet();
+          var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList();
           _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, false);
         }),
         MouseDrop = new Action<InputEvent, GraphObject>((e, node) => {
@@ -117,11 +118,11 @@ namespace WinFormsSampleControls.SeatingChart {
               LocationSpot = Spot.Center,
               // what to do when a drag-over or a drag-drop occurs on a Node representing a table
               MouseDragEnter = (e, node, prev) => {
-                var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToHashSet(); // could be copied from palette
+                var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList(); // could be copied from palette
                 _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, true);
               },
               MouseDragLeave = (e, node, next) => {
-                var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToHashSet();
+                var dragCopy = node.Diagram.ToolManager.DraggingTool.CopiedParts?.Keys.ToList();
                 _HighlightSeats(node as Node, dragCopy ?? node.Diagram.Selection, false);
               },
               MouseDrop = (e, node) => {
@@ -381,7 +382,7 @@ namespace WinFormsSampleControls.SeatingChart {
     private static bool _IsTable(Part n) { return n != null && n.Category != ""; }
 
     // Highlight the empty and occupied seats at a "Table" node
-    private static void _HighlightSeats(Node node, IReadOnlyCollection<Part> coll, bool show) {
+    private static void _HighlightSeats(Node node, IEnumerable<Part> coll, bool show) {
       if (_IsPerson(node)) { // refer to the person's table instead
         node = node.Diagram.FindNodeForKey((node.Data as NodeData).Table);
         if (node == null) return;
@@ -412,7 +413,7 @@ namespace WinFormsSampleControls.SeatingChart {
 
     // Given a table node, assign seats for all of the people in the given collection of Nodes;
     // the optional Point argument indicates where the collection of people may have been dropped.
-    private static void _AssignPeopleToSeats(Node node, IReadOnlyCollection<Part> coll, Point pt) {
+    private static void _AssignPeopleToSeats(Node node, IEnumerable<Part> coll, Point pt) {
       if (_IsPerson(node)) { // refer to the person's table instead
         node = node.Diagram.FindNodeForKey((node.Data as NodeData).Table);
         if (node == null) return;

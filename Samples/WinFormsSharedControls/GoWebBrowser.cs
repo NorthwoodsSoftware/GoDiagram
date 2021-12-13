@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.Net.Http;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 
@@ -15,11 +14,11 @@ namespace WinFormsSharedControls {
   public class GoWebBrowser : WebView2 {
     private bool _Initialized;
     private string _Html;
-    private SideNav _SideNav;
+    private static HttpClient _HttpClient = new();
+    private static Dictionary<string, string> _ApiMap = null;
+    private static MatchEvaluator _DocsMatchEvaluator = new(_ReplaceApiLinks);
 
     public GoWebBrowser() {
-
-      NavigationStarting += GoWebBrowser_NavigationStarting;
       NavigationCompleted += GoWebBrowser_NavigationCompleted;
     }
 
@@ -55,45 +54,68 @@ namespace WinFormsSharedControls {
 
     /// <summary>
     /// Process the provided HTML string for proper links.
-    /// NYI: currently pointing to GoJS.
     /// </summary>
     /// <param name="html"></param>
     /// <returns></returns>
     private static string PreprocessHtml(string html) {
       if (html == null) return "";
-      // process <a> links
-      var rx = new Regex(@"<a>(.*)</a>", RegexOptions.Multiline);
-      html = rx.Replace(html, @"<a href=""https://gojs.net/api/symbols/$1.html"">$1</a>");
-      // process <a href="<relative>"> links
-      rx = new Regex(@"<a href=""samples"".*>(.*)</a>");
-      // process <a href="https"> links
-      rx = new Regex(@"<a href=""http"".*>(.*)</a>");
+
+      // process <a> links for API docs
+      var rx = new Regex(@"<a>(.*?)</a>", RegexOptions.Multiline);
+      html = rx.Replace(html, _DocsMatchEvaluator);
+
+      // process <a href="learn/<page>"> links
+      rx = new Regex(@"<a href=""learn/(.*)"">", RegexOptions.Multiline);
+      html = rx.Replace(html, @"<a href=""https://godiagram.com/learn/$1"">");
+
+      // process <a href="intro/<page>"> links
+      rx = new Regex(@"<a href=""intro/(.*)"">", RegexOptions.Multiline);
+      html = rx.Replace(html, @"<a href=""https://godiagram.com/intro/$1"">");
+
+      // process <a href="<demo>"> links
+      rx = new Regex(@"<a href=""(\w+)"">", RegexOptions.Multiline);
+      html = rx.Replace(html, @"<a href=""https://demo/$1"">");  // cheat and pretend it's a web link to avoid about:blank#blocked
+
       return html;
     }
 
     /// <summary>
-    /// Open links in a browser.
+    /// Used as a delegate for regex replacement of <a> API references.
     /// </summary>
-    /// <param name="e"></param>
-    private void GoWebBrowser_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e) {
-      if (_Html == null) return;
-      
-      if (e.Uri.StartsWith("http")) {
-        Process.Start("explorer.exe", e.Uri);
-        e.Cancel = true;
-      } else if (e.Uri.StartsWith("samples/")) {
-        _SideNav ??= FindForm().Controls.OfType<SideNav>().FirstOrDefault();
-        var sampleName = e.Uri.Substring(8);
-        var sideNavItems = _SideNav.DataSource as List<NavItem>;
-        foreach (var item in sideNavItems) {
-          if (item.Name == sampleName) {
-            _SideNav.SelectedItem = item;
-            break;
-          }
-        }
-        e.Cancel = true;
+    /// <param name="m"></param>
+    /// <returns></returns>
+    private static string _ReplaceApiLinks(Match m) {
+      var str = m.Groups[1].Value;
+      if (_ApiMap != null && _ApiMap.TryGetValue(str, out var url))
+        return @"<a href=""https://godiagram.com/" + url + @""">" + str + "</a>";
+      return m.Value;
+    }
+
+    /// <summary>
+    /// Initialize the API map if it hasn't been already.
+    /// </summary>
+    /// <returns></returns>
+    public static async Task _InitApiMap() {
+      if (_ApiMap == null) {
+        _ApiMap = await GetApiMap();
       }
     }
 
+    /// <summary>
+    /// This method is responsible for fetching the map of short names to API URLs on godiagram.com.
+    /// </summary>
+    /// <returns></returns>
+    static async Task<Dictionary<string, string>> GetApiMap() {
+      var url = "https://godiagram.com/api/apiMap.js";
+      using var response = await _HttpClient.GetAsync(url);
+      if (response.IsSuccessStatusCode) {
+        using var stream = await response.Content.ReadAsStreamAsync();
+        var reader = new StreamReader(stream);
+        var text = reader.ReadToEnd();
+        text = text.Substring(text.IndexOf('{'));
+        return JsonSerializer.Deserialize<Dictionary<string, string>>(text);
+      }
+      return null;
+    }
   }
 }

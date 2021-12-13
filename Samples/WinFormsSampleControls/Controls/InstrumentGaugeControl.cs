@@ -21,15 +21,15 @@ namespace WinFormsSampleControls.InstrumentGauge {
       goWebBrowser1.Html = @"
 
   <p>
-      This makes use of a <a href="".. / intro / graduatedPanels.html"">""Graduated""</a> <a>Panel</a>,
-      which holds the main path of the scale, a Shape whose <a>Shape.geometry</a> is a circular arc.
+      This makes use of a <a href=""intro/graduatedPanels.html"">""Graduated""</a> <a>Panel</a>,
+      which holds the main path of the scale, a Shape whose <a>Shape.Geometry</a> is a circular arc.
       In addition that Graduated Panel holds three different Shapes acting as templates for tick marks and
       a TextBlock acting as a template for tick labels.
     </p>
     <p>
       In a Spot Panel with the Graduated Panel scale are an italic TextBlock showing the node identifier and a red elongated diamond ""needle"" Shape.
-      The needle's angle is determined by <code>convertValueToAngle</code>, which finds the point on the Graduated Panel's
-      main path element corresponding to <code>data.value</code> and computes the angle from the center to that point.
+      The needle's angle is determined by <code>ConvertValueToAngle</code>, which finds the point on the Graduated Panel's
+      main path element corresponding to <code>Data.Value</code> and computes the angle from the center to that point.
       The data value is updated several times per second.
       A circle Shape surrounds the Spot Panel.
     </p>

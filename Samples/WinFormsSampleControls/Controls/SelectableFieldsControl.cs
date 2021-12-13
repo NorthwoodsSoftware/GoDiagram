@@ -29,7 +29,7 @@ namespace WinFormsSampleControls.SelectableFields {
 
       goWebBrowser2.Html = @"
         <p>
-      This sample was derived from the <a href=""records.html"">Records</a> sample.
+      This sample was derived from the <a href=""Records"">Records</a> sample.
         </p>
 ";
 

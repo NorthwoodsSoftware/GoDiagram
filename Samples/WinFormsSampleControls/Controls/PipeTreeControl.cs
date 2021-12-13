@@ -20,11 +20,11 @@ namespace WinFormsSampleControls.PipeTree {
       goWebBrowser1.Html = @"
         <p>
       This diagram does not display <a>Link</a>s.
-      Instead the <a>TreeLayout.layerSpacing</a> is set to 0,
+      Instead the <a>TreeLayout.LayerSpacing</a> is set to 0,
       so that each node and its children have no space between them.
         </p>
         <p>
-      The <a>TreeLayout.treeStyle</a> is set to StyleAlternating,
+      The <a>TreeLayout.TreeStyle</a> is set to <a>TreeStyle.Alternating</a>,
       so that alternating layers of the tree grow in each of two directions.
       Each node's <a>TextBlock</a> is angled according to the direction
       of the layer of the tree that it is in, and the <a>Shape</a>'s
@@ -51,8 +51,7 @@ namespace WinFormsSampleControls.PipeTree {
     }
 
     // give all shapes the appropriate dimensions and text color, size, and orientation.
-    private void updatePipes() {
-      myDiagram = diagramControl1.Diagram;
+    private void updatePipes(Diagram myDiagram) {
       var updated = 1; // when this is 0, no more nodes are in need of updating
       while (updated != 0) {
         // have layout determine node position first, but don't draw

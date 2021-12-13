@@ -19,11 +19,11 @@ namespace WinFormsExtensionControls.Parallel {
     This sample demonstrates a custom <a>TreeLayout</a>, ParallelLayout,
     which assumes that there is a single ""Split"" node that is the root of a tree,
     other than links that connect with a single ""Merge"" node.
-    The layout is defined in its own file, as <a href = ""ParallelLayout.js"">ParallelLayout.js</a>.
+    The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Parallel/ParallelLayout.cs"">ParallelLayout.cs</a>.
    </p>
  
    <p>
-     Both the <a>Diagram.layout</a> and the <a>Group.layout</a> are instances of ParallelLayout,
+     Both the <a>Diagram.Layout</a> and the <a>Group.Layout</a> are instances of ParallelLayout,
     allowing for nested layouts that appear in parallel.
   </p>
 ";

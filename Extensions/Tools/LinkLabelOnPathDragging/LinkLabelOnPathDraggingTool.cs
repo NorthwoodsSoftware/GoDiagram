@@ -1,13 +1,13 @@
 ﻿/*
-*  Copyright (C) 1998-2020 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
-* This is an extension and not part of the main GoJS library.
+* This is an extension and not part of the main GoDiagram library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
-* Extensions can be found in the GoJS kit under the extensions or extensionsTS folders.
-* See the Extensions intro page (https://gojs.Net/latest/intro/extensions.Html) for more information.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 namespace Northwoods.Go.Tools.Extensions {

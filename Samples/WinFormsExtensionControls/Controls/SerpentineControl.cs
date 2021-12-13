@@ -16,10 +16,10 @@ namespace WinFormsExtensionControls.Serpentine {
       goWebBrowser1.Html = @"
           <p>
           This sample demonstrates a custom Layout, SerpentineLayout, which assumes the graph consists of a chain of nodes.
-          The layout is defined in its own file, as <a href=""SerpentineLayout.js"">SerpentineLayout.js</a>.
+          The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Serpentine/SerpentineLayout.cs"">SerpentineLayout.cs</a>.
         </p>
         <p>
-          It also has<a>Layout.isViewportSized</a> set to true, so that resizing the Diagram DIV will automatically re-layout.
+          It also has <a>Layout.IsViewportSized</a> set to true, so that resizing the Diagram will automatically re-layout.
         </p> 
 ";
     }

@@ -1,4 +1,10 @@
-﻿namespace Northwoods.Go.Layouts.Extensions {
+﻿using System.Collections.Generic;
+
+/*
+*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
+namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// This class represents an abstract graph of <see cref="RadialVertex"/>es and <see cref="RadialEdge"/>s
   /// that can be constructed based on the <see cref="Node"/>s and <see cref="Link"/>s of a <see cref="Diagram"/>
@@ -38,6 +44,7 @@
     private double _Angle = 0;
     private double _Sweep = 0;
     private double _Radius = 0;
+    private List<RadialVertex> _Children = null;
 
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex()"/>
     public RadialVertex() : base() { }
@@ -113,6 +120,13 @@
           _Radius = value;
         }
       }
+    }
+
+    /// <summary>
+    /// a list of the RadialVertex children of this vertex, when treating the network as a tree.
+    /// </summary>
+    public List<RadialVertex> Children {
+      get { return _Children; }
     }
   }
 

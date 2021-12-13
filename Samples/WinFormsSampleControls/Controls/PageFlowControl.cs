@@ -45,7 +45,7 @@ namespace WinFormsSampleControls.PageFlow {
     Most of the source code for this sample is in defining pleasing Node templates.
     Much of the functionality seen is done with built-in GoDiagram components.
     This is by no means an exhaustive sample, so be sure to check out the other samples to the left,
-    or take a look at the <a href="".. / intro / "">Introductory Documents</a> for
+    or take a look at the <a href=""intro/index.html"">Introductory Documents</a> for
     a more structured tutorial on different GoDiagram concepts.
   </p>
 ";

@@ -22,14 +22,14 @@ namespace WinFormsSampleControls.CustomExpandCollapse {
       goWebBrowser1.Html = @"
 
   <p>
-      The ""TreeExpanderButton"", which changes the <a>Node.isTreeExpanded</a> property, really only works with tree structures.
+      The ""TreeExpanderButton"", which changes the <a>Node.IsTreeExpanded</a> property, really only works with tree structures.
       When you want to hide/show the ""downstream"" nodes from a given node, using the ""TreeExpanderButton"" might not do what you like,
       especially when there are cycles in the graph structure.
     </p>
     <p>
       Instead, this sample implements a ""Button"" with custom behavior to modify the visibility of each Node.
       If this behavior is still not quite right for your app, you can adapt the behavior implemented in the 
-      <code>collapseFrom</code> and <code>expandFrom</code> functions to use different criteria for when to stop recursion.
+      <code>CollapseFrom</code> and <code>ExpandFrom</code> functions to use different criteria for when to stop recursion.
      </p>
      ";
 
