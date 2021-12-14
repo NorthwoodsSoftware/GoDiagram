@@ -10,7 +10,7 @@
   <Import Project="..\ParallelRouteLink.projitems" Label="Shared" />
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
+    <PackageReference Include="Northwoods.GoWinForms" Version="10.0.0-alpha1" />
   </ItemGroup>
 
 </Project>

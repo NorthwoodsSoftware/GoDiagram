@@ -29,7 +29,7 @@
     <ProjectReference Include="..\..\Extensions\Layouts\Radial\RadialWinForms\RadialWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Layouts\Serpentine\SerpentineWinForms\SerpentineWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Layouts\Spiral\SpiralWinForms\SpiralWinForms.csproj" />
-    <ProjectReference Include="..\..\Extensions\Layouts\SwimLane\SwimLaneWinForm\SwimLaneWinForms.csproj" />
+    <ProjectReference Include="..\..\Extensions\Layouts\SwimLane\SwimLaneWinForms\SwimLaneWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Layouts\Table\TableWinForms\TableWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Layouts\TreeMap\TreeMapWinForms\TreeMapWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Layouts\VirtualizedPacked\VirtualizedPackedWinForms\VirtualizedPackedWinForms.csproj" />
@@ -57,11 +57,7 @@
     <ProjectReference Include="..\..\Extensions\Tools\RowResizing\RowResizingWinForms\RowResizingWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Tools\SectorReshaping\SectorReshapingWinForms\SectorReshapingWinForms.csproj" />
     <ProjectReference Include="..\..\Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingWinForms\SnapLinkReshapingWinForms.csproj" />
-    <ProjectReference Include="..\..\Go\Layouts\Circular\CircularWinForms\CircularWinForms.csproj" />
-    <ProjectReference Include="..\..\Go\Layouts\ForceDirected\ForceDirectedWinForms\ForceDirectedWinForms.csproj" />
-    <ProjectReference Include="..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
-    <ProjectReference Include="..\..\Go\Layouts\Tree\TreeWinForms\TreeWinForms.csproj" />
-    <ProjectReference Include="..\..\Go\WinForms\GoWinForms.csproj" />
+	<PackageReference Include="Northwoods.GoWinForms" Version="10.0.0-alpha1" />
     <ProjectReference Include="..\WinFormsSharedControls\WinFormsSharedControls.csproj" />
   </ItemGroup>
 

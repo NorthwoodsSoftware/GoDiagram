@@ -7,10 +7,15 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <!-- Conditionally obtain references for older targets -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+  	<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
   <Import Project="..\Arranging.projitems" Label="Shared" />
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
+    <PackageReference Include="Northwoods.GoWinForms" Version="10.0.0-alpha1" />
   </ItemGroup>
 
 </Project>

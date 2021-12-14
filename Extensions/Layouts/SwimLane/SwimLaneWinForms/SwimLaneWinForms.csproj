@@ -1,22 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- Use C# latest to enable net6.0 features -->
-    <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net5.0-windows;net6.0-windows;net48</TargetFrameworks>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<!-- Use C# latest to enable net6.0 features -->
+	<LangVersion>latest</LangVersion>
+	<TargetFrameworks>net6.0-windows;net462</TargetFrameworks>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <Import Project="..\SwimLane.projitems" Label="Shared" />
 
-  <!-- Conditionally obtain references for the .NET Framework 4.8 target -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+  <!-- Conditionally obtain references for older targets -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Go\Layouts\LayeredDigraph\LayeredDigraphWinForms\LayeredDigraphWinForms.csproj" />
-    <ProjectReference Include="..\..\..\..\Go\WinForms\GoWinForms.csproj" />
+    <PackageReference Include="Northwoods.GoWinForms" Version="10.0.0-alpha1" />
   </ItemGroup>
 
 </Project>
