@@ -3,7 +3,7 @@ GoDiagram — .NET Library for Interactive Diagrams
 
 # *GoDiagram is currently in alpha*
 
-<img align="right" height="150" src="https://www.nwoods.com/images/go.png">
+<img align="right" height="150" src="https://godiagram.com/assets/images/icon.png">
 
 [GoDiagram](https://godiagram.com) is a .NET library for creating interactive diagrams, charts, and graphs. It is based on the [GoJS](https://gojs.net) JavaScript diagramming library, also from Northwoods Software.
 
