@@ -137,7 +137,7 @@ namespace WinFormsSampleControls.SharedStates {
             Margin = 10
           }.Add(
             new TextBlock {
-              Font = "Bold 10pt sans-serif", Margin = new Margin(0, 0, 5, 0)
+              Font = "Segoe UI, 13px, style=bold", Margin = new Margin(0, 0, 5, 0)
             }.Bind("Text"),
             new Shape {
               Name = "BODY", Opacity = 0

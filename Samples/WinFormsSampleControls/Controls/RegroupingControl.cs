@@ -126,7 +126,7 @@ namespace WinFormsSampleControls.Regrouping {
             new TextBlock {
               Margin = 5,
               Editable = true,
-              Font = "bold 13px sans-serif",
+              Font = "Segoe UI, 13px, style=bold",
               Opacity = 0.75,
               Stroke = "#404040"
             }
@@ -158,7 +158,7 @@ namespace WinFormsSampleControls.Regrouping {
       }
 
       string defaultFont(bool horiz) {
-        return horiz ? "bold 18px sans-serif" : "bold 16px sans-serif";
+        return horiz ? "Segoe UI, 18px, style=bold" : "Segoe UI, 16px, style=bold";
       }
 
       // this function is used to highlight a Group that the selection may be dropped into

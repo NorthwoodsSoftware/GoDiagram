@@ -66,7 +66,7 @@ namespace WinFormsExtensionControls.OverviewResizing {
           Stroke = "black"
         },
         new TextBlock {
-          Font = "General sans-serif, 12px",
+          Font = "Microsoft Sans Serif, 12px",
           Margin = 5
         }.Bind("Text", "Key")),
         expanderButton

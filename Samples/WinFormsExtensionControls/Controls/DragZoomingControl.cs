@@ -87,7 +87,7 @@ namespace WinFormsExtensionControls.DragZooming {
           new TextBlock {
             Text = "Loading...",
             Stroke = "red",
-            Font = "General sans-serif, 20px"
+            Font = "Microsoft Sans Serif, 20px"
           }
         );
 

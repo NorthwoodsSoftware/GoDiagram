@@ -161,9 +161,9 @@ namespace WinFormsSampleControls.BlockEditor {
               MaxSize = new Northwoods.Go.Size(200, double.NaN)
             }
               .Add(
-                new TextBlock { Font = "bold 10pt sans-serif", TextAlign = TextAlign.Center }
+                new TextBlock { Font = "Segoe UI, 13px, style=bold", TextAlign = TextAlign.Center }
                   .Bind("Text"),
-                new TextBlock { Font = "10pt sans-serif", TextAlign = TextAlign.Center }
+                new TextBlock { Font = "Segoe UI, 13px", TextAlign = TextAlign.Center }
                   .Bind("Text", "Details")
               )
             );
@@ -416,7 +416,7 @@ namespace WinFormsSampleControls.BlockEditor {
               ),
             new TextBlock {
               Alignment = Spot.Top, AlignmentFocus = Spot.Bottom,
-              Font = "Generic Sans Serif, 12pt, style=bold", Editable = true
+              Font = "Microsoft Sans Serif, 12pt, style=bold", Editable = true
             }
               .Bind(
                 new Binding("Text"),

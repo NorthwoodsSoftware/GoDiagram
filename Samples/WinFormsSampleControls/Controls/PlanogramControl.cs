@@ -258,7 +258,7 @@ namespace WinFormsSampleControls.Planogram {
            // with the textual key in the middle
            new TextBlock {
              Alignment = Spot.Center,
-             Font = "16px, style=bold",
+             Font = "Segoe UI, 16px, style=bold",
              Editable = true
            }
              .Bind("Text", "Key")

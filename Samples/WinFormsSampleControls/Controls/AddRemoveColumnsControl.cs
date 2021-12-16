@@ -124,7 +124,7 @@ namespace WinFormsSampleControls.AddRemoveColumns {
                 .Add(
                   new TextBlock {
                     Margin = new Margin(2, 2, 0, 2),
-                    Font = "bold 10pt sans-serif"
+                    Font = "Segoe UI, 13px, style=bold"
                   }.Bind(
                     new Binding("Text")
                   )

@@ -426,9 +426,9 @@ namespace Northwoods.Go.Tools.Extensions {
       var diagram = Diagram;
       if (!IsActive) return;
       var e = diagram.LastInput;
-      if (e.Key == "Enter") {  // accept
+      if (e.Key == "ENTER") {  // accept
         FinishShape();  // all done!
-      } else if (e.Key == "z") {  // undo
+      } else if (e.Key == "Z") {  // undo
         Undo();
       } else {
         base.DoKeyDown();

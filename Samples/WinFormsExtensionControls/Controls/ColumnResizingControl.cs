@@ -84,7 +84,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             Column = 1,
             Margin = new Margin(0, 2),
             Stretch = Stretch.Horizontal,
-            Font = "General sans-serif, 13px, style=bold",
+            Font = "Microsoft Sans Serif, 13px, style=bold",
             Wrap = Wrap.None,
             Overflow = Overflow.Ellipsis,
             FromLinkable = false,
@@ -96,7 +96,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             Column = 2,
             Margin = new Margin(0, 2),
             Stretch = Stretch.Horizontal,
-            Font = "General sans-serif, 13px, style=bold",
+            Font = "Microsoft Sans Serif, 13px, style=bold",
             MaxLines = 3,
             Overflow = Overflow.Ellipsis,
             Editable = true
@@ -180,7 +180,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
                 Margin = 3,
                 Stroke = new Brush("white"),
                 TextAlign = TextAlign.Center,
-                Font = "General sans-serif, 12px, style=bold"
+                Font = "Microsoft Sans Serif, 12px, style=bold"
               }.Bind(
                 new Binding("Text", "Key")
               )

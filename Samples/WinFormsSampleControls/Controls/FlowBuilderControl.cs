@@ -95,7 +95,7 @@ namespace WinFormsSampleControls.FlowBuilder {
             ),
             new TextBlock {
               Stroke = "black",
-              Font = "12px sans-serif",
+              Font = "Segoe UI, 12px",
               Editable = true,
               Margin = new Margin(3, 3 + 11, 3, 3 + 4),
               Alignment = Spot.Left
@@ -210,7 +210,7 @@ namespace WinFormsSampleControls.FlowBuilder {
             ),
             new TextBlock {
               Stroke = "black",
-              Font = "12px sans-serif",
+              Font = "Segoe UI, 12px",
               Editable = true,
               Margin = new Margin(3, 3 + 11, 3, 3 + 4),
               Alignment = Spot.Left
@@ -267,7 +267,7 @@ namespace WinFormsSampleControls.FlowBuilder {
             ),
             new TextBlock {
               Stroke = "black",
-              Font = "12px sans-serif",
+              Font = "Segoe UI, 12px",
               Editable = true,
               Margin = new Margin(3, 3 + 11, 3, 3 + 4),
               Alignment = Spot.Left

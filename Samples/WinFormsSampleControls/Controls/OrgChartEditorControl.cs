@@ -156,7 +156,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
       // Provides a common style for most of the TextBlocks.
       var textStyle = new {
-        Font = "SegoeUI, 9pt", Stroke = "white"
+        Font = "Segoe UI, 9pt", Stroke = "white"
       };
 
       // This converter is used by the Picture.
@@ -261,7 +261,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
                     new TextBlock  // the comments
                       {
                       Row = 3, Column = 0, ColumnSpan = 5,
-                      Font = "Sans-serif, 9pt, style=italic",
+                      Font = "Segoe UI, 9pt, style=italic",
                       Stroke = "white",
                       Wrap = Wrap.Fit,
                       Editable = true,  // by default newlines are allowed

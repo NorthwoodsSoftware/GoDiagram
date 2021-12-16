@@ -90,7 +90,7 @@ namespace WinFormsSampleControls.InstrumentGauge {
               new TextBlock { // each tick label
                 Interval = 4,
                 AlignmentFocus = Spot.Center,
-                Font = "bold italic 14pt sans-serif",
+                Font = "Segoe UI, 19px, style=bold,italic",
                 Stroke = "white",
                 SegmentOffset = new Point(0, 30)
               }
@@ -98,7 +98,7 @@ namespace WinFormsSampleControls.InstrumentGauge {
             new TextBlock {
               Alignment = new Spot(0.5, 0.9),
               Stroke = "orange",
-              Font = "bold italic 14pt sans-serif"
+              Font = "Segoe UI, 19px, style=bold,italic"
             }.Bind(
               new Binding("Text", "Key"),
               new Binding("Stroke", "Color")

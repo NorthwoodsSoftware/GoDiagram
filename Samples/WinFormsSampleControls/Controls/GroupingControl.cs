@@ -56,7 +56,7 @@ namespace WinFormsSampleControls.Grouping {
           Stroke = null, StrokeWidth = 0
         }.Bind("Fill", "Key"),
         new TextBlock {
-          Margin = 7, Font = "Bold 14px sans-serif"
+          Margin = 7, Font = "Segoe UI, 14px, style=bold"
         }.Bind("Text", "Key") // text, color, and key are all bound to the same property in the node data
       );
 
@@ -102,7 +102,7 @@ namespace WinFormsSampleControls.Grouping {
             // the SubGraphExpanderButton is a panel that functions as a button to expand or collapse the sub-graph
             Builder.Make<Panel>("SubGraphExpanderButton"),
             new TextBlock {
-              Font = "bold 18px sans-serif",
+              Font = "Segoe UI, 18px, style=bold",
               Margin = 4
             }.Bind("Text", "Key")
           ),

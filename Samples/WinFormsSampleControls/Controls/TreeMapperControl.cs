@@ -127,7 +127,7 @@ namespace WinFormsSampleControls.TreeMapper {
         new Shape { Fill = "white", Stroke = "lightgray" },
         new Panel(PanelLayoutVertical.Instance) { DefaultAlignment = Spot.Left }.Add(
           new TextBlock {
-            Font = "14px, style=bold", Margin = new Margin(5, 5, 0, 5)
+            Font = "Segoe UI, 14px, style=bold", Margin = new Margin(5, 5, 0, 5)
           }.Bind("Text"),
           new Placeholder { Padding = 5 }
         )

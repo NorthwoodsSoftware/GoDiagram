@@ -82,7 +82,7 @@ namespace WinFormsSampleControls.LayerBands {
                 Angle = 0,
                 TextAlign = TextAlign.Center,
                 Wrap = Wrap.None,
-                Font = "bold 11pt sans-serif",
+                Font = "Segoe UI, 15px, style=bold",
                 Background = "aqua"
               }.Bind("Text").Bind("Width", "Bounds", (r, _) => ((Rect)r).Width),
               // option 1: rectangular bands

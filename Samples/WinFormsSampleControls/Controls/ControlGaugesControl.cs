@@ -189,7 +189,7 @@ namespace WinFormsSampleControls.ControlGauges {
           new Shape { Fill = "lightgray", Stroke = "gray" },
           new Panel(PanelLayoutTable.Instance) { Margin = 1, Stretch = Stretch.Fill }.Add(
             // header information
-            new TextBlock { Row = 0, Font = "bold 10pt sans-serif" }.Bind(
+            new TextBlock { Row = 0, Font = "Segoe UI, 13px, style=bold" }.Bind(
               new Binding("Text")
             ),
             new Panel(PanelLayoutSpot.Instance) {
@@ -247,7 +247,7 @@ namespace WinFormsSampleControls.ControlGauges {
             new TextBlock {
               Row = 2,
               Background = "white",
-              Font = "bold 10pt sans-serif",
+              Font = "Segoe UI, 13px, style=bold",
               IsMultiline = false,
               Editable = true
             }.Bind(
@@ -286,7 +286,7 @@ namespace WinFormsSampleControls.ControlGauges {
             // header information
             new TextBlock {
               Row = 0,
-              Font = "bold 10pt sans-serif"
+              Font = "Segoe UI, 13px, style=bold"
             }.Bind(
               new Binding("Text")
             ),
@@ -351,7 +351,7 @@ namespace WinFormsSampleControls.ControlGauges {
             new TextBlock {
               Row = 2,
               Background = "white",
-              Font = "bold 10pt sans-serif",
+              Font = "Segoe UI, 13px, style=bold",
               IsMultiline = false,
               Editable = true
             }.Bind(
@@ -408,7 +408,7 @@ namespace WinFormsSampleControls.ControlGauges {
             new TextBlock {
               Alignment = new Spot(0.5, 0.5, 0, 20),
               Stroke = "white",
-              Font = "bold 10pt sans-serif"
+              Font = "Segoe UI, 13px, style=bold"
             }.Bind(
               new Binding("Text"),
               new Binding("Stroke", "Color")
@@ -417,7 +417,7 @@ namespace WinFormsSampleControls.ControlGauges {
               Alignment = Spot.Top,
               Margin = new Margin(4, 0, 0, 0),
               Stroke = "white",
-              Font = "bold italic 13pt sans-serif",
+              Font = "Segoe UI, 17px, style=bold,italic",
               IsMultiline = false,
               Editable = true
             }.Bind(
@@ -466,7 +466,7 @@ namespace WinFormsSampleControls.ControlGauges {
                 new TextBlock { // each tick label
                   Interval = 4,
                   AlignmentFocus = Spot.Center,
-                  Font = "bold italic 14pt sans-serif",
+                  Font = "Segoe UI, 19px, style=bold,italic",
                   Stroke = "white",
                   SegmentOffset = new Point(0, 30)
                 }
@@ -474,7 +474,7 @@ namespace WinFormsSampleControls.ControlGauges {
               new TextBlock {
                 Alignment = new Spot(0.5, 0.9),
                 Stroke = "white",
-                Font = "bold italic 14pt sans-serif",
+                Font = "Segoe UI, 19px, style=bold,italic",
                 Editable = true
               }.Bind(
                 new Binding("Text", "Value", (v, _) => {
@@ -510,7 +510,7 @@ namespace WinFormsSampleControls.ControlGauges {
           ),
           new TextBlock {
             Row = 1,
-            Font = "bold 11pt sans-serif"
+            Font = "Segoe UI, 15px, style=bold"
           }.Bind(
             new Binding("Text")
           )
@@ -555,7 +555,7 @@ namespace WinFormsSampleControls.ControlGauges {
                 new TextBlock { // each tick label
                   Interval = 4,
                   AlignmentFocus = Spot.Center,
-                  Font = "bold italic 14pt sans-serif",
+                  Font = "Segoe UI, 19px, style=bold,italic",
                   Stroke = "white",
                   SegmentOffset = new Point(0, 30)
                 }
@@ -563,7 +563,7 @@ namespace WinFormsSampleControls.ControlGauges {
               new TextBlock {
                 Alignment = Spot.Center,
                 Stroke = "white",
-                Font = "bold italic 14pt sans-serif",
+                Font = "Segoe UI, 19px, style=bold,italic",
                 Editable = true
               }.Bind(
                 new Binding("Text", "Value", (v, _) => {
@@ -610,7 +610,7 @@ namespace WinFormsSampleControls.ControlGauges {
           ),
           new TextBlock {
             Row = 1,
-            Font = "bold 11pt sans-serif"
+            Font = "Segoe UI, 15px, style=bold"
           }.Bind(
             new Binding("Text")
           )

@@ -60,10 +60,10 @@ namespace WinFormsExtensionControls.Fishbone {
         new FishboneLink().Add(new Shape())
       );
 
-      var rootFont = "Generic sans-serif, 18px, style=bold";
-      var hdrFont = "Generic sans-serif, 14px, style=bold";
-      var hdrFontSm = "Generic sans-serif, 13px, style=bold";
-      var nodeFont = "Generic sans-serif, 13px";
+      var rootFont = "Microsoft Sans Serif, 18px, style=bold";
+      var hdrFont = "Microsoft Sans Serif, 14px, style=bold";
+      var hdrFontSm = "Microsoft Sans Serif, 13px, style=bold";
+      var nodeFont = "Microsoft Sans Serif, 13px";
 
       _Diagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
