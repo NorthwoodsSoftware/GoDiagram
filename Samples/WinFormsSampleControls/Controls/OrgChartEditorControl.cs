@@ -221,7 +221,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
               .Add(
                 new Picture {
                   Name = "Picture",
-                  DesiredSize = new Size(70, 70),
+                  DesiredSize = new Size(80, 80),
                   Margin = 1.5
                 }
                   .Bind("Source", "Key", FindHeadShot),

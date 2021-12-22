@@ -85,20 +85,21 @@ namespace WinFormsSampleControls.LogicCircuit {
           );
 
       // define some common property settings
-      var nodeStyle = new {
-        SelectionAdorned = false,
-        ShadowOffset = new Point(0, 4),
-        ShadowBlur = 15,
-        ShadowColor = "blue",
-        Resizable = true,
-        ResizeElementName = "NODESHAPE",
-        ToolTip = sharedToolTip
-      };
-      Binding[] nodeBind() {
-        return new[] {
-          new Binding("Location", "Loc", Point.Parse, Point.Stringify),
-          new Binding("IsShadowed", "IsSelected").OfElement()
-        };
+      void nodeStyle(Node node) {
+        node
+          .Bind(new[] {
+            new Binding("Location", "Loc", Point.Parse, Point.Stringify),
+            new Binding("IsShadowed", "IsSelected").OfElement()
+          })
+          .Set(new {
+            SelectionAdorned = false,
+            ShadowOffset = new Point(0, 4),
+            ShadowBlur = 15,
+            ShadowColor = "blue",
+            Resizable = true,
+            ResizeElementName = "NODESHAPE",
+            ToolTip = sharedToolTip
+          });
       }
 
       var shapeStyle = new {
@@ -135,8 +136,7 @@ namespace WinFormsSampleControls.LogicCircuit {
             e.Diagram.CommitTransaction("Toggle Input");
           }
         }
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("Circle")
               .Set(shapeStyle)
@@ -147,8 +147,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var outputTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("Rectangle")
               .Set(shapeStyle)
@@ -159,8 +158,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var andTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("AndGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0, 0.3) }
@@ -173,8 +171,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var orTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("OrGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0.16, 0.3) }
@@ -187,8 +184,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var xorTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("XorGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0.26, 0.3) }
@@ -201,8 +197,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var norTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("NorGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0.16, 0.3) }
@@ -215,8 +210,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var xnorTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("XnorGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0.26, 0.3) }
@@ -229,8 +223,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var nandTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("NandGate").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in1", Alignment = new Spot(0, 0.3) }
@@ -243,8 +236,7 @@ namespace WinFormsSampleControls.LogicCircuit {
 
       var notTemplate =
         new Node("Spot")
-          .Set(nodeStyle)
-          .Bind(nodeBind())
+          .Apply(nodeStyle)
           .Add(
             new Shape("Inverter").Set(shapeStyle),
             new Shape("Rectangle") { PortId = "in", Alignment = new Spot(0, 0.5) }

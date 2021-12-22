@@ -108,6 +108,10 @@ namespace WinFormsSampleControls.Flowchart {
       if (_SharedNodeTemplateMap != null) return;  // already defined
       DefineFileFigure();
 
+      void nodeStyle(Node node) {
+        node.Bind("Location", "Loc", Point.Parse, Point.Stringify);
+      }
+
       var textStyle = new {
         Font = "Lato, 11pt, style=bold",
         Stroke = "#F8F8F8"
@@ -119,7 +123,7 @@ namespace WinFormsSampleControls.Flowchart {
           new Node(PanelLayoutTable.Instance) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .Apply(nodeStyle)
           .Add(
             new Panel(PanelLayoutAuto.Instance).Add(
               new Shape("Rectangle") {
@@ -145,7 +149,7 @@ namespace WinFormsSampleControls.Flowchart {
           new Node(PanelLayoutTable.Instance) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .Apply(nodeStyle)
           .Add(
             new Panel(PanelLayoutAuto.Instance).Add(
               new Shape("Diamond") {
@@ -171,7 +175,7 @@ namespace WinFormsSampleControls.Flowchart {
           new Node(PanelLayoutTable.Instance) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .Apply(nodeStyle)
           .Add(
             new Panel(PanelLayoutAuto.Instance).Add(
               new Shape("Circle") {
@@ -192,7 +196,7 @@ namespace WinFormsSampleControls.Flowchart {
           new Node(PanelLayoutTable.Instance) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .Apply(nodeStyle)
           .Add(
             new Panel(PanelLayoutAuto.Instance).Add(
               new Shape("Circle") {
@@ -213,7 +217,7 @@ namespace WinFormsSampleControls.Flowchart {
           new Node(PanelLayoutAuto.Instance) {
             LocationSpot = Spot.Center
           }
-          .Bind(new Binding("Location", "Loc", Point.Parse, Point.Stringify))
+          .Apply(nodeStyle)
           .Add(
             new Shape("File") {
               Fill = "#282C34", Stroke = "#DEE0A3", StrokeWidth = 3.5

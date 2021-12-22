@@ -303,7 +303,7 @@ namespace WinFormsSampleControls.GridLayoutSample {
             this.columnBox.Name = "columnBox";
             this.columnBox.Size = new System.Drawing.Size(54, 23);
             this.columnBox.TabIndex = 1;
-            this.columnBox.Text = "NaN";
+            this.columnBox.Text = "0";
             // 
             // label2
             // 
@@ -324,7 +324,7 @@ namespace WinFormsSampleControls.GridLayoutSample {
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(261, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "(NaN means there\'s no limit)";
+            this.label3.Text = "(0 means there\'s no limit)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel8

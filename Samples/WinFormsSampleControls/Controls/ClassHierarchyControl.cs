@@ -51,10 +51,13 @@ namespace WinFormsSampleControls.ClassHierarchy {
       // Clicking on the node opens up the documentation for that class.
 
       // functions for hyperlink textblock
+      var apiMap = WinFormsSharedControls.GoWebBrowser.ApiMap;
       Func<object, string> linkfunc = (object nodeIn) => {
         var node = nodeIn as Node;
         var data = node.Data as NodeData;
-        return "https://godiagram.com/api/symbols/" + data.Key + ".html";
+        if (apiMap != null && apiMap.TryGetValue(data.Key, out var url))
+          return "https://godiagram.com/" + url;
+        return "https://godiagram.com/api/";
       };
 
       // hyperlinkText
@@ -119,16 +122,31 @@ namespace WinFormsSampleControls.ClassHierarchy {
 
       foreach(var c in classlist) {
         if (c.BaseType?.Name == c.Name) continue;  // don't repeat derived types that share name with parent
+
+        // some names need to be adjusted
+        string getKey(Type t) {
+          var key = t.Name;
+          // generics have '`', remove
+          var idx = key.IndexOf('`');
+          if (idx >= 0) key = key.Substring(0, idx);
+          // nested classes should include their declaring class
+          if (t.IsNested) {
+            key = $"{getKey(t.DeclaringType)}.{key}";
+          }
+          return key;
+        }
+
         // find base class constructor
         var parent = c.BaseType;
+        var key = getKey(c);
         if (parent == null || parent.Name == null ||
             parent.FullName == "System.Object" ||
             parent.FullName == "System.ValueType" ||
             parent.FullName == "System.MulticastDelegate" ||
             parent.FullName == "System.Windows.Forms.Control") {  // "root" node?
-          nodeDataSource.Add(new NodeData { Key = c.Name });
+          nodeDataSource.Add(new NodeData { Key = key });
         } else {
-          nodeDataSource.Add(new NodeData { Key = c.Name, Parent = parent.Name });
+          nodeDataSource.Add(new NodeData { Key = key, Parent = getKey(parent) });
         }
       }
 

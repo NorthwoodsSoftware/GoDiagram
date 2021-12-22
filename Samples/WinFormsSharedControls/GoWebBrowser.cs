@@ -53,6 +53,16 @@ namespace WinFormsSharedControls {
     }
 
     /// <summary>
+    /// Gets the map of API names to URLs.
+    /// </summary>
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public static Dictionary<string, string> ApiMap {
+      get { return _ApiMap; }
+    }
+
+    /// <summary>
     /// Process the provided HTML string for proper links.
     /// </summary>
     /// <param name="html"></param>

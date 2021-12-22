@@ -32,9 +32,9 @@ namespace Northwoods.Go.Extensions {
   /// </remarks>
   public class DimensioningLink : Link {
     private double _Direction;
-    private double _Extension;
-    private double _Inset;
-    private double _Gap;
+    private float _Extension = 30;
+    private float _Inset = 10;
+    private float _Gap = 10;
 
     /// <summary>
     /// Constructs a DimensioningLink and sets the following properties:
@@ -46,11 +46,6 @@ namespace Northwoods.Go.Extensions {
       IsLayoutPositioned = false;
       IsTreeLink = false;
       Routing = LinkRouting.Orthogonal;
-
-      _Direction = 0;
-      _Extension = 0;
-      _Inset = 0;
-      _Gap = 0;
     }
 
     /// <summary>
@@ -79,7 +74,7 @@ namespace Northwoods.Go.Extensions {
     /// Larger values mean further away from the nodes.
     /// The new value must be greater than or equal to zero.
     /// </summary>
-    public double Extension {
+    public float Extension {
       get {
         return _Extension;
       }
@@ -95,7 +90,7 @@ namespace Northwoods.Go.Extensions {
     /// extension lines that are orthogonal to the dimension line.
     /// The default value is 10.
     /// </summary>
-    public double Inset {
+    public float Inset {
       get {
         return _Inset;
       }
@@ -114,7 +109,7 @@ namespace Northwoods.Go.Extensions {
     /// The distance that the extension lines should come short of the measured points.
     /// The default value is 10.
     /// </summary>
-    public double Gap {
+    public float Gap {
       get {
         return _Gap;
       }

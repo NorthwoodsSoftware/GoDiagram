@@ -10,14 +10,15 @@ namespace WinFormsSampleControls.ContentAlignment {
     public ContentAlignmentControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
       diagramControl1.AfterRender = Setup;
 
-      noneBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.None);
-      centerBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.Center);
-      topBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.Top);
-      bottomBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.Bottom);
-      leftBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.Left);
-      rightBtn.CheckedChanged += (e, obj) => ChangeContentAlign(Spot.Right);
+      noneBtn.Click += (e, obj) => ChangeContentAlign(Spot.None);
+      centerBtn.Click += (e, obj) => ChangeContentAlign(Spot.Center);
+      topBtn.Click += (e, obj) => ChangeContentAlign(Spot.Top);
+      bottomBtn.Click += (e, obj) => ChangeContentAlign(Spot.Bottom);
+      leftBtn.Click += (e, obj) => ChangeContentAlign(Spot.Left);
+      rightBtn.Click += (e, obj) => ChangeContentAlign(Spot.Right);
 
       positionChangeBtn.Click += (e, obj) => ChangePosition(positionX.Text, positionY.Text);
       scaleChangeBtn.Click += (e, obj) => ChangeScale(scale.Text);
@@ -25,12 +26,11 @@ namespace WinFormsSampleControls.ContentAlignment {
       fixedBoundsSetBtn.Click += (e, obj) => ChangeFixedBounds(fixedX.Text, fixedY.Text, fixedW.Text, fixedH.Text);
       paddingSetBtn.Click += (e, obj) => ChangePadding(padT.Text, padR.Text, pabB.Text, padL.Text);
 
-      autoScaleNoneBtn.CheckedChanged += (e, obj) => ChangeAutoScale(AutoScaleType.None);
-      autoScaleUniformBtn.CheckedChanged += (e, obj) => ChangeAutoScale(AutoScaleType.Uniform);
-      autoScaleUTFBtn.CheckedChanged += (e, obj) => ChangeAutoScale(AutoScaleType.UniformToFill);
+      autoScaleNoneBtn.Click += (e, obj) => ChangeAutoScale(AutoScaleType.None);
+      autoScaleUniformBtn.Click += (e, obj) => ChangeAutoScale(AutoScaleType.Uniform);
+      autoScaleUTFBtn.Click += (e, obj) => ChangeAutoScale(AutoScaleType.UniformToFill);
 
       zoomToFitBtn.Click += (e, obj) => myDiagram.CommandHandler.ZoomToFit();
-
 
       goWebBrowser1.Html = @"
    
@@ -42,8 +42,6 @@ namespace WinFormsSampleControls.ContentAlignment {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -70,6 +68,9 @@ namespace WinFormsSampleControls.ContentAlignment {
     }
 
     void UpdateDOM(object _, DiagramEvent e) {
+      if (InvokeRequired) {
+        Invoke(UpdateDOM, null, e);
+      }
       var d = e.Diagram;
       var pos = d.Position;
       positionX.Text = ((int)pos.X).ToString();

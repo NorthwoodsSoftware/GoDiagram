@@ -151,9 +151,10 @@ namespace WinFormsExtensionControls.Dimensioning {
   public class LinkData : Model.LinkData {
     public string FromSpot { get; set; }
     public string ToSpot { get; set; }
-    public double Direction { get; set; }
     public string Color { get; set; }
-    public double Extension { get; set; }
+    public double Direction { get; set; }
+    public float Extension { get; set; } = 30;
+    public float Inset { get; set; } = 10;
   }
 
 }

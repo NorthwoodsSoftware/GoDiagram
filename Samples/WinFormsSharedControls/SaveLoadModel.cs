@@ -58,5 +58,9 @@ namespace WinFormsSharedControls {
         }
       }
     }
+
+    private void textBox1_TextChanged(object sender, EventArgs e) {
+      if (_ModelJson != textBox1.Text) _ModelJson = textBox1.Text;
+    }
   }
 }
