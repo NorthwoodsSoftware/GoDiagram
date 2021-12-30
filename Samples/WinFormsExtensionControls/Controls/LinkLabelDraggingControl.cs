@@ -99,7 +99,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
             Cursor = "pointer"
           },
           new TextBlock {
-            Font = "Helvetica, 11px, style=bold", // bold arial??
+            Font = "Arial, 11px, style=bold",
             Editable = true, // editing text automatically updates model data
             Margin = new Margin(1)
           }.Bind(
@@ -204,7 +204,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
             new TextBlock {
               Text = "transition",
               TextAlign = TextAlign.Center,
-              Font = "Helvetica, 10px, style=bold", // arial??
+              Font = "Arial, 10px, style=bold",
               Stroke = "black",
               Margin = new Margin(4),
               Editable = true // editing the text automatically updates the model data

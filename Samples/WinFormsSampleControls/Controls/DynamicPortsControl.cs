@@ -199,7 +199,7 @@ namespace WinFormsSampleControls.DynamicPorts {
               .Add(
                 new Shape("Rectangle") {
                   Fill = "#dbf6cb", Stroke = null, StrokeWidth = 0,
-                  MinSize = new Size(60, 60)
+                  MinSize = new Size(65, 65)
                 },
                 new TextBlock {
                   Margin = 10, TextAlign = TextAlign.Center, Font = "Segoe UI, 14px, style=bold", Stroke = "#484848", Editable = true
@@ -362,15 +362,6 @@ namespace WinFormsSampleControls.DynamicPorts {
     private void LoadModel() {
       if (myDiagram == null) return;
       myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
-
-      // When copying a node, we need to copy the data that the node is bound to.
-      // This object includes properties for the node as a whole, and
-      // four properties that are lists holding data for each port.
-      // Those lists and port data objects need to be copied too.
-
-      // Link data includes the names of the to- and from- ports;
-      // so the model needs to set these property names:
-      // LinkFromPortIdProperty and LinkToPortIdProperty.
     }
 
     // define the model data
@@ -414,7 +405,9 @@ namespace WinFormsSampleControls.DynamicPorts {
       }
     }
 
-    public class LinkData : Model.LinkData { }
+    public class LinkData : Model.LinkData {
+      public List<Point> Points { get; set; }
+    }
 
     public class PortData : ICloneable {
       public string PortColor { get; set; }

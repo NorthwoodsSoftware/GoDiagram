@@ -192,6 +192,8 @@ namespace WinFormsSampleControls.ProcessFlow {
     public float Angle { get; set; }
   }
 
-  public class LinkData : Model.LinkData { }
+  public class LinkData : Model.LinkData {
+    public List<Point> Points { get; set; }
+  }
 
 }

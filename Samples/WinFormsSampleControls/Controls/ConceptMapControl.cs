@@ -50,7 +50,7 @@ namespace WinFormsSampleControls.ConceptMap {
             )),
             Stroke = "black"
           },
-          new TextBlock { Font = "Helvetica, 10px, style=bold", Margin = 4, Stroke = "#555555"}.Bind(
+          new TextBlock { Font = "Arial, 10px, style=bold", Margin = 4, Stroke = "#555555"}.Bind(
             new Binding("Text", "Text"))
         );
 
@@ -75,7 +75,7 @@ namespace WinFormsSampleControls.ConceptMap {
             new TextBlock  // the label text
               {
               TextAlign = TextAlign.Center,
-              Font = "Helvetica, 10px",
+              Font = "Arial, 10px",
               Stroke = "#555555",
               Margin = 4
             }.Bind(

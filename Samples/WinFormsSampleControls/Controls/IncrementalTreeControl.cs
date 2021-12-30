@@ -115,7 +115,7 @@ namespace WinFormsSampleControls.IncrementalTree {
            return blues[(int)dist];
          }),
          new TextBlock {
-           Font = "General sans-serif, 12px",
+           Font = "Microsoft Sans Serif, 12px",
            Margin = 5
          }.Bind("Text", "Key", (key, _) => { if ((int)key == -1) return "0"; return key.ToString(); })
        ),

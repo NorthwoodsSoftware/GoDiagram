@@ -59,7 +59,7 @@ namespace WinFormsSampleControls.Flowchart {
             this.paletteControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
-            this.paletteControl1.Size = new System.Drawing.Size(94, 782);
+            this.paletteControl1.Size = new System.Drawing.Size(120, 782);
             this.paletteControl1.TabIndex = 2;
             this.paletteControl1.Text = "paletteControl1";
             // 
@@ -68,9 +68,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(103, 3);
+            this.diagramControl1.Location = new System.Drawing.Point(129, 3);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(1094, 782);
+            this.diagramControl1.Size = new System.Drawing.Size(1068, 782);
             this.diagramControl1.TabIndex = 3;
             this.diagramControl1.Text = "diagramControl1";
             // 
@@ -93,7 +93,7 @@ namespace WinFormsSampleControls.Flowchart {
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 1053);
             this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1194, 343);
+            this.saveLoadModel1.Size = new System.Drawing.Size(1194, 335);
             this.saveLoadModel1.TabIndex = 5;
             // 
             // FlowchartControl

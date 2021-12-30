@@ -214,7 +214,7 @@ namespace WinFormsSampleControls.ProductionProcess {
           // make sure links come in from the proper direction and go out appropriately
           new Binding("FromSpot", "FromSpot", Spot.Parse),
           new Binding("ToSpot", "ToSpot", Spot.Parse),
-          new Binding("Points").MakeTwoWay()
+          new Binding("Points", "Points", PointArrConverter, PointArrBackConverter)
         ).Add(
           // mark each Shape to get the link geometry with IsPanelMain = true
           new Shape {
@@ -245,6 +245,25 @@ namespace WinFormsSampleControls.ProductionProcess {
       myDiagram.Model = Model.FromJson<Model>(myModelData);
 
       Loop();
+    }
+
+    private static List<Point> PointArrConverter(object pts) {
+      var ptList = pts as List<string>;
+      if (ptList.Count % 2 != 0) throw new ArgumentException();
+      var points = new List<Point>();
+      for (var i = 0; i < ptList.Count; i++) {
+        points.Add(Point.Parse(ptList[i]));
+      }
+      return points;
+    }
+
+    private static List<string> PointArrBackConverter(object pts) {
+      var ptList = pts as List<Point>;
+      var points = new List<string>();
+      for (var i = 0; i < ptList.Count; i++) {
+        points.Add(Point.Stringify(ptList[i]));
+      }
+      return points;
     }
 
     private void Loop() {
@@ -319,7 +338,7 @@ namespace WinFormsSampleControls.ProductionProcess {
   }
 
   public class LinkData : Model.LinkData {
-    public List<Point> Points { get; set; }
+    public List<string> Points { get; set; }
     public string FromSpot { get; set; }
   }
 

@@ -276,6 +276,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
   }
 
   public class LinkData : Model.LinkData {
+    public List<Point> Points { get; set; }
     public int Id { get; set; }
   }
 

@@ -99,7 +99,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
             Cursor = "pointer"
           },
           new TextBlock {
-            Font = "Helvetica, 11px, style=bold", // bold arial??
+            Font = "Arial, 11px, style=bold",
             Editable = true,
             Margin = 0
           }.Bind(
@@ -193,7 +193,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
             new TextBlock() {
               Text = "transition",
               TextAlign = TextAlign.Center,
-              Font = "Helvetica, 10px", //arial??
+              Font = "Arial, 10px",
               Stroke = "black",
               Margin = 4,
               Editable = true

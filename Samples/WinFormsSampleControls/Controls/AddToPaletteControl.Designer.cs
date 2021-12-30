@@ -114,7 +114,7 @@ namespace WinFormsSampleControls.AddToPalette {
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 1093);
             this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1139, 343);
+            this.saveLoadModel1.Size = new System.Drawing.Size(1139, 335);
             this.saveLoadModel1.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -137,7 +137,7 @@ namespace WinFormsSampleControls.AddToPalette {
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
-            this.paletteControl1.Size = new System.Drawing.Size(162, 402);
+            this.paletteControl1.Size = new System.Drawing.Size(141, 402);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
             // 
@@ -145,7 +145,7 @@ namespace WinFormsSampleControls.AddToPalette {
             // 
             this.overviewControl1.Location = new System.Drawing.Point(3, 411);
             this.overviewControl1.Name = "overviewControl1";
-            this.overviewControl1.Size = new System.Drawing.Size(162, 121);
+            this.overviewControl1.Size = new System.Drawing.Size(141, 121);
             this.overviewControl1.TabIndex = 1;
             this.overviewControl1.Text = "overviewControl1";
             // 

@@ -61,7 +61,7 @@ namespace WinFormsSampleControls.PageFlow {
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
-            this.paletteControl1.Size = new System.Drawing.Size(94, 589);
+            this.paletteControl1.Size = new System.Drawing.Size(120, 589);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
             // 
@@ -69,9 +69,9 @@ namespace WinFormsSampleControls.PageFlow {
             // 
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(103, 3);
+            this.diagramControl1.Location = new System.Drawing.Point(129, 3);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(1337, 589);
+            this.diagramControl1.Size = new System.Drawing.Size(1311, 589);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
             // 
@@ -103,7 +103,7 @@ namespace WinFormsSampleControls.PageFlow {
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 883);
             this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1437, 343);
+            this.saveLoadModel1.Size = new System.Drawing.Size(1437, 335);
             this.saveLoadModel1.TabIndex = 5;
             // 
             // PageFlowControl

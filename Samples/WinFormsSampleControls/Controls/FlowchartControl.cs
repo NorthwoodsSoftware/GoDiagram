@@ -307,7 +307,7 @@ namespace WinFormsSampleControls.Flowchart {
           },
           new TextBlock("Yes") {  // the label
             TextAlign = TextAlign.Center,
-            Font = "Helvetica, 10pt",
+            Font = "Arial, 10pt",
             Stroke = "#333333",
             Editable = true
           }.Bind(new Binding("Text").MakeTwoWay())

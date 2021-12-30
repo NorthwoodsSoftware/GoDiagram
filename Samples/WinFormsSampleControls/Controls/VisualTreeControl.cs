@@ -106,7 +106,7 @@ namespace WinFormsSampleControls.VisualTree {
           .Add(
             new Shape { Fill = "darkkhaki", Stroke = null },
             new TextBlock {
-                Font = "Helvetica, 13px, style=bold",
+                Font = "Arial, 13px, style=bold",
                 Stroke = "black",
                 Margin = 3
               }

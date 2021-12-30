@@ -99,7 +99,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
               }
               .Bind("Fill"),
             new TextBlock {
-                Font = "Helvetica, 12px",
+                Font = "Arial, 12px",
                 Stroke = "white",
                 MaxLines = 1
               }
@@ -140,7 +140,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
           Text = "GoDiagram",
           ToolTip = "GoDiagram",
           Fill = null,
-          Font = "Helvetica, 64px, style=bold",
+          Font = "Arial, 64px, style=bold",
           IsLabel = true,
           Children = new List<NodeData>()
         }
@@ -249,7 +249,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
             ToolTip = n.ToolTip,
             Group = n.Key,
             Fill = null,
-            Font = "Helvetica, 20px, style=bold"
+            Font = "Arial, 20px, style=bold"
           });
         }
 

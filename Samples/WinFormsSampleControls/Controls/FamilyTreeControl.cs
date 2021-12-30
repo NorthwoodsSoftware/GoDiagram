@@ -84,7 +84,7 @@ namespace WinFormsSampleControls.FamilyTree {
 
       var tooltipTemplate = Builder.Make<Adornment>("ToolTip").Add(
         new TextBlock {
-          Font = "Helvetica, 8pt, style=bold",
+          Font = "Arial, 8pt, style=bold",
           Wrap = Wrap.Fit,
           Margin = 5
         }.Bind("Text", "", tooltipTextConverter)

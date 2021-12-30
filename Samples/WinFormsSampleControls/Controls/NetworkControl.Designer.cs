@@ -57,7 +57,7 @@ namespace WinFormsSampleControls.Network {
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
-            this.paletteControl1.Size = new System.Drawing.Size(110, 390);
+            this.paletteControl1.Size = new System.Drawing.Size(140, 390);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
             // 
@@ -65,10 +65,10 @@ namespace WinFormsSampleControls.Network {
             // 
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(119, 3);
+            this.diagramControl1.Location = new System.Drawing.Point(149, 3);
             this.diagramControl1.Name = "diagramControl1";
             this.tableLayoutPanel1.SetRowSpan(this.diagramControl1, 2);
-            this.diagramControl1.Size = new System.Drawing.Size(878, 586);
+            this.diagramControl1.Size = new System.Drawing.Size(848, 586);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
             // 
@@ -77,7 +77,7 @@ namespace WinFormsSampleControls.Network {
             this.overviewControl1.AllowDrop = true;
             this.overviewControl1.Location = new System.Drawing.Point(3, 399);
             this.overviewControl1.Name = "overviewControl1";
-            this.overviewControl1.Size = new System.Drawing.Size(110, 190);
+            this.overviewControl1.Size = new System.Drawing.Size(140, 190);
             this.overviewControl1.TabIndex = 2;
             this.overviewControl1.Text = "overviewControl1";
             // 
@@ -88,7 +88,7 @@ namespace WinFormsSampleControls.Network {
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 595);
             this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
+            this.saveLoadModel1.Size = new System.Drawing.Size(994, 335);
             this.saveLoadModel1.TabIndex = 3;
             // 
             // NetworkControl
