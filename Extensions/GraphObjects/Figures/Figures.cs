@@ -1,9 +1,18 @@
-﻿using System;
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
+/*
+* This is an extension and not part of the main GoDiagram library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
-*/
 
 // This file holds definitions of all standard shape figures -- string values for Shape.Figure.
 // You do not need to load this file in order to use named Shape figure.
@@ -17,25 +26,22 @@ using System.Linq;
 // define a lot of code that your app does not use and will not get garbage-collected.
 
 namespace Northwoods.Go.Extensions {
-
   // The following functions and variables are used throughout this file:
-
-  /// @hidden @internal
   /// <summary>
   /// This FigureParameter class describes various properties each parameter uses in figures.
   /// </summary>
   internal class FigureParameter {
-    public static Dictionary<string, List<FigureParameter>> DefinedParameters = new Dictionary<string, List<FigureParameter>>();
+    public static Dictionary<string, List<FigureParameter>> DefinedParameters = new();
     private string _Name;
     private double _DefaultValue;
     private double _Minimum;
     private double _Maximum;
+
     public FigureParameter(string name, double def, double min = 0.0, double max = double.PositiveInfinity) {
       _Name = name;
       _DefaultValue = def;
       _Minimum = min;
       _Maximum = max;
-      // (Shape as any)["_FigureParameters"] = {};
     }
 
     /// <summary>
@@ -94,11 +100,9 @@ namespace Northwoods.Go.Extensions {
     /// This static function gets a FigureParameter for a particular figure name.
     /// </summary>
     /// <param name="figurename"></param>
-    /// <param name="index"></param>, currently must be either 0 or 1
-    /// <returns></returns>
+    /// <param name="index">currently must be either 0 or 1</param>
     public static FigureParameter GetFigureParameter(string figurename, int index) {
-      // var arr = (Shape as any)["_FigureParameters"][figurename];
-      var arr = FigureParameter.DefinedParameters[figurename];
+      var arr = DefinedParameters[figurename];
       if (arr == null) return null;
       return arr[index];
     }
@@ -107,23 +111,19 @@ namespace Northwoods.Go.Extensions {
     /// This static function sets a FigureParameter for a particular figure name.
     /// </summary>
     /// <param name="figurename"></param>
-    /// <param name="index"></param>, currently must be either 0 or 1
+    /// <param name="index">currently must be either 0 or 1</param>
     /// <param name="figparam"></param>
     public static void SetFigureParameter(string figurename, int index, FigureParameter figparam) {
-      if (!(figparam is FigureParameter)) throw new Exception("Third argument to FigureParameter.SetFigureParameter is not FigureParameter: " + figparam);
+      if (figparam == null) throw new Exception("Third argument to FigureParameter.SetFigureParameter is not FigureParameter: " + figparam);
       if (figparam.DefaultValue < figparam.Minimum || figparam.DefaultValue > figparam.Maximum) {
-        throw new Exception("defaultValue must be between minimum and maximum, not: " + figparam.DefaultValue);
+        throw new Exception("DefaultValue must be between minimum and maximum, not: " + figparam.DefaultValue);
       }
-      // var paramObj = (Shape as any)["_FigureParameters"];
-      // var arr = paramObj[figurename];
       List<FigureParameter> arr;
-      if (FigureParameter.DefinedParameters.ContainsKey(figurename)) {
-        arr = FigureParameter.DefinedParameters[figurename];
+      if (DefinedParameters.ContainsKey(figurename)) {
+        arr = DefinedParameters[figurename];
       } else {
-        // arr = new List<MissingType>();
-        // paramObj[figurename] = arr;
         arr = new List<FigureParameter>();
-        FigureParameter.DefinedParameters.Add(figurename, arr);
+        DefinedParameters.Add(figurename, arr);
       }
       arr.Insert(index, figparam);
     }
@@ -133,18 +133,6 @@ namespace Northwoods.Go.Extensions {
   /// This class contains static methods pertaining to <see cref="Shape"/> figures.
   /// </summary>
   public class Figures {
-
-    /// @ignore
-    /// <param name="p1x"></param>
-    /// <param name="p1y"></param>
-    /// <param name="p2x"></param>
-    /// <param name="p2y"></param>
-    /// <param name="q1x"></param>
-    /// <param name="q1y"></param>
-    /// <param name="q2x"></param>
-    /// <param name="q2y"></param>
-    /// <param name="result"></param>
-    /// <returns></returns>
     private static Point GetIntersection(double p1x, double p1y, double p2x, double p2y, double q1x, double q1y, double q2x, double q2y, out Point result) {
       var dx1 = p1x - p2x;
       var dx2 = q1x - q2x;
@@ -177,23 +165,8 @@ namespace Northwoods.Go.Extensions {
       return result;
     }
 
-    /// @ignore
-    /// <param name="startx"></param>
-    /// <param name="starty"></param>
-    /// <param name="c1x"></param>
-    /// <param name="c1y"></param>
-    /// <param name="c2x"></param>
-    /// <param name="c2y"></param>
-    /// <param name="endx"></param>
-    /// <param name="endy"></param>
-    /// <param name="fraction"></param>
-    /// <param name="curve1cp1"> // modified result control point</param>
-    /// <param name="curve1cp2"> // modified result control point</param>
-    /// <param name="midpoint"> // modified result</param>
-    /// <param name="curve2cp1"> // modified result control point
-    ///  <param name="curve2cp2"></param>  // modified result control point</param>
     private static void BreakUpBezier(double startx, double starty, double c1x, double c1y, double c2x, double c2y, double endx, double endy, double fraction,
-                           out Point curve1cp1, out Point curve1cp2, out Point midpoint, out Point curve2cp1, out Point curve2cp2) {
+                                      out Point curve1cp1, out Point curve1cp2, out Point midpoint, out Point curve2cp1, out Point curve2cp2) {
       var fo = 1 - fraction;
       var so = fraction;
       var m1x = (startx * fo + c1x * so);
@@ -224,15 +197,11 @@ namespace Northwoods.Go.Extensions {
     /// Define extra figures to be used by <see cref="Shape"/>s.
     /// </summary>
     public static void DefineExtraFigures() {
-
       var GeneratorEllipseSpot1 = new Spot(0.156, 0.156);
-
       var GeneratorEllipseSpot2 = new Spot(0.844, 0.844);
-
       var KAPPA = 4 * ((Math.Sqrt(2) - 1) / 3);
 
       // OPTIONAL figures, not predefined in the library:
-
       Shape.DefineFigureGenerator("AsteriskLine", (shape, w, h) => {
         var offset = .2 / Math.Sqrt(2);
         return new Geometry()
@@ -258,20 +227,22 @@ namespace Northwoods.Go.Extensions {
       });
 
       Shape.DefineFigureGenerator("Line1", (shape, w, h) => {
-        var geo = new Geometry(GeometryType.Line);
-        geo.StartX = 0;
-        geo.StartY = 0;
-        geo.EndX = w;
-        geo.EndY = h;
+        var geo = new Geometry(GeometryType.Line) {
+          StartX = 0,
+          StartY = 0,
+          EndX = w,
+          EndY = h
+        };
         return geo;
       });
 
       Shape.DefineFigureGenerator("Line2", (shape, w, h) => {
-        var geo = new Geometry(GeometryType.Line);
-        geo.StartX = w;
-        geo.StartY = 0;
-        geo.EndX = 0;
-        geo.EndY = h;
+        var geo = new Geometry(GeometryType.Line) {
+          StartX = w,
+          StartY = 0,
+          EndX = 0,
+          EndY = h
+        };
         return geo;
       });
 
@@ -335,18 +306,19 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("Parallelogram1", 0, new FigureParameter("Indent", .1, -.99, .99));
       Shape.DefineFigureGenerator("Parallelogram1", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent"s percent distance
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent's percent distance
         if (double.IsNaN(param1)) param1 = 0.1;
         else if (param1 < -1) param1 = -1;
         else if (param1 > 1) param1 = 1;
         var indent = Math.Abs(param1) * w;
 
         if (param1 == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var geo = new Geometry();
@@ -372,18 +344,19 @@ namespace Northwoods.Go.Extensions {
       // Parallelogram with absolutes instead of scaling
       FigureParameter.SetFigureParameter("Parallelogram2", 0, new FigureParameter("Indent", 10, -double.PositiveInfinity, double.PositiveInfinity));
       Shape.DefineFigureGenerator("Parallelogram2", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent"s x distance
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent's x distance
         if (double.IsNaN(param1)) param1 = 10;
         else if (param1 < -1) param1 = -w;
         else if (param1 > 1) param1 = w;
         var indent = Math.Abs(param1);
 
         if (param1 == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var geo = new Geometry();
@@ -407,18 +380,19 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("Trapezoid1", 0, new FigureParameter("Indent", .2, -.99, .99));
       Shape.DefineFigureGenerator("Trapezoid1", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent"s percent distance
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent's percent distance
         if (double.IsNaN(param1)) param1 = 0.2;
         else if (param1 < 0.5) param1 = -0.5;
         else if (param1 > 0.5) param1 = 0.5;
         var indent = Math.Abs(param1) * w;
 
         if (param1 == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var geo = new Geometry();
@@ -444,18 +418,19 @@ namespace Northwoods.Go.Extensions {
       // Trapezoid with absolutes instead of scaling
       FigureParameter.SetFigureParameter("Trapezoid2", 0, new FigureParameter("Indent", 20, -double.PositiveInfinity, double.PositiveInfinity));
       Shape.DefineFigureGenerator("Trapezoid2", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent"s x distance
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // indent's x distance
         if (double.IsNaN(param1)) param1 = 20; // default value
         else if (param1 < -w) param1 = -w / 2;
         else if (param1 > w) param1 = w / 2;
         var indent = Math.Abs(param1);
 
         if (param1 == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var geo = new Geometry();
@@ -488,11 +463,12 @@ namespace Northwoods.Go.Extensions {
         var indent = Math.Abs(param1);
 
         if (param1 == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var geo = new Geometry();
@@ -568,7 +544,7 @@ namespace Northwoods.Go.Extensions {
           var q21 = polygon[(half + i - 1) % count];
           var q2off = polygon[(half + i + offset) % count];
           pts[i * 2] = p0;
-          Point tempPoint = new Point();
+          var tempPoint = new Point();
           pts[i * 2 + 1] = GetIntersection(p0.X, p0.Y,
             q21.X, q21.Y,
             p1.X, p1.Y,
@@ -986,8 +962,8 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("FramedRectangle", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         var param2 = (shape != null) ? shape.Parameter2 : double.NaN;
-        if (double.IsNaN(param1)) param1 = 8; // default values PARAMETER 1 is for WIDTH
-        if (double.IsNaN(param2)) param2 = 8; // default values PARAMETER 2 is for HEIGHT
+        if (double.IsNaN(param1)) param1 = 8;  // default values PARAMETER 1 is for WIDTH
+        if (double.IsNaN(param2)) param2 = 8;  // default values PARAMETER 2 is for HEIGHT
 
         var geo = new Geometry();
         var fig = new PathFigure(0, 0, true);
@@ -1082,8 +1058,8 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("Pie", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         var param2 = (shape != null) ? shape.Parameter2 : double.NaN;
-        if (double.IsNaN(param1)) param1 = 0; // default values PARAMETER 1 is for Start Angle
-        if (double.IsNaN(param2)) param2 = 315; // default values PARAMETER 2 is for Sweep Angle
+        if (double.IsNaN(param1)) param1 = 0;  // default values PARAMETER 1 is for Start Angle
+        if (double.IsNaN(param2)) param2 = 315;  // default values PARAMETER 2 is for Sweep Angle
 
         var start = param1 % 360;
         if (start < 0) start += 360;
@@ -1169,11 +1145,12 @@ namespace Northwoods.Go.Extensions {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         if (double.IsNaN(param1) || param1 < 0) param1 = 30;
         if (w == 0 || h == 0) {
-          var geo = new Geometry(GeometryType.Rectangle);
-          geo.StartX = 0;
-          geo.StartY = 0;
-          geo.EndX = w;
-          geo.EndY = h;
+          var geo = new Geometry(GeometryType.Rectangle) {
+            StartX = 0,
+            StartY = 0,
+            EndX = w,
+            EndY = h
+          };
           return geo;
         } else {
           var w2 = w / 2;
@@ -1225,7 +1202,7 @@ namespace Northwoods.Go.Extensions {
       // adjust the width of the vertical beam
       FigureParameter.SetFigureParameter("SquareIBeam", 0, new FigureParameter("BeamWidth", 0.2, 0.1, 0.9));
       Shape.DefineFigureGenerator("SquareIBeam", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // width of the ibeam in % of the total width
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // width of the ibeam in % of the total width
         if (double.IsNaN(param1)) param1 = .2;
 
         var geo = new Geometry();
@@ -1248,7 +1225,7 @@ namespace Northwoods.Go.Extensions {
       // parameter allows it easy to adjust the roundness of the curves that cut inward
       FigureParameter.SetFigureParameter("RoundedIBeam", 0, new FigureParameter("Curviness", .5, .05, .65));
       Shape.DefineFigureGenerator("RoundedIBeam", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // curviness of the ibeam relative to total width
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // curviness of the ibeam relative to total width
         if (double.IsNaN(param1)) param1 = .5;
 
         var geo = new Geometry();
@@ -1313,9 +1290,9 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, .85 * w, h));
         fig.Add(new PathSegment(SegmentType.Bezier, .6 * w, .6 * h, .55 * w, .95 * h, .5 * w, .75 * h));
         // First circle:
-        var r = .2; // radius
-        var cx = .3; // offset from Center x
-        var cy = 0d; // offset from Center y
+        var r = .2;  // radius
+        var cx = .3;  // offset from Center x
+        var cy = 0d;  // offset from Center y
         var d = r * KAPPA;
         fig.Add(new PathSegment(SegmentType.Bezier, (.5 + cx) * w, (.5 + r + cy) * h,
           (.5 - r + cx) * w, (.5 + d + cy) * h,
@@ -1329,9 +1306,9 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Bezier, (.65) * w, (0.36771243) * h,
           (.5 - d + cx) * w, (.5 - r + cy) * h,
           (.5 - r + cx + .05) * w, (.5 - d + cy - .02) * h));
-        r = .2; // radius
-        cx = 0; // offset from Center x
-        cy = -.3; // offset from Center y
+        r = .2;  // radius
+        cx = 0;  // offset from Center x
+        cy = -.3;  // offset from Center y
         d = r * KAPPA;
         fig.Add(new PathSegment(SegmentType.Bezier, (1 - .5 + r + cx) * w, (.5 + cy) * h,
           (.5 + d + cx) * w, (.5 + r + cy) * h,
@@ -1345,9 +1322,9 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Bezier, (.5 - d + cx) * w, (.5 + r + cy) * h,
           (.5 - r + cx) * w, (.5 + d + cy) * h,
           (.5 - d + cx) * w, (.5 + r + cy) * h));
-        r = .2; // radius
-        cx = -.3; // offset from Center x
-        cy = 0; // offset from Center y
+        r = .2;  // radius
+        cx = -.3;  // offset from Center x
+        cy = 0;  // offset from Center y
         d = r * KAPPA;
         fig.Add(new PathSegment(SegmentType.Bezier, (.5 + cx) * w, (.5 - r + cy) * h,
           (1 - .5 + r + cx - .05) * w, (.5 - d + cy - .02) * h,
@@ -1380,16 +1357,16 @@ namespace Northwoods.Go.Extensions {
         var centery = .25;
         // Top small circle, goes counter-clockwise
         fig.Add(new PathSegment(SegmentType.Move, (centerx + radius) * w, (centery) * h));
-        fig.Add(new PathSegment(SegmentType.Arc, 0, -360, w * centerx, h * centery, radius * w, radius * w).Close()); // Right semi-circle
-                                                                                                                      // Left semi-circle
+        fig.Add(new PathSegment(SegmentType.Arc, 0, -360, w * centerx, h * centery, radius * w, radius * w).Close());  // Right semi-circle
+        // Left semi-circle
         fig = new PathFigure(w * 0.5, 0, false);
         geo.Add(fig);
         fig.Add(new PathSegment(SegmentType.Arc, 270, -180, w * 0.5, w * 0.5, w * 0.5, w * 0.5));
         centery = .75;
         // Bottom small circle
-        fig = new PathFigure((centerx + radius) * w, (centery) * h, true); // Not a subpath
+        fig = new PathFigure((centerx + radius) * w, (centery) * h, true);  // Not a subpath
         geo.Add(fig);
-        fig.Add(new PathSegment(SegmentType.Arc, 0, 360, w * centerx, h * centery, radius * w, radius * w).Close()); // Right semi-circle
+        fig.Add(new PathSegment(SegmentType.Arc, 0, 360, w * centerx, h * centery, radius * w, radius * w).Close());  // Right semi-circle
         geo.DefaultStretch = GeometryStretch.Uniform;
         return geo;
       });
@@ -1513,7 +1490,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("HourGlass", 0, new FigureParameter("Thickness", 30));
       Shape.DefineFigureGenerator("HourGlass", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // width at middle of hourglass
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // width at middle of hourglass
         if (double.IsNaN(param1) || param1 < 0) param1 = 30;
         if (param1 > w) param1 = w;
         var x1 = (w - param1) / 2;
@@ -1605,9 +1582,9 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("GenderFemale", (shape, w, h) => {
         var geo = new Geometry();
         // Outer Circle
-        var r = .375; // radius
-        var cx = 0; // offset from Center x
-        var cy = -.125; // offset from Center y
+        var r = .375;  // radius
+        var cx = 0;  // offset from Center x
+        var cy = -.125;  // offset from Center y
         var d = r * KAPPA;
         var fig = new PathFigure((.525 + cx) * w, (.5 + r + cy) * h, false);
         geo.Add(fig);
@@ -1632,9 +1609,9 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, .575 * w, .85 * h));
         fig.Add(new PathSegment(SegmentType.Line, .525 * w, .85 * h).Close());
         // Inner circle
-        r = .325; // radius
-        cx = 0; // offset from Center x
-        cy = -.125; // offset from Center y
+        r = .325;  // radius
+        cx = 0;  // offset from Center x
+        cy = -.125;  // offset from Center y
         d = r * KAPPA;
         fig = new PathFigure((1 - .5 + r + cx) * w, (.5 + cy) * h, false);
         geo.Add(fig);
@@ -1669,7 +1646,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("LogicIff", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .2; // Distance the arrow folds from the right
+        if (double.IsNaN(param1)) param1 = .2;  // Distance the arrow folds from the right
         return new Geometry()
           .Add(new PathFigure((1 - param1) * w, 0, false)
             .Add(new PathSegment(SegmentType.Line, w, .5 * h))
@@ -1787,9 +1764,9 @@ namespace Northwoods.Go.Extensions {
       FigureParameter.SetFigureParameter("Arrow", 0, new FigureParameter("ArrowheadWidth", .3, .01, .99));
       FigureParameter.SetFigureParameter("Arrow", 1, new FigureParameter("TailHeight", .3, .01, .99));
       Shape.DefineFigureGenerator("Arrow", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // % width of arrowhead
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // % width of arrowhead
         if (double.IsNaN(param1)) param1 = .3;
-        var param2 = (shape != null) ? shape.Parameter2 : double.NaN; // % height of tail
+        var param2 = (shape != null) ? shape.Parameter2 : double.NaN;  // % height of tail
         if (double.IsNaN(param2)) param2 = .3;
 
         var x = (1 - param1) * w;
@@ -1821,10 +1798,10 @@ namespace Northwoods.Go.Extensions {
       FigureParameter.SetFigureParameter("Arrow2", 0, new FigureParameter("ArrowheadWidth", 30));
       FigureParameter.SetFigureParameter("Arrow2", 1, new FigureParameter("TailHeight", 30));
       Shape.DefineFigureGenerator("Arrow2", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // width of arrowhead
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // width of arrowhead
         if (double.IsNaN(param1)) param1 = 30;
         if (param1 > w) param1 = w;
-        var param2 = (shape != null) ? shape.Parameter2 : double.NaN; // height of tail
+        var param2 = (shape != null) ? shape.Parameter2 : double.NaN;  // height of tail
         if (double.IsNaN(param2)) param2 = 30;
         param2 = Math.Min(param2, h / 2);
 
@@ -1882,7 +1859,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("DoubleEndArrow", 0, new FigureParameter("ConnecterHeight", .3, .01, .99));
       Shape.DefineFigureGenerator("DoubleEndArrow", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // height of midsection
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // height of midsection
         if (double.IsNaN(param1)) param1 = .3;
 
         var y1 = (.5 - param1 / 2) * h;
@@ -1920,9 +1897,9 @@ namespace Northwoods.Go.Extensions {
       FigureParameter.SetFigureParameter("DoubleEndArrow2", 0, new FigureParameter("ConnecterHeight", 40));
       FigureParameter.SetFigureParameter("DoubleEndArrow2", 1, new FigureParameter("ArrowHeight", 100));
       Shape.DefineFigureGenerator("DoubleEndArrow2", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // height of midsection
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // height of midsection
         if (double.IsNaN(param1)) param1 = 40;
-        var param2 = (shape != null) ? shape.Parameter2 : double.NaN; // height of arrows
+        var param2 = (shape != null) ? shape.Parameter2 : double.NaN;  // height of arrows
         if (double.IsNaN(param2)) param2 = 100;
 
         /*
@@ -1943,7 +1920,7 @@ namespace Northwoods.Go.Extensions {
         var y2outer = y1outer + param2;
         if (param1 > h || param2 > h) {
           if (param2 > param1) {
-            param1 = param1 * h / param2; // use similar ratio
+            param1 = param1 * h / param2;  // use similar ratio
             y1 = (h - param1) / 2;
             y2 = y1 + param1;
             y1outer = 0;
@@ -1986,7 +1963,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("IBeamArrow", 0, new FigureParameter("ConnectorHeight", .3, .01, .99));
       Shape.DefineFigureGenerator("IBeamArrow", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // height of midsection
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // height of midsection
         if (double.IsNaN(param1)) param1 = .3;
 
         var y1 = (.5 - param1 / 2) * h;
@@ -2020,9 +1997,9 @@ namespace Northwoods.Go.Extensions {
       FigureParameter.SetFigureParameter("IBeamArrow2", 0, new FigureParameter("ConnectorHeight", 40));
       FigureParameter.SetFigureParameter("IBeamArrow2", 1, new FigureParameter("BeamArrowHeight", 100));
       Shape.DefineFigureGenerator("IBeamArrow2", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // height of midsection
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // height of midsection
         if (double.IsNaN(param1)) param1 = 40;
-        var param2 = (shape != null) ? shape.Parameter2 : double.NaN; // height of beam and arrow
+        var param2 = (shape != null) ? shape.Parameter2 : double.NaN;  // height of beam and arrow
         if (double.IsNaN(param2)) param2 = 100;
 
         var y1 = (h - param1) / 2;
@@ -2031,7 +2008,7 @@ namespace Northwoods.Go.Extensions {
         var y2outer = y1outer + param2;
         if (param1 > h || param2 > h) {
           if (param2 > param1) {
-            param1 = param1 * h / param2; // use similar ratio
+            param1 = param1 * h / param2;  // use similar ratio
             y1 = (h - param1) / 2;
             y2 = y1 + param1;
             y1outer = 0;
@@ -2069,7 +2046,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("Pointer", 0, new FigureParameter("BackPoint", .1, 0, .2));
       Shape.DefineFigureGenerator("Pointer", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // how much the back of the pointer comes in
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // how much the back of the pointer comes in
         if (double.IsNaN(param1)) param1 = .1;
 
         var geo = new Geometry();
@@ -2087,7 +2064,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("RoundedPointer", 0, new FigureParameter("RoundedEdged", .3, 0, .5));
       Shape.DefineFigureGenerator("RoundedPointer", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // how much the curved back of the pointer comes in
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // how much the curved back of the pointer comes in
         if (double.IsNaN(param1)) param1 = .3;
 
         var geo = new Geometry();
@@ -2105,7 +2082,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("SplitEndArrow", 0, new FigureParameter("TailHeight", 0.4, 0.01, .99));
       Shape.DefineFigureGenerator("SplitEndArrow", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // % height of arrow tail
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // % height of arrow tail
         if (double.IsNaN(param1)) param1 = .4;
 
         var y1 = (.5 - param1 / 2) * h;
@@ -2167,7 +2144,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("SquareArrow", 0, new FigureParameter("ArrowPoint", .7, .2, .9));
       Shape.DefineFigureGenerator("SquareArrow", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // pointiness of arrow, lower is more pointy
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // pointiness of arrow, lower is more pointy
         if (double.IsNaN(param1)) param1 = .7;
 
         var geo = new Geometry();
@@ -2262,7 +2239,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("Cylinder1", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // half the height of the ellipse
-        if (double.IsNaN(param1)) param1 = 5; // default value
+        if (double.IsNaN(param1)) param1 = 5;  // default value
         param1 = Math.Min(param1, h / 3);
 
         var geo = new Geometry();
@@ -2296,7 +2273,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("Cylinder2", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // half the height of the ellipse
-        if (double.IsNaN(param1)) param1 = 5; // default value
+        if (double.IsNaN(param1)) param1 = 5;  // default value
         param1 = Math.Min(param1, h / 3);
 
         var geo = new Geometry();
@@ -2330,7 +2307,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("Cylinder3", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // half the width of the ellipse
-        if (double.IsNaN(param1)) param1 = 5; // default value
+        if (double.IsNaN(param1)) param1 = 5;  // default value
         param1 = Math.Min(param1, w / 3);
 
         var geo = new Geometry();
@@ -2364,7 +2341,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("Cylinder4", (shape, w, h) => {
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // half the width of the ellipse
-        if (double.IsNaN(param1)) param1 = 5; // default value
+        if (double.IsNaN(param1)) param1 = 5;  // default value
         param1 = Math.Min(param1, w / 3);
 
         var geo = new Geometry();
@@ -2562,7 +2539,7 @@ namespace Northwoods.Go.Extensions {
 
       FigureParameter.SetFigureParameter("Card", 0, new FigureParameter("CornerCutoutSize", .2, .1, .9));
       Shape.DefineFigureGenerator("Card", (shape, w, h) => {
-        var param1 = (shape != null) ? shape.Parameter1 : double.NaN; // size of corner cutout
+        var param1 = (shape != null) ? shape.Parameter1 : double.NaN;  // size of corner cutout
         if (double.IsNaN(param1)) param1 = .2;
 
         var geo = new Geometry();
@@ -2724,7 +2701,7 @@ namespace Northwoods.Go.Extensions {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         if (double.IsNaN(param1)) param1 = .2;
-        else if (param1 < .15) param1 = .15; // Minimum
+        else if (param1 < .15) param1 = .15;  // Minimum
         var cpOffset = KAPPA * .2;
         var fig = new PathFigure(0, .2 * h, true);
         geo.Add(fig);
@@ -2752,7 +2729,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("DividedProcess", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1) || param1 < .1) param1 = .1; // Minimum
+        if (double.IsNaN(param1) || param1 < .1) param1 = .1;  // Minimum
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -2785,7 +2762,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("ExternalOrganization", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1) || param1 < .2) param1 = .2; // Minimum
+        if (double.IsNaN(param1) || param1 < .2) param1 = .2;  // Minimum
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -2840,7 +2817,7 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("File", (shape, w, h) => {
         var geo = new Geometry();
-        var fig = new PathFigure(0, 0, true); // starting point
+        var fig = new PathFigure(0, 0, true);  // starting point
         geo.Add(fig);
         fig.Add(new PathSegment(SegmentType.Line, .75 * w, 0));
         fig.Add(new PathSegment(SegmentType.Line, w, .25 * h));
@@ -2879,8 +2856,8 @@ namespace Northwoods.Go.Extensions {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         var param2 = (shape != null) ? shape.Parameter2 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Distance from left
-        if (double.IsNaN(param2)) param2 = .1; // Distance from top
+        if (double.IsNaN(param1)) param1 = .1;  // Distance from left
+        if (double.IsNaN(param2)) param2 = .1;  // Distance from top
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -2998,7 +2975,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("MessageFromUser", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .7; // How far from the right the point is
+        if (double.IsNaN(param1)) param1 = .7;  // How far from the right the point is
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3014,7 +2991,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("MicroformProcessing", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .25; // How far from the top/bottom the points are
+        if (double.IsNaN(param1)) param1 = .25;  // How far from the top/bottom the points are
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3105,8 +3082,8 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("OfflineStorage", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Distance between 2 top lines
-        var l = 1 - param1; // Length of the top line
+        if (double.IsNaN(param1)) param1 = .1;  // Distance between 2 top lines
+        var l = 1 - param1;  // Length of the top line
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3180,8 +3157,8 @@ namespace Northwoods.Go.Extensions {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         var param2 = (shape != null) ? shape.Parameter2 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Distance of left line from left
-        if (double.IsNaN(param2)) param2 = .3; // Distance of point from right
+        if (double.IsNaN(param1)) param1 = .1;  // Distance of left line from left
+        if (double.IsNaN(param2)) param2 = .3;  // Distance of point from right
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3198,8 +3175,8 @@ namespace Northwoods.Go.Extensions {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
         var param2 = (shape != null) ? shape.Parameter2 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Distance of left line from left
-        if (double.IsNaN(param2)) param2 = .3; // Distance of top and bottom right corners from right
+        if (double.IsNaN(param1)) param1 = .1;  // Distance of left line from left
+        if (double.IsNaN(param2)) param2 = .3;  // Distance of top and bottom right corners from right
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3236,7 +3213,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("Process", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Distance of left  line from left edge
+        if (double.IsNaN(param1)) param1 = .1;  // Distance of left  line from left edge
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -3301,7 +3278,7 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("TransmittalTape", (shape, w, h) => {
         var geo = new Geometry();
         var param1 = (shape != null) ? shape.Parameter1 : double.NaN;
-        if (double.IsNaN(param1)) param1 = .1; // Bottom line"s distance from the point on the triangle
+        if (double.IsNaN(param1)) param1 = .1;  // Bottom line's distance from the point on the triangle
         var fig = new PathFigure(0, 0, true);
         geo.Add(fig);
 
@@ -4026,8 +4003,8 @@ namespace Northwoods.Go.Extensions {
       Shape.DefineFigureGenerator("BpmnActivityLoop", (shape, w, h) => {
         var geo = new Geometry();
         var r = .5;
-        var cx = 0; // offset from Center x
-        var cy = 0; // offset from Center y
+        var cx = 0;  // offset from Center x
+        var cy = 0;  // offset from Center y
         var d = r * KAPPA;
         var mx1 = (.4 * Math.Sqrt(2) / 2 + .5);
         var my1 = (.5 - .5 * Math.Sqrt(2) / 2);
@@ -5050,7 +5027,7 @@ namespace Northwoods.Go.Extensions {
             .Add(new PathSegment(SegmentType.Line, 0.8566875 * w, 0.23796875 * h))
             .Add(new PathSegment(SegmentType.Line, 0.76825 * w, 0.14959375 * h))
             .Add(new PathSegment(SegmentType.Line, 0.67596875 * w, 0.24184375 * h))
-            .Add(new PathSegment(SegmentType.Bezier, 0.5625 * w, 0.19378125 * h, 0.64228125 * w, 0.2188125 * h, 0.603875 * w, 0.2021875 * h))
+            .Add(new PathSegment(SegmentType.Bezier, 0.5625 * w, 0.19378125 * h, 0.64228125 * w, 0.2188125 * h, 0.603875 * w, 0.2022875 * h))
             .Add(new PathSegment(SegmentType.Line, 0.5625 * w, 0.0625 * h))
             .Add(new PathSegment(SegmentType.Line, 0.4375 * w, 0.0625 * h))
             .Add(new PathSegment(SegmentType.Line, 0.4375 * w, 0.19378125 * h))
@@ -5134,7 +5111,7 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(0, h, true);
         geo.Add(fig);
 
-        // bottam rectangle section
+        // bottom rectangle section
         fig.Add(new PathSegment(SegmentType.Line, w, h));
         fig.Add(new PathSegment(SegmentType.Line, w, h * .7));
         fig.Add(new PathSegment(SegmentType.Line, 0, h * .7).Close());
@@ -5159,7 +5136,7 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(w * 1, h * 1, false);
         geo.Add(fig);
 
-        fig.Add(new PathSegment(SegmentType.Line, 0, h * 1)); // bottom part
+        fig.Add(new PathSegment(SegmentType.Line, 0, h * 1));  // bottom part
         fig.Add(new PathSegment(SegmentType.Line, 0, h * .85));
         fig.Add(new PathSegment(SegmentType.Line, .046 * w, h * .85));
         fig.Add(new PathSegment(SegmentType.Line, .046 * w, h * .45));
@@ -5173,23 +5150,23 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, (1 - .046) * w, h * .45));
         fig.Add(new PathSegment(SegmentType.Line, (1 - .046) * w, h * .85));
         fig.Add(new PathSegment(SegmentType.Line, w, h * .85).Close());
-        var fig2 = new PathFigure(.126 * w, .85 * h, false); // is filled in our not
+        var fig2 = new PathFigure(.126 * w, .85 * h, false);  // is filled in our not
         geo.Add(fig2);
         fig2.Add(new PathSegment(SegmentType.Line, .126 * w, .45 * h));
         fig2.Add(new PathSegment(SegmentType.Line, .322 * w, .45 * h));
         fig2.Add(new PathSegment(SegmentType.Line, .322 * w, .85 * h).Close());
-        var fig3 = new PathFigure(.402 * w, .85 * h, false); // is filled in our not
+        var fig3 = new PathFigure(.402 * w, .85 * h, false);  // is filled in our not
         geo.Add(fig3);
         fig3.Add(new PathSegment(SegmentType.Line, .402 * w, .45 * h));
         fig3.Add(new PathSegment(SegmentType.Line, .598 * w, .45 * h));
         fig3.Add(new PathSegment(SegmentType.Line, .598 * w, .85 * h).Close());
-        var fig4 = new PathFigure(.678 * w, .85 * h, false); // is filled in our not
+        var fig4 = new PathFigure(.678 * w, .85 * h, false);  // is filled in our not
         geo.Add(fig4);
         fig4.Add(new PathSegment(SegmentType.Line, .678 * w, .45 * h));
         fig4.Add(new PathSegment(SegmentType.Line, .874 * w, .45 * h));
         fig4.Add(new PathSegment(SegmentType.Line, .874 * w, .85 * h).Close());
         // the top inner triangle
-        var fig5 = new PathFigure(.5 * w, .1 * h, false); // is filled in our not
+        var fig5 = new PathFigure(.5 * w, .1 * h, false);  // is filled in our not
         geo.Add(fig5);
         fig5.Add(new PathSegment(SegmentType.Line, (.046 + .15) * w, .30 * h));
         fig5.Add(new PathSegment(SegmentType.Line, (1 - (.046 + .15)) * w, .30 * h).Close());
@@ -5202,7 +5179,7 @@ namespace Northwoods.Go.Extensions {
         geo.Add(fig);
 
         // Bottom part
-        fig.Add(new PathSegment(SegmentType.Line, w * .20, h * 1)); // bottom left part
+        fig.Add(new PathSegment(SegmentType.Line, w * .20, h * 1));  // bottom left part
         fig.Add(new PathSegment(SegmentType.Line, w * .20, h * .80));
         fig.Add(new PathSegment(SegmentType.Line, w * .40, h * .80));
         fig.Add(new PathSegment(SegmentType.Line, w * .40, h * .60));
@@ -5226,29 +5203,29 @@ namespace Northwoods.Go.Extensions {
 
       Shape.DefineFigureGenerator("5Bars", (shape, w, h) => {
         var geo = new Geometry();
-        var fig = new PathFigure(0, h * 1, true); // bottom left
+        var fig = new PathFigure(0, h * 1, true);  // bottom left
         geo.Add(fig);
 
         // Width of each bar is .184
         // space in between each bar is .2
-        fig.Add(new PathSegment(SegmentType.Line, w * .184, h * 1)); // bottom left part
+        fig.Add(new PathSegment(SegmentType.Line, w * .184, h * 1));  // bottom left part
         fig.Add(new PathSegment(SegmentType.Line, w * .184, h * (1 - .184)).Close());
-        var fig3 = new PathFigure(w * .204, h, true); // is filled in our not
+        var fig3 = new PathFigure(w * .204, h, true);  // is filled in our not
         geo.Add(fig3);
         fig3.Add(new PathSegment(SegmentType.Line, w * .204, h * (1 - .184)));
         fig3.Add(new PathSegment(SegmentType.Line, w * .388, h * (1 - (.184 * 2))));
         fig3.Add(new PathSegment(SegmentType.Line, w * .388, h * 1).Close());
-        var fig4 = new PathFigure(w * .408, h, true); // is filled in our not
+        var fig4 = new PathFigure(w * .408, h, true);  // is filled in our not
         geo.Add(fig4);
         fig4.Add(new PathSegment(SegmentType.Line, w * .408, h * (1 - (.184 * 2))));
         fig4.Add(new PathSegment(SegmentType.Line, w * .592, h * (1 - (.184 * 3))));
         fig4.Add(new PathSegment(SegmentType.Line, w * .592, h * 1).Close());
-        var fig5 = new PathFigure(w * .612, h, true); // is filled in our not
+        var fig5 = new PathFigure(w * .612, h, true);  // is filled in our not
         geo.Add(fig5);
         fig5.Add(new PathSegment(SegmentType.Line, w * .612, h * (1 - (.184 * 3))));
         fig5.Add(new PathSegment(SegmentType.Line, w * .796, h * (1 - (.184 * 4))));
         fig5.Add(new PathSegment(SegmentType.Line, w * .796, h * 1).Close());
-        var fig6 = new PathFigure(w * .816, h, true); // is filled in our not
+        var fig6 = new PathFigure(w * .816, h, true);  // is filled in our not
         geo.Add(fig6);
         fig6.Add(new PathSegment(SegmentType.Line, w * .816, h * (1 - (.184 * 4))));
         fig6.Add(new PathSegment(SegmentType.Line, w * 1, h * (1 - (.184 * 5))));
@@ -5259,31 +5236,31 @@ namespace Northwoods.Go.Extensions {
       // desktop
       Shape.DefineFigureGenerator("PC", (shape, w, h) => {
         var geo = new Geometry();
-        var fig = new PathFigure(0, 0, true); // top right
+        var fig = new PathFigure(0, 0, true);  // top right
         geo.Add(fig);
 
         fig.Add(new PathSegment(SegmentType.Line, 0, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .3, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .3, 0).Close());
         // Drive looking rectangle 1
-        var fig2 = new PathFigure(w * .055, .07 * h, true); // is filled in our not
+        var fig2 = new PathFigure(w * .055, .07 * h, true);  // is filled in our not
         geo.Add(fig2);
         fig2.Add(new PathSegment(SegmentType.Line, w * .245, h * .07));
         fig2.Add(new PathSegment(SegmentType.Line, w * .245, h * .1));
         fig2.Add(new PathSegment(SegmentType.Line, w * .055, h * .1).Close());
         // Drive looking rectangle 2
-        var fig3 = new PathFigure(w * .055, .13 * h, true); // is filled in our not
+        var fig3 = new PathFigure(w * .055, .13 * h, true);  // is filled in our not
         geo.Add(fig3);
         fig3.Add(new PathSegment(SegmentType.Line, w * .245, h * .13));
         fig3.Add(new PathSegment(SegmentType.Line, w * .245, h * .16));
         fig3.Add(new PathSegment(SegmentType.Line, w * .055, h * .16).Close());
         // Drive/cd rom looking rectangle 3
-        var fig4 = new PathFigure(w * .055, .18 * h, true); // is filled in our not
+        var fig4 = new PathFigure(w * .055, .18 * h, true);  // is filled in our not
         geo.Add(fig4);
         fig4.Add(new PathSegment(SegmentType.Line, w * .245, h * .18));
         fig4.Add(new PathSegment(SegmentType.Line, w * .245, h * .21));
         fig4.Add(new PathSegment(SegmentType.Line, w * .055, h * .21).Close());
-        var fig5 = new PathFigure(w * 1, 0, true); // is filled in our not
+        var fig5 = new PathFigure(w * 1, 0, true);  // is filled in our not
         geo.Add(fig5);
         fig5.Add(new PathSegment(SegmentType.Line, w * .4, 0));
         fig5.Add(new PathSegment(SegmentType.Line, w * .4, h * .65));
@@ -5347,7 +5324,7 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(0, 0, false);
         geo.Add(fig);
 
-        fig.Add(new PathSegment(SegmentType.Arc, 270, 180, w * 0, w * 0.3, w * 0.055)); // left semi-circle
+        fig.Add(new PathSegment(SegmentType.Arc, 270, 180, w * 0, w * 0.3, w * 0.055));  // left semi-circle
         fig.Add(new PathSegment(SegmentType.Line, 0, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .08, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .08, h * .95));
@@ -5383,23 +5360,23 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, w * (.08 + .056 * 15), h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
-        var fig2 = new PathFigure(0, 0, false); // is filled in our not
+        var fig2 = new PathFigure(0, 0, false);  // is filled in our not
         geo.Add(fig2);
         fig2.Add(new PathSegment(SegmentType.Line, w * 1, h * 0));
-        fig2.Add(new PathSegment(SegmentType.Arc, 270, -180, w * 1, w * 0.3, w * 0.055)); // right semi circle
+        fig2.Add(new PathSegment(SegmentType.Arc, 270, -180, w * 1, w * 0.3, w * 0.055));  // right semi circle
         fig2.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
         // Each of the little square boxes on the tape
-        var fig3 = new PathFigure(w * .11, h * .1, false); // is filled in our not
+        var fig3 = new PathFigure(w * .11, h * .1, false);  // is filled in our not
         geo.Add(fig3);
         fig3.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 1) + (.028 * 0)), h * .1));
         fig3.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 1) + (.028 * 0)), h * .8));
         fig3.Add(new PathSegment(SegmentType.Line, w * .11, h * .8).Close());
-        var fig4 = new PathFigure(w * (.11 + (.24133333 * 1) + (.028 * 1)), h * .1, false); // is filled in our not
+        var fig4 = new PathFigure(w * (.11 + (.24133333 * 1) + (.028 * 1)), h * .1, false);  // is filled in our not
         geo.Add(fig4);
         fig4.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 2) + (.028 * 1)), h * .1));
         fig4.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 2) + (.028 * 1)), h * .8));
         fig4.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 1) + (.028 * 1)), h * .8).Close());
-        var fig5 = new PathFigure(w * (.11 + (.24133333 * 2) + (.028 * 2)), h * .1, false); // is filled in our not
+        var fig5 = new PathFigure(w * (.11 + (.24133333 * 2) + (.028 * 2)), h * .1, false);  // is filled in our not
         geo.Add(fig5);
         fig5.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 3) + (.028 * 2)), h * .1));
         fig5.Add(new PathSegment(SegmentType.Line, w * (.11 + (.24133333 * 3) + (.028 * 2)), h * .8));
@@ -5448,7 +5425,7 @@ namespace Northwoods.Go.Extensions {
         param1 = Math.Min(param1, h / 3);
 
         var cpOffset = param1 * KAPPA;
-        var bubbleH = h * .8; // leave some room at bottom for pointer
+        var bubbleH = h * .8;  // leave some room at bottom for pointer
 
         var geo = new Geometry();
         var fig = new PathFigure(param1, 0, true);
@@ -5487,7 +5464,7 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, w * .65, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .20, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * .20, h * .45).Close());
-        var fig2 = new PathFigure(w * 1, h * .55, true); // is filled in our not
+        var fig2 = new PathFigure(w * 1, h * .55, true);  // is filled in our not
         geo.Add(fig2);
         fig2.Add(new PathSegment(SegmentType.Line, w * .75, h * 1));
         fig2.Add(new PathSegment(SegmentType.Line, w * .50, h * .55));
@@ -5528,15 +5505,15 @@ namespace Northwoods.Go.Extensions {
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * .10));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * .90));
         fig.Add(new PathSegment(SegmentType.Line, w * 0, h * .90).Close());
-        var fig2 = new PathFigure(w * .10, h * .20, true); // is filled in our not
+        var fig2 = new PathFigure(w * .10, h * .20, true);  // is filled in our not
         geo.Add(fig2);
         fig2.Add(new PathSegment(SegmentType.Line, w * .10, h * .25));
-        fig2.Add(new PathSegment(SegmentType.Line, w * .22, h * .285)); // midpoint
+        fig2.Add(new PathSegment(SegmentType.Line, w * .22, h * .285));  // midpoint
         fig2.Add(new PathSegment(SegmentType.Line, w * .10, h * .32));
         fig2.Add(new PathSegment(SegmentType.Line, w * .10, h * .37));
         fig2.Add(new PathSegment(SegmentType.Line, w * .275, h * .32));
         fig2.Add(new PathSegment(SegmentType.Line, w * .275, h * .25).Close());
-        var fig3 = new PathFigure(w * .28, h * .37, true); // is filled in our not
+        var fig3 = new PathFigure(w * .28, h * .37, true);  // is filled in our not
         geo.Add(fig3);
         fig3.Add(new PathSegment(SegmentType.Line, w * .45, h * .37));
         fig3.Add(new PathSegment(SegmentType.Line, w * .45, h * .41));
@@ -5575,9 +5552,9 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(w * 0, h * 1, true);
         geo.Add(fig);
 
-        var third = .1 / .3; // just to keep values consistent
-                             // outer frame
-                             // starts bottom left
+        var third = .1 / .3;  // just to keep values consistent
+        // outer frame
+        // starts bottom left
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * (1 - third)));
         fig.Add(new PathSegment(SegmentType.Line, w * .8, h * 0));
@@ -5613,9 +5590,9 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(w * 0, h * 1, true);
         geo.Add(fig);
 
-        var third = .1 / .3; // just to keep values consistent
-                             // outer frame
-                             // starts bottom left
+        var third = .1 / .3;  // just to keep values consistent
+        // outer frame
+        // starts bottom left
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * (1 - third)));
         fig.Add(new PathSegment(SegmentType.Line, w * .8, h * 0));
@@ -5642,9 +5619,9 @@ namespace Northwoods.Go.Extensions {
         var fig = new PathFigure(w * 0, h * 1, true);
         geo.Add(fig);
 
-        var third = .1 / .3; // just to keep values consistent
-                             // outer frame
-                             // starts bottom left
+        var third = .1 / .3;  // just to keep values consistent
+        // outer frame
+        // starts bottom left
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * 1));
         fig.Add(new PathSegment(SegmentType.Line, w * 1, h * (1 - third)));
         fig.Add(new PathSegment(SegmentType.Line, w * .8, h * 0));

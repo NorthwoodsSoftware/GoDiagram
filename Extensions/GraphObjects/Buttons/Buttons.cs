@@ -1,11 +1,12 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
-* This is an extension and not part of the main library.
+* This is an extension and not part of the main GoDiagram library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
@@ -39,7 +40,7 @@ namespace Northwoods.Go.Extensions {
         var buttonStrokeNormal = "#bdbdbd";
         var buttonFillOver = "#e0e0e0";
         var buttonStrokeOver = "#9e9e9e";
-        var buttonFillPressed = "#bdbdbd"; // set to null for no button pressed effects
+        var buttonFillPressed = "#bdbdbd";  // set to null for no button pressed effects
         var buttonStrokePressed = "#9e9e9e";
         var buttonFillDisabled = "#e5e5e5";
 
@@ -242,11 +243,11 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// This is a complete Button that you can have in a Node template
-      /// to allow the user to collapse/expand the subtree beginning at that Node.
-      ///
-      /// Typical usage within a Node template:
-      ///   Builder.Make<Panel>("TreeExpanderButton")
+      // This is a complete Button that you can have in a Node template
+      // to allow the user to collapse/expand the subtree beginning at that Node.
+      //
+      // Typical usage within a Node template:
+      //   Builder.Make<Panel>("TreeExpanderButton")
       Builder.DefineBuilder("TreeExpanderButton", (args) => {
         var button = Builder.Make<Panel>("Button").Set(new {
           // set these values for the IsTreeExpanded binding conversion
@@ -294,11 +295,11 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// This is a complete Button that you can have in a Group template
-      /// to allow the user to collapse/expand the subgraph that the Group holds.
-      ///
-      /// Typical usage within a Group template:
-      ///   Builder.Make<Panel>("SubGraphExpanderButton")
+      // This is a complete Button that you can have in a Group template
+      // to allow the user to collapse/expand the subgraph that the Group holds.
+      //
+      // Typical usage within a Group template:
+      //   Builder.Make<Panel>("SubGraphExpanderButton")
       Builder.DefineBuilder("SubGraphExpanderButton", (args) => {
         var button = Builder.Make<Panel>("Button").Set(new {
           // set these values for the IsSubGraphExpanded binding conversion
@@ -342,13 +343,13 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// This is just an "Auto" Adornment that can hold some contents within a light gray, shadowed box.
-      ///
-      /// Typical usage:
-      ///   ToolTip =
-      ///     Builder.Make<Adornment>("ToolTip").Add(
-      ///       new TextBlock { ... }
-      ///     )
+      // This is just an "Auto" Adornment that can hold some contents within a light gray, shadowed box.
+      //
+      // Typical usage:
+      //   ToolTip =
+      //     Builder.Make<Adornment>("ToolTip").Add(
+      //       new TextBlock { ... }
+      //     )
       Builder.DefineBuilder("ToolTip", (args) => {
         var ad = new Adornment(PanelLayoutAuto.Instance) {
           IsShadowed = true,
@@ -369,18 +370,18 @@ namespace Northwoods.Go.Extensions {
         return ad;
       });
 
-      /// This is just a "Vertical" Adornment that can hold some "ContextMenuButton"s.
-      ///
-      /// Typical usage:
-      ///   ContextMenu =
-      ///     Builder.Make<Adornment>("ContextMenu").Add(
-      ///       Builder.Make<Panel>("ContextMenuButton").Add(
-      ///         new TextBlock { ... }
-      ///       ).Set(new {
-      ///           Click = ...
-      ///       }),
-      ///       Builder.Make<Panel>("ContextMenuButton") ...
-      ///     )
+      // This is just a "Vertical" Adornment that can hold some "ContextMenuButton"s.
+      //
+      // Typical usage:
+      //   ContextMenu =
+      //     Builder.Make<Adornment>("ContextMenu").Add(
+      //       Builder.Make<Panel>("ContextMenuButton").Add(
+      //         new TextBlock { ... }
+      //       ).Set(new {
+      //           Click = ...
+      //       }),
+      //       Builder.Make<Panel>("ContextMenuButton") ...
+      //     )
       Builder.DefineBuilder("ContextMenu", (args) => {
         var ad = new Adornment(PanelLayoutVertical.Instance) {
           Background = "#f5f5f5",
@@ -399,18 +400,18 @@ namespace Northwoods.Go.Extensions {
         return ad;
       });
 
-      /// This just holds the 'ButtonBorder' Shape that acts as the border
-      /// around the button contents, which must be supplied by the caller.
-      /// The button contents are usually a TextBlock or Panel consisting of a Shape and a TextBlock.
-      ///
-      /// Typical usage within an Adornment that is either a GraphObject.ContextMenu or a Diagram.ContextMenu:
-      ///   Builder.Make<Panel>("ContextMenuButton").Add(
-      ///     new TextBlock { ... }
-      ///   ).Set(new {
-      ///     Click = new Action<InputEvent, GraphObject>((e, obj) => {
-      ///       Console.WriteLine("Command for " + (obj.Part as Adornment).AdornedPart);
-      ///     })
-      ///   }).Bind("Visible", "", (data, _) => { return ...OK to perform Command...; })
+      // This just holds the 'ButtonBorder' Shape that acts as the border
+      // around the button contents, which must be supplied by the caller.
+      // The button contents are usually a TextBlock or Panel consisting of a Shape and a TextBlock.
+      //
+      // Typical usage within an Adornment that is either a GraphObject.ContextMenu or a Diagram.ContextMenu:
+      //   Builder.Make<Panel>("ContextMenuButton").Add(
+      //     new TextBlock { ... }
+      //   ).Set(new {
+      //     Click = new Action<InputEvent, GraphObject>((e, obj) => {
+      //       Console.WriteLine("Command for " + (obj.Part as Adornment).AdornedPart);
+      //     })
+      //   }).Bind("Visible", "", (data, _) => { return ...OK to perform Command...; })
       Builder.DefineBuilder("ContextMenuButton", (args) => {
         var button = Builder.Make<Panel>("Button");
         button.Stretch = Stretch.Horizontal;
@@ -425,20 +426,20 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// This button is used to toggle the visibility of a GraphObject named
-      /// by the second argument to Builder.Make.  If the second argument is not present
-      /// or if it is not a string, this assumes that the element name is 'COLLAPSIBLE'.
-      /// You can only control the visibility of one element in a Part at a time,
-      /// although that element might be an arbitrarily complex Panel.
-      ///
-      /// Typical usage:
-      ///   new Panel { ... }.Add(
-      ///     Builder.Make<Panel>("PanelExpanderButton", "COLLAPSIBLE"),
-      ///     ...,
-      ///     new Panel { ..., Name = "COLLAPSIBLE" }.Add(
-      ///       ...stuff to be hidden or shown as the PanelExpanderButton is clicked...
-      ///     )
-      ///   )
+      // This button is used to toggle the visibility of a GraphObject named
+      // by the second argument to Builder.Make.  If the second argument is not present
+      // or if it is not a string, this assumes that the element name is 'COLLAPSIBLE'.
+      // You can only control the visibility of one element in a Part at a time,
+      // although that element might be an arbitrarily complex Panel.
+      //
+      // Typical usage:
+      //   new Panel { ... }.Add(
+      //     Builder.Make<Panel>("PanelExpanderButton", "COLLAPSIBLE"),
+      //     ...,
+      //     new Panel { ..., Name = "COLLAPSIBLE" }.Add(
+      //       ...stuff to be hidden or shown as the PanelExpanderButton is clicked...
+      //     )
+      //   )
       Builder.DefineBuilder("PanelExpanderButton", (args) => {
         var eltname = Builder.TakeBuilderArgument(ref args, "COLLAPSIBLE");
 
@@ -487,19 +488,19 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// Define a common checkbox button; the first argument is the name of the data property
-      /// to which the state of this checkbox is data bound.  If the first argument is not a string,
-      /// it raises an error.  If no data binding of the checked state is desired,
-      /// pass an empty string as the first argument.
-      ///
-      /// Examples:
-      ///   Builder.Make<Panel>("CheckBoxButton", "DataPropertyName").Set(...)
-      /// or:
-      ///   Builder.Make<Panel>("CheckBoxButton", "").Set(new {
-      ///     _DoClick = new Action<InputEvent, GraphObject>((e, obj) => {
-      ///       Console.WriteLine("Clicked!");
-      ///     })
-      ///   })
+      // Define a common checkbox button; the first argument is the name of the data property
+      // to which the state of this checkbox is data bound.  If the first argument is not a string,
+      // it raises an error.  If no data binding of the checked state is desired,
+      // pass an empty string as the first argument.
+      //
+      // Examples:
+      //   Builder.Make<Panel>("CheckBoxButton", "DataPropertyName").Set(...)
+      // or:
+      //   Builder.Make<Panel>("CheckBoxButton", "").Set(new {
+      //     _DoClick = new Action<InputEvent, GraphObject>((e, obj) => {
+      //       Console.WriteLine("Clicked!");
+      //     })
+      //   })
       Builder.DefineBuilder("CheckBoxButton", (args) => {
         // process the one required string argument for this kind of button
         var propname = Builder.TakeBuilderArgument(ref args);
@@ -536,21 +537,21 @@ namespace Northwoods.Go.Extensions {
         return button;
       });
 
-      /// This defines a whole check-box -- including both a 'CheckBoxButton' and whatever you want as the check box label.
-      /// Note that MouseEnter/MouseLeave/Click events apply to everything in the panel, not just in the 'CheckBoxButton'.
-      ///
-      /// Examples:
-      ///   Builder.Make<Panel>("CheckBox", "ABooleanDataProperty").Add(
-      ///     new TextBlock("the checkbox label")
-      ///   )
-      /// or
-      ///   Builder.Make<Panel>("CheckBox", "SomeProperty").Set(new {
-      ///     _DoClick = new Action<InputEvent, GraphObject>((e, obj) => {
-      ///       ...perform extra side-effects...
-      ///     })
-      ///   }).Add(
-      ///     new TextBlock("A Choice")
-      ///   )
+      // This defines a whole check-box -- including both a 'CheckBoxButton' and whatever you want as the check box label.
+      // Note that MouseEnter/MouseLeave/Click events apply to everything in the panel, not just in the 'CheckBoxButton'.
+      //
+      // Examples:
+      //   Builder.Make<Panel>("CheckBox", "ABooleanDataProperty").Add(
+      //     new TextBlock("the checkbox label")
+      //   )
+      // or
+      //   Builder.Make<Panel>("CheckBox", "SomeProperty").Set(new {
+      //     _DoClick = new Action<InputEvent, GraphObject>((e, obj) => {
+      //       ...perform extra side-effects...
+      //     })
+      //   }).Add(
+      //     new TextBlock("A Choice")
+      //   )
       Builder.DefineBuilder("CheckBox", (args) => {
         // process the one required string argument for this kind of button
         var propname = Builder.TakeBuilderArgument(ref args);
@@ -583,7 +584,7 @@ namespace Northwoods.Go.Extensions {
           _ButtonFillPressed = button["_ButtonFillPressed"],
           _ButtonStrokePressed = button["_ButtonStrokePressed"],
           _ButtonFillDisabled = button["_ButtonFillDisabled"],
-          // also save original Button behavior, for potential use in a Panel.click event handler
+          // also save original Button behavior, for potential use in a Panel.Click event handler
           _ButtonClick = button.Click
         }).Add(button);
 

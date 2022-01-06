@@ -1,8 +1,9 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
+
 /*
-* This is an extension and not part of the main GoDiagram library.
+* This is an extension and not part of the main Go library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
 * Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
@@ -17,9 +18,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// A custom LayeredDigraphLayout that knows about "lanes"
   /// and that positions each node in its respective lane.
-  ///
-  /// This assumes that each Node.data.lane property is a string that names the lane the node should be in.
-  /// You can set the <see cref="LaneProperty"/> propertyto use a different data property name.
+  /// </summary>
+  /// <remarks>
+  /// This assumes that each Node.Data.Lane property is a string that names the lane the node should be in.
+  /// You can set the <see cref="LaneProperty"/> property to use a different data property name.
   /// It is commonplace to set this property to be the same as the
   /// <see cref="Models.GraphLinksModel{TNodeData, TNodeKey, TSharedData, TLinkData, TLinkKey, TPort}.NodeGroupKeyProperty"/>,
   /// so that the one property indicates that a particular node data is a member of a particular group
@@ -29,8 +31,8 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// 
   /// You can add extra space between the lanes by increasing <see cref="LaneSpacing"/> from its default of zero.
   /// That number's unit is columns, <see cref="LayeredDigraphLayout.ColumnSpacing"/>, not in document coordinates.
+  /// </remarks>
   /// @category Layout Extension
-  /// </summary>
   public class SwimLaneLayout : LayeredDigraphLayout {
     // settable properties
     private string _LaneProperty = "Lane";  // how to get lane identifier string from node data

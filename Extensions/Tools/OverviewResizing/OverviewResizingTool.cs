@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -10,13 +10,16 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The OverviewResizingTool class lets the user resize the box within an overview.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/OverviewResizing.Html">Overview Resizing</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/OverviewResizing.html">Overview Resizing</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class OverviewResizingTool : ResizingTool {
     // Internal property used to keep track of changing handle size
@@ -30,10 +33,11 @@ namespace Northwoods.Go.Tools.Extensions {
       _HandleSize = new Size(6, 6);
     }
 
-    /// @hidden @internal
-    /// <param name="resizeBox"></param>
-    /// <returns></returns>
-    public Adornment MakeAdornment(Shape resizeBox) {
+    /// <summary>
+    /// Undocumented.
+    /// </summary>
+    [Undocumented]
+    public virtual Adornment MakeAdornment(Shape resizeBox) {
       _HandleSize = new Size(resizeBox.StrokeWidth * 3, resizeBox.StrokeWidth * 3);
       // Set up the resize adornment
       // placeholder
@@ -59,15 +63,14 @@ namespace Northwoods.Go.Tools.Extensions {
       return ad;
     }
 
-    /// @hidden @internal
-    /// <summary>
     /// Keep the resize handle properly sized as the scale is changing.
     /// This overrides an undocumented method on the ResizingTool.
+    /// <summary>
+    /// Undocumented.
     /// </summary>
-    /// <param name="elt"></param>
-    /// <param name="angle"></param>
+    [Undocumented]
     public override void UpdateResizeHandles(GraphObject elt, double angle) {
-      if (elt == null || !(elt is Adornment)) return;
+      if (elt == null || elt is not Adornment) return;
       var ad = elt as Adornment;
       var handle = ad.FindElement("RSZHND") as Shape;
       var box = ad.AdornedElement as Shape;
@@ -76,23 +79,20 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Overrides <see cref="ResizingTool.Resize"/> to resize the overview box via setting the observed diagram"s scale.
+    /// Overrides <see cref="ResizingTool.Resize"/> to resize the overview box via setting the observed diagram's scale.
     /// </summary>
     /// <param name="newr">the intended new rectangular bounds the overview box.</param>
     public override void Resize(Rect newr) {
-      // TEMOPORARY
-      // Overview NYI:
-      //var overview = Diagram as Overview;
-      //var observed = overview.Observed;
-      //if (observed == null) return;
-      //var oldr = observed.ViewportBounds.Copy();
-      //var oldscale = observed.Scale;
-      //if (oldr.Width != newr.Width || oldr.Height != newr.Height) {
-      //  if (newr.Width > 0 && newr.Height > 0) {
-      //    observed.Scale = Math.Min(oldscale * oldr.Width / newr.Width, oldscale * oldr.Height / newr.Height);
-      //  }
-      //}
-      // END TEMPORARY
+      var overview = Diagram as Overview;
+      var observed = overview.Observed;
+      if (observed == null) return;
+      var oldr = observed.ViewportBounds;
+      var oldscale = observed.Scale;
+      if (oldr.Width != newr.Width || oldr.Height != newr.Height) {
+        if (newr.Width > 0 && newr.Height > 0) {
+          observed.Scale = Math.Min(oldscale * oldr.Width / newr.Width, oldscale * oldr.Height / newr.Height);
+        }
+      }
     }
   }
 }

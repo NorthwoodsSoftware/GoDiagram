@@ -1,10 +1,6 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 /*
 * This is an extension and not part of the main GoDiagram library.
@@ -13,6 +9,10 @@ using System.Linq;
 * Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Northwoods.Go.Extensions {
   /// <summary>
@@ -48,15 +48,13 @@ namespace Northwoods.Go.Extensions {
   /// </summary>
   public class DrawCommandHandler : CommandHandler {
     private ArrowBehavior _ArrowKeyBehavior = ArrowBehavior.Move;
-    private Point _PasteOffset = new Point(10, 10);
-    private Point _LastPasteOffset = new Point(0, 0);
+    private Point _PasteOffset = new(10, 10);
+    private Point _LastPasteOffset = new(0, 0);
 
     /// <summary>
-    /// Gets or sets the arrow key behavior. Possible values can be found in the Behavior enum.
+    /// Gets or sets the arrow key behavior. Possible values can be found in the <see cref="ArrowBehavior"/> enum.
     /// </summary>
     /// <remarks>
-    /// Possible values include <see cref="ArrowBehavior.Move"/>, <see cref="ArrowBehavior.Select"/>,
-    /// <see cref="ArrowBehavior.Scroll"/>, <see cref="ArrowBehavior.Tree"/>, and <see cref="ArrowBehavior.None"/>.
     /// The default value is <see cref="ArrowBehavior.Move"/>.
     /// </remarks>
     public ArrowBehavior ArrowKeyBehavior {
@@ -91,10 +89,12 @@ namespace Northwoods.Go.Extensions {
     /// This controls whether or not the user can invoke the <see cref="AlignLeft"/>, <see cref="AlignRight"/>,
     /// <see cref="AlignTop"/>, <see cref="AlignBottom"/>, <see cref="AlignCenterX"/>, <see cref="AlignCenterY"/> commands.
     /// </summary>
-    /// <returns>This returns true:
-    ///           if the diagram is not <see cref="Diagram.IsReadOnly"/>,
-    ///           if the model is not <see cref="Models.Model{TNodeData, TNodeKey, TSharedData}.IsReadOnly"/>,
-    ///           if there are at least two selected <see cref="Part"/>s.</returns>
+    /// <returns>
+    /// This returns true:
+    ///   if the diagram is not <see cref="Diagram.IsReadOnly"/>,
+    ///   if the model is not <see cref="Models.Model{TNodeData, TNodeKey, TSharedData}.IsReadOnly"/>,
+    ///   if there are at least two selected <see cref="Part"/>s.
+    /// </returns>
     public bool CanAlignSelection() {
       var diagram = Diagram;
       if (diagram.IsReadOnly || diagram.IsModelReadOnly) return false;
@@ -110,11 +110,11 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning left");
       var minPosition = double.PositiveInfinity;
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Link
+        if (current is Link) continue;  // skips over Link
         minPosition = Math.Min(current.Position.X, minPosition);
       }
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Links
+        if (current is Link) continue;  // skips over Links
         current.Move(new Point(minPosition, current.Position.Y));
       }
       diagram.CommitTransaction("aligning left");
@@ -128,11 +128,11 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning right");
       var maxPosition = double.NegativeInfinity;
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Link
+        if (current is Link) continue;  // skips over Link
         maxPosition = Math.Max(current.Position.X + current.ActualBounds.Width, maxPosition);
       }
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Links
+        if (current is Link) continue;  // skips over Links
         current.Move(new Point(maxPosition - current.ActualBounds.Width, current.Position.Y));
       }
       diagram.CommitTransaction("aligning right");
@@ -146,11 +146,11 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning top");
       var minPosition = double.PositiveInfinity;
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Link
+        if (current is Link) continue;  // skips over Link
         minPosition = Math.Min(minPosition, current.Position.Y);
       }
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Links
+        if (current is Link) continue;  // skips over Links
         current.Move(new Point(current.Position.X, minPosition));
       }
       diagram.CommitTransaction("aligning top");
@@ -164,11 +164,11 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning bottom");
       var maxPosition = double.NegativeInfinity;
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Link
+        if (current is Link) continue;  // skips over Link
         maxPosition = Math.Max(maxPosition, current.Position.Y + current.ActualBounds.Height);
       }
       foreach (var current in diagram.Selection) {
-        if (current is Link) continue; // skips over Links
+        if (current is Link) continue;  // skips over Links
         current.Move(new Point(current.Position.X + current.ActualBounds.Width, maxPosition));
       }
       diagram.CommitTransaction("aligning bottom");
@@ -184,7 +184,7 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning Center X");
       var centerX = firstSelection.ActualBounds.X + firstSelection.ActualBounds.Width / 2;
       foreach (var current in diagram.Selection) {
-        if (current is Link) return; // skips over Links
+        if (current is Link) return;  // skips over Links
         current.Move(new Point(centerX - current.ActualBounds.Width / 2, current.ActualBounds.Y));
       }
       diagram.CommitTransaction("aligning Center X");
@@ -200,7 +200,7 @@ namespace Northwoods.Go.Extensions {
       diagram.StartTransaction("aligning Center Y");
       var centerY = firstSelection.ActualBounds.Y + firstSelection.ActualBounds.Height / 2;
       foreach (var current in diagram.Selection) {
-        if (current is Link) return; // skips over Links
+        if (current is Link) return;  // skips over Links
         current.Move(new Point(current.ActualBounds.X, centerY - current.ActualBounds.Height / 2));
       }
       diagram.CommitTransaction("aligning Center Y");
@@ -208,9 +208,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Aligns selected parts top-to-bottom in order of the order selected.
-    /// Distance between parts can be specified. Default distance is 0.
     /// </summary>
-    /// <param name="distance"></param>
+    /// <remarks>
+    /// Distance between parts can be specified. Default distance is 0.
+    /// </remarks>
     public void AlignColumn(int distance = 0) {
       var diagram = Diagram;
       diagram.StartTransaction("align Column");
@@ -231,9 +232,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Aligns selected parts left-to-right in order of the order selected.
-    /// Distance between parts can be specified. Default distance is 0.
     /// </summary>
-    /// <param name="distance"></param>
+    /// <remarks>
+    /// Distance between parts can be specified. Default distance is 0.
+    /// </remarks>
     public void AlignRow(int distance = 0) {
       var diagram = Diagram;
       diagram.StartTransaction("align Row");
@@ -255,10 +257,12 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// This controls whether or not the user can invoke the <see cref="Rotate"/> method.
     /// </summary>
-    /// <returns>This returns true:
-    ///           if the diagram is not <see cref="Diagram.IsReadOnly"/>,
-    ///           if the model is not <see cref="Models.Model{TNodeData, TNodeKey, TSharedData}.IsReadOnly"/>,
-    ///           if there is at least one selected <see cref="Part"/>s.</returns>
+    /// <returns>
+    /// This returns true:
+    ///   if the diagram is not <see cref="Diagram.IsReadOnly"/>,
+    ///   if the model is not <see cref="Models.Model{TNodeData, TNodeKey, TSharedData}.IsReadOnly"/>,
+    ///   if there is at least one selected <see cref="Part"/>s.
+    /// </returns>
     public bool CanRotate() {
       var diagram = Diagram;
       if (diagram.IsReadOnly || diagram.IsModelReadOnly) return false;
@@ -267,15 +271,18 @@ namespace Northwoods.Go.Extensions {
     }
 
     /// <summary>
-    /// Change the angle of the parts connected with the given part. This is in the command handler
-    /// so it can easily be accessed for the purpose of creating commands that change the rotation of parts.
+    /// Change the angle of the parts connected with the given part.
     /// </summary>
+    /// <remarks>
+    /// This is in the command handler
+    /// so it can easily be accessed for the purpose of creating commands that change the rotation of parts.
+    /// </remarks>
     /// <param name="angle">the positive (clockwise) or negative (counter-clockwise) change in the angle of each Part, in degrees.</param>
     public void Rotate(double angle = 90) {
       var diagram = Diagram;
       diagram.StartTransaction("rotate " + angle.ToString());
       foreach (var current in diagram.Selection) {
-        if (current is Link || current is Group) return; // skip over links and Groups
+        if (current is Link || current is Group) return;  // skip over links and Groups
         current.Angle += angle;
       }
       diagram.CommitTransaction("rotate " + angle.ToString());
@@ -284,8 +291,10 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// Change the z-ordering of selected parts to pull them forward, in front of all other parts
     /// in their respective layers.
-    /// All unselected parts in each layer with a selected Part with a non-numeric <see cref="Part.ZOrder"/> will get a ZOrder of 0.
     /// </summary>
+    /// <remarks>
+    /// All unselected parts in each layer with a selected Part with a non-numeric <see cref="Part.ZOrder"/> will get a ZOrder of 0.
+    /// </remarks>
     public void PullToFront() {
       var diagram = Diagram;
       diagram.StartTransaction("pullToFront");
@@ -315,7 +324,7 @@ namespace Northwoods.Go.Extensions {
       // assign each selected Part.ZOrder to the computed value for each Layer
       foreach (var part in diagram.Selection) {
         var z = layers.ContainsKey(part.Layer) ? layers[part.Layer] : 0;
-        DrawCommandHandler._AssignZOrder(part, z + 1);
+        _AssignZOrder(part, z + 1);
       }
       diagram.CommitTransaction("pullToFront");
     }
@@ -323,8 +332,10 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// Change the z-ordering of selected parts to push them backward, behind all other parts
     /// in their respective layers.
-    /// All unselected parts in each layer with a selected Part with a non-numeric <see cref="Part.ZOrder"/> will get a ZOrder of 0.
     /// </summary>
+    /// <remarks>
+    /// All unselected parts in each layer with a selected Part with a non-numeric <see cref="Part.ZOrder"/> will get a ZOrder of 0.
+    /// </remarks>
     public void PushToBack() {
       var diagram = Diagram;
       diagram.StartTransaction("pushToBack");
@@ -354,7 +365,7 @@ namespace Northwoods.Go.Extensions {
       // assign each selected Part.ZOrder to the computed value for each Layer
       foreach (var part in diagram.Selection) {
         var z = layers.ContainsKey(part.Layer) ? layers[part.Layer] : 0;
-        DrawCommandHandler._AssignZOrder(part, z - 1 - DrawCommandHandler._FindGroupDepth(part));
+        _AssignZOrder(part, z - 1 - _FindGroupDepth(part));
       }
       diagram.CommitTransaction("pushToBack");
     }
@@ -364,7 +375,7 @@ namespace Northwoods.Go.Extensions {
       if (part.Layer == root.Layer) part.ZOrder = z;
       if (part is Group g) {
         foreach (var m in g.MemberParts) {
-          DrawCommandHandler._AssignZOrder(m, z + 1, root);
+          _AssignZOrder(m, z + 1, root);
         }
       }
     }
@@ -373,7 +384,7 @@ namespace Northwoods.Go.Extensions {
       if (part is Group g) {
         var d = 0;
         foreach (var m in g.MemberParts) {
-          d = Math.Max(d, DrawCommandHandler._FindGroupDepth(m));
+          d = Math.Max(d, _FindGroupDepth(m));
         }
         return d + 1;
       }
@@ -382,9 +393,11 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// This implements custom behaviors for arrow key keyboard events.
+    /// </summary>
+    /// <remarks>
     /// Set <see cref="ArrowKeyBehavior"/> to select, move, scroll, or none
     /// This affects the behavior when a user types an arrow key.
-    /// </summary>
+    /// </remarks>
     public override void DoKeyDown() {
       var diagram = Diagram;
       var e = diagram.LastInput;
@@ -423,7 +436,7 @@ namespace Northwoods.Go.Extensions {
       var allparts = new List<Part>();
       foreach (var node in Diagram.Nodes) allparts.Add(node);
       foreach (var part in Diagram.Parts) allparts.Add(part);
-      return allparts; // note that this ignores Links (and Adornments)
+      return allparts;  // note that this ignores Links (and Adornments)
     }
 
     /// <summary>
@@ -489,7 +502,7 @@ namespace Northwoods.Go.Extensions {
     }
 
     /// <summary>
-    /// Finds the nearest Part in the specified direction, based on their center points.
+    /// Finds the nearest Part in the specified direction, based on their center points;
     /// if it doesn't find anything it just returns the current part.
     /// </summary>
     /// <param name="dir">the direction in degrees</param>
@@ -500,16 +513,16 @@ namespace Northwoods.Go.Extensions {
       var originalPoint = originalPart.ActualBounds.Center;
       var allparts = _GetAllParts();
       var closestDistance = double.PositiveInfinity;
-      var closest = originalPart; // if no part meets criteria, the same part remains selected
+      var closest = originalPart;  // if no part meets criteria, the same part remains selected
 
       foreach (var nextPart in allparts) {
         if (nextPart == originalPart) continue; // skips over currently selected part
         var nextPoint = nextPart.ActualBounds.Center;
         var angle = originalPoint.Direction(nextPoint);
         var anglediff = _AngleCloseness(angle, dir);
-        if (anglediff <= 45) { // if this part's center is within the desired direction's sector
+        if (anglediff <= 45) {  // if this part's center is within the desired direction's sector
           var distance = originalPoint.DistanceSquared(nextPoint);
-          distance *= 1 + Math.Sin(anglediff * Math.PI / 180); // based on difference from intended angle
+          distance *= 1 + Math.Sin(anglediff * Math.PI / 180);  // based on difference from intended angle
           if (distance < closestDistance) {
             closestDistance = distance;
             closest = nextPart;
@@ -520,7 +533,7 @@ namespace Northwoods.Go.Extensions {
       return closest;
     }
 
-    private double _AngleCloseness(double a, double dir) {
+    private static double _AngleCloseness(double a, double dir) {
       return Math.Min(Math.Abs(dir - a), Math.Min(Math.Abs(dir + 360 - a), Math.Abs(dir - 360 - a)));
     }
 
@@ -529,7 +542,7 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     private void _ArrowKeyTree() {
       var selected = Diagram.Selection.FirstOrDefault();
-      if (!(selected is Node n)) return;
+      if (selected is not Node n) return;
 
       var e = Diagram.LastInput;
       if (e.Key == "ARROWRIGHT") {
@@ -595,7 +608,7 @@ namespace Northwoods.Go.Extensions {
       if (sel != null) Diagram.ScrollToRect(sel.ActualBounds);
     }
 
-    private List<Node> _SortTreeChildrenByY(Node node) {
+    private static List<Node> _SortTreeChildrenByY(Node node) {
       var list = new List<Node>(node.FindTreeChildrenNodes());
       list.Sort((a, b) => {
         var aloc = a.Location;
@@ -612,7 +625,6 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// Reset the last offset for pasting.
     /// </summary>
-    /// <param name="coll"></param>
     public override void CopyToClipboard(IEnumerable<Part> coll) {
       base.CopyToClipboard(coll);
       _LastPasteOffset = _PasteOffset;

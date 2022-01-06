@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,16 +17,17 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The RealtimeDragSelectingTool class lets the user select and deselect Parts within the <see cref="DragSelectingTool.Box"/>
   /// during a drag, not just at the end of the drag.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/RealtimeDragSelecting.Html">Realtime Drag Selecting</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/RealtimeDragSelecting.html">Realtime Drag Selecting</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class RealtimeDragSelectingTool : DragSelectingTool {
     private HashSet<Part> _OriginalSelection;
-    private HashSet<Part> _TemporarySelection;
+    private readonly HashSet<Part> _TemporarySelection;
 
     /// <summary>
-    /// Constructor
+    /// Constructs a RealtimeDragSelectingTool.
     /// </summary>
     public RealtimeDragSelectingTool() : base() {
       _OriginalSelection = new HashSet<Part>();
@@ -117,7 +118,7 @@ namespace Northwoods.Go.Tools.Extensions {
           foreach (var p in found) {
             p.IsSelected = false; temp.Add(p);
           }
-        } else {  // toggle selectedness of parts based on _originalSelection
+        } else {  // toggle selectedness of parts based on _OriginalSelection
           foreach (var p in temp) {
             if (!found.Contains(p)) p.IsSelected = orig.Contains(p);
           }

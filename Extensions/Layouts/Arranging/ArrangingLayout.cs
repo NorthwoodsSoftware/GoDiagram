@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,24 +10,26 @@ using System.Linq;
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Northwoods.Go.Layouts.Extensions {
-
-
-#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
   /// <summary>
   /// A custom Layout that provides one way to have a layout of layouts.
   /// It partitions nodes and links into separate subgraphs, applies a primary
   /// layout to each subgraph, and then arranges those results by an
-  /// arranging layout.Any disconnected nodes are laid out later by a
+  /// arranging layout. Any disconnected nodes are laid out later by a
   /// side layout, by default in a grid underneath the main body of subgraphs.
-  ///
-  /// If you want to experiment with this extension, try the<a href="../../extensionsTS/Arranging.html"> Arranging Layout</a> sample.
-  ///
+  /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Arranging.html">Arranging Layout</a> sample.
+  /// 
   /// This layout uses three separate Layouts.
   ///
   /// One is used for laying out nodes and links that are connected together: <see cref="PrimaryLayout"/>.
   /// This defaults to null and must be set to an instance of a <see cref="Layout"/>,
-  /// such as a <see cref="TreeLayout"/> or a <see cref="ForceDirectedLayout"/> or a custom Layout.
+  /// such as a TreeLayout or a ForceDirectedLayout or a custom Layout.
   ///
   /// One is used to arrange separate subnetworks of the main graph: <see cref="ArrangeLayout"/>.
   /// This defaults to an instance of <see cref="GridLayout"/>.
@@ -55,18 +53,16 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// to be on the side of the arrangement of the main graph of nodes and links.
   ///
   /// Note: if you do not want to have singleton nodes be arranged by <see cref="SideLayout"/>,
-  /// set <see cref="Filter"/> to <code language="cs"> (part) => { return true; }</code>.
+  /// set <see cref="Filter"/> to <code language="cs">(part) => { return true; }</code>.
   /// That will cause all singleton nodes to be arranged by <see cref="ArrangeLayout"/> as if they
   /// were each their own subgraph.
   ///
   /// If you both don't want to use <see cref="SideLayout"/> and you don't want to use <see cref="ArrangeLayout"/>
   /// to lay out connected subgraphs, don't use this ArrangingLayout at all --
   /// just use whatever Layout you would have assigned to <see cref="PrimaryLayout"/>.
-  ///
-  /// </summary>
+  /// </remarks>
   /// @category Layout Extension
   public class ArrangingLayout : NetworkLayout<ArrangingNetwork, ArrangingVertex, ArrangingEdge, ArrangingLayout> {
-#pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
     private Func<Part, bool> _Filter;
     private Spot _Side;
     private Size _Spacing;
@@ -94,13 +90,16 @@ namespace Northwoods.Go.Layouts.Extensions {
       };
       SideLayout = slay;
     }
+
     /// <summary>
     /// Gets or sets the predicate function to call on each non-Link.
-    /// If the predicate returns true, the part will be laid out by the main layouts,
-    /// the primaryLayouts and the arrangingLayout, otherwise by the sideLayout.
-    /// The default value is a function that is true when there are any links connecting with the node.
-    /// Such default behavior will have the sideLayout position all of the singleton nodes.
     /// </summary>
+    /// <remarks>
+    /// If the predicate returns true, the part will be laid out by the main layouts,
+    /// the PrimaryLayouts and the ArrangingLayout, otherwise by the SideLayout.
+    /// The default value is a function that is true when there are any links connecting with the node.
+    /// Such default behavior will have the SideLayout position all of the singleton nodes.
+    /// </remarks>
     public Func<Part, bool> Filter {
       get {
         return _Filter;
@@ -112,75 +111,82 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
       }
     }
+
     /// <summary>
     /// Gets or sets the side <see cref="Spot"/> where the side nodes and links should be laid out,
     /// relative to the results of the main Layout.
+    /// </summary>
+    /// <remarks>
     /// The default value is Spot.BottomSide.
     /// Currently only handles a single side.
-    /// </summary>
-    /// @name ArrangeLayout.Side
-    /// <return></return>
+    /// </remarks>
     public Spot Side {
       get {
         return _Side;
       }
       set {
-        if (!(value is Spot spot) || !value.IsSide()) {
-          throw new Exception("new value for ArrangingLayout.side must be a side Spot, not: " + value);
-      } if (!_Side.Equals(value)) {
+        if (!value.IsSide()) {
+          throw new Exception("new value for ArrangingLayout.Side must be a side Spot, not: " + value);
+        }
+        if (_Side != value) {
           _Side = value;
           InvalidateLayout();
         }
       }
     }
+
     /// <summary>
     /// Gets or sets the space between the main layout and the side layout.
-    /// The default value is Size(20, 20).
     /// </summary>
-    /// @name ArraneLayout.Spacing
-    /// <return></return>
+    /// <remarks>
+    /// The default value is Size(20, 20).
+    /// </remarks>
     public Size Spacing {
       get {
         return _Spacing;
       }
       set {
-        if (!(value is Size size)) {
-          throw new Exception("new value for ArrangingLayout.spacing must be a Size, not: " + value);
-        } if (!_Spacing.Equals(value)) {
-            _Spacing = value;
-            InvalidateLayout();
+        if (_Spacing != value) {
+          _Spacing = value;
+          InvalidateLayout();
         }
       }
     }
+
     /// <summary>
     /// Gets or sets the Layout used for the main part of the diagram.
+    /// </summary>
+    /// <remarks>
     /// The default value is an instance of GridLayout.
     /// Any new value must not be null.
-    /// </summary>
+    /// </remarks>
     public Layout PrimaryLayout {
       get {
         return _PrimaryLayout;
       }
       set {
-        if(!(value is Layout layout)) {
+        if (value is not Layout layout) {
           throw new Exception("layout does not inherit from Layout: " + value);
         }
         _PrimaryLayout = value;
         InvalidateLayout();
       }
     }
+
     /// <summary>
     /// Gets or sets the Layout used to arrange multiple separate connected subgraphs of the main graph.
+    /// </summary>
+    /// <remarks>
     /// The default value is an instance of GridLayout.
     /// Set this property to null in order to get the default behavior of the <see cref="PrimaryLayout"/>
     /// when dealing with multiple connected graphs as a whole.
-    /// </summary>
+    /// </remarks>
     public Layout ArrangeLayout {
       get {
         return _ArrangeLayout;
       }
       set {
-        if (!(value is Layout layout)) { // extra condition here before
+        if (value is not Layout layout) { // extra condition here before
           throw new Exception("layout does not inherit from Layout: " + value);
         }
         _ArrangeLayout = value;
@@ -190,25 +196,28 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the Layout used to arrange the "side" nodes and links -- those outside of the main layout.
+    /// </summary>
+    /// <remarks>
     /// The default value is an instance of GridLayout.
     /// Any new value must not be null.
-    /// </summary>
+    /// </remarks>
     public Layout SideLayout {
       get {
         return _SideLayout;
       }
       set {
-        if (!(value is Layout layout)) {
+        if (value is not Layout layout) {
           throw new Exception("layout does not inherit from Layout: " + value);
         }
         _SideLayout = value;
         InvalidateLayout();
       }
     }
-    /// @ignore @hidden @internal
+
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
+    [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
 
@@ -224,10 +233,11 @@ namespace Northwoods.Go.Layouts.Extensions {
       copy._Side = _Side;
       copy._Spacing = _Spacing;
     }
-    /// @hidden @internal
+
     /// <summary>
+    /// Perform the layout.
     /// </summary>
-    /// <param name="coll"> the collection of Parts to layout.</param>
+    /// <param name="coll">the collection of Parts to layout.</param>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       HashSet<Part> allparts;
       if (coll != null) {
@@ -239,7 +249,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       } else {
         return; // Nothing to layout!
       }
-      if (allparts.Count() == 0) return; // do nothing for an empty collection
+      if (allparts.Count == 0) return; // do nothing for an empty collection
 
       if (Diagram == null) throw new Exception("No Diagram for this Layout");
       // implementations of doLayout that do not make use of a LayoutNetwork
@@ -254,7 +264,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         mainnet = MakeNetwork(maincoll);
         subnets = mainnet.SplitIntoSubNetworks<ArrangingNetwork>();
       }
-      Rect bounds = new Rect();
+      var bounds = new Rect();
       if (ArrangeLayout != null && mainnet != null && subnets != null && subnets.MoveNext()) {
         var groups = new Dictionary<Part, (IEnumerable<Part> Parts, Rect Bounds)>();
         subnets.Reset();
@@ -267,8 +277,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
         foreach (var v in mainnet.Vertexes) {
           if (v.Node != null) {
-            var subcoll = new HashSet<Part>();
-            subcoll.Add(v.Node);
+            var subcoll = new HashSet<Part> { v.Node };
             PreparePrimaryLayout(PrimaryLayout, subcoll);
             PrimaryLayout.DoLayout(subcoll);
             _AddMainNode(groups, subcoll, Diagram);
@@ -277,11 +286,11 @@ namespace Northwoods.Go.Layouts.Extensions {
         ArrangeLayout.DoLayout(groups.Keys);
         foreach (var git in groups) {
           var grp = git.Key;
-          var ginfo = git.Value;
-          MoveSubgraph(ginfo.Parts, ginfo.Bounds, new Rect(grp.Position, grp.DesiredSize));
+          var (Parts, Bounds) = git.Value;
+          MoveSubgraph(Parts, Bounds, new Rect(grp.Position, grp.DesiredSize));
         }
         bounds = Diagram.ComputePartsBounds(groups.Keys); // not maincoll due to links without real bounds
-      } else { // no this.arrangingLayout
+      } else { // no ArrangingLayout
         PreparePrimaryLayout(PrimaryLayout, maincoll);
         PrimaryLayout.DoLayout(maincoll);
         bounds = Diagram.ComputePartsBounds(maincoll);
@@ -299,35 +308,30 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       Diagram.CommitTransaction("Arranging Layout");
     }
-    /// @hidden @internal
-    /// <summary> 
-    /// </summary>
-    /// <param name="groups"></param>
-    /// <param name="subcoll"></param>
-    /// <param name="diagram"></param>
-    private void _AddMainNode(Dictionary<Part, (IEnumerable<Part> Parts, Rect Bounds)> groups, IEnumerable<Part> subcoll, Diagram diagram) {
-      var grp = new Node();
-      grp.LocationSpot = Spot.Center;
-      var grpb = Diagram.ComputePartsBounds(subcoll);
+
+    private static void _AddMainNode(Dictionary<Part, (IEnumerable<Part> Parts, Rect Bounds)> groups, IEnumerable<Part> subcoll, Diagram diagram) {
+      var grp = new Node {
+        LocationSpot = Spot.Center
+      };
+      var grpb = diagram.ComputePartsBounds(subcoll);
       grp.DesiredSize = grpb.Size;
       grp.Position = grpb.Position;
       groups.Add(grp, (subcoll, grpb));
     }
+
     /// <summary>
     /// Assign all of the Parts in the given collection into either the
     /// set of Nodes and Links for the main graph or the set of Nodes and Links
     /// for the side graph.
-    ///
-    /// By default this just calls the {@link #filter} on each non-Link to decide,
+    /// </summary>
+    /// <remarks>
+    /// By default this just calls the <see cref="Filter"/> on each non-Link to decide,
     /// and then looks at each Link's connected Nodes to decide.
     ///
     /// A null filter assigns all Nodes that have connected Links to the main graph, and
     /// all Links will be assigned to the main graph, and the side graph will only contain
     /// Parts with no connected Links.
-    /// </summary>
-    /// <param name="coll"></param>
-    /// <param name="maincoll"></param>
-    /// <param name="sidecoll"></param>
+    /// </remarks>
     public virtual void SplitParts(HashSet<Part> coll, HashSet<Part> maincoll, HashSet<Part> sidecoll) {
       // first consider all Nodes
       var pred = Filter;
@@ -360,49 +364,58 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
       }
     }
+
     /// <summary>
-    /// This method is called just before the primaryLayout is performed so that
-    /// there can be adjustments made to the primaryLayout, if desired.
-    /// By default this method makes no adjustments to the primaryLayout.
+    /// This method is called just before the PrimaryLayout is performed so that
+    /// there can be adjustments made to the PrimaryLayout, if desired.
     /// </summary>
-    /// <param name="primaryLayout">the sideLayout that may be modified for the results of the primaryLayout</param>
-    /// <param name="mainColl">the Nodes and Links to be laid out by primaryLayout after being separated into subnetworks</param>
+    /// <remarks>
+    /// By default this method makes no adjustments to the PrimaryLayout.
+    /// </remarks>
+    /// <param name="primaryLayout">the sideLayout that may be modified for the results of the PrimaryLayout</param>
+    /// <param name="mainColl">the Nodes and Links to be laid out by PrimaryLayout after being separated into subnetworks</param>
     public virtual void PreparePrimaryLayout(Layout primaryLayout, IEnumerable<Part> mainColl) {
       // by default this is a no-op
     }
+
     /// <summary>
     /// Move a Set of Nodes and Links to the given area.
     /// </summary>
     /// <param name="subColl">the Set of Nodes and Links that form a separate connected subgraph</param>
     /// <param name="subbounds">the area occupied by the subColl</param>
-    /// <param name="bounds">the area where they should be moved according to the arrangingLayout</param>
+    /// <param name="bounds">the area where they should be moved according to the ArrangingLayout</param>
     public virtual void MoveSubgraph(IEnumerable<Part> subColl, Rect subbounds, Rect bounds) {
       var diagram = Diagram;
       if (diagram == null) return;
       diagram.MoveParts(subColl, bounds.Position.Subtract(subbounds.Position), false);
     }
+
     /// <summary>
-    /// This method is called just after the main layouts (the primaryLayouts and arrangingLayout)
-    /// have been performed and just before the sideLayout is performed so that there can be
+    /// This method is called just after the main layouts (the PrimaryLayouts and ArrangingLayout)
+    /// have been performed and just before the SideLayout is performed so that there can be
     /// adjustments made to the sideLayout, if desired.
-    /// By default this method makes no adjustments to the sideLayout.
     /// </summary>
-    /// <param name="sideLayout"> the sideLayout that may be modified for the results of the main layouts</param>
-    /// <param name="sideColl"> the Nodes and Links filtered out to be laid out by sideLayout</param>
-    /// <param name="mainBounds"> the area occupied by the nodes and links of the main layout, after it was performed</param>
+    /// <remarks>
+    /// By default this method makes no adjustments to the sideLayout.
+    /// </remarks>
+    /// <param name="sideLayout">the SideLayout that may be modified for the results of the main layouts</param>
+    /// <param name="sideColl">the Nodes and Links filtered out to be laid out by SideLayout</param>
+    /// <param name="mainBounds">the area occupied by the nodes and links of the main layout, after it was performed</param>
     public virtual void PrepareSideLayout(Layout sideLayout, IEnumerable<Part> sideColl, Rect mainBounds) {
       // by default this is a no-op
     }
 
     /// <summary>
-    /// This method is called just after the sideLayout has been performed in order to move
+    /// This method is called just after the SideLayout has been performed in order to move
     /// its parts to the desired area relative to the results of the main layouts.
-    /// By default this calls { @link Diagram#moveParts} on the sidecoll collection to the {@link #side} of the mainbounds.
-    /// This won't get called if there are no Parts in the sidecoll collection.
     /// </summary>
-    /// <param name="sidecoll">a collection of Parts that were laid out by the sideLayout</param>
+    /// <remarks>
+    /// By default this calls <see cref="Diagram.MoveParts"/> on the sidecoll collection to the <see cref="Side"/> of the mainbounds.
+    /// This won't get called if there are no Parts in the sidecoll collection.
+    /// </remarks>
+    /// <param name="sidecoll">a collection of Parts that were laid out by the SideLayout</param>
     /// <param name="mainbounds">the area occupied by the results of the main layouts</param>
-    /// <param name="sidebounds">the area occupied by the results of the sideLayout</param>
+    /// <param name="sidebounds">the area occupied by the results of the SideLayout</param>
     public virtual void MoveSideCollection(IEnumerable<Part> sidecoll, Rect mainbounds, Rect sidebounds) {
       var diagram = Diagram;
       if (diagram == null) return;

@@ -1,7 +1,5 @@
-﻿using System;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,9 +15,10 @@ namespace Northwoods.Go.Extensions {
   /// This custom <see cref="Link"/> class customizes its <see cref="Shape"/> to surround the comment node (the from node).
   /// If the Shape is filled, it will obscure the comment itself unless the Link is behind the comment node.
   /// Thus the default layer for BalloonLinks is "Background".
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/BalloonLink.Html">Balloon Links</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/BalloonLink.html">Balloon Links</a> sample.
+  /// </remarks>
   /// @category Part Extension
   public class BalloonLink : Link {
     private double _Base = 10;
@@ -41,9 +40,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Gets or sets width of the base of the triangle at the center point of the <see cref="Link.FromNode"/>.
-    ///
-    /// The default value is 10.
     /// </summary>
+    /// <remarks>
+    /// The default value is 10.
+    /// </remarks>
     public double Base {
       get {
         return _Base;
@@ -61,7 +61,7 @@ namespace Northwoods.Go.Extensions {
       var fromnode = FromNode;
       var tonode = ToNode;
       if (fromnode == null || tonode == null) return base.MakeGeometry();
-      // assume the fromNode is the comment and the toNode is the commented-upon node
+      // assume the FromNode is the comment and the ToNode is the commented-upon node
       var bb = fromnode.ActualBounds;
       var nb = tonode.ActualBounds;
 
@@ -81,7 +81,7 @@ namespace Northwoods.Go.Extensions {
 
       // form a triangular arrow from the comment to the commented node
       var fig = new PathFigure(pn.X - pos.X, pn.Y - pos.Y, true);  // filled; start at arrow point at commented node
-      fig.Add(new PathSegment(SegmentType.Line, R.X - pos.X, R.Y - pos.Y));  // a triangle base point on comment"s edge
+      fig.Add(new PathSegment(SegmentType.Line, R.X - pos.X, R.Y - pos.Y));  // a triangle base point on comment's edge
       var side = 0;
       if (L.Y >= bb.Bottom || R.Y >= bb.Bottom) side = 2;
       else if (L.X <= bb.X && R.X <= bb.X) side = 1;
@@ -91,7 +91,7 @@ namespace Northwoods.Go.Extensions {
       PathToCorner(side + 1, bb, fig, pos, L, R);
       PathToCorner(side + 2, bb, fig, pos, L, R);
       PathToCorner(side + 3, bb, fig, pos, L, R);
-      fig.Add(new PathSegment(SegmentType.Line, L.X - pos.X, L.Y - pos.Y).Close());  // the other triangle base point on comment"s edge
+      fig.Add(new PathSegment(SegmentType.Line, L.X - pos.X, L.Y - pos.Y).Close());  // the other triangle base point on comment's edge
 
       // return a Geometry
       return new Geometry().Add(fig);
@@ -100,7 +100,7 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// Draw a line to a corner, but not if the comment arrow encompasses that corner.
     /// </summary>
-    public void PathToCorner(int side, Rect bb, PathFigure fig, Rect pos, Point L, Point R) {
+    public static void PathToCorner(int side, Rect bb, PathFigure fig, Rect pos, Point L, Point R) {
       switch (side % 4) {
         case 0: if (!(L.Y <= bb.Y && R.X <= bb.X)) fig.Add(new PathSegment(SegmentType.Line, bb.X - pos.X, bb.Y - pos.Y)); break;
         case 1: if (!(L.X <= bb.X && R.Y >= bb.Bottom)) fig.Add(new PathSegment(SegmentType.Line, bb.X - pos.X, bb.Bottom - pos.Y)); break;

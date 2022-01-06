@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -16,9 +16,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The OrthogonalLinkReshapingTool class lets a user drag a tool handle along the link segment, which will move the whole segment.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/OrthogonalLinkReshaping.Html">Orthogonal Link Reshaping</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/OrthogonalLinkReshaping.html">Orthogonal Link Reshaping</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class OrthogonalLinkReshapingTool : LinkReshapingTool {
     /// <summary>
@@ -30,18 +31,16 @@ namespace Northwoods.Go.Tools.Extensions {
 
     private bool _AlreadyAddedPoint = false;
 
-    /// @hidden @internal
     /// <summary>
-    /// For orthogonal, straight links, create the handles and set reshaping behavior.
+    /// Undocumented.
     /// </summary>
+    [Undocumented]
     public override Adornment MakeAdornment(GraphObject pathshape) {
-      var link = pathshape.Part as Link;
-
       // add all normal handles first
       var adornment = base.MakeAdornment(pathshape);
 
       // add long reshaping handles for orthogonal, straight links
-      if (link != null && link.IsOrthogonal && link.Curve != LinkCurve.Bezier) {
+      if (pathshape.Part is Link link && link.IsOrthogonal && link.Curve != LinkCurve.Bezier) {
         var firstindex = link.FirstPickIndex + (link.Resegmentable ? 0 : 1);
         var lastindex = link.LastPickIndex - (link.Resegmentable ? 0 : 1);
         for (var i = firstindex; i < lastindex; i++) {
@@ -81,7 +80,7 @@ namespace Northwoods.Go.Tools.Extensions {
       // identify if the handle being dragged is a segment dragging handle
       if (link != null && link.IsOrthogonal && link.Curve != LinkCurve.Bezier && Handle != null && Handle.ToMaxLinks == 999) {
         link.StartRoute();
-        var index = (int)Handle.SegmentIndex; // for these handles, firstPickIndex <= index < lastPickIndex
+        var index = (int)Handle.SegmentIndex; // for these handles, FirstPickIndex <= index < LastPickIndex
         if (!_AlreadyAddedPoint && link.Resegmentable) {  // only change the double of points if Link.Resegmentable
           _AlreadyAddedPoint = true;
           if (index == link.FirstPickIndex) {
@@ -110,9 +109,11 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Create the segment dragging handles.
+    /// </summary>
+    /// <remarks>
     /// There are two parts: one invisible handle that spans the segment, and a visible handle at the middle of the segment.
     /// These are inserted at the front of the adornment such that the normal handles have priority.
-    /// </summary>
+    /// </remarks>
     public void MakeSegmentDragHandle(Link link, Adornment adornment, int index) {
       var a = link.GetPoint(index);
       var b = link.GetPoint(index + 1);
@@ -154,11 +155,7 @@ namespace Northwoods.Go.Tools.Extensions {
       adornment.InsertAt(0, h);
     }
 
-    /// <summary>
-    /// Compare two numbers to ensure they are almost equal.
-    /// Used in this class for comparing coordinates of Points.
-    /// </summary>
-    public bool IsApprox(double x, double y) {
+    private static bool IsApprox(double x, double y) {
       var d = x - y;
       return d < 0.5 && d > -0.5;
     }

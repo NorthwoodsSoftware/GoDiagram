@@ -1,8 +1,16 @@
-﻿using System.Collections.Generic;
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
 
 /*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+* This is an extension and not part of the main Go library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
+
+using System.Collections.Generic;
 
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
@@ -53,7 +61,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     public RadialVertex(RadialNetwork network) : base(network) { }
 
     /// <summary>
-    /// Number of layers from the root, non-negative integers
+    /// Number of layers from the root, non-negative integers.
     /// </summary>
     public int Distance {
       get {
@@ -67,7 +75,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Used internally to keep track
+    /// Used internally to keep track.
     /// </summary>
     public bool Laid {
       get {
@@ -81,7 +89,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// the direction at which the node is placed relative to the root node
+    /// The direction at which the node is placed relative to the root node.
     /// </summary>
     public double Angle {
       get {
@@ -95,7 +103,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// the angle subtended by the vertex
+    /// The angle subtended by the vertex.
     /// </summary>
     public double Sweep {
       get {
@@ -109,7 +117,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// the inner radius of the layer containing this vertex
+    /// The inner radius of the layer containing this vertex.
     /// </summary>
     public double Radius {
       get {
@@ -123,10 +131,17 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// a list of the RadialVertex children of this vertex, when treating the network as a tree.
+    /// A list of the RadialVertex children of this vertex, when treating the network as a tree.
     /// </summary>
     public List<RadialVertex> Children {
-      get { return _Children; }
+      get {
+        return _Children;
+      }
+      set {
+        if (_Children != value) {
+          _Children = value;
+        }
+      }
     }
   }
 

@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,13 +14,14 @@ namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The LinkLabelDraggingTool class lets the user move a label on a <see cref="Link"/>.
-  ///
+  /// </summary>
+  /// <remarks>
   /// This tool only works when the Link has a label
   /// that is positioned at the <see cref="Link.MidPoint"/> plus some offset.
   /// It does not work for labels that have a particular <see cref="GraphObject.SegmentIndex"/>.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/LinkLabelDragging.Html">Link Label Dragging</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkLabelDragging.html">Link Label Dragging</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class LinkLabelDraggingTool : Tool {
     /// <summary>
@@ -48,11 +49,11 @@ namespace Northwoods.Go.Tools.Extensions {
       var e = diagram.LastInput;
       var elt = diagram.FindElementAt(e.DocumentPoint, null, null);
 
-      if (elt == null || !(elt.Part is Link)) return null;
+      if (elt == null || elt.Part is not Link) return null;
       while (elt != null && elt.Panel != elt.Part) {
         elt = elt.Panel;
       }
-      // If it's at an arrowhead segment index, don"t consider it a label:
+      // If it's at an arrowhead segment index, don't consider it a label:
       if (elt != null && (elt.SegmentIndex == 0 || elt.SegmentIndex == -1)) return null;
       return elt;
     }
@@ -74,7 +75,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Start a transaction, call <see cref="FindLabel"/> and remember it as the "label" property,
+    /// Start a transaction, call <see cref="FindLabel"/> and remember it as the <see cref="Label"/> property,
     /// and remember the original value for the label's <see cref="GraphObject.SegmentOffset"/> property.
     /// </summary>
     public override void DoActivate() {
@@ -141,8 +142,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public void UpdateSegmentOffset() {
       var lab = Label;
       if (lab == null) return;
-      var link = lab.Part as Link;
-      if (!(link is Link)) return;
+      if (lab.Part is not Link link) return;
 
       var last = Diagram.LastInput.DocumentPoint;
       var idx = (int)lab.SegmentIndex;
@@ -160,7 +160,7 @@ namespace Northwoods.Go.Tools.Extensions {
         if (idx >= 0) {  // indexing forwards
           a = link.GetPoint(idx);
           b = (idx < numpts - 1) ? link.GetPoint(idx + 1) : a;
-        } else {  // or backwards if segmentIndex is negative
+        } else {  // or backwards if SegmentIndex is negative
           var i = numpts + idx;
           a = link.GetPoint(i);
           b = (i > 0) ? link.GetPoint(i - 1) : a;

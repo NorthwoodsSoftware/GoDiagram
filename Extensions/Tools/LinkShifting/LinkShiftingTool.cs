@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,17 +10,23 @@ using System.Linq;
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
-  /// The LinkShiftingTool class lets the user shift the end of a link to be anywhere along the edges of the port;
-  /// use it in a diagram.ToolManager.MouseDownTools list:
-  /// ```js
+  /// The LinkShiftingTool class lets the user shift the end of a link to be anywhere along the edges of the port.
+  /// </summary>
+  /// <remarks>
+  /// This tool may be installed as a mouse down tool:
+  /// ```cs
   /// myDiagram.ToolManager.MouseDownTools.Add(new LinkShiftingTool());
   /// ```
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/LinkShifting.Html">Link Shifting</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkShifting.html">Link Shifting</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class LinkShiftingTool : Tool {
     // these are archetypes for the two shift handles, one at each end of the Link:
@@ -35,30 +37,32 @@ namespace Northwoods.Go.Tools.Extensions {
     private GraphObject _Handle;
     private List<Point> _OriginalPoints;
 
-    private Random _Rand = new();
+    private readonly Random _Rand = new();
 
     /// <summary>
     /// Constructs a LinkShiftingTool and sets the handles and name of the tool.
     /// </summary>
     public LinkShiftingTool() : base() {
-      var h = new Shape();
-      h.GeometryString = "F1 M0 0 L8 0 M8 4 L0 4";
-      h.Fill = (Brush)null;
-      h.Stroke = "dodgerblue";
-      h.Background = "lightblue";
-      h.Cursor = "pointer";
-      h.SegmentIndex = 0;
-      h.SegmentFraction = 1;
-      h.SegmentOrientation = Orientation.Along;
-      var g = new Shape();
-      g.GeometryString = "F1 M0 0L 8 0 M8 4 L0 4";
-      g.Fill = (Brush)null;
-      g.Stroke = "dodgerblue";
-      g.Background = "lightblue";
-      g.Cursor = "pointer";
-      g.SegmentIndex = -1;
-      g.SegmentFraction = 1;
-      g.SegmentOrientation = Orientation.Along;
+      var h = new Shape {
+        GeometryString = "F1 M0 0 L8 0 M8 4 L0 4",
+        Fill = (Brush)null,
+        Stroke = "dodgerblue",
+        Background = "lightblue",
+        Cursor = "pointer",
+        SegmentIndex = 0,
+        SegmentFraction = 1,
+        SegmentOrientation = Orientation.Along
+      };
+      var g = new Shape {
+        GeometryString = "F1 M0 0L 8 0 M8 4 L0 4",
+        Fill = (Brush)null,
+        Stroke = "dodgerblue",
+        Background = "lightblue",
+        Cursor = "pointer",
+        SegmentIndex = -1,
+        SegmentFraction = 1,
+        SegmentOrientation = Orientation.Along
+      };
 
       _FromHandleArchetype = h;
       _ToHandleArchetype = g;
@@ -94,7 +98,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Show an <see cref="Adornment"/> with a reshape handle at each end of the link which allows for shifting of the end points.
     /// </summary>
     public override void UpdateAdornments(Part part) {
-      if (part == null || !(part is Link)) return;  // this tool only applies to Links
+      if (part == null || part is not Link) return;  // this tool only applies to Links
       var link = part as Link;
       // show handles if link is selected, remove them if no longer selected
       var category = "LinkShiftingFrom";
@@ -174,20 +178,19 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Start shifting, if <see cref="Tool.FindToolHandleAt"/> finds a reshaping handle at the mouse down point.
-    ///
+    /// </summary>
+    /// <remarks>
     /// If successful this sets the handle to be the reshape handle that it finds.
     /// It also remembers the original points in case this tool is cancelled.
     /// And it starts a transaction.
-    /// </summary>
+    /// </remarks>
     public override void DoActivate() {
       var diagram = Diagram;
       var h = FindToolHandleAt(diagram.FirstInput.DocumentPoint, "LinkShiftingFrom");
       if (h == null) h = FindToolHandleAt(diagram.FirstInput.DocumentPoint, "LinkShiftingTo");
       if (h == null) return;
-      var ad = h.Part as Adornment;
-      if (ad == null || ad.AdornedElement == null) return;
-      var link = ad.AdornedElement.Part as Link;
-      if (!(link is Link)) return;
+      if (h.Part is not Adornment ad || ad.AdornedElement == null) return;
+      if (ad.AdornedElement.Part is not Link link) return;
 
       _Handle = h;
       _OriginalPoints = link.Points.ToList(); // shallow copy should work because points are structs (value type)
@@ -240,7 +243,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Reshape the link"s end with a point based on the most recent mouse point by calling <see cref="DoReshape"/>,
+    /// Reshape the link's end with a point based on the most recent mouse point by calling <see cref="DoReshape"/>,
     /// and then stop this tool.
     /// </summary>
     public override void DoMouseUp() {
@@ -252,7 +255,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Find the closest point along the edge of the link"s port and shift the end of the link to that point.
+    /// Find the closest point along the edge of the link's port and shift the end of the link to that point.
     /// </summary>
     public void DoReshape(Point pt) {
       if (_Handle == null) return;
@@ -274,8 +277,8 @@ namespace Northwoods.Go.Tools.Extensions {
                                 port.GetDocumentPoint(Spot.BottomRight).Subtract(center).Rotate(-portang).Add(center));
       var lp = link.GetLinkPointFromPoint(port.Part as Node, port, center, pt, fromend);
       lp = lp.Subtract(center).Rotate(-portang).Add(center);
-      var spot = new Spot(Math.Max(0, Math.Min(1, (lp.X - portb.X) / (portb.Width != double.NaN ? portb.Width : 1))),
-                               Math.Max(0, Math.Min(1, (lp.Y - portb.Y) / (portb.Height != double.NaN ? portb.Height : 1))));
+      var spot = new Spot(Math.Max(0, Math.Min(1, (lp.X - portb.X) / (!double.IsNaN(portb.Width) ? portb.Width : 1))),
+                          Math.Max(0, Math.Min(1, (lp.Y - portb.Y) / (!double.IsNaN(portb.Height) ? portb.Height : 1))));
       if (fromend) {
         link.FromSpot = spot;
       } else {

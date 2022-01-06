@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+* Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,6 +17,8 @@ using System.Linq;
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// Perform two <see cref="TreeLayout"/>s, one going rightwards and one going leftwards.
+  /// </summary>
+  /// <remarks>
   /// The choice of direction is determined by the mandatory predicate <see cref="DirectionFunction"/>,
   /// which is called on each child Node of the root Node.
   ///
@@ -30,7 +32,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// If there is no root node, all nodes are involved in cycles, so the first given node is chosen.
   ///
   /// If you want to experiment with this extension, try the <a href="../../samples/doubleTree.html">Double Tree</a> sample.
-  /// </summary>
+  /// </remarks>
   public class DoubleTreeLayout : Layout {
     private bool _Vertical = false;
     private Func<Node, bool> _DirectionFunction = (node) => { return true; };
@@ -45,7 +47,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -61,9 +62,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// When false, the layout should grow towards the left and towards the right,
     /// when true, the layout should grow upwards and downwards.
-    ///
-    /// The default value is false.
     /// </summary>
+    /// <remarks>
+    /// The default value is false.
+    /// </remarks>
     public bool Vertical {
       get {
         return _Vertical;
@@ -80,10 +82,12 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// This function is called on each child node of the root node
     /// in order to determine whether the subtree starting from that child node will grow towards
     /// larger coordinates or towards smaller ones.
-    /// The value must be a function and must not be null
+    /// </summary>
+    /// <remarks>
+    /// The value must be a function and must not be null.
     ///
     /// It must return true if <see cref="IsPositiveDirection"/> should return true, otherwise it should return false.
-    /// </summary>
+    /// </remarks>
     public Func<Node, bool> DirectionFunction {
       get {
         return _DirectionFunction;
@@ -98,10 +102,12 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the options to be applied to a <see cref="TreeLayout"/>.
+    /// </summary>
+    /// <remarks>
     /// By default this is null -- no properties are set on the TreeLayout
     /// other than the <see cref="TreeLayout.Angle"/>, depending on <see cref="Vertical"/> and
     /// the result of calling <see cref="DirectionFunction"/>.
-    /// </summary>
+    /// </remarks>
     public TreeLayout BottomRightOptions {
       get {
         return _BottomRightOptions;
@@ -116,10 +122,12 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the options to be applied to a <see cref="TreeLayout"/>.
+    /// </summary>
+    /// <remarks>
     /// By default this is null -- no properties are set on the TreeLayout
     /// other than the <see cref="TreeLayout.Angle"/>, depending on <see cref="Vertical"/> and
     /// the result of calling <see cref="DirectionFunction"/>.
-    /// </summary>
+    /// </remarks>
     public TreeLayout TopLeftOptions {
       get {
         return _TopLeftOptions;
@@ -136,7 +144,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Perform two <see cref="TreeLayout"/>s by splitting the collection of Parts
     /// into two separate subsets but sharing only a single root Node.
     /// </summary>
-    /// <param name="coll"></param>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       HashSet<Part> allparts;
       if (coll != null) {
@@ -148,7 +155,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       } else {
         return; // Nothing to layout!
       }
-      if (allparts.Count() == 0) return; // do nothing for an empty collection
+      if (allparts.Count == 0) return; // do nothing for an empty collection
 
       if (Diagram != null) Diagram.StartTransaction("Double Tree Layout");
 
@@ -197,9 +204,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// one for the subtrees growing towards the left or upwards, and one for the subtrees
     /// growing towards the right or downwards.
     /// </summary>
-    /// <param name="coll"></param>
-    /// <param name="leftParts"></param>
-    /// <param name="rightParts"></param>
     protected void SeparatePartsForLayout(HashSet<Part> coll, HashSet<Part> leftParts, HashSet<Part> rightParts) {
       Node root = null; // the one root
       var roots = new HashSet<Node>(); // in case there are multiple roots
@@ -265,7 +269,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// It should return true if this child node is the root of a subtree that should grow
     /// rightwards or downwards, or false otherwise.
     /// </summary>
-    /// <param name="child"></param>
     /// <returns>true if it grows towards right or towards bottom; false otherwise</returns>
     protected bool IsPositiveDirection(Node child) {
       if (DirectionFunction == null) {

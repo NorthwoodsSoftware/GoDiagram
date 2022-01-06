@@ -1,8 +1,6 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
-
-using System;
 
 /*
 * This is an extension and not part of the main GoDiagram library.
@@ -12,9 +10,13 @@ using System;
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+
 namespace Northwoods.Go.Extensions {
   /// <summary>
   /// This class implements a zoom slider for GoDiagram diagrams.
+  /// </summary>
+  /// <remarks>
   /// The constructor has the following arguments:
   ///   - `diagram` ***Diagram*** a reference to a GoDiagram diagram
   ///   
@@ -25,10 +27,10 @@ namespace Northwoods.Go.Extensions {
   /// The Extension takes as parameters two delegates, which should respectively get and set the value parameter of the Range
   /// component. This is best implemented via accessors to a two-way binding property. An example of this implementation can
   /// be found in the ZoomSlider sample.
-  /// </summary>
+  /// </remarks>
   public class ZoomSlider {
-    private Diagram _Diagram;
-    private double _InitialScale;
+    private readonly Diagram _Diagram;
+    private readonly double _InitialScale;
 
     //Function used to keep the slider up to date
     private readonly Func<double> _Get;
@@ -75,9 +77,6 @@ namespace Northwoods.Go.Extensions {
     /// the options provided. Also sets up change listeners on the
     /// Diagram so the ZoomSlider stays up to date.
     /// </summary>
-    /// <param name="diagram"></param>
-    /// <param name="get"></param>
-    /// <param name="set"></param>
     public ZoomSlider(Diagram diagram, Func<double> get, Action<double> set) {
       _Diagram = diagram;
       _Get = get;

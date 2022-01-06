@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -54,7 +54,7 @@ namespace Northwoods.Go.Extensions {
   /// </remarks>
   /// @category Extension
   public class Inspector {
-    private IInspector _Inspector;
+    private readonly IInspector _Inspector;
     private Diagram _Diagram;
     private object _InspectedObject = null;
     // Inspector options defaults:
@@ -63,7 +63,7 @@ namespace Northwoods.Go.Extensions {
     private Dictionary<string, PropertyOptions> _Properties;
     private Action<string, object, Inspector> _PropertyModified;
 
-    private List<Row> _Rows = new();
+    private readonly List<Row> _Rows = new();
 
     // Private variables used to keep track of internal state
     private Dictionary<string, Row> _InspectedProperties;
@@ -195,9 +195,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// This read-only property returns the object currently being inspected.
-    ///
-    /// To set the inspected object, call <see cref="InspectObject"/>.
     /// </summary>
+    /// <remarks>
+    /// To set the inspected object, call <see cref="InspectObject"/>.
+    /// </remarks>
     public object InspectedObject {
       get {
         return _InspectedObject;
@@ -206,10 +207,12 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Gets or sets whether the Inspector automatically inspects the associated Diagram's selection.
+    /// </summary>
+    /// <remarks>
     /// When set to false, the Inspector won't show anything until <see cref="InspectObject"/> is called.
     ///
     /// The default value is true.
-    /// </summary>
+    /// </remarks>
     public bool InspectSelection {
       get {
         return _InspectSelection;
@@ -230,9 +233,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Gets or sets whether the Inspector includes all properties currently on the inspected object.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool IncludesOwnProperties {
       get {
         return _IncludesOwnProperties;
@@ -247,11 +251,13 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Gets or sets the properties that the Inspector will inspect, maybe setting options for those properties.
+    /// </summary>
+    /// <remarks>
     /// The dictionary should contain string: Object pairs representing propertyName: propertyOptions.
     /// Can be used to include or exclude additional properties.
     ///
     /// The default value is null.
-    /// </summary>
+    /// </remarks>
     public Dictionary<string, PropertyOptions> Properties {
       get {
         return _Properties;
@@ -266,10 +272,12 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Gets or sets the function to be called when a property is modified by the Inspector.
+    /// </summary>
+    /// <remarks>
     /// The first parameter will be the property name, the second will be the new value, and the third will be a reference to this Inspector.
     ///
     /// The default value is null, meaning nothing will be done.
-    /// </summary>
+    /// </remarks>
     public Action<string, object, Inspector> PropertyModified {
       get {
         return _PropertyModified;
@@ -295,7 +303,6 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Node"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
-    /// <returns></returns>
     public static bool ShowIfNode(object part, string _) { return part is Node; }
 
     /// <summary>
@@ -303,7 +310,6 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Link"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
-    /// <returns></returns>
     public static bool ShowIfLink(object part, string _) { return part is Link; }
 
     /// <summary>
@@ -311,21 +317,21 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Group"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
-    /// <returns></returns>
     public static bool ShowIfGroup(object part, string _) { return part is Group; }
 
     /// <summary>
     /// Update the UI state of this Inspector with the given object.
-    ///
+    /// </summary>
+    /// <remarks>
     /// If passed an object, the Inspector will inspect that object.
     /// If no parameter is supplied, the <see cref="InspectedObject"/> will be set based on the value of <see cref="InspectSelection"/>.
-    /// </summary>
+    /// </remarks>
     public void InspectObject(object obj = null) {
       var inspectedObject = obj;
       if (obj == null) {
         if (_InspectSelection) {
           inspectedObject = _Diagram.Selection.FirstOrDefault();
-        } else { // if there is a single inspected object
+        } else {  // if there is a single inspected object
           inspectedObject = _InspectedObject;
         }
       }
@@ -388,9 +394,10 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// This predicate should be false if the given property should not be shown.
     /// Normally it only checks the value of <see cref="PropertyOptions.Show"/>.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     /// <param name="propertyName">the property name</param>
     /// <param name="opts">the property options</param>
     /// <param name="inspectedObject">the data object</param>
@@ -403,9 +410,10 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// This predicate should be false if the given property should not be editable by the user.
     /// Normally it only checks the value of <see cref="PropertyOptions.ReadOnly"/>.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     /// <param name="propertyName">the property name</param>
     /// <param name="opts">the property options</param>
     /// <param name="inspectedObject">the data object</param>
@@ -422,7 +430,7 @@ namespace Northwoods.Go.Extensions {
       return true;
     }
 
-    private object FindValue(string propName, PropertyOptions propDesc, object data) {
+    private static object FindValue(string propName, PropertyOptions propDesc, object data) {
       object val = null;
       if (propDesc != null && propDesc.DefaultValue != null) val = propDesc.DefaultValue;
       var pi = data.GetType().GetProperty(propName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
@@ -452,8 +460,7 @@ namespace Northwoods.Go.Extensions {
 
     // convert to color?
 
-    /// @hidden @ignore
-    private List<double> ConvertToArrayOfNumber(string propertyValue) {
+    private static List<double> ConvertToArrayOfNumber(string propertyValue) {
       if (propertyValue == "null") return null;
       var split = propertyValue.Split(' ');
       var arr = new List<double>();
@@ -484,7 +491,7 @@ namespace Northwoods.Go.Extensions {
     }
 
     [Undocumented]
-    public object ParseValue(PropertyOptions decProp, object value, object input, object oldval) {
+    public static object ParseValue(PropertyOptions decProp, object value, object oldval) {
       // If it's a bool, or if its previous value was bool,
       // parse the value to be a bool and then update the input.Value to match
       var type = "";

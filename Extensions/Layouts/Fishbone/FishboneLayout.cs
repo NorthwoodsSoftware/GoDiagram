@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -18,16 +18,17 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// FishboneLayout is a custom <see cref="Layout"/> derived from <see cref="TreeLayout"/> for creating "fishbone" diagrams.
   /// A fishbone diagram also requires a <see cref="Link"/> class that implements custom routing, <see cref="FishboneLink"/>.
-  ///
+  /// </summary>
+  /// <remarks>
   /// This only works for angle == 0 or angle == 180.
   ///
   /// This layout assumes Links are automatically routed in the way needed by fishbone diagrams
   /// by using the FishboneLink class instead of <see cref="Link"/>.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/Fishbone.html">Fishbone Layout</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Fishbone.html">Fishbone Layout</a> sample.
+  /// </remarks>
   public class FishboneLayout : TreeLayout {
-    private readonly Dictionary<TreeVertex, int> _Direction = new Dictionary<TreeVertex, int>();
+    private readonly Dictionary<TreeVertex, int> _Direction = new();
 
     /// <summary>
     /// Create a Fishbone layout.
@@ -63,7 +64,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           net.LinkVertexes(v, dummy, null);
         }
         // make sure there's an odd number of children, including at least one dummy;
-        // commitNodes will move the parent node to where this dummy child node is placed
+        // CommitNodes will move the parent node to where this dummy child node is placed
         var dummy2 = net.CreateVertex();
         dummy2.Bounds = v.Bounds;
         dummy2.Focus = v.Focus;
@@ -77,7 +78,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Add a direction property to each vertex and modify <see cref="TreeVertex.LayerSpacing"/>.
     /// </summary>
-    /// <param name="v"></param>
     protected override void AssignTreeVertexValues(TreeVertex v) {
       base.AssignTreeVertexValues(v);
       _Direction[v] = 0;  // assign direction to each TreeVertex
@@ -151,7 +151,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Shifts subtrees within the fishbone based on angle and node spacing.
     /// </summary>
-    /// <param name="v"></param>
     public void Shift(TreeVertex v) {
       var p = v.Parent;
       if (p != null && (v.Angle == 90 || v.Angle == 270)) {
@@ -209,10 +208,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Shifts a subtree.
     /// </summary>
-    /// <param name="direction"></param>
-    /// <param name="absolute"></param>
-    /// <param name="root"></param>
-    /// <param name="v"></param>
     public void ShiftAll(int direction, double absolute, TreeVertex root, TreeVertex v) {
       var locx = v.CenterX;
       locx += direction * Math.Abs(root.CenterY - v.CenterY) / 2;
@@ -237,7 +232,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Determines the points for this link based on spots and maintains horizontal lines.
     /// </summary>
-    /// <returns></returns>
     public override bool ComputePoints() {
       var result = base.ComputePoints();
       if (result) {
@@ -248,7 +242,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           var fromport = FromPort;
           Point p1;
 
-          if (fromnode != null && fromport != null && fromnode.FindLinksInto().Count() == 0) {
+          if (fromnode != null && fromport != null && !fromnode.FindLinksInto().Any()) {
             // pretend the link is coming from the opposite direction than the declared FromSpot
             var fromctr = fromport.GetDocumentPoint(Spot.Center);
             var fromfar = new Point(fromctr.X, fromctr.Y);

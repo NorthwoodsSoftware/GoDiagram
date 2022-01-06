@@ -40,11 +40,11 @@ namespace WinFormsSampleControls.Radial {
       } else {
         var rlay = (diagramControl1.Diagram.Layout as RadialLayout);
         rlay.MaxLayers = value;
-        for (int i = 1; i < 60; i++) {
+        for (var i = 1; i < 60; i++) {
           if (myDiagram.FindNodeForKey(i).Category == "Root")
             rlay.Root = myDiagram.FindNodeForKey(i);
         }
-        NodeClicked(null, rlay.Root);
+        _NodeClicked(null, rlay.Root);
       }
     }
 
@@ -68,7 +68,7 @@ namespace WinFormsSampleControls.Radial {
 
       var nodeDataSource = new NodeData[names.Length];
       for (var i = 0; i < names.Length; i++) {
-        nodeDataSource[i] = new NodeData { Key = i+1, Text = names[i], Color = Brush.RandomColor(128, 240) };
+        nodeDataSource[i] = new NodeData { Key = i + 1, Text = names[i], Color = Brush.RandomColor(128, 240) };
       }
 
       var linkDataSource = new LinkData[num * 2];
@@ -83,11 +83,12 @@ namespace WinFormsSampleControls.Radial {
         LinkDataSource = linkDataSource
       };
 
-      var someone = nodeDataSource[rand.Next(num)];
-      NodeClicked(null, myDiagram.FindNodeForData(someone));
+      var someone = nodeDataSource[0];
+      _NodeClicked(null, myDiagram.FindNodeForData(someone));
     }
 
-    private void NodeClicked(InputEvent e, Node root) {
+    private void _NodeClicked(InputEvent e, GraphObject obj) {
+      var root = obj as Node;
       var diagram = root.Diagram;
       if (diagram == null) return;
       // all other nodes should be visible and use the default category
@@ -131,57 +132,57 @@ namespace WinFormsSampleControls.Radial {
         );
 
       myDiagram.NodeTemplate =
-        new Node(PanelLayoutSpot.Instance) {
-          LocationSpot = Spot.Center,
-          LocationElementName = "SHAPE",  // Node.location is the center of the Shape
-          SelectionAdorned = false,
-          Click = (e, node) => NodeClicked(e, node as Node),
-          ToolTip = commonToolTip
-        }.Add(
-          new Shape {
-            Name = "SHAPE",
-            Figure = "Circle",
-            Fill = "lightgray",  // default value, but also data-bound
-            Stroke = "transparent",
-            StrokeWidth = 2,
-            DesiredSize = new Size(20, 20),
-            PortId = ""  // so links will go to the shape, not the whole node
-          }.Bind("Fill", "Color"),
-          new TextBlock {
-            Name = "TEXTBLOCK",
-            Alignment = Spot.Right,
-            AlignmentFocus = Spot.Left
-          }.Bind("Text")
+        new Node("Spot") {
+            LocationSpot = Spot.Center,
+            LocationElementName = "SHAPE",  // Node.Location is the center of the Shape
+            SelectionAdorned = false,
+            Click = _NodeClicked,
+            ToolTip = commonToolTip
+          }
+          .Add(
+            new Shape("Circle") {
+                Name = "SHAPE",
+                Fill = "lightgray",  // default value, but also data-bound
+                Stroke = "transparent",
+                StrokeWidth = 2,
+                DesiredSize = new Size(20, 20),
+                PortId = ""  // so links will go to the shape, not the whole node
+              }
+              .Bind("Fill", "Color"),
+            new TextBlock {
+                Name = "TEXTBLOCK",
+                Alignment = Spot.Right,
+                AlignmentFocus = Spot.Left
+              }
+              .Bind("Text")
         );
 
       myDiagram.NodeTemplateMap["Root"] =
-        new Node(PanelLayoutAuto.Instance) {
-          LocationSpot = Spot.Center,
-          SelectionAdorned = false,
-          ToolTip = commonToolTip
-        }.Add(
-          new Shape { Figure = "Circle", Fill = "White" },
-          new TextBlock {
-            Font = "Segoe UI, 12px style=bold", Margin = 5
-          }.Bind("Text")
-        );
+        new Node("Auto") {
+            LocationSpot = Spot.Center,
+            SelectionAdorned = false,
+            ToolTip = commonToolTip
+          }
+          .Add(
+            new Shape("Circle") { Fill = "White" },
+            new TextBlock { Font = "Segoe UI, 12px style=bold", Margin = 5 }
+              .Bind("Text")
+          );
 
       myDiagram.LinkTemplate =
         new Link() {
-          Routing = LinkRouting.Normal,
-          Curve = LinkCurve.Bezier,
-          SelectionAdorned = false,
-          LayerName = "Background"
-        }.Add(
-          new Shape {
-            Stroke = "black",
-            StrokeWidth = 1
-          }.Bind("Fill", "Color")
-        );
+            Routing = LinkRouting.Normal,
+            Curve = LinkCurve.Bezier,
+            SelectionAdorned = false,
+            LayerName = "Background"
+          }
+          .Add(
+            new Shape { Stroke = "black", StrokeWidth = 1 }
+              .Bind("Fill", "Color")
+          );
 
       GenerateGraph();
     }
-
   }
 
   public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { };
@@ -212,18 +213,18 @@ namespace WinFormsSampleControls.Radial {
       // add circles centered at the root
       for (var layer = 1; layer <= MaxLayers; layer++) {
         var radius = layer * LayerThickness;
-
-        var circle = new Part {
-          Name = "CIRCLE", LayerName = "Grid",
-          LocationSpot = Spot.Center, Location = Root.Location
-        }.Add(
-          new Shape {
-            Figure = "Circle",
-            Width = radius * 2, Height = radius * 2,
-            Fill = "rgba(200,200,200,0.2)", Stroke = null
-          }
-        );
-
+        var circle =
+          new Part {
+              Name = "CIRCLE", LayerName = "Grid",
+              LocationSpot = Spot.Center, Location = Root.Location
+            }
+            .Add(
+              new Shape {
+                Figure = "Circle",
+                Width = radius * 2, Height = radius * 2,
+                Fill = "rgba(200,200,200,0.2)", Stroke = null
+              }
+            );
         Diagram.Add(circle);
       }
     }

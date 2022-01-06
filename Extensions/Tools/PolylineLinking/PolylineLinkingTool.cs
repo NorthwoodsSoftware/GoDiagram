@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -10,7 +10,6 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,15 +18,16 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The PolylineLinkingTool class the user to draw a new <see cref="Link"/> by clicking where the route should go,
   /// until clicking on a valid target port.
-  ///
+  /// </summary>
+  /// <remarks>
   /// This tool supports routing both orthogonal and straight links.
   /// You can customize the <see cref="LinkingBaseTool.TemporaryLink"/> as needed to affect the
   /// appearance and behavior of the temporary link that is shown during the linking operation.
   /// You can customize the <see cref="LinkingTool.ArchetypeLinkData"/> to specify property values
   /// that can be data-bound by your link template for the Links that are actually created.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/PolylineLinking.Html">Polyline Linking</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/PolylineLinking.html">Polyline Linking</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class PolylineLinkingTool : LinkingTool {
     private bool _FirstMouseDown = false;
@@ -41,13 +41,13 @@ namespace Northwoods.Go.Tools.Extensions {
       Name = "PolylineLinking";
     }
 
-    /// @hidden @internal
     /// <summary>
     /// This internal method adds a point to the route.
+    /// </summary>
+    /// <remarks>
     /// During the operation of this tool, the very last point changes to follow the mouse point.
     /// This method is called by <see cref="DoMouseDown"/> in order to add a new "last" point.
-    /// </summary>
-    /// <param name="p"></param>
+    /// </remarks>
     private void AddPoint(Point p) {
       if (_FirstMouseDown) return;
       var pts = TemporaryLink.Points.ToList();
@@ -56,12 +56,12 @@ namespace Northwoods.Go.Tools.Extensions {
       TemporaryLink.Points = pts;
     }
 
-    /// @hidden @internal
     /// <summary>
-    /// This internal method moves the last point of the temporary Link"s route.
-    /// This is called by <see cref="DoMouseMove"/> and other methods that want to adjust the end of the route.
+    /// This internal method moves the last point of the temporary Link's route.
     /// </summary>
-    /// <param name="p"></param>
+    /// <remarks>
+    /// This is called by <see cref="DoMouseMove"/> and other methods that want to adjust the end of the route.
+    /// </remarks>
     private void MoveLastPoint(Point p) {
       if (_FirstMouseDown) return;
       var pts = TemporaryLink.Points.ToList();
@@ -78,13 +78,14 @@ namespace Northwoods.Go.Tools.Extensions {
       TemporaryLink.Points = pts;
     }
 
-    /// @hidden @internal
     /// <summary>
-    /// This internal method removes the last point of the temporary Link"s route.
+    /// This internal method removes the last point of the temporary Link's route.
+    /// </summary>
+    /// <remarks>
     /// This is called by the "Z" command in <see cref="DoKeyDown"/>
     /// and by <see cref="DoMouseUp"/> when a valid target port is found and we want to
     /// discard the current mouse point from the route.
-    /// </summary>
+    /// </remarks>
     private void RemoveLastPoint() {
       if (_FirstMouseDown) return;
       var pts = TemporaryLink.Points.ToList();
@@ -115,7 +116,7 @@ namespace Northwoods.Go.Tools.Extensions {
         if (_FirstMouseDown) {
           _FirstMouseDown = false;
           // disconnect the temporary node/port from the temporary link
-          // so that it doesn"t lose the points that are accumulating
+          // so that it doesn't lose the points that are accumulating
           if (IsForwards) {
             TemporaryLink.ToNode = null;
           } else {
@@ -128,7 +129,7 @@ namespace Northwoods.Go.Tools.Extensions {
         }
         // a new temporary end point, the previous one is now "accepted"
         AddPoint(Diagram.LastInput.DocumentPoint);
-      } else {  // e.G. right mouse down
+      } else {  // e.g. right mouse down
         DoCancel();
       }
     }
@@ -145,11 +146,14 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// If this event happens on a valid target port (as determined by <see cref="LinkingBaseTool.FindTargetPort"/>),
-    /// we complete the link drawing operation.  <see cref="InsertLink"/> is overridden to transfer the accumulated
+    /// we complete the link drawing operation.
+    /// </summary>
+    /// <remarks>
+    /// <see cref="InsertLink"/> is overridden to transfer the accumulated
     /// route drawn by user clicks to the new <see cref="Link"/> that was created.
     ///
     /// If this event happens elsewhere in the diagram, this tool is not stopped: the drawing of the route continues.
-    /// </summary>
+    /// </remarks>
     public override void DoMouseUp() {
       if (!IsActive) return;
       var target = FindTargetPort(IsForwards);
@@ -171,7 +175,7 @@ namespace Northwoods.Go.Tools.Extensions {
               pts.Insert(pts.Count - 2, pts.ElementAt(pts.Count - 2));
             }
           } else {
-            // copy the route of saved points, because we"re about to recompute it
+            // copy the route of saved points, because we're about to recompute it
             pts = TemporaryLink.Points.ToList();
             // terminate the link in the expected manner by letting the
             // temporary link connect with the temporary node/port and letting the
@@ -184,7 +188,7 @@ namespace Northwoods.Go.Tools.Extensions {
               TemporaryLink.FromNode = target.Part as Node;
             }
             TemporaryLink.UpdateRoute();
-            // now copy the final one or two points of the temporary link"s route
+            // now copy the final one or two points of the temporary link's route
             // into the route built up in the PTS List.
             var natpts = TemporaryLink.Points;
             var numnatpts = natpts.Count;
@@ -201,7 +205,7 @@ namespace Northwoods.Go.Tools.Extensions {
             }
           }
           // save desired route in temporary link;
-          // insertLink will copy the route into the new real Link
+          // InsertLink will copy the route into the new real Link
           TemporaryLink.Points = pts;
           base.DoMouseUp();
         }
@@ -222,7 +226,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// This supports the "Z" command during this tool"s operation to remove the last added point of the route.
+    /// This supports the "Z" command during this tool's operation to remove the last added point of the route.
     /// Type ESCAPE to completely cancel the operation of the tool.
     /// </summary>
     public override void DoKeyDown() {

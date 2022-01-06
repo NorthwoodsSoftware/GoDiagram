@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -16,14 +16,15 @@ namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The PortShiftingTool class lets a user move a port on a <see cref="Node"/>.
-  ///
-  /// This tool only works when the Node has a port (any GraphObject) marked with
-  /// a non-null and non-empty portId that is positioned in a Spot Panel,
-  /// and the user holds down the Shift key.
-  /// It works by modifying that port"s <see cref="GraphObject.Alignment"/> property.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/PortShifting.Html">Port Shifting</a> sample.
   /// </summary>
+  /// <remarks>
+  /// This tool only works when the Node has a port (any GraphObject) marked with
+  /// a non-null and non-empty PortId that is positioned in a Spot Panel,
+  /// and the user holds down the Shift key.
+  /// It works by modifying that port's <see cref="GraphObject.Alignment"/> property.
+  ///
+  /// If you want to experiment with this extension, try the <a href="../../extensions/PortShifting.html">Port Shifting</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class PortShiftingTool : Tool {
     /// <summary>
@@ -48,7 +49,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public override bool CanStart() {
       var diagram = Diagram;
       if (!base.CanStart()) return false;
-      // require left button & that it has moved far enough away from the mouse down point, so it isn"t a click
+      // require left button & that it has moved far enough away from the mouse down point, so it isn't a click
       var e = diagram.LastInput;
       if (!e.Left || !e.Shift) return false;
       if (!IsBeyondDragSize()) return false;
@@ -66,7 +67,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var diagram = Diagram;
       var e = diagram.FirstInput;
       var elt = diagram.FindElementAt(e.DocumentPoint, null, null);
-      if (elt == null || !(elt.Part is Node)) return null;
+      if (elt == null || elt.Part is not Node) return null;
 
       while (elt != null && elt.Panel != null) {
         if (elt.Panel.Type == PanelLayoutSpot.Instance && elt.Panel.FindMainElement() != elt &&
@@ -79,7 +80,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Start a transaction, call <see cref="FindPort"/> and remember it as the "port" property,
+    /// Start a transaction, call <see cref="FindPort"/> and remember it as the "Port" property,
     /// and remember the original value for the port"s <see cref="GraphObject.Alignment"/> property.
     /// </summary>
     public override void DoActivate() {
@@ -108,7 +109,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Restore the port"s original value for GraphObject.Alignment.
+    /// Restore the port's original value for <see cref="GraphObject.Alignment"/>.
     /// </summary>
     public override void DoCancel() {
       if (Port != null) {
@@ -137,12 +138,15 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Save the port"s <see cref="GraphObject.Alignment"/> as a fractional Spot in the Spot Panel
-    /// that the port is in. Thus if the main element changes size, the relative positions
+    /// Save the port's <see cref="GraphObject.Alignment"/> as a fractional Spot in the Spot Panel
+    /// that the port is in.
+    /// </summary>
+    /// <remarks>
+    /// If the main element changes size, the relative positions
     /// of the ports will be maintained. But that does assume that the port must remain
     /// inside the main element -- it cannot wander away from the node.
-    /// This does not modify the port"s <see cref="GraphObject.AlignmentFocus"/> property.
-    /// </summary>
+    /// This does not modify the port's <see cref="GraphObject.AlignmentFocus"/> property.
+    /// </remarks>
     public void UpdateAlignment() {
       if (Port == null || Port.Panel == null) return;
       var last = Diagram.LastInput.DocumentPoint;

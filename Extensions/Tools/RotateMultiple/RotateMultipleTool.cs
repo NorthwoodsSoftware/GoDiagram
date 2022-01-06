@@ -1,34 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
+
+/*
+* This is an extension and not part of the main GoDiagram library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
+*/
+
+using System;
+using System.Collections.Generic;
 
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The RotateMultipleTool class lets the user rotate multiple objects at a time.
+  /// </summary>
+  /// <remarks>
   /// When more than one part is selected, rotates all parts, revolving them about their collective center.
   /// If the control key is held down during rotation, rotates all parts individually.
   ///
   /// Caution: this only works for Groups that do *not* have a Placeholder.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/RotateMultiple.Html">Rotate Multiple</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/RotateMultiple.html">Rotate Multiple</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class RotateMultipleTool : RotatingTool {
-    /// <summary>
-    /// Holds references to all selected non-Link Parts and their offset &amp; angles
-    /// </summary>
-    private Dictionary<Part, PartInfo> _InitialInfo;
-    /// <summary>
-    /// Initial angle when rotating as a whole
-    /// </summary>
-    private double _InitialAngle = 0;
-    /// <summary>
-    /// Rotation point of selection
-    /// </summary>
-    private Point _CenterPoint;
+    private Dictionary<Part, PartInfo> _InitialInfo;  // Holds references to all selected non-Link Parts and their offset & angles
+    private double _InitialAngle = 0;  // Initial angle when rotating as a whole
+    private Point _CenterPoint;  // Rotation point of selection
+
     /// <summary>
     /// Constructs a RotateMultipleTool and sets the name for the tool.
     /// </summary>
@@ -61,10 +64,9 @@ namespace Northwoods.Go.Tools.Extensions {
       _InitialInfo = infos;
     }
 
-    /// @hidden @internal
     private void WalkTree(Part part, Dictionary<Part, PartInfo> infos) {
       if (part == null || part is Link) return;
-      // distance from _centerPoint to locationSpot of part
+      // distance from _CenterPoint to LocationSpot of part
       var dist = Math.Sqrt(_CenterPoint.DistanceSquared(part.Location));
       // calculate initial relative angle
       var dir = _CenterPoint.Direction(part.Location);
@@ -92,7 +94,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public override void Rotate(double newangle) {
       var diagram = Diagram;
       if (_InitialInfo == null) return;
-      var node = AdornedElement != null ? AdornedElement.Part : null;
+      var node = AdornedElement?.Part;
       if (node == null) return;
       var e = diagram.LastInput;
       // when rotating individual parts, remember the original angle difference
@@ -112,7 +114,7 @@ namespace Northwoods.Go.Tools.Extensions {
           }
         } else {
           var radAngle = newangle * (Math.PI / 180); // converts the angle traveled from degrees to radians
-                                                     // calculate the part"s x-y location relative to the central rotation point
+          // calculate the part's x-y location relative to the central rotation point
           var offsetX = partInfo.Distance * Math.Cos(radAngle + partInfo.PlacementAngle);
           var offsetY = partInfo.Distance * Math.Sin(radAngle + partInfo.PlacementAngle);
           // move part
@@ -146,7 +148,7 @@ namespace Northwoods.Go.Tools.Extensions {
       else if (angle < 0) angle += 360;
       var interval = Math.Min(Math.Abs(SnapAngleMultiple), 180);
       var epsilon = Math.Min(Math.Abs(SnapAngleEpsilon), interval / 2);
-      // if it"s close to a multiple of INTERVAL degrees, make it exactly so
+      // if it's close to a multiple of INTERVAL degrees, make it exactly so
       if (!diagram.LastInput.Shift && interval > 0 && epsilon > 0) {
         if (angle % interval < epsilon) {
           angle = Math.Floor(angle / interval) * interval;
@@ -162,9 +164,9 @@ namespace Northwoods.Go.Tools.Extensions {
   }
 
   /// <summary>
-  /// Internal class to remember a Part"s offset and angle.
+  /// Internal class to remember a Part's offset and angle.
   /// </summary>
-  class PartInfo {
+  internal class PartInfo {
     public double PlacementAngle;
     public double Distance;
     public double RotationAngle;

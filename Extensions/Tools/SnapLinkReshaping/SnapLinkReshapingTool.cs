@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,14 +14,15 @@ using System;
 using System.Linq;
 
 namespace Northwoods.Go.Tools.Extensions {
-
   /// <summary>
   /// The SnapLinkReshapingTool class lets the user snap link reshaping handles to the nearest grid point.
+  /// </summary>
+  /// <remarks>
   /// If <see cref="AvoidsNodes"/> is true and the link is orthogonal,
   /// it also avoids reshaping the link so that any adjacent segments cross over any avoidable nodes.
   /// 
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/SnapLinkReshaping.Html">Snap Link Reshaping</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/SnapLinkReshaping.html">Snap Link Reshaping</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class SnapLinkReshapingTool : LinkReshapingTool {
     private Size _GridCellSize = new(double.NaN, double.NaN);
@@ -35,9 +36,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the <see cref="Size"/> of each grid cell to which link points will be snapped.
-    ///
-    /// The default value is NaNxNaN, which means use the <see cref="Diagram.Grid"/>"s <see cref="Panel.GridCellSize"/>.
     /// </summary>
+    /// <remarks>
+    /// The default value is NaNxNaN, which means use the <see cref="Diagram.Grid"/>'s <see cref="Panel.GridCellSize"/>.
+    /// </remarks>
     public Size GridCellSize {
       get {
         return _GridCellSize;
@@ -49,9 +51,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the <see cref="Point"/> origin for the grid to which link points will be snapped.
-    ///
-    /// The default value is NaN,NaN, which means use the <see cref="Diagram.Grid"/>"s <see cref="Panel.GridOrigin"/>.
     /// </summary>
+    /// <remarks>
+    /// The default value is NaNxNaN, which means use the <see cref="Diagram.Grid"/>'s <see cref="Panel.GridOrigin"/>.
+    /// </remarks>
     public Point GridOrigin {
       get {
         return _GridOrigin;
@@ -62,11 +65,12 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets whether a reshape handle"s position should be snapped to a grid point.
+    /// Gets or sets whether a reshape handle's position should be snapped to a grid point.
     /// This affects the behavior of <see cref="ComputeReshape"/>.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool IsGridSnapEnabled {
       get {
         return _IsGridSnapEnabled;
@@ -77,12 +81,13 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets whether a reshape handle"s position should only be dragged where the
+    /// Gets or sets whether a reshape handle's position should only be dragged where the
     /// adjacent segments do not cross over any nodes.
     /// This affects the behavior of <see cref="ComputeReshape"/>.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool AvoidsNodes {
       get {
         return _AvoidsNodes;
@@ -99,7 +104,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public override void DoActivate() {
       base.DoActivate();
       if (IsActive && AvoidsNodes && AdornedLink != null && AdornedLink.IsOrthogonal && Handle != null) {
-        // assume the Link"s route starts off correctly avoiding all nodes
+        // assume the Link's route starts off correctly avoiding all nodes
         _SafePoint = Diagram.LastInput.DocumentPoint;
         var link = AdornedLink;
         var idx = (int)Handle.SegmentIndex;
@@ -110,13 +115,15 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Pretend while dragging a reshape handle the mouse point is at the nearest grid point, if <see cref="IsGridSnapEnabled"/> is true.
+    /// </summary>
+    /// <remarks>
     /// This uses <see cref="GridCellSize"/> and <see cref="GridOrigin"/>, unless those are not real values,
     /// in which case this uses the <see cref="Diagram.Grid"/>"s <see cref="Panel.GridCellSize"/> and <see cref="Panel.GridOrigin"/>.
     ///
     /// If <see cref="AvoidsNodes"/> is true and the adorned Link is <see cref="Link.IsOrthogonal"/>,
     /// this method also avoids returning a Point that causes the adjacent segments, both before and after
-    /// the current handle"s index, to cross over any Nodes that are <see cref="Node.Avoidable"/>.
-    /// </summary>
+    /// the current handle's index, to cross over any Nodes that are <see cref="Node.Avoidable"/>.
+    /// </remarks>
     public override Point ComputeReshape(Point p) {
       var pt = p;
       var diagram = Diagram;
@@ -140,7 +147,6 @@ namespace Northwoods.Go.Tools.Extensions {
       return base.ComputeReshape(pt);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Internal method for seeing whether a moved handle will cause any
     /// adjacent orthogonal segments to cross over any avoidable nodes.

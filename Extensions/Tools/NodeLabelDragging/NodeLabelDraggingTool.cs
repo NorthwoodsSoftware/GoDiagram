@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,14 +14,15 @@ namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The NodeLabelDraggingTool class lets the user move a label on a Node.
-  ///
-  /// This tool only works when the Node has a label (any GraphObject) marked with
-  /// { _isNodeLabel: true } that is positioned in a Spot Panel.
-  /// It works by modifying that label"s <see cref="GraphObject.Alignment"/> property to have an
+  /// </summary>
+  /// <remarks>
+  /// This tool only works when the Node has a label (any GraphObject) marked
+  /// by the "_IsNodeLabel" property that is positioned in a Spot Panel.
+  /// It works by modifying that label's <see cref="GraphObject.Alignment"/> property to have an
   /// offset from the center of the panel.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/NodeLabelDragging.Html">Node Label Dragging</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/NodeLabelDragging.html">Node Label Dragging</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class NodeLabelDraggingTool : Tool {
     /// <summary>
@@ -44,8 +45,8 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// From the GraphObject at the mouse point, search up the visual tree until we get to
-    /// an object that has the "_isNodeLabel" property set to true, that is in a Spot Panel,
-    /// and that is not the first element of that Panel (i.E. not the main element of the panel).
+    /// an object that has the "_IsNodeLabel" property set to true, that is in a Spot Panel,
+    /// and that is not the first element of that Panel (i.e. not the main element of the panel).
     /// </summary>
     /// <returns>This returns null if no such label is at the mouse down point.</returns>
     public GraphObject FindLabel() {
@@ -53,7 +54,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var e = diagram.FirstInput;
       var elt = diagram.FindElementAt(e.DocumentPoint, null, null);
 
-      if (elt == null || !(elt.Part is Node)) return null;
+      if (elt == null || elt.Part is not Node) return null;
       while (elt.Panel != null) {
         if ((elt["_IsNodeLabel"] as bool? ?? false) && elt.Panel.Type == PanelLayoutSpot.Instance && elt.Panel.FindMainElement() != elt) return elt;
         elt = elt.Panel;
@@ -64,12 +65,12 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// This tool can only start if the mouse has moved enough so that it is not a click,
     /// and if the mouse down point is on a GraphObject "label" in a Spot Panel,
-    /// as determined by findLabel().
+    /// as determined by <see cref="FindLabel"/>.
     /// </summary>
     public override bool CanStart() {
       if (!base.CanStart()) return false;
       var diagram = Diagram;
-      // require left button & that it has moved far enough away from the mouse down point, so it isn"t a click
+      // require left button & that it has moved far enough away from the mouse down point, so it isn't a click
       var e = diagram.LastInput;
       if (!e.Left) return false;
       if (!IsBeyondDragSize()) return false;
@@ -78,8 +79,8 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Start a transaction, call <see cref="FindLabel"/> and remember it as the "label" property,
-    /// and remember the original value for the label"s <see cref="GraphObject.Alignment"/> property.
+    /// Start a transaction, call <see cref="FindLabel"/> and remember it as the <see cref="Label"/> property,
+    /// and remember the original value for the label's <see cref="GraphObject.Alignment"/> property.
     /// </summary>
     public override void DoActivate() {
       StartTransaction("Shifted Label");
@@ -114,7 +115,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Restore the label"s original value for GraphObject.Alignment.
+    /// Restore the label's original value for <see cref="GraphObject.Alignment"/>.
     /// </summary>
     public override void DoCancel() {
       if (Label != null) {
@@ -124,7 +125,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// During the drag, call updateAlignment in order to set the <see cref="GraphObject.Alignment"/> of the label.
+    /// During the drag, call <see cref="UpdateAlignment"/> in order to set the <see cref="GraphObject.Alignment"/> of the label.
     /// </summary>
     public override void DoMouseMove() {
       if (!IsActive) return;
@@ -143,7 +144,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Save the label"s <see cref="GraphObject.Alignment"/> as an absolute offset from the center of the Spot Panel
+    /// Save the label's <see cref="GraphObject.Alignment"/> as an absolute offset from the center of the Spot Panel
     /// that the label is in.
     /// </summary>
     public void UpdateAlignment() {

@@ -1,5 +1,5 @@
 /*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,7 +14,6 @@ using System;
 using System.Collections.Generic;
 
 namespace Northwoods.Go.Layouts.Extensions {
-  /// @hidden @internal
   /// <summary>
   /// Used to represent the perimeter of the currently packed
   /// shape when packing rectangles. Segments are always assumed
@@ -32,7 +31,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     public bool P1Concave;
     public bool IsHorizontal; // if the segment is not horizontal, it is assumed to be vertical
 
-    /// @hidden @internal
     /// <summary>
     /// Constructs a new Segment. Segments are assumed to be either
     /// horizontal or vertical, and the given coordinates should
@@ -53,8 +51,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       IsHorizontal = Math.Abs(y2 - y1) < 1e-7;
     }
 
-
-    /// @hidden @internal
     /// <summary>
     /// Gets a rectangle representing the bounds of a given segment.
     /// Used to supply bounds of segments to the quadtree.
@@ -68,7 +64,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
   }
 
-  /// @hidden @internal
   /// <summary>
   /// Defines the possible orientations that two adjacent
   /// horizontal/vertical segments can form.
@@ -80,7 +75,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     SE
   }
 
-  /// @hidden @internal
   /// <summary>
   /// Structure for storing possible placements when packing
   /// rectangles. Fits have a cost associated with them (lower
@@ -96,7 +90,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     public VirtualizedPackedLayout.ListNode<Segment> S1;
     public VirtualizedPackedLayout.ListNode<Segment> S2;
 
-    /// @hidden @internal
     /// <summary>
     /// Constructs a new Fit.
     /// </summary>
@@ -122,21 +115,24 @@ namespace Northwoods.Go.Layouts.Extensions {
 
 #pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
   /// <summary>
-  /// A Custom Layout that attempts to pack nodes as close together as possible
-  /// without overlap.  Each node is assumed to be either rectangular or
+  /// A custom Layout that attempts to pack nodes as close together as possible
+  /// without overlap.
+  /// </summary>
+  /// <remarks>
+  /// Each node is assumed to be either rectangular or
   /// circular (dictated by the <see cref="HasCircularNodes"/> property). This layout
   /// supports packing nodes into either a rectangle or an ellipse, with the
-  /// shape determined by the packShape property and the aspect ratio determined
-  /// by either the aspectRatio property or the specified width and height
-  /// (depending on the packMode).
+  /// shape determined by the PackShape property and the aspect ratio determined
+  /// by either the AspectRatio property or the specified width and height
+  /// (depending on the PackMode).
   ///
   /// Nodes with 0 width or height cannot be packed, so they are treated by this
   /// layout as having a width or height of 0.1 instead.
   ///
   /// Unlike other "Virtualized..." layouts, this does not inherit from <see cref="PackedLayout"/>
-  /// because there were a lot of internal changes that needed to be made.  That may
-  /// change in the future if PackedLayout"s implementation is generalized.
-  /// </summary>
+  /// because there were a lot of internal changes that needed to be made. That may
+  /// change in the future if PackedLayout's implementation is generalized.
+  /// </remarks>
   /// @category Layout Extension
   [Undocumented]
 #pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
@@ -144,7 +140,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -167,7 +162,8 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Gets or sets the shape that nodes will be packed into. Valid values are
     /// <see cref="VPackShape.Elliptical"/>, <see cref="VPackShape.Rectangular"/>, and
     /// <see cref="VPackShape.Spiral"/>.
-    ///
+    /// </summary>
+    /// <remarks>
     /// In <see cref="VPackShape.Spiral"/> mode, nodes are not packed into a particular
     /// shape, but rather packed consecutively one after another in a spiral fashion.
     /// The <see cref="AspectRatio"/> property is ignored in this mode, and
@@ -187,7 +183,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <see cref="Size"/> property.
     ///
     /// The default value is <see cref="VPackShape.Elliptical"/>.
-    /// </summary>
+    /// </remarks>
     public VPackShape PackShape {
       get {
         return _PackShape;
@@ -201,12 +197,12 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets the mode that the layout will use to determine its size. Valid values
-    /// are <see cref="VPackMode.AspectOnly"/>, <see cref="VPackMode.Fit"/>, and <see cref="VPackMode.ExpandToFit"/>.
-    ///
+    /// Gets or sets the mode that the layout will use to determine its size.
+    /// </summary>
+    /// <remarks>
     /// The default value is <see cref="VPackMode.AspectOnly"/>. In this mode, the layout will simply
     /// grow as needed, attempting to keep the aspect ratio defined by <see cref="AspectRatio"/>.
-    /// </summary>
+    /// </remarks>
     public VPackMode PackMode {
       get {
         return _PackMode;
@@ -222,9 +218,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets or sets the method by which nodes will be sorted before being packed. To change
     /// the order, see <see cref="SortOrder"/>.
-    ///
-    /// The default value is <see cref="VSortMode.None"/>, in which nodes will not be sorted at all.
     /// </summary>
+    /// <remarks>
+    /// The default value is <see cref="VSortMode.None"/>, in which nodes will not be sorted at all.
+    /// </remarks>
     public VSortMode SortMode {
       get {
         return _SortMode;
@@ -240,9 +237,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets or sets the order that nodes will be sorted in before being packed. To change
     /// the sort method, see <see cref="SortMode"/>.
-    ///
-    /// The default value is <see cref="VSortOrder.Descending"/>
     /// </summary>
+    /// <remarks>
+    /// The default value is <see cref="VSortOrder.Descending"/>
+    /// </remarks>
     public VSortOrder SortOrder {
       get {
         return _SortOrder;
@@ -257,27 +255,26 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the comparison function used for sorting nodes.
-    ///
+    /// </summary>
+    /// <remarks>
     /// By default, the comparison function is set according to the values of <see cref="SortMode"/>
     /// and <see cref="SortOrder"/>.
     ///
     /// Whether this comparison function is used is determined by the value of <see cref="SortMode"/>.
     /// Any value except <see cref="VSortMode.None"/> will result in the comparison function being used.
-    /// <code language="js">
-    ///   $(VirtualizedPackedLayout,
-    ///     {
-    ///       sortMode: VirtualizedPackedLayout.Area,
-    ///       comparer: function(na, nb) {
+    /// <code language="cs">
+    ///   myDiagram.Layout = new VirtualizedPackedLayout {
+    ///       SortMode = VSortMode.Area,
+    ///       Comparer = (na, nb) => {
     ///         var na = na.Data;
     ///         var nb = nb.Data;
     ///         if (da.SomeProperty &lt; db.SomeProperty) return -1;
     ///         if (da.SomeProperty &gt; db.SomeProperty) return 1;
     ///         return 0;
     ///       }
-    ///     }
-    ///   )
+    ///     };
     /// </code>
-    /// </summary>
+    /// </remarks>
     public Comparison<IBounded> Comparer {
       get {
         return _Comparer;
@@ -289,14 +286,16 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the aspect ratio for the shape that nodes will be packed into.
+    /// </summary>
+    /// <remarks>
     /// The provided aspect ratio should be a nonzero postive number.
-    ///
+    /// 
     /// Note that this only applies if the <see cref="PackMode"/> is
     /// <see cref="VPackMode.AspectOnly"/>. Otherwise, the <see cref="Size"/>
     /// will determine the aspect ratio of the packed shape.
     ///
     /// The default value is 1.
-    /// </summary>
+    /// </remarks>
     public double AspectRatio {
       get {
         return _AspectRatio;
@@ -311,6 +310,8 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the size for the shape that nodes will be packed into.
+    /// </summary>
+    /// <remarks>
     /// To fill the viewport, set a size with a width and height of NaN. Size
     /// values of 0 are considered for layout purposes to instead be 1.
     ///
@@ -322,7 +323,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <see cref="VPackMode.Fit"/> or <see cref="VPackMode.ExpandToFit"/>.
     ///
     /// The default value is 500x500.
-    /// </summary>
+    /// </remarks>
     public Size Size {
       get {
         return _Size;
@@ -342,8 +343,11 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets the spacing between nodes. This value can be set to any
-    /// real double (a negative spacing will compress nodes together, and a
+    /// Gets or sets the spacing between nodes.
+    /// </summary>
+    /// <remarks>
+    /// This value can be set to any
+    /// real number (a negative spacing will compress nodes together, and a
     /// positive spacing will leave space between them).
     ///
     /// Note that the spacing value is only respected in the <see cref="VPackMode.Fit"/>
@@ -352,7 +356,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <see cref="PackMode"/>, this property does not do anything.
     ///
     /// The default value is 0.
-    /// </summary>
+    /// </remarks>
     public double Spacing {
       get {
         return _Spacing;
@@ -368,14 +372,15 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets or sets whether or not to assume that nodes are circular. This changes
     /// the packing algorithm to one that is much more efficient for circular nodes.
-    ///
+    /// </summary>
+    /// <remarks>
     /// As this algorithm expects circles, it is assumed that if this property is set
     /// to true that the given nodes will all have the same height and width. All
     /// calculations are done using the width of the given nodes, so unexpected results
     /// may occur if the height differs from the width.
     ///
     /// The default value is false.
-    /// </summary>
+    /// </remarks>
     public bool HasCircularNodes {
       get {
         return _HasCircularNodes;
@@ -388,11 +393,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-
-#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
     /// <summary>
-    /// This read-only property is the effective spacing calculated after <see cref="PackedLayout.DoLayout"/>.
-    ///
+    /// This read-only property is the effective spacing calculated after <see cref="PerformLayout(List{IBounded})"/>.
+    /// </summary>
+    /// <remarks>
     /// If the <see cref="PackMode"/> is <see cref="VPackMode.AspectOnly"/>, this will simply be the
     /// <see cref="Spacing"/> property. However, in the <see cref="VPackMode.Fit"/> and
     /// <see cref="VPackMode.ExpandToFit"/> modes, this property will include the forced spacing added by
@@ -400,9 +404,8 @@ namespace Northwoods.Go.Layouts.Extensions {
     ///
     /// Note that this property will only return a valid value after a layout has been performed. Before
     /// then, its behavior is undefined.
-    /// </summary>
+    /// </remarks>
     public double ActualSpacing {
-#pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
       get {
         return Spacing + _FixedSizeModeSpacing;
       }
@@ -410,11 +413,13 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// This read-only property returns the actual rectangular bounds occupied by the packed nodes.
+    /// </summary>
+    /// <remarks>
     /// This property does not take into account any kind of spacing around the packed nodes.
     ///
     /// Note that this property will only return a valid value after a layout has been performed. Before
     /// then, its behavior is undefined.
-    /// </summary>
+    /// </remarks>
     public Rect ActualBounds {
       get {
         return _ActualBounds;
@@ -422,8 +427,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// This read-only property returns the smallest enclosing circle around the packed nodes. It makes
-    /// use of the <see cref="HasCircularNodes"/> property to determine whether or not to make
+    /// This read-only property returns the smallest enclosing circle around the packed nodes.
+    /// </summary>
+    /// <remarks>
+    /// It makes use of the <see cref="HasCircularNodes"/> property to determine whether or not to make
     /// enclosing circle calculations for rectangles or for circles. This property does not take into
     /// account any kind of spacing around the packed nodes. The enclosing circle calculation is
     /// performed the first time this property is retrieved, and then cached to prevent slow accesses
@@ -433,11 +440,11 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// then, its behavior is undefined.
     ///
     /// This property is included as it may be useful for some data visualizations.
-    /// </summary>
+    /// </remarks>
     public Rect EnclosingCircle {
       get {
         if (_EnclosingCircle == null) {
-          if (HasCircularNodes || PackShape == VPackShape.Spiral) { // remember, spiral mode assumes hasCircularNodes
+          if (HasCircularNodes || PackShape == VPackShape.Spiral) { // remember, spiral mode assumes HasCircularNodes
             var circles = new List<Circle>(_NodeBounds.Count);
             for (var i = 0; i < circles.Count; i++) {
               var bounds = _NodeBounds[i];
@@ -446,7 +453,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             }
             _EnclosingCircle = Enclose(circles);
           } else {
-            var points = new List<Point>(); // TODO: make this work with segments, not the whole nodeboudns list
+            var points = new List<Point>(); // TODO: make this work with segments, not the whole nodebounds list
             var segment = _Segments.Start;
             if (segment != null) {
               do {
@@ -465,9 +472,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets or sets whether or not to use the <see cref="Layout.ArrangementOrigin"/>
     /// property when placing nodes.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool ArrangesToOrigin {
       get {
         return _ArrangesToOrigin;
@@ -481,39 +489,25 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     // configuration defaults
-    /** @hidden @internal */
     private VPackShape _PackShape = VPackShape.Elliptical;
-    /** @hidden @internal */
     private VPackMode _PackMode = VPackMode.AspectOnly;
-    /** @hidden @internal */
     private VSortMode _SortMode = VSortMode.None;
-    /** @hidden @internal */
     private VSortOrder _SortOrder = VSortOrder.Descending;
-    /** @hidden @internal */
     private Comparison<IBounded> _Comparer = null;
-    /** @hidden @internal */
     private double _AspectRatio = 1;
-    /** @hidden @internal */
-    private Size _Size = new Size(500, 500);
-    /** @hidden @internal */
-    private Size _DefaultSize = new Size(500, 500);
-    /** @hidden @internal */
+    private Size _Size = new(500, 500);
+    private Size _DefaultSize = new(500, 500);
     private bool _FillViewport = false; // true if size is (NaN, NaN)
-    /** @hidden @internal */
     private double _Spacing = 0;
-    /** @hidden @internal */
     private bool _HasCircularNodes = false;
-    /** @hidden @internal */
     private bool _ArrangesToOrigin = true;
 
-    /// @hidden @internal
     /// <summary>
     /// The forced spacing value applied in the <see cref="VPackMode.Fit"/>
     /// and <see cref="VPackMode.ExpandToFit"/> modes.
     /// </summary>
     private double _FixedSizeModeSpacing = 0;
 
-    /// @hidden @internal
     /// <summary>
     /// The actual target aspect ratio, set from either <see cref="AspectRatio"/>
     /// or from the <see cref="Size"/>, depending on the <see cref="PackMode"/>.
@@ -521,32 +515,21 @@ namespace Northwoods.Go.Layouts.Extensions {
     private double _EAspectRatio = 1;
 
     // layout state
-    /** @hidden @internal */
-    private Point _Center = new Point();
-    /** @hidden @internal */
-    private Rect _Bounds = new Rect();
-    /** @hidden @internal */
-    private Rect _ActualBounds = new Rect();
-    /** @hidden @internal */
+    private Point _Center = new();
+    private Rect _Bounds = new();
+    private Rect _ActualBounds = new();
     private Rect? _EnclosingCircle = null;
-    /** @hidden @internal */
     private Segment _MinXSegment = null;
-    /** @hidden @internal */
     private Segment _MinYSegment = null;
-    /** @hidden @internal */
     private Segment _MaxXSegment = null;
-    /** @hidden @internal */
     private Segment _MaxYSegment = null;
-    /** @hidden @internal */
-    private Quadtree<Segment> _Tree = new Quadtree<Segment>();
+    private readonly Quadtree<Segment> _Tree = new();
 
-    // saved node bounds and segment list to use to calculate enclosing circle in the enclosingCircle getter
-    /** @hidden @internal */
-    private List<Rect> _NodeBounds = new List<Rect>();
-    /** @hidden @internal */
-    private CircularDoublyLinkedList<Segment> _Segments = new CircularDoublyLinkedList<Segment>();
+    // saved node bounds and segment list to use to calculate enclosing circle in the EnclosingCircle getter
+    private List<Rect> _NodeBounds = new();
+    private CircularDoublyLinkedList<Segment> _Segments = new();
 
-    private Random _Rand = new();
+    private readonly Random _Rand = new();
 
     /// <summary>
     /// Performs the VirtualizedPackedLayout.
@@ -627,7 +610,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       var fits = HasCircularNodes || PackShape == VPackShape.Spiral ? FitCircles(nodes) : FitRects(nodes);
       // in the Fit and ExpandToFit modes, we need to run the packing another time to figure out what the correct
-      // _fixedModeSpacing should be. Then the layout is run a final time with the correct spacing.
+      // _FixedModeSpacing should be. Then the layout is run a final time with the correct spacing.
       if (PackMode == VPackMode.Fit || PackMode == VPackMode.ExpandToFit) {
         var bounds0 = new Rect(_Bounds.X, _Bounds.Y, _Bounds.Width, _Bounds.Height);
         _Bounds = new Rect();
@@ -663,7 +646,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         _Bounds = new Rect();
         fits = HasCircularNodes || PackShape == VPackShape.Spiral ? FitCircles(nodes) : FitRects(nodes);
       }
-      // move the nodes and calculate the actualBounds property
+      // move the nodes and calculate the ActualBounds property
       if (ArrangesToOrigin) {
         _ActualBounds = new Rect(ArrangementOrigin.X, ArrangementOrigin.Y, 0, 0);
       }
@@ -683,7 +666,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       _NodeBounds = nodeBounds; // save node bounds in case we want to calculate the smallest enclosing circle later
 
-      // can be overriden to change layout behavior, doesn"t do anything by default
+      // can be overriden to change layout behavior, doesn't do anything by default
       CommitLayout();
 
       if (diagram != null) diagram.CommitTransaction("Layout");
@@ -695,10 +678,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Cause the vertex to be moved so that its position is at (nx,ny).
     /// The default implementation assumes the node.Bounds is a Rect that may be modified.
     /// </summary>
-    /// @expose
-    /// <param name="node"></param>
-    /// <param name="nx"></param>
-    /// <param name="ny"></param>
     public virtual void MoveNode(IBounded node, double nx, double ny) {
       node.Bounds = new Rect(nx, ny);
     }
@@ -708,10 +687,8 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// before the layout transaction is committed. It can be overriden and
     /// used to customize layout behavior. By default, the method does nothing.
     /// </summary>
-    /// @expose
-    public void CommitLayout() { }
+    public virtual void CommitLayout() { }
 
-    /// @hidden @internal
     /// <summary>
     /// Runs a circle packing algorithm on the given array of nodes. The
     /// algorithm used is a slightly modified version of the one proposed
@@ -859,9 +836,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       return fits;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Runs a rectangle packing algorithm on the given array of nodes.
+    /// </summary>
+    /// <remarks>
     /// The algorithm presented is original, and operates by maintaining
     /// a representation (with segments) of the perimeter of the already
     /// packed shape. The perimeter of segments is stored in both a linked
@@ -891,8 +869,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// strategies enables intersection checking to take place extremely
     /// quickly, when it would normally be the slowest part of the entire
     /// algorithm.
-    ///
-    /// </summary>
+    /// </remarks>
     /// <param name="nodes">the array of Nodes to pack</param>
     /// <returns>an array of positioned rectangles corresponding to the nodes argument</returns>
     private List<Rect> FitRects(List<IBounded> nodes) {
@@ -966,7 +943,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           return (int)(a.Cost - b.Cost);
         });
 
-        /* scales the cost of skip fits. a double below
+        /* scales the cost of skip fits. a number below
          * one makes skip fits more likely to appear,
          * which is preferable because they are more
          * aesthetically pleasing and reduce the total
@@ -1032,10 +1009,9 @@ namespace Northwoods.Go.Layouts.Extensions {
       return fits;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Attempts to find a segment which can be used to create a new skip fit
-    /// between fit.S1 and the found segment. A double of conditions are checked
+    /// between fit.S1 and the found segment. A number of conditions are checked
     /// before returning a segment, ensuring that if the skip fit *does* intersect
     /// with the already packed shape, it will do so along the perimeter (so that it
     /// can be detected with only knowledge about the perimeter). Multiple oriented
@@ -1044,7 +1020,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     ///
     /// Oriented segments can be oriented with either fit.S1, or fit.S1.Prev. The
     /// second return value (usePreviousSegment) indicates which the found segment is.
-    ///
     /// </summary>
     /// <param name="fit">the fit to search for a new segment for</param>
     /// <param name="lastSegment">the last segment found.</param>
@@ -1107,14 +1082,13 @@ namespace Northwoods.Go.Layouts.Extensions {
       return (null, false);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Returns the orientation of two adjacent segments. s2
     /// is assumed to start at the end of s1.
     /// </summary>
     /// <param name="s1">the first segment</param>
     /// <param name="s2">the second segment</param>
-    private Orientation SegmentOrientation(Segment s1, Segment s2) {
+    private static Orientation SegmentOrientation(Segment s1, Segment s2) {
       if (s1.IsHorizontal) {
         if (s1.X1 < s2.X1) {
           return s2.P1Concave ? Orientation.SE : Orientation.NE;
@@ -1130,19 +1104,17 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Fits a rectangle between two segments (used for skip fits). This is an operation
     /// related more to corners than segments, so fit.S1 should always be supplied for
     /// segment a (even if usePreviousSegment was true in the return value for
     /// <see cref="FindNextOrientedSegment"/>).
-    ///
     /// </summary>
     /// <param name="a">the first segment to fit between, should always be fit.S1</param>
     /// <param name="b"></param> the second segment to fit between, found with <see cref="FindNextOrientedSegment"/>
     /// <param name="width">the width of the rectangle, should be fit.Width</param>
     /// <param name="height">the height of the rectangle, should be fit.Height</param>
-    private Rect RectAgainstMultiSegment(ListNode<Segment> a, ListNode<Segment> b, double width, double height) {
+    private static Rect RectAgainstMultiSegment(ListNode<Segment> a, ListNode<Segment> b, double width, double height) {
       switch (SegmentOrientation(a.Prev.Data, a.Data)) {
         case Orientation.NE:
           if (a.Data.Y1 > b.Data.Y2) {
@@ -1170,10 +1142,8 @@ namespace Northwoods.Go.Layouts.Extensions {
           }
         default: return default;
       }
-
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Gets the rectangle placed against the given segment with the lowest
     /// placement cost. Rectangles can be placed against a segment either at
@@ -1228,15 +1198,14 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks if a segment is on the perimeter of the given fit bounds.
     /// Also returns true if the segment is within the rect, but that
-    /// shouldn"t matter for any of the cases where this function is used.
+    /// shouldn't matter for any of the cases where this function is used.
     /// </summary>
     /// <param name="s">the segment to test</param>
     /// <param name="bounds">the fit bounds</param>
-    private bool SegmentIsOnFitPerimeter(Segment s, Rect bounds) {
+    private static bool SegmentIsOnFitPerimeter(Segment s, Rect bounds) {
       var xCoordinatesTogether = NumberIsBetween(s.X1, bounds.Left, bounds.Right)
         || NumberIsBetween(s.X2, bounds.Left, bounds.Right)
         || NumberIsBetween(bounds.Left, s.X1, s.X2)
@@ -1249,34 +1218,31 @@ namespace Northwoods.Go.Layouts.Extensions {
         || (!s.IsHorizontal && (ApproxEqual(s.X1, bounds.Left) || ApproxEqual(s.X1, bounds.Right)) && yCoordinatesTogether);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks if a point is on the perimeter of the given fit bounds.
     /// Also returns true if the point is within the rect, but that
-    /// shouldn"t matter for any of the cases where this function is used.
+    /// shouldn't matter for any of the cases where this function is used.
     /// </summary>
     /// <param name="x">the x coordinate of the point to test</param>
     /// <param name="y">the y coordinate of the point to test</param>
     /// <param name="bounds">the fit bounds</param>
-    private bool PointIsOnFitPerimeter(double x, double y, Rect bounds) {
+    private static bool PointIsOnFitPerimeter(double x, double y, Rect bounds) {
       return (x >= bounds.Left - 1e-7 && x <= bounds.Right + 1e-7 && y >= bounds.Top - 1e-7 && y <= bounds.Bottom + 1e-7);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks if a point is on the corner of the given fit bounds.
     /// </summary>
     /// <param name="x">the x coordinate of the point to test</param>
     /// <param name="y">the y coordinate of the point to test</param>
     /// <param name="bounds">the fit bounds</param>
-    private bool PointIsFitCorner(double x, double y, Rect bounds) {
+    private static bool PointIsFitCorner(double x, double y, Rect bounds) {
       return (ApproxEqual(x, bounds.Left) && ApproxEqual(y, bounds.Top)) ||
              (ApproxEqual(x, bounds.Right) && ApproxEqual(y, bounds.Top)) ||
              (ApproxEqual(x, bounds.Left) && ApproxEqual(y, bounds.Bottom)) ||
              (ApproxEqual(x, bounds.Right) && ApproxEqual(y, bounds.Bottom));
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Updates the representation of the perimeter of segments after
     /// a new placement is made. This modifies the given segments list,
@@ -1453,7 +1419,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           UpdateMinMaxSegments(newSegment);
         }
       } else { // if (PointIsOnFitPerimeter(sNext.Data.X1, sNext.Data.Y1, fit.Bounds))
-               // shorten existing segment
+        // shorten existing segment
         (sNext.Data.X1, sNext.Data.Y1) = CornerFromRect((Orientation)((int)(testOrientation + 3) % 4), fit.Bounds);
         sNext.Data.P1Concave = true;
         _Tree.SetTo(sNext.Data, Segment.RectFromSegment(sNext.Data));
@@ -1472,13 +1438,11 @@ namespace Northwoods.Go.Layouts.Extensions {
       FixMissingMinMaxSegments();
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Finds the new minimum and maximum segments in the packed shape if
     /// any of them have been deleted. To do this quickly, the quadtree
     /// is used.
     /// </summary>
-    /// @this{VirtualizedPackedLayout}
     /// <param name="force">whether or not to force an update based on the quadtree even if none of the segments were deleted</param>
     private void FixMissingMinMaxSegments(bool force = false) {
       if (_MinXSegment == null || _MaxXSegment == null || _MinYSegment == null || _MaxYSegment == null || force) {
@@ -1486,7 +1450,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Updates the minimum or maximum segments with a new segment if that
     /// segment is a new minimum or maximum.
@@ -1509,13 +1472,12 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Gets the x and y coordinates of a corner of a given rectangle.
     /// </summary>
     /// <param name="orientation">the orientation of the corner to get</param>
     /// <param name="bounds">the bounds of the rectangle to get the corner from</param>
-    private (double, double) CornerFromRect(Orientation orientation, Rect bounds) {
+    private static (double, double) CornerFromRect(Orientation orientation, Rect bounds) {
       var x = bounds.X;
       var y = bounds.Y;
       if (orientation == Orientation.NE || orientation == Orientation.SE) {
@@ -1527,23 +1489,21 @@ namespace Northwoods.Go.Layouts.Extensions {
       return (x, y);
     }
 
-    /// @hidden @internal
     /// <summary>
-    /// Tests if a double is in between two other numbers, with included
+    /// Tests if a number is in between two other numbers, with included
     /// allowance for some floating point error with the supplied values.
     /// The order of the given boundaries does not matter.
     /// </summary>
     /// <param name="n">the double to test</param>
     /// <param name="b1">the first boundary</param>
     /// <param name="b2">the second boundary</param>
-    private bool NumberIsBetween(double n, double b1, double b2) {
+    private static bool NumberIsBetween(double n, double b1, double b2) {
       var tmp = b1;
       b1 = Math.Min(b1, b2);
       b2 = Math.Max(tmp, b2);
       return n + 1e-7 >= b1 && n - 1e-7 <= b2;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Tests whether or not a given segment is a minimum or maximum segment.
     /// </summary>
@@ -1552,7 +1512,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       return s == _MinXSegment || s == _MinYSegment || s == _MaxXSegment || s == _MaxYSegment;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Removes a segment from the layout state. This includes removing it
     /// from the quadtree, as well as setting the corresponding minimum or
@@ -1577,7 +1536,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       _Tree.Remove(s.Data);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Removes all segments between the two given segments (exclusive).
     /// This includes removing them from the layout state, as well as
@@ -1605,7 +1563,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       segments.Length -= count;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Calculates the cost of a given fit placement, depending on the
     /// <see cref="PackShape"/> and <see cref="_EAspectRatio"/>.
@@ -1622,7 +1579,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Uses the quadtree to determine if the given fit has any
     /// intersections anywhere along the perimeter.
@@ -1632,16 +1588,15 @@ namespace Northwoods.Go.Layouts.Extensions {
       return _Tree.Intersecting(fit.Bounds).Count > 0;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks if a few nearby segments intersect with the given fit,
     /// producing faster interesection detection than a complete check
-    /// with the quadtree in many cases. However, since it doesn"t check
+    /// with the quadtree in many cases. However, since it doesn't check
     /// the entire perimeter, this function is susceptible to false
     /// negatives and should only be used with a more comprehensive check.
     /// </summary>
     /// <param name="fit">the fit to check</param>
-    private bool FastFitHasIntersections(Fit fit) {
+    private static bool FastFitHasIntersections(Fit fit) {
       var sNext = fit.S1.Next;
       var sPrev = fit.S1.Prev;
       for (var i = 0; i < 2; i++) {
@@ -1657,14 +1612,13 @@ namespace Northwoods.Go.Layouts.Extensions {
       return false;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks whether or not a segment intersects with a given rect.
     /// Used for <see cref="FastFitHasIntersections"/>.
     /// </summary>
     /// <param name="s">the segment to test</param>
     /// <param name="r">the rectangle to test</param>
-    private bool SegmentIntersects(Segment s, Rect r) {
+    private static bool SegmentIntersects(Segment s, Rect r) {
       var left = Math.Min(s.X1, s.X2);
       var right = Math.Max(s.X1, s.X2);
       var top = Math.Min(s.Y1, s.Y2);
@@ -1672,18 +1626,16 @@ namespace Northwoods.Go.Layouts.Extensions {
       return !(left + 1e-7 >= r.Right || right - 1e-7 <= r.Left || top + 1e-7 >= r.Bottom || bottom - 1e-7 <= r.Top);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Checks if two numbers are approximately equal, used for
     /// eliminating mistakes caused by floating point error.
     /// </summary>
     /// <param name="x">the first number</param>
     /// <param name="y">the second number</param>
-    private bool ApproxEqual(double x, double y) {
+    private static bool ApproxEqual(double x, double y) {
       return Math.Abs(x - y) < 1e-7;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Class for a node in a {<see cref="CircularDoublyLinkedList{T}"/>.
     /// Stores a pointer to the previous and next node.
@@ -1695,19 +1647,17 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       public ListNode(T data, ListNode<T> prev = null, ListNode<T> next = null) {
         Data = data;
-        Prev = prev != null ? prev : this;
-        Next = next != null ? next : this;
+        Prev = prev ?? this;
+        Next = next ?? this;
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// A Circular doubly linked list, used by <see cref="VirtualizedPackedLayout"/> to
     /// efficiently store <see cref="Segment"/>s with fast insertion and
     /// deletion time.
     /// </summary>
     internal class CircularDoublyLinkedList<T> {
-
       /// <summary>
       /// The start of the list, null when the list is empty.
       /// </summary>
@@ -1718,7 +1668,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       public int Length = 0;
 
       /// <summary>
-      /// Constructs a new list with an optional list of values
+      /// Constructs a new list with an optional list of values.
       /// </summary>
       /// <param name="vals">values to create the list with</param>
       public CircularDoublyLinkedList(params T[] vals) {
@@ -1728,7 +1678,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       /// <summary>
-      /// Inserts the given value directly after the given node
+      /// Inserts the given value directly after the given node.
       /// </summary>
       /// <param name="val">the value to insert</param>
       /// <param name="node">the node to insert after</param>
@@ -1749,7 +1699,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       /// <summary>
-      /// Inserts the given value or values at the end of the list
+      /// Inserts the given value or values at the end of the list.
       /// </summary>
       /// <param name="vals">the value(s) to insert</param>
       /// <returns>the node for the last value inserted (a list of values is inserted sequentially)</returns>
@@ -1766,7 +1716,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       /// <summary>
-      /// Removes the given node from the list
+      /// Removes the given node from the list.
       /// </summary>
       /// <param name="node">the node to remove</param>
       public void Remove(ListNode<T> node) {
@@ -1810,45 +1760,40 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     }
 
-    /// <summary>
-    /// The following is a BSD-licensed implementation of the
-    /// Matousek-Sharir-Welzl algorithm for finding the smallest
-    /// enclosing circle around a given set of circles. The
-    /// original algorithm was adapted to support enclosing points
-    /// by assuming that the radius of a point is 0.
-    /// </summary>
+    // The following is a BSD-licensed implementation of the
+    // Matousek-Sharir-Welzl algorithm for finding the smallest
+    // enclosing circle around a given set of circles. The
+    // original algorithm was adapted to support enclosing points
+    // by assuming that the radius of a point is 0.
 
-    /// <summary>
-    /// Copyright 2010-2016 Mike Bostock
-    /// All rights reserved.
-    ///
-    /// Redistribution and use in source and binary forms, with or without modification,
-    /// are permitted provided that the following conditions are met:
-    ///
-    /// * Redistributions of source code must retain the above copyright notice, this
-    ///   list of conditions and the following disclaimer.
-    ///
-    /// * Redistributions in binary form must reproduce the above copyright notice,
-    ///   this list of conditions and the following disclaimer in the documentation
-    ///   and/or other materials provided with the distribution.
-    ///
-    /// * Neither the name of the author nor the names of contributors may be used to
-    ///   endorse or promote products derived from this software without specific prior
-    ///   written permission.
-    ///
-    /// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    /// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    /// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    /// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    /// ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    /// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    /// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-    /// ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    /// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-    /// SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    /// </summary>
+    // Copyright 2010-2016 Mike Bostock
+    // All rights reserved.
+    //
+    // Redistribution and use in source and binary forms, with or without modification,
+    // are permitted provided that the following conditions are met:
+    //
+    // * Redistributions of source code must retain the above copyright notice, this
+    //   list of conditions and the following disclaimer.
+    //
+    // * Redistributions in binary form must reproduce the above copyright notice,
+    //   this list of conditions and the following disclaimer in the documentation
+    //   and/or other materials provided with the distribution.
+    //
+    // * Neither the name of the author nor the names of contributors may be used to
+    //   endorse or promote products derived from this software without specific prior
+    //   written permission.
+    //
+    // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    // ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    // WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    // DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+    // ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    // (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    // LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    // ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-    /// @hidden @internal
     /// <summary>
     /// Represents a circle for the purposes of the smallest-enclosing
     /// circle algorithm. The x and y values represent the center of
@@ -1856,32 +1801,32 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     internal class Circle {
       public double R;
-      private Point p;
+      private Point _P;
       public Circle(double x, double y, double r) {
         R = r;
-        p = new Point(x, y);
+        _P = new Point(x, y);
       }
 
       public double X {
         get {
-          return p.X;
+          return _P.X;
         }
         set {
-          if (p.X != value) p.X = value;
+          if (_P.X != value) _P.X = value;
         }
       }
 
       public double Y {
         get {
-          return p.Y;
+          return _P.Y;
         }
         set {
-          if (p.Y != value) p.Y = value;
+          if (_P.Y != value) _P.Y = value;
         }
       }
     }
 
-    Rect Enclose(List<Point> points) {
+    private Rect Enclose(List<Point> points) {
       var circles = new List<Circle>();
       foreach (var point in points) {
         circles.Add(new Circle(point.X, point.Y, 0));
@@ -1889,9 +1834,8 @@ namespace Northwoods.Go.Layouts.Extensions {
       return Enclose(circles);
     }
 
-    /// @hidden @internal
     /// <param name="circles">array of circles of points to find the enclosing circle for</param>
-    Rect Enclose(List<Circle> circles) {
+    private Rect Enclose(List<Circle> circles) {
       var i = 0;
       var n = (circles = Shuffle(new List<Circle>(circles))).Count;
       var B = new List<Circle>();
@@ -1911,17 +1855,15 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
-    /// Converts a Circle to a go.Rect object
+    /// Converts a Circle to a go.Rect object.
     /// </summary>
     /// <param name="c">the Circle to convert</param>
-    Rect CircleToRect(Circle c) {
+    private static Rect CircleToRect(Circle c) {
       return new Rect(c.X - c.R, c.Y - c.R, c.R * 2, c.R * 2);
     }
 
-    /// @hidden @internal
-    List<Circle> ExtendBasis(List<Circle> B, Circle p) {
+    private static List<Circle> ExtendBasis(List<Circle> B, Circle p) {
       if (EnclosesWeakAll(p, B)) return new List<Circle> { p };
 
       // If we get here then B must have at least one element.
@@ -1948,28 +1890,25 @@ namespace Northwoods.Go.Layouts.Extensions {
       throw new Exception("Assertion error");
     }
 
-    /// @hidden @internal
-    bool EnclosesNot(Circle a, Circle b) {
-      var ar = a is Circle ? a.R : 0;
-      var br = b is Circle ? b.R : 0;
+    private static bool EnclosesNot(Circle a, Circle b) {
+      var ar = a != null ? a.R : 0;
+      var br = b != null ? b.R : 0;
       var dr = ar - br;
       var dx = b.X - a.X;
       var dy = b.Y - a.Y;
       return dr < 0 || dr * dr < dx * dx + dy * dy;
     }
 
-    /// @hidden @internal
-    bool EnclosesWeak(Circle a, Circle b) {
-      var ar = a is Circle ? a.R : 0;
-      var br = b is Circle ? b.R : 0;
+    private static bool EnclosesWeak(Circle a, Circle b) {
+      var ar = a != null ? a.R : 0;
+      var br = b != null ? b.R : 0;
       var dr = ar - br + 1e-6;
       var dx = b.X - a.X;
       var dy = b.Y - a.Y;
       return dr > 0 && dr * dr > dx * dx + dy * dy;
     }
 
-    /// @hidden @internal
-    bool EnclosesWeakAll(Circle a, List<Circle> B) {
+    private static bool EnclosesWeakAll(Circle a, List<Circle> B) {
       for (var i = 0; i < B.Count; ++i) {
         if (!EnclosesWeak(a, B[i])) {
           return false;
@@ -1978,8 +1917,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return true;
     }
 
-    /// @hidden @internal
-    Circle EncloseBasis(List<Circle> B) {
+    private static Circle EncloseBasis(List<Circle> B) {
       switch (B.Count) {
         case 2: return EncloseBasis2(B[0], B[1]);
         case 3: return EncloseBasis3(B[0], B[1], B[2]);
@@ -1987,16 +1925,14 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
-    Circle EncloseBasis1(Circle a) {
-      var ar = a is Circle ? a.R : 0;
+    private static Circle EncloseBasis1(Circle a) {
+      var ar = a != null ? a.R : 0;
       return new Circle(a.X, a.Y, ar);
     }
 
-    /// @hidden @internal
-    Circle EncloseBasis2(Circle a, Circle b) {
-      var ar = a is Circle ? a.R : 0;
-      var br = b is Circle ? b.R : 0;
+    private static Circle EncloseBasis2(Circle a, Circle b) {
+      var ar = a != null ? a.R : 0;
+      var br = b != null ? b.R : 0;
       var x1 = a.X;
       var y1 = a.Y;
       var r1 = ar;
@@ -2014,11 +1950,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       );
     }
 
-    /// @hidden @internal
-    Circle EncloseBasis3(Circle a, Circle b, Circle c) {
-      var ar = a is Circle ? a.R : 0;
-      var br = b is Circle ? b.R : 0;
-      var cr = c is Circle ? c.R : 0;
+    private static Circle EncloseBasis3(Circle a, Circle b, Circle c) {
+      var ar = a != null ? a.R : 0;
+      var br = b != null ? b.R : 0;
+      var cr = c != null ? c.R : 0;
       var x1 = a.X;
       var y1 = a.Y;
       var r1 = ar;
@@ -2053,7 +1988,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       );
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Shuffles array in place.
     /// </summary>
@@ -2076,7 +2010,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// These values determine the shape of the final layout.
   /// Used for <see cref="VirtualizedPackedLayout.PackShape"/>
   /// </summary>
-  [Undocumented]
   public enum VPackShape {
     /// <summary>
     /// This value for <see cref="VPackShape"/> causes nodes to be packed
@@ -2111,7 +2044,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// These values determine the size of the layout.
   /// Used for <see cref="VirtualizedPackedLayout.PackMode"/>.
   /// </summary>
-  [Undocumented]
   public enum VPackMode {
     /// <summary>
     /// Nodes will be packed using the <see cref="VirtualizedPackedLayout.AspectRatio"/> property, with
@@ -2146,7 +2078,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// These values specify an optional method by which to sort nodes before packing.
   /// Used for <see cref="VirtualizedPackedLayout.SortMode"/>.
   /// </summary>
-  [Undocumented]
   public enum VSortMode {
     /// <summary>
     /// Nodes will not be sorted before packing; this value is used for <see cref="VSortMode"/>.
@@ -2169,7 +2100,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// These values specify the order that nodes will be sorted, if applicable.
   /// Used for <see cref="VirtualizedPackedLayout.SortOrder"/>.
   /// </summary>
-  [Undocumented]
   public enum VSortOrder {
     /// <summary>
     /// Nodes will be sorted in descending order; this value is used for <see cref="VSortOrder"/>.

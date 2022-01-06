@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,13 +17,14 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The NonRealtimeDraggingTool class lets the user drag an image instead of actually moving any selected nodes,
   /// until the mouse-up event.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/NonRealtimeDragging.Html">Non Realtime Dragging</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/NonRealtimeDragging.html">Non Realtime Dragging</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class NonRealtimeDraggingTool : DraggingTool {
     private Part _ImagePart;  // a Part holding a translucent image of what would be dragged
-    private IDictionary<Part, DraggingInfo> _GhostDraggedParts;  // a Map of the _imagePart and its dragging information
+    private IDictionary<Part, DraggingInfo> _GhostDraggedParts;  // a Map of the _ImagePart and its dragging information
     private IDictionary<Part, DraggingInfo> _OriginalDraggedParts;  // the saved normal value of DraggingTool.DraggedParts
 
     /// <summary>

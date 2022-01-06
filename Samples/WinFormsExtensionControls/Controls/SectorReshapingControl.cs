@@ -34,7 +34,7 @@ namespace WinFormsExtensionControls.SectorReshaping {
       myDiagram.ToolManager.MouseDownTools.Add(new SectorReshapingTool());
 
       // geometry converter for the node's "LAMP" Shape
-      Geometry MakeSector(object dataIn, object objIn) {
+      static Geometry MakeSector(object dataIn, object objIn) {
         var data = dataIn as NodeData;
         var radius = SectorReshapingTool.GetRadius(data);
         var angle = SectorReshapingTool.GetAngle(data);

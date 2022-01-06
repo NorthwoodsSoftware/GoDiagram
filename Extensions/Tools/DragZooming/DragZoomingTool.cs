@@ -1,7 +1,5 @@
-﻿using System;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -12,14 +10,16 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
-namespace Northwoods.Go.Tools.Extensions {
+using System;
 
+namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The DragZoomingTool lets the user zoom into a diagram by stretching a box
-  /// to indicate the new contents of the diagram"s viewport (the area of the
+  /// to indicate the new contents of the diagram's viewport (the area of the
   /// model shown by the Diagram).
   /// Hold down the Shift key in order to zoom out.
-  ///
+  /// </summary>
+  /// <remarks>
   /// The default drag selection box is a magenta rectangle.
   /// You can modify the <see cref="Box"/> to customize its appearance.
   ///
@@ -27,14 +27,14 @@ namespace Northwoods.Go.Tools.Extensions {
   /// If the value is null, the tool zooms its own <see cref="Tool.Diagram"/>.
   ///
   /// You can use this tool in a modal manner by executing:
-  /// ```js
+  /// <code language="cs">
   ///   diagram.CurrentTool = new DragZoomingTool();
-  /// ```
+  /// </code>
   ///
   /// Use this tool in a mode-less manner by executing:
-  /// ```js
+  /// <code language="cs">
   ///   myDiagram.ToolManager.MouseMoveTools.InsertAt(2, new DragZoomingTool());
-  /// ```
+  /// </code>
   ///
   /// However when used mode-lessly as a mouse-move tool, in <see cref="ToolManager.MouseMoveTools"/>,
   /// this cannot start running unless there has been a motionless delay
@@ -44,8 +44,8 @@ namespace Northwoods.Go.Tools.Extensions {
   /// but it does temporarily add the <see cref="Box"/> part to the diagram.
   /// This tool does not modify the model or conduct any transaction.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/DragZooming.Html">Drag Zooming</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/DragZooming.html">Drag Zooming</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class DragZoomingTool : Tool {
     private Part _Box;
@@ -74,13 +74,14 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Gets or sets the <see cref="Part"/> used as the "rubber-band zoom box"
     /// that is stretched to follow the mouse, as feedback for what area will
     /// be passed to <see cref="ZoomToRect"/> upon a mouse-up.
-    ///
+    /// </summary>
+    /// <remarks>
     /// Initially this is a <see cref="Part"/> containing only a simple magenta rectangular <see cref="Shape"/>.
     /// The object to be resized should be named "SHAPE".
     /// Setting this property does not raise any events.
     ///
     /// Modifying this property while this tool <see cref="Tool.IsActive"/> might have no effect.
-    /// </summary>
+    /// </remarks>
     public Part Box {
       get {
         return _Box;
@@ -93,10 +94,11 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Gets or sets the TimeSpan for which the mouse must be stationary
     /// before this tool can be started.
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is 175 milliseconds.
     /// Setting this property does not raise any events.
-    /// </summary>
+    /// </remarks>
     public TimeSpan Delay {
       get {
         return _Delay;
@@ -109,10 +111,11 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Gets or sets the <see cref="Diagram"/> whose <see cref="Diagram.Position"/> and <see cref="Diagram.Scale"/>
     /// should be set to display the drawn <see cref="Box"/> rectangular bounds.
-    ///
-    /// The default value is null, which causes <see cref="ZoomToRect"/> to modify this tool"s <see cref="Tool.Diagram"/>.
-    /// Setting this property does not raise any events.
     /// </summary>
+    /// <remarks>
+    /// The default value is null, which causes <see cref="ZoomToRect"/> to modify this tool's <see cref="Tool.Diagram"/>.
+    /// Setting this property does not raise any events.
+    /// </remarks>
     public Diagram ZoomedDiagram {
       get {
         return _ZoomedDiagram;
@@ -131,9 +134,9 @@ namespace Northwoods.Go.Tools.Extensions {
       if (!IsEnabled) return false;
       var diagram = Diagram;
       var e = diagram.LastInput;
-      // require left button & that it has moved far enough away from the mouse down point, so it isn"t a click
+      // require left button & that it has moved far enough away from the mouse down point, so it isn't a click
       if (!e.Left) return false;
-      // don"t include the following checks when this tool is running modally
+      // don't include the following checks when this tool is running modally
       if (diagram.CurrentTool != this) {
         if (!IsBeyondDragSize()) return false;
         // must wait for "delay" milliseconds before that tool can run
@@ -166,7 +169,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Update the <see cref="Box"/>"s position and size according to the value
+    /// Update the <see cref="Box"/>'s position and size according to the value
     /// of <see cref="ComputeBoxBounds"/>.
     /// </summary>
     public override void DoMouseMove() {
@@ -201,7 +204,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// This just returns a <see cref="Rect"/> stretching from the mouse-down point to the current mouse point
     /// while maintaining the aspect ratio of the <see cref="ZoomedDiagram"/>.
     /// </summary>
-    /// @return {Rect} a <see cref="Rect"/> in document coordinates.
+    /// <returns>a <see cref="Rect"/> in document coordinates.</returns>
     public Rect ComputeBoxBounds() {
       var diagram = Diagram;
       var start = diagram.FirstInput.DocumentPoint;
@@ -233,7 +236,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// This method is called to change the <see cref="ZoomedDiagram"/>"s viewport to match the given rectangle.
+    /// This method is called to change the <see cref="ZoomedDiagram"/>'s viewport to match the given rectangle.
     /// </summary>
     /// <param name="r">a rectangular bounds in document coordinates.</param>
     public void ZoomToRect(Rect r) {
@@ -245,12 +248,16 @@ namespace Northwoods.Go.Tools.Extensions {
 
       // zoom out when using the Shift modifier
       if (diagram.LastInput.Shift) {
-        observed.Scale = Math.Max(observed.Scale * r.Width / observed.ViewportBounds.Width, observed.MinScale);
-        observed.CenterRect(r);
+        observed.Commit((d) => {
+          observed.Scale = Math.Max(observed.Scale * r.Width / observed.ViewportBounds.Width, observed.MinScale);
+          observed.CenterRect(r);
+        }, null);
       } else {
-        // do scale first, so the Diagram"s position normalization isn"t constrained unduly when increasing scale
-        observed.Scale = Math.Min(observed.ViewportBounds.Width * observed.Scale / r.Width, observed.MaxScale);
-        observed.Position = new Point(r.X, r.Y);
+        // do scale first, so the Diagram's position normalization isn't constrained unduly when increasing scale
+        observed.Commit((d) => {
+          observed.Scale = Math.Min(observed.ViewportBounds.Width * observed.Scale / r.Width, observed.MaxScale);
+          observed.Position = new Point(r.X, r.Y);
+        }, null);
       }
     }
   }

@@ -1,5 +1,13 @@
 /*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
+/*
+* This is an extension and not part of the main GoDiagram library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 using System;
@@ -70,6 +78,8 @@ namespace Northwoods.Go.Layouts.Extensions {
 
   /// <summary>
   /// Implementation of the quadtree data structure using the <see cref="Rect"/> class.
+  /// </summary>
+  /// <remarks>
   /// Each Quadtree has defined bounds found at <see cref="Bounds"/>, an array
   /// of member rectangles, and an array of child nodes
   /// (Quadtrees themselves). If the Quadtree has no
@@ -86,14 +96,14 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// a given rectangle, use <see cref="Intersecting(Rect)"/>.
   ///
   /// Other common operations are detailed below.
-  /// </summary>
+  /// </remarks>
   /// @category Layout Extension
   public class Quadtree<T> {
     private QuadNode<T> _Root;
 
     private readonly int _NodeCapacity = 1;
     private readonly int _MaxLevels = int.MaxValue;
-    private Dictionary<T, QuadObj<T>> _TreeObjectMap = new();
+    private readonly Dictionary<T, QuadObj<T>> _TreeObjectMap = new();
 
     // we can avoid unnecessary work when adding objects if there are no objects with 0 width or height.
     // Note that after being set to true, these flags are not ever set again to false, even if all objects
@@ -102,7 +112,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     private bool _HasZeroHeightObject = false;
 
     /// <summary>
-    /// Gets the node capacity of this quadtree. This is the double of objects a node can contain before it splits.
+    /// Gets the node capacity of this quadtree. This is the number of objects a node can contain before it splits.
     /// </summary>
     public double NodeCapacity {
       get {
@@ -110,7 +120,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
     /// <summary>
-    /// Gets the maximum depth the Quadtree will allow before it will no longer split..
+    /// Gets the maximum depth the Quadtree will allow before it will no longer split.
     /// </summary>
     public double MaxLevels {
       get {
@@ -126,7 +136,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
     /// <summary>
-    /// Gets the root node of the tree
+    /// Gets the root node of the tree.
     /// </summary>
     public QuadNode<T> Root {
       get {
@@ -138,14 +148,12 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// In most cases, simply calling this constructor with no arguments will produce the desired behaviour.
     /// </summary>
-    /// @constructor
     /// <param name="nodeCapacity">The node capacity of this quadtree. This is the double of objects a node can contain before it splits. Defaults to 1.</param>
     /// <param name="maxLevel">The maximum depth the Quadtree will allow before it will no longer split. Defaults to double.PositiveInfinity (no maximum depth).</param>
     /// <param name="bounds">The bounding box surrounding the entire Quadtree. If the bounds are unset or a node is inserted outside of the bounds, the tree will automatically grow.</param>
     public Quadtree(int nodeCapacity = 1, int maxLevel = int.MaxValue, Rect bounds = new Rect()) {
       _NodeCapacity = nodeCapacity;
       _MaxLevels = maxLevel;
-      bounds = new Rect();
 
       _Root = new QuadNode<T>(bounds, null, 0);
     }
@@ -153,24 +161,21 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Clears the Quadtree, removing all objects and children nodes. Keeps the current bounds of the root node.
     /// </summary>
-    /// <returns></returns>
     public void Clear() {
       _Root.Clear();
       _TreeObjectMap.Clear();
     }
 
-    private bool IsNullArea(Rect rect, double error = 1e-7) {
+    private static bool IsNullArea(Rect rect, double error = 1e-7) {
       return Math.Abs(rect.Width * rect.Height) < error;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Returns a list of possible quadrants that the given rect could be in
     /// </summary>
     /// <param name="rect">the rectangle to test</param>
     /// <param name="node"></param>
-    /// <returns></returns>
-    private List<int> _GetQuadrants(Rect rect, QuadNode<T> node) {
+    private static List<int> _GetQuadrants(Rect rect, QuadNode<T> node) {
       var quadrants = new List<int>();
       var horizontalMidpoint = node.Bounds.X + (node.Bounds.Width / 2);
       var verticalMidpoint = node.Bounds.Y + (node.Bounds.Height / 2);
@@ -197,18 +202,16 @@ namespace Northwoods.Go.Layouts.Extensions {
       return quadrants;
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Determine which node the rect belongs to. -1 means rect
     /// cannot completely fit within a child node and is part of
     /// the parent node. This function avoids some additional
     /// calculations by assuming that the rect is contained entirely
-    /// within the parent node"s bounds.
+    /// within the parent node's bounds.
     /// </summary>
     /// <param name="rect">the rect to test</param>
     /// <param name="node"></param>
-    /// <returns></returns>
-    private int _GetIndex(Rect rect, QuadNode<T> node) {
+    private static int _GetIndex(Rect rect, QuadNode<T> node) {
       var index = -1;
       if (node.Bounds.IsEmpty()) { // the quadtree is empty (empty Bounds)
         return index;
@@ -256,7 +259,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Insert the object into the quadtree. If the node
     /// exceeds the capacity, it will split and add all
     /// objects to their corresponding nodes. If the object is
-    /// outside the bounds of the tree"s root node, the tree
+    /// outside the bounds of the tree's root node, the tree
     /// will grow to accomodate it. Possibly restructures the
     /// tree if a more efficient configuration can be found with
     /// the new dimensions.
@@ -274,7 +277,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Insert the object into the quadtree. If the node
     /// exceeds the capacity, it will split and add all
     /// objects to their corresponding nodes. If the object is
-    /// outside the bounds of the tree"s root node, the tree
+    /// outside the bounds of the tree's root node, the tree
     /// will grow to accomodate it. Possibly restructures the
     /// tree if a more efficient configuration can be found with
     /// the new dimensions.
@@ -288,7 +291,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Insert the object into the quadtree. If the node
     /// exceeds the capacity, it will split and add all
     /// objects to their corresponding nodes. If the object is
-    /// outside the bounds of the tree"s root node, the tree
+    /// outside the bounds of the tree's root node, the tree
     /// will grow to accomodate it. Possibly restructures the
     /// tree if a more efficient configuration can be found with
     /// the new dimensions. Bounds can be given either as a
@@ -427,7 +430,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       _AddHelper(_Root, treeObj);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Helper function to recursively perform the add operation
     /// on the tree.
@@ -474,7 +476,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Recursively moves objects placed on the right side of a vertical border
     /// between two nodes to the left side of the vertical border. This allows
@@ -508,7 +509,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Recursively moves objects placed on the bottom side of a horizontal border
     /// between two nodes to the top side of the vertical border. This allows
@@ -542,7 +542,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Moves all objects from a leaf node to its parent and unsplits.
     /// Used after growing the tree when level>max level.
@@ -605,7 +604,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Convenience method, calls <see cref="Find"/> and returns a bool
-    /// indicating whether or not the tree contains the given object
+    /// indicating whether or not the tree contains the given object.
     /// </summary>
     /// <param name="obj">the object to check for</param>
     /// <returns>whether or not the given object is present in the tree</returns>
@@ -614,7 +613,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Checks if any of the objects in the tree have the given boundaries
+    /// Checks if any of the objects in the tree have the given boundaries.
     /// </summary>
     /// <param name="bounds">the rectangle to check for</param>
     /// <returns>the actual bounds object stored in the tree</returns>
@@ -713,15 +712,13 @@ namespace Northwoods.Go.Layouts.Extensions {
       _Restructure(owner);
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Recursively adds all objects from children of the given
-    /// root tree to the given owner tree
-    /// Used internally by <see cref="Remove"/>
+    /// root tree to the given owner tree.
+    /// Used internally by <see cref="Remove"/>.
     /// </summary>
     /// <param name="owner">the tree to add objects to</param>
     /// <param name="root"></param>
-    /// <returns></returns>
     private void _AddChildObjectsToNode(QuadNode<T> owner, QuadNode<T> root) {
       foreach (var node in root.Nodes) {
         if (node != null) {
@@ -732,12 +729,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Recursively combines parent nodes that should be split, all the way
     /// up the tree. Starts from the given node.
     /// </summary>
-    /// <returns></returns>
     private void _Restructure(QuadNode<T> root) {
       var parent = root.Parent;
       if (parent != null) {
@@ -768,8 +763,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Can be called as either (obj, x, y) or (obj, point). Translate
-    /// the given object to a given <see cref="Point"/>.
+    /// Translate the given object to a given <see cref="Point"/>.
     /// </summary>
     /// <param name="obj">the object to move</param>
     /// <param name="p">the Point to move the object to</param>
@@ -779,8 +773,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Can be called as either (obj, x, y) or (obj, point). Translate
-    /// the given object to given x and y coordinates.
+    /// Translate the given object to given x and y coordinates.
     /// </summary>
     /// <param name="obj">the object to move</param>
     /// <param name="x">the x coordinate to move the object to</param>
@@ -797,8 +790,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Can be called as either (obj, width, height) or (obj, size). Resize
-    /// the given object to a given <see cref="Size"/>.
+    /// Resize the given object to a given <see cref="Size"/>.
     /// </summary>
     /// <param name="obj">the object to resize</param>
     /// <param name="size">the Size to resize the object to</param>
@@ -808,8 +800,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Can be called as either (obj, width, height) or (obj, size). Resize
-    /// the given object to given width and height.
+    /// Resize the given object to given width and height.
     /// </summary>
     /// <param name="obj">the object to resize</param>
     /// <param name="width">the width to resize the object to</param>
@@ -826,8 +817,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Updates the given object to have the bounds given, provided as either a
-    /// <see cref="Rect"/>.
+    /// Updates the given object to have the bounds given, provided as a <see cref="Rect"/>.
     /// </summary>
     /// <param name="obj">the object to change the bounds of</param>
     /// <param name="rect">the Rect to set the object to</param>
@@ -836,7 +826,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Updates the given object to have the bounds given, provided as either an
+    /// Updates the given object to have the bounds given, provided as
     /// x, y, width, and height.
     /// </summary>
     /// <param name="obj">the object to change the bounds of</param>
@@ -904,7 +894,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Similar as <see cref="Rect.Intersects(Rect)"/>, but doesn't count edges as intersections.
     /// Also accounts for floating error (by returning false more often) up to an error of 1e-7.
@@ -960,7 +949,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Returns the square of the distance from the centers of the given objects
+    /// Returns the square of the distance from the centers of the given objects.
     /// </summary>
     /// <param name="obj1"></param>
     /// <param name="obj2"></param>
@@ -982,7 +971,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="callback">the callback to execute on each node. Takes the form of (n: Quadtree) => void</param>
     /// <param name="root">whether or not to execute the callback on the root node as well. Defaults to true</param>
-    /// <returns></returns>
     public void Walk(Action<QuadNode<T>> callback, bool root = true) {
       Walk(callback, _Root, root);
     }
@@ -994,7 +982,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <param name="callback">the callback to execute on each node. Takes the form of (n: Quadtree) => void</param>
     /// <param name="node"></param>
     /// <param name="root">whether or not to execute the callback on the root node as well. Defaults to true</param>
-    /// <returns></returns>
     public void Walk(Action<QuadNode<T>> callback, QuadNode<T> node, bool root = true) {
       if (root) {
         root = false;
@@ -1009,10 +996,9 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Visits every object stored in the tree (depth first)
+    /// Visits every object stored in the tree (depth first).
     /// </summary>
     /// <param name="callback">the callback to execute on each object.</param>
-    /// <returns></returns>
     public void ForEach(Action<T> callback) {
       Walk((n) => {
         foreach (var obj in n.Objects) {
@@ -1022,7 +1008,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Finds the most furthest object in each direction stored in the tree.
+    /// Finds the furthest object in each direction stored in the tree.
     /// Bounds are tested using the center x and y coordinate.
     /// </summary>
     /// <returns>maximum and minimum objects in the tree, in the format [min x, max x, min y, max y].</returns>
@@ -1036,7 +1022,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       );
     }
 
-    /// @hidden @internal
     /// <summary>
     /// Recursive helper function for <see cref="FindExtremeObjects"/>
     /// </summary>

@@ -1,5 +1,13 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
+/*
+* This is an extension and not part of the main GoDiagram library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
 using System;
@@ -17,7 +25,9 @@ using Northwoods.Go.Tools;
 
 namespace Northwoods.Go.Extensions {
   public class Templates {
+    /// <summary>
     /// Set up the default templates that each Diagram starts off with.
+    /// </summary>
     public static void DefineDiagramTemplates(Diagram diagram) {
       // Node Templates
       var NodeTemplateMap = new Dictionary<string, Part>();
@@ -104,7 +114,9 @@ namespace Northwoods.Go.Extensions {
       diagram.LinkTemplateMap = LinkTemplateMap;
     }
 
+    /// <summary>
     /// Set up the default Panel.ItemTemplate.
+    /// </summary>
     public static void DefineDefaultItemTemplate(Panel panel) {
       var architem = new Panel();
       var itemtxt = new TextBlock();
@@ -113,7 +125,9 @@ namespace Northwoods.Go.Extensions {
       panel.ItemTemplate = architem;
     }
 
-    /// Set up the diagram's selection Adornments
+    /// <summary>
+    /// Set up the diagram's selection Adornments.
+    /// </summary>
     public static void DefineSelectionAdornments(Diagram diagram) {
       // create the default Adornment for selection
       var selad = new Adornment();
@@ -143,6 +157,9 @@ namespace Northwoods.Go.Extensions {
       diagram.LinkSelectionAdornmentTemplate = selad;
     }
 
+    /// <summary>
+    /// Set up the diagram's default background grid pattern.
+    /// </summary>
     public static void DefineDefaultBackgroundGrid(Diagram diagram) {
       // make the background Grid Panel
       var Grid = new Panel(PanelLayoutGrid.Instance);
@@ -211,7 +228,9 @@ namespace Northwoods.Go.Extensions {
 
     // overview box?
 
+    /// <summary>
     /// Set up LinkingBaseTool's default temporary nodes and link.
+    /// </summary>
     public static void DefineLinkingToolTemporaryNodesAndLink(LinkingBaseTool tool) {
       // LinkingTool.temporaryLink
       var link = new Link();
@@ -261,7 +280,9 @@ namespace Northwoods.Go.Extensions {
       tool.TemporaryToPort = toPort;
     }
 
-    /// Set up RelinkingTool's default handle archetypes
+    /// <summary>
+    /// Set up RelinkingTool's default handle archetypes.
+    /// </summary>
     public static void DefineRelinkingToolHandles(RelinkingTool tool) {
       var h = new Shape();
       h.Figure = "Diamond";
@@ -284,7 +305,9 @@ namespace Northwoods.Go.Extensions {
       tool.ToHandleArchetype = h;
     }
 
-    /// Set up LinkReshapingTool's default handle archetypes
+    /// <summary>
+    /// Set up LinkReshapingTool's default handle archetypes.
+    /// </summary>
     public static void DefineLinkReshapingToolHandles(LinkReshapingTool tool) {
       var h = new Shape();
       h.Figure = "Rectangle";
@@ -304,7 +327,9 @@ namespace Northwoods.Go.Extensions {
       tool.MidHandleArchetype = h;
     }
 
-    /// Set up ResizingTool's default handle archetype
+    /// <summary>
+    /// Set up ResizingTool's default handle archetype.
+    /// </summary>
     public static void DefineResizingToolHandles(ResizingTool tool) {
       var h = new Shape();
       h.AlignmentFocus = Spot.Center;
@@ -318,7 +343,9 @@ namespace Northwoods.Go.Extensions {
       tool.HandleArchetype = h;
     }
 
-    /// Set up RotatingTool's default handle archetype
+    /// <summary>
+    /// Set up RotatingTool's default handle archetype.
+    /// </summary>
     public static void DefineRotatingToolHandles(RotatingTool tool) {
       var h = new Shape();
       h.Figure = "Ellipse";
@@ -331,7 +358,9 @@ namespace Northwoods.Go.Extensions {
       tool.HandleArchetype = h;
     }
 
-    /// Set up DragSelectingTool's default box
+    /// <summary>
+    /// Set up DragSelectingTool's default box.
+    /// </summary>
     public static void DefineDragSelectingToolBox(DragSelectingTool tool) {
       var b = new Part();
       b.LayerName = "Tool";
@@ -346,8 +375,10 @@ namespace Northwoods.Go.Extensions {
       tool.Box = b;
     }
 
+    /// <summary>
     /// This static function can be used to convert an object to a string,
     /// looking for commonly defined data properties, such as "Text", "Name", "Key", or "Id".
+    /// </summary>
     public static string ToString(object val) {
       var v = val;
       if (!Util.IsSimpleType(val)) {
@@ -361,7 +392,9 @@ namespace Northwoods.Go.Extensions {
       return v.ToString();
     }
 
+    /// <summary>
     /// This is a simplified version of the normal property getter.
+    /// </summary>
     public static object GetProp(object obj, string prop) {
       return obj.GetType().GetProperty(prop).GetValue(obj);
     }

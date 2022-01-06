@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -37,7 +37,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -63,7 +62,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// This method positions all of the nodes by determining total area and then recursively tiling nodes from the top-level down.
     /// </summary>
-    /// <param name="coll"></param>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       var diagram = Diagram;
       if (diagram == null) throw new Exception("TreeMapLayout only works as the Diagram.Layout");
@@ -74,7 +72,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       ComputeTotals(diagram);
-      // make sure data.total has been computed for every node
+      // make sure data.Total has been computed for every node
       // figure out how large an area to cover;
       // perhaps this should be a property that could be set, rather than depending on the current viewport
       ArrangementOrigin = InitialOrigin(ArrangementOrigin);
@@ -139,7 +137,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Compute the _total for each node in the Diagram, with a <see cref="Group"/>'s being a sum of its members.
+    /// Compute the Total for each node in the Diagram, with a <see cref="Group"/>'s being a sum of its members.
     /// </summary>
     /// <param name="diagram"></param>
     private void ComputeTotals(Diagram diagram) {

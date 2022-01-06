@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -13,22 +13,18 @@
 using System;
 
 namespace Northwoods.Go.Extensions {
-  // A custom routed Link for showing the distances between a point on one node and a point on another node.
-
-  // Note that because this is a Link, the points being measured must be on Nodes, not simple Parts.
-  // The exact point on each Node is determined by the Link.fromSpot and Link.toSpot.
-
-  // Several properties of the DimensioningLink customize the appearance of the dimensioning:
-  // direction, for orientation of the dimension line and which side it is on,
-  // extension, for how far the dimension line is from the measured points,
-  // inset, for leaving room for a text label, and
-  // gap, for distance that the extension line starts from the measured points
   /// <summary>
   /// A custom routed <see cref="Link"/> for showing the distances between a point on one node and a point on another node.
   /// </summary>
   /// <remarks>
   /// Note that because this is a Link, the points being measured must be on <see cref="Node"/>s, not simple <see cref="Part"/>s.
   /// The exact point on each Node is determined by the <see cref="Link.FromSpot"/> and <see cref="Link.ToSpot"/>.
+  ///
+  /// Several properties of the DimensioningLink customize the appearance of the dimensioning:
+  ///   - Direction, for orientation of the dimension line and which side it is on,
+  ///   - Extension, for how far the dimension line is from the measured points,
+  ///   - Inset, for leaving room for a text label, and
+  ///   - Gap, for distance that the extension line starts from the measured points
   /// </remarks>
   public class DimensioningLink : Link {
     private double _Direction;
@@ -50,11 +46,13 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// The general angle at which the measurement should be made.
+    /// </summary>
+    /// <remarks>
     /// The default value is 0, meaning to go measure only along the X axis,
     /// with the dimension line and label above the two nodes (at lower Y coordinates).
     /// New values must be one of: 0, 90, 180, 270, or NaN.
     /// The value NaN indicates that the measurement is point-to-point and not orthogonal.
-    /// </summary>
+    /// </remarks>
     public double Direction {
       get {
         return _Direction;
@@ -70,10 +68,12 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// The distance at which the dimension line should be from the points being measured.
+    /// </summary>
+    /// <remarks>
     /// The default value is 30.
     /// Larger values mean further away from the nodes.
     /// The new value must be greater than or equal to zero.
-    /// </summary>
+    /// </remarks>
     public float Extension {
       get {
         return _Extension;
@@ -88,8 +88,10 @@ namespace Northwoods.Go.Extensions {
     /// <summary>
     /// The distance that the dimension line should be indented from the ends of the
     /// extension lines that are orthogonal to the dimension line.
-    /// The default value is 10.
     /// </summary>
+    /// <remarks>
+    /// The default value is 10.
+    /// </remarks>
     public float Inset {
       get {
         return _Inset;
@@ -107,8 +109,10 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// The distance that the extension lines should come short of the measured points.
-    /// The default value is 10.
     /// </summary>
+    /// <remarks>
+    /// The default value is 10.
+    /// </remarks>
     public float Gap {
       get {
         return _Gap;

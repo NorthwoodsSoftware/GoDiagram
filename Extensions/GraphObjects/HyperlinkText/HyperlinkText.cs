@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -57,8 +57,7 @@ namespace Northwoods.Go.Extensions {
   ///
   /// The result is either a TextBlock or a Panel.
   /// </remarks>
-  public class HyperlinkText {
-
+  public partial class HyperlinkText {
     /// <summary>
     /// Adds the "HyperlinkText" builder to the <see cref="Builder"/>.
     /// </summary>
@@ -72,19 +71,8 @@ namespace Northwoods.Go.Extensions {
         var anyGraphObjects = false;
         for (var i = 0; i < args.Length; i++) {
           var a = args[i];
-          if (a != null && a is GraphObject) anyGraphObjects = true;
+          if (a is not null and GraphObject) anyGraphObjects = true;
         }
-
-        // define the click behavior
-        Action<InputEvent, GraphObject> click = (e, obj) => {
-          var u = obj["_Url"];
-          if (u is Func<object, string>) u = (u as Func<object, string>).Invoke(obj.FindBindingPanel());
-          var uri = u as string;
-          if (uri != null) {
-            var psi = new ProcessStartInfo { FileName = uri, UseShellExecute = true };
-            Process.Start(psi);
-          }
-        };
 
         // define the tooltip
         var tooltip =
@@ -112,7 +100,7 @@ namespace Northwoods.Go.Extensions {
               if (u != null && obj is TextBlock) (obj as TextBlock).IsUnderline = true;
             },
             MouseLeave = (e, obj, targObj) => { if (obj is TextBlock) (obj as TextBlock).IsUnderline = false; },
-            Click = click,  // defined above
+            Click = Click,  // defined in platform-specific code
             ToolTip = tooltip // shared by all HyperlinkText textblocks
           };
           tb["_Url"] = url;
@@ -128,8 +116,7 @@ namespace Northwoods.Go.Extensions {
           return tb;
         } else {
           // recursive delegate
-          Func<GraphObject, TextBlock> findTextBlock = null;
-          findTextBlock = (obj) => {
+          static TextBlock findTextBlock(GraphObject obj) {
             if (obj is TextBlock) return obj as TextBlock;
             if (obj is Panel) {
               var it = (obj as Panel).Elements.GetEnumerator();
@@ -139,7 +126,8 @@ namespace Northwoods.Go.Extensions {
               }
             }
             return null;
-          };
+          }
+
           var visualTree = args.OfType<GraphObject>();  // pull GraphObjects from args array
           var retPanel = new Panel {
             Cursor = "pointer",
@@ -153,7 +141,7 @@ namespace Northwoods.Go.Extensions {
               var tb = findTextBlock(panel);
               if (tb != null) tb.IsUnderline = false;
             },
-            Click = click,  // defined above
+            Click = Click,  // defined in platform-specific code
             ToolTip = tooltip  // shared by all HyperlinkText panels
           }.Add(visualTree);
           retPanel["_Url"] = url;

@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -15,13 +15,14 @@ using System;
 namespace Northwoods.Go.Extensions {
   /// <summary>
   /// A class for simulating mouse and keyboard input.
-  /// 
+  /// </summary>
+  /// <remarks>
   /// As a special hack, this supports limited simulation of drag-and-drop between Diagrams,
-  /// by setting the sourceDiagram and targetDiagram properties
+  /// by setting the SourceDiagram and TargetDiagram properties
   /// on the "eventprops" arguments of the MouseDown/MouseMove/MouseUp methods.
   /// Although <see cref="InputEvent.TargetDiagram"/> is a real property, the SourceDiagram property
   /// is only used by these Robot methods.
-  /// </summary>
+  /// </remarks>
   public class Robot {
     private Diagram _Diagram;
 
@@ -38,7 +39,7 @@ namespace Northwoods.Go.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets the <see cref="Northwoods.Go.Diagram"/> associated with this Robot.
+    /// Gets or sets the <see cref="Go.Diagram"/> associated with this Robot.
     /// </summary>
     public Diagram Diagram {
       get {
@@ -56,7 +57,7 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     /// <param name="n">an InputEvent that will receive the properties</param>
     /// <param name="eventprops">the InputEvent that acts as a source for the properties</param>
-    private void InitializeEvent(InputEvent n, InputEvent eventprops) {
+    private static void InitializeEvent(InputEvent n, InputEvent eventprops) {
       if (eventprops == null) return;
       foreach (var prop in eventprops.GetType().GetProperties()) {
         prop.SetValue(n, prop.GetValue(eventprops));
@@ -76,9 +77,10 @@ namespace Northwoods.Go.Extensions {
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
 
-      var n = new InputEvent();
-      n.Diagram = diagram;
-      n.DocumentPoint = new Point(x, y);
+      var n = new InputEvent {
+        Diagram = diagram,
+        DocumentPoint = new Point(x, y)
+      };
       n.ViewPoint = diagram.TransformDocToView(n.DocumentPoint);
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -104,9 +106,10 @@ namespace Northwoods.Go.Extensions {
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
 
-      var n = new InputEvent();
-      n.Diagram = diagram;
-      n.DocumentPoint = new Point(x, y);
+      var n = new InputEvent {
+        Diagram = diagram,
+        DocumentPoint = new Point(x, y)
+      };
       n.ViewPoint = diagram.TransformDocToView(n.DocumentPoint);
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -130,9 +133,10 @@ namespace Northwoods.Go.Extensions {
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
 
-      var n = new InputEvent();
-      n.Diagram = diagram;
-      n.DocumentPoint = new Point(x, y);
+      var n = new InputEvent {
+        Diagram = diagram,
+        DocumentPoint = new Point(x, y)
+      };
       n.ViewPoint = diagram.TransformDocToView(n.DocumentPoint);
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -156,9 +160,10 @@ namespace Northwoods.Go.Extensions {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
 
-      var n = new InputEvent(diagram.LastInput);
-      n.Diagram = diagram;
-      n.Delta = delta;
+      var n = new InputEvent(diagram.LastInput) {
+        Diagram = diagram,
+        Delta = delta
+      };
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
@@ -178,9 +183,10 @@ namespace Northwoods.Go.Extensions {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
 
-      var n = new InputEvent(diagram.LastInput);
-      n.Diagram = Diagram;
-      n.Key = key;
+      var n = new InputEvent(diagram.LastInput) {
+        Diagram = Diagram,
+        Key = key
+      };
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
@@ -200,10 +206,11 @@ namespace Northwoods.Go.Extensions {
     public void KeyUp(string key, long time = 0, InputEvent eventprops = null) {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
-      var n = new InputEvent(diagram.LastInput);
-      n.Diagram = diagram;
+      var n = new InputEvent(diagram.LastInput) {
+        Diagram = diagram,
 
-      n.Key = key;
+        Key = key
+      };
 
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();

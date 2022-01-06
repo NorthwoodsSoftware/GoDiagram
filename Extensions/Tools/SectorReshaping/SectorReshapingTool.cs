@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,16 +14,17 @@ using System;
 using Northwoods.Go.Models;
 
 namespace Northwoods.Go.Tools.Extensions {
-
   /// <summary>
   /// The SectorReshapingTool class lets the user interactively modify the angles of a "pie"-shaped sector of a circle.
-  /// When a node is selected, this shows two handles for changing the angles of the sides of the sector and one handle for changing the radius.
+  /// </summary>
+  /// <remarks>
+  /// When a node is selected, this tool shows two handles for changing the angles of the sides of the sector and one handle for changing the radius.
   ///
-  /// This depends on there being three data properties, "angle", "sweep", and "radius",
+  /// This depends on there being three data properties, "Angle", "Sweep", and "Radius",
   /// that hold the needed information to be able to reproduce the sector.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/SectorReshaping.Html">Sector Reshaping</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/SectorReshaping.html">Sector Reshaping</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class SectorReshapingTool : Tool {
     private GraphObject _Handle;
@@ -44,9 +45,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the name of the data property for the sector radius.
-    ///
-    /// The default value is "radius".
     /// </summary>
+    /// <remarks>
+    /// The default value is "Radius".
+    /// </remarks>
     public string RadiusProperty {
       get {
         return _RadiusProperty;
@@ -58,9 +60,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the name of the data property for the sector start angle.
-    ///
-    /// The default value is "angle".
     /// </summary>
+    /// <remarks>
+    /// The default value is "Angle".
+    /// </remarks>
     public string AngleProperty {
       get {
         return _AngleProperty;
@@ -72,9 +75,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the name of the data property for the sector sweep angle.
-    ///
-    /// The default value is "sweep".
     /// </summary>
+    /// <remarks>
+    /// The default value is "Sweep".
+    /// </remarks>
     public string SweepProperty {
       get {
         return _SweepProperty;
@@ -85,7 +89,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// This tool can only start if Diagram.AllowReshape is true and the mouse-down event
+    /// This tool can only start if <see cref="Diagram.AllowReshape"/> is true and the mouse-down event
     /// is at a tool handle created by this tool.
     /// </summary>
     public override bool CanStart() {
@@ -213,10 +217,13 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Depending on the current handle being dragged, update the "radius", the "angle", or the "sweep"
+    /// Depending on the current handle being dragged, update the "Radius", the "Angle", or the "Sweep"
     /// properties on the model data.
-    /// Those property names are currently parameterized as static members of SectorReshapingTool.
     /// </summary>
+    /// <remarks>
+    /// The data property names can be updated via <see cref="RadiusProperty"/>,
+    /// <see cref="AngleProperty"/>, and <see cref="SweepProperty"/>.
+    /// </remarks>
     public override void DoMouseMove() {
       var diagram = Diagram;
       var h = _Handle;
@@ -255,7 +262,10 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     // static functions for getting data
-    /** @hidden @internal */
+    /// <summary>
+    /// Undocumented.
+    /// </summary>
+    [Undocumented]
     public static double GetRadius(object data) {
       // null-coalesce operator to handle null
       var radius = data.GetType().GetProperty("Radius").GetValue(data) as double? ?? double.NaN;
@@ -263,7 +273,10 @@ namespace Northwoods.Go.Tools.Extensions {
       return radius;
     }
 
-    /** @hidden @internal */
+    /// <summary>
+    /// Undocumented.
+    /// </summary>
+    [Undocumented]
     public static double GetAngle(object data) {
       // null-coalesce operator to handle null
       var angle = data.GetType().GetProperty("Angle").GetValue(data) as double? ?? double.NaN;
@@ -272,7 +285,10 @@ namespace Northwoods.Go.Tools.Extensions {
       return angle;
     }
 
-    /** @hidden @internal */
+    /// <summary>
+    /// Undocumented.
+    /// </summary>
+    [Undocumented]
     public static double GetSweep(object data) {
       // null-coalesce operator to handle null
       var sweep = data.GetType().GetProperty("Sweep").GetValue(data) as double? ?? double.NaN;

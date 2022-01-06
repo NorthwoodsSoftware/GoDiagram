@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -13,12 +13,12 @@
 using System;
 
 namespace Northwoods.Go.Tools.Extensions {
-
   /// <summary>
   /// The ResizeMultipleTool class lets the user resize multiple objects at once.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/ResizeMultiple.Html">Resize Multiple</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/ResizeMultiple.html">Resize Multiple</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class ResizeMultipleTool : ResizingTool {
     /// <summary>
@@ -31,7 +31,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Overrides <see cref="ResizingTool.Resize"/> to resize all selected objects to the same size.
     /// </summary>
-    /// <param name="newr"></param> the intended new rectangular bounds for each Part"s <see cref="Part.ResizeElement"/>.
+    /// <param name="newr">the intended new rectangular bounds for each Part's <see cref="Part.ResizeElement"/>.</param>
     public override void Resize(Rect newr) {
       var diagram = Diagram;
       foreach (var part in diagram.Selection) {

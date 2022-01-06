@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,16 +10,19 @@ using System.Linq;
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Northwoods.Go.Layouts.Extensions {
-  /**
-  * <summary>
-  * Given a root {@link Node}, this arranges connected nodes in concentric rings,
-  * layered by the minimum link distance from the root.
-  *
-  * If you want to experiment with this extension, try the <a href="../../extensionsTS/Radial.html">Radial Layout</a> sample.
-  * </summary>
-  * @category Layout Extension
-  */
+  /// <summary>
+  /// Given a root <see cref="Node"/>, this arranges connected nodes in concentric rings,
+  /// layered by the minimum link distance from the root.
+  /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Radial.html">Radial Layout</a> sample.
+  /// </remarks>
+  /// @category Layout Extension
   public class RadialLayout : NetworkLayout<RadialNetwork, RadialVertex, RadialEdge, RadialLayout> {
     private Node _Root = null;
     private int _LayerThickness = 100;
@@ -39,7 +38,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -68,9 +66,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the thickness of each ring representing a layer.
-    ///
-    /// The default value is 100.
     /// </summary>
+    /// <remarks>
+    /// The default value is 100.
+    /// </remarks>
     public int LayerThickness {
       get {
         return _LayerThickness;
@@ -85,9 +84,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the maximum number of layers to be shown, in addition to the root node at layer zero.
-    ///
-    /// The default value is int.MaxValue.
     /// </summary>
+    /// <remarks>
+    /// The default value is int.MaxValue.
+    /// </remarks>
     public int MaxLayers {
       get {
         return _MaxLayers;
@@ -113,7 +113,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       if (_Root == null) {
-        //If no root supplied, choose one without any incoming edges
+        // If no root supplied, choose one without any incoming edges
         foreach (var v in Network.Vertexes) {
           if (v.Node != null && v.SourceEdges.Count == 0) {
             _Root = v.Node;
@@ -123,9 +123,9 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       if (_Root == null && Network != null) {
-        //If could not find any default root, choose a random one
+        // If could not find any default root, choose a random one
         var first = Network.Vertexes.First();
-        _Root = (first == null) ? null : first.Node;
+        _Root = first?.Node;
       }
       if (_Root == null) {
         Network = null;
@@ -136,12 +136,12 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (rootvert == null) throw new Exception("RadialLayout.root must be a Node in the LayoutNetwork that the RadialLayout is opearting on");
 
       ArrangementOrigin = InitialOrigin(ArrangementOrigin);
-      findDistances(rootvert);
+      _FindDistances(rootvert);
 
-      //now recursively position nodes (using radlay1()), starting with the root
+      // now recursively position nodes (using _RadLay1()), starting with the root
       rootvert.CenterX = ArrangementOrigin.X;
       rootvert.CenterY = ArrangementOrigin.Y;
-      radlay1(rootvert, 1, 0, 360);
+      _RadLay1(rootvert, 1, 0, 360);
 
       // Update the "physical" positions of the nodes and links.
       UpdateParts();
@@ -149,18 +149,16 @@ namespace Northwoods.Go.Layouts.Extensions {
       Network = null;
     }
 
-    /*
-     * Recursively position vertexes in a radial layout
-     */
-    private void radlay1(RadialVertex vert, int layer, double angle, double sweep) {
-      if (layer > _MaxLayers) return; //no need to position nodes outside of maxLayers
-      var verts = vert.Children; //array of all RadialVertexes connected to 'vert' in layer 'layer'
-      var found = verts.Count();
+    // Recursively position vertexes in a radial layout
+    private void _RadLay1(RadialVertex vert, int layer, double angle, double sweep) {
+      if (layer > _MaxLayers) return; // no need to position nodes outside of MaxLayers
+      var verts = vert.Children; // array of all RadialVertexes connected to 'vert' in layer 'layer'
+      var found = verts.Count;
       if (found == 0) return;
 
       var fracs = new List<double>(); // relative proportions that each child vertex should occupy
-      double tot = 0.0;
-      for (int i = 0; i < found; i++) {
+      var tot = 0.0;
+      for (var i = 0; i < found; i++) {
         var v = verts[i];
         var f = ComputeBreadth(v);
         fracs.Add(f);
@@ -168,27 +166,27 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       if (tot <= 0) return;
       // convert into fractions 0.0 <= frac <= 1.0
-      for (int i = 0; i < found; i++) fracs[i] /= tot;
+      for (var i = 0; i < found; i++) fracs[i] /= tot;
 
       var radius = layer * _LayerThickness;
       var a = angle - sweep / 2; // the angle to rotate the node to
       // for each vertex in this layer, place it in its correct layer and position
-      for (int i = 0; i < found; i++) {
+      for (var i = 0; i < found; i++) {
         var v = verts[i];
-        double breadth = fracs[i] * sweep;
+        var breadth = fracs[i] * sweep;
         a += breadth / 2;
         if (a < 0) a += 360; else if (a > 360) a -= 360;
         // the point to place the node at -- this corresponds with the layer the node is in
         // all nodes in the same layer are placed at a constant point, then rotated accordingly
         var p = new Point(radius, 0);
-        p.Rotate(a);
+        p = p.Rotate(a);
         v.CenterX = p.X + ArrangementOrigin.X;
         v.CenterY = p.Y + ArrangementOrigin.Y;
         v.Angle = a;
         v.Sweep = breadth;
         v.Radius = radius;
         // keep going for all layers
-        radlay1(v, layer + 1, a, sweep * fracs[i]);
+        _RadLay1(v, layer + 1, a, sweep * fracs[i]);
         a += breadth / 2;
         if (a < 0) a += 360; else if (a > 360) a -= 360;
       }
@@ -199,37 +197,35 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <remarks>
     /// The default behavior is to give each child arc according to the sum of the maximum breadths of each of its children.
-    /// This assumes that all nodes have the same breadth -- i.e.that they will occupy the same sweep of arc.
-    /// It does not take the Node.actualBounds into account, nor the angle at which the node will be location relative to the origin,
+    /// This assumes that all nodes have the same breadth -- i.e. that they will occupy the same sweep of arc.
+    /// It does not take the Node.ActualBounds into account, nor the angle at which the node will be location relative to the origin,
     /// nor the distance the node will be from the root node.
     ///
     /// In order to give each child of a vertex the same fraction of arc, override this method:
-    /// <code>computeBreadth(v) { return 1; }</code>
+    /// <code language="cs">public override double ComputeBreadth(RadialVertex v) { return 1; }</code>
     ///
     /// In order to give each child of a vertex a fraction of arc proportional to how many children the child has:
-    /// <code>computeBreadth(v) { return Math.max(1, v.children.length); }</code>
+    /// <code language="cs">public override double ComputeBreadth(RadialVertex v) { return Math.Max(1, v.Children.Count); }</code>
     /// </remarks>
     /// <param name="v"></param>
-    public double ComputeBreadth(RadialVertex v) {
-      double b = 0;
+    public virtual double ComputeBreadth(RadialVertex v) {
+      var b = 0.0;
       foreach (var w in v.Children) {
         b += ComputeBreadth(w);  // inefficient
       }
       return Math.Max(b, 1);
     }
 
-    /*
-     * Update RadialVertex.distance for every vertex.
-     */
-    private void findDistances(RadialVertex source) {
+    // Update RadialVertex.Distance for every vertex.
+    private void _FindDistances(RadialVertex source) {
       if (Network == null) return;
 
-      //keep track of distances from the source node.
+      // keep track of distances from the source node.
       foreach (var v in Network.Vertexes) {
         v.Distance = int.MaxValue;
         v.Laid = false;
       }
-      //the source node starts with distance 0
+      // the source node starts with distance 0
       source.Distance = 0;
       // keep track of nodes for we have set a non-Infinity distance,
       // but which we have not yet finished examining
@@ -238,7 +234,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       };
 
       // local function for finding a vertex with the smallest distance in a given collection
-      LeastVertex leastVertex = (vertexes) => {
+      static RadialVertex leastVertex(ISet<RadialVertex> vertexes) {
         var bestdist = int.MaxValue;
         RadialVertex bestvert = null;
 
@@ -250,22 +246,21 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
 
         return bestvert;
-      };
+      }
 
       // keep track of vertexes we have finished examining;
       // this avoids unnecessary traversals and helps keep the SEEN collection small
       var finished = new HashSet<RadialVertex>();
-      while (seen.Count() > 0) {
-        //look at the unfinished vertex with the shortest distance so far
+      while (seen.Count > 0) {
+        // look at the unfinished vertex with the shortest distance so far
         var least = leastVertex(seen);
-        if (least == null) return;
+        if (least == null) break;
         var leastdist = least.Distance;
         // by the end of this loop we will have finished examining this LEAST vertex
         seen.Remove(least);
         finished.Add(least);
         // look at all edges connected with this vertex
         foreach (var edge in least.Edges) {
-          if (least == null) return;
           var neighbor = edge.GetOtherVertex(least);
           if (neighbor == null) continue;
           // skip vertexes that we have finished
@@ -284,12 +279,13 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
       }
 
-      // now update the RadialVertex.children Arrays to form a tree-structure
+      // now update the RadialVertex.Children Arrays to form a tree-structure
       foreach (var v in Network.Vertexes) {
         var dist = v.Distance;
         var arr = v.Children;
-        foreach (var w in v.Vertexes) {  // use LayoutVertex.vertexes to remove duplicates
-          // use the RadialVertex.laid property for avoiding already-traversed vertexes
+        if (arr == null) arr = v.Children = new List<RadialVertex>();
+        foreach (var w in v.Vertexes) {  // use LayoutVertex.Vertexes to remove duplicates
+          // use the RadialVertex.Laid property for avoiding already-traversed vertexes
           if (!w.Laid && w != v && w.Distance == dist + 1) {
             arr.Add(w);
             w.Laid = true;
@@ -297,7 +293,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
       }
 
-      // reset RadialVertex.laid in case of future use
+      // reset RadialVertex.Laid in case of future use
       foreach (var v in Network.Vertexes) {
         v.Laid = false;
       }
@@ -319,18 +315,18 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Override this method in order to modify each node as it is laid out.
-    /// By default this method does nothing.
     /// </summary>
-    /// <param name="node"></param>
-    /// <param name="angle"></param>
-    /// <param name="sweep"></param>
-    /// <param name="radius"></param>
+    /// <remarks>
+    /// By default this method does nothing.
+    /// </remarks>
     public virtual void RotateNode(Node node, double angle, double sweep, double radius) { }
 
     /// <summary>
     /// Override this method in order to create background circles indicating the layers of the radial layout.
-    /// By default this method does nothing.
     /// </summary>
+    /// <remarks>
+    /// By default this method does nothing.
+    /// </remarks>
     public virtual void CommitLayers() { }
   }
 }

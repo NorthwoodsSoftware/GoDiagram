@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
+/*
+* This is an extension and not part of the main GoDiagram library.
+* Note that the API for this class may change with any version, even point releases.
+* If you intend to use an extension in production, you should copy the code to your own source directory.
+* Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
+* See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
+*/
+
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,6 +17,9 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace Northwoods.Go.Extensions {
+  /// <summary>
+  /// Implements the <see cref="IInspector"/> interface for the WinForms platform.
+  /// </summary>
   public partial class InspectorControl : UserControl, IInspector {
     private readonly Dictionary<string, Control> _PropertyControls = new();
 
@@ -13,6 +27,9 @@ namespace Northwoods.Go.Extensions {
       InitializeComponent();
     }
 
+    /// <summary>
+    /// Implements <see cref="IInspector.UpdateUI"/> to update the input fields or rebuild the table of inputs.
+    /// </summary>
     public void UpdateUI(Inspector inspector, bool rebuild = false) {
       var table = tableLayoutPanel1;
       var rows = inspector.Rows;
@@ -48,6 +65,9 @@ namespace Northwoods.Go.Extensions {
       table.Visible = rows.Any();
     }
 
+    /// <summary>
+    /// Implements <see cref="IInspector.UpdatePropertiesFromInput"/> to update data properties.
+    /// </summary>
     public void UpdatePropertiesFromInput(Inspector inspector) {
       var rows = inspector.Rows;
       var data = inspector.InspectedObject is Part p ? p.Data : inspector.InspectedObject;
@@ -79,7 +99,7 @@ namespace Northwoods.Go.Extensions {
           }
         }
 
-        value = inspector.ParseValue(opts, value, input, oldval);
+        value = Inspector.ParseValue(opts, value, oldval);
 
         // in case parsed to be different, such as in the case of bool values,
         // the value shown should match the actual value

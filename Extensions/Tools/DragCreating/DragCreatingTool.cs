@@ -1,7 +1,5 @@
-﻿using System;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -11,27 +9,31 @@
 * Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
+
+using System;
+
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The DragCreatingTool lets the user create a new node by dragging in the background
   /// to indicate its size and position.
-  ///
+  /// </summary>
+  /// <remarks>
   /// The default drag selection box is a magenta rectangle.
   /// You can modify the <see cref="Box"/> to customize its appearance.
   ///
   /// This tool will not be able to start running unless you have set the
-  /// <see cref="ArchetypeNodeData"/> property to an object that can be copied and added to the diagram"s model.
+  /// <see cref="ArchetypeNodeData"/> property to an object that can be copied and added to the diagram's model.
   ///
   /// You can use this tool in a modal manner by executing:
-  /// ```js
+  /// <code language="cs">
   ///   diagram.CurrentTool = new DragCreatingTool();
-  /// ```
+  /// </code>
   ///
   /// Use this tool in a mode-less manner by executing:
-  /// ```js
+  /// <code language="cs">
   ///   myDiagram.ToolManager.MouseMoveTools.InsertAt(2, new DragCreatingTool());
-  /// ```
+  /// </code>
   ///
   /// However when used mode-lessly as a mouse-move tool, in <see cref="ToolManager.MouseMoveTools"/>,
   /// this cannot start running unless there has been a motionless delay
@@ -41,8 +43,8 @@ namespace Northwoods.Go.Tools.Extensions {
   /// but it does temporarily add the <see cref="Box"/> Part to the diagram.
   /// This tool does conduct a transaction when inserting the new node.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/DragCreating.Html">Drag Creating</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/DragCreating.html">Drag Creating</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class DragCreatingTool : Tool {
     private Part _Box;
@@ -53,15 +55,17 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Constructs a DragCreatingTool, sets <see cref="Box"/> to a magenta rectangle, and sets name of the tool.
     /// </summary>
     public DragCreatingTool() : base() {
-      Part b = new Part();
-      Shape r = new Shape();
-      b.LayerName = "Tool";
-      b.Selectable = false;
-      r.Name = "SHAPE";
-      r.Figure = "Rectangle";
-      r.Fill = (Brush)null;
-      r.Stroke = new Brush("magenta");
-      r.Position = new Point(0, 0);
+      var b = new Part {
+        LayerName = "Tool",
+        Selectable = false
+      };
+      var r = new Shape {
+        Name = "SHAPE",
+        Figure = "Rectangle",
+        Fill = (Brush)null,
+        Stroke = new Brush("magenta"),
+        Position = new Point(0, 0)
+      };
       b.Add(r);
       _Box = b;
       Name = "DragCreating";
@@ -71,13 +75,14 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Gets or sets the <see cref="Part"/> used as the "rubber-band box"
     /// that is stretched to follow the mouse, as feedback for what area will
     /// be passed to <see cref="InsertPart"/> upon a mouse-up.
-    ///
+    /// </summary>
+    /// <remarks>
     /// Initially this is a <see cref="Part"/> containing only a simple magenta rectangular <see cref="Shape"/>.
     /// The object to be resized should be named "SHAPE".
     /// Setting this property does not raise any events.
     ///
     /// Modifying this property while this tool <see cref="Tool.IsActive"/> might have no effect.
-    /// </summary>
+    /// </remarks>
     public Part Box {
       get {
         return _Box;
@@ -90,11 +95,12 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Gets or sets the TimeSpan for which the mouse must be stationary
     /// before this tool can be started.
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is 175 milliseconds.
     /// A value of zero will allow this tool to run without any wait after the mouse down.
     /// Setting this property does not raise any events.
-    /// </summary>
+    /// </remarks>
     public TimeSpan Delay {
       get {
         return _Delay;
@@ -105,12 +111,13 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets a data object that will be copied and added to the diagram"s model each time this tool executes.
-    ///
+    /// Gets or sets a data object that will be copied and added to the diagram's model each time this tool executes.
+    /// </summary>
+    /// <remarks>
     /// The default value is null.
     /// The value must be non-null for this tool to be able to run.
     /// Setting this property does not raise any events.
-    /// </summary>
+    /// </remarks>
     public object ArchetypeNodeData {
       get {
         return _ArchetypeNodeData;
@@ -137,9 +144,9 @@ namespace Northwoods.Go.Tools.Extensions {
       if (!diagram.AllowInsert) return false;
 
       var e = diagram.LastInput;
-      // require left button & that it has moved far enough away from the mouse down point, so it isn"t a click
+      // require left button & that it has moved far enough away from the mouse down point, so it isn't a click
       if (!e.Left) return false;
-      // don"t include the following checks when this tool is running modally
+      // don't include the following checks when this tool is running modally
       if (diagram.CurrentTool != this) {
         if (!IsBeyondDragSize()) return false;
         // must wait for "delay" milliseconds before that tool can run
@@ -203,7 +210,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// This just returns a <see cref="Rect"/> stretching from the mouse-down point to the current mouse point.
     /// </summary>
-    /// @return {Rect} a <see cref="Rect"/> in document coordinates.
+    /// <returns>a <see cref="Rect"/> in document coordinates.</returns>
     public Rect ComputeBoxBounds() {
       var diagram = Diagram;
       var start = diagram.FirstInput.DocumentPoint;
@@ -213,13 +220,14 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Create a node by adding a copy of the <see cref="ArchetypeNodeData"/> object
-    /// to the diagram"s model, assign its <see cref="GraphObject.Position"/> and <see cref="GraphObject.DesiredSize"/>
+    /// to the diagram's model, assign its <see cref="GraphObject.Position"/> and <see cref="GraphObject.DesiredSize"/>
     /// according to the given bounds, and select the new part.
-    ///
+    /// </summary>
+    /// <remarks>
     /// The actual part that is added to the diagram may be a <see cref="Part"/>, a <see cref="Node"/>,
     /// or even a <see cref="Group"/>, depending on the properties of the <see cref="ArchetypeNodeData"/>
     /// and the type of the template that is copied to create the part.
-    /// </summary>
+    /// </remarks>
     /// <param name="bounds">a Point in document coordinates.</param>
     /// <returns>the newly created Part, or null if it failed.</returns>
     public virtual Part InsertPart(Rect bounds) {

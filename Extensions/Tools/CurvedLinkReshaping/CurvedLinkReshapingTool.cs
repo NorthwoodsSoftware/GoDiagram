@@ -1,7 +1,5 @@
-﻿using System;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -12,35 +10,36 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// This CurvedLinkReshapingTool class allows for a <see cref="Link"/>'s path to be modified by the user
   /// via the dragging of a single tool handle at the middle of the link.
   /// Dragging the handle changes the value of <see cref="Link.Curviness"/>.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/CurvedLinkReshaping.html">Curved Link Reshaping</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/CurvedLinkReshaping.html">Curved Link Reshaping</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class CurvedLinkReshapingTool : LinkReshapingTool {
-    private double _OriginalCurviness;
+    private double _OriginalCurviness = double.NaN;
 
     /// <summary>
-    /// constructor
+    /// Constructs a CurvedLinkReshapingTool.
     /// </summary>
     public CurvedLinkReshapingTool() : base() {
       IsEnabled = true;
-      _OriginalCurviness = double.NaN;
     }
 
     /// <summary>
-    /// @hidden @internal
+    /// Undocumented.
     /// </summary>
+    [Undocumented]
     public override Adornment MakeAdornment(GraphObject pathshape) {
-      var link = pathshape.Part as Link;
-      if ((link != null) && (link.Curve == LinkCurve.Bezier) && (link.PointsCount == 4)) {
-        var adornment = new Adornment();
-        adornment.Type = PanelLayoutLink.Instance;
+      if (pathshape.Part is Link link && link.Curve == LinkCurve.Bezier && link.PointsCount == 4) {
+        var adornment = new Adornment(PanelLayoutLink.Instance);
         var h = MakeHandle(pathshape, 0);
         SetReshapingBehavior(h, ReshapingBehavior.All);
         h.Cursor = "move";
@@ -55,12 +54,13 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Start reshaping, if <see cref="Tool.FindToolHandleAt"/> finds a reshape handle at the mouse down point.
-    ///
-    /// If successful this sets {@link #handle} to be the reshape handle that it finds
+    /// </summary>
+    /// <remarks>
+    /// If successful this sets <see cref="LinkReshapingTool.Handle"/> to be the reshape handle that it finds
     /// and <see cref="LinkReshapingTool.AdornedLink"/> to be the <see cref="Link"/> being routed.
     /// It also remembers the original link route (a list of Points) and curviness in case this tool is cancelled.
     /// And it starts a transaction.
-    /// </summary>
+    /// </remarks>
     public override void DoActivate() {
       base.DoActivate();
       if (AdornedLink != null) {
@@ -81,13 +81,14 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Change the route of the <see cref="LinkReshapingTool.AdornedLink"/> by moving the point corresponding to the current
     /// <see cref="LinkReshapingTool.Handle"/> to be at the given <see cref="Point"/>.
+    /// </summary>
+    /// <remarks>
     /// This is called by <see cref="ToolManager.DoMouseMove"/> and <see cref="ToolManager.DoMouseUp"/> with the result of calling
     /// <see cref="LinkReshapingTool.ComputeReshape"/> to constrain the input point.
-    /// </summary>
+    /// </remarks>
     /// <param name="newPoint">the value of the call to <see cref="Reshape"/></param>
     public override void Reshape(Point newPoint) {
-      var link = AdornedLink as Link;
-      if ((link != null) && (link.Curve == LinkCurve.Bezier) && (link.PointsCount == 4)) {
+      if (AdornedLink is Link link && link.Curve == LinkCurve.Bezier && link.PointsCount == 4) {
         var start = link.GetPoint(0);
         var end = link.GetPoint(3);
         var ang = start.Direction(end);

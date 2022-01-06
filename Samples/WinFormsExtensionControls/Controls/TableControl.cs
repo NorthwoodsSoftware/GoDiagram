@@ -6,18 +6,30 @@ using System.ComponentModel;
 using System.Linq;
 using Northwoods.Go.Layouts.Extensions;
 using Northwoods.Go.Tools;
-using Northwoods.Go.WinForms;
 
 namespace WinFormsExtensionControls.Table {
   [ToolboxItem(false)]
   public partial class TableControl : System.Windows.Forms.UserControl {
-
-    private static Diagram myDiagram;
+    private Diagram myDiagram;
     private Palette myPalette;
+    private Node myNodeTemplate =  // for regular nodes within cells (groups); you'll want to extend this
+      new Node("Auto") {
+          Width = 120, Height = 50, Margin = 4  // assume uniform Margin, all around
+        }
+        .Bind("Row")
+        .Bind("Column", "Col")
+        .Add(
+          new Shape { Fill = "white" }
+            .Bind("Fill", "Color"),
+          new TextBlock()
+            .Bind("Text", "Key")
+        );
 
 
     public TableControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
+      myPalette = paletteControl1.Diagram as Palette;
 
       diagramControl1.AfterRender = Setup;
       paletteControl1.AfterRender = SetupPalette;
@@ -46,11 +58,9 @@ namespace WinFormsExtensionControls.Table {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.Layout =
         new TableLayout()
-          .Add(new RowDefinition { Row = 1, Height = 22})  // fixed size column headers
+          .Add(new RowDefinition { Row = 1, Height = 22 })  // fixed size column headers
           .Add(new ColumnDefinition { Column = 1, Width = 22 });  // fixed size row headers
 
       myDiagram.SelectionMoved += (s, e) => {
@@ -68,51 +78,41 @@ namespace WinFormsExtensionControls.Table {
       };
 
       myDiagram.NodeTemplateMap.Add("Header",  // an overall table header, at the top
-        new Node(PanelLayoutAuto.Instance) {
-          Row = 0, Column = 1, ColumnSpan = 9999,
-          Stretch = Stretch.Horizontal,
-          Selectable = false, Pickable = false
-        }.Add(
-          new Shape {
-            Fill = "transparent",
-            StrokeWidth = 0
-          },
-          new TextBlock {
-            Alignment = Spot.Center,
-            Font = "Arial, 12px, style=bold"
-          }.Bind("Text")
-      ));
+        new Node("Auto") {
+            Row = 0, Column = 1, ColumnSpan = 9999,
+            Stretch = Stretch.Horizontal,
+            Selectable = false, Pickable = false
+          }
+          .Add(
+            new Shape { Fill = "transparent", StrokeWidth = 0 },
+            new TextBlock { Alignment = Spot.Center, Font = "Arial, 12pt, style=bold" }
+              .Bind("Text")
+          ));
 
       myDiagram.NodeTemplateMap.Add("Sider",  // an overall table header, on the left side
-        new Node(PanelLayoutAuto.Instance) {
-          Row = 1, RowSpan = 9999, Column = 0,
-          Stretch = Stretch.Vertical,
-          Selectable = false, Pickable = false
-        }.Add(
-          new Shape {
-            Fill = "transparent",
-            StrokeWidth = 0
-          },
-          new TextBlock {
-            Alignment = Spot.Center,
-            Font = "Arial, 12px, style=bold",
-            Angle = 270
-          }.Bind("Text")
-      ));
+        new Node("Auto") {
+            Row = 1, RowSpan = 9999, Column = 0,
+            Stretch = Stretch.Vertical,
+            Selectable = false, Pickable = false
+          }
+          .Add(
+            new Shape { Fill = "transparent", StrokeWidth = 0 },
+            new TextBlock { Alignment = Spot.Center, Font = "Arial, 12pt, style=bold", Angle = 270 }
+              .Bind("Text")
+          ));
 
       myDiagram.NodeTemplateMap.Add("Column Header",  // for each column header
-        new Node(PanelLayoutSpot.Instance) {
-            ZOrder = 50,
+        new Node("Spot") {
             Row = 1, RowSpan = 9999, Column = 2,
             MinSize = new Size(100, double.NaN),
             Stretch = Stretch.Fill,
             Movable = false,
             Resizable = true,
             ResizeAdornmentTemplate =
-              new Adornment(PanelLayoutSpot.Instance)
+              new Adornment("Spot")
                 .Add(
                   new Placeholder(),
-                  new Shape { // for changing the length of a lane
+                  new Shape {  // for changing the length of a lane
                     Alignment = Spot.Right,
                     DesiredSize = new Size(7, 50),
                     Fill = "lightblue", Stroke = "dodgerblue",
@@ -124,7 +124,7 @@ namespace WinFormsExtensionControls.Table {
           .Add(
             new Shape { Fill = null }
               .Bind("Fill", "Color"),
-            new Panel(PanelLayoutAuto.Instance) {
+            new Panel("Auto") {
                 // this is positioned above the Shape, in row 1
                 Alignment = Spot.Top, AlignmentFocus = Spot.Bottom,
                 Stretch = Stretch.Horizontal,
@@ -133,7 +133,7 @@ namespace WinFormsExtensionControls.Table {
               .Add(
                 new Shape { Fill = "transparent", StrokeWidth = 0 },
                 new TextBlock {
-                    Font = "Arial, 10px, style=bold", IsMultiline = false,
+                    Font = "Arial, 10pt, style=bold", IsMultiline = false,
                     Wrap = Wrap.None, Overflow = Overflow.Ellipsis
                   }
                   .Bind("Text")
@@ -142,18 +142,17 @@ namespace WinFormsExtensionControls.Table {
       );
 
       myDiagram.NodeTemplateMap.Add("Row Sider",  // for each row header
-        new Node(PanelLayoutSpot.Instance) {
-            ZOrder = 50,
+        new Node("Spot") {
             Row = 2, Column = 1, ColumnSpan = 9999,
             MinSize = new Size(double.NaN, 100),
             Stretch = Stretch.Fill,
             Movable = false,
             Resizable = true,
             ResizeAdornmentTemplate =
-              new Adornment(PanelLayoutSpot.Instance)
+              new Adornment("Spot")
                 .Add(
                   new Placeholder(),
-                  new Shape { // for changing the breadth of a lane
+                  new Shape {  // for changing the breadth of a lane
                     Alignment = Spot.Bottom,
                     DesiredSize = new Size(50, 7),
                     Fill = "lightblue", Stroke = "dodgerblue",
@@ -165,7 +164,7 @@ namespace WinFormsExtensionControls.Table {
           .Add(
             new Shape { Fill = null }
               .Bind("Fill", "Color"),
-            new Panel(PanelLayoutAuto.Instance) {
+            new Panel("Auto") {
                 // this is positioned to the left of the Shape, in column 1
                 Alignment = Spot.Left, AlignmentFocus = Spot.Right,
                 Stretch = Stretch.Vertical, Angle = 270,
@@ -174,7 +173,7 @@ namespace WinFormsExtensionControls.Table {
               .Add(
                 new Shape { Fill = "transparent", StrokeWidth = 0 },
                 new TextBlock {
-                    Font = "Arial, 10px, style=bold", IsMultiline = false,
+                    Font = "Arial, 10pt, style=bold", IsMultiline = false,
                     Wrap = Wrap.None, Overflow = Overflow.Ellipsis
                   }
                   .Bind("Text")
@@ -182,20 +181,10 @@ namespace WinFormsExtensionControls.Table {
           )
       );
 
-      myDiagram.NodeTemplate =  // for regular nodes within cells (groups); you'll want to extend this
-        new Node(PanelLayoutAuto.Instance) {
-            ZOrder = 100,
-            Width = 120, Height = 50, Margin = 4  // assume uniform Margin, all around
-          }
-          .Bind("Row")
-          .Bind("Column", "Col")
-          .Add(
-            new Shape { Fill = "white" }.Bind("Fill", "Color"),
-            new TextBlock().Bind("Text", "Key")
-          );
+      myDiagram.NodeTemplate = myNodeTemplate;
 
       myDiagram.GroupTemplate =  // for cells
-        new Group(PanelLayoutAuto.Instance) {
+        new Group("Auto") {
             LayerName = "Background",
             Stretch = Stretch.Fill,
             Selectable = false,
@@ -212,18 +201,16 @@ namespace WinFormsExtensionControls.Table {
               var anynew = e.Diagram.Selection.Any((p) => {
                 return p.ContainingGroup != group;
               });
-
               // don't allow headers/siders to be dropped
               var anyHeadersSiders = e.Diagram.Selection.Any((p) => {
                 return p.Category == "Column Header" || p.Category == "Row Sider";
               });
-
               if (!anyHeadersSiders && group.AddMembers(e.Diagram.Selection, true)) {
                 if (anynew) {
                   (e.Diagram.Layout as TableLayout).GetRowDefinition(group.Row).Height = double.NaN;
                   (e.Diagram.Layout as TableLayout).GetColumnDefinition(group.Column).Width = double.NaN;
                 }
-              } else {
+              } else {  // failure upon trying to add parts to this group
                 e.Diagram.CurrentTool.DoCancel();
               }
             }
@@ -231,13 +218,14 @@ namespace WinFormsExtensionControls.Table {
           .Bind("Row")
           .Bind("Column", "Col")
           .Add(
-            //the group is normally unseen -- it is completely transparent except when given a color or when highlighted
+            // the group is normally unseen -- it is completely transparent except when given a color or when highlighted
             new Shape {
                 Fill = "transparent", Stroke = "transparent",
                 StrokeWidth = myDiagram.NodeTemplate.Margin.Left,
                 Stretch = Stretch.Fill
               }
-              .Bind("Fill", "Color"),
+              .Bind("Fill", "Color")
+              .Bind(new Binding("Stroke", "IsHighlighted", h => (bool)h ? "red" : "transparent").OfElement()),
             new Placeholder {
               // leave a margin around the member nodes of a group which is the same as the member node margin
               Alignment = new Spot(0, 0, myDiagram.NodeTemplate.Margin.Top, myDiagram.NodeTemplate.Margin.Left),
@@ -247,15 +235,15 @@ namespace WinFormsExtensionControls.Table {
 
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          //headers
+          // headers
           new NodeData { Key = "Header", Text = "Vacation Procedures", Category = "Header" },
           new NodeData { Key = "Sider", Text = "Personnel", Category = "Sider" },
-          //column and row headers
-          new NodeData { Key = "Request", Text = "Request", Col = 2, Category = "Column Header", Color = "transparent" },
-          new NodeData { Key = "Approval", Text = "Approval", Col = 3, Category = "Column Header", Color = "transparent" },
-          new NodeData { Key = "Employee", Text = "Employee", Row = 2, Category = "Row Sider", Color = "transparent" },
-          new NodeData { Key = "Manager", Text = "Manager", Row = 3, Category = "Row Sider", Color = "transparent" },
-          new NodeData { Key = "Administrator", Text = "Administrator", Row = 4, Category = "Row Sider", Color = "transparent" },
+          // column and row headers
+          new NodeData { Key = "Request", Text = "Request", Col = 2, Category = "Column Header" },
+          new NodeData { Key = "Approval", Text = "Approval", Col = 3, Category = "Column Header" },
+          new NodeData { Key = "Employee", Text = "Employee", Row = 2, Category = "Row Sider" },
+          new NodeData { Key = "Manager", Text = "Manager", Row = 3, Category = "Row Sider" },
+          new NodeData { Key = "Administrator", Text = "Administrator", Row = 4, Category = "Row Sider" },
           // cells, each a group assigned to a row and column
           new NodeData { Key = "EmpReq", Row = 2, Col = 2, IsGroup = true, Color = "lightyellow" },
           new NodeData { Key = "EmpApp", Row = 2, Col = 3, IsGroup = true, Color = "lightgreen" },
@@ -263,7 +251,7 @@ namespace WinFormsExtensionControls.Table {
           new NodeData { Key = "ManApp", Row = 3, Col = 3, IsGroup = true, Color = "lightyellow" },
           new NodeData { Key = "AdmReq", Row = 4, Col = 2, IsGroup = true, Color = "lightyellow" },
           new NodeData { Key = "AdmApp", Row = 4, Col = 3, IsGroup = true, Color = "lightgreen" },
-          //nodes, each assigned to a group/cell
+          // nodes, each assigned to a group/cell
           new NodeData { Key = "Delta", Color = "orange", Size = new Size(100, 100), Group = "EmpReq" },
           new NodeData { Key = "Epsilon", Color = "coral", Size = new Size(100, 50), Group = "EmpReq" },
           new NodeData { Key = "Zeta", Color = "tomato", Size = new Size(50, 70), Group = "ManReq" },
@@ -274,19 +262,7 @@ namespace WinFormsExtensionControls.Table {
     }
 
     private void SetupPalette() {
-      myPalette = paletteControl1.Diagram as Palette;
-      //myPalette.NodeTemplateMap = nodeTemplateMap;
-
-      myPalette.NodeTemplate = 
-        new Node(PanelLayoutAuto.Instance) {
-            Width = 120, Height = 50, Margin = 4  // assume uniform Margin, all around
-          }
-          .Bind("Row")
-          .Bind("Column", "Col")
-          .Add(
-            new Shape { Fill = "white" }.Bind("Fill", "Color"),
-            new TextBlock().Bind("Text", "Key")
-          );
+      myPalette.NodeTemplate = myNodeTemplate;
 
       myPalette.Model = new Model {
         NodeDataSource = new List<NodeData> {

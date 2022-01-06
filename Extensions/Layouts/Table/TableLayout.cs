@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -33,6 +33,8 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This <see cref="Layout"/> positions non-Link Parts into a table according to the values of
   /// <see cref="GraphObject.Row"/>, <see cref="GraphObject.Column"/>, <see cref="GraphObject.RowSpan"/>, <see cref="GraphObject.ColumnSpan"/>,
   /// <see cref="GraphObject.Alignment"/>, <see cref="GraphObject.Stretch"/>.
+  /// </summary>
+  /// <remarks>
   /// If the value of GraphObject.Stretch is not <see cref="Stretch.None"/>, the Part will be sized
   /// according to the available space in the cell(s).
   ///
@@ -51,9 +53,9 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// nor background (<see cref="RowColumnDefinition.Background"/> and <see cref="RowColumnDefinition.CoversSeparators"/> properties).
   /// There is no support for <see cref="RowColumnDefinition.Sizing"/>, either.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/Table.html">Table Layout</a> sample.
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Table.html">Table Layout</a> sample.
+  /// </remarks>
   /// @category Layout Extension
-  /// </summary>
   public class TableLayout : Layout {
     private Spot _DefaultAlignment = Spot.Default;
     private Stretch _DefaultStretch = Stretch.Default;
@@ -69,7 +71,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -145,10 +146,11 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the alignment to use by default for Parts in rows (vertically) and in columns (horizontally).
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is <see cref="Spot.Default"/>.
     /// Setting this property does not raise any events.
-    /// </summary>
+    /// </remarks>
     public Spot DefaultAlignment {
       get {
         return _DefaultAlignment;
@@ -162,10 +164,11 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets whether Parts should be stretched in rows (vertically) and in columns (horizontally).
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is <see cref="Stretch.Default"/>.
     /// Setting this property does not raise any events.
-    /// </summary>
+    /// </remarks>
     public Stretch DefaultStretch {
       get {
         return _DefaultStretch;
@@ -179,8 +182,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// This read-only property returns the number of rows in this TableLayout.
-    /// This value is only valid after the layout has been performed.
     /// </summary>
+    /// <remarks>
+    /// This value is only valid after the layout has been performed.
+    /// </remarks>
     public int RowCount {
       get {
         return 1 + _RowDefs.Keys.Max();
@@ -189,8 +194,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// This read-only property returns the number of columns in this TableLayout.
-    /// This value is only valid after the layout has been performed.
     /// </summary>
+    /// <remarks>
+    /// This value is only valid after the layout has been performed.
+    /// </remarks>
     public int ColumnCount {
       get {
         return 1 + _ColDefs.Keys.Max();
@@ -199,9 +206,11 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets the <see cref="RowDefinition"/> for a particular row in this TableLayout.
+    /// </summary>
+    /// <remarks>
     /// If you ask for the definition of a row at or beyond the <see cref="RowCount" />,
     /// it will automatically create one and return it.
-    /// </summary>
+    /// </remarks>
     /// <param name="idx">The non-negative zero-based integer row index.</param>
     /// <returns><see cref="RowDefinition"/></returns>
     public RowDefinition GetRowDefinition(int idx) {
@@ -220,9 +229,11 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets the <see cref="ColumnDefinition"/> for a particular column in this TableLayout.
+    /// </summary>
+    /// <remarks>
     /// If you ask for the definition of a column at or beyond the <see cref="ColumnCount" />,
     /// it will automatically create one and return it.
-    /// </summary>
+    /// </remarks>
     /// <param name="idx">The non-negative zero-based integer column index.</param>
     /// <returns><see cref="ColumnDefinition"/></returns>
     public ColumnDefinition GetColumnDefinition(int idx) {
@@ -242,11 +253,13 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Returns the row at a given y-coordinate in document coordinates.
+    /// </summary>
+    /// <remarks>
     /// This information is only valid when this layout has been performed and <see cref="Layout.IsValidLayout"/> is true.
-    ///
+    /// 
     /// If the point is above row 0, this method returns -1.
     /// If the point is below the last row, this returns the last row + 1.
-    /// </summary>
+    /// </remarks>
     /// <param name="y"></param>
     /// <returns>a zero-based integer</returns>
     /// <seealso cref="FindColumnForDocumentX" />
@@ -266,11 +279,13 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Returns the column at a given x-coordinate in document coordinates.
+    /// </summary>
+    /// <remarks>
     /// This information is only valid when this layout has been performed and <see cref="Layout.IsValidLayout"/> is true.
     ///
     /// If the point is to the left of column 0, this method returns -1.
     /// If the point is to the right of the last column, this returns the last column + 1.
-    /// </summary>
+    /// </remarks>
     /// <param name="x"></param>
     /// <returns>a zero-based integer</returns>
     /// <seealso cref="FindRowForDocumentY" />
@@ -291,7 +306,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Assign the positions of the parts.
     /// </summary>
-    /// <param name="coll"></param>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       var diagram = Diagram;
       HashSet<Part> allparts;
@@ -307,7 +321,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       ArrangementOrigin = InitialOrigin(ArrangementOrigin);
 
 
-      //put all eligible Parts that are not Links into an Array
+      // put all eligible Parts that are not Links into an Array
       var parts = new List<Part>();
       foreach (var part in allparts) {
         if (!part.IsLinkLike()) parts.Add(part);
@@ -316,7 +330,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (Diagram != null) {
         Diagram.StartTransaction("Table Layout");
         var union = new Size();
-        //this calls .BeforeMeasure(parts, rowcol)
+        // this calls .BeforeMeasure(parts, rowcol)
         var rowcol = MeasureTable(int.MaxValue, int.MaxValue, parts, union, 0, 0);
 
         ArrangeTable(parts, union, rowcol);
@@ -336,8 +350,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Override this method in order to perform some operations after arranging.
     /// By default this method does nothing.
     /// </summary>
-    /// <param name="parts"></param>
-    /// <param name="rowcol"></param>
     protected virtual void AfterArrange(List<Part> parts, DefaultDict<int, DefaultDict<int, List<Part>>> rowcol) { }
 
     private DefaultDict<int, DefaultDict<int, List<Part>>> MeasureTable(int width, int height, List<Part> children, Size union, int minw, int minh) {
@@ -360,7 +372,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       BeforeMeasure(children, rowcol);
 
-      //spanners/nosize/cols/rows here
+      // spanners/nosize/cols/rows here
       var spanners = new List<Part>();
       var nosize = new List<Part>();
 
@@ -379,7 +391,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       var lcol = 0;
       foreach (var row in rowcol.Values) {
-        if (row != null) lcol = Math.Max(lcol, 1 + row.Keys.Max()); // column length in this row
+        if (row != null) lcol = Math.Max(lcol, 1 + row.Keys.Max());  // column length in this row
       }
 
       var nosizeCols = new double[lcol];
@@ -399,7 +411,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         lcol = 1 + row.Keys.Max();
         var rowHerald = GetRowDefinition(rowIdx);
-        rowHerald.ActualHeight = 0; // Reset rows (only on first pass)
+        rowHerald.ActualHeight = 0;  // Reset rows (only on first pass)
 
         foreach (var colpair in row) {
           var colIdx = colpair.Key;
@@ -414,9 +426,9 @@ namespace Northwoods.Go.Layouts.Extensions {
           }
 
           var cell = rowcol[rowIdx][colIdx];
-          //foreach element in cell, measure
+          // foreach element in cell, measure
           foreach (var child in cell) {
-            //Skip children that span multiple rows/columns or have no set size
+            // Skip children that span multiple rows/columns or have no set size
             var spanner = false;
             if (child.RowSpan > 1 || child.ColumnSpan > 1) {
               spanner = true;
@@ -515,18 +527,18 @@ namespace Northwoods.Go.Layouts.Extensions {
         if (colHerald.ActualWidth == 0 && nosizeCols[child.Column] != 0) {
           nosizeCols[child.Column] = Math.Max(mb.Width + margw, nosizeCols[child.Column]);
         } else {
-          nosizeCols[child.Column] = 0; //obey the column herald
+          nosizeCols[child.Column] = 0; // obey the column herald
         }
 
         if (rowHerald.ActualHeight == 0 && nosizeRows[child.Row] != 0) {
           nosizeRows[child.Row] = Math.Max(mb.Height + margh, nosizeRows[child.Row]);
         } else {
-          nosizeRows[child.Row] = 0; //obey the row herald
+          nosizeRows[child.Row] = 0; // obey the row herald
         }
       }
 
-      //we now have the size that all these columns prefer to be
-      //we also have the amount left over
+      // we now have the size that all these columns prefer to be
+      // we also have the amount left over
       var desiredRowTotal = nosizeRows.Sum();
       var desiredColTotal = nosizeCols.Sum();
 
@@ -602,11 +614,11 @@ namespace Northwoods.Go.Layouts.Extensions {
         colHerald.ActualWidth = Math.Max(colHerald.ActualWidth, mwidth);
         amt = colHerald.ActualWidth - oldAmount;
         colleft = Math.Max(colleft - amt, 0);
-      } // end no fixed size objects
+      }  // end no fixed size objects
 
       foreach (var row in rowcol.Values) {
         if (row == null) continue;
-        lcol = Math.Max(lcol, 1 + row.Keys.Max()); // column length in this row
+        lcol = Math.Max(lcol, 1 + row.Keys.Max());  // column length in this row
       }
 
       // Go through each object that spans multiple rows or columns
@@ -622,7 +634,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           var row = rowpair.Value;
           if (row == null) continue;
 
-          lcol = 1 + row.Keys.Max(); // column length in this row
+          lcol = 1 + row.Keys.Max();  // column length in this row
           var rowHerald = GetRowDefinition(ix);
           actualSizeRows[ix] = rowHerald.ActualHeight;
           for (var j = 0; j < lcol; j++) {
@@ -664,7 +676,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         additionalSpan.Height = 0;
 
         for (var n = 1; n < child.RowSpan; n++) {
-          if (child.Row + n >= RowCount) break; // if the row exists at all
+          if (child.Row + n >= RowCount) break;  // if the row exists at all
           rdefspan = GetRowDefinition(child.Row + n);
           amt = 0;
           if (stretch == Stretch.Fill || stretch == Stretch.Vertical) {
@@ -679,7 +691,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         additionalSpan.Width = 0;
 
         for (var n = 1; n < child.ColumnSpan; n++) {
-          if (child.Column + n >= ColumnCount) break; // if the column exists at all
+          if (child.Column + n >= ColumnCount) break;  // if the column exists at all
           cdefspan = GetColumnDefinition(child.Column + n);
           amt = 0;
           if (stretch == Stretch.Fill || stretch == Stretch.Horizontal) {
@@ -703,14 +715,14 @@ namespace Northwoods.Go.Layouts.Extensions {
         var rdeftot = GetRowDefinition(child.Row);
         var totalRow = 0.0;
         for (var n = 0; n < child.RowSpan; n++) {
-          if (child.Row + n >= RowCount) break; // if the row exists at all
+          if (child.Row + n >= RowCount) break;  // if the row exists at all
           rdeftot = GetRowDefinition(child.Row + n);
           totalRow += rdeftot.TotalHeight;
         }
         // def is the last row definition
         if (totalRow < mheight) {
           var roomLeft = mheight - totalRow;
-          while (roomLeft > 0) { // Add the extra to the first row that allows us to
+          while (roomLeft > 0) {  // Add the extra to the first row that allows us to
             var act = rdeftot.ActualHeight;
             if (double.IsNaN(rdeftot.Height) && rdeftot.MaxHeight > act) {
               rdeftot.ActualHeight = Math.Min(rdeftot.MaxHeight, act + roomLeft);
@@ -724,14 +736,14 @@ namespace Northwoods.Go.Layouts.Extensions {
         var cdeftot = GetColumnDefinition(child.Column);
         var totalCol = 0.0;
         for (var n = 0; n < child.ColumnSpan; n++) {
-          if (child.Column + n >= ColumnCount) break; // if the col exists at all
+          if (child.Column + n >= ColumnCount) break;  // if the col exists at all
           cdeftot = GetColumnDefinition(child.Column + n);
           totalCol += cdeftot.TotalWidth;
         }
         // def is the last col definition
         if (totalCol < mwidth) {
           var roomLeft = mwidth - totalCol;
-          while (roomLeft > 0) { // Add the extra to the first column that allows us to
+          while (roomLeft > 0) {  // Add the extra to the first column that allows us to
             var act = cdeftot.ActualWidth;
             if (double.IsNaN(cdeftot.Width) && cdeftot.MaxWidth > act) {
               cdeftot.ActualWidth = Math.Min(cdeftot.MaxWidth, act + roomLeft);
@@ -741,7 +753,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             cdeftot = GetColumnDefinition(cdeftot.Column - 1);
           }
         }
-      } // end spanning objects
+      }  // end spanning objects
 
       l = ColumnCount;
       for (var j = 0; j < l; j++) {
@@ -768,9 +780,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return rowcol;
     }
 
-    /*
-     * Only ever called from TableLayout's measure and arrange
-     */
+    // Only ever called from TableLayout's measure and arrange
     private Stretch GetEffectiveTableStretch(Part child, RowColumnDefinition rowHerald, RowColumnDefinition colHerald) {
       var effectivestretch = child.Stretch;
       if (effectivestretch != Stretch.Default) return effectivestretch;
@@ -802,7 +812,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (horizontal && vertical) return Stretch.Fill;
       if (horizontal) return Stretch.Horizontal;
       if (vertical) return Stretch.Vertical;
-      return Stretch.None; // Everything else is None by default
+      return Stretch.None;  // Everything else is None by default
     }
 
     private void ArrangeTable(List<Part> children, Size union, DefaultDict<int, DefaultDict<int, List<Part>>> rowcol) {
@@ -814,7 +824,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       var lcol = 0;
       foreach (var row in rowcol.Values) {
         if (row == null) continue;
-        lcol = Math.Max(lcol, 1 + row.Keys.Max()); // column length in this row
+        lcol = Math.Max(lcol, 1 + row.Keys.Max());  // column length in this row
       }
 
       var additionalSpan = new Size();
@@ -860,7 +870,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             var colwidth = colHerald.ActualWidth + additionalSpan.Width;
             var rowheight = rowHerald.ActualHeight + additionalSpan.Height;
 
-            //construct a rect that represents the total cell size allowed for this object
+            // construct a rect that represents the total cell size allowed for this object
             var ar = new Rect {
               X = x,
               Y = y,
@@ -908,7 +918,7 @@ namespace Northwoods.Go.Layouts.Extensions {
               alignoffsetY = align.OffsetY;
             }
 
-            // same as if(!align.IsSpot()) align = Spot.Center
+            // same as if (!align.IsSpot()) align = Spot.Center
             if (double.IsNaN(alignx) || double.IsNaN(aligny)) {
               alignx = 0.5;
               aligny = 0.5;
@@ -934,7 +944,7 @@ namespace Northwoods.Go.Layouts.Extensions {
               height = GetLayoutBounds(child).Height;
             }
 
-            //min and max override any stretch values
+            // min and max override any stretch values
             width = Math.Min(child.MaxSize.Width, width);
             height = Math.Min(child.MaxSize.Height, height);
             width = Math.Max(child.MinSize.Width, width);

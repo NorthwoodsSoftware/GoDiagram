@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,13 +17,14 @@ using System.Linq;
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// A custom <see cref="Layout" /> that lays out a chain of nodes in a spiral.
-  ///
+  /// </summary>
+  /// <remarks>
   /// This layout assumes the graph is a chain of <see cref="Node"/>s,
   /// <see cref="Spacing"/> controls the spacing between nodes.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/Spiral.html">Spiral Layout</a> sample.
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Spiral.html">Spiral Layout</a> sample.
+  /// </remarks>
   /// @category Layout Extension
-  /// </summary>
   public class SpiralLayout : NetworkLayout<SpiralNetwork, SpiralVertex, SpiralEdge, SpiralLayout> {
     private double _Radius = double.NaN;
     private double _Spacing = 100;
@@ -37,7 +38,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -51,9 +51,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the radius distance.
-    ///
-    /// The default value is NaN.
     /// </summary>
+    /// <remarks>
+    /// The default value is NaN.
+    /// </remarks>
     public double Radius {
       get {
         return _Radius;
@@ -68,9 +69,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the spacing between nodes.
-    ///
-    /// The default value is 100.
     /// </summary>
+    /// <remarks>
+    /// The default value is 100.
+    /// </remarks>
     public double Spacing {
       get {
         return _Spacing;
@@ -85,9 +87,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets whether the spiral should go clockwise or counter-clockwise.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool Clockwise {
       get {
         return _Clockwise;
@@ -104,8 +107,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// This method actually positions all of the Nodes, assuming that
     /// the ordering of the nodes is given by a single link from one node
     /// to the next.
-    /// This resepects the <see cref="Spacing"/> property to affect the layout.
     /// </summary>
+    /// <remarks>
+    /// This respects the <see cref="Spacing"/> property to affect the layout.
+    /// </remarks>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       if (Network == null) {
         Network = MakeNetwork(coll);
@@ -154,7 +159,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         var x = rad * (cos + angle * sin);
         var y = rad * (sin - angle * cos);
-        //the link might connect to a member node of a group
+        // the link might connect to a member node of a group
         if (link != null && vert.Node is Group && link.ToNode != null && link.ToNode != vert.Node) {
           var offset = link.ToNode.Location.Subtract(vert.Node.Location);
           x -= offset.X;
@@ -188,7 +193,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Compute the effective diameter of a Node.
     /// </summary>
-    public double Diameter(SpiralVertex v) {
+    public static double Diameter(SpiralVertex v) {
       if (v == null) return 0;
       var b = v.Bounds;
       return Math.Sqrt(b.Width * b.Width + b.Height * b.Height);

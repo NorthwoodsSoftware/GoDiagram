@@ -1,37 +1,36 @@
-﻿using System;
-using System.Linq;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
-* This is an extension and not part of the main Go library.
+* This is an extension and not part of the main GoDiagram library.
 * Note that the API for this class may change with any version, even point releases.
 * If you intend to use an extension in production, you should copy the code to your own source directory.
 * Extensions can be found in the GoDiagram repository (https://github.com/NorthwoodsSoftware/GoDiagram/tree/main/Extensions).
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+using System.Linq;
+
 namespace Northwoods.Go.Tools.Extensions {
-
-
   /// <summary>
   /// The GuidedDraggingTool class makes guidelines visible as the parts are dragged around a diagram
   /// when the selected part is nearly aligned with another part.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/GuidedDragging.Html">Guided Dragging</a> sample.
   /// </summary>
+  /// <remarks>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/GuidedDragging.html">Guided Dragging</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class GuidedDraggingTool : DraggingTool {
     // horizontal guidelines
-    private Part GuidelineHtop;
-    private Part GuidelineHbottom;
-    private Part GuidelineHcenter;
+    private readonly Part _GuidelineHtop;
+    private readonly Part _GuidelineHbottom;
+    private readonly Part _GuidelineHcenter;
     // vertical guidelines
-    private Part GuidelineVleft;
-    private Part GuidelineVright;
-    private Part GuidelineVcenter;
+    private readonly Part _GuidelineVleft;
+    private readonly Part _GuidelineVright;
+    private readonly Part _GuidelineVcenter;
 
     // properties that the programmer can modify
     private double _GuidelineSnapDistance = 6;
@@ -51,28 +50,28 @@ namespace Northwoods.Go.Tools.Extensions {
       var shapeProperties = new { Stroke = "gray", IsGeometryPositioned = true };
 
       // temporary parts for horizonal guidelines
-      GuidelineHtop =
+      _GuidelineHtop =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 100 0" }.Set(shapeProperties)
         );
-      GuidelineHbottom =
+      _GuidelineHbottom =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 100 0" }.Set(shapeProperties)
         );
-      GuidelineHcenter =
+      _GuidelineHcenter =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 100 0" }.Set(shapeProperties)
         );
       // temporary parts for vertical guidelines
-      GuidelineVleft =
+      _GuidelineVleft =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 0 100" }.Set(shapeProperties)
         );
-      GuidelineVright =
+      _GuidelineVright =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 0 100" }.Set(shapeProperties)
         );
-      GuidelineVcenter =
+      _GuidelineVcenter =
         new Part().Set(partProperties).Add(
           new Shape { GeometryString = "M0 0 0 100" }.Set(shapeProperties)
         );
@@ -80,16 +79,17 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the margin of error for which guidelines show up.
-    ///
-    /// The default value is 6.
-    /// Guidelines will show up when the aligned nods are ± 6px away from perfect alignment.
     /// </summary>
+    /// <remarks>
+    /// The default value is 6.
+    /// Guidelines will show up when the aligned nodes are ± 6px away from perfect alignment.
+    /// </remarks>
     public double GuidelineSnapDistance {
       get {
         return _GuidelineSnapDistance;
       }
       set {
-        if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuideddraggingTool.GuidelineSnapDistance must be a non-negative number");
+        if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuidedDraggingTool.GuidelineSnapDistance must be a non-negative number");
         if (_GuidelineSnapDistance != value) {
           _GuidelineSnapDistance = value;
         }
@@ -97,10 +97,11 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets whether the guidelines are enabled or disable.
-    ///
-    /// The default value is true.
+    /// Gets or sets whether the guidelines are enabled or disabled.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool IsGuidelineEnabled {
       get {
         return _IsGuidelineEnabled;
@@ -114,9 +115,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets the color of horizontal guidelines.
-    ///
-    /// The default value is "gray".
     /// </summary>
+    /// <remarks>
+    /// The default value is "gray".
+    /// </remarks>
     public string HorizontalGuidelineColor {
       get {
         return _HorizontalGuidelineColor;
@@ -124,17 +126,18 @@ namespace Northwoods.Go.Tools.Extensions {
       set {
         if (_HorizontalGuidelineColor != value) {
           _HorizontalGuidelineColor = value;
-          (GuidelineHbottom.Elements.First() as Shape).Stroke = _HorizontalGuidelineColor;
-          (GuidelineHtop.Elements.First() as Shape).Stroke = _HorizontalGuidelineColor;
+          (_GuidelineHbottom.Elements.First() as Shape).Stroke = _HorizontalGuidelineColor;
+          (_GuidelineHtop.Elements.First() as Shape).Stroke = _HorizontalGuidelineColor;
         }
       }
     }
 
     /// <summary>
     /// Gets or sets the color of vertical guidelines.
-    ///
-    /// The default value is "gray".
     /// </summary>
+    /// <remarks>
+    /// The default value is "gray".
+    /// </remarks>
     public string VerticalGuidelineColor {
       get {
         return _VerticalGuidelineColor;
@@ -142,17 +145,18 @@ namespace Northwoods.Go.Tools.Extensions {
       set {
         if (_VerticalGuidelineColor != value) {
           _VerticalGuidelineColor = value;
-          (GuidelineVleft.Elements.First() as Shape).Stroke = _VerticalGuidelineColor;
-          (GuidelineVright.Elements.First() as Shape).Stroke = _VerticalGuidelineColor;
+          (_GuidelineVleft.Elements.First() as Shape).Stroke = _VerticalGuidelineColor;
+          (_GuidelineVright.Elements.First() as Shape).Stroke = _VerticalGuidelineColor;
         }
       }
     }
 
     /// <summary>
     /// Gets or sets the color of center guidelines.
-    ///
-    /// The default value is "gray".
     /// </summary>
+    /// <remarks>
+    /// The default value is "gray".
+    /// </remarks>
     public string CenterGuidelineColor {
       get {
         return _CenterGuidelineColor;
@@ -160,17 +164,18 @@ namespace Northwoods.Go.Tools.Extensions {
       set {
         if (_CenterGuidelineColor != value) {
           _CenterGuidelineColor = value;
-          (GuidelineVcenter.Elements.First() as Shape).Stroke = _CenterGuidelineColor;
-          (GuidelineHcenter.Elements.First() as Shape).Stroke = _CenterGuidelineColor;
+          (_GuidelineVcenter.Elements.First() as Shape).Stroke = _CenterGuidelineColor;
+          (_GuidelineHcenter.Elements.First() as Shape).Stroke = _CenterGuidelineColor;
         }
       }
     }
 
     /// <summary>
     /// Gets or sets the width guidelines.
-    ///
-    /// The default value is 1.
     /// </summary>
+    /// <remarks>
+    /// The default value is 1.
+    /// </remarks>
     public double GuidelineWidth {
       get {
         return _GuidelineWidth;
@@ -179,22 +184,23 @@ namespace Northwoods.Go.Tools.Extensions {
         if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuidedDraggingTool.GuidelineWidth must be a non-negative number.");
         if (_GuidelineWidth != value) {
           _GuidelineWidth = value;
-          (GuidelineVcenter.Elements.First() as Shape).StrokeWidth = value;
-          (GuidelineHcenter.Elements.First() as Shape).StrokeWidth = value;
-          (GuidelineVleft.Elements.First() as Shape).StrokeWidth = value;
-          (GuidelineVright.Elements.First() as Shape).StrokeWidth = value;
-          (GuidelineHbottom.Elements.First() as Shape).StrokeWidth = value;
-          (GuidelineHtop.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineVcenter.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineHcenter.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineVleft.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineVright.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineHbottom.Elements.First() as Shape).StrokeWidth = value;
+          (_GuidelineHtop.Elements.First() as Shape).StrokeWidth = value;
         }
       }
     }
 
     /// <summary>
     /// Gets or sets the distance around the selected part to search for aligned parts.
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is 1000.
     /// Set this to double.PositiveInfinity if you want to search the entire diagram no matter how far away.
-    /// </summary>
+    /// </remarks>
     public double SearchDistance {
       get {
         return _SearchDistance;
@@ -209,9 +215,10 @@ namespace Northwoods.Go.Tools.Extensions {
 
     /// <summary>
     /// Gets or sets whether snapping to guidelines is enabled.
-    ///
-    /// The default value is true.
     /// </summary>
+    /// <remarks>
+    /// The default value is true.
+    /// </remarks>
     public bool IsGuidelineSnapEnabled {
       get {
         return _IsGuidelineSnapEnabled;
@@ -227,12 +234,12 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Removes all of the guidelines from the grid.
     /// </summary>
     public void ClearGuidelines() {
-      Diagram.Remove(GuidelineHbottom);
-      Diagram.Remove(GuidelineHcenter);
-      Diagram.Remove(GuidelineHtop);
-      Diagram.Remove(GuidelineVleft);
-      Diagram.Remove(GuidelineVright);
-      Diagram.Remove(GuidelineVcenter);
+      Diagram.Remove(_GuidelineHbottom);
+      Diagram.Remove(_GuidelineHcenter);
+      Diagram.Remove(_GuidelineHtop);
+      Diagram.Remove(_GuidelineVleft);
+      Diagram.Remove(_GuidelineVright);
+      Diagram.Remove(_GuidelineVcenter);
     }
 
     /// <summary>
@@ -248,7 +255,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Shows vertical and horizontal guidelines for the dragged part.
     /// </summary>
     public override void DoDragOver(Point pt, GraphObject obj) {
-      // clear all existing guidelines in case either show... method decides to show a guideline
+      // clear all existing guidelines in case either Show... method decides to show a guideline
       ClearGuidelines();
 
       // gets the selected part
@@ -289,7 +296,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// since the node is likely to have moved a different amount than all its connected links in the regular
     /// operation of the DraggingTool.
     /// </summary>
-    public void InvalidateLinks(Part node) {
+    public static void InvalidateLinks(Part node) {
       if (node is Node n) n.InvalidateConnectedLinks();
     }
 
@@ -313,7 +320,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var area = objBounds.Inflate(distance, marginOfError + 1);
       var otherObjs = Diagram.FindElementsIn(area,
         (obj) => obj.Part,
-        (obj) => obj is Part p && !p.IsSelected && !(p is Link) && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
+        (obj) => obj is Part p && !p.IsSelected && p is not Link && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
         true);
 
       var bestDiff = marginOfError;
@@ -378,9 +385,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineHcenter.Position = new Point(x0, bestPoint.Y);
-            GuidelineHcenter.Elt(0).Width = x2 - x0;
-            Diagram.Add(GuidelineHcenter);
+            _GuidelineHcenter.Position = new Point(x0, bestPoint.Y);
+            _GuidelineHcenter.Elt(0).Width = x2 - x0;
+            Diagram.Add(_GuidelineHcenter);
           }
         } else if (bestSpot == Spot.Top) {
           if (snap) {
@@ -388,9 +395,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineHtop.Position = new Point(x0, bestPoint.Y);
-            GuidelineHtop.Elt(0).Width = x2 - x0;
-            Diagram.Add(GuidelineHtop);
+            _GuidelineHtop.Position = new Point(x0, bestPoint.Y);
+            _GuidelineHtop.Elt(0).Width = x2 - x0;
+            Diagram.Add(_GuidelineHtop);
           }
         } else if (bestSpot == Spot.Bottom) {
           if (snap) {
@@ -398,9 +405,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineHbottom.Position = new Point(x0, bestPoint.Y);
-            GuidelineHbottom.Elt(0).Width = x2 - x0;
-            Diagram.Add(GuidelineHbottom);
+            _GuidelineHbottom.Position = new Point(x0, bestPoint.Y);
+            _GuidelineHbottom.Elt(0).Width = x2 - x0;
+            Diagram.Add(_GuidelineHbottom);
           }
         }
       }
@@ -413,7 +420,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// </summary>
     /// <param name="part"></param>
     /// <param name="guideline">if true, show guideline</param>
-    /// <param name="snap">if true, don"t show guidelines but just snap the part to where the guideline would be</param>
+    /// <param name="snap">if true, don't show guidelines but just snap the part to where the guideline would be</param>
     public void ShowVerticalMatches(Part part, bool guideline, bool snap) {
       var objBounds = part.LocationElement.GetDocumentBounds();
       var p0 = objBounds.X;
@@ -426,7 +433,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var area = objBounds.Inflate(marginOfError + 1, distance);
       var otherObjs = Diagram.FindElementsIn(area,
         (obj) => obj.Part as Part,
-        (obj) => obj is Part p && !p.IsSelected && !(p is Link) && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
+        (obj) => obj is Part p && !p.IsSelected && p is not Link && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
         true);
 
       var bestDiff = marginOfError;
@@ -482,7 +489,7 @@ namespace Northwoods.Go.Tools.Extensions {
         // line extends from y0 to y2
         var y0 = Math.Min(objBounds.Y, bestBounds.Y) - 10;
         var y2 = Math.Max(objBounds.Y + objBounds.Height, bestBounds.Y + bestBounds.Height) + 10;
-        // find bestObj"s desired X
+        // find bestObj's desired X
         var bestPoint = Point.SetSpot(bestBounds, bestOtherSpot);
         if (bestSpot == Spot.Center) {
           if (snap) {
@@ -491,9 +498,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineVcenter.Position = new Point(bestPoint.X, y0);
-            GuidelineVcenter.Elt(0).Height = y2 - y0;
-            Diagram.Add(GuidelineVcenter);
+            _GuidelineVcenter.Position = new Point(bestPoint.X, y0);
+            _GuidelineVcenter.Elt(0).Height = y2 - y0;
+            Diagram.Add(_GuidelineVcenter);
           }
         } else if (bestSpot == Spot.Left) {
           if (snap) {
@@ -501,9 +508,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineVleft.Position = new Point(bestPoint.X, y0);
-            GuidelineVleft.Elt(0).Height = y2 - y0;
-            Diagram.Add(GuidelineVleft);
+            _GuidelineVleft.Position = new Point(bestPoint.X, y0);
+            _GuidelineVleft.Elt(0).Height = y2 - y0;
+            Diagram.Add(_GuidelineVleft);
           }
         } else if (bestSpot == Spot.Right) {
           if (snap) {
@@ -511,9 +518,9 @@ namespace Northwoods.Go.Tools.Extensions {
             InvalidateLinks(part);
           }
           if (guideline) {
-            GuidelineVright.Position = new Point(bestPoint.X, y0);
-            GuidelineVright.Elt(0).Height = y2 - y0;
-            Diagram.Add(GuidelineVright);
+            _GuidelineVright.Position = new Point(bestPoint.X, y0);
+            _GuidelineVright.Elt(0).Height = y2 - y0;
+            Diagram.Add(_GuidelineVright);
           }
         }
       }

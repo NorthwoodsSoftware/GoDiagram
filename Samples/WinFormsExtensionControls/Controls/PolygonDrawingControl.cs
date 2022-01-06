@@ -53,11 +53,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
 ";
       saveLoadModel1.ModelJson = @"
         { 
-          ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Category"": ""PolygonDrawing"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ]
-          
-
-    }
-";
+          ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Category"": ""PolygonDrawing"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
+          ""SharedData"": { ""Position"":""0 0"" }
+        }";
     }
 
     private void Setup() {
@@ -102,27 +100,14 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       );
 
       // create a polygon drawing tool, defined in PolygonDrawingTool.cs
-      var tool = new PolygonDrawingTool();
-      // provide default model data
-      tool.ArchetypePartData = new NodeData { Fill = "yellow", Stroke = "blue", StrokeWidth = 3, Category = "PolygonDrawing" };
-      tool.IsPolygon = true;
+      var tool = new PolygonDrawingTool {
+        // provide default model data
+        ArchetypePartData = new NodeData { Fill = "yellow", Stroke = "blue", StrokeWidth = 3, Category = "PolygonDrawing" },
+        IsPolygon = true
+      };
       // install as first mouse-down tool
       myDiagram.ToolManager.MouseDownTools.Insert(0, tool);
 
-      // TEMPORARY until loading from textarea works
-      /*myDiagram.Model = new Model() {
-        NodeDataSource = new List<NodeData>() {
-          new NodeData {
-            Loc = "183 148",
-            Geo = "F M0 145 L75 2 L131 87 L195 0 L249 143z",
-            Key = "-1",
-            Category = "PolygonDrawing",
-            StrokeWidth = 1
-          }
-        }
-      };*/
-      // END TEMPORARY
-      // myDiagram.Model = new PolygonDrawingModel();
       LoadModel(); // load a simple diagram from textarea
     }
 
@@ -136,9 +121,8 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     }
 
     private void Finish(bool commit) {
-      var tool = myDiagram.CurrentTool as PolygonDrawingTool;
-      if (tool == null) return;
-      if (commit && (tool is PolygonDrawingTool)) {
+      if (!(myDiagram.CurrentTool is PolygonDrawingTool tool)) return;
+      if (commit && tool != null) {
         var lastInput = myDiagram.LastInput;
         if (lastInput.EventType == "mousedown" || lastInput.EventType == "mouseup" || lastInput.EventType == "pointerdown" || lastInput.EventType == "pointerup") {
           tool.RemoveLastPoint();
@@ -149,41 +133,28 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       }
     }
 
+    // this command removes the last clicked point from the temporary Shape
     private void Undo() {
-      var tool = myDiagram.CurrentTool as PolygonDrawingTool;
-      if (tool is not PolygonDrawingTool) { //CHANGED IS WITH IS NOT... seems to work now :)
+      if (myDiagram.CurrentTool is PolygonDrawingTool tool) {
         var lastInput = myDiagram.LastInput;
         if (lastInput.EventType == "mousedown" || lastInput.EventType == "mouseup" || lastInput.EventType == "pointerdown" || lastInput.EventType == "pointerup") {
-          tool.FinishShape();
+          tool.RemoveLastPoint();
         }
-      } else {
-        tool.RemoveLastPoint();
+        tool.Undo();
       }
     }
 
     private void SaveModel() {
-      /*if (myDiagram == null) return;
-      var str = "{ \"Position\": \"" + Point.Stringify(myDiagram.Position) + "\",\n  \"Model\": " + myDiagram.Model.ToJson() + " }";
-      saveLoadModel1.ModelJson = str;*/
       if (myDiagram == null) return;
       (myDiagram.Model.SharedData as SharedData).Position = Point.Stringify(myDiagram.Position);
       saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
     }
     private void LoadModel() {
-      /*if (myDiagram == null) return;
-      var str = "{ \"Position\": \"" + Point.Stringify(myDiagram.Position) + "\",\n  \"Model\": " + myDiagram.Model.ToJson() + " }";
-      var json = JsonSerializer.Deserialize<PolygonDrawingSavedData>(str);
-      myDiagram.InitialPosition = Point.Parse(json.Position ?? "0 0"); // null-coalescing operator
-      myDiagram.Model = json.Model;
-      myDiagram.Model.UndoManager.IsEnabled = true;*/
       if (myDiagram == null) return;
       myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
       myDiagram.Model.UndoManager.IsEnabled = true;
-      if (!(myDiagram.Model.SharedData is SharedData)) {
-        myDiagram.Model.SharedData = new SharedData();
-        var pos = (myDiagram.Model.SharedData as SharedData).Position;
-        if (pos != null) myDiagram.InitialPosition = Point.Parse(pos);
-      }
+      var pos = (myDiagram.Model.SharedData as SharedData).Position;
+      myDiagram.InitialPosition = Point.Parse(pos);
       SelectShape();
     }
 

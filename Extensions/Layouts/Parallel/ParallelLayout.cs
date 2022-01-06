@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -15,18 +15,20 @@ using System.Collections.Generic;
 
 
 namespace Northwoods.Go.Layouts.Extensions {
-  /**
-  * A custom <see cref="TreeLayout"/> that can be used for laying out stylized flowcharts.
-  * Each layout requires a single "Split" node and a single "Merge" node.
-  * The "Split" node should be the root of a tree-like structure if one excludes links to the "Merge" node.
-  * This will position the "Merge" node to line up with the "Split" node.
-  *
-  * You can set all of the TreeLayout properties that you like,
-  * except that for simplicity this code just works for angle == 0 or angle == 90.
-  *
-  * If you want to experiment with this extension, try the Parallel Layout sample.
-  * @category Layout Extension
-  */
+  /// <summary>
+  /// A custom <see cref="TreeLayout"/> that can be used for laying out stylized flowcharts.
+  /// </summary>
+  /// <remarks>
+  /// Each layout requires a single "Split" node and a single "Merge" node.
+  /// The "Split" node should be the root of a tree-like structure if one excludes links to the "Merge" node.
+  /// This will position the "Merge" node to line up with the "Split" node.
+  ///
+  /// You can set all of the TreeLayout properties that you like,
+  /// except that for simplicity this code just works for angle == 0 or angle == 90.
+  ///
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Parellel.html">Parallel Layout</a> sample.
+  /// </remarks>
+  /// @category Layout Extension
   public class ParallelLayout : TreeLayout {
 
     /// <summary>
@@ -89,8 +91,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Overridable predicate for deciding if a Node is a conditional or "If" type of Split Node
     /// expecting to have two links coming out of the sides.
     /// </summary>
-    /// <param name="node"></param>
-    /// <returns></returns>
     public virtual bool IsConditional(Node node) {
       if (node == null) return false;
       return node.Category == "If";
@@ -100,8 +100,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Overridable predicate for deciding if a Node is a "Switch" type of Split Node
     /// expecting to have three links coming out of the bottom/right side.
     /// </summary>
-    /// <param name="node"></param>
-    /// <returns></returns>
     public virtual bool IsSwitch(Node node) {
       if (node == null) return false;
       return node.Category == "Switch";
@@ -115,7 +113,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// and exactly one Node that <see cref="IsMerge(Node)"/>.
     /// This can be overridden; any override must set <see cref="SplitNode"/> and <see cref="MergeNode"/>.
     /// </remarks>
-    /// <param name="vertexes"></param>
     public virtual void FindSplitMerge(IEnumerable<TreeVertex> vertexes) {
       Node split = null;
       Node merge = null;
@@ -139,8 +136,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Create and initialize a <see cref="TreeNetwork"/> with the given nodes and links.
     /// This override finds the split and merge nodes and sets the focus of any <see cref="Group"/>s.
     /// </summary>
-    /// <param name="coll"></param>
-    /// <returns>TreeNetwork</returns>
     [Undocumented]
     public override TreeNetwork MakeNetwork(IEnumerable<Part> coll = null) {
       var net = base.MakeNetwork(coll);

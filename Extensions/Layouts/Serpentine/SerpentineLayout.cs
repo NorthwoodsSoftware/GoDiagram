@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,10 +10,15 @@ using System.Linq;
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// A custom <see cref="Layout"/> that lays out a chain of nodes in a snake-like fashion.
-  ///
+  /// </summary>
+  /// <remarks>
   /// This layout assumes the graph is a chain of Nodes,
   /// positioning nodes in horizontal rows back and forth, alternating between left-to-right
   /// and right-to-left within the <see cref="Wrap"/> limit.
@@ -25,8 +26,8 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// When this layout is the Diagram.Layout, it is automatically invalidated when the viewport changes size.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/Serpentine.Html">Serpentine Layout</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/Serpentine.html">Serpentine Layout</a> sample.
+  /// </remarks>
   /// @category Layout Extension
   public class SerpentineLayout : Layout {
     private Size _Spacing = new Size(30, 30);
@@ -42,7 +43,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
-    /// <param name="c"></param>
     [Undocumented]
     protected override void CloneProtected(Layout c) {
       if (c == null) return;
@@ -56,9 +56,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets or sets the <see cref="Size"/> whose width specifies the horizontal space between nodes
     /// and whose height specifies the minimum vertical space between nodes.
-    ///
-    /// The default value is 30x30.
     /// </summary>
+    /// <remarks>
+    /// The default value is 30x30.
+    /// </remarks>
     public Size Spacing {
       get {
         return _Spacing;
@@ -73,10 +74,11 @@ namespace Northwoods.Go.Layouts.Extensions {
 
     /// <summary>
     /// Gets or sets the total width of the layout.
-    ///
+    /// </summary>
+    /// <remarks>
     /// The default value is NaN, which for <see cref="Diagram.Layout"/>s means that it uses
     /// the <see cref="Diagram.ViewportBounds"/>.
-    /// </summary>
+    /// </remarks>
     public double Wrap {
       get {
         return _Wrap;
@@ -92,9 +94,11 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// This method actually positions all of the Nodes, assuming that the ordering of the nodes
     /// is given by a single link from one node to the next.
-    /// This respects the <see cref="Spacing"/> and <see cref="Wrap"/> properties to affect the layout.
     /// </summary>
-    /// <param name="coll"></param> A collection of <see cref="Part"/>s.
+    /// <remarks>
+    /// This respects the <see cref="Spacing"/> and <see cref="Wrap"/> properties to affect the layout.
+    /// </remarks>
+    /// <param name="coll">A collection of <see cref="Part"/>s.</param>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       HashSet<Part> allparts;
       if (coll != null) {

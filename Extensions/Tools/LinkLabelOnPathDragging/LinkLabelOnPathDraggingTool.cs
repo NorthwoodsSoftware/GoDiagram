@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2021 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -11,13 +11,14 @@
 */
 
 namespace Northwoods.Go.Tools.Extensions {
-
   /// <summary>
   /// The LinkLabelOnPathDraggingTool class lets the user move a label on a <see cref="Link"/> while keeping the label on the link's path.
+  /// </summary>
+  /// <remarks>
   /// This tool only works when the Link has a label marked by the "_IsLinkLabel" property.
   ///
-  /// If you want to experiment with this extension, try the <a href="../../extensionsTS/LinkLabelOnPathDragging.Html">Link Label On Path Dragging</a> sample.
-  /// </summary>
+  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkLabelOnPathDragging.html">Link Label On Path Dragging</a> sample.
+  /// </remarks>
   /// @category Tool Extension
   public class LinkLabelOnPathDraggingTool : Tool {
     /// <summary>
@@ -43,11 +44,11 @@ namespace Northwoods.Go.Tools.Extensions {
       var e = diagram.LastInput;
       var elt = diagram.FindElementAt(e.DocumentPoint, null, null);
 
-      if (elt == null || !(elt.Part is Link)) return null;
+      if (elt == null || elt.Part is not Link) return null;
       while (elt != null && elt.Panel != elt.Part) {
         elt = elt.Panel;
       }
-      // If it"s not marked as "_IsLinkLabel", don't consider it a label:
+      // If it's not marked as "_IsLinkLabel", don't consider it a label:
       if (!((elt["_IsLinkLabel"] as bool?) ?? false)) return null; // null-coaslecing operator for casting to bool
       return elt;
     }
@@ -69,8 +70,8 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Start a transaction, call FindLabel and remember it as the "label" property,
-    /// and remember the original value for the label's SegmentFraction property.
+    /// Start a transaction, call FindLabel and remember it as the <see cref="Label"/> property,
+    /// and remember the original value for the label's <see cref="GraphObject.SegmentFraction"/> property.
     /// </summary>
     public override void DoActivate() {
       StartTransaction("Shifted Label");
@@ -98,7 +99,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Restore the label's original value for GraphObject.SegmentFraction property.
+    /// Restore the label's original value for <see cref="GraphObject.SegmentFraction"/> property.
     /// </summary>
     public override void DoCancel() {
       if (Label != null) {
@@ -108,7 +109,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// During the drag, call <see cref="UpdateSegmentOffset"/> in order to set the SegmentFraction property of the label.
+    /// During the drag, call <see cref="UpdateSegmentOffset"/> in order to set the <see cref="GraphObject.SegmentFraction"/> property of the label.
     /// </summary>
     public override void DoMouseMove() {
       if (!IsActive) return;
@@ -133,8 +134,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public void UpdateSegmentOffset() {
       var lab = Label;
       if (lab == null) return;
-      var link = lab.Part as Link;
-      if (!(link is Link) || link.Path == null) return;
+      if (lab.Part is not Link link || link.Path == null) return;
 
       var last = Diagram.LastInput.DocumentPoint;
       // find the fractional distance along the link path closest to this point
