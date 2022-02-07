@@ -219,7 +219,7 @@ namespace WinFormsSampleControls.DraggableLink {
               new Binding("Fill")
             ),
             new TextBlock {
-              Font = "Segoe UI, 11px, style=bold",
+              Font = new Font("Segoe UI", 11, FontWeight.Bold),
               Margin = 8,
               MaxSize = new Size(160, double.NaN),
               Wrap = Wrap.Fit,
@@ -322,7 +322,7 @@ namespace WinFormsSampleControls.DraggableLink {
             },
             new TextBlock {
               TextAlign = TextAlign.Center,
-              Font = "Segoe UI, 10px",
+              Font = new Font("Segoe UI", 10),
               Stroke = "#919191",
               Margin = 2,
               MinSize = new Size(10, double.NaN),

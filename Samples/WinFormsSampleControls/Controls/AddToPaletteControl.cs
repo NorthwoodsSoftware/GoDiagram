@@ -90,7 +90,7 @@ namespace WinFormsSampleControls.AddToPalette {
         ),
         new TextBlock {
           Margin = new Margin(5, 5, 3, 5),
-          Font = "Segoe UI, 10px",
+          Font = new Font("Segoe UI", 10),
           MinSize = new Size(16, 16),
           MaxSize = new Size(120, double.NaN),
           TextAlign = TextAlign.Center,

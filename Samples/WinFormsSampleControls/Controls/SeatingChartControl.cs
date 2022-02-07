@@ -73,7 +73,7 @@ namespace WinFormsSampleControls.SeatingChart {
             .Bind("Fill"),
           new TextBlock {
             Text = number.ToString(),
-            Font = "Verdana, 10px"
+            Font = new Font("Verdana", 10)
           }
             .Bind("Angle", "Angle", (n, _) => -(double)n)
         );
@@ -142,7 +142,7 @@ namespace WinFormsSampleControls.SeatingChart {
                   new TextBlock {
                       Margin = 2,
                       DesiredSize = new Size(55, double.NaN),
-                      Font = "Verdana, 8px",
+                      Font = new Font("Verdana", 8),
                       TextAlign = TextAlign.Center,
                       Stroke = "darkblue"
                     }
@@ -176,7 +176,7 @@ namespace WinFormsSampleControls.SeatingChart {
                     .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
                     .Bind("Fill"),
                   new TextBlock {
-                      Editable = true, Font = "Verdana, 11px, style=bold"
+                      Editable = true, Font = new Font("Verdana", 11, FontWeight.Bold)
                     }
                     .Bind(
                       new Binding("Text", "Name").MakeTwoWay(),
@@ -212,7 +212,7 @@ namespace WinFormsSampleControls.SeatingChart {
                     .Bind("Fill"),
                   new TextBlock {
                       Editable = true,
-                      Font = "Verdana, 11px, style=bold"
+                      Font = new Font("Verdana", 11, FontWeight.Bold)
                     }
                     .Bind(
                       new Binding("Text", "Name").MakeTwoWay(),
@@ -243,7 +243,7 @@ namespace WinFormsSampleControls.SeatingChart {
                     .Bind("Fill"),
                   new TextBlock {
                       Editable = true,
-                      Font = "Verdana, 11px, style=bold"
+                      Font = new Font("Verdana", 11, FontWeight.Bold)
                     }
                     .Bind(
                       new Binding("Text", "Name").MakeTwoWay(),

@@ -79,7 +79,7 @@ namespace WinFormsSampleControls.Sparklines {
         new TextBlock {
           Visible = false,
           Margin = 1,
-          Font = "Segoe UI, 11px",
+          Font = new Font("Segoe UI", 11),
           Background = "white"
         }.Bind("Alignment", "Values", (v, _) => {
           var values = v as List<int>;

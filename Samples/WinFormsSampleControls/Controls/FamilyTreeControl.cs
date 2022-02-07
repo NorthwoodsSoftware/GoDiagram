@@ -48,7 +48,7 @@ namespace WinFormsSampleControls.FamilyTree {
           Selectable = false
         }.Add(
           new TextBlock("Key") {
-            Row = 0, Font = "Segoe UI, 14px, style=bold"
+            Row = 0, Font = new Font("Segoe UI", 14, FontWeight.Bold)
           }, // end row 0
           new Panel(PanelLayoutHorizontal.Instance) {
             Row = 1,
@@ -57,7 +57,7 @@ namespace WinFormsSampleControls.FamilyTree {
             new Shape("Rectangle") {
               DesiredSize = new Size(30, 30), Fill = bluegrad, Margin = 5
             },
-            new TextBlock("Males") { Font = "Segoe UI, 13px, style=bold" }
+            new TextBlock("Males") { Font = new Font("Segoe UI", 13, FontWeight.Bold) }
           ), // end row 1
           new Panel(PanelLayoutHorizontal.Instance) {
             Row = 2,
@@ -66,7 +66,7 @@ namespace WinFormsSampleControls.FamilyTree {
             new Shape("Rectangle") {
               DesiredSize = new Size(30, 30), Fill = pinkgrad, Margin = 5
             },
-            new TextBlock("Females") { Font = "Segoe UI, 13px, style=bold" }
+            new TextBlock("Females") { Font = new Font("Segoe UI", 13, FontWeight.Bold) }
           ) // end row 2
         )
       );
@@ -84,7 +84,7 @@ namespace WinFormsSampleControls.FamilyTree {
 
       var tooltipTemplate = Builder.Make<Adornment>("ToolTip").Add(
         new TextBlock {
-          Font = "Arial, 8pt, style=bold",
+          Font = new Font("Arial", 8, FontWeight.Bold, FontUnit.Point),
           Wrap = Wrap.Fit,
           Margin = 5
         }.Bind("Text", "", tooltipTextConverter)
@@ -108,7 +108,7 @@ namespace WinFormsSampleControls.FamilyTree {
           Alignment = Spot.Center
         }.Bind("Fill", "Gender", genderBrushConverter),
         new TextBlock {
-          Font = "Segoe UI, 12px, style=bold",
+          Font = new Font("Segoe UI", 12, FontWeight.Bold),
           TextAlign = TextAlign.Center,
           Margin = 10, MaxSize = new Size(80, double.NaN)
         }.Bind("Text", "Name")

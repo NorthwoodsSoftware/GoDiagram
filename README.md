@@ -10,12 +10,12 @@ GoDiagram — .NET Library for Interactive Diagrams
 [![open issues](https://img.shields.io/github/issues-raw/NorthwoodsSoftware/GoDiagram.svg)](https://github.com/NorthwoodsSoftware/GoDiagram/issues)
 [![Twitter Follow](https://img.shields.io/twitter/follow/NorthwoodsGo.svg?style=social&label=Follow)](https://twitter.com/NorthwoodsGo)
 
-[Get Started with GoDiagram](https://godiagram.com/learn)
+[Get Started with GoDiagram](https://godiagram.com/winforms/latest/learn)
 
 
 GoDiagram is a flexible library that can be used to create a number of different kinds of interactive diagrams, including data visualizations, drawing tools, and graph editors. GoDiagram includes a number of built in layouts including tree layout, force directed, radial, and layered digraph layout, and a number of custom layout examples.
 
-Read more about GoDiagram at [godiagram.com](https://godiagram.com)
+Read more about GoDiagram at [godiagram.com](https://godiagram.com).
 
 This repository contains the sources for all samples and extensions.
 You can use the GitHub repository to quickly [search through the sample sources](https://github.com/NorthwoodsSoftware/GoDiagram/search?q=FindNodeDataForKey&type=Code).
@@ -35,12 +35,12 @@ Graphs are constructed by creating one or more templates, with desired propertie
 
     // define a simple Node template
     _Diagram.NodeTemplate =
-      new Node(PanelLayoutAuto.Instance)  // the Shape will go around the TextBlock
+      new Node("Auto")  // the Shape will go around the TextBlock
         .Add(
           new Shape("RoundedRectangle") { StrokeWidth = 0 }
             .Bind("Fill", "Color"),
           new TextBlock {
-              Font = "Segoe UI, 14px, style=bold", Stroke = "#333", Margin = 8, // Specify a margin to add some room around the text
+              Font = new Font("Segoe UI", 14, FontWeight.Bold), Stroke = "#333", Margin = 8, // Specify a margin to add some room around the text
               Editable = true
             }
             .Bind("Text")

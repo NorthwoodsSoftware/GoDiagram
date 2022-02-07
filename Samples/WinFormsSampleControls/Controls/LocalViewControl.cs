@@ -129,7 +129,7 @@ namespace WinFormsSampleControls.LocalView {
         Sorting = TreeSorting.Ascending
       };
       myLocalDiagram.LayoutCompleted += (obj, e) => {
-        var sel = e.Diagram.Selection.First();
+        var sel = e.Diagram.Selection.FirstOrDefault();
         if (sel != null) myLocalDiagram.ScrollToRect(sel.ActualBounds);
       };
       myLocalDiagram.MaxSelectionCount = 1;

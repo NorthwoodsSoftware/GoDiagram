@@ -181,7 +181,7 @@ namespace WinFormsSampleControls.ProductionEditor {
               new Binding("Fill", "Color", ColorFunc)
             ),
             new TextBlock {
-              Font = "Segoe UI, 14px, style=bold",
+              Font = new Font("Segoe UI", 14, FontWeight.Bold),
               TextAlign = TextAlign.Center,
               Margin = 3,
               MaxSize = new Size(105, double.NaN),

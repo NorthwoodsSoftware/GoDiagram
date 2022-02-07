@@ -77,7 +77,7 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
       // make a textblock with ad-hoc property
       var textblock =
         new TextBlock {
-          Font = "Arial, 11px, style=bold",
+          Font = new Font("Arial", 11, FontWeight.Bold),
           Editable = true, // editing the text automatically updates the model data
           Cursor = "move" // visual hint that the user can do something with this node label
         }.Bind(
@@ -215,7 +215,7 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
               new TextBlock() {
                 Text = "transition",
                 TextAlign = TextAlign.Center,
-                Font = "Arial, 10px, style=bold",
+                Font = new Font("Arial", 10, FontWeight.Bold),
                 Stroke = "black",
                 Margin = 4,
                 Editable = true

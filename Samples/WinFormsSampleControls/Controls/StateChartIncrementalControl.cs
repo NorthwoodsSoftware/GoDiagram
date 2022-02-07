@@ -115,7 +115,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
             Cursor = "pointer"
           },
           new TextBlock {
-            Font = "Segoe UI, 11px, style=bold",
+            Font = new Font("Segoe UI", 11, FontWeight.Bold),
             Editable = true  // editing the text automatically updates the model data
           }.Bind(
             new Binding("Text", "Text").MakeTwoWay())
@@ -218,7 +218,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
             new TextBlock { // the label text
               Text = "transition",
               TextAlign = TextAlign.Center,
-              Font = "Segoe UI, 10px",
+              Font = new Font("Segoe UI", 10),
               Stroke = "black",
               Margin = 4,
               Editable = true  // editing the text automatically updates the model data

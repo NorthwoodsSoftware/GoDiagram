@@ -65,7 +65,7 @@ namespace WinFormsSampleControls.EntityRelationship {
             new Binding("Stroke", "Color")),
           new TextBlock {
             Stroke = "#333333",
-            Font = "Segoe UI, 14px, style=bold"
+            Font = new Font("Segoe UI", 14, FontWeight.Bold)
           }.Bind(
             new Binding("Text", "Name"))
         );
@@ -103,7 +103,7 @@ namespace WinFormsSampleControls.EntityRelationship {
               Row = 0,
               Alignment = Spot.Center,
               Margin = new Margin(0, 24, 0, 2),  // leave room for Button
-              Font = "Segoe UI, 16px, style=bold"
+              Font = new Font("Segoe UI", 16, FontWeight.Bold)
             }.Bind(
               new Binding("Text", "Key")),
             // the collapse/expand button
@@ -138,7 +138,7 @@ namespace WinFormsSampleControls.EntityRelationship {
           new TextBlock  // the "from" label
             {
             TextAlign = TextAlign.Center,
-            Font = "Segoe UI, 14px, style=bold",
+            Font = new Font("Segoe UI", 14, FontWeight.Bold),
             Stroke = "#1967B3",
             SegmentIndex = 0,
             SegmentOffset = new Point(double.NaN, double.NaN),
@@ -148,7 +148,7 @@ namespace WinFormsSampleControls.EntityRelationship {
           new TextBlock  // the "to" label
             {
             TextAlign = TextAlign.Center,
-            Font = "Segoe UI, 14px, style=bold",
+            Font = new Font("Segoe UI", 14, FontWeight.Bold),
             Stroke = "#1967B3",
             SegmentIndex = -1,
             SegmentOffset = new Point(double.NaN, double.NaN),

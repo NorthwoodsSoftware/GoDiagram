@@ -81,7 +81,7 @@ namespace WinFormsSampleControls.PipeTree {
           if (flow > 20) { shortSide = 50; longSide += 30; }
           if (flow > 50) shortSide = 100;
           // font size also depends on current
-          (node.FindElement("TEXTBLOCK") as TextBlock).Font = $"Segoe UI, {Math.Floor(10 + flow / 11)}px";
+          (node.FindElement("TEXTBLOCK") as TextBlock).Font = new Font("Segoe UI", (float)Math.Floor(10 + flow / 11));
           var chl = node.FindTreeChildrenNodes();
           if (horiz) {
             var min = node.Location.X;

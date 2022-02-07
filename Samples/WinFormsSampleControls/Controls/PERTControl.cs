@@ -22,10 +22,10 @@ namespace WinFormsSampleControls.PERT {
       Each node represents an activity and displays several pieces of information about each one.
       The node template is basically a <a>Panel</a> of type <a>PanelLayoutTable</a> holding several <a>TextBlock</a>s
       that are data-bound to properties of the Activity, all surrounded by a rectangular border.
-      The lines separating the text are implemented by setting the <a>RowColumnDefinition.SeparatorStroke</a>
+      The lines separating the text are implemented by setting the <a>RowDefinition.SeparatorStroke</a>/<a>ColumnDefinition.SeparatorStroke</a>
       for two columns and two rows. The separators are not seen in the middle because the middle row
-      of each node has its <a>RowColumnDefinition.Background</a> set to white,
-      and <a>RowColumnDefinition.CoversSeparators</a> set to true.
+      of each node has its <a>RowDefinition.Background</a> set to white,
+      and <a>RowDefinition.CoversSeparators</a> set to true.
         </p>
         <p>
       The ""Critical"" property on the activity data object controls whether the node is drawn with a red brush or a blue one.
@@ -87,7 +87,7 @@ namespace WinFormsSampleControls.PERT {
           }.Bind("Text", "", (d, _) => ((d as NodeData).EarlyStart + (d as NodeData).Length).ToString("0.##")),
           new TextBlock {
             Row = 1, Column = 0, ColumnSpan = 3, Margin = 5,
-            TextAlign = TextAlign.Center, Font = "Segoe UI, 14px, style=bold"
+            TextAlign = TextAlign.Center, Font = new Font("Segoe UI", 14, FontWeight.Bold)
           }.Bind("Text", "Text"),
           new TextBlock { // late start
             Row = 2, Column = 0, Margin = 5, TextAlign = TextAlign.Center
@@ -190,7 +190,7 @@ namespace WinFormsSampleControls.PERT {
           new TextBlock {
             Text = "Activity Name",
             Row = 1, Column = 0, ColumnSpan = 3, Margin = 5,
-            TextAlign = TextAlign.Center, Font = "Segoe UI, 14px, style=bold"
+            TextAlign = TextAlign.Center, Font = new Font("Segoe UI", 14, FontWeight.Bold)
           },
           new TextBlock {
             Text = "Late Start",

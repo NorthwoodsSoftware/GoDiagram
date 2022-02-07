@@ -69,7 +69,7 @@ namespace WinFormsSampleControls.ClassHierarchy {
             new Shape { Fill = "#1F4963", Stroke = (Brush)null },
             new TextBlock {
               Text = "Text",
-              Font = "Segoe UI, 13px, style=bold",
+              Font = new Font("Segoe UI", 13, FontWeight.Bold),
               Stroke = "white",
               Margin = 3
             }.Bind(

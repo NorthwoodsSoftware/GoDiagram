@@ -99,7 +99,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
               }
               .Bind("Fill"),
             new TextBlock {
-                Font = "Arial, 12px",
+                Font = new Font("Arial", 12),
                 Stroke = "white",
                 MaxLines = 1
               }
@@ -140,7 +140,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
           Text = "GoDiagram",
           ToolTip = "GoDiagram",
           Fill = null,
-          Font = "Arial, 64px, style=bold",
+          Font = new Font("Arial", 64, FontWeight.Bold),
           IsLabel = true,
           Children = new List<NodeData>()
         }
@@ -249,7 +249,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
             ToolTip = n.ToolTip,
             Group = n.Key,
             Fill = null,
-            Font = "Arial, 20px, style=bold"
+            Font = new Font("Arial", 20, FontWeight.Bold)
           });
         }
 
@@ -272,7 +272,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
     public Point Position { get; set; }
     public string ToolTip { get; set; }
     public Brush Fill { get; set; } = "#1F4963";
-    public string Font { get; set; }
+    public Font Font { get; set; } = new();
     public int PropCount { get; set; }
   }
 

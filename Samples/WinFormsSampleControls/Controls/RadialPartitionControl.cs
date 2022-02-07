@@ -52,7 +52,7 @@ namespace WinFormsSampleControls.RadialPartition {
           Margin = 3
         }.Add(
           new TextBlock {
-            Margin = 4, Font = "Segoe UI, 12px, style=bold"
+            Margin = 4, Font = new Font("Segoe UI", 12, FontWeight.Bold)
           }.Bind("Text"),
           new TextBlock()
            .Bind("Text", "Color", (c, _) => "Color: " + c),
@@ -134,7 +134,7 @@ namespace WinFormsSampleControls.RadialPartition {
             Fill = "white", StrokeWidth = 0.5, Spot1 = Spot.TopLeft, Spot2 = Spot.BottomRight
           },
           new TextBlock {
-            Font = "Segoe UI, 14px, style=bold", TextAlign = TextAlign.Center
+            Font = new Font("Segoe UI", 14, FontWeight.Bold), TextAlign = TextAlign.Center
           }.Bind("Text")
         )
       );

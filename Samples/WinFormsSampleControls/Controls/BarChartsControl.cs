@@ -67,7 +67,7 @@ namespace WinFormsSampleControls.BarCharts {
           new Panel(PanelLayoutVertical.Instance).Add(
             new Panel(PanelLayoutTable.Instance) { Margin = 6, ItemTemplate = itemTempl }.Bind(
               new Binding("ItemList", "Items")),
-            new TextBlock { Font = "Segoe UI, 16px, style=bold" }.Bind(
+            new TextBlock { Font = new Font("Segoe UI", 16, FontWeight.Bold) }.Bind(
               new Binding("Text"))
           )
         );

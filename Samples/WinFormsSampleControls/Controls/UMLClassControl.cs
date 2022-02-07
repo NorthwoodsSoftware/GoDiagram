@@ -168,7 +168,7 @@ namespace WinFormsSampleControls.UMLClass {
               ColumnSpan = 2,
               Margin = 3,
               Alignment = Spot.Center,
-              Font = "Segoe UI, 12px, style=bold",
+              Font = new Font("Segoe UI", 12, FontWeight.Bold),
               IsMultiline = false,
               Editable = true
             }.Bind(
@@ -178,7 +178,7 @@ namespace WinFormsSampleControls.UMLClass {
             new TextBlock {
               Text = "Properties",
               Row = 1,
-              Font = "Segoe UI, 10px, style=italic"
+              Font = new Font("Segoe UI", 10, FontStyle.Italic)
             }.Bind(
               new Binding("Visible", "Visible", (v, _) => {
                 return !(v as bool? ?? false);
@@ -210,7 +210,7 @@ namespace WinFormsSampleControls.UMLClass {
             new TextBlock {
               Text = "Methods",
               Row = 2,
-              Font = "Segoe UI, 10px, style=italic"
+              Font = new Font("Segoe UI", 10, FontStyle.Italic)
             }.Bind(
               new Binding("Visible", "Visible", (v, _) => {
                 return !(v as bool? ?? false);

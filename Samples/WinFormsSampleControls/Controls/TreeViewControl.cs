@@ -139,7 +139,7 @@ namespace WinFormsSampleControls.TreeView {
             new Binding("Source", "IsTreeLeaf", imageConverter).OfElement()
           ),
           new TextBlock {
-            Font = "Segoe UI, 9px"
+            Font = new Font("Segoe UI", 9)
           }.Bind("Text", "Key", (s, _) => "item " + s)
         ) // end Horizontal panel
       ); // end Node

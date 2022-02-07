@@ -101,11 +101,11 @@ namespace WinFormsSampleControls.Thermometer {
                   .Bind("Height"),
                 new Shape { AlignmentFocus = Spot.Bottom, Interval = 2, StrokeWidth = 1, GeometryString = "M0 0 V15" },
                 new Shape { AlignmentFocus = Spot.Bottom, Interval = 10, StrokeWidth = 2, GeometryString = "M0 0 V20" },
-                new TextBlock { Interval = 20, Font = "Georgia, 22px", AlignmentFocus = new Spot(1, 0.5, 20, 0) },
+                new TextBlock { Interval = 20, Font = new Font("Georgia", 22), AlignmentFocus = new Spot(1, 0.5, 20, 0) },
                 // Mark 32 degrees on the farenheit scale:
                 new TextBlock {
                     Interval = 32, GraduatedFunction = (n) => { return n == 32 ? "32—" : ""; },
-                    Font = "Georgia, 12px, style=bold", Stroke = "red", AlignmentFocus = new Spot(1, 0.5, 20, 0)
+                    Font = new Font("Georgia", 12, FontWeight.Bold), Stroke = "red", AlignmentFocus = new Spot(1, 0.5, 20, 0)
                   }
               ),
 
@@ -159,7 +159,7 @@ namespace WinFormsSampleControls.Thermometer {
                 new Shape { Interval = 2, StrokeWidth = 1, GeometryString = "M0 0 V15" },
                 new Shape { Interval = 10, StrokeWidth = 2, GeometryString = "M0 0 V20" },
                 new TextBlock {
-                    Interval = 20, TextAlign = TextAlign.Left, Font = "Georgia, 22px",
+                    Interval = 20, TextAlign = TextAlign.Left, Font = new Font("Georgia", 22),
                     AlignmentFocus = Spot.Left,
                     SegmentOffset = new Point(0, 22)
                   }

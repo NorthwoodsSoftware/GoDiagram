@@ -203,7 +203,7 @@ namespace WinFormsSampleControls.Sankey {
         PortSpreading = PortSpreading.Packed // rather than the default PortSpreading.SpreadingEvenly
       }.Add(
         new TextBlock {
-          Font = "Segoe UI, 12px, style=bold",
+          Font = new Font("Segoe UI", 12, FontWeight.Bold),
           Stroke = "black",
           Margin = 5,
           Name = "LTEXT"
@@ -221,7 +221,7 @@ namespace WinFormsSampleControls.Sankey {
           Width = 20
         }.Bind("Fill", "Color"),
         new TextBlock {
-          Font = "Segoe UI, 12px, style=bold",
+          Font = new Font("Segoe UI", 12, FontWeight.Bold),
           Stroke = "black",
           Margin = 5,
           Name = "TEXT"
@@ -297,7 +297,7 @@ namespace WinFormsSampleControls.Sankey {
       public override LayeredDigraphNetwork CreateNetwork() {
         foreach (var node in Diagram.Nodes) {
           var height = _GetAutoHeightForNode(node);
-          var font = "Segoe UI, " + Math.Max(12, Math.Round(height / 8)) + "px, style=bold";
+          var font = new Font("Segoe UI", (float)Math.Max(12, Math.Round(height / 8)), FontWeight.Bold);
           var shape = node.FindElement("SHAPE");
           var text = node.FindElement("TEXT");
           var ltext = node.FindElement("LTEXT");

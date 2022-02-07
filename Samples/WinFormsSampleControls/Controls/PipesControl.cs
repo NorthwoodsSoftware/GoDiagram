@@ -262,7 +262,7 @@ namespace WinFormsSampleControls.Pipes {
           .Add(
             new TextBlock {
               Stroke = "brown",
-              Font = "Segoe UI, 12px"
+              Font = new Font("Segoe UI", 12)
             }
               .Bind("Text")
           )

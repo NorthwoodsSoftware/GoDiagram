@@ -40,18 +40,18 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// You can specify constraints for whole rows or columns by calling
   /// <see cref="GetRowDefinition(int)"/> or <see cref="GetColumnDefinition(int)"/> and setting one of the following properties:
-  /// <see cref="RowColumnDefinition.Alignment"/>, <see cref="RowDefinition.Height"/>,
-  /// <see cref="RowDefinition.MaxHeight"/>, <see cref="RowDefinition.MinHeight"/> (or their column equivalents), <see cref="RowColumnDefinition.Stretch"/>,
+  /// <see cref="RowDefinition.Alignment"/>, <see cref="RowDefinition.Height"/>,
+  /// <see cref="RowDefinition.MaxHeight"/>, <see cref="RowDefinition.MinHeight"/> (or their column equivalents), <see cref="RowDefinition.Stretch"/>,
   /// or in bulk by calling <see cref="Add(RowDefinition[])"/>.
   ///
   /// The <see cref="DefaultAlignment"/> and <see cref="DefaultStretch"/> properties apply to all parts if not specified
   /// on the individual Part or in the corresponding row or column definition.
   ///
   /// At the current time, there is no support for separator lines
-  ///(<see cref="RowColumnDefinition.SeparatorStroke"/>, <see cref="RowColumnDefinition.SeparatorStrokeWidth"/>,
-  /// and <see cref="RowColumnDefinition.SeparatorDashArray"/> properties)
-  /// nor background (<see cref="RowColumnDefinition.Background"/> and <see cref="RowColumnDefinition.CoversSeparators"/> properties).
-  /// There is no support for <see cref="RowColumnDefinition.Sizing"/>, either.
+  /// (<see cref="RowDefinition.SeparatorStroke"/>, <see cref="RowDefinition.SeparatorStrokeWidth"/>,
+  /// and <see cref="RowDefinition.SeparatorDashArray"/> properties)
+  /// nor background (<see cref="RowDefinition.Background"/> and <see cref="RowDefinition.CoversSeparators"/> properties).
+  /// There is no support for <see cref="RowDefinition.Sizing"/>, either.
   ///
   /// If you want to experiment with this extension, try the <a href="../../extensions/Table.html">Table Layout</a> sample.
   /// </remarks>
@@ -256,7 +256,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <remarks>
     /// This information is only valid when this layout has been performed and <see cref="Layout.IsValidLayout"/> is true.
-    /// 
+    ///
     /// If the point is above row 0, this method returns -1.
     /// If the point is below the last row, this returns the last row + 1.
     /// </remarks>
@@ -780,8 +780,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       return rowcol;
     }
 
-    // Only ever called from TableLayout's measure and arrange
-    private Stretch GetEffectiveTableStretch(Part child, RowColumnDefinition rowHerald, RowColumnDefinition colHerald) {
+    /*
+     * Only ever called from TableLayout's measure and arrange
+     */
+    private Stretch GetEffectiveTableStretch(Part child, RowDefinition rowHerald, ColumnDefinition colHerald) {
       var effectivestretch = child.Stretch;
       if (effectivestretch != Stretch.Default) return effectivestretch;
 

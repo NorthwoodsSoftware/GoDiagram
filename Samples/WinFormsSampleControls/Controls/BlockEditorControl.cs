@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Extensions;
@@ -122,11 +118,11 @@ namespace WinFormsSampleControls.BlockEditor {
       myDiagram.NodeTemplate =
         new Node("Auto") {
           LocationSpot = Spot.Center, LocationElementName = "SHAPE",
-          DesiredSize = new Northwoods.Go.Size(120, 60), MinSize = new Northwoods.Go.Size(40, 40),
-          Resizable = true, ResizeCellSize = new Northwoods.Go.Size(20, 20)
+          DesiredSize = new Size(120, 60), MinSize = new Size(40, 40),
+          Resizable = true, ResizeCellSize = new Size(20, 20)
         }
           .Bind(
-            new Binding("Location", "Loc", Northwoods.Go.Point.Parse).MakeTwoWay(Northwoods.Go.Point.Stringify),
+            new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify),
             new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify)
           )
           .Add(
@@ -158,12 +154,12 @@ namespace WinFormsSampleControls.BlockEditor {
         Builder.Make<Adornment>("ToolTip")
           .Add(
             new Panel("Vertical") {
-              MaxSize = new Northwoods.Go.Size(200, double.NaN)
+              MaxSize = new Size(200, double.NaN)
             }
               .Add(
-                new TextBlock { Font = "Segoe UI, 13px, style=bold", TextAlign = TextAlign.Center }
+                new TextBlock { Font = new Font("Segoe UI", 13, FontWeight.Bold), TextAlign = TextAlign.Center }
                   .Bind("Text"),
-                new TextBlock { Font = "Segoe UI, 13px", TextAlign = TextAlign.Center }
+                new TextBlock { Font = new Font("Segoe UI", 13), TextAlign = TextAlign.Center }
                   .Bind("Text", "Details")
               )
             );
@@ -180,7 +176,7 @@ namespace WinFormsSampleControls.BlockEditor {
             var model = m as Model;
             var selnode = (shape.Part as Adornment).AdornedPart;
             // create a new node in the direction of the spot
-            var p = Northwoods.Go.Point.SetSpot(selnode.ActualBounds, spot);
+            var p = Point.SetSpot(selnode.ActualBounds, spot);
             p = p.Subtract(selnode.Location);
             p = p.Scale(2, 2);
             p = p.Offset(Math.Sign(p.X) * 60, Math.Sign(p.Y) * 60);
@@ -392,7 +388,7 @@ namespace WinFormsSampleControls.BlockEditor {
           },
           Avoidable = false
         }
-          .Bind("Location", "Loc", Northwoods.Go.Point.Parse, Northwoods.Go.Point.Stringify)
+          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel("Auto") {
               Name = "BODY"
@@ -416,7 +412,7 @@ namespace WinFormsSampleControls.BlockEditor {
               ),
             new TextBlock {
               Alignment = Spot.Top, AlignmentFocus = Spot.Bottom,
-              Font = "Microsoft Sans Serif, 12pt, style=bold", Editable = true
+              Font = new Font("Microsoft Sans Serif", 12, FontWeight.Bold, FontUnit.Point), Editable = true
             }
               .Bind(
                 new Binding("Text"),

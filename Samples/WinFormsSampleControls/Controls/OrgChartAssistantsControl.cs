@@ -216,7 +216,7 @@ namespace WinFormsSampleControls.OrgChartAssistants {
                 Row = 0,
                 Column = 0,
                 ColumnSpan = 5,
-                Font = "Segoe UI, 12px",
+                Font = new Font("Segoe UI", 12, FontUnit.Point),
                 Editable = true,
                 IsMultiline = false,
                 MinSize = new Size(10, 16)
@@ -226,7 +226,7 @@ namespace WinFormsSampleControls.OrgChartAssistants {
                 Row = 1,
                 Column = 0,
                 Text = "Title: ",
-                Font = "Segoe UI, 9px",
+                Font = new Font("Segoe UI", 9, FontUnit.Point),
               },
               new TextBlock {
                 Row = 1,
@@ -236,20 +236,20 @@ namespace WinFormsSampleControls.OrgChartAssistants {
                 IsMultiline = false,
                 MinSize = new Size(10, 14),
                 Margin = new Margin(0, 0, 0, 3),
-                Font = "Segoe UI, 9px",
+                Font = new Font("Segoe UI", 9, FontUnit.Point),
               }.Bind(
                 new Binding("Text", "Title").MakeTwoWay()),
               new TextBlock {
                 Row = 2,
                 Column = 0,
-                Font = "Segoe UI, 9px",
+                Font = new Font("Segoe UI", 9, FontUnit.Point),
               }.Bind(
                 new Binding("Text", "Key", (v, _) => { return "ID: " + v.ToString(); })),
               new TextBlock {
                 Name = "boss",
                 Row = 2,
                 Column = 3,
-                Font = "Segoe UI, 9px",
+                Font = new Font("Segoe UI", 9, FontUnit.Point),
               }.Bind( // we include a name so we can access this TextBlock when deleting Nodes/Links
                 new Binding("Text", "Parent", (v, _) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); })),
               new TextBlock  // the comments
@@ -257,7 +257,7 @@ namespace WinFormsSampleControls.OrgChartAssistants {
                 Row = 3,
                 Column = 0,
                 ColumnSpan = 5,
-                Font = "Segoe UI, 9px, style=italic",
+                Font = new Font("Segoe UI", 9, FontStyle.Italic, FontUnit.Point),
                 Wrap = Wrap.Fit,
                 Editable = true,  // by default newlines are allowed
                 MinSize = new Size(10, 14),

@@ -64,7 +64,7 @@ namespace WinFormsSampleControls.Timeline {
                 Row = 0,
                 Stroke = "#CCCCCC",
                 Wrap = Wrap.Fit,
-                Font = "Segoe UI, 12px, style=bold",
+                Font = new Font("Segoe UI", 12, FontWeight.Bold),
                 TextAlign = TextAlign.Center,
                 Margin = 4
               }.Bind(
@@ -125,7 +125,7 @@ namespace WinFormsSampleControls.Timeline {
             StrokeWidth = 2
           },
           new TextBlock {
-            Font = "Segoe UI, 10px",
+            Font = new Font("Segoe UI", 10),
             Stroke = "#CCCCCC",
             Interval = 14,
             AlignmentFocus = Spot.Right,

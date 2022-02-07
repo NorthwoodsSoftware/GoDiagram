@@ -51,7 +51,7 @@ namespace WinFormsExtensionControls.NonRealtimeDragging {
             new Binding("Fill", "Color")
           ),
           new TextBlock {
-            Font = "Segoe UI, 14px, style=bold",
+            Font = new Font("Segoe UI", 14, FontWeight.Bold),
             Stroke = "#333",
             Margin = 6, // make some extra space for the shape around the text
             IsMultiline = false, // don't allow newlines in text

@@ -49,7 +49,7 @@ namespace WinFormsSampleControls.MultipleArrowheads {
         }.Bind("Fill", "Color"),
         new TextBlock {
           Margin = 10,
-          Font = "Segoe UI, 12px, style=bold"
+          Font = new Font("Segoe UI", 12, FontWeight.Bold)
         }.Bind("Text")
       );
 

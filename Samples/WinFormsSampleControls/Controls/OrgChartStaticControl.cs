@@ -79,7 +79,7 @@ namespace WinFormsSampleControls.OrgChartStatic {
       // Provide a common style for most of the TextBlocks.
       var textStyle = 
         new {
-          Font = "Segoe UI, 12px", Stroke = "rgba(0, 0, 0, .60)",
+          Font = new Font("Segoe UI", 12), Stroke = "rgba(0, 0, 0, .60)",
           Visible = false  // only show textblocks when there is corresponding data for them
         };
 
@@ -138,7 +138,7 @@ namespace WinFormsSampleControls.OrgChartStatic {
                         new TextBlock 
                           {
                             Row = 0, Alignment = Spot.Left,
-                            Font = "Segoe UI, 16px",
+                            Font = new Font("Segoe UI", 16),
                             Stroke = "rgba(0, 0, 0, .87)",
                             MaxSize = new Size(160, double.NaN)
                           }

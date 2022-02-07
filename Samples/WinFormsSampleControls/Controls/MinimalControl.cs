@@ -48,7 +48,7 @@ namespace WinFormsSampleControls.Minimal {
             new Shape("RoundedRectangle") { StrokeWidth = 0 }
               .Bind("Fill", "Color"),
             new TextBlock {
-                Font = "Segoe UI, 14px, style=bold", Stroke = "#333", Margin = 8, // Specify a margin to add some room around the text
+                Font = new Font("Segoe UI", 14, FontWeight.Bold), Stroke = "#333", Margin = 8, // Specify a margin to add some room around the text
                 Editable = true
               }
               .Bind("Text")

@@ -138,7 +138,7 @@ namespace WinFormsExtensionControls.SnapLinkReshape {
       Figures.DefineExtraFigures();
 
       var textStyle = new {
-        Font = "Lato, 11pt, style=bold",
+        Font = new Font("Lato", 11, FontWeight.Bold, FontUnit.Point),
         Stroke = "#F8F8F8"
       };
 
@@ -319,7 +319,7 @@ namespace WinFormsExtensionControls.SnapLinkReshape {
           Fill = "white"
         }.Bind("Figure").Bind("Fill"),
         new TextBlock() {
-          Font = "Arial, 11px, style=bold",
+          Font = new Font("Arial", 11, FontWeight.Bold),
           Margin = 8,
           MaxSize = new Size(160, double.NaN),
           Wrap = Wrap.Fit,

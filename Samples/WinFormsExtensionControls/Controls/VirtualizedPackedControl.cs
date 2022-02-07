@@ -110,7 +110,7 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
           }
           .Add(
             new TextBlock("loading...") {
-              Stroke = "red", Font = "Segoe UI, 20pt"
+              Stroke = "red", Font = new Font("Segoe UI", 20, FontUnit.Point)
             }
           );
 

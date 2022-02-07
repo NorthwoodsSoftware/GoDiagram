@@ -55,7 +55,7 @@ namespace WinFormsSampleControls.DoubleCircle {
           // define the node's text
           new TextBlock {
             Margin = 5,
-            Font = "Segoe UI, 11px, style=bold"
+            Font = new Font("Segoe UI", 11, FontWeight.Bold)
           }.Bind(
             new Binding("Text", "Key")
           )

@@ -69,7 +69,7 @@ namespace WinFormsSampleControls.InteractiveForceDirected {
             Spot2 = new Spot(1, 1, -5, -5)
           },
           new TextBlock {
-            Font = "Segoe UI, 10px, style=bold",
+            Font = new Font("Segoe UI", 10, FontWeight.Bold),
             TextAlign = TextAlign.Center,
             MaxSize = new Northwoods.Go.Size(100, double.NaN)
           }.Bind(
@@ -98,7 +98,7 @@ namespace WinFormsSampleControls.InteractiveForceDirected {
             new TextBlock  // the label text
               {
               TextAlign = TextAlign.Center,
-              Font = "Segoe UI, 10px",
+              Font = new Font("Segoe UI", 10),
               Stroke = "#555555",
               Margin = 4
             }.Bind(

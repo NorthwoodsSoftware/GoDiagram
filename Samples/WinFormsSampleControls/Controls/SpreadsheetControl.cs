@@ -40,7 +40,7 @@ namespace WinFormsSampleControls.Spreadsheet {
         },
         new TextBlock {
           Stroke = "White",
-          Font = "Segoe UI, 10px",
+          Font = new Font("Segoe UI", 10),
           Alignment = Spot.Left,
           Margin = 10,
           Width = 50
@@ -62,7 +62,7 @@ namespace WinFormsSampleControls.Spreadsheet {
         }.Add(
           new TextBlock {
             Stroke = "white",
-            Font = "Segoe UI, 10px",
+            Font = new Font("Segoe UI", 10),
             Alignment = Spot.Left,
             Row = 0
           }.Bind("Text", "Header"),
@@ -89,7 +89,7 @@ namespace WinFormsSampleControls.Spreadsheet {
         }.Add(
           new TextBlock {
             Stroke = "white",
-            Font = "Segoe UI, 10px",
+            Font = new Font("Segoe UI", 10),
             Alignment = Spot.Left,
             MaxSize = new Size(70, double.NaN)
           }.Bind("Text", "Header"),
@@ -102,7 +102,7 @@ namespace WinFormsSampleControls.Spreadsheet {
       var checkBoxTemplate = Builder.Make<Panel>("CheckBox", "Checked").Add(
         new TextBlock {
           Stroke = "white",
-          Font = "Segoe UI, 10px",
+          Font = new Font("Segoe UI", 10),
           Alignment = Spot.Left
         }.Bind("Text", "Label")
       );
@@ -119,7 +119,7 @@ namespace WinFormsSampleControls.Spreadsheet {
           },
           new TextBlock {
             Stroke = "white",
-            Font = "Segoe UI, 16px",
+            Font = new Font("Segoe UI", 16),
             Alignment = Spot.Center,
             Margin = 10
           }.Bind("Text", "Title")
@@ -144,7 +144,7 @@ namespace WinFormsSampleControls.Spreadsheet {
           }.Add(
             new TextBlock {
               Stroke = "white",
-              Font = "Segoe UI, 16px",
+              Font = new Font("Segoe UI", 16),
               Alignment = Spot.Left
             }.Bind("Text", "AggTitle"),
 
@@ -167,7 +167,7 @@ namespace WinFormsSampleControls.Spreadsheet {
               }.Add(
                 new TextBlock {
                   Stroke = "white",
-                  Font = "Segoe UI, 16px",
+                  Font = new Font("Segoe UI", 16),
                   Alignment = Spot.Left,
                   Row = 0
                 }.Bind("Text", "AggHeaderB"),
@@ -196,7 +196,7 @@ namespace WinFormsSampleControls.Spreadsheet {
               }.Add(
                 new TextBlock {
                   Stroke = "white",
-                  Font = "Segoe UI, 16px",
+                  Font = new Font("Segoe UI", 16),
                   Alignment = Spot.Left,
                   Row = 0,
                   Column = 0,
@@ -235,7 +235,7 @@ namespace WinFormsSampleControls.Spreadsheet {
               }.Add(
                 new TextBlock {
                   Stroke = "white",
-                  Font = "Segoe UI, 16px",
+                  Font = new Font("Segoe UI", 16),
                   Alignment = Spot.Left
                 }.Bind("Text", "Choices"),
                 new Panel(PanelLayoutVertical.Instance) {

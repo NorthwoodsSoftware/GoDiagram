@@ -202,7 +202,7 @@ namespace WinFormsSampleControls.DynamicPorts {
                   MinSize = new Size(65, 65)
                 },
                 new TextBlock {
-                  Margin = 10, TextAlign = TextAlign.Center, Font = "Segoe UI, 14px, style=bold", Stroke = "#484848", Editable = true
+                  Margin = 10, TextAlign = TextAlign.Center, Font = new Font("Segoe UI", 14, FontWeight.Bold), Stroke = "#484848", Editable = true
                 }
                   .Bind(new Binding("Text", "Name").MakeTwoWay())
               ),  // end panel body

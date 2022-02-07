@@ -92,7 +92,7 @@ namespace WinFormsSampleControls.SequentialFunction {
               Alignment = Spot.Center
             },
             new TextBlock {
-              Font = "Segoe UI, 16px, style=bold",
+              Font = new Font("Segoe UI", 16, FontWeight.Bold),
               Alignment = Spot.Center,
               Wrap = Wrap.Fit,
               Editable = true

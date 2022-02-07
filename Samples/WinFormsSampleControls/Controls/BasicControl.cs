@@ -154,7 +154,7 @@ namespace WinFormsSampleControls.Basic {
               }
               .Bind("Fill", "Color"),
             new TextBlock {
-                Font = "Segoe UI, 14px, style=bold",
+                Font = new Font("Segoe UI", 14, FontWeight.Bold),
                 Stroke = "#333",
                 Margin = 6,  // make some extra space for the shape around the text
                 IsMultiline = false,  // don't allow newlines in text
@@ -225,7 +225,7 @@ namespace WinFormsSampleControls.Basic {
           }
           .Add(
             new TextBlock {
-                Font = "Segoe UI, 19px, style=bold",
+                Font = new Font("Segoe UI", 19, FontWeight.Bold),
                 IsMultiline = false,  // don't allow newlines in text
                 Editable = true  // allow in-place editing by user
               }

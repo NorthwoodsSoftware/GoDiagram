@@ -135,7 +135,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
       // This function provides a common style for most of the TextBlocks.
       // Some of these values may be overridden in a particular TextBlock.
       object TextStyle() {
-        return new { Font = "Segoe UI, 9px", Stroke = "white" };
+        return new { Font = new Font("Segoe UI", 9), Stroke = "white" };
       }
 
       // define the Node template
@@ -205,7 +205,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
               Row = 0,
               Column = 0,
               ColumnSpan = 5,
-              Font = "Segoe UI, 9px, style=bold",
+              Font = new Font("Segoe UI", 9, FontWeight.Bold),
               Editable = true,
               IsMultiline = false,
               Stroke = "white",
@@ -251,7 +251,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
               Row = 3,
               Column = 1,
               Stroke = "white",
-              Font = "Segoe UI, 9px"
+              Font = new Font("Segoe UI", 9)
             }.Bind(
               new Binding("Text", "", (nodeAsObj, _) => { // get parent name
                 var node = nodeAsObj as Node;
@@ -265,7 +265,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
               Row = 4,
               Column = 0,
               ColumnSpan = 5,   
-              Font = "Segoe UI, 9px, style=bold",
+              Font = new Font("Segoe UI", 9, FontWeight.Bold),
               Wrap = Wrap.Fit,
               Editable = true,  // by default newlines are allowed
               Stroke = "white",

@@ -56,25 +56,25 @@ namespace WinFormsSampleControls.Tournament {
             Row = 0,
             Wrap = Wrap.None, Margin = 5, Width = 90,
             IsMultiline = false, TextAlign = TextAlign.Left,
-            Font = "Segoe UI, 10px, style=bold", Stroke = "white"
+            Font = new Font("Segoe UI", 10, FontWeight.Bold), Stroke = "white"
           }.Bind(new Binding("Text", "Player1").MakeTwoWay()),
           new TextBlock {
             Row = 1,
             Wrap = Wrap.None, Margin = 5, Width = 90,
             IsMultiline = false, TextAlign = TextAlign.Left,
-            Font = "Segoe UI, 10px, style=bold", Stroke = "white"
+            Font = new Font("Segoe UI", 10, FontWeight.Bold), Stroke = "white"
           }.Bind(new Binding("Text", "Player2").MakeTwoWay()),
           new TextBlock {
             Column = 1, Row = 0,
             Wrap = Wrap.None, Margin = 2, Width = 25,
             IsMultiline = false, Editable = true, TextAlign = TextAlign.Center,
-            Font = "Segoe UI, 10px, style=bold", Stroke = "black"
+            Font = new Font("Segoe UI", 10, FontWeight.Bold), Stroke = "black"
           }.Bind(new Binding("Text", "Score1").MakeTwoWay()),
           new TextBlock {
             Column = 1, Row = 1,
             Wrap = Wrap.None, Margin = 2, Width = 25,
             IsMultiline = false, Editable = true, TextAlign = TextAlign.Center,
-            Font = "Segoe UI, 10px, style=bold", Stroke = "black"
+            Font = new Font("Segoe UI", 10, FontWeight.Bold), Stroke = "black"
           }.Bind(new Binding("Text", "Score2").MakeTwoWay())
       ));
 

@@ -121,7 +121,7 @@ namespace WinFormsSampleControls.Radial {
           }.Add(
             new TextBlock {
               Margin = 4,
-              Font = "Segoe UI, 12px, style=bold"
+              Font = new Font("Segoe UI", 12, FontWeight.Bold)
             }.Bind("Text"),
             new TextBlock().Bind("Text", "Color", (c, _) => { return "Color: " + c; }),
             new TextBlock().Bind(new Binding("Text", "", (ad, _) => {
@@ -165,7 +165,7 @@ namespace WinFormsSampleControls.Radial {
           }
           .Add(
             new Shape("Circle") { Fill = "White" },
-            new TextBlock { Font = "Segoe UI, 12px style=bold", Margin = 5 }
+            new TextBlock { Font = new Font("Segoe UI", 12, FontWeight.Bold), Margin = 5 }
               .Bind("Text")
           );
 

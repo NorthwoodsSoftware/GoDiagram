@@ -138,15 +138,15 @@ namespace WinFormsSampleControls.PageFlow {
         { 0, "#F0F8FF" }, { 1, "#E6E6FA" } }
       ));
 
-      var bigfont = "Segoe UI, 13px, style=bold";
-      var smallfont = "Segoe UI, 11px, style=bold";
+      var bigFont = new Font("Segoe UI", 13, FontWeight.Bold);
+      var smallFont = new Font("Segoe UI", 11, FontWeight.Bold);
 
       var textStyle = new {
         Margin = 6,
         Wrap = Wrap.Fit,
         TextAlign = TextAlign.Center,
         Editable = true,
-        Font = bigfont
+        Font = bigFont
       };
 
       var defaultAdornment =
@@ -190,7 +190,7 @@ namespace WinFormsSampleControls.PageFlow {
               Wrap = Wrap.Fit,
               Stroke = "whitesmoke",
               Editable = true,
-              Font = smallfont
+              Font = smallFont
             }
               .Bind(new Binding("Text").MakeTwoWay())
           );
@@ -209,7 +209,7 @@ namespace WinFormsSampleControls.PageFlow {
                 },
               new TextBlock("Page") {
                   Margin = 6,
-                  Font = bigfont,
+                  Font = bigFont,
                   Editable = true
                 }
                 .Bind(new Binding("Text").MakeTwoWay())
@@ -279,7 +279,7 @@ namespace WinFormsSampleControls.PageFlow {
                   MaxSize = new Size(200, double.NaN),
                   Wrap = Wrap.Fit,
                   Editable = true,
-                  Font = smallfont
+                  Font = smallFont
                 }
                 .Bind(new Binding("Text").MakeTwoWay())
             )

@@ -112,7 +112,7 @@ namespace WinFormsSampleControls.DynamicPieChart {
             ToolTip =
               Builder.Make<Adornment>("ToolTip").Add(
                 new TextBlock {
-                  Font = "Segoe UI, 10px, style=bold",
+                  Font = new Font("Segoe UI", 10, FontWeight.Bold),
                   Margin = 4
                 }.Bind(
                   new Binding("Text", "", (dataAsObj, _) => {
@@ -134,7 +134,7 @@ namespace WinFormsSampleControls.DynamicPieChart {
         new Panel(PanelLayoutTableRow.Instance).Add(
           new TextBlock {
             Column = 0,
-            Font = "Segoe UI, 10px, style=bold",
+            Font = new Font("Segoe UI", 10, FontWeight.Bold),
             Alignment = Spot.Left,
             Margin = 5
           }.Bind(
@@ -147,7 +147,7 @@ namespace WinFormsSampleControls.DynamicPieChart {
               Fill = "#F2F2F2"
             },
             new TextBlock {
-              Font = "Segoe UI, 10px",
+              Font = new Font("Segoe UI", 10),
               TextAlign = TextAlign.Right,
               Margin = 2,
               Wrap = Wrap.None,
@@ -198,7 +198,7 @@ namespace WinFormsSampleControls.DynamicPieChart {
           Deletable = false
         }.Add(
           new TextBlock {
-            Font = "Segoe UI, 11px, style=bold",
+            Font = new Font("Segoe UI", 11, FontWeight.Bold),
             Margin = 5
           }.Bind(
             new Binding("Text")

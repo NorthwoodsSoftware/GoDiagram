@@ -152,7 +152,7 @@ namespace WinFormsSampleControls.RegroupingTreeView {
                         Alignment = Spot.Left,
                         Editable = true,
                         Margin = 5,
-                        Font = "Segoe UI, 18px, style=bold",
+                        Font = new Font("Segoe UI", 18, FontWeight.Bold),
                         Stroke = "#9A6600"
                       }
                       .Bind(new Binding("Text").MakeTwoWay())
@@ -195,7 +195,7 @@ namespace WinFormsSampleControls.RegroupingTreeView {
                       Alignment = Spot.Left,
                       Editable = true,
                       Margin = 5,
-                      Font = "Segoe UI, 16px, style=bold",
+                      Font = new Font("Segoe UI", 16, FontWeight.Bold),
                       Stroke = "#006080"
                     }.Bind(new Binding("Text").MakeTwoWay())
                   ),  // end horizontal Panel
@@ -216,7 +216,7 @@ namespace WinFormsSampleControls.RegroupingTreeView {
             new TextBlock {
                 Margin = 5,
                 Editable = true,
-                Font = "Segoe UI, 13px, style=bold",
+                Font = new Font("Segoe UI", 13, FontWeight.Bold),
                 Stroke = "#446700"
               }
               .Bind(new Binding("Text").MakeTwoWay())

@@ -136,7 +136,7 @@ namespace WinFormsSampleControls.Navigation {
           Name = "GROUPTEXT",
           Alignment = Spot.TopLeft,
           AlignmentFocus = new Spot(0, 0, -4, -4),
-          Font = "Segoe UI, 13px, style=bold"
+          Font = new Font("Segoe UI", 13, FontWeight.Bold)
         }.Bind(new Binding("Text", "Key"))
       );
 

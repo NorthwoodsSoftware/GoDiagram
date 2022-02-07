@@ -125,7 +125,7 @@ namespace WinFormsSampleControls.IVR {
           Width = 12, Height = 12
         }.Bind("Figure").Bind("Fill"),
         new TextBlock {
-          Font = "Segoe UI, 10px",
+          Font = new Font("Segoe UI", 10),
           Stroke = "black",
         }.Bind("Text")
       );
@@ -148,7 +148,7 @@ namespace WinFormsSampleControls.IVR {
             // the title
             new TextBlock {
               Stretch = Stretch.Horizontal,
-              Font = "Segoe UI, 12px, style=bold",
+              Font = new Font("Segoe UI", 12, FontWeight.Bold),
               Stroke = "black",
             }.Bind("Text", "Question"),
             // the optional list of actions
@@ -164,7 +164,7 @@ namespace WinFormsSampleControls.IVR {
               }.Add(
                 new TextBlock("Choices") {
                   Alignment = Spot.Left,
-                  Font = "Segoe UI, 10px",
+                  Font = new Font("Segoe UI", 10),
                   Stroke = "black",
                 },
                 Builder.Make<Panel>("PanelExpanderButton")
@@ -192,7 +192,7 @@ namespace WinFormsSampleControls.IVR {
           Width = 55, Height = 55, Fill = greengrad, Stroke = null
         },
         new TextBlock {
-          Font = "Segoe UI, 10px, style=bold",
+          Font = new Font("Segoe UI", 10, FontWeight.Bold),
           Stroke = "black",
         }.Bind("Text")
       ));

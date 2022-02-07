@@ -68,7 +68,7 @@ namespace WinFormsExtensionControls.Dimensioning {
             SegmentOrientation = Orientation.Upright,
             AlignmentFocus = Spot.Bottom,
             Stroke = "gray",
-            Font = "Microsoft Sans Serif, 10px"
+            Font = new Font("Microsoft Sans Serif", 10)
           }.Bind(
             new Binding("Text", "", showDistance).OfElement(),
             new Binding("Stroke", "Color")

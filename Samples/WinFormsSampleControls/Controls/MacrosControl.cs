@@ -58,7 +58,7 @@ namespace WinFormsSampleControls.Macros {
            Margin = 6,
            Editable = true,
            Name = "TEXT",
-           Font = "Segoe UI, 16px"
+           Font = new Font("Segoe UI", 16)
          }.Bind(new Binding("Text", "Text").MakeTwoWay())
       );
 
@@ -75,7 +75,7 @@ namespace WinFormsSampleControls.Macros {
         },
         new Placeholder { Alignment = Spot.TopLeft },
         new TextBlock {
-          Font = "Segoe UI, 16px, style=bold", Margin = 10
+          Font = new Font("Segoe UI", 16, FontWeight.Bold), Margin = 10
         }.Bind("Text", "Text")
       );
 

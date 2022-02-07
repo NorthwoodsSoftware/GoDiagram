@@ -164,7 +164,7 @@ namespace WinFormsSampleControls.SystemDynamics {
       };
 
       var textStyle = new {
-        Font = "Arial, 11px, style=bold",
+        Font = new Font("Arial", 11, FontWeight.Bold),
         Margin = 2,
         Editable = true
       };

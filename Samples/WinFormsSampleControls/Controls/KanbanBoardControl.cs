@@ -128,7 +128,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                   .Add(
                     new TextBlock {
                       Name = "TEXT",
-                      Margin = 6, Font = "Segoe UI, 11px", Editable = true,
+                      Margin = 6, Font = new Font("Segoe UI", 11), Editable = true,
                       Stroke = "#000", MaxSize = new Size(130, double.NaN),
                       Alignment = Spot.TopLeft
                     }
@@ -159,7 +159,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                 new Shape("Rectangle") { StrokeWidth = 0, Stroke = null, Fill = "#6FB583" },
                 new Shape("PlusLine") { Margin = 6, StrokeWidth = 2, Width = 12, Height = 12, Stroke = "white", Background = "#6FB583" }
               ),
-            new TextBlock("New item") { Font = "Segoe UI, 10px", Margin = 6 }
+            new TextBlock("New item") { Font = new Font("Segoe UI", 10), Margin = 6 }
           )
       );
 
@@ -231,7 +231,7 @@ namespace WinFormsSampleControls.KanbanBoard {
               .Add(
                 Builder.Make<Panel>("SubGraphExpanderButton").Set(new { Margin = 5 }),  // this remains always visible
                 new TextBlock { // the lane label
-                  Font = "Segoe UI, 15px", Editable = true, Margin = new Margin(2, 0, 0, 0)
+                  Font = new Font("Segoe UI", 15), Editable = true, Margin = new Margin(2, 0, 0, 0)
                 }.Bind(
                     // this is hidden when the swimlane is collapsed
                     new Binding("Visible", "IsSubGraphExpanded").OfElement(),
@@ -249,7 +249,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                   ),
                 new Placeholder { Padding = 12, Alignment = Spot.TopLeft },
                 new TextBlock {  // this TextBlock is only seen when the swimlane is collapsed
-                  Name = "LABEL", Font = "Segoe UI, 15px, style=bold", Editable = true,
+                  Name = "LABEL", Font = new Font("Segoe UI", 15, FontWeight.Bold), Editable = true,
                   Angle = 90, Alignment = Spot.TopLeft, Margin = new Margin(4, 0, 0, 2)
                 }.Bind(
                     new Binding("Visible", "IsSubGraphExpanded", (e, _) => !(bool)e).OfElement(),
@@ -265,7 +265,7 @@ namespace WinFormsSampleControls.KanbanBoard {
         }
           .Add(
             new TextBlock("Key") {
-              Row = 0, Font = "Segoe UI, 14px, style=bold"
+              Row = 0, Font = new Font("Segoe UI", 14, FontWeight.Bold)
             },  // end Row 0
             new Panel("Horizontal") {
               Row = 1, Alignment = Spot.Left
@@ -275,7 +275,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                   DesiredSize = new Size(10, 10), Fill = "#CC293D", Margin = 5
                 },
                 new TextBlock("Halted") {
-                  Font = "Segoe UI, 13px, style=bold"
+                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
                 }
               ), // end row 1
             new Panel("Horizontal") {
@@ -286,7 +286,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                   DesiredSize = new Size(10, 10), Fill = "#FFD700", Margin = 5
                 },
                 new TextBlock("In Progress") {
-                  Font = "Segoe UI, 13px, style=bold"
+                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
                 }
               ), // end row 2
             new Panel("Horizontal") {
@@ -297,7 +297,7 @@ namespace WinFormsSampleControls.KanbanBoard {
                   DesiredSize = new Size(10, 10), Fill = "#009CCC", Margin = 5
                 },
                 new TextBlock("Completed") {
-                  Font = "Segoe UI, 13px, style=bold"
+                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
                 }
               ) // end row 3
           )
@@ -430,6 +430,7 @@ namespace WinFormsSampleControls.KanbanBoard {
   public class NodeData : Model.NodeData {
     public int Color { get; set; }
     public string Loc { get; set; }
+    public string Size { get; set; }
     public bool Expanded { get; set; } = true;
   }
 

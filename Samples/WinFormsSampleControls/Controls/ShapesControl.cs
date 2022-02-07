@@ -114,7 +114,7 @@ namespace WinFormsSampleControls.Shapes {
           new TextBlock  // the label
             {
             Margin = 4,
-            Font = "Segoe UI, 18px, style=bold",
+            Font = new Font("Segoe UI", 18, FontWeight.Bold),
             Background = "white"
           }.Bind(
             new Binding("Visible", "IsHighlighted").OfElement(),

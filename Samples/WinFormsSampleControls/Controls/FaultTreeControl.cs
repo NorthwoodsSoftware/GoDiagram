@@ -145,7 +145,7 @@ namespace WinFormsSampleControls.FaultTree {
           new Shape { Fill = "#770000", Stroke = null },
           new TextBlock {
             Margin = new Margin(2, 10, 1, 10), MaxSize = new Size(100, double.NaN),
-            Stroke = "whitesmoke", Font = "Segoe UI, 10px, style=bold"
+            Stroke = "whitesmoke", Font = new Font("Segoe UI", 10, FontWeight.Bold)
           }.Bind("Text")
         ), // end BODY, an Auto Panel
         treeExpander,
@@ -163,7 +163,7 @@ namespace WinFormsSampleControls.FaultTree {
         ),
         new TextBlock {
           Alignment = new Spot(0.5, 1, 20, 20), AlignmentFocus = Spot.Left,
-          Stroke = "black", Font = "Segoe UI, 10px, style=bold"
+          Stroke = "black", Font = new Font("Segoe UI", 10, FontWeight.Bold)
         }.Bind(
           new Binding("Visible", "Figure", (f, _) => (string)f != "None"), // if we don't have a figure, don't display text
           new Binding("Text", "Choice")

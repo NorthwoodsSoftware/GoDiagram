@@ -102,7 +102,7 @@ namespace WinFormsSampleControls.DataFlow {
           Cursor = "pointer"  // show a different cursor to indicate potential link point
         };
 
-        var lab = new TextBlock(name) { Font = "Segoe UI, 7px" };
+        var lab = new TextBlock(name) { Font = new Font("Segoe UI", 7) };
 
         var panel = new Panel("Horizontal") { Margin = new Margin(2, 0) };
 
@@ -141,7 +141,7 @@ namespace WinFormsSampleControls.DataFlow {
                       Margin = 3,
                       MaxSize = new Size(80, double.NaN),
                       Stroke = "white",
-                      Font = "Segoe UI, 11px, style=bold"
+                      Font = new Font("Segoe UI", 11, FontWeight.Bold)
                     },
                     new Picture(icon) {
                       Row = 1, Width = 16, Height = 16, Scale = 3
@@ -152,7 +152,7 @@ namespace WinFormsSampleControls.DataFlow {
                       Editable = true,
                       MaxSize = new Size(80, 40),
                       Stroke = "white",
-                      Font = "Segoe UI, 9px, style=bold"
+                      Font = new Font("Segoe UI", 9, FontWeight.Bold)
                     }
                       .Bind(new Binding("Text", "Name").MakeTwoWay())
                   )

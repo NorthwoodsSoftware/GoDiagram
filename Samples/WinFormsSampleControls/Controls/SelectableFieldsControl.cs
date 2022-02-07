@@ -87,7 +87,7 @@ namespace WinFormsSampleControls.SelectableFields {
           new TextBlock {
             Column = 1,
             Margin = new Margin(0, 5),
-            Font = "Segoe UI, 13px, style=bold",
+            Font = new Font("Segoe UI", 13, FontWeight.Bold),
             Alignment = Spot.Left,
             FromLinkable = false,
             ToLinkable = false
@@ -97,7 +97,7 @@ namespace WinFormsSampleControls.SelectableFields {
           new TextBlock {
             Column = 2,
             Margin = new Margin(0, 5),
-            Font = "Segoe UI, 13px",
+            Font = new Font("Segoe UI", 13),
             Alignment = Spot.Left
           }.Bind(
             new Binding("Text", "Info").MakeTwoWay()
@@ -146,7 +146,7 @@ namespace WinFormsSampleControls.SelectableFields {
                 Margin = 3,
                 Stroke = new Brush("white"),
                 TextAlign = TextAlign.Center,
-                Font = "Segoe UI, 12px, style=bold"
+                Font = new Font("Segoe UI", 12, FontWeight.Bold)
               }.Bind(
                 new Binding("Text", "Key")
               )

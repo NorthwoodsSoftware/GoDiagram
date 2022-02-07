@@ -87,7 +87,7 @@ namespace WinFormsSampleControls.RadialAdornment {
           }.Add(
             new TextBlock {
               Text = "?",
-              Font = "Segoe UI, 14px, style=bold",
+              Font = new Font("Segoe UI", 14, FontWeight.Bold),
               Alignment = new Spot(0.5, 0.5, -60, 0)
             }
           ),

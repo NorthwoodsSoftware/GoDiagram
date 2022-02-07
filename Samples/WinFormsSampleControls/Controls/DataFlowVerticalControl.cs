@@ -107,7 +107,7 @@ namespace WinFormsSampleControls.DataFlowVertical {
 
         var lab = new TextBlock {
           Text = name,
-          Font = "Segoe UI, 7px"
+          Font = new Font("Segoe UI", 7)
         };
 
         var panel = new Panel("Vertical") {
@@ -149,7 +149,7 @@ namespace WinFormsSampleControls.DataFlowVertical {
                         Margin = 3,
                         MaxSize = new Size(80, double.NaN),
                         Stroke = "black",
-                        Font = "Segoe UI, 11px, style=bold"
+                        Font = new Font("Segoe UI", 11, FontWeight.Bold)
                       },
                     new Picture(icon) {
                         Column = 1, Width = 55, Height = 55
@@ -160,7 +160,7 @@ namespace WinFormsSampleControls.DataFlowVertical {
                         Editable = true,
                         MaxSize = new Size(80, 40),
                         Stroke = "black",
-                        Font = "Segoe UI, 9px, style=bold"
+                        Font = new Font("Segoe UI", 9, FontWeight.Bold)
                       }
                       .Bind(new Binding("Text", "Name").MakeTwoWay())
                   )

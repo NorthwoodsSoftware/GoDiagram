@@ -133,7 +133,7 @@ namespace WinFormsSampleControls.RuleredDiagram {
             Interval = 5
           },
           new TextBlock {
-            Font = "Segoe UI, 10px",
+            Font = new Font("Segoe UI", 10),
             Interval = 5,
             AlignmentFocus = Spot.TopLeft,
             SegmentOffset = new Point(0, 7)
@@ -161,7 +161,7 @@ namespace WinFormsSampleControls.RuleredDiagram {
             AlignmentFocus = Spot.Bottom
           },
           new TextBlock {
-            Font = "Segoe UI, 10px",
+            Font = new Font("Segoe UI", 10),
             SegmentOrientation = Orientation.Opposite,
             Interval = 5,
             AlignmentFocus = Spot.BottomLeft,

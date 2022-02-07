@@ -95,7 +95,7 @@ namespace WinFormsSampleControls.SequenceDiagram {
                 },
                 new TextBlock {
                   Margin = 5,
-                  Font = "Segoe UI, 10px, style=bold"
+                  Font = new Font("Segoe UI", 10, FontWeight.Bold)
                 }
                   .Bind("Text")
               ),
@@ -160,7 +160,7 @@ namespace WinFormsSampleControls.SequenceDiagram {
               ToArrow = "OpenTriangle", Stroke = "black"
             },
             new TextBlock {
-              Font = "Segoe UI, 9px, style=bold",
+              Font = new Font("Segoe UI", 9, FontWeight.Bold),
               SegmentIndex = 0,
               SegmentOffset = new Point(double.NaN, double.NaN),
               IsMultiline = false,

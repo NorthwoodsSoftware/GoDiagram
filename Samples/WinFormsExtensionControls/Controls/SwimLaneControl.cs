@@ -84,14 +84,14 @@ namespace WinFormsExtensionControls.SwimLane {
             Avoidable = false  // don't affect any AvoidNodes link routes
           }
           .Add(
-            new TextBlock { Font = "Segoe UI, 12pt, style=bold", Angle = (DIRECTION == 0 || DIRECTION == 180) ? 270 : 0 }
+            new TextBlock { Font = new Font("Segoe UI", 12, FontWeight.Bold, FontUnit.Point), Angle = (DIRECTION == 0 || DIRECTION == 180) ? 270 : 0 }
               .Bind("Text", "Key"),
             new Panel("Auto")
               .Add(
                 new Shape { Fill = "transparent", Stroke = "orange" },
                 new Shape { Name = "PLACEHOLDER", Fill = null, Stroke = null, StrokeWidth = 0 }
               ),
-            new TextBlock { Font = "Segoe UI, 12px, style=bold", Angle = (DIRECTION == 0 || DIRECTION == 180) ? 90 : 0 }
+            new TextBlock { Font = new Font("Segoe UI", 12, FontWeight.Bold), Angle = (DIRECTION == 0 || DIRECTION == 180) ? 90 : 0 }
               .Bind("Text", "Key")
           );
 

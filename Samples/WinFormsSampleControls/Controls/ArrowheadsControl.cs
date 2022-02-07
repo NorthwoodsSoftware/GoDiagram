@@ -117,7 +117,7 @@ namespace WinFormsSampleControls.Arrowheads {
             Text = "Arrowheads",
             Margin = 1,
             Stroke = "white",
-            Font = "Segoe UI, 14px, style=bold"
+            Font = new Font("Segoe UI", 14, FontWeight.Bold)
           }
         )
       );

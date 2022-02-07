@@ -60,10 +60,10 @@ namespace WinFormsExtensionControls.Fishbone {
         new FishboneLink().Add(new Shape())
       );
 
-      var rootFont = "Microsoft Sans Serif, 18px, style=bold";
-      var hdrFont = "Microsoft Sans Serif, 14px, style=bold";
-      var hdrFontSm = "Microsoft Sans Serif, 13px, style=bold";
-      var nodeFont = "Microsoft Sans Serif, 13px";
+      var rootFont = new Font("Microsoft Sans Serif", 18, FontWeight.Bold);
+      var hdrFont = new Font("Microsoft Sans Serif", 14, FontWeight.Bold);
+      var hdrFontSm = new Font("Microsoft Sans Serif", 13, FontWeight.Bold);
+      var nodeFont = new Font("Microsoft Sans Serif", 13);
 
       _Diagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
@@ -160,6 +160,6 @@ namespace WinFormsExtensionControls.Fishbone {
   public class Model : TreeModel<NodeData, string, object> { }
 
   public class NodeData : Model.NodeData {
-    public string Font { get; set; }
+    public Font Font { get; set; } = new();
   }
 }

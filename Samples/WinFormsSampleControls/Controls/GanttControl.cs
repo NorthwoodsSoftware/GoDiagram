@@ -159,7 +159,7 @@ namespace WinFormsSampleControls.Gantt {
         },
         new TextBlock {
           Name = "labels",
-          Font = "Segoe UI, 13px",
+          Font = new Font("Segoe UI", 13),
           AlignmentFocus = new Spot(0, 0, -3, -3),
           GraduatedFunction = v => {
             var d = new DateTime(2017, 6, 23);

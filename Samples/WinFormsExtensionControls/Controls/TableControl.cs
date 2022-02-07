@@ -85,7 +85,7 @@ namespace WinFormsExtensionControls.Table {
           }
           .Add(
             new Shape { Fill = "transparent", StrokeWidth = 0 },
-            new TextBlock { Alignment = Spot.Center, Font = "Arial, 12pt, style=bold" }
+            new TextBlock { Alignment = Spot.Center, Font = new Font("Arial", 12, FontWeight.Bold, FontUnit.Point) }
               .Bind("Text")
           ));
 
@@ -97,7 +97,7 @@ namespace WinFormsExtensionControls.Table {
           }
           .Add(
             new Shape { Fill = "transparent", StrokeWidth = 0 },
-            new TextBlock { Alignment = Spot.Center, Font = "Arial, 12pt, style=bold", Angle = 270 }
+            new TextBlock { Alignment = Spot.Center, Font = new Font("Arial", 12, FontWeight.Bold, FontUnit.Point), Angle = 270 }
               .Bind("Text")
           ));
 
@@ -133,7 +133,7 @@ namespace WinFormsExtensionControls.Table {
               .Add(
                 new Shape { Fill = "transparent", StrokeWidth = 0 },
                 new TextBlock {
-                    Font = "Arial, 10pt, style=bold", IsMultiline = false,
+                    Font = new Font("Arial", 10, FontWeight.Bold, FontUnit.Point), IsMultiline = false,
                     Wrap = Wrap.None, Overflow = Overflow.Ellipsis
                   }
                   .Bind("Text")
@@ -173,7 +173,7 @@ namespace WinFormsExtensionControls.Table {
               .Add(
                 new Shape { Fill = "transparent", StrokeWidth = 0 },
                 new TextBlock {
-                    Font = "Arial, 10pt, style=bold", IsMultiline = false,
+                    Font = new Font("Arial", 10, FontWeight.Bold, FontUnit.Point), IsMultiline = false,
                     Wrap = Wrap.None, Overflow = Overflow.Ellipsis
                   }
                   .Bind("Text")

@@ -81,7 +81,7 @@ namespace WinFormsSampleControls.Icons {
           new TextBlock {
             Margin = 8,
             Stroke = colors.Gray,
-            Font = "Segoe UI, 16px, style=bold"
+            Font = new Font("Segoe UI", 16, FontWeight.Bold)
           }.Bind(
             new Binding("Text", "Geo"))
         );

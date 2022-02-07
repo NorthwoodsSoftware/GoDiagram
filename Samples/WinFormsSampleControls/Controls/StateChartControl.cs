@@ -120,7 +120,7 @@ namespace WinFormsSampleControls.StateChart {
             }
               .Set(roundedRectangleParams),
             new TextBlock {
-              Font = "Segoe UI, 11px, style=bold", Margin = 7, Stroke = "rgba(0, 0, 0, .87)",
+              Font = new Font("Segoe UI", 11, FontWeight.Bold), Margin = 7, Stroke = "rgba(0, 0, 0, .87)",
               Editable = true // editing the text automatically updates the model data
             }
               .Bind(new Binding("Text").MakeTwoWay())
@@ -199,7 +199,7 @@ namespace WinFormsSampleControls.StateChart {
               Cursor = "pointer"
             },
             new TextBlock("Start") {
-              Font = "Segoe UI, 16px, style=bold",
+              Font = new Font("Segoe UI", 16, FontWeight.Bold),
               Stroke = "whitesmoke"
             }
           )
@@ -222,7 +222,7 @@ namespace WinFormsSampleControls.StateChart {
               StrokeWidth = 2, Stroke = "whitesmoke"
             },
             new TextBlock("End") {
-              Font = "Segoe UI, 16px, style=bold",
+              Font = new Font("Segoe UI", 16, FontWeight.Bold),
               Stroke = "whitesmoke"
             }
           )
@@ -260,7 +260,7 @@ namespace WinFormsSampleControls.StateChart {
                 },
                 new TextBlock("transition") {  // the label text
                   TextAlign = TextAlign.Center,
-                  Font = "Segoe UI, 9px, style=bold",
+                  Font = new Font("Segoe UI", 9, FontWeight.Bold),
                   Margin = 4,
                   Editable = true  // enable in-place editing
                 }

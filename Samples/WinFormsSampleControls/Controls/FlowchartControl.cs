@@ -113,7 +113,7 @@ namespace WinFormsSampleControls.Flowchart {
       }
 
       var textStyle = new {
-        Font = "Lato, 11pt, style=bold",
+        Font = new Font("Lato", 11, FontWeight.Bold, FontUnit.Point),
         Stroke = "#F8F8F8"
       };
 
@@ -307,7 +307,7 @@ namespace WinFormsSampleControls.Flowchart {
           },
           new TextBlock("Yes") {  // the label
             TextAlign = TextAlign.Center,
-            Font = "Arial, 10pt",
+            Font = new Font("Arial", 10, FontUnit.Point),
             Stroke = "#333333",
             Editable = true
           }.Bind(new Binding("Text").MakeTwoWay())

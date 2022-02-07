@@ -162,7 +162,7 @@ namespace WinFormsSampleControls.TriStateCheckBoxTree {
           ).Add(
             Builder.Make<Panel>("TriStateCheckBoxButton"),
             new TextBlock {
-              Font = "Verdana, 9px",
+              Font = new Font("Verdana", 9),
               Margin = new Margin(0, 0, 0, 2)
             }.Bind(
               new Binding("Text", "Key", (s, _) => { return "item " + ((int)s - 1).ToString(); })

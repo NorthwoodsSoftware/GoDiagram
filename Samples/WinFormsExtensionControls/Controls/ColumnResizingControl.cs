@@ -25,7 +25,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
   </p>
  
   <p>
-    This sample also adds TwoWay Bindings to the <a>RowColumnDefinition.Width</a> property for the columns.
+    This sample also adds TwoWay Bindings to the <a>ColumnDefinition.Width</a> property for the columns.
     Each column width is stored in the corresponding index of the node data's ""Widths"" property, which must be an Array of numbers.    
     The default value is NaN, allowing the column to occupy its natural width.      
     Note that there are <b>no</b> Bindings for the row heights.            
@@ -84,7 +84,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             Column = 1,
             Margin = new Margin(0, 2),
             Stretch = Stretch.Horizontal,
-            Font = "Microsoft Sans Serif, 13px, style=bold",
+            Font = new Font("Segoe UI", 13, FontWeight.Bold),
             Wrap = Wrap.None,
             Overflow = Overflow.Ellipsis,
             FromLinkable = false,
@@ -96,7 +96,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             Column = 2,
             Margin = new Margin(0, 2),
             Stretch = Stretch.Horizontal,
-            Font = "Microsoft Sans Serif, 13px, style=bold",
+            Font = new Font("Segoe UI", 13, FontWeight.Bold),
             MaxLines = 3,
             Overflow = Overflow.Ellipsis,
             Editable = true
@@ -105,8 +105,8 @@ namespace WinFormsExtensionControls.ColumnResizing {
           )
         );
 
-      // return initialization for a RowColumnDefinition, specifying a particular column
-      // and adding a Binding of RowColumnDefinition.width to the IDX'th number in the data.widths Array
+      // return initialization for a ColumnDefinition, specifying a particular column
+      // and adding a Binding of ColumnDefinition.Width to the IDX'th number in the data.widths Array
       Binding MakeWidthBinding(int idx) {
         // these two conversion functions are closed over the IDX variable, IDX var is captured
         // this source-to-target conversion extracts a number from the Array at the given index
@@ -180,7 +180,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
                 Margin = 3,
                 Stroke = new Brush("white"),
                 TextAlign = TextAlign.Center,
-                Font = "Microsoft Sans Serif, 12px, style=bold"
+                Font = new Font("Segoe UI", 12, FontWeight.Bold),
               }.Bind(
                 new Binding("Text", "Key")
               )

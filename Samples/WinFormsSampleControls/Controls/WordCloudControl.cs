@@ -75,8 +75,6 @@ namespace WinFormsSampleControls.WordCloud {
       myDiagram.NodeTemplate = new Node(PanelLayoutAuto.Instance).Add(
         new TextBlock()
           .Bind("Text", "Text")
-          .Bind("Stroke", "Stroke")
-          .Bind("Font", "Font")
       ).Bind("Scale", "Scale");
 
       txtWords.Text = _WordString;

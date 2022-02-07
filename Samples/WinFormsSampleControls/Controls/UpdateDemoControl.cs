@@ -98,7 +98,7 @@ namespace WinFormsSampleControls.UpdateDemo {
           },
           new TextBlock {
             Margin = 3,
-            Font = "Arial, 10px, style=bold",
+            Font = new Font("Arial", 10, FontWeight.Bold),
             Stroke = "whitesmoke",
             Editable = true
           }.Bind(
@@ -145,7 +145,7 @@ namespace WinFormsSampleControls.UpdateDemo {
           },
           new TextBlock {
             Margin = 3,
-            Font = "Georgia, 12px, style=bold"
+            Font = new Font("Georgia", 12, FontWeight.Bold)
           }.Bind(
             new Binding("Text")
           )

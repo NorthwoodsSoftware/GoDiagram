@@ -271,7 +271,7 @@ namespace WinFormsSampleControls.SwimLanes {
                     new Shape("Diamond") { Width = 8, Height = 8, Fill = "white" }
                       .Bind("Fill", "Color"),
                     new TextBlock { // the lane label
-                        Font = "Segoe UI, 13pt, style=bold",
+                        Font = new Font("Segoe UI", 13, FontWeight.Bold, FontUnit.Point),
                         Editable = true,
                         Margin = new Margin(2, 0, 0, 0)
                       }
@@ -287,7 +287,7 @@ namespace WinFormsSampleControls.SwimLanes {
                 new Placeholder { Padding = 12, Alignment = Spot.TopLeft },
                 new TextBlock {  // this TextBlock is only seen when the swimlane is collapsed
                     Name = "LABEL",
-                    Font = "Segoe UI, 13pt, style=bold", Editable = true,
+                    Font = new Font("Segoe UI", 13, FontWeight.Bold, FontUnit.Point), Editable = true,
                     Angle = 0, Alignment = Spot.TopLeft, Margin = new Margin(2, 0, 0, 4)
                   }
                   .Bind(
@@ -345,7 +345,7 @@ namespace WinFormsSampleControls.SwimLanes {
                 new Panel("Horizontal") { Column = 0, Angle = 270 }
                   .Add(
                     new TextBlock {
-                      Font = "Segoe UI, 16pt, style=bold",
+                      Font = new Font("Segoe UI", 16, FontWeight.Bold, FontUnit.Point),
                       Editable = true,
                       Margin = new Margin(2, 0, 0, 0)
                     }

@@ -127,7 +127,7 @@ namespace WinFormsSampleControls.AdornmentButtons {
       var button1 = Builder.Make<Panel>("Button").Add( // edit text
         new TextBlock {
           Text = "t",
-          Font = "Segoe UI, 13px, style=bold",
+          Font = new Font("Segoe UI", 13, FontWeight.Bold),
           DesiredSize = new Size(15, 15),
           TextAlign = TextAlign.Center
         }

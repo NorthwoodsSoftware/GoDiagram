@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using Northwoods.Go.Layouts;
+using System;
 
 namespace WinFormsSampleControls.MindMap {
   [ToolboxItem(false)]
@@ -114,7 +115,7 @@ namespace WinFormsSampleControls.MindMap {
       selectionAdornmentButton.AlignmentFocus = Spot.Left;
       selectionAdornmentButton.Click = addNodeAndLink; // define click behavior for this button in the Adornment
       selectionAdornmentButton = selectionAdornmentButton.Add(new TextBlock {
-        Text = "+", Font = "Segoe UI, 8px, style=bold"
+        Text = "+", Font = new Font("Segoe UI", 8, FontWeight.Bold)
       });
 
       // selected nodes show a button for adding children
@@ -130,53 +131,71 @@ namespace WinFormsSampleControls.MindMap {
 
       // the context menu allows users to change the font size and weight,
       // and to perform a limited tree layout starting at that node
-      MyDiagram.NodeTemplate.ContextMenu = Builder.Make<Adornment>("ContextMenu").Add(
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Bigger") {
-            Click = (e, obj) => changeTextSize(obj, 1.1)
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Smaller") {
-            Click = (e, obj) => changeTextSize(obj, 1 / 1.1)
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Bold/Normal") {
-            Click = (e, obj) => toggleTextWeight(obj)
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Copy") {
-            Click = (e, obj) => e.Diagram.CommandHandler.CopySelection()
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Delete") {
-            Click = (e, obj) => e.Diagram.CommandHandler.DeleteSelection()
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Undo") {
-            Click = (e, obj) => e.Diagram.CommandHandler.Undo()
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Redo") {
-            Click = (e, obj) => e.Diagram.CommandHandler.Redo()
-          }
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Layout") {
-            Click = (e, obj) => {
-              var adorn = obj.Part as Adornment;
-              adorn.Diagram.StartTransaction("Subtree Layout");
-              layoutTree(adorn.AdornedPart);
-              adorn.Diagram.CommitTransaction("Subtree Layout");
-            }
-          }
-        )
-      ) as Adornment;
+      MyDiagram.NodeTemplate.ContextMenu =
+        Builder.Make<Adornment>("ContextMenu")
+          .Add(
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Bigger"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => changeTextSize(obj, 1.1))
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Smaller"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => changeTextSize(obj, 1 / 1.1))
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Bold/Normal"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => toggleTextWeight(obj))
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Copy"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.CopySelection())
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Delete"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.DeleteSelection())
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Undo"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.Undo())
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Redo"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.Redo())
+                }
+              ),
+            Builder.Make<Panel>("ContextMenuButton")
+              .Add(new TextBlock("Layout"))
+              .Set(
+                new {
+                  Click = new Action<InputEvent, GraphObject>((e, obj) => {
+                    var adorn = obj.Part as Adornment;
+                    adorn.Diagram.StartTransaction("Subtree Layout");
+                    layoutTree(adorn.AdornedPart);
+                    adorn.Diagram.CommitTransaction("Subtree Layout");
+                  })
+                }
+              )
+          );
 
       // a link is just a Bezier-curved line of the same color as the node to which it is connected
       MyDiagram.LinkTemplate = new Link {
@@ -197,27 +216,50 @@ namespace WinFormsSampleControls.MindMap {
 
       // the Diagram's context menu just displays commands for general functionality
       MyDiagram.ContextMenu = Builder.Make<Adornment>("ContextMenu").Add(
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Paste") {
-            Click = (e, obj) => e.Diagram.CommandHandler.PasteSelection(e.Diagram.ToolManager.ContextMenuTool.MouseDownPoint)
-          }.Bind(
-            new Binding("Visible", "", (o, _) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanPasteSelection()).OfElement()
+        Builder.Make<Panel>("ContextMenuButton")
+          .Add(new TextBlock("Paste"))
+          .Set(
+            new {
+              Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.PasteSelection(e.Diagram.ToolManager.ContextMenuTool.MouseDownPoint))
+            }
           )
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Undo") {
-            Click = (e, obj) => e.Diagram.CommandHandler.Undo()
-          }.Bind(
-            new Binding("Visible", "", (o, _) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanUndo()).OfElement()
+          .Bind(
+            new Binding("Visible", "", (o) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanPasteSelection()).OfElement()
+          ),
+        Builder.Make<Panel>("ContextMenuButton")
+          .Add(new TextBlock("Undo"))
+          .Set(
+            new {
+              Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.Undo())
+            }
           )
-        ),
-        Builder.Make<Panel>("ContextMenuButton").Add(
-          new TextBlock("Redo") {
-            Click = (e, obj) => e.Diagram.CommandHandler.Redo()
-          }.Bind(
-            new Binding("Visible", "", (o, _) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanRedo()).OfElement()
+          .Bind(
+            new Binding("Visible", "", (o) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanUndo()).OfElement()
+          ),
+        Builder.Make<Panel>("ContextMenuButton")
+          .Add(new TextBlock("Redo"))
+          .Set(
+            new {
+              Click = new Action<InputEvent, GraphObject>((e, obj) => e.Diagram.CommandHandler.Redo())
+            }
           )
-        ) // TODO add SAVE and LOAD buttons
+          .Bind(
+            new Binding("Visible", "", (o) => (o as GraphObject).Diagram != null && (o as GraphObject).Diagram.CommandHandler.CanRedo()).OfElement()
+          ),
+        Builder.Make<Panel>("ContextMenuButton")
+          .Add(new TextBlock("Save"))
+          .Set(
+            new {
+              Click = new Action<InputEvent, GraphObject>((e, obj) => SaveModel())
+            }
+          ),
+        Builder.Make<Panel>("ContextMenuButton")
+          .Add(new TextBlock("Load"))
+          .Set(
+            new {
+              Click = new Action<InputEvent, GraphObject>((e, obj) => LoadModel())
+            }
+          )
       );
 
       MyDiagram.SelectionMoved += (s, e) => {
@@ -273,12 +315,11 @@ namespace WinFormsSampleControls.MindMap {
       adorn.Diagram.StartTransaction("Change Text Weight");
       var node = adorn.AdornedPart;
       var tb = node.FindElement("TEXT") as TextBlock;
-      // assume "bold" is at the start of the font specifier
-      var idx = tb.Font.IndexOf("bold");
-      if (idx < 0) {
-        tb.Font = "bold " + tb.Font;
+      // flip the whether font is bold
+      if (tb.Font.Weight != FontWeight.Bold) {
+        tb.Font = new Font(tb.Font.Family, tb.Font.Size, FontWeight.Bold, tb.Font.Unit);
       } else {
-        tb.Font = tb.Font.Substring(idx + 5);
+        tb.Font = new Font(tb.Font.Family, tb.Font.Size, FontWeight.Regular, tb.Font.Unit);
       }
       adorn.Diagram.CommitTransaction("Change Text Weight");
     }
@@ -365,6 +406,8 @@ namespace WinFormsSampleControls.MindMap {
     public string Loc { get; set; }
     public string Brush { get; set; }
     public string Dir { get; set; } // left or right
+    public Font Font { get; set; } = new();
+    public double Scale { get; set; } = 1;
   }
 
 }

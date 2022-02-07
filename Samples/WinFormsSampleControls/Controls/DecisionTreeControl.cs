@@ -102,7 +102,7 @@ namespace WinFormsSampleControls.DecisionTree {
       var tooltipTemplate =
         Builder.Make<Adornment>("ToolTip").Add(
           new TextBlock {
-            Font = "Segoe UI, 8px",
+            Font = new Font("Segoe UI", 8),
             Wrap = Wrap.Fit,
             DesiredSize = new Size(200, double.NaN),
             Alignment = Spot.Center,
@@ -128,7 +128,7 @@ namespace WinFormsSampleControls.DecisionTree {
           // define a horizontal Panel to place the node's text alongside the buttons
           new Panel(PanelLayoutHorizontal.Instance).Add(
             new TextBlock {
-              Font = "Segoe UI, 30px, style=bold",
+              Font = new Font("Segoe UI", 30, FontWeight.Bold),
               Margin = 5
             }.Bind(
               new Binding("Text", "Key")
@@ -148,7 +148,7 @@ namespace WinFormsSampleControls.DecisionTree {
                 new Binding("PortId", "A")
               ).Add(
                 new TextBlock {
-                  Font = "Segoe UI, 16px, style=bold"
+                  Font = new Font("Segoe UI", 16, FontWeight.Bold)
                 }.Bind(
                   new Binding("Text", "AText")
                 )
@@ -163,7 +163,7 @@ namespace WinFormsSampleControls.DecisionTree {
                 new Binding("PortId", "B")
               ).Add(
                 new TextBlock {
-                  Font = "Segoe UI, 16px, style=bold"
+                  Font = new Font("Segoe UI", 16, FontWeight.Bold)
                 }.Bind(
                   new Binding("Text", "BText")
                 )
@@ -180,7 +180,7 @@ namespace WinFormsSampleControls.DecisionTree {
         ).Add(
           new Shape("Rectangle") { Fill = "whitesmoke", Stroke = "lightgray" },
           new TextBlock {
-            Font = "Segoe UI, 13px, style=bold",
+            Font = new Font("Segoe UI", 13, FontWeight.Bold),
             Wrap = Wrap.Fit,
             DesiredSize = new Size(200, double.NaN),
             Margin = 5

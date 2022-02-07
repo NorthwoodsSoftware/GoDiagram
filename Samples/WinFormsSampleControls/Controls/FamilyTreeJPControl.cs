@@ -57,7 +57,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
           new TextBlock {
             Text = "Key",
             Row = 0,
-            Font = "Segoe UI, 10px, style=bold"
+            Font = new Font("Segoe UI", 10, FontWeight.Bold)
           },  // end row 0
           new Panel(PanelLayoutHorizontal.Instance) {
             Row = 1,
@@ -71,7 +71,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
             },
             new TextBlock {
               Text = "Males",
-              Font = "Segoe UI, 8px, style=bold"
+              Font = new Font("Segoe UI", 8, FontWeight.Bold)
             }
           ),  // end row 1
           new Panel(PanelLayoutHorizontal.Instance) {
@@ -86,7 +86,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
             },
             new TextBlock {
               Text = "Females",
-              Font = "Segoe UI, 8px, style=bold"
+              Font = new Font("Segoe UI", 8, FontWeight.Bold)
             }
           )  // end row 2
         )
@@ -106,7 +106,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
       var tooltiptemplate =
         Builder.Make<Adornment>("ToolTip").Add(
           new TextBlock {
-            Font = "Segoe UI, 8px, style=bold",
+            Font = new Font("Segoe UI", 8, FontWeight.Bold),
             Wrap = Wrap.Fit,
             Margin = 5
           }.Bind(
@@ -148,7 +148,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
           ),
           new Panel(PanelLayoutVertical.Instance).Add(
             new TextBlock {
-              Font = "Segoe UI, 8px, style=bold",
+              Font = new Font("Segoe UI", 8, FontWeight.Bold),
               Alignment = Spot.Center,
               Margin = 6
             }.Bind(

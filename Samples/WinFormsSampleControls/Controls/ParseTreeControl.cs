@@ -58,7 +58,7 @@ namespace WinFormsSampleControls.ParseTree {
             .Bind("Fill")
             .Bind("Stroke"),
           new TextBlock {
-            Font = "Segoe UI, 12px, style=bold",
+            Font = new Font("Segoe UI", 12, FontWeight.Bold),
             Margin = new Margin(4, 2, 2, 2)
           }.Bind("Text")
         ),

@@ -156,7 +156,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
       // Provides a common style for most of the TextBlocks.
       var textStyle = new {
-        Font = "Segoe UI, 9pt", Stroke = "white"
+        Font = new Font("Segoe UI", 12), Stroke = "white"
       };
 
       // This converter is used by the Picture.
@@ -236,7 +236,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
                   .Add(
                     new TextBlock { // the name
                       Row = 0, Column = 0, ColumnSpan = 5,
-                      Font = "Segoe UI, 12pt",
+                      Font = new Font("Segoe UI", 16),
                       Stroke = "white",
                       Editable = true, IsMultiline = false,
                       MinSize = new Size(10, 16)
@@ -258,10 +258,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
                     new TextBlock { Name = "boss", Row = 2, Column = 3 }  // we include a name so we can access this TextBlock when deleting Nodes/Links
                       .Set(textStyle)
                       .Bind("Text", "Parent", (v, _) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); }),
-                    new TextBlock  // the comments
-                      {
+                    new TextBlock {  // the comments
                       Row = 3, Column = 0, ColumnSpan = 5,
-                      Font = "Segoe UI, 9pt, style=italic",
+                      Font = new Font("Segoe UI", 12, FontStyle.Italic),
                       Stroke = "white",
                       Wrap = Wrap.Fit,
                       Editable = true,  // by default newlines are allowed

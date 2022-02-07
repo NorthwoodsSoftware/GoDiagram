@@ -63,14 +63,14 @@ namespace WinFormsSampleControls.RecordMapper {
               .Bind("Figure")
               .Bind("Fill", "Color"),
             new TextBlock {
-              Margin = new Margin(0, 5), Column = 1, Font = "Segoe UI, 13px, style=bold",
+              Margin = new Margin(0, 5), Column = 1, Font = new Font("Segoe UI", 13, FontWeight.Bold),
               Alignment = Spot.Left,
               // and disallow drawing links from or to this text:
               FromLinkable = false, ToLinkable = false
             }
               .Bind("Text", "Name"),
             new TextBlock {
-              Margin = new Margin(0, 5), Column = 2, Font = "Segoe UI, 13px, style=bold", Alignment = Spot.Left
+              Margin = new Margin(0, 5), Column = 2, Font = new Font("Segoe UI", 13, FontWeight.Bold), Alignment = Spot.Left
             }
               .Bind("Text", "Info")
           );
@@ -98,7 +98,7 @@ namespace WinFormsSampleControls.RecordMapper {
                       Margin = 3,
                       Stroke = "white",
                       TextAlign = TextAlign.Center,
-                      Font = "Segoe UI, 12px, style=bold"
+                      Font = new Font("Segoe UI", 12, FontWeight.Bold)
                     }
                       .Bind("Text", "Key")
                   ),
