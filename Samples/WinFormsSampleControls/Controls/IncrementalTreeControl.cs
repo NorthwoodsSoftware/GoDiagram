@@ -117,7 +117,7 @@ namespace WinFormsSampleControls.IncrementalTree {
          new TextBlock {
            Font = new Font("Microsoft Sans Serif", 12),
            Margin = 5
-         }.Bind("Text", "Key", (key, _) => { if ((int)key == -1) return "0"; return key.ToString(); })
+         }.Bind("Text", "Key", key => key.ToString())
        ),
        expanderButton
       );
@@ -125,7 +125,7 @@ namespace WinFormsSampleControls.IncrementalTree {
       // create the model with a root node data
       MyDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = -1, EverExpanded = false, RootDistance = 0 }
+          new NodeData { Key = 1, EverExpanded = false, RootDistance = 0 }
         }
       };
     }
@@ -177,7 +177,7 @@ namespace WinFormsSampleControls.IncrementalTree {
 
       for (var i = 0; i < numchildren; i++) {
         var childdata = new NodeData {
-          Key = model.NodeDataSource.Count(),
+          Key = model.NodeDataSource.Count() + 1,
           Parent = parentdata.Key,
           RootDistance = degrees
         };

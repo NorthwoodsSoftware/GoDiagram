@@ -127,7 +127,7 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 
     private void _Load(Diagram diag) {
       // create a lot of data for the myWholeModel
-      _AddGraph(myWholeModel, 12345, 50, 4, 1.0);
+      _AddGraph(myWholeModel, 123456, 50, 4, 1.0);
       // remove the status indicator
       diag.Remove(myLoading);
     }
@@ -142,11 +142,13 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
       // groupdata may be null for top-level nodes
       var rand = new Random();
       var nextkey = model.NodeDataSource.Count() + 1;
+      var nextlkey = model.LinkDataSource.Count() + 1;
       if (nextkey > totnodes) return;
       var numnodes = (int)Math.Floor(rand.NextDouble() * (maxmembers - 1)) + 2;
       if (nextkey + numnodes > totnodes) numnodes = totnodes - nextkey + 1;
       var nodes = new List<NodeData>();
       var links = new List<LinkData>();
+      var lcount = 0;
       for (var i = 0; i < numnodes; i++) {
         var data = new NodeData { Key = nextkey + i, Depth = depth };  // Bounds = undefined??
         if (groupdata != null) {
@@ -166,13 +168,17 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
           data.Bounds = new Rect(0, 0, 50, 50);
         }
         nodes.Add(data);
-        if (i > 0) links.Add(new LinkData { From = nextkey, To = nextkey + i });
+        if (i > 0) {
+          links.Add(new LinkData { Key = -(nextlkey + lcount), From = nextkey, To = nextkey + i });
+          lcount++;
+        }
       }
       for (var i = 1; i <= numnodes / 3; i++) {
         // additional links between nodes other than the first one
         var from = (int)Math.Floor(rand.NextDouble() * (numnodes - 1)) + 1;
         var to = (int)Math.Floor(rand.NextDouble() * (numnodes - 1)) + 1;
-        links.Add(new LinkData { From = nodes[from].Key, To = nodes[to].Key });
+        links.Add(new LinkData { Key = -(nextlkey + lcount), From = nodes[from].Key, To = nodes[to].Key });
+        lcount++;
       }
       model.AddNodeDataCollection(nodes);
       model.AddLinkDataCollection(links);
@@ -305,7 +311,7 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
     }
   }
 
-  public class Model : GraphLinksModel<NodeData, int, object, LinkData, string, string> {
+  public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> {
     public List<VirtualizedPacked.NodeData> TopGroups { get; set; } = new List<VirtualizedPacked.NodeData>();
   }
 
