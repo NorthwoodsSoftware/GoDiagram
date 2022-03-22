@@ -11,11 +11,11 @@ namespace WinFormsSampleControls.SwimLanesVertical {
   [ToolboxItem(false)]
   public partial class SwimLanesVerticalControl : System.Windows.Forms.UserControl {
     private Diagram _Diagram;
-    
+
     public SwimLanesVerticalControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -28,8 +28,8 @@ namespace WinFormsSampleControls.SwimLanesVertical {
       Each pool Group has its own custom <a>GridLayout</a> that arranges all of its lanes in a vertical stack.
       That custom layout makes sure all of the pool's lanes have the same length.
       If you don't want each lane/group to have its own layout,
-      you could use set the lane group's <a>Group.Layout</a> to null and set the pool group's 
-      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href=""SwimLaneLayout"">Swim Lane Layout</a>.  
+      you could use set the lane group's <a>Group.Layout</a> to null and set the pool group's
+      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href=""SwimLaneLayout"">Swim Lane Layout</a>.
         </p>
         <p>
       When dragging nodes note that the nodes are limited to stay within the lanes.
@@ -88,7 +88,7 @@ namespace WinFormsSampleControls.SwimLanesVertical {
       }
       diag.LayoutDiagram();
     }
-    
+
     // compute the minimum size of a Pool Group needed to hold all the Lane Groups
     public static Size ComputeMinPoolSize(Group pool) {
       var len = _MINLENGTH;
@@ -436,7 +436,7 @@ namespace WinFormsSampleControls.SwimLanesVertical {
 
   // define the model data
   public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
-  
+
   public class NodeData : Model.NodeData {
     public string Loc { get; set; }
     public string Color { get; set; }

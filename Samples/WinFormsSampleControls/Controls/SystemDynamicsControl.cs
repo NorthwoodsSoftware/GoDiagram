@@ -19,8 +19,6 @@ namespace WinFormsSampleControls.SystemDynamics {
     public SystemDynamicsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       pointerBtn.Click += (e, obj) => SetMode("pointer", "pointer");
       stockBtn.Click += (e, obj) => SetMode("node", "stock");
       cloudBtn.Click += (e, obj) => SetMode("node", "cloud");
@@ -97,6 +95,8 @@ namespace WinFormsSampleControls.SystemDynamics {
     { ""From"": ""k3"", ""To"": ""sheep_loss"", ""Category"": ""influence""}
   ]
 }";
+
+      Setup();
     }
 
     private void Setup() {

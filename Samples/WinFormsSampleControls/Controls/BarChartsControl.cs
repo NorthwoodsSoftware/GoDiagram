@@ -13,11 +13,11 @@ namespace WinFormsSampleControls.BarCharts {
   [ToolboxItem(false)]
   public partial class BarChartsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public BarChartsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

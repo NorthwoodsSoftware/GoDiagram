@@ -16,9 +16,7 @@ namespace WinFormsSampleControls.UpdateDemo {
     public UpdateDemoControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      diagramControl2.AfterRender = Setup;
-      diagramControl3.AfterRender = Setup;
+      Setup();
 
       clearLogModelBtn.Click += (e, obj) => ClearLog();
       undoBtn.Click += (e, obj) => blueDiagram.CommandHandler.Undo();
@@ -61,7 +59,7 @@ namespace WinFormsSampleControls.UpdateDemo {
       goWebBrowser1.Html = @"
            <p>Update Demo <b>GoDiagram</b> Sample</p>
 ";
-      
+
     }
 
     private void Setup() {
@@ -261,8 +259,8 @@ namespace WinFormsSampleControls.UpdateDemo {
         // scrolls down automatically
         int visibleItems = listBox1.ClientSize.Height / listBox1.ItemHeight;
         listBox1.TopIndex = Math.Max(listBox1.Items.Count - visibleItems + 1, 0);
-        
-        
+
+
 
         // Modify the undoDisplay Diagram, the tree view
         if (e.PropertyName == "CommittedTransaction") {
@@ -330,8 +328,8 @@ namespace WinFormsSampleControls.UpdateDemo {
 
       model.Changed += ChangedEvent;
 
-      
-    } 
+
+    }
 
     private void ClearLog() {
       listBox1.Items.Clear();

@@ -11,7 +11,7 @@ namespace WinFormsExtensionControls.GeometryReshaping {
     public GeometryReshapingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           The GeometryReshapingTool class allows for a Shape's Geometry to be modified by the user via the dragging of tool handles.

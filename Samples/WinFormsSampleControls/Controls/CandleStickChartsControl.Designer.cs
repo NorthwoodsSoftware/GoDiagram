@@ -1,6 +1,6 @@
 ﻿
-namespace WinFormsSampleControls.CandleStickCharts {
-  partial class CandleStickChartsControl {
+namespace WinFormsSampleControls.CandlestickCharts {
+  partial class CandlestickChartsControl {
     /// <summary> 
     /// Required designer variable.
     /// </summary>

@@ -7,11 +7,11 @@ namespace WinFormsSampleControls.TwoHalves {
   [ToolboxItem(false)]
   public partial class TwoHalvesControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public TwoHalvesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
       <p>

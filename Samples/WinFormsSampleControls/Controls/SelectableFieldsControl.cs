@@ -11,20 +11,20 @@ namespace WinFormsSampleControls.SelectableFields {
     public SelectableFieldsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      
+      Setup();
+
       goWebBrowser1.Html = @"
         <p>
       This shows a variable number of selectable ""fields"" for each ""record"".
         </p>
-        <p> 
+        <p>
       Draw new links by dragging from the background of any field.
       Reconnect a selected link by dragging its diamond-shaped handle.
       The user can delete a selected field.
         </p>
-        <p> 
+        <p>
       The model data, automatically updated after each change or undo or redo:
-        </p>   
+        </p>
 ";
 
       goWebBrowser2.Html = @"

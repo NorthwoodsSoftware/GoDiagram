@@ -19,8 +19,6 @@ namespace WinFormsSampleControls.SharedStates {
     public SharedStatesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => _Save();
       saveLoadModel1.LoadClick += (e, obj) => _Load();
 
@@ -65,6 +63,7 @@ namespace WinFormsSampleControls.SharedStates {
         ]
        }";
 
+      Setup();
     }
 
     private void _Save() {
@@ -95,7 +94,7 @@ namespace WinFormsSampleControls.SharedStates {
           }
         }
       }
-      
+
     }
 
     private void Setup() {

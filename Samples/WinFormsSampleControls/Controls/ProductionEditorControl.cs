@@ -23,12 +23,9 @@ namespace WinFormsSampleControls.ProductionEditor {
     static ProductionEditorControl() {
       _HttpClient.DefaultRequestHeaders.Add("User-Agent", "Production Editor Image Getter");
     }
-    
+
     public ProductionEditorControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
 
       goWebBrowser1.Html = @"
         <p>
@@ -44,16 +41,13 @@ namespace WinFormsSampleControls.ProductionEditor {
       Each <a>Node</a> consists of an SVG <a>Shape</a> at the top and a rectangular port at the bottom.
       The designer can draw new pipes (<a>Link</a>s) by dragging from a port to a different node's port.
         </p>
-        <p> 
+        <p>
       Below is the JSON data for the model:
         </p>
-         
+
 ";
 
-      txtJSON.Text = myModelData;
-    }
-
-    private string myModelData = @"{
+      txtJSON.Text = @"{
   ""NodeDataSource"": [
     {""Key"":1, ""Pos"":""-170 -48"", ""Icon"":""Natgas"", ""Color"":""blue"", ""Text"":""Gas Companies"", ""Description"":""Provides natural gas liquids (NGLs)."", ""Caption"":""Gas Drilling Well"", ""Imgsrc"":""https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BarnettShaleDrilling-9323.jpg/256px-BarnettShaleDrilling-9323.jpg""},
     {""Key"":2, ""Pos"":""-170 96"", ""Icon"":""Oil"", ""Color"":""blue"", ""Text"":""Oil Companies"", ""Description"":""Provides associated petroleum gas (APG). This type of gas used to be released as waste from oil drilling, but is now commonly captured for processing."", ""Caption"":""Offshore oil well"", ""Imgsrc"":""https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Oil_platform_P-51_%28Brazil%29.jpg/512px-Oil_platform_P-51_%28Brazil%29.jpg""},
@@ -81,6 +75,10 @@ namespace WinFormsSampleControls.ProductionEditor {
     {""From"":5, ""To"":9, ""FromSpot"":""Right"", ""Points"":[""160 -37"",""170 -37"",""240 -37"",""240 127"",""310 127"",""320 127""]}
   ]
 }";
+
+      Setup();
+      SetupPalette();
+    }
 
     // vars for animations
     private double opacity = 1;
@@ -206,14 +204,14 @@ namespace WinFormsSampleControls.ProductionEditor {
       }
 
       // diagram properties
-      myDiagram.InitialAutoScale = AutoScaleType.None; // scale to show all of the contents
+      myDiagram.InitialAutoScale = AutoScale.None; // scale to show all of the contents
       myDiagram.ChangedSelection += OnSelectionChanged; // view additional information
       myDiagram.ToolManager.DraggingTool.GridSnapCellSize = new Size(10, 1);
       myDiagram.ToolManager.DraggingTool.IsGridSnapEnabled = true;
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.ModelChanged += (_, e) => {
         if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          myModelData = e.Model.ToJson();
+          txtJSON.Text = e.Model.ToJson();
         }
       };
 
@@ -252,7 +250,7 @@ namespace WinFormsSampleControls.ProductionEditor {
               else {
                 return "gray";
               }
-              
+
             }).OfElement(),
             // but use the link's data.Color if it is set
             new Binding("Stroke", "Color", ColorFunc)
@@ -267,7 +265,7 @@ namespace WinFormsSampleControls.ProductionEditor {
           }
         );
 
-      myDiagram.Model = Model.FromJson<Model>(myModelData);
+      myDiagram.Model = Model.FromJson<Model>(txtJSON.Text);
 
       //Loop();
 
@@ -338,7 +336,7 @@ namespace WinFormsSampleControls.ProductionEditor {
         Loop();
       });
     }
-    
+
     private void OnSelectionChanged(object _, DiagramEvent e) {
       var sel = myDiagram.Selection;
       if (sel.Count >= 1 && sel.First() is Node node) { // a node is selected

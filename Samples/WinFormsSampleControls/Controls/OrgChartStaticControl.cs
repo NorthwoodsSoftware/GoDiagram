@@ -18,8 +18,10 @@ namespace WinFormsSampleControls.OrgChartStatic {
 
       myDiagram = diagramControl1.Diagram;
       myOverview = overviewControl1.Diagram as Overview;
-      diagramControl1.AfterRender = Setup;
-      overviewControl1.AfterRender = SetupOverview;
+
+      Setup();
+      SetupOverview();
+
       searchBtn.Click += (sender, e) => SearchDiagram();
       goWebBrowser1.Html = @"
         <p>
@@ -77,9 +79,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
       };
 
       // Provide a common style for most of the TextBlocks.
-      var textStyle = 
+      var textStyle =
         new {
-          Font = new Font("Segoe UI", 12), Stroke = "rgba(0, 0, 0, .60)",
+          Font = new Font("Malgun Gothic", 12), Stroke = "rgba(0, 0, 0, .60)",
           Visible = false  // only show textblocks when there is corresponding data for them
         };
 
@@ -118,11 +120,11 @@ namespace WinFormsSampleControls.OrgChartStatic {
           .Add(
             new Shape("RoundedRectangle") { Name = "SHAPE", Fill = "#ffffff", StrokeWidth = 0 }
               .Set(roundedRectangleParams)
-              // bluish if highlighted, white otherwise  
+              // bluish if highlighted, white otherwise
               .Bind(new Binding("Fill", "IsHighlighted", (h, obj) => { return (h as bool? ?? false) ? "#e8eaf6" : "#ffffff"; }).OfElement()),
             new Panel(PanelLayoutVertical.Instance)
               .Add(
-                new Panel(PanelLayoutHorizontal.Instance) 
+                new Panel(PanelLayoutHorizontal.Instance)
                   { Margin = 8 }
                   .Add(
                     new Picture  // flag image, only visible if a nation is specified
@@ -135,15 +137,15 @@ namespace WinFormsSampleControls.OrgChartStatic {
                       ),
                     new Panel(PanelLayoutTable.Instance)
                       .Add(
-                        new TextBlock 
+                        new TextBlock
                           {
                             Row = 0, Alignment = Spot.Left,
-                            Font = new Font("Segoe UI", 16),
+                            Font = new Font("Malgun Gothic", 16),
                             Stroke = "rgba(0, 0, 0, .87)",
                             MaxSize = new Size(160, double.NaN)
                           }
                           .Bind("Text", "Name"),
-                        new TextBlock 
+                        new TextBlock
                           {
                             Row = 1, Alignment = Spot.Left,
                             MaxSize = new Size(160, double.NaN)
@@ -152,7 +154,7 @@ namespace WinFormsSampleControls.OrgChartStatic {
                           .Bind(textVisible("Title"))
                           .Bind("Text", "Title"),
                         Builder.Make<Panel>("PanelExpanderButton", "INFO")
-                          .Set(new { 
+                          .Set(new {
                             Row = 0, Column = 1, RowSpan = 2, Margin = ml8
                           })
                       )  // end table panel

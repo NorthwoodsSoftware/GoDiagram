@@ -7,20 +7,20 @@ using Northwoods.Go.Models;
 using Northwoods.Go.Tools;
 
 namespace WinFormsSampleControls.Thermometer {
-  [ToolboxItem(false)]  
+  [ToolboxItem(false)]
   public partial class ThermometerControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ThermometerControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
       This sample uses <a href=""intro/graduatedPanels.html"">Graduated Panels</a> and <code>Panel.AlignmentFocusName</code> to line up thermometer scales.
         </p>
-    
+
         <p>
       The thermometers are resizable, with two types. For the first two (default), resizing the thermometer reduces
       or increases the range of the values. For the second two (<code>Type = ""scaling""</code>), resizing

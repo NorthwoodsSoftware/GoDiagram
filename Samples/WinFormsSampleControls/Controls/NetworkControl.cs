@@ -23,10 +23,6 @@ namespace WinFormsSampleControls.Network {
       myPalette = paletteControl1.Diagram as Palette;
       myOverview = overviewControl1.Diagram as Overview;
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-      overviewControl1.AfterRender = SetupOverview;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -52,6 +48,9 @@ namespace WinFormsSampleControls.Network {
      ]}
     ";
 
+      Setup();
+      SetupPalette();
+      SetupOverview();
     }
 
     // Must use sharedNodeTemplate because don't know if palette or diagram will be initialized first
@@ -99,7 +98,7 @@ namespace WinFormsSampleControls.Network {
             AlignmentFocus = Spot.Left,
             Editable = true
           }.Bind(new Binding("Text").MakeTwoWay())
-        
+
       );
 
       var connectorTemplate = new Node(PanelLayoutSpot.Instance) {

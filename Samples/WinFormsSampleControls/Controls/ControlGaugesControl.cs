@@ -16,7 +16,7 @@ namespace WinFormsSampleControls.ControlGauges {
     public ControlGaugesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -72,7 +72,7 @@ namespace WinFormsSampleControls.ControlGauges {
     <li><a>Panel.GraduatedMin</a> from <code>Data.Min</code>, to control the range of the scale </li>
     <li><a>Panel.GraduatedMax</a> from <code>Data.Max</code>, to control the range of the scale </li>
     <li>(various) from <code>Data.Color</code>, to control some colors used by the instrument </li>
-  </ul>    
+  </ul>
 ";
 
     }

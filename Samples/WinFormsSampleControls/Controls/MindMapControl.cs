@@ -13,8 +13,6 @@ namespace WinFormsSampleControls.MindMap {
     public MindMapControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
       btnLayout.Click += (e, obj) => _LayoutAll();
@@ -67,6 +65,7 @@ namespace WinFormsSampleControls.MindMap {
       ]
     }";
 
+      Setup();
     }
 
     private void Setup() {

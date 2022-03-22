@@ -13,10 +13,6 @@ namespace WinFormsSampleControls.OrgChartExtras {
     public OrgChartExtrasControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
-      
-
       nameBox.Leave += (e, obj) => UpdateData(nameBox.Text, "name");
       titleBox.Leave += (e, obj) => UpdateData(titleBox.Text, "title");
       commentBox.Leave += (e, obj) => UpdateData(commentBox.Text, "comments");
@@ -65,6 +61,8 @@ namespace WinFormsSampleControls.OrgChartExtras {
     and there are additional non-tree links connecting some of the nodes.
   </p>
 ";
+
+      Setup();
     }
 
     private void Setup() {
@@ -264,7 +262,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
             new TextBlock { // the comments
               Row = 4,
               Column = 0,
-              ColumnSpan = 5,   
+              ColumnSpan = 5,
               Font = new Font("Segoe UI", 9, FontWeight.Bold),
               Wrap = Wrap.Fit,
               Editable = true,  // by default newlines are allowed
@@ -420,7 +418,7 @@ namespace WinFormsSampleControls.OrgChartExtras {
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 
-    
+
   }
 
   // define the model data

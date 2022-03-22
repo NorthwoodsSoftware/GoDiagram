@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using Northwoods.Go;
+using Northwoods.Go.Extensions;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;
 
@@ -13,6 +14,9 @@ namespace WinFormsSampleControls.AddToPalette {
     private Diagram myDiagram;
     private Palette myPalette;
     private Overview myOverview;
+    private Inspector myInspector;
+
+    private Part sharedNodeTemplate;
 
     public AddToPaletteControl() {
       InitializeComponent();
@@ -21,9 +25,7 @@ namespace WinFormsSampleControls.AddToPalette {
       myPalette = paletteControl1.Diagram as Palette;
       myOverview = overviewControl1.Diagram as Overview;
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-      overviewControl1.AfterRender = SetupOverview;
+      DefineTemplates();
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -46,15 +48,7 @@ namespace WinFormsSampleControls.AddToPalette {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = myDiagramData;
-      txtPalette.Text = myPaletteData;
-
-    }
-
-    private Part sharedNodeTemplate;
-    private string myPaletteData;
-    private string myDiagramData =
-@"{
+      saveLoadModel1.ModelJson = @"{
   ""NodeDataSource"": [
     { ""Key"": 1, ""Text"":""Hello"", ""Figure"":""Circle"", ""Color"":""Green"", ""Loc"":""0 0"" },
     { ""Key"": 2, ""Text"":""World"", ""Figure"":""Rectangle"", ""Color"":""Red"", ""Loc"":""100 0"" }
@@ -63,70 +57,66 @@ namespace WinFormsSampleControls.AddToPalette {
     { ""From"":1, ""To"":2 }
   ]
 }";
+      txtPalette.Text = "";
 
-    private void DefineNodeTemplates() {
-      if (sharedNodeTemplate != null)
-        return;   // Already defined
+      Setup();
+      SetupPalette();
+      SetupOverview();
+    }
 
-      sharedNodeTemplate = new Node(PanelLayoutAuto.Instance) {
-        LocationSpot = Spot.Center
-      }.Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
-     .Add(
-       new Shape {
-         Figure = "Circle",
-         Fill = "white",
-         Stroke = "gray",
-         StrokeWidth = 2,
-         PortId = "",
-         FromLinkable = true,
-         ToLinkable = true,
-         FromLinkableDuplicates = true,
-         ToLinkableDuplicates = true,
-         FromLinkableSelfNode = true,
-         ToLinkableSelfNode = true
-       }.Bind(
-          new Binding("Stroke", "Color"),
-          new Binding("Figure")
-        ),
-        new TextBlock {
-          Margin = new Margin(5, 5, 3, 5),
-          Font = new Font("Segoe UI", 10),
-          MinSize = new Size(16, 16),
-          MaxSize = new Size(120, double.NaN),
-          TextAlign = TextAlign.Center,
-          Editable = true
-        }.Bind(
-          new Binding("Text").MakeTwoWay()
-        )
-      );
-
+    private void DefineTemplates() {
+      sharedNodeTemplate =
+        new Node("Auto") {
+            LocationSpot = Spot.Center
+          }
+          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .Add(
+            new Shape("Circle") {
+                Fill = "white", Stroke = "gray", StrokeWidth = 2,
+                PortId = "", FromLinkable = true, ToLinkable = true,
+                FromLinkableDuplicates = true, ToLinkableDuplicates = true,
+                FromLinkableSelfNode = true, ToLinkableSelfNode = true
+              }
+              .Bind("Stroke", "Color")
+              .Bind("Figure"),
+            new TextBlock {
+                Margin = new Margin(5, 5, 3, 5), Font = new Font("Segoe UI", 10),
+                MinSize = new Size(16, 16), MaxSize = new Size(120, double.NaN),
+                TextAlign = TextAlign.Center, Editable = true
+              }
+              .Bind(new Binding("Text").MakeTwoWay())
+          );
     }
 
     private void Setup() {
-      // diagram properties
       myDiagram.UndoManager.IsEnabled = true;
-
-      // node template
-      DefineNodeTemplates();
       myDiagram.NodeTemplate = sharedNodeTemplate;
 
       // load some intial data
       LoadModel();
+
+      myInspector = new Inspector(inspectorControl1, myDiagram, new Inspector.Options {
+        // comment this line to inspect all properties on each object:
+        IncludesOwnProperties = false,
+        Properties = new Dictionary<string, Inspector.PropertyOptions> {
+          { "Text", new Inspector.PropertyOptions { } },
+          { "Key", new Inspector.PropertyOptions { ReadOnly = true } },
+          { "Color", new Inspector.PropertyOptions { } },
+          { "Figure", new Inspector.PropertyOptions { } }
+        }
+      });
     }
 
     private void SetupPalette() {
-      // initialize Palette
-      DefineNodeTemplates();
       myPalette.NodeTemplate = sharedNodeTemplate;
       myPalette.ContentAlignment = Spot.Center;
       myPalette.Layout = new GridLayout {
         WrappingColumn = 1,
         CellSize = new Size(2, 2)
       };
-      myPalette.ModelChanged += (_, e) => {     // just for demonstration purposes,
-        if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          myPaletteData = e.Model.ToJson();
-          txtPalette.Text = myPaletteData;
+      myPalette.ModelChanged += (_, e) => {  // just for demonstration purposes,
+        if (e.IsTransactionFinished) {  // show the model data in the page's text box
+          txtPalette.Text = e.Model.ToJson();
         }
       };
 
@@ -144,20 +134,18 @@ namespace WinFormsSampleControls.AddToPalette {
     }
 
     private void SetupOverview() {
-      // overview properties
       myOverview.Observed = myDiagram;
       myOverview.ContentAlignment = Spot.Center;
     }
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      myDiagramData = myDiagram.Model.ToJson();
-      saveLoadModel1.ModelJson = myDiagramData;
+      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(myDiagramData);
+      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
     }
 
     private void AddToPalette() {
@@ -175,7 +163,6 @@ namespace WinFormsSampleControls.AddToPalette {
     private void RemoveFromPalette() {
       myPalette.CommandHandler.DeleteSelection();
     }
-
   }
 
   // define the model data

@@ -17,7 +17,7 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
     public VirtualizedPackedControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
            <p>
             This uses the <a>VirtualizedPackedLayout</a> extension,

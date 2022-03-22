@@ -80,7 +80,6 @@ namespace WinFormsDemoApp {
             // 
             this.sampleList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.sampleList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sampleList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.sampleList.IntegralHeight = false;
             this.sampleList.ItemHeight = 19;
             this.sampleList.Location = new System.Drawing.Point(3, 3);
@@ -104,7 +103,6 @@ namespace WinFormsDemoApp {
             // 
             this.extensionList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.extensionList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extensionList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.extensionList.IntegralHeight = false;
             this.extensionList.ItemHeight = 19;
             this.extensionList.Location = new System.Drawing.Point(3, 3);

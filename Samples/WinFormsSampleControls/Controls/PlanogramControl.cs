@@ -21,11 +21,11 @@ namespace WinFormsSampleControls.Planogram {
     public PlanogramControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPaletteSmall;
-      paletteControl2.AfterRender = SetupPaletteTall;
-      paletteControl3.AfterRender = SetupPaletteWide;
-      paletteControl4.AfterRender = SetupPaletteBig;
+      Setup();
+      SetupPaletteSmall();
+      SetupPaletteTall();
+      SetupPaletteWide();
+      SetupPaletteBig();
       goWebBrowser1.Html = @"
   <p>
   A <em>planogram</em> is a visual representation of a store's products or services, often used as a tool to maximize sales.
@@ -52,7 +52,7 @@ namespace WinFormsSampleControls.Planogram {
 
       myDiagram.ModelChanged += (s, e) => {
         if (e.IsTransactionFinished) textBox1.Text = myDiagram.Model.ToJson();
-        
+
       };
 
       myDiagram.Grid =
@@ -241,7 +241,7 @@ namespace WinFormsSampleControls.Planogram {
         },
         MouseDrop = (e, node) => {  // disallow dropping anything on an "item"
           node.Diagram.CurrentTool.DoCancel();
-        } 
+        }
       }
         .Bind("Position", "Pos", Point.Parse, Point.Stringify)
         .Add(
@@ -292,6 +292,6 @@ namespace WinFormsSampleControls.Planogram {
 
     public class LinkData : Model.LinkData { }
 
-    
+
   }
 }

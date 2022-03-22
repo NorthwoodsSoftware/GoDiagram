@@ -12,12 +12,12 @@ namespace WinFormsSampleControls.Curviness {
   [ToolboxItem(false)]
   public partial class CurvinessControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public CurvinessControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      
+      Setup();
+
       goWebBrowser1.Html = @"
 
   <p>

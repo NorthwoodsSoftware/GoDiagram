@@ -20,8 +20,8 @@ namespace WinFormsSampleControls.DragUnoccupied {
     public DragUnoccupiedControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
+      Setup();
+      SetupPalette();
 
       goWebBrowser1.Html = @"
 

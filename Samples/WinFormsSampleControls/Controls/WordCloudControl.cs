@@ -5,15 +5,15 @@ using Northwoods.Go;
 using Northwoods.Go.Layouts.Extensions;
 using Northwoods.Go.Models;
 
-namespace WinFormsSampleControls.WordCloud {
+namespace WinFormsSampleControls.Wordcloud {
   [ToolboxItem(false)]
-  public partial class WordCloudControl : System.Windows.Forms.UserControl {
+  public partial class WordcloudControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
-    public WordCloudControl() {
+
+    public WordcloudControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnGenerate.Click += (e, obj) => _RebuildGraph();
       checkBxRandomize.CheckedChanged += (e, obj) => _RebuildGraph();
@@ -40,13 +40,13 @@ namespace WinFormsSampleControls.WordCloud {
           Yet GoDiagram is remarkably simple for such a powerful and flexible system. Our thorough documentation introduces the basic concepts and demonstrate typical features that most apps want to offer. Nodes and links can be arbitrarily detailed according to the needs of the application. The API consists of only a few dozen important classes which encapsulate many useful features that interact with each other. There are many properties that permit simple customizations; some methods may be overridden for more complicated customizations.
 
           Explore
-          Start from over 200 sample apps that demonstrate flowcharts, org charts, mind maps, UML diagrams, BPMN diagrams, graph editors, data visualization, custom tools and layouts, and much more. 
+          Start from over 200 sample apps that demonstrate flowcharts, org charts, mind maps, UML diagrams, BPMN diagrams, graph editors, data visualization, custom tools and layouts, and much more.
 
           Learn
           Get started with a step-by-step description of how to build a .NET diagram in WinForms using GoDiagram and some model data.
 
           Download
-          Get a copy of the library and all of the samples, extensions, and documentation. Search the C# code and modify the samples to start your app. 
+          Get a copy of the library and all of the samples, extensions, and documentation. Search the C# code and modify the samples to start your app.
 
           Technical Introduction
           Read our introduction for a overview of GoDiagram concepts and features..
@@ -55,7 +55,7 @@ namespace WinFormsSampleControls.WordCloud {
           Evaluate the full library without any limitations. Register with us and get free support for a month to help build your app.
 
           API Documentation
-          Read our comprehensive documentation for an in-depth reference of the properties and methods of all of the .NET classes. 
+          Read our comprehensive documentation for an in-depth reference of the properties and methods of all of the .NET classes.
 
 
           When upgrading to a newer version, please read the Change Log.
@@ -69,7 +69,7 @@ namespace WinFormsSampleControls.WordCloud {
       myDiagram = diagramControl1.Diagram;
 
       myDiagram.IsReadOnly = true;
-      myDiagram.AutoScale = AutoScaleType.Uniform;
+      myDiagram.AutoScale = AutoScale.Uniform;
 
       // nodes have a template with bindings for size, shape, and fill color
       myDiagram.NodeTemplate = new Node(PanelLayoutAuto.Instance).Add(

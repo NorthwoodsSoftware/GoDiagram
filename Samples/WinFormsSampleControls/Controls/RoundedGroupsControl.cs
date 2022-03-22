@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.RoundedGroups {
   [ToolboxItem(false)]
   public partial class RoundedGroupsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public RoundedGroupsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -24,8 +24,8 @@ namespace WinFormsSampleControls.RoundedGroups {
       The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are defined in
       <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> in the extensions directory.
       See also the <a href=""TwoHalves"">Two Halves</a> sample and
-      the <a href=""Parallel"">Parallel Layout</a> sample. 
-        </p>    
+      the <a href=""Parallel"">Parallel Layout</a> sample.
+        </p>
 ";
 
     }

@@ -13,7 +13,7 @@ namespace WinFormsSampleControls.TreeView {
     public TreeViewControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -29,16 +29,16 @@ namespace WinFormsSampleControls.TreeView {
         </p>
         <p>
       There are two link templates in the source code, one which uses no lines, and one which connects the items with dotted lines.
-        </p>  
+        </p>
         <p>
       See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
-      The <a href=""TriStateCheckBoxTree"">Tri-state CheckBox Tree</a> sample demonstrates a ""tree view"" where each item           
+      The <a href=""TriStateCheckBoxTree"">Tri-state CheckBox Tree</a> sample demonstrates a ""tree view"" where each item
       has a three - state checkbox. The <a href=""TreeMapper"">Tree Mapper</a> sample demonstrates how to map (draw associations) between items in two trees.
-      The <a href=""UpdateDemo"">Update Demo</a> sample also uses a ""tree view"" for its own purposes.       
-        </p>      
-        <p> 
+      The <a href=""UpdateDemo"">Update Demo</a> sample also uses a ""tree view"" for its own purposes.
+        </p>
+        <p>
       The icons in this sample are from <a href=""https://icons8.com/"">icons8.com</a>
-        </p>                      
+        </p>
 ";
 
     }

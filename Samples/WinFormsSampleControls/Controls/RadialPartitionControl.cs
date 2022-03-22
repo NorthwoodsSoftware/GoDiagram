@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.RadialPartition {
     public RadialPartitionControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -37,10 +37,10 @@ namespace WinFormsSampleControls.RadialPartition {
 
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.IsReadOnly = true;
       myDiagram.MaxSelectionCount = 1;
-
+      myDiagram.AnimationManager.IsEnabled = false;
       myDiagram.Layout = new RadialPartitionLayout {
         MaxLayers = 5,
         LayerThickness = _LayerThickness

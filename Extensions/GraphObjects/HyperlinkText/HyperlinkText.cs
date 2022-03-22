@@ -31,7 +31,7 @@ namespace Northwoods.Go.Extensions {
   ///   Builder.Make&lt;GraphObject&gt;("HyperlinkText", "https://godiagram.com", "Visit GoDiagram");
   ///
   ///   Builder.Make&lt;GraphObject&gt;("HyperlinkText",
-  ///     (n) =&gt; "https://godiagram.com/" + n.data.version,
+  ///     (n) =&gt; "https://godiagram.com/winforms/" + n.data.version,
   ///     new Panel("Auto")
   ///       .Add(
   ///         new Shape { ... },
@@ -40,7 +40,7 @@ namespace Northwoods.Go.Extensions {
   ///   );
   ///
   ///   Builder.Make&lt;GraphObject&gt;("HyperlinkText",
-  ///     (n) =&gt; "https://godiagram.com/" + n.data.version,
+  ///     (n) =&gt; "https://godiagram.com/winforms/" + n.data.version,
   ///     (n) =&gt; "Visit GoDiagram version " + n.data.version
   ///   );
   /// </code>

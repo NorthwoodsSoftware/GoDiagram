@@ -12,11 +12,12 @@ namespace WinFormsSampleControls.DonutCharts {
   [ToolboxItem(false)]
   public partial class DonutChartsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public DonutChartsControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnChangeSelectedValue.Click += (e, obj) => ChangeValue();
 
@@ -32,36 +33,21 @@ namespace WinFormsSampleControls.DonutCharts {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
-      // node template
       myDiagram.NodeTemplate =
-      new Node(PanelLayoutSpot.Instance).Add(
-        new Panel().Add(
-          new Shape {
-            Figure = "Circle",
-            Width = 100,
-            Height = 100,
-            StrokeWidth = 0,
-            Fill = "transparent"
-          },
-          new Shape {
-            Fill = "transparent",
-            Stroke = "cyan",
-            StrokeWidth = 8
-          }.Bind(
-            new Binding("Geometry", "Value", MakeArc),
-            new Binding("Stroke", "Color1")
-          ),
-          new Shape { Fill = "transparent", Stroke = "gray", StrokeWidth = 8 }.Bind(
-            new Binding("Geometry", "Value", MakeArcRest),
-            new Binding("Stroke", "Color2")
-          )
-        ),
-        new TextBlock().Bind(
-          new Binding("Text")
-        )
-      );
+        new Node("Spot")
+          .Add(
+            new Panel()
+              .Add(
+                new Shape("Circle") { Width = 100, Height = 100, StrokeWidth = 0, Fill = "transparent" },
+                new Shape { Fill = "transparent", Stroke = "cyan", StrokeWidth = 8 }
+                  .Bind("Geometry", "Value", MakeArc)
+                  .Bind("Stroke", "Color1"),
+                new Shape { Fill = "transparent", Stroke = "gray", StrokeWidth = 8 }
+                  .Bind("Geometry", "Value", MakeArcRest)
+                  .Bind("Stroke", "Color2")
+              ),
+              new TextBlock().Bind("Text")
+            );
 
       // These arcs assume the angle starts at 270 degrees, at the top of the circle.
       // They all assume the circle is 100x100 in size.

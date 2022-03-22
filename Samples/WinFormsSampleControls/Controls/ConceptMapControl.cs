@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.ConceptMap {
     public ConceptMapControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           A concept map sample depicting various suggested relationships between different ideas.
@@ -28,7 +28,7 @@ namespace WinFormsSampleControls.ConceptMap {
       _Diagram = diagramControl1.Diagram;
 
       // diagram properties
-      _Diagram.InitialAutoScale = AutoScaleType.Uniform; // an initial automatic zoom-to-fit
+      _Diagram.InitialAutoScale = AutoScale.Uniform; // an initial automatic zoom-to-fit
       _Diagram.ContentAlignment = Spot.Center;  // align document to the center of the viewport
       _Diagram.Layout = new ForceDirectedLayout {
         MaxIterations = 200,

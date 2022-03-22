@@ -17,7 +17,7 @@ namespace WinFormsExtensionControls.Dimensioning {
     public DimensioningControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

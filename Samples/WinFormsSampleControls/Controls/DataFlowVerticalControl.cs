@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;
@@ -17,8 +13,6 @@ namespace WinFormsSampleControls.DataFlowVertical {
 
     public DataFlowVerticalControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -82,6 +76,7 @@ namespace WinFormsSampleControls.DataFlowVertical {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {
@@ -89,7 +84,7 @@ namespace WinFormsSampleControls.DataFlowVertical {
 
       // diagram properties
       myDiagram.InitialContentAlignment = Spot.Top;
-      myDiagram.InitialAutoScale = AutoScaleType.UniformToFill;
+      myDiagram.InitialAutoScale = AutoScale.UniformToFill;
       myDiagram.Layout = new LayeredDigraphLayout {
         Direction = 90
       };

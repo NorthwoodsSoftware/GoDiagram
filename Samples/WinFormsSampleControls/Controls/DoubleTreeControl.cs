@@ -17,7 +17,7 @@ namespace WinFormsSampleControls.DoubleTree {
     public DoubleTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
          <p>
           This sample displays a bow-tie diagram of two trees sharing a single root node growing in opposite directions.

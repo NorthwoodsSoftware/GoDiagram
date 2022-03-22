@@ -18,7 +18,7 @@ namespace WinFormsSampleControls.EntityRelationship {
     public EntityRelationshipControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -26,7 +26,7 @@ namespace WinFormsSampleControls.EntityRelationship {
           custom link template's <a href=""intro/links.html"">Link.Routing</a>.
           Also note the use of <a href=""intro/buttons.html"">Panel Expander Buttons</a> to allow for expandable/collapsible node data.
       </p>
-    
+
       <p>Buttons are defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Buttons/Buttons.cs"">Buttons.cs</a>.</p>
 ";
 
@@ -96,7 +96,7 @@ namespace WinFormsSampleControls.EntityRelationship {
           // define the node's outer shape, which will surround the Table
           new Shape() { Figure = "RoundedRectangle", Fill = "white", Stroke = "#eeeeee", StrokeWidth = 3 },
           new Panel(PanelLayoutTable.Instance) { Margin = 8, Stretch = Stretch.Fill }.Add(
-            new RowDefinition { Row = 0, Sizing = DefinitionSizing.None })
+            new RowDefinition { Row = 0, Sizing = Sizing.None })
           .Add(
             // the table header
             new TextBlock {

@@ -11,7 +11,7 @@ namespace WinFormsExtensionControls.Spiral {
     public SpiralControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom Layout, SpiralLayout, which assumes the graph consists of a chain of nodes.
@@ -23,7 +23,7 @@ namespace WinFormsExtensionControls.Spiral {
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.IsTreePathToChildren = false; // links go from child to parent
       myDiagram.Layout = new SpiralLayout {
         Clockwise = true

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
-using Northwoods.Go.WinForms;
-using Northwoods.Go.Extensions;
 using Northwoods.Go.Layouts;
 
 namespace WinFormsSampleControls.Regrouping {
@@ -16,12 +14,12 @@ namespace WinFormsSampleControls.Regrouping {
     private Part sharedNodeTemplate;
     private Group sharedGroupTemplate;
 
-    private int sliderValue = 3;
     public RegroupingControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
+      myPalette = paletteControl1.Diagram as Palette;
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
+      DefineTemplates();
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -74,70 +72,15 @@ namespace WinFormsSampleControls.Regrouping {
           Semantic zoom level:
         </p>
       ";
+
+      Setup();
+      SetupPalette();
     }
 
-    public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
-
-    public class NodeData : Model.NodeData {
-      public bool Horiz { get; set; }
-      public string Color { get; set; }
-    }
-
-    public class LinkData : Model.LinkData { }
-
-    /*public partial class RegroupingPage : ComponentBase {
-      private DiagramComponent myDiagramComponent;
-      private Diagram myDiagram;
-      private PaletteComponent myPaletteComponent;
-      private Palette myPalette;
-
-      private Part sharedNodeTemplate;
-      private Group sharedGroupTemplate;
-
-      private int sliderValue = 3;
-
-    } */
-
-    private void SaveModel() {
-      if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
-    }
-
-    private void LoadModel() {
-      if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
-      myDiagram.Model.UndoManager.IsEnabled = true;
-    }
-
-    private void DefineNodeTemplate() {
-      if (sharedNodeTemplate != null) return;  // already defined
-
-      sharedNodeTemplate =
-        new Node("Auto") {
-          // dropping on a Node is the same as dropping on its containing Group, even if it's top-level
-          MouseDrop = (e, nod) => _FinishDrop(e, (nod as Node).ContainingGroup)
-        }
-          .Add(
-            new Shape {
-              Figure = "Rectangle",
-              Fill = "#ACE600", Stroke = null
-            }
-              .Bind("Fill", "Color"),
-            new TextBlock {
-              Margin = 5,
-              Editable = true,
-              Font = new Font("Segoe UI", 13, FontWeight.Bold),
-              Opacity = 0.75,
-              Stroke = "#404040"
-            }
-              .Bind(new Binding("Text", "Text").MakeTwoWay())
-          );
-    }
-
-    // The one template for Groups can be configured to be either layout out its members
-    // horizontally or vertically, each with a different default color.
-    private void DefineGroupTemplate() {
-      if (sharedGroupTemplate != null) return;  // already defined
+    
+    private void DefineTemplates() {
+      // The one template for Groups can be configured to be either layout out its members
+      // horizontally or vertically, each with a different default color.
 
       Layout makeLayout(bool horiz) {
         if (horiz) {
@@ -154,11 +97,11 @@ namespace WinFormsSampleControls.Regrouping {
       }
 
       string defaultColor(bool horiz) {
-        return horiz ? "#FFDD33" : "#33D3E5";
+        return horiz ? "rgba(255, 221, 51, 0.55)" : "rgba(51,211,229, 0.5)";
       }
 
       Font defaultFont(bool horiz) {
-        return horiz ? new Font("Segoe UI", 18, FontWeight.Bold) : new Font("Segoe UI", 16, FontWeight.Bold);
+        return horiz ? new Font("Segoe UI", 20, FontWeight.Bold) : new Font("Segoe UI", 16, FontWeight.Bold);
       }
 
       // this function is used to highlight a Group that the selection may be dropped into
@@ -181,51 +124,46 @@ namespace WinFormsSampleControls.Regrouping {
 
       sharedGroupTemplate =
         new Group("Auto") {
-          Background = "transparent",
-          // highlight when dragging into the Group
-          MouseDragEnter = (e, grp, prev) => highlightGroup(e, grp as Group, true),
-          MouseDragLeave = (e, grp, next) => highlightGroup(e, grp as Group, false),
-          ComputesBoundsAfterDrag = true,
-          // when the selection is dropped into a Group, add the selected Parts into that Group;
-          // if it fails, cancel the tool, rolling back any changes
-          MouseDrop = _FinishDrop,
-          HandlesDragDropForMembers = true,  // don't need to define handlers on member Nodes and Links
-                                             // Groups containing Groups lay out their members Horizontally
-          Layout = makeLayout(false)
-        }
+            Background = "blue",
+            Ungroupable = true,
+            // highlight when dragging into the Group
+            MouseDragEnter = (e, grp, prev) => highlightGroup(e, grp as Group, true),
+            MouseDragLeave = (e, grp, next) => highlightGroup(e, grp as Group, false),
+            ComputesBoundsAfterDrag = true,
+            // when the selection is dropped into a Group, add the selected Parts into that Group;
+            // if it fails, cancel the tool, rolling back any changes
+            MouseDrop = _FinishDrop,
+            HandlesDragDropForMembers = true,  // don't need to define handlers on member Nodes and Links
+            // Groups containing Groups lay out their members Horizontally
+            Layout = makeLayout(false)
+          }
           .Bind(
             new Binding("Layout", "Horiz", (h) => makeLayout((bool)h)),
             new Binding("Background", "IsHighlighted", (h) => (bool)h ? "rgba(255,0,0,0.2)" : "transparent").OfElement()
           )
           .Add(
-            new Shape {
-              Figure = "Rectangle",
-              Fill = null, Stroke = defaultColor(false), StrokeWidth = 2
-            }
+            new Shape { Stroke = defaultColor(false), Fill = defaultColor(false), StrokeWidth = 2 }
               .Bind(
                 new Binding("Stroke", "Horiz", (h) => defaultColor((bool)h)),
-                new Binding("Stroke", "Color")
+                new Binding("Fill", "Horiz", (h) => defaultColor((bool)h))
               ),
             new Panel("Vertical")  // title above Placeholder
               .Add(
-                new Panel("Horizontal") { // button next to TextBlock
-                  Stretch = Stretch.Horizontal, Background = defaultColor(false)
-                }
-                  .Bind(
-                    new Binding("Background", "Horiz", (h) => defaultColor((bool)h)),
-                    new Binding("Background", "Color")
-                  )
+                new Panel("Horizontal") {  // button next to TextBlock
+                    Stretch = Stretch.Horizontal, Background = defaultColor(false)
+                  }
+                  .Bind("Background", "Horiz", (h) => defaultColor((bool)h))
                   .Add(
                     Builder.Make<Panel>("SubGraphExpanderButton")
                       .Set(new { Alignment = Spot.Right, Margin = 5 }),
                     new TextBlock {
-                      Alignment = Spot.Left,
-                      Editable = true,
-                      Margin = 5,
-                      Font = defaultFont(false),
-                      Opacity = 0.75,  // allow some color to show through
-                      Stroke = "#404040"
-                    }
+                        Alignment = Spot.Left,
+                        Editable = true,
+                        Margin = 5,
+                        Font = defaultFont(false),
+                        Opacity = 0.90,  // allow some color to show through
+                        Stroke = "#404040"
+                      }
                       .Bind(
                         new Binding("Font", "Horiz", (h) => defaultFont((bool)h)),
                         new Binding("Text", "Text").MakeTwoWay()
@@ -234,54 +172,55 @@ namespace WinFormsSampleControls.Regrouping {
                 new Placeholder { Padding = 5, Alignment = Spot.TopLeft }
               ) // end Vertical Panel
           );
+
+      sharedNodeTemplate =
+        new Node("Auto") {
+            // dropping on a Node is the same as dropping on its containing Group, even if it's top-level
+            MouseDrop = (e, node) => _FinishDrop(e, (node as Node).ContainingGroup)
+          }
+          .Add(
+            new Shape("RoundedRectangle") { Fill = "rgba(172, 230, 0, 0.9)", Stroke = "white", StrokeWidth = .5 },
+            new TextBlock {
+                Margin = 7,
+                Editable = true,
+                Font = new Font("Segoe UI", 13, FontWeight.Bold),
+                Opacity = 0.90,
+                Stroke = "#404040"
+              }
+              .Bind(new Binding("Text", "Text").MakeTwoWay())
+          );
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
-     
-
-      // what to do when a drag-drop occurs on the Background
+      // when a drag-drop occurs in the Diagram's background, make it a top-level node
       myDiagram.MouseDrop = (e) => _FinishDrop(e, null);
+      // Diagram has simple horizontal layout
       myDiagram.Layout = new GridLayout {
         WrappingWidth = double.PositiveInfinity,
         Alignment = GridAlignment.Position,
         CellSize = new Size(1, 1)
       };
       myDiagram.CommandHandler.ArchetypeGroupData = new NodeData {
-        IsGroup = true,
-        Text = "Group"
+        IsGroup = true, Text = "Group", Horiz = false
       };
-
       myDiagram.UndoManager.IsEnabled = true;
 
-      DefineNodeTemplate();
       myDiagram.NodeTemplate = sharedNodeTemplate;
-      DefineGroupTemplate();
       myDiagram.GroupTemplate = sharedGroupTemplate;
 
       LoadModel();
     }
 
     private void SetupPalette() {
-      myPalette = paletteControl1.Diagram as Palette;
       // initialize the Palette and its contents
-      DefineNodeTemplate();
       myPalette.NodeTemplate = sharedNodeTemplate;
-      DefineGroupTemplate();
       myPalette.GroupTemplate = sharedGroupTemplate;
-      myPalette.Layout = new GridLayout {
-        WrappingColumn = 1,
-        Alignment = GridAlignment.Position
-      };
 
       myPalette.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Text = "lightgreen", Color = "#ACE600" },
-          new NodeData { Text = "yellow", Color = "#FFDD33" },
-          new NodeData { Text = "lightblue", Color = "#33D3E5" },
-          new NodeData { Text = "H Group", Color = "#FFDD33", IsGroup = true },
-          new NodeData { Text = "V Group", Color = "#33D3E5", IsGroup = true}
+          new NodeData { Text = "New Node" },
+          new NodeData { IsGroup = true, Text = "H Group", Horiz = true },
+          new NodeData { IsGroup = true, Text = "V Group", Horiz = false }
         }
       };
     }
@@ -296,25 +235,40 @@ namespace WinFormsSampleControls.Regrouping {
       if (!ok) e.Diagram.CurrentTool.DoCancel();
     }
 
-    private void Reexpand() { 
-      sliderValue = trackBar1.Value;
+    private void Reexpand() {
       myDiagram.Commit((d) => {
         var tlg = d.FindTopLevelGroups();
         while (tlg.MoveNext()) {
           var g = tlg.Current;
-          ExpandGroups(g, 0, sliderValue);
+          ExpandGroups(g, 0, trackBar1.Value);
         }
-      }, "reexpand"); 
+      }, "reexpand");
     }
 
-    
-
     private void ExpandGroups(Part p, int i, int level) {
-      if (!(p is Group g)) return;
+      if (p is not Group g) return;
       g.IsSubGraphExpanded = i < level;
       foreach (var m in g.MemberParts) {
         ExpandGroups(m, i + 1, level);
       }
     }
+
+    private void SaveModel() {
+      if (myDiagram == null) return;
+      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+    }
+
+    private void LoadModel() {
+      if (myDiagram == null) return;
+      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+    }
+
+    public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
+
+    public class NodeData : Model.NodeData {
+      public bool Horiz { get; set; }
+    }
+
+    public class LinkData : Model.LinkData { }
   }
 }

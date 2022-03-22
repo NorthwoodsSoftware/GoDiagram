@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 
-namespace WinFormsSampleControls.CandleStickCharts {
+namespace WinFormsSampleControls.CandlestickCharts {
   [ToolboxItem(false)]
-  public partial class CandleStickChartsControl : System.Windows.Forms.UserControl {
+  public partial class CandlestickChartsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
-    public CandleStickChartsControl() {
+
+    public CandlestickChartsControl() {
       InitializeComponent();
-      
-      diagramControl1.AfterRender = Setup;
+
+      Setup();
 
       goWebBrowser1.Html = @"
 
    <p>
     Demonstrates candlestick charts in GoDiagram.
   </p>
-";    
-      
+";
+
     }
 
     private void Setup() {
-      
+
       myDiagram = diagramControl1.Diagram;
 
       // the template for each attribute in a node's array of item data

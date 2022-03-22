@@ -16,8 +16,8 @@ namespace WinFormsSampleControls.Macros {
     public MacrosControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
+      Setup();
+      SetupPalette();
 
       goWebBrowser1.Html = @"
     <p>
@@ -25,7 +25,7 @@ namespace WinFormsSampleControls.Macros {
     the ""ExternalObjectsDropped"" <a>DiagramEvent</a> listener automatically ungroups that group node
     to show all of its members nodes and links that were copied by the drag-and-drop.
     </p>
-      
+
     <p>
     Note also that a drop causes the <a>TextEditingTool</a> to automatically start editing the text in the node.
     </p>
@@ -116,7 +116,7 @@ namespace WinFormsSampleControls.Macros {
           txtJSON.Text = myDiagram.Model.ToJson();
         }
       };
-      
+
     }
 
     private void SetupPalette() {

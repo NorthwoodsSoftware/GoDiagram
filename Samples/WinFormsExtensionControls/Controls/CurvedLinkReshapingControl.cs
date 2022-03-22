@@ -13,8 +13,6 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
     public CurvedLinkReshapingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -58,6 +56,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
   ]
 }";
 
+      Setup();
     }
 
     private void SaveModel() {

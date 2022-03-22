@@ -23,9 +23,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}"/>.
   /// </remarks>
   public class RadialNetwork : GenericNetwork<RadialVertex, RadialEdge, RadialLayout> {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork()"/>
-    public RadialNetwork() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork(Y)"/>
     public RadialNetwork(RadialLayout layout) : base(layout) { }
 
@@ -53,9 +50,6 @@ namespace Northwoods.Go.Layouts.Extensions {
     private double _Sweep = 0;
     private double _Radius = 0;
     private List<RadialVertex> _Children = null;
-
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex()"/>
-    public RadialVertex() : base() { }
 
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex(GenericNetwork{V, E, Y})"/>
     public RadialVertex(RadialNetwork network) : base(network) { }
@@ -152,9 +146,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Edge"/>.
   /// </remarks>
   public class RadialEdge : RadialNetwork.Edge {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge()"/>
-    public RadialEdge() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge(GenericNetwork{V, E, Y})"/>
     public RadialEdge(RadialNetwork network) : base(network) { }
   }

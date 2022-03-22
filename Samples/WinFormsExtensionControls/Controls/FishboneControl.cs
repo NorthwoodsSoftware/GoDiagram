@@ -13,7 +13,7 @@ namespace WinFormsExtensionControls.Fishbone {
     public FishboneControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       fishboneBtn.Click += (s, e) => LayoutFishbone();
       branchingBtn.Click += (s, e) => LayoutBranching();

@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 
 namespace WinFormsSampleControls.Minimal {
   [ToolboxItem(false)]
-  public partial class MinimalControl : UserControl {
+  public partial class MinimalControl : System.Windows.Forms.UserControl {
     private Diagram _Diagram;
 
     public MinimalControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           This isn't a truly <i>minimal</i> demonstration of <b>GoDiagram</b>,
@@ -45,10 +44,12 @@ namespace WinFormsSampleControls.Minimal {
       _Diagram.NodeTemplate =
         new Node(PanelLayoutAuto.Instance)  // the Shape will go around the TextBlock
           .Add(
-            new Shape("RoundedRectangle") { StrokeWidth = 0 }
-              .Bind("Fill", "Color"),
+            new Shape("RoundedRectangle") {
+                StrokeWidth = 0,
+                Fill = "lightgray"
+            }.Bind("Fill", "Color"),
             new TextBlock {
-                Font = new Font("Segoe UI", 14, FontWeight.Bold), Stroke = "#333", Margin = 8, // Specify a margin to add some room around the text
+                Font = new Font("Segoe UI", 14, FontWeight.Bold), Margin = 8, // Specify a margin to add some room around the text
                 Editable = true
               }
               .Bind("Text")

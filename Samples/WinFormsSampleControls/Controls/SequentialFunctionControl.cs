@@ -7,11 +7,9 @@ namespace WinFormsSampleControls.SequentialFunction {
   [ToolboxItem(false)]
   public partial class SequentialFunctionControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public SequentialFunctionControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -61,6 +59,7 @@ namespace WinFormsSampleControls.SequentialFunction {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

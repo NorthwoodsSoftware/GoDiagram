@@ -32,7 +32,7 @@ namespace WinFormsSharedControls {
 
     private void GoWebBrowser_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e) {
       if (e.IsSuccess) {
-        ((WebView2)sender).ExecuteScriptAsync("var body = document.querySelector('body'); body.style.overflow='scroll'; body.style.font='.825rem Segoe UI'; var style=document.createElement('style');style.type='text/css';style.innerHTML='::-webkit-scrollbar{display:none}; font-size: .875rem; line-height: 1.5; letter-spacing: 0;';document.getElementsByTagName('body')[0].appendChild(style)");
+        ((WebView2)sender).ExecuteScriptAsync("var body = document.querySelector('body'); body.style.overflow='scroll'; body.style.font='9pt Segoe UI'; var style=document.createElement('style');style.type='text/css';style.innerHTML='::-webkit-scrollbar{display:none}; font-size: 9pt; line-height: 1.5; letter-spacing: 0;';document.getElementsByTagName('body')[0].appendChild(style)");
       }
     }
 
@@ -76,11 +76,11 @@ namespace WinFormsSharedControls {
 
       // process <a href="learn/<page>"> links
       rx = new Regex(@"<a href=""learn/(.*)"">", RegexOptions.Multiline);
-      html = rx.Replace(html, @"<a href=""https://godiagram.com/learn/$1"">");
+      html = rx.Replace(html, @"<a href=""https://godiagram.com/winforms/latest/learn/$1"">");
 
       // process <a href="intro/<page>"> links
       rx = new Regex(@"<a href=""intro/(.*)"">", RegexOptions.Multiline);
-      html = rx.Replace(html, @"<a href=""https://godiagram.com/intro/$1"">");
+      html = rx.Replace(html, @"<a href=""https://godiagram.com/winforms/latest/intro/$1"">");
 
       // process <a href="<demo>"> links
       rx = new Regex(@"<a href=""(\w+)"">", RegexOptions.Multiline);
@@ -97,7 +97,7 @@ namespace WinFormsSharedControls {
     private static string _ReplaceApiLinks(Match m) {
       var str = m.Groups[1].Value;
       if (_ApiMap != null && _ApiMap.TryGetValue(str, out var url))
-        return @"<a href=""https://godiagram.com/" + url + @""">" + str + "</a>";
+        return @"<a href=""https://godiagram.com/winforms/latest/" + url + @""">" + str + "</a>";
       return m.Value;
     }
 
@@ -116,7 +116,7 @@ namespace WinFormsSharedControls {
     /// </summary>
     /// <returns></returns>
     static async Task<Dictionary<string, string>> GetApiMap() {
-      var url = "https://godiagram.com/api/apiMap.js";
+      var url = "https://godiagram.com/winforms/latest/api/apiMap.js";
       using var response = await _HttpClient.GetAsync(url);
       if (response.IsSuccessStatusCode) {
         using var stream = await response.Content.ReadAsStreamAsync();

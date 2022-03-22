@@ -366,7 +366,7 @@ namespace Northwoods.Go.Tools.Extensions {
         part.Move(part.Position.Subtract(offset.Rotate(part.Angle)));
       }
       UpdateAdornments(AdornedShape.Part);  // update any Adornments of the Part
-      Diagram.Immediate();  // force more frequent drawing for smoother looking behavior
+      Diagram.MaybeUpdate();  // force more frequent drawing for smoother looking behavior
     }
 
     /// <summary>

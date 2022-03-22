@@ -13,7 +13,7 @@ namespace WinFormsSampleControls.FamilyTree {
     public FamilyTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnZoomToFit.Click += (e, obj) => ZoomToFit();
       btnCenterOnRoot.Click += (e, obj) => CenterRoot();
@@ -29,6 +29,7 @@ namespace WinFormsSampleControls.FamilyTree {
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
+      myDiagram.AnimationManager.IsEnabled = true;
       myDiagram.ToolManager.HoverDelay = 100; // 100 ms instead of the default 850
       myDiagram.AllowCopy = false;
       myDiagram.Layout = new TreeLayout {

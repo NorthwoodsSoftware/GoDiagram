@@ -8,11 +8,11 @@ namespace WinFormsSampleControls.ScrollModes {
   [ToolboxItem(false)]
   public partial class ScrollModesControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ScrollModesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -134,7 +134,7 @@ namespace WinFormsSampleControls.ScrollModes {
       myDiagram.CommitTransaction("change scale computation");
     }
 
-    
+
   }
 
   // define the model data

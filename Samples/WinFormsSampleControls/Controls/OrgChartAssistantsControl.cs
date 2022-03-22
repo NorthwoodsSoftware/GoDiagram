@@ -10,11 +10,9 @@ namespace WinFormsSampleControls.OrgChartAssistants {
   [ToolboxItem(false)]
   public partial class OrgChartAssistantsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public OrgChartAssistantsControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -58,12 +56,13 @@ namespace WinFormsSampleControls.OrgChartAssistants {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.MaxSelectionCount = 1;
       myDiagram.ValidCycle = CycleMode.DestinationTree;
       // custom click creating tool

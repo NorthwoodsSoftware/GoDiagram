@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.DragCreating {
     public DragCreatingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       checkBxEnable.CheckStateChanged += (e, obj) => ToolEnabled();
 

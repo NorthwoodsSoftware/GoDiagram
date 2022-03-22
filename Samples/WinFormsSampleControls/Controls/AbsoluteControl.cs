@@ -12,11 +12,11 @@ namespace WinFormsSampleControls.Absolute {
   [ToolboxItem(false)]
   public partial class AbsoluteControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public AbsoluteControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -78,7 +78,7 @@ namespace WinFormsSampleControls.Absolute {
         if (diagram == null) return pt;
         // compute the document area without padding
         var v = diagram.DocumentBounds;
-        v.SubtractMargin(diagram.Padding);
+        v = v.SubtractMargin(diagram.Padding);
         // get the bounds of the part being dragged
         var b = part.ActualBounds;
         var loc = part.Location;

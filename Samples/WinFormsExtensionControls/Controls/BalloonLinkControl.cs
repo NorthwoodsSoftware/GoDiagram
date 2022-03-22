@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.BalloonLink {
     public BalloonLinkControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
    <p>

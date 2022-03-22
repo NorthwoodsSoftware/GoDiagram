@@ -15,9 +15,6 @@ namespace WinFormsSampleControls.RegroupingTreeView {
     public RegroupingTreeViewControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      //treeViewControl1.AfterRender =
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -58,6 +55,8 @@ namespace WinFormsSampleControls.RegroupingTreeView {
   ],
   ""LinkDataSource"": [  ]
 }";
+
+      Setup();
     }
 
     private void Setup() {

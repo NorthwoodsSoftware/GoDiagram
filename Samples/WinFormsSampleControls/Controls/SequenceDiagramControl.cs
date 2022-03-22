@@ -14,8 +14,6 @@ namespace WinFormsSampleControls.SequenceDiagram {
     public SequenceDiagramControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -27,7 +25,7 @@ namespace WinFormsSampleControls.SequenceDiagram {
         <p>
           The diagram uses the <a>Diagram.GroupTemplate</a> for ""lifelines,""
           <a>Diagram.NodeTemplate</a> for ""activities,"" and <a>Diagram.LinkTemplate</a> for ""messages"" between the entities.
-            
+
           Also featured are a custom Link class and custom <a>LinkingTool</a> to draw links
           between lifelines and create activities at the end of the new link. Nodes use a binding function on the location
           property to ensure they are anchored to their lifeline.
@@ -57,6 +55,7 @@ namespace WinFormsSampleControls.SequenceDiagram {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

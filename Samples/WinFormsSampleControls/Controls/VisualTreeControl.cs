@@ -16,8 +16,8 @@ namespace WinFormsSampleControls.VisualTree {
     public VisualTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      diagramControl2.AfterRender = SetupVisual;
+      Setup();
+      SetupVisual();
 
       visualTreeBtn.Click += (e, obj) => DrawVisualTree();
 
@@ -48,11 +48,11 @@ namespace WinFormsSampleControls.VisualTree {
         The text for each Node in ""myVisualTree"" is data - bound to the actual Diagram/Layer/Part/GraphObject object.
         That object is converted to a text string by using the <b>ToString</b> method.
           </p>
-          <p> 
+          <p>
         See also the <a href=""VisualTreeGrouping"">Visual Tree Using Groups</a> sample,
         to show the same visual tree using nested groups. For more use of the <a>TreeLayout</a>,
         see the <a href=""ClassHierarchy"">Class Hierarchy Tree</a> sample.
-          </p>        
+          </p>
 ";
     }
 
@@ -66,7 +66,7 @@ namespace WinFormsSampleControls.VisualTree {
       myDiagram = diagramControl1.Diagram;
       myDiagram.UndoManager.IsEnabled = true;
 
-      myDiagram.NodeTemplate = 
+      myDiagram.NodeTemplate =
         new Node("Auto")
           .Bind("Location")
           .Add(
@@ -96,12 +96,12 @@ namespace WinFormsSampleControls.VisualTree {
     private void SetupVisual() {
       myVisualTree = diagramControl2.Diagram;
       myVisualTree.InitialContentAlignment = Spot.Left;
-      myVisualTree.InitialAutoScale = AutoScaleType.Uniform;
+      myVisualTree.InitialAutoScale = AutoScale.Uniform;
       myVisualTree.IsReadOnly = true;
       myVisualTree.AllowSelect = false;
       myVisualTree.Layout = new TreeLayout { NodeSpacing = 5 };
 
-      myVisualTree.NodeTemplate = 
+      myVisualTree.NodeTemplate =
         new Node("Auto")
           .Add(
             new Shape { Fill = "darkkhaki", Stroke = null },
@@ -112,8 +112,8 @@ namespace WinFormsSampleControls.VisualTree {
               }
               .Bind("Text")
           );
-        
-      myVisualTree.LinkTemplate = 
+
+      myVisualTree.LinkTemplate =
         new Link()
           .Add(
             new Shape { Stroke = "darkkhaki", StrokeWidth = 2 }
@@ -164,7 +164,7 @@ namespace WinFormsSampleControls.VisualTree {
   public class LinkData : Model.LinkData { }
 
   public class TreeModel : TreeModel<TreeNodeData, int, object> { }
-  
+
   public class TreeNodeData : TreeModel.NodeData {
     public int ParentKey { get; set; }
   }

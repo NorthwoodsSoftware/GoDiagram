@@ -11,7 +11,7 @@ namespace WinFormsSampleControls.SelectablePorts {
     public SelectablePortsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

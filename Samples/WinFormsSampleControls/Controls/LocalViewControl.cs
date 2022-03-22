@@ -17,7 +17,7 @@ namespace WinFormsSampleControls.LocalView {
     public LocalViewControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnCreateNewTree.Click += (e, obj) => SetupDiagram();
 
@@ -30,7 +30,7 @@ namespace WinFormsSampleControls.LocalView {
   a large yellow highlighter part employing a radial <a>Brush</a> is placed in the background layer of the upper diagram behind the selected node.
   The Create New Tree button will randomly generate a new <a>TreeModel</a> to be used by the diagrams.
    </p>
-      
+
    <p>
   Although it is not demonstrated in this sample,
   one could well use very simple templates for Nodes and for Links in the top Diagram.
@@ -65,14 +65,14 @@ namespace WinFormsSampleControls.LocalView {
         // add parent and grandparent
         var parent = node.FindTreeParentNode();
         if (parent != null) {
-          model.AddNodeData(parent.Data as NodeData);          
+          model.AddNodeData(parent.Data as NodeData);
           var grandparent = parent.FindTreeParentNode();
           if (grandparent != null) {
             model.AddNodeData(grandparent.Data as NodeData);
           }
         }
         // create the model using the same node data as in myFullDiagram.Model
-        
+
         foreach (var n in nearby) {
           if (n is Node m) model.AddNodeData(m.Data as NodeData);
         }
@@ -110,7 +110,7 @@ namespace WinFormsSampleControls.LocalView {
       myLocalDiagram = diagramControl2.Diagram;
       myFullDiagram = diagramControl1.Diagram;
 
-      myFullDiagram.InitialAutoScale = AutoScaleType.UniformToFill; // automatically scale down to show whole tree
+      myFullDiagram.InitialAutoScale = AutoScale.UniformToFill; // automatically scale down to show whole tree
       myFullDiagram.MaxScale = 0.25;
       myFullDiagram.ContentAlignment = Spot.Center; // center the tree in the viewport
       myFullDiagram.IsReadOnly = true; // don't allow user to change the diagram
@@ -121,7 +121,7 @@ namespace WinFormsSampleControls.LocalView {
       myFullDiagram.MaxSelectionCount = 1; // only one node may be selected at a time in each diagram
       myFullDiagram.ChangedSelection += (obj, e) => showLocalOnFullClick();
 
-      myLocalDiagram.AutoScale = AutoScaleType.UniformToFill;
+      myLocalDiagram.AutoScale = AutoScale.UniformToFill;
       myLocalDiagram.ContentAlignment = Spot.Center;
       myLocalDiagram.IsReadOnly = true;
       myLocalDiagram.Layout = new TreeLayout() {

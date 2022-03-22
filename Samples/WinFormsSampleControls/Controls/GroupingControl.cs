@@ -17,7 +17,7 @@ namespace WinFormsSampleControls.Grouping {
     public GroupingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

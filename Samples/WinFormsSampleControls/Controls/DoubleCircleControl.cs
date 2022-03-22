@@ -13,11 +13,11 @@ namespace WinFormsSampleControls.DoubleCircle {
   [ToolboxItem(false)]
   public partial class DoubleCircleControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public DoubleCircleControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -37,7 +37,7 @@ namespace WinFormsSampleControls.DoubleCircle {
       myDiagram = diagramControl1.Diagram;
 
       // diagram properties
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.UndoManager.IsEnabled = true;
 
       // node template

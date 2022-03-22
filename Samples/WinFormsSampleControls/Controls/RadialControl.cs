@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.Radial {
     public RadialControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnLayers.Click += (e, obj) => ChangeMaxLayers(int.Parse(txtLayers.Text));
 
@@ -24,9 +24,9 @@ namespace WinFormsSampleControls.Radial {
       It is also easy to add more information to each node, including pictures,
       or to put such information into <a href=""intro/toolTips.html"">Tooltips</a>.
       </p>
-    
+
       <p>
-      The <code>RadialLayout</code> class is an extension defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Radial/RadialLayout.cs"">RadialLayout.cs</a>.     
+      The <code>RadialLayout</code> class is an extension defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Radial/RadialLayout.cs"">RadialLayout.cs</a>.
       You can control how many layers to show, whether to draw the circles, and whether to rotate the text, by modifying
       RadialLayout properties or changing overrides of <code>RadialLayout.RotateNode</code> and/or <code>RadialLayout.CommitLayers</code>.
       </p>
@@ -105,7 +105,7 @@ namespace WinFormsSampleControls.Radial {
 
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.Padding = 10;
       myDiagram.IsReadOnly = true;
       myDiagram.Layout = new MyRadialLayout {

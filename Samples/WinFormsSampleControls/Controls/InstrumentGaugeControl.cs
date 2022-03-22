@@ -16,7 +16,7 @@ namespace WinFormsSampleControls.InstrumentGauge {
     public InstrumentGaugeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

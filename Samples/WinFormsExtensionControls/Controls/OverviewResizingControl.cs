@@ -21,8 +21,8 @@ namespace WinFormsExtensionControls.OverviewResizing {
       myDiagram = diagramControl1.Diagram;
       myOverview = overviewControl1.Diagram as Overview;
 
-      diagramControl1.AfterRender = Setup;
-      overviewControl1.AfterRender = SetupOverview;
+      Setup();
+      SetupOverview();
 
       zoomToFit.Click += (e, obj) => ZoomToFit();
       expandRandomNode.Click += (e, obj) => ExpandAtRandom();

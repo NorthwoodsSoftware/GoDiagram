@@ -18,8 +18,6 @@ namespace WinFormsSampleControls.OrgChartEditor {
     public OrgChartEditorControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       zoomFitBtn.Click += (e, obj) => ZoomToFit();
       centerRootBtn.Click += (e, obj) => CenterRoot();
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
@@ -78,6 +76,8 @@ namespace WinFormsSampleControls.OrgChartEditor {
           that uses a custom <a>TreeLayout</a> to position ""assistants"" that way.
         </p>
       ";
+
+      Setup();
     }
 
     private void Setup() {

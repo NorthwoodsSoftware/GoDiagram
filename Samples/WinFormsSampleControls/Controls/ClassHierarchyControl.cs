@@ -20,7 +20,7 @@ namespace WinFormsSampleControls.ClassHierarchy {
     public ClassHierarchyControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -56,8 +56,8 @@ namespace WinFormsSampleControls.ClassHierarchy {
         var node = nodeIn as Node;
         var data = node.Data as NodeData;
         if (apiMap != null && apiMap.TryGetValue(data.Key, out var url))
-          return "https://godiagram.com/" + url;
-        return "https://godiagram.com/api/";
+          return "https://godiagram.com/winforms/latest/" + url;
+        return "https://godiagram.com/winforms/latest/api/";
       };
 
       // hyperlinkText

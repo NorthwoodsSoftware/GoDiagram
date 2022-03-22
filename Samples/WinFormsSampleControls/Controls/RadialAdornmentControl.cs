@@ -8,11 +8,11 @@ namespace WinFormsSampleControls.RadialAdornment {
   [ToolboxItem(false)]
   public partial class RadialAdornmentControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public RadialAdornmentControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       //btnSetLayers.Click += (e, obj) => doLayout();
 
@@ -21,9 +21,9 @@ namespace WinFormsSampleControls.RadialAdornment {
       Click on a Node to center it and show its relationships.
       It is also easy to add more information to each node, including pictures,
       or to put such information into <a href=""intro/toolTips.html"">Tooltips</a>.
-        </p>    
+        </p>
         <p>
-      The <code>RadialLayout</code> class is an extension defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Radial/RadialLayout.cs"">RadialLayout.cs</a>.          
+      The <code>RadialLayout</code> class is an extension defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Radial/RadialLayout.cs"">RadialLayout.cs</a>.
       You can control how many layers to show,
       whether to draw the circles, and whether to rotate the text, by modifying
       RadialLayout properties or changing overrides of <code>RadialLayout.RotateNode</code> and/or <code>RadialLayout.CommitLayers</code>.

@@ -31,8 +31,8 @@ namespace WinFormsExtensionControls.Table {
       myDiagram = diagramControl1.Diagram;
       myPalette = paletteControl1.Diagram as Palette;
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
+      Setup();
+      SetupPalette();
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom Layout, TableLayout, that is very much like a simplified ""Table"" Panel layout,

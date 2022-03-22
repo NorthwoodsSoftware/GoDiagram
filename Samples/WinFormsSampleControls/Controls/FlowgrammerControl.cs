@@ -25,10 +25,6 @@ namespace WinFormsSampleControls.Flowgrammer {
       myPalette = paletteControl1.Diagram as Palette;
       myOverview = overviewControl1.Diagram as Overview;
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-      overviewControl1.AfterRender = SetupOverview;
-
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
       btnNewDiagram.Click += (e, obj) => NewDiagram();
 
@@ -86,6 +82,10 @@ namespace WinFormsSampleControls.Flowgrammer {
     { ""From"":12, ""To"":13}
   ]
 }";
+
+      Setup();
+      SetupPalette();
+      SetupOverview();
     }
 
     private void Setup() {
@@ -102,7 +102,7 @@ namespace WinFormsSampleControls.Flowgrammer {
         foreach (var part in sel) {
           _DeletingNode(part);
         }
-      };      
+      };
       myDiagram.ExternalElementsDropped += (obj, e) => {
         var newnode = e.Diagram.Selection.FirstOrDefault() as Node;
         if (newnode == null) return;
@@ -266,7 +266,7 @@ namespace WinFormsSampleControls.Flowgrammer {
         else {
           var link = oldnode.FindLinksOutOf().FirstOrDefault();
           if (link != null) _DropOntoLink(e, link);
-        } 
+        }
       }
     }
 
@@ -467,7 +467,7 @@ namespace WinFormsSampleControls.Flowgrammer {
           .Set(nodeStyle)
           .Add(
             new Shape("Rectangle").Set(shapeStyle),
-            new TextBlock("Action") { Margin = 4, Editable = true }.Set(textStyle).Bind(TextBind())             
+            new TextBlock("Action") { Margin = 4, Editable = true }.Set(textStyle).Bind(TextBind())
           );
 
       var startTemplate =

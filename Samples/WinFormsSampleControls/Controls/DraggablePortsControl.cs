@@ -17,11 +17,11 @@ namespace WinFormsSampleControls.DraggablePorts {
     public DraggablePortsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       saveLoadModel1.SaveClick += (e, obj) => _Save();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
-      
+
       goWebBrowser1.Html = @"
 
   <p>
@@ -159,7 +159,7 @@ namespace WinFormsSampleControls.DraggablePorts {
                 Stretch = Stretch.Fill
               },
               new Picture {
-                Source = @"https://godiagram.com/samples/images/60x90.png",
+                Source = "https://godiagram.com/samples/images/60x90.png",
                 Width = 60,
                 Height = 90,
                 Scale = 0.5

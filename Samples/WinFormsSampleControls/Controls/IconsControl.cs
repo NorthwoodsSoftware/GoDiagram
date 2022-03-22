@@ -18,15 +18,15 @@ namespace WinFormsSampleControls.Icons {
     public IconsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
   <p>This sample shows several ""icons"" that were originally SVG paths, used as Shapes in GoDiagram.</p>
   <p>Above some icons are shown in a Tree-like Diagram, below a larger selection is shown.</p>
   <p>You can easily add your own shapes to GoDiagram by writing your own geometry strings, or by copying SVG path strings, as is done in this sample.</p>
   <p><a href=""intro/geometry.html"">Read more about GoDiagram path syntax here.</a></p>
-     
-"; 
+
+";
 
       goWebBrowser2.Html = @"
   <p>The icons in this sample are from a selection of free icons at <a href=""https://icomoon.io"">icomoon.io</a></p>

@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.Rescaling {
     public RescalingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
       Selecting a node will show a rescaling handle that when dragged will modify the node's <a>GraphObject.Scale</a> property.

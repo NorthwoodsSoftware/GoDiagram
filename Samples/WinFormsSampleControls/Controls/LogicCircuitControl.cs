@@ -18,9 +18,6 @@ namespace WinFormsSampleControls.LogicCircuit {
     public LogicCircuitControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -65,6 +62,8 @@ namespace WinFormsSampleControls.LogicCircuit {
   ]
 }";
 
+      Setup();
+      SetupPalette();
     }
 
     private void DefineNodeTemplates() {

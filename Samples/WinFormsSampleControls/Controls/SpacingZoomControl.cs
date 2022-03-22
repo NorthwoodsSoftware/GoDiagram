@@ -8,11 +8,11 @@ namespace WinFormsSampleControls.SpacingZoom {
   [ToolboxItem(false)]
   public partial class SpacingZoomControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public SpacingZoomControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       checkBxYAxis.CheckedChanged += (e, obj) => OnIsYSpacedToggled();
 

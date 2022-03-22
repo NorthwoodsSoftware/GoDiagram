@@ -27,7 +27,7 @@ namespace WinFormsSampleControls.Gantt {
     public GanttControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       trackBar1.ValueChanged += (e, obj) => rescale();
 
@@ -190,8 +190,8 @@ namespace WinFormsSampleControls.Gantt {
       myDiagram.UpdateAllTargetBindings();
       // update width of date scale and maybe change interval of labels if too small
       var width = scaleWidth(450);
-      
-      
+
+
       (dateScale.FindElement("line") as Shape).GeometryString = "M0 0 H" + width;
       if (width >= 140) (dateScale.FindElement("labels") as TextBlock).Interval = 1;
       if (width < 140) (dateScale.FindElement("labels") as TextBlock).Interval = 2;
@@ -199,7 +199,7 @@ namespace WinFormsSampleControls.Gantt {
       myDiagram.CommitTransaction("rescale");
     }
   }
-  
+
   public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
 
   public class NodeData : Model.NodeData {

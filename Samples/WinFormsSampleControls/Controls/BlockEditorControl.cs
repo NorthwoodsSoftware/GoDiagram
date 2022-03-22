@@ -14,13 +14,10 @@ namespace WinFormsSampleControls.BlockEditor {
     public BlockEditorControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
-
   <p>
     Double-click in the background to create a new node.
     Create groups by selecting nodes and invoking Ctrl-G; Ctrl-Shift-G to ungroup a selected group.
@@ -59,6 +56,7 @@ namespace WinFormsSampleControls.BlockEditor {
  ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

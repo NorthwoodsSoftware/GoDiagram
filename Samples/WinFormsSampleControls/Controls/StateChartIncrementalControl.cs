@@ -10,11 +10,9 @@ namespace WinFormsSampleControls.StateChartIncremental {
   [ToolboxItem(false)]
   public partial class StateChartIncrementalControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public StateChartIncrementalControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -60,6 +58,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
   ]
 }";
 
+      Setup();
     }
 
     private string myTransaction = "InitialLayout";

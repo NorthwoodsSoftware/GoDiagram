@@ -21,9 +21,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}"/>.
   /// </remarks>
   public class SpiralNetwork : GenericNetwork<SpiralVertex, SpiralEdge, SpiralLayout> {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork()"/>
-    public SpiralNetwork() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork(Y)"/>
     public SpiralNetwork(SpiralLayout layout) : base(layout) { }
 
@@ -45,9 +42,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Vertex"/>.
   /// </remarks>
   public class SpiralVertex : SpiralNetwork.Vertex {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex()"/>
-    public SpiralVertex() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex(GenericNetwork{V, E, Y})"/>
     public SpiralVertex(SpiralNetwork network) : base(network) { }
   }
@@ -59,9 +53,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Edge"/>.
   /// </remarks>
   public class SpiralEdge : SpiralNetwork.Edge {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge()"/>
-    public SpiralEdge() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge(GenericNetwork{V, E, Y})"/>
     public SpiralEdge(SpiralNetwork network) : base(network) { }
   }

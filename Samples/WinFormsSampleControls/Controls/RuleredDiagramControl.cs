@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.RuleredDiagram {
   [ToolboxItem(false)]
   public partial class RuleredDiagramControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public RuleredDiagramControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       diagramControl1.MouseEnter += (s, e) => ShowIndicators();
       diagramControl1.MouseLeave += (s, e) => HideIndicators();
 

@@ -18,11 +18,11 @@ namespace WinFormsSampleControls.ProductionProcess {
     static ProductionProcessControl() {
       _HttpClient.DefaultRequestHeaders.Add("User-Agent", "Production Process Image Getter");
     }
-    
+
     public ProductionProcessControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       txtJSON.Text = myModelData;
 
       goWebBrowser1.Html = @"
@@ -122,7 +122,7 @@ namespace WinFormsSampleControls.ProductionProcess {
       }
 
       // diagram properties
-      myDiagram.InitialAutoScale = AutoScaleType.None; // scale to show all of the contents
+      myDiagram.InitialAutoScale = AutoScale.None; // scale to show all of the contents
       myDiagram.ChangedSelection += OnSelectionChanged; // view additional information
       myDiagram.MaxSelectionCount = 1; // don't allow users to select more than one thing at a time
       myDiagram.IsReadOnly = true;

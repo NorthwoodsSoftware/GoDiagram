@@ -18,7 +18,7 @@ namespace WinFormsSampleControls.Virtualized {
     public VirtualizedControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
    <p>
@@ -80,7 +80,7 @@ namespace WinFormsSampleControls.Virtualized {
               .Bind("Stroke", "State", s => _LinkColors[(int)s])
           );
 
-      
+
 
       // This model includes all of the data
       myWholeModel = new Model(); // must match the model used by the Diagram, below
@@ -152,14 +152,14 @@ namespace WinFormsSampleControls.Virtualized {
 
     // The following functions implement virtualization of the Diagram
     // Assume data.bounds is a Rect of the area occupied by the Node in document coordinates.
-    
+
     // It's not good enough to ensure keys are unique in the limited model that is myDiagram.Model --
     // need to ensure uniqueness in MyWholeModel.
     private int _VirtualUniqueKey(Model<NodeData, int, object> model, NodeData data) {
       myWholeModel.MakeNodeDataKeyUnique(data);
       return myWholeModel.GetKeyForNodeData(data);
     }
-    
+
     // The normal mechanism for determining the size of the document depends on all of the
     // Nodes and Links existing, so we need to use a function that depends only on the model data.
     private Rect _ComputeDocumentBounds() {
@@ -248,7 +248,7 @@ namespace WinFormsSampleControls.Virtualized {
       if (e.Model.SkipsUndoManager) return;
       if (e.Change == ChangeType.Property) {
         if (e.PropertyName == "Bounds") {
-          _WholeQuadTree.Move(e.Object as NodeData, ((Point)e.NewValue).X, ((Point)e.NewValue).Y);
+          _WholeQuadTree.Move(e.Object as NodeData, ((Rect)e.NewValue).X, ((Rect)e.NewValue).Y);
         }
       } else if (e.Change == ChangeType.Insert) {
         if (e.PropertyName == "NodeDataSource") {

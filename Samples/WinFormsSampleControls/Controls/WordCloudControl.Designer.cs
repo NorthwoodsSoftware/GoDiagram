@@ -1,6 +1,6 @@
 ﻿
-namespace WinFormsSampleControls.WordCloud {
-  partial class WordCloudControl {
+namespace WinFormsSampleControls.Wordcloud {
+  partial class WordcloudControl {
     /// <summary> 
     /// Required designer variable.
     /// </summary>

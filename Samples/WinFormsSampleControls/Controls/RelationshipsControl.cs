@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.Relationships {
   [ToolboxItem(false)]
   public partial class RelationshipsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public RelationshipsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
    <p>

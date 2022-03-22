@@ -7,11 +7,11 @@ namespace WinFormsSampleControls.PieCharts {
   [ToolboxItem(false)]
   public partial class PieChartsControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
+
     public PieChartsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

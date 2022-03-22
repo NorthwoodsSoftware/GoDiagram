@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.SinglePage {
   [ToolboxItem(false)]
   public partial class SinglePageControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public SinglePageControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -44,7 +44,7 @@ namespace WinFormsSampleControls.SinglePage {
 
       // diagram properties
       myDiagram.FixedBounds = pageBounds.AddMargin(pageMargin);
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.AnimationManager.IsInitial = false;
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.ToolManager.ResizingTool = new SinglePageResizingTool();

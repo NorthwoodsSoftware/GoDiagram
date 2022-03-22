@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.Shapes {
     public ShapesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -37,7 +37,7 @@ namespace WinFormsSampleControls.Shapes {
         <p>
       With GoDiagram you can also define your own custom shapes with SVG - like path syntax, see the <a href=""Icons"">SVG icons</a>
       sample for examples or the <a href=""intro/geometry.html"">Geometry Path Strings intro page</a> to learn more.
-        </p>    
+        </p>
         <p>
       For predefined arrowheads, see the <a href=""Arrowheads"">Arrowheads</a> sample.
         </p>
@@ -134,7 +134,7 @@ namespace WinFormsSampleControls.Shapes {
     }
 
   }
-  
+
   // define the model data
   public class Model : Model<NodeData, string, object> { }
   public class NodeData : Model.NodeData { }

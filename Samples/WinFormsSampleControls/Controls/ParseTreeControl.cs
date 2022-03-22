@@ -9,12 +9,12 @@ namespace WinFormsSampleControls.ParseTree {
   [ToolboxItem(false)]
   public partial class ParseTreeControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ParseTreeControl() {
       InitializeComponent();
 
       //When page loads
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>A <em>parse tree</em> is an ordered, rooted tree representing the structure of a sentence, broken down to parts-of-speech.</p>
         <p>
@@ -32,7 +32,7 @@ namespace WinFormsSampleControls.ParseTree {
             <li><b>NN</b>, a common noun</li>
             <li><b>VBZ</b>, a third person singular present verb</li>
             <li><b>VBN</b>, a past participle verb</li>
-          </ul>                                                        
+          </ul>
         </p>
       ";
     }
@@ -43,7 +43,7 @@ namespace WinFormsSampleControls.ParseTree {
       myDiagram.AllowCopy = false;
       myDiagram.AllowDelete = false;
       myDiagram.AllowMove = false;
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.Layout = new FlatTreeLayout { // custom tree layout, defined below
         Angle = 90,
         Compaction = TreeCompaction.None

@@ -15,14 +15,14 @@ namespace WinFormsSampleControls.Genogram {
   [ToolboxItem(false)]
   public partial class GenogramControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
-    public GenogramControl() 
+
+    public GenogramControl()
     {
 
       InitializeComponent();
 
       //When page loads
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>A <em>genogram</em> or <em>pedigree chart</em> is an extended family tree diagram that displays information about each person or each relationship.</p>
         <p>
@@ -105,7 +105,7 @@ namespace WinFormsSampleControls.Genogram {
 
       MyDiagram = diagramControl1.Diagram;
 
-      MyDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      MyDiagram.InitialAutoScale = AutoScale.Uniform;
       // when a node is selected, draw a big yellow circle behind it
       MyDiagram.NodeSelectionAdornmentTemplate = new Adornment(PanelLayoutAuto.Instance) {
         LayerName = "Grid"
@@ -456,7 +456,7 @@ namespace WinFormsSampleControls.Genogram {
     }
 
 
-    
+
   }
 
   public class GenogramLayout : LayeredDigraphLayout {

@@ -17,8 +17,6 @@ namespace WinFormsSampleControls.Grafcet {
     public GrafcetControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -26,7 +24,7 @@ namespace WinFormsSampleControls.Grafcet {
 
   <p>
     A grafcet diagram is similar to a <a href=""SequentialFunction"">sequential function chart</a>.
-  </p> 
+  </p>
   <p>
     Select a Node to show a list of Buttons that enable creating new Nodes or drawing new Links.
     These buttons are defined as an adornment that is used in a common <a>Part.SelectionAdornmentTemplate</a>.
@@ -86,6 +84,7 @@ namespace WinFormsSampleControls.Grafcet {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

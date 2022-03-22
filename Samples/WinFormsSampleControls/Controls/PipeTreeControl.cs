@@ -11,11 +11,11 @@ namespace WinFormsSampleControls.PipeTree {
   [ToolboxItem(false)]
   public partial class PipeTreeControl : UserControl {
     private Diagram myDiagram;
-    
+
     public PipeTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

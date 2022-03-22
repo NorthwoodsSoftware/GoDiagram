@@ -18,8 +18,6 @@ namespace WinFormsSampleControls.DynamicPorts {
     public DynamicPortsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       topBtn.Click += (e, obj) => AddPort("Top");
       bottomBtn.Click += (e, obj) => AddPort("Bottom");
       leftBtn.Click += (e, obj) => AddPort("Left");
@@ -27,8 +25,6 @@ namespace WinFormsSampleControls.DynamicPorts {
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
-
-
 
       goWebBrowser1.Html = @"
   <p>
@@ -90,7 +86,8 @@ namespace WinFormsSampleControls.DynamicPorts {
     { ""From"": 1, ""To"": 2, ""FromPort"": ""Right1"", ""ToPort"": ""Left2"" }
   ]
 }";
-  
+
+      Setup();
     }
 
     private void Setup() {
@@ -508,6 +505,6 @@ namespace WinFormsSampleControls.DynamicPorts {
       }
     }
 
-    
+
   }
 }

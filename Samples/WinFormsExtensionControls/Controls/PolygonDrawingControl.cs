@@ -13,8 +13,6 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     public PolygonDrawingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -56,6 +54,8 @@ namespace WinFormsExtensionControls.PolygonDrawing {
           ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Category"": ""PolygonDrawing"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
           ""SharedData"": { ""Position"":""0 0"" }
         }";
+
+      Setup();
     }
 
     private void Setup() {

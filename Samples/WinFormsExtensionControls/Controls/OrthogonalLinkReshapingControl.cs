@@ -13,7 +13,7 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
     public OrthogonalLinkReshapingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       radBtnOrthogonal.CheckedChanged += (e, obj) => SetOrthogonalRouting();
       radBtnAvoidsNodes.CheckedChanged += (e, obj) => SetAvoidsNodesRouting();

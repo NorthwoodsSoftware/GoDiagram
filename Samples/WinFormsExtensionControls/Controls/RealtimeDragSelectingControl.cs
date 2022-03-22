@@ -13,7 +13,7 @@ namespace WinFormsExtensionControls.RealtimmeDragSelecting {
     public RealtimeDragSelectingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates the RealtimeDragSelectingTool, which replaces the standard <a>DragSelectingTool</a>.

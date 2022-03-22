@@ -17,9 +17,6 @@ namespace WinFormsSampleControls.PageFlow {
     public PageFlowControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
       btnLayout.Click += (e, obj) => doLayout();
@@ -66,7 +63,7 @@ namespace WinFormsSampleControls.PageFlow {
     { ""Key"": 101, ""Category"": ""DesiredEvent"", ""Text"": ""Ordered!"" },
     { ""Key"": 102, ""Category"": ""DesiredEvent"", ""Text"": ""Downloaded!"" },
 
-    { 
+    {
       ""Key"": 201, ""Category"": ""UndesiredEvent"",
       ""ReasonsList"": [
         { ""Text"":""Needs redesign?""},
@@ -77,7 +74,7 @@ namespace WinFormsSampleControls.PageFlow {
       ""Key"": 202, ""Category"": ""UndesiredEvent"",
       ""ReasonsList"": [
         { ""Text"":""Need better samples?""},
-        { ""Text"":""Bad landing page for Advertising?""} 
+        { ""Text"":""Bad landing page for Advertising?""}
       ]
     },
     {
@@ -115,6 +112,8 @@ namespace WinFormsSampleControls.PageFlow {
   ]
 }";
 
+      Setup();
+      SetupPalette();
     }
 
     private void DefineNodeTemplates() {
@@ -292,7 +291,7 @@ namespace WinFormsSampleControls.PageFlow {
 
       // have mouse wheel events zoom in and out instead of scroll up and down
       myDiagram.ToolManager.MouseWheelBehavior = WheelMode.Zoom;
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.ToolManager.LinkingTool.Direction = LinkingDirection.ForwardsOnly;
       myDiagram.Layout = new LayeredDigraphLayout {
         IsInitial = false,
@@ -331,7 +330,7 @@ namespace WinFormsSampleControls.PageFlow {
       myPalette = paletteControl1.Diagram as Palette;
       DefineNodeTemplates();
       myPalette.NodeTemplateMap = sharedNodeTemplateMap;
-      //myPalette.AutoScale = AutoScaleType.Uniform; // everything always fits in viewport
+      //myPalette.AutoScale = AutoScale.Uniform; // everything always fits in viewport
 
       myPalette.Model = new Model {
         NodeDataSource = new List<NodeData> {

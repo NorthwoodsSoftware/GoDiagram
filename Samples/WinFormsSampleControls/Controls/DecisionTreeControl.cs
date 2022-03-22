@@ -14,11 +14,11 @@ namespace WinFormsSampleControls.DecisionTree {
   public partial class DecisionTreeControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
 
-    public DecisionTreeControl() 
+    public DecisionTreeControl()
     {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           This sample allows a user to make progressive decisions about personality types.

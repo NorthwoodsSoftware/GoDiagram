@@ -16,8 +16,6 @@ namespace WinFormsSampleControls.Flowchart {
     public FlowchartControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
       goWebBrowser1.Html = @"
         <p>
           The FlowChart sample demonstrates several key features of GoDiagram,
@@ -69,6 +67,9 @@ namespace WinFormsSampleControls.Flowchart {
 }";
       saveLoadModel1.SaveClick += (obj, e) => SaveModel();
       saveLoadModel1.LoadClick += (obj, e) => LoadModel();
+
+      Setup();
+      SetupPalette();
     }
 
     // Define a function for creating a "port" that is normally transparent.
@@ -350,7 +351,7 @@ namespace WinFormsSampleControls.Flowchart {
       if (_Diagram == null) return;
       _Diagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
     }
-    
+
   }
 
   public class Model : GraphLinksModel<NodeData, int, object, LinkData, string, string> { }

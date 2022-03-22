@@ -13,7 +13,7 @@ namespace WinFormsSampleControls.FriendWheel {
     public FriendWheelControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -50,7 +50,7 @@ namespace WinFormsSampleControls.FriendWheel {
       var highlightColor = "red";
 
       // diagram properties
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.Padding = 10;
       myDiagram.ContentAlignment = Spot.Center;
       myDiagram.Layout = new WheelLayout {

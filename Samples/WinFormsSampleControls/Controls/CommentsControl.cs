@@ -18,8 +18,6 @@ namespace WinFormsSampleControls.Comments {
     public CommentsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       goWebBrowser1.Html = @"
 
  <p>
@@ -56,6 +54,7 @@ namespace WinFormsSampleControls.Comments {
 { ""From"": ""G comment"", ""To"": ""Gamma"", ""Category"": ""Comment"" }
 ]}";
 
+      Setup();
     }
 
     private void Setup() {

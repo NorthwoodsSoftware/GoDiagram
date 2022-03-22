@@ -14,11 +14,11 @@ namespace WinFormsSampleControls.Arrowheads {
   [ToolboxItem(false)]
   public partial class ArrowheadsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ArrowheadsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -36,11 +36,11 @@ namespace WinFormsSampleControls.Arrowheads {
         See the definitions of all these arrowheads in the file:
         <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Arrowheads/Arrowheads.cs"">Arrowheads.cs</a>.
       </p>
-    
+
       <p>
         For predefined shape geometries, see the <a href=""Shapes"">Shapes</a> sample.
       </p>
-    
+
 ";
 
     }

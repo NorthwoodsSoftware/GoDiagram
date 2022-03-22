@@ -16,7 +16,7 @@ namespace WinFormsSampleControls.KittenMonitor {
     public KittenMonitorControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

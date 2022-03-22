@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
     public FreehandDrawingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnSelect.Click += (e, obj) => Mode(false);
       btnDraw.Click += (e, obj) => Mode(true);

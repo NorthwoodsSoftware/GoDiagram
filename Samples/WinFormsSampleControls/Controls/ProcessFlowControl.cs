@@ -13,8 +13,6 @@ namespace WinFormsSampleControls.ProcessFlow {
     public ProcessFlowControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -59,6 +57,7 @@ namespace WinFormsSampleControls.ProcessFlow {
   ]
 }";
 
+      Setup();
     }
 
 
@@ -77,7 +76,7 @@ namespace WinFormsSampleControls.ProcessFlow {
       myDiagram.ToolManager.RotatingTool.SnapAngleEpsilon = 45;
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.AnimationManager.IsEnabled = true;
-      
+
 
       // node templatemap "Process"
       myDiagram.NodeTemplateMap.Add("Process",

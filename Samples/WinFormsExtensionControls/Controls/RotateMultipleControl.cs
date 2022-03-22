@@ -11,7 +11,7 @@ namespace WinFormsExtensionControls.RotateMultiple {
     public RotateMultipleControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom <a>RotatingTool</a> which allows the user to rotate many selected objects at once.

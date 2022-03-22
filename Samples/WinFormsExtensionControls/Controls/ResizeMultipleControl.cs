@@ -11,7 +11,7 @@ namespace WinFormsExtensionControls.ResizeMultiple {
     public ResizeMultipleControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
            <p>
           This sample demonstrates a custom <a>ResizingTool</a> which allows the user to resize many selected objects at once.

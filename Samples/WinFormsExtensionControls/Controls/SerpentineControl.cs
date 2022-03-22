@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.Serpentine {
     public SerpentineControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
           <p>
           This sample demonstrates a custom Layout, SerpentineLayout, which assumes the graph consists of a chain of nodes.

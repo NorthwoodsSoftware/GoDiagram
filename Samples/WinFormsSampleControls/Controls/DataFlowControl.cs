@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;
@@ -16,8 +11,6 @@ namespace WinFormsSampleControls.DataFlow {
 
     public DataFlowControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -81,13 +74,14 @@ namespace WinFormsSampleControls.DataFlow {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
       myDiagram.InitialContentAlignment = Spot.Left;
-      myDiagram.InitialAutoScale = AutoScaleType.UniformToFill;
+      myDiagram.InitialAutoScale = AutoScale.UniformToFill;
       myDiagram.Layout = new LayeredDigraphLayout {
         Direction = 0
       };

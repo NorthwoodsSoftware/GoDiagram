@@ -9,11 +9,9 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
   [ToolboxItem(false)]
   public partial class ShopFloorMonitorControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ShopFloorMonitorControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       btnLoad.Click += (e, obj) => LoadModel();
 
@@ -33,6 +31,8 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
 
 
       txtJSON.Text = myModelData;
+
+      Setup();
     }
 
     private string myModelData =
@@ -88,9 +88,9 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
         }
       }
 
-      string NodeProblemConverter(object msg, object _) {
+      object NodeProblemConverter(object msg, object _) {
         if (msg as string != "") return "red";
-        return null;
+        return (Brush)null;
       }
 
       string NodeOperationConverter(object sAsObj, object _) {
@@ -213,7 +213,7 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
 
       LoadModel();
       Loop(); // start the simulation
-      
+
     }
 
     private void LoadModel() {

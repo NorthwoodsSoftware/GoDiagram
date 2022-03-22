@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.GuidedDragging {
     public GuidedDraggingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
    <p>

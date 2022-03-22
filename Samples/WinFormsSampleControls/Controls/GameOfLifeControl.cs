@@ -32,7 +32,7 @@ namespace WinFormsSampleControls.GameOfLife {
     public GameOfLifeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnStart.Click += (e, obj) => ToggleSimulation();
       btnStep.Click += (e, obj) => StepOnclick();
@@ -65,9 +65,9 @@ namespace WinFormsSampleControls.GameOfLife {
     </p>
     <p>
       Each cell is implemented by a simple <a>Part</a> holding a small square <a>Shape</a>.
- 
+
      </p>
- 
+
 ";
 
     }
@@ -84,7 +84,7 @@ namespace WinFormsSampleControls.GameOfLife {
     }
 
     private void Setup() {
-      // initialize grid 
+      // initialize grid
       goLGrid = new Part[rows, cols];
 
       myDiagram = diagramControl1.Diagram;
@@ -97,7 +97,7 @@ namespace WinFormsSampleControls.GameOfLife {
       myDiagram.AllowSelect = false;
       myDiagram.HasHorizontalScrollbar = false;
       myDiagram.HasVerticalScrollbar = false;
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
 
       var nodeDataSource = new List<NodeData>();
       // populate data array by initializing Nodes in a grid and setting their "isAlive" state to false
@@ -170,7 +170,7 @@ namespace WinFormsSampleControls.GameOfLife {
           new Binding("Location")
         );
 
-      // simple model 
+      // simple model
       myDiagram.Model = new Model {
         NodeDataSource = nodeDataSource
       };

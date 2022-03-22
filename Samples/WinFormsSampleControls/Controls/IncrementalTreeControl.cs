@@ -19,7 +19,7 @@ namespace WinFormsSampleControls.IncrementalTree {
     public IncrementalTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       btnZoomToFit.Click += (e, obj) => ZoomToFit();
       btnExpandRandomNode.Click += (e, obj) => ExpandAtRandom();

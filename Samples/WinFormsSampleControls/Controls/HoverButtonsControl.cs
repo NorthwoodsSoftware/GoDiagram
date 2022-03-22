@@ -12,11 +12,11 @@ namespace WinFormsSampleControls.HoverButtons {
   [ToolboxItem(false)]
   public partial class HoverButtonsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public HoverButtonsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

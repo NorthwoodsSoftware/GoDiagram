@@ -13,11 +13,11 @@ namespace WinFormsSampleControls.CustomExpandCollapse {
   [ToolboxItem(false)]
   public partial class CustomExpandCollapseControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public CustomExpandCollapseControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -28,7 +28,7 @@ namespace WinFormsSampleControls.CustomExpandCollapse {
     </p>
     <p>
       Instead, this sample implements a ""Button"" with custom behavior to modify the visibility of each Node.
-      If this behavior is still not quite right for your app, you can adapt the behavior implemented in the 
+      If this behavior is still not quite right for your app, you can adapt the behavior implemented in the
       <code>CollapseFrom</code> and <code>ExpandFrom</code> functions to use different criteria for when to stop recursion.
      </p>
      ";

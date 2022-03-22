@@ -20,7 +20,7 @@ namespace WinFormsDemoApp {
       { "DoubleTree", new NavItem("Double Tree", typeof(WinFormsSampleControls.DoubleTree.DoubleTreeControl)) },
       { "MindMap", new NavItem("Mind Map", typeof(WinFormsSampleControls.MindMap.MindMapControl)) },
       { "DecisionTree", new NavItem("Decision Tree", typeof(WinFormsSampleControls.DecisionTree.DecisionTreeControl)) },
-      { "IVRtree", new NavItem("IVR", typeof(WinFormsSampleControls.IVR.IVRControl)) },
+      { "IVRtree", new NavItem("IVR", typeof(WinFormsSampleControls.IVRTree.IVRTreeControl)) },
       { "IncrementalTree", new NavItem("Incremental Tree", typeof(WinFormsSampleControls.IncrementalTree.IncrementalTreeControl)) },
       { "ParseTree", new NavItem("Parse Tree", typeof(WinFormsSampleControls.ParseTree.ParseTreeControl)) },
       { "TreeView", new NavItem("Tree View", typeof(WinFormsSampleControls.TreeView.TreeViewControl)) },
@@ -32,12 +32,12 @@ namespace WinFormsDemoApp {
       { "ProcessFlow", new NavItem("Process Flow", typeof(WinFormsSampleControls.ProcessFlow.ProcessFlowControl)) },
       { "SystemDynamics", new NavItem("System Dynamics", typeof(WinFormsSampleControls.SystemDynamics.SystemDynamicsControl)) },
       { "StateChart", new NavItem("State Chart", typeof(WinFormsSampleControls.StateChart.StateChartControl)) },
-      { "KanbanBoard", new NavItem("Kanban Board", typeof(WinFormsSampleControls.KanbanBoard.KanbanBoardControl)) },
+      { "Kanban", new NavItem("Kanban Board", typeof(WinFormsSampleControls.Kanban.KanbanControl)) },
       { "SequentialFunction", new NavItem("Sequential Function", typeof(WinFormsSampleControls.SequentialFunction.SequentialFunctionControl)) },
       { "Grafcet", new NavItem("Grafcet", typeof(WinFormsSampleControls.Grafcet.GrafcetControl)) },
       { "SequenceDiagram", new NavItem("Sequence Diagram", typeof(WinFormsSampleControls.SequenceDiagram.SequenceDiagramControl)) },
       { "LogicCircuit", new NavItem("Logic Circuit", typeof(WinFormsSampleControls.LogicCircuit.LogicCircuitControl)) },
-      { "Records", new NavItem("Record Mapper", typeof(WinFormsSampleControls.RecordMapper.RecordMapperControl)) },
+      { "Records", new NavItem("Record Mapper", typeof(WinFormsSampleControls.Records.RecordsControl)) },
       { "DataFlow", new NavItem("Data Flow (Horizontal)", typeof(WinFormsSampleControls.DataFlow.DataFlowControl)) },
       { "DynamicPorts", new NavItem("Dynamic Ports", typeof(WinFormsSampleControls.DynamicPorts.DynamicPortsControl)) },
       { "Planogram", new NavItem("Planogram", typeof(WinFormsSampleControls.Planogram.PlanogramControl)) },
@@ -48,19 +48,19 @@ namespace WinFormsDemoApp {
       { "LinkToLinks", new NavItem("Links To Links", typeof(WinFormsSampleControls.LinksToLinks.LinksToLinksControl)) },
       { "BeatPaths", new NavItem("Beat Paths", typeof(WinFormsSampleControls.BeatPaths.BeatPathsControl)) },
       { "ConceptMap", new NavItem("Concept Map", typeof(WinFormsSampleControls.ConceptMap.ConceptMapControl)) },
-      { "Euler", new NavItem("Euler Diagram", typeof(WinFormsSampleControls.EulerDiagram.EulerDiagramControl)) },
+      { "Euler", new NavItem("Euler Diagram", typeof(WinFormsSampleControls.Euler.EulerControl)) },
       { "EntityRelationship", new NavItem("Entity Relationship", typeof(WinFormsSampleControls.EntityRelationship.EntityRelationshipControl)) },
       { "FriendWheel", new NavItem("Friend Wheel", typeof(WinFormsSampleControls.FriendWheel.FriendWheelControl)) },
       { "Radial", new NavItem("Recentering Radial", typeof(WinFormsSampleControls.Radial.RadialControl)) }, // Moved to samples from extensions
       { "RadialPartition", new NavItem("Radial Partition", typeof(WinFormsSampleControls.RadialPartition.RadialPartitionControl)) },
-      { "DistancesAndPaths", new NavItem("Distances and Paths", typeof(WinFormsSampleControls.DistancesAndPaths.DistancesAndPathsControl)) },
+      { "Distances", new NavItem("Distances and Paths", typeof(WinFormsSampleControls.Distances.DistancesControl)) },
       { "Sankey", new NavItem("Sankey Diagram", typeof(WinFormsSampleControls.Sankey.SankeyControl)) },
       { "PERT", new NavItem("PERT", typeof(WinFormsSampleControls.PERT.PERTControl)) },
       { "Gantt", new NavItem("Gantt", typeof(WinFormsSampleControls.Gantt.GanttControl)) },
       { "ShopFloorMonitor", new NavItem("Shop Floor Monitor", typeof(WinFormsSampleControls.ShopFloorMonitor.ShopFloorMonitorControl)) },
       { "KittenMonitor", new NavItem("Kitten Monitor", typeof(WinFormsSampleControls.KittenMonitor.KittenMonitorControl)) },
       { "Grouping", new NavItem("Grouping", typeof(WinFormsSampleControls.Grouping.GroupingControl)) },
-      { "SwimBands", new NavItem("Layer Bands", typeof(WinFormsSampleControls.LayerBands.LayerBandsControl)) },
+      { "SwimBands", new NavItem("Layer Bands", typeof(WinFormsSampleControls.SwimBands.SwimBandsControl)) },
       { "SwimLanes", new NavItem("Swim Lanes (Horizontal)", typeof(WinFormsSampleControls.SwimLanes.SwimLanesControl)) },
       { "UmlClass", new NavItem("UML Class", typeof(WinFormsSampleControls.UMLClass.UMLClassControl)) },
       { "Minimal", new NavItem("Minimal", typeof(WinFormsSampleControls.Minimal.MinimalControl)) },
@@ -72,14 +72,14 @@ namespace WinFormsDemoApp {
       { "Arrowheads", new NavItem("Arrowheads", typeof(WinFormsSampleControls.Arrowheads.ArrowheadsControl)) },
       { "Navigation", new NavItem("Navigation", typeof(WinFormsSampleControls.Navigation.NavigationControl)) },
       { "UpdateDemo", new NavItem("Update Demo", typeof(WinFormsSampleControls.UpdateDemo.UpdateDemoControl)) },
-      { "ContentAlign", new NavItem("Content Alignment", typeof(WinFormsSampleControls.ContentAlignment.ContentAlignmentControl)) },
+      { "ContentAlign", new NavItem("Content Alignment", typeof(WinFormsSampleControls.ContentAlign.ContentAlignControl)) },
       { "Comments", new NavItem("Comments", typeof(WinFormsSampleControls.Comments.CommentsControl)) },
-      { "GLayout", new NavItem("Grid Layout", typeof(WinFormsSampleControls.GridLayoutSample.GridLayoutSampleControl)) },
-      { "TLayout", new NavItem("Tree Layout", typeof(WinFormsSampleControls.TreeLayoutSample.TreeLayoutSampleControl)) },
-      { "FDLayout", new NavItem("ForceDirected Layout", typeof(WinFormsSampleControls.ForceDirectedLayoutSample.ForceDirectedLayoutSampleControl)) },
-      { "LDLayout", new NavItem("Layered Digraph", typeof(WinFormsSampleControls.LayeredDigraph.LayeredDigraphControl)) },
-      { "CLayout", new NavItem("Circular Layout", typeof(WinFormsSampleControls.CircularLayoutSample.CircularLayoutSampleControl)) },
-      { "InteractiveForce", new NavItem("Interactive Force", typeof(WinFormsSampleControls.InteractiveForceDirected.InteractiveForceDirectedControl)) },
+      { "GLayout", new NavItem("Grid Layout", typeof(WinFormsSampleControls.GLayout.GLayoutControl)) },
+      { "TLayout", new NavItem("Tree Layout", typeof(WinFormsSampleControls.TLayout.TLayoutControl)) },
+      { "FDLayout", new NavItem("ForceDirected Layout", typeof(WinFormsSampleControls.FDLayout.FDLayoutControl)) },
+      { "LDLayout", new NavItem("Layered Digraph", typeof(WinFormsSampleControls.LDLayout.LDLayoutControl)) },
+      { "CLayout", new NavItem("Circular Layout", typeof(WinFormsSampleControls.CLayout.CLayoutControl)) },
+      { "InteractiveForce", new NavItem("Interactive Force", typeof(WinFormsSampleControls.InteractiveForce.InteractiveForceControl)) },
 
       // Samples on Complete list but not on short list
       { "Absolute", new NavItem("Absolute", typeof(WinFormsSampleControls.Absolute.AbsoluteControl)) },
@@ -88,7 +88,7 @@ namespace WinFormsDemoApp {
       { "AdornmentButtons", new NavItem("Adornment Buttons", typeof(WinFormsSampleControls.AdornmentButtons.AdornmentButtonsControl)) },
       { "BarCharts", new NavItem("Bar Charts", typeof(WinFormsSampleControls.BarCharts.BarChartsControl)) },
       //{ "", new NavItem("Canvases", typeof(WinFormsSampleControls.Canvases.CanvasesControl)) },
-      { "CandlestickCharts", new NavItem("Candle-Stick Charts", typeof(WinFormsSampleControls.CandleStickCharts.CandleStickChartsControl)) },
+      { "CandlestickCharts", new NavItem("Candle-Stick Charts", typeof(WinFormsSampleControls.CandlestickCharts.CandlestickChartsControl)) },
       { "ConstantSize", new NavItem("Constant Size", typeof(WinFormsSampleControls.ConstantSize.ConstantSizeControl)) },
       { "ControlGauges", new NavItem("Control Gauges", typeof(WinFormsSampleControls.ControlGauges.ControlGaugesControl)) },
       { "Curviness", new NavItem("Curviness", typeof(WinFormsSampleControls.Curviness.CurvinessControl)) },
@@ -108,7 +108,7 @@ namespace WinFormsDemoApp {
       { "InstrumentGauge", new NavItem("Instrument Gauge", typeof(WinFormsSampleControls.InstrumentGauge.InstrumentGaugeControl)) },
       { "Macros", new NavItem("Macros", typeof(WinFormsSampleControls.Macros.MacrosControl)) },
       { "MultiNodePathLinks", new NavItem("Multi-Node Path Links", typeof(WinFormsSampleControls.MultiNodePathLinks.MultiNodePathLinksControl)) },
-      { "MultiArrow", new NavItem("Multiple Arrowheads", typeof(WinFormsSampleControls.MultipleArrowheads.MultipleArrowheadsControl)) },
+      { "MultiArrow", new NavItem("Multiple Arrowheads", typeof(WinFormsSampleControls.MultiArrow.MultiArrowControl)) },
       { "Network", new NavItem("Network", typeof(WinFormsSampleControls.Network.NetworkControl)) },
       { "OrgChartAssistants", new NavItem("OrgChart Assistants", typeof(WinFormsSampleControls.OrgChartAssistants.OrgChartAssistantsControl)) },
       { "OrgChartExtras", new NavItem("OrgChart Extras", typeof(WinFormsSampleControls.OrgChartExtras.OrgChartExtrasControl)) },
@@ -129,7 +129,7 @@ namespace WinFormsDemoApp {
       { "SharedStates", new NavItem("Shared States", typeof(WinFormsSampleControls.SharedStates.SharedStatesControl)) },
       { "SinglePage", new NavItem("Single Page", typeof(WinFormsSampleControls.SinglePage.SinglePageControl)) },
       { "SpacingZoom", new NavItem("Spacing Zoom", typeof(WinFormsSampleControls.SpacingZoom.SpacingZoomControl)) },
-      { "SparklineGraphs", new NavItem("Sparklines", typeof(WinFormsSampleControls.Sparklines.SparklinesControl)) },
+      { "SparklineGraphs", new NavItem("Sparklines", typeof(WinFormsSampleControls.SparklineGraphs.SparklineGraphsControl)) },
       { "Spreadsheet", new NavItem("Spreadsheet", typeof(WinFormsSampleControls.Spreadsheet.SpreadsheetControl)) },
       { "StateChartIncremental", new NavItem("State Chart Incremental", typeof(WinFormsSampleControls.StateChartIncremental.StateChartIncrementalControl)) },
       { "SwimLanesVertical", new NavItem("Swim Lanes (Vertical)", typeof(WinFormsSampleControls.SwimLanesVertical.SwimLanesVerticalControl)) },
@@ -140,20 +140,20 @@ namespace WinFormsDemoApp {
       { "TriStateCheckBoxTree", new NavItem("Tri-State CheckBox Tree", typeof(WinFormsSampleControls.TriStateCheckBoxTree.TriStateCheckBoxTreeControl)) },
       { "TwoHalves", new NavItem("Two Halves", typeof(WinFormsSampleControls.TwoHalves.TwoHalvesControl)) },
       { "Virtualized", new NavItem("Virtualized", typeof(WinFormsSampleControls.Virtualized.VirtualizedControl)) },
-      { "WordCloud", new NavItem("Word Cloud", typeof(WinFormsSampleControls.WordCloud.WordCloudControl)) }
+      { "Wordcloud", new NavItem("Word Cloud", typeof(WinFormsSampleControls.Wordcloud.WordcloudControl)) }
     };
 
     public static Dictionary<string, NavItem> Extensions = new(StringComparer.InvariantCultureIgnoreCase) {
       /****** LAYOUTS ******/
       { "Arranging", new NavItem("Arranging Layout", typeof(WinFormsExtensionControls.Arranging.ArrangingControl)) },
       { "Fishbone", new NavItem("Fishbone Layout", typeof(WinFormsExtensionControls.Fishbone.FishboneControl)) },
-      { "PackedLayout", new NavItem("Packed Layout", typeof(WinFormsExtensionControls.PackedLayoutSample.PackedLayoutSampleControl)) },
+      { "PackedLayout", new NavItem("Packed Layout", typeof(WinFormsExtensionControls.PackedLayout.PackedLayoutControl)) },
       { "Parellel", new NavItem("Parallel Layout", typeof(WinFormsExtensionControls.Parallel.ParallelControl)) },
       { "Serpentine", new NavItem("Serpentine Layout", typeof(WinFormsExtensionControls.Serpentine.SerpentineControl)) },
       { "Spiral", new NavItem("Spiral Layout", typeof(WinFormsExtensionControls.Spiral.SpiralControl)) },
-      { "SwimLaneLayout", new NavItem("Swim Lane Layout", typeof(WinFormsExtensionControls.SwimLane.SwimLaneControl)) },
+      { "SwimLaneLayout", new NavItem("Swim Lane Layout", typeof(WinFormsExtensionControls.SwimLaneLayout.SwimLaneLayoutControl)) },
       { "Table", new NavItem("Table Layout", typeof(WinFormsExtensionControls.Table.TableControl)) },
-      { "TreeMap", new NavItem("Tree Map Layout", typeof(WinFormsExtensionControls.TreeMapSample.TreeMapSampleControl)) },
+      { "TreeMap", new NavItem("Tree Map Layout", typeof(WinFormsExtensionControls.TreeMap.TreeMapControl)) },
 
       /****** TOOLS ******/
       { "RealtimeSelecting", new NavItem("Realtime Selecting", typeof(WinFormsExtensionControls.RealtimmeDragSelecting.RealtimeDragSelectingControl)) },
@@ -165,7 +165,7 @@ namespace WinFormsDemoApp {
       { "Rescaling", new NavItem("Rescaling", typeof(WinFormsExtensionControls.Rescaling.RescalingControl)) },
       { "CurvedLinkReshaping", new NavItem("Bez. Link Reshaping", typeof(WinFormsExtensionControls.CurvedLinkReshaping.CurvedLinkReshapingControl)) },
       { "OrthogonalLinkReshaping", new NavItem("Orth. Link Reshaping", typeof(WinFormsExtensionControls.OrthogonalLinkReshaping.OrthogonalLinkReshapingControl)) },
-      { "SnapLinkReshaping", new NavItem("Snap Link Reshaping", typeof(WinFormsExtensionControls.SnapLinkReshape.SnapLinkReshapeControl)) },
+      { "SnapLinkReshaping", new NavItem("Snap Link Reshaping", typeof(WinFormsExtensionControls.SnapLinkReshaping.SnapLinkReshapingControl)) },
       { "GeometryReshaping", new NavItem("Geometry Reshaping", typeof(WinFormsExtensionControls.GeometryReshaping.GeometryReshapingControl)) },
       { "SectorReshaping", new NavItem("Sector Reshaping", typeof(WinFormsExtensionControls.SectorReshaping.SectorReshapingControl)) },
       { "FreehandDrawing", new NavItem("Freehand Drawing", typeof(WinFormsExtensionControls.FreehandDrawing.FreehandDrawingControl)) },
@@ -184,9 +184,9 @@ namespace WinFormsDemoApp {
       /****** GRAPH OBJECTS ******/
       // scrolling table
       { "BalloonLink", new NavItem("Balloon Link", typeof(WinFormsExtensionControls.BalloonLink.BalloonLinkControl)) },
-      { "ParallelRoute", new NavItem("Parallel Route Links", typeof(WinFormsExtensionControls.ParallelLinkRouting.ParallelLinkRoutingControl)) },
+      { "ParallelRoute", new NavItem("Parallel Route Links", typeof(WinFormsExtensionControls.ParallelRoute.ParallelRouteControl)) },
       { "Dimensioning", new NavItem("Dimensioning Links", typeof(WinFormsExtensionControls.Dimensioning.DimensioningControl)) },
-      { "DrawCommandHandler", new NavItem("Drawing Commands", typeof(WinFormsExtensionControls.DrawCommandHandlerSample.DrawCommandHandlerSampleControl)) },
+      { "DrawCommandHandler", new NavItem("Drawing Commands", typeof(WinFormsExtensionControls.DrawCommandHandler.DrawCommandHandlerControl)) },
       // local storage?
       // simulating input (robot)
       // data inspector
@@ -196,8 +196,8 @@ namespace WinFormsDemoApp {
       // floor planner
 
       /****** OTHER ******/
-      { "Hyperlink", new NavItem("Hyperlinks", typeof(WinFormsExtensionControls.HyperlinkTextSample.HyperlinkTextSampleControl)) },
-      { "ZoomSlider", new NavItem("Zoom Slider", typeof(WinFormsExtensionControls.ZoomSliderSample.ZoomSliderSampleControl)) },
+      { "Hyperlink", new NavItem("Hyperlinks", typeof(WinFormsExtensionControls.Hyperlink.HyperlinkControl)) },
+      { "ZoomSlider", new NavItem("Zoom Slider", typeof(WinFormsExtensionControls.ZoomSlider.ZoomSliderControl)) },
       { "VirtualizedPacked", new NavItem("Virtualized Packed", typeof(WinFormsExtensionControls.VirtualizedPacked.VirtualizedPackedControl)) }
     };
   }

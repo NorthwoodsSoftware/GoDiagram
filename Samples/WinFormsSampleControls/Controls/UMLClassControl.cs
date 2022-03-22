@@ -8,18 +8,18 @@ namespace WinFormsSampleControls.UMLClass {
   [ToolboxItem(false)]
   public partial class UMLClassControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public UMLClassControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
          <p>
       This sample demonstrates one way of defining a UML (Unified Modeling Language) Class Diagram.
       Note the use of a separate Panel for the properties and one for the methods,
       allowing for an item template for properties and a separate item template for methods.
-      <a href=""intro/buttons.html#panelExpanderButton"">PanelExpanderButton</a>s are used to hide/show class properties and methods.        
+      <a href=""intro/buttons.html#panelExpanderButton"">PanelExpanderButton</a>s are used to hide/show class properties and methods.
         </p>
          <p>
       In this example, symbol prefixes indicate the visibility of methods and properties. The three possibilities are:

@@ -15,21 +15,19 @@ namespace WinFormsSampleControls.Sankey {
     public SankeyControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       readBtn.Click += (e, obj) => Setup();
 
       goWebBrowser1.Html = @"
          <p>
       A Sankey diagram is a type of flow diagram where the Link thickness is proportional to the flow quantity.
-         </p>      
+         </p>
 
 ";
       goWebBrowser2.Html = @"
          <p>
-      This sample demonstrates one way of generating a Sankey or flow diagram. 
+      This sample demonstrates one way of generating a Sankey or flow diagram.
       The data was derived from <a href=""https://tamc.github.io/Sankey/"">https://tamc.github.io/Sankey/</a>.
-        </p>      
+        </p>
 ";
       saveLoadModel1.ModelJson = @"
         {
@@ -178,13 +176,14 @@ namespace WinFormsSampleControls.Sankey {
      ]}
 ";
 
+      Setup();
     }
 
     private void Setup() {
 
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.InitialAutoScale = AutoScaleType.UniformToFill;
+      myDiagram.InitialAutoScale = AutoScale.UniformToFill;
       myDiagram.Layout = new SankeyLayout {
         SetsPortSpots = false, // to allowthe side spots on the nodes to take effect
         Direction = 0, // rightwards

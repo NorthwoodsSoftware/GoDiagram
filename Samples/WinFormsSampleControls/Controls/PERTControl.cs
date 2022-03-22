@@ -12,7 +12,7 @@ namespace WinFormsSampleControls.PERT {
     public PERTControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -49,7 +49,7 @@ namespace WinFormsSampleControls.PERT {
       var pinkfill = "#F8BBD0";
       var bluefill = "#B3E5FC";
 
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.Layout = new LayeredDigraphLayout();
 
       // The node template shows the activity name in the middle as well as

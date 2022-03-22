@@ -7,11 +7,11 @@ namespace WinFormsSampleControls.PanelLayout {
   [ToolboxItem(false)]
   public partial class PanelLayoutControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public PanelLayoutControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

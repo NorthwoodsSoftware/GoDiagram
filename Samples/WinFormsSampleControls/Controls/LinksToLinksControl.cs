@@ -11,8 +11,6 @@ namespace WinFormsSampleControls.LinksToLinks {
     public LinksToLinksControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -56,7 +54,9 @@ namespace WinFormsSampleControls.LinksToLinks {
 { ""From"": ""A-B"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-B-G-D"" ], ""Category"": ""linkToLink"" }
  ]}";
 
+      Setup();
     }
+
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 

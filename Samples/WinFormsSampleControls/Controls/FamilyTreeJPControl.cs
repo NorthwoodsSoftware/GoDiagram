@@ -13,16 +13,16 @@ namespace WinFormsSampleControls.FamilyTreeJP {
   [ToolboxItem(false)]
   public partial class FamilyTreeJPControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public FamilyTreeJPControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
   <p>For a variation of this tree, see the <a href=""FamilyTree"">British family tree sample</a>.</p>
-  <p>For a more complex family tree see the <a href=""Genogram"">genogram sample</a>.</p>     
+  <p>For a more complex family tree see the <a href=""Genogram"">genogram sample</a>.</p>
 ";
 
     }
@@ -154,7 +154,7 @@ namespace WinFormsSampleControls.FamilyTreeJP {
             }.Bind(
               new Binding("Text", "Name")
             ),
-            new TextBlock().Bind(
+            new TextBlock { Font = new Font("MS UI Gothic", 8) }.Bind(
               new Binding("Text", "KanjiName")
             )
           )

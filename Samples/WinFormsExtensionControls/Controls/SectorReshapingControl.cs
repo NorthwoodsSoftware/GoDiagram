@@ -11,7 +11,7 @@ namespace WinFormsExtensionControls.SectorReshaping {
     public SectorReshapingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
           <p>
           Two of the handles permit changing the angles of the sector; one handle permits changing the radius of the sector.

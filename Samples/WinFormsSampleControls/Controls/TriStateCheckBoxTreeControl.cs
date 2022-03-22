@@ -10,11 +10,11 @@ namespace WinFormsSampleControls.TriStateCheckBoxTree {
   [ToolboxItem(false)]
   public partial class TriStateCheckBoxTreeControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public TriStateCheckBoxTreeControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

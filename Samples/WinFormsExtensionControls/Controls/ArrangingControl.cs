@@ -16,7 +16,7 @@ namespace WinFormsExtensionControls.Arranging {
     public ArrangingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
       <p>
         This sample demonstrates a custom Layout, <a>ArrangingLayout</a>, that provides layouts of layouts.
@@ -47,7 +47,7 @@ namespace WinFormsExtensionControls.Arranging {
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.Layout = new CustomArrangingLayout() {
         // create a circular arrangement of circular layouts
         PrimaryLayout = new CircularLayout(), // must specify the primaryLayout

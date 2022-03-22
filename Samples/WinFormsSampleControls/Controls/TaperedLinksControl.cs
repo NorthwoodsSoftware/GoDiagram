@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.TaperedLinks {
   [ToolboxItem(false)]
   public partial class TaperedLinksControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public TaperedLinksControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

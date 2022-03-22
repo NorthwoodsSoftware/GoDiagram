@@ -7,11 +7,11 @@ namespace WinFormsSampleControls.Spreadsheet {
   [ToolboxItem(false)]
   public partial class SpreadsheetControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public SpreadsheetControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>

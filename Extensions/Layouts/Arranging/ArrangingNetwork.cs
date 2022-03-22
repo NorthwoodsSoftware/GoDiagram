@@ -13,9 +13,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}"/>.
   /// </remarks>
   public class ArrangingNetwork : GenericNetwork<ArrangingVertex, ArrangingEdge, ArrangingLayout> {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork()"/>
-    public ArrangingNetwork() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork(Y)"/>
     public ArrangingNetwork(ArrangingLayout layout) : base(layout) { }
 
@@ -37,9 +34,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Vertex"/>.
   /// </remarks>
   public class ArrangingVertex : ArrangingNetwork.Vertex {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex()"/>
-    public ArrangingVertex() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex(GenericNetwork{V, E, Y})"/>
     public ArrangingVertex(ArrangingNetwork network) : base(network) { }
   }
@@ -51,9 +45,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Edge"/>.
   /// </remarks>
   public class ArrangingEdge : ArrangingNetwork.Edge {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge()"/>
-    public ArrangingEdge() : base() { }
-
     /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge(GenericNetwork{V, E, Y})"/>
     public ArrangingEdge(ArrangingNetwork network) : base(network) { }
   }

@@ -72,12 +72,11 @@ namespace WinFormsSharedControls {
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 3);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
+            this.label1.Location = new System.Drawing.Point(165, 7);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(214, 21);
+            this.label1.Size = new System.Drawing.Size(208, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Diagram Model saved in JSON format:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

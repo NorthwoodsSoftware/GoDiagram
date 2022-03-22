@@ -70,21 +70,23 @@ namespace WinFormsSampleControls.Regrouping {
             // paletteControl1
             // 
             this.paletteControl1.AllowDrop = true;
-            this.paletteControl1.Location = new System.Drawing.Point(3, 3);
+            this.paletteControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
+            this.paletteControl1.Location = new System.Drawing.Point(4, 3);
+            this.paletteControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.paletteControl1.Name = "paletteControl1";
             this.paletteControl1.Size = new System.Drawing.Size(132, 594);
             this.paletteControl1.TabIndex = 0;
-            this.paletteControl1.Text = "paletteControl1";
             // 
             // diagramControl1
             // 
             this.diagramControl1.AllowDrop = true;
+            this.diagramControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(141, 3);
+            this.diagramControl1.Location = new System.Drawing.Point(144, 3);
+            this.diagramControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(856, 594);
+            this.diagramControl1.Size = new System.Drawing.Size(852, 594);
             this.diagramControl1.TabIndex = 1;
-            this.diagramControl1.Text = "diagramControl1";
             // 
             // goWebBrowser1
             // 
@@ -105,7 +107,7 @@ namespace WinFormsSampleControls.Regrouping {
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 879);
             this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
+            this.saveLoadModel1.Size = new System.Drawing.Size(994, 335);
             this.saveLoadModel1.TabIndex = 5;
             // 
             // RegroupingControl

@@ -13,11 +13,11 @@ namespace WinFormsSampleControls.AdornmentButtons {
   [ToolboxItem(false)]
   public partial class AdornmentButtonsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public AdornmentButtonsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 
@@ -41,7 +41,7 @@ namespace WinFormsSampleControls.AdornmentButtons {
     The fourth button, ""N"", when clicked, adds a new node and creates a link from
     the selected node to the new node.
     Dragging from the fourth button does the same thing as a click but also activates
-    the <a>DraggingTool</a>, allowing the user to drag the new node where they like.  
+    the <a>DraggingTool</a>, allowing the user to drag the new node where they like.
     </p>
 ";
 

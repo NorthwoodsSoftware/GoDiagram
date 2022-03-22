@@ -13,7 +13,7 @@ namespace WinFormsSampleControls.Basic {
     public BasicControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           This sample demonstrates tooltips and context menus for all parts and for the diagram background,

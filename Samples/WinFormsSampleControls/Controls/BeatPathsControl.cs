@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.BeatPaths {
     public BeatPathsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
           This sample demonstrates reading JSON data describing the relative rankings of NFL teams
@@ -40,7 +40,7 @@ namespace WinFormsSampleControls.BeatPaths {
       // diagram properties
 
       // automatically scale the diagram to fit the viewport's size
-      _Diagram.InitialAutoScale = AutoScaleType.Uniform;
+      _Diagram.InitialAutoScale = AutoScale.Uniform;
       // disable user copying of parts
       _Diagram.AllowCopy = false;
       // position all of the nodes and route all of the links
@@ -143,6 +143,6 @@ namespace WinFormsSampleControls.BeatPaths {
     public class NodeData : Model.NodeData { }
     public class LinkData : Model.LinkData { }
 
-    
+
   }
 }

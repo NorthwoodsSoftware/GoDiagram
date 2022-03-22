@@ -12,11 +12,11 @@ namespace WinFormsSampleControls.AddRemoveColumns {
   [ToolboxItem(false)]
   public partial class AddRemoveColumnsControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public AddRemoveColumnsControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
 
       btnInsertIntoArray.Click += (e, obj) => InsertIntoArray();
@@ -24,7 +24,7 @@ namespace WinFormsSampleControls.AddRemoveColumns {
       btnAddColumn.Click += (e, obj) => AddColumn("");
       btnRemoveColumn.Click += (e, obj) => RemoveColumn();
       btnSwapColumns.Click += (e, obj) => SwapTwoColumns();
-      
+
       goWebBrowser1.Html = @"
 
    <p>Add a row or Remove the second row of the table held by the selected node:</p>

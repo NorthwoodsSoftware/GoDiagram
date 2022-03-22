@@ -13,8 +13,6 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
     public LinkLabelDraggingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -62,6 +60,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

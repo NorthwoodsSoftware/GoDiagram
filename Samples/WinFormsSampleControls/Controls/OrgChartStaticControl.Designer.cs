@@ -48,58 +48,54 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(998, 859);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1430, 1435);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // diagramControl1
             // 
             this.diagramControl1.AllowDrop = true;
+            this.diagramControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(2, 2);
-            this.diagramControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.diagramControl1.Location = new System.Drawing.Point(5, 6);
+            this.diagramControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(994, 638);
+            this.diagramControl1.Size = new System.Drawing.Size(1420, 1063);
             this.diagramControl1.TabIndex = 0;
-            this.diagramControl1.Text = "diagramControl1";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.searchBtn, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 644);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 1078);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(162, 29);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(231, 48);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(2, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(101, 23);
+            this.textBox1.Size = new System.Drawing.Size(143, 31);
             this.textBox1.TabIndex = 3;
             // 
             // searchBtn
             // 
             this.searchBtn.AutoSize = true;
             this.searchBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.searchBtn.Location = new System.Drawing.Point(107, 2);
-            this.searchBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.searchBtn.Location = new System.Drawing.Point(153, 3);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(52, 25);
+            this.searchBtn.Size = new System.Drawing.Size(74, 35);
             this.searchBtn.TabIndex = 4;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
@@ -109,34 +105,32 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.goWebBrowser1.Location = new System.Drawing.Point(2, 677);
-            this.goWebBrowser1.Margin = new System.Windows.Forms.Padding(2);
+            this.goWebBrowser1.Location = new System.Drawing.Point(3, 1132);
             this.goWebBrowser1.Name = "goWebBrowser1";
-            this.goWebBrowser1.Size = new System.Drawing.Size(994, 180);
+            this.goWebBrowser1.Size = new System.Drawing.Size(1424, 300);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
             // 
             // overviewControl1
             // 
             this.overviewControl1.AllowDrop = true;
-            this.overviewControl1.Location = new System.Drawing.Point(7, 6);
-            this.overviewControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.overviewControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.overviewControl1.Location = new System.Drawing.Point(10, 10);
+            this.overviewControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.overviewControl1.Name = "overviewControl1";
-            this.overviewControl1.Size = new System.Drawing.Size(200, 100);
+            this.overviewControl1.Size = new System.Drawing.Size(286, 167);
             this.overviewControl1.TabIndex = 3;
-            this.overviewControl1.Text = "overviewControl1";
             // 
             // OrgChartStaticControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.overviewControl1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OrgChartStaticControl";
-            this.Size = new System.Drawing.Size(998, 859);
+            this.Size = new System.Drawing.Size(1430, 1435);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

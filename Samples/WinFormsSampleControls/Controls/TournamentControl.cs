@@ -15,7 +15,7 @@ namespace WinFormsSampleControls.Tournament {
       InitializeComponent();
 
       //When page loads
-      diagramControl1.AfterRender = Setup;
+      Setup();
       goWebBrowser1.Html = @"
         <p>
         Click on the empty score boxes next to names to fill in scores for each player.

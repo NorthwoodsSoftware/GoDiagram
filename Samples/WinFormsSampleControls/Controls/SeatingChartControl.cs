@@ -22,8 +22,9 @@ namespace WinFormsSampleControls.SeatingChart {
     public SeatingChartControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      guestsControl.AfterRender = SetupGuests;
+      Setup();
+      SetupGuests();
+
       goWebBrowser1.Html = @"
         <p>
       This sample demonstrates how a ""Person"" node can be dropped onto a ""Table"" node,
@@ -79,7 +80,7 @@ namespace WinFormsSampleControls.SeatingChart {
         );
     }
 
-    
+
 
     private void DefineNodeTemplates() {
       if (sharedNodeTemplateMap != null) return;  // already defined
@@ -274,7 +275,7 @@ namespace WinFormsSampleControls.SeatingChart {
       // For this sample, automatically show the state of the diagram's model on the page
       myDiagram.ModelChanged += (s, e) => {
         if (e.IsTransactionFinished) textBox1.Text = myDiagram.Model.ToJson();
-        
+
       };
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -307,10 +308,10 @@ namespace WinFormsSampleControls.SeatingChart {
         foreach (var part in sel) {
           if(_IsPerson(part)) {
             myGuests.Model.AddNodeData(myGuests.Model.CopyNodeData(part.Data as NodeData));
-            
 
 
-            // add line to allow new person to sit 
+
+            // add line to allow new person to sit
           }
         }
       };

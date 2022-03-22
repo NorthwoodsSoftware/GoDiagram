@@ -13,11 +13,9 @@ namespace WinFormsSampleControls.FaultTree {
   [ToolboxItem(false)]
   public partial class FaultTreeControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
+
     public FaultTreeControl() {
       InitializeComponent();
-
-      diagramControl1.AfterRender = Setup;
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
@@ -39,11 +37,11 @@ namespace WinFormsSampleControls.FaultTree {
     display a <b>TreeExpanderButton</b> allowing for expanding/collapsing of subtrees.
     See the <a href=""intro/buttons.html"">Intro page on Buttons</a> for more GoDiagram button information.
       </p>
-    
+
       <p>
         Related to deductive failure analysis is root cause analysis, or RCA. See the <a href=""Fishbone"">fishbone layout</a>
           extension page for a diagram format typically used in root cause analysis.
-  </p>    
+  </p>
 ";
 
       saveLoadModel1.ModelJson = @"
@@ -61,6 +59,7 @@ namespace WinFormsSampleControls.FaultTree {
         {""Key"":10, ""Text"":""Component A2 blocks flow"", ""Parent"":6, ""Figure"":""Circle"", ""Choice"":""B03""}
         ]}";
 
+      Setup();
     }
 
     private string nodeFillConverter(object figure, object _) {

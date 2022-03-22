@@ -20,8 +20,6 @@ namespace WinFormsSampleControls.FlowBuilder {
     public FlowBuilderControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       btnDoLayout.Click += (e, obj) => doLayout();
 
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
@@ -47,6 +45,7 @@ namespace WinFormsSampleControls.FlowBuilder {
       ]
     }";
 
+      Setup();
     }
 
     private void Setup() {

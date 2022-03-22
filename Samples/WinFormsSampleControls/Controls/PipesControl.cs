@@ -18,9 +18,6 @@ namespace WinFormsSampleControls.Pipes {
     public PipesControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
       saveLoadModel1.ModelJson = @"{
@@ -77,6 +74,8 @@ namespace WinFormsSampleControls.Pipes {
         </p>
       ";
 
+      Setup();
+      SetupPalette();
     }
 
     // To simplify this code we define a function for creating a context menu button:
@@ -732,5 +731,5 @@ namespace WinFormsSampleControls.Pipes {
       }
     }
   }
-  
+
 }

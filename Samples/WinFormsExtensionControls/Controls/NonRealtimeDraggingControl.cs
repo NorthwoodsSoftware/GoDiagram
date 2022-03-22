@@ -12,7 +12,7 @@ namespace WinFormsExtensionControls.NonRealtimeDragging {
     public NonRealtimeDraggingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
    <p>

@@ -13,11 +13,11 @@ namespace WinFormsSampleControls.DynamicPieChart {
   [ToolboxItem(false)]
   public partial class DynamicPieChartControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public DynamicPieChartControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
 

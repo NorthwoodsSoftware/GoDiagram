@@ -13,8 +13,6 @@ namespace WinFormsSampleControls.StateChart {
     public StateChartControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -76,6 +74,7 @@ namespace WinFormsSampleControls.StateChart {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {

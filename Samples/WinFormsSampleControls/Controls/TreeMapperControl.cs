@@ -9,11 +9,11 @@ namespace WinFormsSampleControls.TreeMapper {
   [ToolboxItem(false)]
   public partial class TreeMapperControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public TreeMapperControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -25,7 +25,7 @@ namespace WinFormsSampleControls.TreeMapper {
       Draw new links by dragging from any field (i.e. any tree node).
       Reconnect a selected link by dragging its diamond-shaped handle.
         </p>
-        <p> 
+        <p>
       The model data, automatically updated after each change or undo or redo:
         </p>
 ";
@@ -169,7 +169,7 @@ namespace WinFormsSampleControls.TreeMapper {
           textBox1.Text = myDiagram.Model.ToJson();
         }
       };
-      
+
     }
 
     private int _MakeTree(int level, int count, int max, List<NodeData> nodeDataSource, List<LinkData> linkDataSource, NodeData parentdata, int groupkey, int rootkey) {

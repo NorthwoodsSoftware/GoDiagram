@@ -17,9 +17,6 @@ namespace WinFormsSampleControls.DraggableLink {
     public DraggableLinkControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-      paletteControl1.AfterRender = SetupPalette;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -56,6 +53,9 @@ namespace WinFormsSampleControls.DraggableLink {
     and <a>Model.FromJson</a>.
   </p>
 ";
+
+      Setup();
+      SetupPalette();
     }
 
     private void DefineNodeTemplate() {

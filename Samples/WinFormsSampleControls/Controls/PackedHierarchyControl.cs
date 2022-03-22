@@ -15,11 +15,11 @@ namespace WinFormsSampleControls.PackedHierarchy {
   public partial class PackedHierarchyControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
     public static Dictionary<string, NodeData> _KeyToNodeDataMap = new();
-    
+
     public PackedHierarchyControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
+      Setup();
 
       goWebBrowser1.Html = @"
         <p>
@@ -46,7 +46,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
       MyDiagram.Layout = new HierarchyLayout();
       MyDiagram.AnimationManager.IsEnabled = false;
       MyDiagram.IsReadOnly = true;
-      MyDiagram.InitialAutoScale = AutoScaleType.Uniform;
+      MyDiagram.InitialAutoScale = AutoScale.Uniform;
 
       // common definition for both Nodes and Groups
       var toolTipTemplate =
@@ -72,13 +72,17 @@ namespace WinFormsSampleControls.PackedHierarchy {
           new Placeholder()
         );
 
+      var apiMap = WinFormsSharedControls.GoWebBrowser.ApiMap;
       var commonStyle = new {
         ToolTip = toolTipTemplate,
         SelectionAdornmentTemplate = selectionAdornmentTemplate,
         DoubleClick = new Action<InputEvent, GraphObject>((e, obj) => {
           var node = obj as Node;
-          var url = "https://godiagram.com/api/symbols/" + (node.Data as NodeData).Key + ".html";
-          Process.Start("explorer.exe", url);
+          var data = node.Data as NodeData;
+          if (apiMap != null && apiMap.TryGetValue(data.Key, out var url))
+            Process.Start("explorer.exe", "https://godiagram.com/winforms/latest/" + url);
+          else
+            Process.Start("explorer.exe", "https://godiagram.com/winforms/latest/");
         })
       };
 
@@ -124,7 +128,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
               new Binding("Position")
             ),
           new Placeholder()  // represents area for all member parts
-        ); 
+        );
 
       // Collect all of the data for the model of the class hierarchy
       var nodeDataSource = new List<NodeData> {
@@ -147,7 +151,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
       };
 
       _KeyToNodeDataMap.Clear();
-      _KeyToNodeDataMap.Add("GoDiagram", nodeDataSource[0]);      
+      _KeyToNodeDataMap.Add("GoDiagram", nodeDataSource[0]);
 
       static bool includeType(Type t) {
         return t.Namespace != null &&
@@ -231,7 +235,7 @@ namespace WinFormsSampleControls.PackedHierarchy {
           totalCount += parentData.PropCount;
           parentKey = parentData.Group;
         }
-  
+
         if (n.Group == null) {  // applies to the root GoDiagram group only
           n.ToolTip = n.Text;
         } else {

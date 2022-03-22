@@ -13,8 +13,6 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
     public NodeLabelDraggingControl() {
       InitializeComponent();
 
-      diagramControl1.AfterRender = Setup;
-
       saveLoadModel1.SaveClick += (e, obj) => SaveModel();
       saveLoadModel1.LoadClick += (e, obj) => LoadModel();
 
@@ -56,6 +54,7 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
   ]
 }";
 
+      Setup();
     }
 
     private void Setup() {
