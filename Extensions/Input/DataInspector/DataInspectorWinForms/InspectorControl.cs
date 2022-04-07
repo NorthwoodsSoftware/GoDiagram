@@ -123,8 +123,9 @@ namespace Northwoods.Go.Extensions {
       // create the label
       var label = new Label {
         AutoSize = true,
+        Anchor = AnchorStyles.Left,
         Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, GraphicsUnit.Point),
-        ForeColor = SystemColors.ControlLight,
+        ForeColor = SystemColors.ControlLightLight,
         Text = row.PropertyName,
         TextAlign = ContentAlignment.MiddleLeft
       };

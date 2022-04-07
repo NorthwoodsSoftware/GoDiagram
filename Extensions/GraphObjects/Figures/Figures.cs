@@ -31,7 +31,7 @@ namespace Northwoods.Go.Extensions {
   /// This FigureParameter class describes various properties each parameter uses in figures.
   /// </summary>
   internal class FigureParameter {
-    public static Dictionary<string, List<FigureParameter>> DefinedParameters = new();
+    public static Dictionary<string, List<FigureParameter>> DefinedParameters = new(StringComparer.OrdinalIgnoreCase);
     private string _Name;
     private double _DefaultValue;
     private double _Minimum;

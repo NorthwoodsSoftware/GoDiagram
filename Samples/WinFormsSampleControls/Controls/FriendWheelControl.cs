@@ -155,26 +155,18 @@ namespace WinFormsSampleControls.FriendWheel {
         "John", "Samuel", "Tyler", "Dylan", "Jonathan"
       };
 
-      var nodeDataSource = new List<NodeData>();
-      for (var i = 0; i < names.Length; i++) {
-        nodeDataSource.Add(new NodeData {
-          Key = i,
-          Text = names[i],
-          Color = Brush.RandomColor(128, 240)
-        });
+      var num = names.Length;
+      var nodeDataSource = new NodeData[num];
+      for (var i = 0; i < num; i++) {
+        nodeDataSource[i] = new NodeData { Key = i + 1, Text = names[i], Color = Brush.RandomColor(128, 240) };
       }
 
-      var linkDataSource = new List<LinkData>();
-      var num = nodeDataSource.Count;
       var rand = new Random();
+      var linkDataSource = new LinkData[num * 2];
       for (var i = 0; i < num * 2; i++) {
-        var a = Convert.ToInt32(Math.Floor(rand.NextDouble() * num));
-        var b = Convert.ToInt32(Math.Floor(rand.NextDouble() * num / 4) + 1);
-        linkDataSource.Add(new LinkData {
-          From = a,
-          To = (a + b) % num,
-          Color = Brush.RandomColor(0, 127)
-        });
+        var a = (int)Math.Floor(i / 2f);
+        var b = rand.Next(num / 4) + 1;
+        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
       }
 
       myDiagram.Model = new Model {
@@ -186,7 +178,7 @@ namespace WinFormsSampleControls.FriendWheel {
   }
 
   // define the model data
-  public class Model : GraphLinksModel<NodeData, int, object, LinkData, string, string> { }
+  public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
   public class NodeData : Model.NodeData {
     public string Color { get; set; }
   }

@@ -87,9 +87,6 @@ namespace WinFormsSampleControls.RegroupingTreeView {
         myChangingSelection = false;
       };
 
-      // when the document is modified, add a "*" to the title and enable the "Save" button
-      // NYI
-
       // There are two templates for groups, "OfGroups" and "OfNodes"
 
       // this function is used to highlight a group that the selection may be dropped into

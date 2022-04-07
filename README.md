@@ -1,7 +1,7 @@
 GoDiagram — .NET Library for Interactive Diagrams
 ============================================
 
-# *GoDiagram is currently in alpha*
+# *GoDiagram is currently in beta*
 
 <img align="right" height="150" src="https://godiagram.com/assets/images/icon.png">
 

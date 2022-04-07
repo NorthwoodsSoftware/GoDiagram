@@ -63,7 +63,7 @@ namespace WinFormsSampleControls.GLayout {
 
       // create a list of data describing randomly colored and sized nodes
       var nodeDataSource = new List<NodeData>();
-      for (var i = 0; i < 100; i++) {
+      for (var i = 1; i <= 100; i++) {
         nodeDataSource.Add(new NodeData {
           Key = i,
           Text = i.ToString(),

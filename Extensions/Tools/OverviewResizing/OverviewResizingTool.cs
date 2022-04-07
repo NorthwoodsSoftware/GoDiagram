@@ -37,41 +37,35 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Undocumented.
     /// </summary>
     [Undocumented]
-    public virtual Adornment MakeAdornment(Shape resizeBox) {
+    public override Adornment MakeAdornment(GraphObject resizeObj) {
+      var resizeBox = (Shape)resizeObj;
       _HandleSize = new Size(resizeBox.StrokeWidth * 3, resizeBox.StrokeWidth * 3);
       // Set up the resize adornment
-      // placeholder
-      var ph = new Placeholder {
-        IsPanelMain = true
-      };
-      // handle
-      var hnd = new Shape("Rectangle") {
-        Name = "RSZHND",
-        DesiredSize = _HandleSize,
-        Cursor = "se-resize",
-        Alignment = Spot.BottomRight,
-        AlignmentFocus = Spot.Center
-      };
-      var ad = new Adornment {
-        Type = PanelLayoutSpot.Instance,
-        LocationSpot = Spot.Center,
-        AdornedElement = resizeBox
-      }.Add(
-        ph,
-        hnd
+      var ad = new Adornment("Spot") {
+          LocationSpot = Spot.Center,
+          AdornedElement = resizeBox
+        }
+        .Add(
+          new Placeholder { IsPanelMain = true },
+          new Shape {
+            Name = "RSZHND",
+            DesiredSize = _HandleSize,
+            Cursor = "se-resize",
+            Alignment = Spot.BottomRight,
+            AlignmentFocus = Spot.Center
+          }
       );
       return ad;
     }
 
+    /// <summary>
+    /// (undocumented)
     /// Keep the resize handle properly sized as the scale is changing.
     /// This overrides an undocumented method on the ResizingTool.
-    /// <summary>
-    /// Undocumented.
     /// </summary>
     [Undocumented]
     public override void UpdateResizeHandles(GraphObject elt, double angle) {
-      if (elt == null || elt is not Adornment) return;
-      var ad = elt as Adornment;
+      if (elt == null || elt is not Adornment ad) return;
       var handle = ad.FindElement("RSZHND") as Shape;
       var box = ad.AdornedElement as Shape;
       _HandleSize = new Size(box.StrokeWidth * 3, box.StrokeWidth * 3);

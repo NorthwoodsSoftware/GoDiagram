@@ -15,22 +15,20 @@ namespace WinFormsSampleControls.KittenMonitor {
 
     public KittenMonitorControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
       Setup();
 
       goWebBrowser1.Html = @"
-
- <p>This diagram displays a monitored floor plan with several nodes (representing kittens) to view in real-time.</p>
-  <p>Every two seconds the kitten positions are updated</p>
-  <p>The <a href=""intro/toolTips.html"">Tooltip</a> for each kitten shows its name and photo.</p>
-      <p>There is a custom <a>Diagram.ScaleComputation</a> that limits the <a>Diagram.Scale</a> values to multiples of 0.1.</p>
+<p>This diagram displays a monitored floor plan with several nodes (representing kittens) to view in real-time.</p>
+<p>Every two seconds the kitten positions are updated</p>
+<p>The <a href=""intro/toolTips.html"">Tooltip</a> for each kitten shows its name and photo.</p>
+<p>There is a custom <a>Diagram.ScaleComputation</a> that limits the <a>Diagram.Scale</a> values to multiples of 0.1.</p>
 ";
 
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
       myDiagram.InitialContentAlignment = Spot.TopLeft;
       myDiagram.IsReadOnly = true;
@@ -46,53 +44,38 @@ namespace WinFormsSampleControls.KittenMonitor {
       // the background image, a floor plan
       myDiagram.Add(
         new Part {  // this Part is not bound to any model data
-          Width = 840,
-          Height = 570,
-          LayerName = "Background",
-          Position = new Point(0, 0),
-          Selectable = false,
-          Pickable = false
-        }.Add(
-          new Picture {
-            Source = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Sample_Floorplan.jpg"
+            Width = 840, Height = 570,
+            LayerName = "Background", Position = new Point(0, 0),
+            Selectable = false, Pickable = false
           }
-        )
+          .Add(new Picture { Source = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Sample_Floorplan.jpg" })
       );
 
       // the template for each kitten, for now just a colored circle
       myDiagram.NodeTemplate =
         new Node { // this tooltip shows the name and picture of the kitten
-          ToolTip =
-            Builder.Make<Adornment>("ToolTip").Add(
-              new Panel(PanelLayoutVertical.Instance).Add(
-                new Picture {
-                  DesiredSize = new Size(50, 50),
-                  Margin = 3
-                }.Bind(
-                  new Binding("Source", "Src", (s, _) => { return "https://godiagram.com/samples/images/" + s + ".png"; })
-                ),
-                new TextBlock {
-                  Margin = 3
-                }.Bind(
-                  new Binding("Text", "Key")
-                )
-              )
-            ),  // end Adornment
-          LocationSpot = Spot.Center // at center of node
-        }.Bind( // specified by data
-          new Binding("Location", "Loc")
-        ).Add(
-          //new AnimationTrigger("position", { Duration = 2000 }),
-          new Shape {
-            Figure = "Circle",
-            Width = 15,
-            Height = 15,
-            StrokeWidth = 3
-          }.Bind(
-            new Binding("Fill", "Color", MakeFill),
-            new Binding("Stroke", "Color", MakeStroke)
-          )  // also specified by data
-        );
+            ToolTip =
+              Builder.Make<Adornment>("ToolTip")
+                .Add(
+                  new Panel("Vertical")
+                    .Add(
+                      new Picture { Margin = 3 }
+                        .Bind("Source", "Src", (s) => { return "https://godiagram.com/samples/images/" + s + ".png"; }),
+                      new TextBlock { Margin = 3 }
+                        .Bind("Text", "Key")
+                  )
+                ),  // end Adornment
+            LocationSpot = Spot.Center // at center of node
+          }
+          .Bind("Location", "Loc")  // specified by data
+          .Add(
+            new Shape("Circle") {
+                Width = 15, Height = 15, StrokeWidth = 3
+              }
+              .Bind("Fill", "Color", MakeFill)
+              .Bind("Stroke", "Color", MakeStroke)  // also specified by data
+          )
+          .Trigger(new AnimationTrigger("Position", (2000, null, Animation.EaseLinear)));
 
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
@@ -123,21 +106,20 @@ namespace WinFormsSampleControls.KittenMonitor {
         model.CommitTransaction("update locations");
       }
 
-      void Loop() {
-        Task.Delay(2000).ContinueWith((t) => {
-          RandomMovement();
-          Loop();
-        });
+      async void Loop() {
+        await Task.Delay(2100);
+        RandomMovement();
+        Loop();
       }
       Loop();
 
       // generate some colors based on hue value
       string MakeFill(object num, object _) {
-        var number = num as double? ?? 0.0;
+        var number = (int)num;
         return HSVtoRGB(0.1 * number, 0.5, 0.7);
       }
       string MakeStroke(object num, object _) {
-        var number = num as double? ?? 0.0;
+        var number = (int)num;
         return HSVtoRGB(0.1 * number, 0.5, 0.5); // same color but darker (less V in HSV)
       }
       string HSVtoRGB(double h, double s, double v) {

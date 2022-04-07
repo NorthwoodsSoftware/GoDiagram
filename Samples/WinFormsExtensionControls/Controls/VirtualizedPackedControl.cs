@@ -16,6 +16,7 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 
     public VirtualizedPackedControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
       Setup();
       goWebBrowser1.Html = @"
@@ -27,9 +28,18 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 ";
     }
 
-    private void Setup() {
-      myDiagram = diagramControl1.Diagram;
+    // Don't load the graph until the control has rendered;
+    // allows loading indicator to be shown as graph loads and ensures timing
+    protected override void OnLoad(EventArgs e) {
+      base.OnLoad(e);
 
+      // Allow the loading indicator to be shown,
+      // but allow objects added in load to also be considered part of the initial Diagram.
+      // If you are not going to add temporary initial Parts, don't call DelayInitialization.
+      myDiagram.DelayInitialization(_Load);
+    }
+
+    private void Setup() {
       myDiagram.AnimationManager.IsEnabled = false;
       myDiagram.InitialScale = 0.25;
       myDiagram.Layout = new VirtualizedPackedGroupsLayout();
@@ -116,11 +126,6 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 
       // temporarily add the status indicator
       myDiagram.Add(myLoading);
-
-      // Allow the myLoading indicator to be shown now,
-      // but allow objects added in load to also be considered part of the initial Diagram.
-      // If you are not going to add temporary initial Parts, don't call DelayInitialization.
-      myDiagram.DelayInitialization(_Load);
     }
 
     // The following code creates a large randomized graph with nested groups in myWholeModel.

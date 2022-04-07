@@ -65,15 +65,18 @@ namespace WinFormsSampleControls.DoubleCircle {
       var data = new List<NodeData>();
 
       // if you want a node in the center, set its Layer = 0
-      //data.Push({ Layer = 0, Color = "red" });
-      for (var i = 0; i < 10; i++) data.Add(new NodeData {
-        Layer = 1,
-        Color = Brush.RandomColor()
-      });
-      for (var i = 0; i < 25; i++) data.Add(new NodeData {
-        Layer = 2,
-        Color = Brush.RandomColor()
-      });
+      for (var i = 0; i < 10; i++) {
+        data.Add(new NodeData {
+          Layer = 1,
+          Color = Brush.RandomColor()
+        });
+      }
+      for (var i = 0; i < 25; i++) {
+        data.Add(new NodeData {
+          Layer = 2,
+          Color = Brush.RandomColor()
+        });
+      }
       myDiagram.Model = new Model {
         NodeDataSource = data
       };

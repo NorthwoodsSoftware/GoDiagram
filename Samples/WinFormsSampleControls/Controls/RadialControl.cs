@@ -49,7 +49,7 @@ namespace WinFormsSampleControls.Radial {
     }
 
     private void GenerateGraph() {
-      string[] names = {
+      var names = new string[] {
         "Joshua", "Daniel", "Robert", "Noah", "Anthony",
         "Elizabeth", "Addison", "Alexis", "Ella", "Samantha",
         "Joseph", "Scott", "James", "Ryan", "Benjamin",
@@ -63,19 +63,19 @@ namespace WinFormsSampleControls.Radial {
         "Kaylee", "Juliana", "Leah", "Anna", "Allison",
         "John", "Samuel", "Tyler", "Dylan", "Jonathan"
       };
-      var num = names.Length;
-      var rand = new Random();
 
-      var nodeDataSource = new NodeData[names.Length];
-      for (var i = 0; i < names.Length; i++) {
+      var num = names.Length;
+      var nodeDataSource = new NodeData[num];
+      for (var i = 0; i < num; i++) {
         nodeDataSource[i] = new NodeData { Key = i + 1, Text = names[i], Color = Brush.RandomColor(128, 240) };
       }
 
+      var rand = new Random();
       var linkDataSource = new LinkData[num * 2];
       for (var i = 0; i < num * 2; i++) {
-        var a = rand.Next(num);
+        var a = (int)Math.Floor(i / 2f);
         var b = rand.Next(num / 4) + 1;
-        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num, Color = Brush.RandomColor(0, 127) };
+        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
       }
 
       myDiagram.Model = new Model {

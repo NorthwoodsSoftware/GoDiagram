@@ -48,7 +48,7 @@ namespace WinFormsExtensionControls.OverviewResizing {
       expanderButton.AlignmentFocus = Spot.Center;
       expanderButton.Click = (e, obj) => { // OBJ is the button
         // get the Node containing this button
-        if (!(obj.Part is Node node)) return;
+        if (obj.Part is not Node node) return;
         e.Handled = true;
         _ExpandNode(node);
       };

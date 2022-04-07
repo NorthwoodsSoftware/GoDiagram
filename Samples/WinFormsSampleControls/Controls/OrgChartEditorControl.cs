@@ -82,7 +82,6 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
     private void Setup() {
       _Diagram = diagramControl1.Diagram;
-
       _Diagram.MaxSelectionCount = 1;
       _Diagram.ValidCycle = CycleMode.DestinationTree;
       // custom click creating tool

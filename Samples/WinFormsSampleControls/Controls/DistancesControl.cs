@@ -145,26 +145,18 @@ namespace WinFormsSampleControls.Distances {
         "Jacob", "Michael", "Juliana", "Natalie", "Grace", "Ashley", "Dylan"
       };
 
-      var nodeDataSource = new List<NodeData>();
-      for (var i = 1; i <= names.Length; i++) {
-        nodeDataSource.Add(new NodeData {
-          Key = i,
-          Text = names[i - 1],
-          Color = Brush.RandomColor(128, 240)
-        });
+      var num = names.Length;
+      var nodeDataSource = new NodeData[num];
+      for (var i = 0; i < num; i++) {
+        nodeDataSource[i] = new NodeData { Key = i + 1, Text = names[i], Color = Brush.RandomColor(128, 240) };
       }
 
       var rand = new Random();
-      var linkDataSource = new List<LinkData>();
-      var num = nodeDataSource.Count;
-      for (var i = 1; i <= num * 2; i++) {
-        var a = Convert.ToInt32(Math.Floor(rand.NextDouble() * num));
-        var b = Convert.ToInt32(Math.Floor(rand.NextDouble() * num / 4) + 1);
-        linkDataSource.Add(new LinkData {
-          From = a,
-          To = (a + b) % num + 1,
-          Color = Brush.RandomColor(0, 127)
-        });
+      var linkDataSource = new LinkData[num * 2];
+      for (var i = 0; i < num * 2; i++) {
+        var a = (int)Math.Floor(i / 2f);
+        var b = rand.Next(num / 4) + 1;
+        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
       }
 
       myDiagram.Model = new Model {
@@ -178,14 +170,12 @@ namespace WinFormsSampleControls.Distances {
     private void ChooseTwoNodes() {
       myDiagram.ClearSelection();
       var rand = new Random();
-      Node node1 = null;
-      Node node2 = null;
       var num = myDiagram.Model.NodeDataSource.Count();
-      for (var i = (int)Math.Floor(rand.NextDouble() * num) + 1; i < num * 2; i++) {
-        node1 = myDiagram.FindNodeForKey(i % num + 1);
+      for (var i = rand.Next(num); i < num * 2; i++) {
+        var node1 = myDiagram.FindNodeForKey(i % num + 1);
         var distances = FindDistances(node1);
-        for (var j = (int)Math.Floor(rand.NextDouble() * num) + 1; j < num * 2; j++) {
-          node2 = myDiagram.FindNodeForKey(j % num + 1);
+        for (var j = rand.Next(num); j < num * 2; j++) {
+          var node2 = myDiagram.FindNodeForKey(j % num + 1);
           var dist = distances[node2];
           if (dist > 1 && dist < int.MaxValue) {
             node1.IsSelected = true;
@@ -436,7 +426,7 @@ namespace WinFormsSampleControls.Distances {
       }
     }
 
-    public class Model : GraphLinksModel<NodeData, int, object, LinkData, string, string> { }
+    public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
     public class NodeData : Model.NodeData {
       public string Color { get; set; }
       public int? Distance { get; set; }

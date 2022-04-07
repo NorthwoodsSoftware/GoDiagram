@@ -72,7 +72,7 @@ namespace WinFormsSampleControls.Shapes {
       // Names of the built in shapes, which we will color green instead of pink.
       // The pinks shapes are instead defined in the extensions "Figures.cs" file.
       var builtIn = new HashSet<string>() {
-      "Rectangle", "Square", "Roundedrectangle", "Border", "Ellipse", "Circle", "Triangleright", "Triangledown", "Triangleleft", "Triangleup", "Triangle", "Diamond", "Lineh", "Linev", "None", "Barh", "Barv", "Minusline", "Plusline", "Xline"
+      "Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle", "TriangleRight", "TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "None", "BarH", "BarV", "MinusLine", "PlusLine", "XLine"
       };
       bool IsBuiltIn(string shapeName) {
         return builtIn.Contains(shapeName);

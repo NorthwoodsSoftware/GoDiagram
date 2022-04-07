@@ -13,6 +13,7 @@ namespace WinFormsSampleControls.RadialPartition {
 
     public RadialPartitionControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
       Setup();
 
@@ -34,9 +35,6 @@ namespace WinFormsSampleControls.RadialPartition {
     private int _LayerThickness = 70;
 
     private void Setup() {
-
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.InitialAutoScale = AutoScale.Uniform;
       myDiagram.IsReadOnly = true;
       myDiagram.MaxSelectionCount = 1;
@@ -146,7 +144,7 @@ namespace WinFormsSampleControls.RadialPartition {
     }
 
     private void _GenerateGraph() {
-      var names = new List<string> {
+      var names = new string[] {
         "Joshua", "Daniel", "Robert", "Noah", "Anthony",
         "Elizabeth", "Addison", "Alexis", "Ella", "Samantha",
         "Joseph", "Scott", "James", "Ryan", "Benjamin",
@@ -161,33 +159,28 @@ namespace WinFormsSampleControls.RadialPartition {
         "John", "Samuel", "Tyler", "Dylan", "Jonathan"
       };
 
-      var nodeDataSource = new List<NodeData>();
-      for (var i = 0; i < names.Count; i++) {
-        nodeDataSource.Add(new NodeData {
-          Key = i, Text = names[i], Color = Brush.RandomColor(128, 240)
-        });
+      var num = names.Length;
+      var nodeDataSource = new NodeData[num];
+      for (var i = 0; i < num; i++) {
+        nodeDataSource[i] = new NodeData { Key = i + 1, Text = names[i], Color = Brush.RandomColor(128, 240) };
       }
 
       var rand = new Random();
-
-      var linkDataSource = new List<LinkData>();
-      var num = nodeDataSource.Count;
+      var linkDataSource = new LinkData[num * 2];
       for (var i = 0; i < num * 2; i++) {
-        var a = rand.Next(num);
+        var a = (int)Math.Floor(i / 2f);
         var b = rand.Next(num / 4) + 1;
-        linkDataSource.Add(new LinkData {
-          From = a, To = (a + b) % num, Color = Brush.RandomColor(0, 127)
-        });
+        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
       }
 
-      diagramControl1.Diagram.Model = new Model {
+      myDiagram.Model = new Model {
         NodeDataSource = nodeDataSource,
         LinkDataSource = linkDataSource
       };
 
       // layout based on a random person
-      var someone = nodeDataSource[rand.Next(nodeDataSource.Count)];
-      var somenode = diagramControl1.Diagram.FindNodeForData(someone);
+      var someone = nodeDataSource[rand.Next(num)];
+      var somenode = myDiagram.FindNodeForData(someone);
       nodeClicked(null, somenode);
     }
 

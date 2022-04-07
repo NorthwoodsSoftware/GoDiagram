@@ -92,6 +92,7 @@ namespace WinFormsDemoApp {
       { "ConstantSize", new NavItem("Constant Size", typeof(WinFormsSampleControls.ConstantSize.ConstantSizeControl)) },
       { "ControlGauges", new NavItem("Control Gauges", typeof(WinFormsSampleControls.ControlGauges.ControlGaugesControl)) },
       { "Curviness", new NavItem("Curviness", typeof(WinFormsSampleControls.Curviness.CurvinessControl)) },
+      { "CustomAnimations", new NavItem("Custom Animations", typeof(WinFormsSampleControls.CustomAnimations.CustomAnimationsControl)) },
       { "CustomExpandCollapse", new NavItem("Custom Expand Collapse", typeof(WinFormsSampleControls.CustomExpandCollapse.CustomExpandCollapseControl)) },
       { "DataFlowVertical", new NavItem("Data Flow (Vertical)", typeof(WinFormsSampleControls.DataFlowVertical.DataFlowVerticalControl)) },
       { "DonutCharts", new NavItem("Donut Charts", typeof(WinFormsSampleControls.DonutCharts.DonutChartsControl)) },
@@ -179,7 +180,7 @@ namespace WinFormsDemoApp {
       { "NonRealtimeDragging", new NavItem("Non-Realtime Dragging", typeof(WinFormsExtensionControls.NonRealtimeDragging.NonRealtimeDraggingControl)) },
       { "PortShifting", new NavItem("Port Shifting", typeof(WinFormsExtensionControls.PortShifting.PortShiftingControl)) },
       { "ColumnResizing", new NavItem("Column Resizing", typeof(WinFormsExtensionControls.ColumnResizing.ColumnResizingControl)) },
-      // NYI, needs overview fixes: { "OverviewResizing", new NavItem("Overview Resizing", typeof(WinFormsExtensionControls.OverviewResizing.OverviewResizingControl)) },
+      { "OverviewResizing", new NavItem("Overview Resizing", typeof(WinFormsExtensionControls.OverviewResizing.OverviewResizingControl)) },
 
       /****** GRAPH OBJECTS ******/
       // scrolling table
