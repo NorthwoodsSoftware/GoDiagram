@@ -21,9 +21,9 @@ namespace Northwoods.Go.Tools.Extensions {
   /// </summary>
   /// <remarks>
   /// This tool may be installed as a mouse down tool:
-  /// ```cs
+  /// <code language="cs">
   /// myDiagram.ToolManager.MouseDownTools.Add(new LinkShiftingTool());
-  /// ```
+  /// </code>
   ///
   /// If you want to experiment with this extension, try the <a href="../../extensions/LinkShifting.html">Link Shifting</a> sample.
   /// </remarks>
