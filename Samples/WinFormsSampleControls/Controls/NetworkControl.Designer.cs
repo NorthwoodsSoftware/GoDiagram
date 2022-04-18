@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.Network {
   partial class NetworkControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.Network {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -31,9 +32,9 @@ namespace WinFormsSampleControls.Network {
             this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -51,18 +52,18 @@ namespace WinFormsSampleControls.Network {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 939);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // paletteControl1
-            // 
+            //
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
             this.paletteControl1.Size = new System.Drawing.Size(140, 390);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(149, 3);
@@ -71,18 +72,18 @@ namespace WinFormsSampleControls.Network {
             this.diagramControl1.Size = new System.Drawing.Size(848, 586);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // overviewControl1
-            // 
+            //
             this.overviewControl1.AllowDrop = true;
             this.overviewControl1.Location = new System.Drawing.Point(3, 399);
             this.overviewControl1.Name = "overviewControl1";
             this.overviewControl1.Size = new System.Drawing.Size(140, 190);
             this.overviewControl1.TabIndex = 2;
             this.overviewControl1.Text = "overviewControl1";
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -90,9 +91,9 @@ namespace WinFormsSampleControls.Network {
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(994, 335);
             this.saveLoadModel1.TabIndex = 3;
-            // 
+            //
             // NetworkControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

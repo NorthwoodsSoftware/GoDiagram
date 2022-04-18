@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.DrawCommandHandler {
   partial class DrawCommandHandlerControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -61,9 +62,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -85,9 +86,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 799);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -95,9 +96,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.diagramControl1.Size = new System.Drawing.Size(1280, 394);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 9;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -124,9 +125,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1121, 44);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
+            //
             // btnColumn
-            // 
+            //
             this.btnColumn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnColumn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnColumn.Location = new System.Drawing.Point(1003, 3);
@@ -135,9 +136,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnColumn.TabIndex = 8;
             this.btnColumn.Text = "Column";
             this.btnColumn.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnRow
-            // 
+            //
             this.btnRow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRow.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRow.Location = new System.Drawing.Point(883, 3);
@@ -146,9 +147,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnRow.TabIndex = 7;
             this.btnRow.Text = "Row";
             this.btnRow.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnCenterY
-            // 
+            //
             this.btnCenterY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCenterY.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCenterY.Location = new System.Drawing.Point(763, 3);
@@ -157,9 +158,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnCenterY.TabIndex = 6;
             this.btnCenterY.Text = "Center Y";
             this.btnCenterY.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnCenterX
-            // 
+            //
             this.btnCenterX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCenterX.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCenterX.Location = new System.Drawing.Point(643, 3);
@@ -168,9 +169,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnCenterX.TabIndex = 5;
             this.btnCenterX.Text = "Center X";
             this.btnCenterX.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnBottoms
-            // 
+            //
             this.btnBottoms.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnBottoms.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBottoms.Location = new System.Drawing.Point(523, 3);
@@ -179,9 +180,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnBottoms.TabIndex = 4;
             this.btnBottoms.Text = "Bottoms";
             this.btnBottoms.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnTops
-            // 
+            //
             this.btnTops.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTops.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTops.Location = new System.Drawing.Point(403, 3);
@@ -190,9 +191,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnTops.TabIndex = 3;
             this.btnTops.Text = "Tops";
             this.btnTops.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnRight
-            // 
+            //
             this.btnRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRight.Location = new System.Drawing.Point(253, 3);
@@ -201,9 +202,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnRight.TabIndex = 2;
             this.btnRight.Text = "Right Sides";
             this.btnRight.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblAlign
-            // 
+            //
             this.lblAlign.AutoSize = true;
             this.lblAlign.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAlign.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -213,9 +214,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.lblAlign.TabIndex = 0;
             this.lblAlign.Text = "Align:";
             this.lblAlign.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // btnLeft
-            // 
+            //
             this.btnLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLeft.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLeft.Location = new System.Drawing.Point(103, 3);
@@ -224,9 +225,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnLeft.TabIndex = 1;
             this.btnLeft.Text = "Left Sides";
             this.btnLeft.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.ColumnCount = 6;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -247,9 +248,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(477, 44);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
+            //
             // btn180
-            // 
+            //
             this.btn180.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn180.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn180.Location = new System.Drawing.Point(403, 3);
@@ -258,9 +259,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btn180.TabIndex = 5;
             this.btn180.Text = "180°";
             this.btn180.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnNeg90
-            // 
+            //
             this.btnNeg90.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNeg90.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnNeg90.Location = new System.Drawing.Point(328, 3);
@@ -269,9 +270,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnNeg90.TabIndex = 4;
             this.btnNeg90.Text = "-90°";
             this.btnNeg90.UseVisualStyleBackColor = true;
-            // 
+            //
             // btn90
-            // 
+            //
             this.btn90.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn90.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn90.Location = new System.Drawing.Point(253, 3);
@@ -280,9 +281,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btn90.TabIndex = 3;
             this.btn90.Text = "90°";
             this.btn90.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnNeg45
-            // 
+            //
             this.btnNeg45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnNeg45.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnNeg45.Location = new System.Drawing.Point(178, 3);
@@ -291,9 +292,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnNeg45.TabIndex = 2;
             this.btnNeg45.Text = "-45°";
             this.btnNeg45.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblRotate
-            // 
+            //
             this.lblRotate.AutoSize = true;
             this.lblRotate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRotate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -303,9 +304,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.lblRotate.TabIndex = 0;
             this.lblRotate.Text = "Rotate:";
             this.lblRotate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // btn45
-            // 
+            //
             this.btn45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn45.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn45.Location = new System.Drawing.Point(103, 3);
@@ -314,9 +315,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btn45.TabIndex = 1;
             this.btn45.Text = "45°";
             this.btn45.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -331,9 +332,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(406, 44);
             this.tableLayoutPanel4.TabIndex = 3;
-            // 
+            //
             // btnBack
-            // 
+            //
             this.btnBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBack.Location = new System.Drawing.Point(253, 3);
@@ -342,9 +343,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnBack.TabIndex = 2;
             this.btnBack.Text = "Push To Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblZOrder
-            // 
+            //
             this.lblZOrder.AutoSize = true;
             this.lblZOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -354,9 +355,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.lblZOrder.TabIndex = 0;
             this.lblZOrder.Text = "Z-Order:";
             this.lblZOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // btnFront
-            // 
+            //
             this.btnFront.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFront.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnFront.Location = new System.Drawing.Point(103, 3);
@@ -365,9 +366,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.btnFront.TabIndex = 1;
             this.btnFront.Text = "Pull To Front";
             this.btnFront.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel5
-            // 
+            //
             this.tableLayoutPanel5.ColumnCount = 5;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
@@ -386,9 +387,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(561, 44);
             this.tableLayoutPanel5.TabIndex = 4;
-            // 
+            //
             // radBtnTree
-            // 
+            //
             this.radBtnTree.AutoSize = true;
             this.radBtnTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radBtnTree.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -398,9 +399,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.radBtnTree.TabIndex = 4;
             this.radBtnTree.Text = "Tree";
             this.radBtnTree.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnScroll
-            // 
+            //
             this.radBtnScroll.AutoSize = true;
             this.radBtnScroll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radBtnScroll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -410,9 +411,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.radBtnScroll.TabIndex = 3;
             this.radBtnScroll.Text = "Scroll";
             this.radBtnScroll.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnSelect
-            // 
+            //
             this.radBtnSelect.AutoSize = true;
             this.radBtnSelect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radBtnSelect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -422,9 +423,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.radBtnSelect.TabIndex = 2;
             this.radBtnSelect.Text = "Select";
             this.radBtnSelect.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblArrow
-            // 
+            //
             this.lblArrow.AutoSize = true;
             this.lblArrow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblArrow.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -434,9 +435,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.lblArrow.TabIndex = 0;
             this.lblArrow.Text = "Arrow Mode:";
             this.lblArrow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // radBtnMove
-            // 
+            //
             this.radBtnMove.AutoSize = true;
             this.radBtnMove.Checked = true;
             this.radBtnMove.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -448,9 +449,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.radBtnMove.TabStop = true;
             this.radBtnMove.Text = "Move";
             this.radBtnMove.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -459,9 +460,9 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
             this.goWebBrowser1.Size = new System.Drawing.Size(1280, 194);
             this.goWebBrowser1.TabIndex = 5;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // DrawCommandHandlerSampleControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

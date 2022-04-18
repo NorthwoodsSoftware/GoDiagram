@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;

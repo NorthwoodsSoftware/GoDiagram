@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
   partial class OrthogonalLinkReshapingControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -35,9 +36,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -53,9 +54,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -63,9 +64,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.diagramControl1.Size = new System.Drawing.Size(994, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -79,9 +80,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(402, 44);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -91,9 +92,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.label1.TabIndex = 0;
             this.label1.Text = "Routing:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // radBtnOrthogonal
-            // 
+            //
             this.radBtnOrthogonal.AutoSize = true;
             this.radBtnOrthogonal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radBtnOrthogonal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -103,9 +104,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.radBtnOrthogonal.TabIndex = 1;
             this.radBtnOrthogonal.Text = "Orthogonal";
             this.radBtnOrthogonal.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnAvoidsNodes
-            // 
+            //
             this.radBtnAvoidsNodes.AutoSize = true;
             this.radBtnAvoidsNodes.Checked = true;
             this.radBtnAvoidsNodes.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,9 +118,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.radBtnAvoidsNodes.TabStop = true;
             this.radBtnAvoidsNodes.Text = "AvoidsNodes";
             this.radBtnAvoidsNodes.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -128,9 +129,9 @@ namespace WinFormsExtensionControls.OrthogonalLinkReshaping {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 544);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // OrthogonalLinkReshapingControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

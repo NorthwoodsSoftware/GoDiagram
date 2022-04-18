@@ -1,3 +1,5 @@
+/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 using System;
 using System.Linq;
 using System.Windows.Forms;

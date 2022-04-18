@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;

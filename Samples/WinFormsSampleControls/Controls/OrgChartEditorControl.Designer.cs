@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.OrgChartEditor {
   partial class OrgChartEditorControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -36,9 +37,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -58,9 +59,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1093, 1303);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -69,9 +70,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.diagramControl1.Size = new System.Drawing.Size(1087, 570);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.zoomFitBtn);
@@ -80,18 +81,18 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1087, 29);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
+            //
             // zoomFitBtn
-            // 
+            //
             this.zoomFitBtn.Location = new System.Drawing.Point(3, 3);
             this.zoomFitBtn.Name = "zoomFitBtn";
             this.zoomFitBtn.Size = new System.Drawing.Size(104, 23);
             this.zoomFitBtn.TabIndex = 0;
             this.zoomFitBtn.Text = "Zoom to Fit";
             this.zoomFitBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // centerRootBtn
-            // 
+            //
             this.centerRootBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.centerRootBtn.Location = new System.Drawing.Point(113, 3);
             this.centerRootBtn.Name = "centerRootBtn";
@@ -99,18 +100,18 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.centerRootBtn.TabIndex = 1;
             this.centerRootBtn.Text = "Center on root";
             this.centerRootBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 885);
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(1087, 343);
             this.saveLoadModel1.TabIndex = 4;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -119,9 +120,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.goWebBrowser1.Size = new System.Drawing.Size(1087, 238);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // inspectorControl1
-            // 
+            //
             this.inspectorControl1.AutoSize = true;
             this.inspectorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.inspectorControl1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -129,9 +130,9 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.inspectorControl1.Name = "inspectorControl1";
             this.inspectorControl1.Size = new System.Drawing.Size(92, 21);
             this.inspectorControl1.TabIndex = 5;
-            // 
+            //
             // OrgChartEditorControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

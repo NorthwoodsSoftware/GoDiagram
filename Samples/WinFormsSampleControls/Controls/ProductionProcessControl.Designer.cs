@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.ProductionProcess {
   partial class ProductionProcessControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.ProductionProcess {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -37,9 +38,9 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -57,9 +58,9 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 1646);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -67,9 +68,9 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.diagramControl1.Size = new System.Drawing.Size(1278, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -78,9 +79,9 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.goWebBrowser1.Size = new System.Drawing.Size(1278, 194);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.80826F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.19174F));
@@ -95,18 +96,18 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(678, 294);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
+            //
             // pictureBox1
-            // 
+            //
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(227, 118);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
+            //
             // txtCaption
-            // 
+            //
             this.txtCaption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtCaption.Location = new System.Drawing.Point(3, 127);
@@ -114,18 +115,18 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.txtCaption.Name = "txtCaption";
             this.txtCaption.Size = new System.Drawing.Size(230, 31);
             this.txtCaption.TabIndex = 2;
-            // 
+            //
             // txtDescription
-            // 
+            //
             this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescription.Location = new System.Drawing.Point(3, 164);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(230, 127);
             this.txtDescription.TabIndex = 4;
-            // 
+            //
             // txtJSON
-            // 
+            //
             this.txtJSON.BackColor = System.Drawing.Color.DimGray;
             this.txtJSON.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtJSON.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -135,9 +136,9 @@ namespace WinFormsSampleControls.ProductionProcess {
             this.txtJSON.Name = "txtJSON";
             this.txtJSON.Size = new System.Drawing.Size(1278, 354);
             this.txtJSON.TabIndex = 4;
-            // 
+            //
             // ProductionProcessControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

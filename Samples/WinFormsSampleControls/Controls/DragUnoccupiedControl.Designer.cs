@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.DragUnoccupied {
   partial class DragUnoccupiedControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.DragUnoccupied {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -31,9 +32,9 @@ namespace WinFormsSampleControls.DragUnoccupied {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -49,18 +50,18 @@ namespace WinFormsSampleControls.DragUnoccupied {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 607);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // paletteControl1
-            // 
+            //
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
             this.paletteControl1.Size = new System.Drawing.Size(114, 394);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(123, 3);
@@ -68,9 +69,9 @@ namespace WinFormsSampleControls.DragUnoccupied {
             this.diagramControl1.Size = new System.Drawing.Size(874, 394);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -80,9 +81,9 @@ namespace WinFormsSampleControls.DragUnoccupied {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 195);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // DragUnoccupiedControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

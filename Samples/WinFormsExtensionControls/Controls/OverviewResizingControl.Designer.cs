@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.OverviewResizing {
   partial class OverviewResizingControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.OverviewResizing {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -35,9 +36,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -55,9 +56,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -65,9 +66,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.diagramControl1.Size = new System.Drawing.Size(994, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -76,9 +77,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 284);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
@@ -90,9 +91,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(349, 44);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // expandRandomNode
-            // 
+            //
             this.expandRandomNode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.expandRandomNode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.expandRandomNode.Location = new System.Drawing.Point(153, 3);
@@ -101,9 +102,9 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.expandRandomNode.TabIndex = 1;
             this.expandRandomNode.Text = "Expand random Node";
             this.expandRandomNode.UseVisualStyleBackColor = true;
-            // 
+            //
             // zoomToFit
-            // 
+            //
             this.zoomToFit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zoomToFit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.zoomToFit.Location = new System.Drawing.Point(3, 3);
@@ -112,18 +113,18 @@ namespace WinFormsExtensionControls.OverviewResizing {
             this.zoomToFit.TabIndex = 0;
             this.zoomToFit.Text = "Zoom to Fit";
             this.zoomToFit.UseVisualStyleBackColor = true;
-            // 
+            //
             // overviewControl1
-            // 
+            //
             this.overviewControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.overviewControl1.Location = new System.Drawing.Point(3, 603);
             this.overviewControl1.Name = "overviewControl1";
             this.overviewControl1.Size = new System.Drawing.Size(254, 254);
             this.overviewControl1.TabIndex = 3;
             this.overviewControl1.Text = "overviewControl1";
-            // 
+            //
             // OverviewResizingControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

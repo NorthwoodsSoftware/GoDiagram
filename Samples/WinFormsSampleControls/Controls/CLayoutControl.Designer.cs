@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.CLayout {
   partial class CLayoutControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.CLayout {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -98,9 +99,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -117,9 +118,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 833);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -133,9 +134,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 339);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -162,9 +163,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(199, 310);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel7
-            // 
+            //
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -176,17 +177,17 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(193, 29);
             this.tableLayoutPanel7.TabIndex = 7;
-            // 
+            //
             // maxLinksFromNode
-            // 
+            //
             this.maxLinksFromNode.Location = new System.Drawing.Point(147, 3);
             this.maxLinksFromNode.Name = "maxLinksFromNode";
             this.maxLinksFromNode.Size = new System.Drawing.Size(43, 23);
             this.maxLinksFromNode.TabIndex = 2;
             this.maxLinksFromNode.Text = "2";
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(3, 0);
@@ -195,9 +196,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label5.TabIndex = 3;
             this.label5.Text = "Max Links from Node:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel6
-            // 
+            //
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -209,17 +210,17 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(193, 29);
             this.tableLayoutPanel6.TabIndex = 6;
-            // 
+            //
             // minLinksFromNode
-            // 
+            //
             this.minLinksFromNode.Location = new System.Drawing.Point(147, 3);
             this.minLinksFromNode.Name = "minLinksFromNode";
             this.minLinksFromNode.Size = new System.Drawing.Size(43, 23);
             this.minLinksFromNode.TabIndex = 2;
             this.minLinksFromNode.Text = "1";
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 0);
@@ -228,9 +229,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label4.TabIndex = 3;
             this.label4.Text = "Min Links from Node:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // simpleRing
-            // 
+            //
             this.simpleRing.AutoSize = true;
             this.simpleRing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simpleRing.Location = new System.Drawing.Point(6, 173);
@@ -240,9 +241,9 @@ namespace WinFormsSampleControls.CLayout {
             this.simpleRing.TabIndex = 5;
             this.simpleRing.Text = "Graph is simple ring";
             this.simpleRing.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel5
-            // 
+            //
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -254,18 +255,18 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(193, 29);
             this.tableLayoutPanel5.TabIndex = 3;
-            // 
+            //
             // textBox7
-            // 
+            //
             this.textBox7.Location = new System.Drawing.Point(147, 3);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(43, 23);
             this.textBox7.TabIndex = 1;
             this.textBox7.Text = "(<=65)";
-            // 
+            //
             // randomSizes
-            // 
+            //
             this.randomSizes.AutoSize = true;
             this.randomSizes.Checked = true;
             this.randomSizes.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -276,9 +277,9 @@ namespace WinFormsSampleControls.CLayout {
             this.randomSizes.TabIndex = 0;
             this.randomSizes.Text = "Random Sizes:";
             this.randomSizes.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -290,17 +291,17 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(193, 29);
             this.tableLayoutPanel4.TabIndex = 1;
-            // 
+            //
             // numOfNodes
-            // 
+            //
             this.numOfNodes.Location = new System.Drawing.Point(99, 3);
             this.numOfNodes.Name = "numOfNodes";
             this.numOfNodes.Size = new System.Drawing.Size(91, 23);
             this.numOfNodes.TabIndex = 1;
             this.numOfNodes.Text = "16";
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 0);
@@ -309,9 +310,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label2.TabIndex = 2;
             this.label2.Text = "# of nodes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel8
-            // 
+            //
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -325,25 +326,25 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(193, 29);
             this.tableLayoutPanel8.TabIndex = 2;
-            // 
+            //
             // xNodeSize
-            // 
+            //
             this.xNodeSize.Location = new System.Drawing.Point(99, 3);
             this.xNodeSize.Name = "xNodeSize";
             this.xNodeSize.Size = new System.Drawing.Size(42, 23);
             this.xNodeSize.TabIndex = 6;
             this.xNodeSize.Text = "25";
-            // 
+            //
             // yNodeSize
-            // 
+            //
             this.yNodeSize.Location = new System.Drawing.Point(147, 3);
             this.yNodeSize.Name = "yNodeSize";
             this.yNodeSize.Size = new System.Drawing.Size(42, 23);
             this.yNodeSize.TabIndex = 4;
             this.yNodeSize.Text = "25";
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(3, 0);
@@ -352,9 +353,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label3.TabIndex = 5;
             this.label3.Text = "Node Size:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // circularNodes
-            // 
+            //
             this.circularNodes.AutoSize = true;
             this.circularNodes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.circularNodes.Location = new System.Drawing.Point(6, 138);
@@ -364,9 +365,9 @@ namespace WinFormsSampleControls.CLayout {
             this.circularNodes.TabIndex = 4;
             this.circularNodes.Text = "Circular Nodes";
             this.circularNodes.UseVisualStyleBackColor = true;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -376,9 +377,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label1.TabIndex = 9;
             this.label1.Text = "New Graph";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // generateCircle
-            // 
+            //
             this.generateCircle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.generateCircle.Location = new System.Drawing.Point(3, 278);
             this.generateCircle.Name = "generateCircle";
@@ -386,9 +387,9 @@ namespace WinFormsSampleControls.CLayout {
             this.generateCircle.TabIndex = 10;
             this.generateCircle.Text = "Generate Circle";
             this.generateCircle.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel9
-            // 
+            //
             this.tableLayoutPanel9.AutoSize = true;
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -417,9 +418,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(417, 333);
             this.tableLayoutPanel9.TabIndex = 1;
-            // 
+            //
             // tableLayoutPanel13
-            // 
+            //
             this.tableLayoutPanel13.ColumnCount = 3;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -433,9 +434,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(408, 29);
             this.tableLayoutPanel13.TabIndex = 13;
-            // 
+            //
             // label12
-            // 
+            //
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Location = new System.Drawing.Point(3, 0);
@@ -444,17 +445,17 @@ namespace WinFormsSampleControls.CLayout {
             this.label12.TabIndex = 4;
             this.label12.Text = "Spacing:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // spacing
-            // 
+            //
             this.spacing.Location = new System.Drawing.Point(103, 3);
             this.spacing.Name = "spacing";
             this.spacing.Size = new System.Drawing.Size(34, 23);
             this.spacing.TabIndex = 1;
             this.spacing.Text = "6";
-            // 
+            //
             // label18
-            // 
+            //
             this.label18.AutoSize = true;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Location = new System.Drawing.Point(143, 0);
@@ -463,9 +464,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label18.TabIndex = 5;
             this.label18.Text = "(actual spacing also depends on radius)";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel12
-            // 
+            //
             this.tableLayoutPanel12.ColumnCount = 3;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -479,9 +480,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(408, 29);
             this.tableLayoutPanel12.TabIndex = 12;
-            // 
+            //
             // label11
-            // 
+            //
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Location = new System.Drawing.Point(3, 0);
@@ -490,17 +491,17 @@ namespace WinFormsSampleControls.CLayout {
             this.label11.TabIndex = 4;
             this.label11.Text = "Sweep Angle:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // sweepAngle
-            // 
+            //
             this.sweepAngle.Location = new System.Drawing.Point(103, 3);
             this.sweepAngle.Name = "sweepAngle";
             this.sweepAngle.Size = new System.Drawing.Size(34, 23);
             this.sweepAngle.TabIndex = 1;
             this.sweepAngle.Text = "360";
-            // 
+            //
             // label17
-            // 
+            //
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Location = new System.Drawing.Point(143, 0);
@@ -509,9 +510,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label17.TabIndex = 5;
             this.label17.Text = "(degrees occupied; > = 1, <= 360)";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel11
-            // 
+            //
             this.tableLayoutPanel11.ColumnCount = 3;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -525,17 +526,17 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(408, 29);
             this.tableLayoutPanel11.TabIndex = 11;
-            // 
+            //
             // startAngle
-            // 
+            //
             this.startAngle.Location = new System.Drawing.Point(103, 3);
             this.startAngle.Name = "startAngle";
             this.startAngle.Size = new System.Drawing.Size(34, 23);
             this.startAngle.TabIndex = 1;
             this.startAngle.Text = "0";
-            // 
+            //
             // label10
-            // 
+            //
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 0);
@@ -544,9 +545,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label10.TabIndex = 3;
             this.label10.Text = "StartAngle:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // label16
-            // 
+            //
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Location = new System.Drawing.Point(143, 0);
@@ -555,9 +556,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label16.TabIndex = 4;
             this.label16.Text = "(angle at first element)";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel10
-            // 
+            //
             this.tableLayoutPanel10.ColumnCount = 3;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -571,9 +572,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(408, 29);
             this.tableLayoutPanel10.TabIndex = 10;
-            // 
+            //
             // label9
-            // 
+            //
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 0);
@@ -582,17 +583,17 @@ namespace WinFormsSampleControls.CLayout {
             this.label9.TabIndex = 4;
             this.label9.Text = "Aspect Ratio:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // aspectRatio
-            // 
+            //
             this.aspectRatio.Location = new System.Drawing.Point(103, 3);
             this.aspectRatio.Name = "aspectRatio";
             this.aspectRatio.Size = new System.Drawing.Size(34, 23);
             this.aspectRatio.TabIndex = 1;
             this.aspectRatio.Text = "1";
-            // 
+            //
             // label15
-            // 
+            //
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Location = new System.Drawing.Point(143, 0);
@@ -601,9 +602,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label15.TabIndex = 5;
             this.label15.Text = "(1 is circular; > 0)";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel14
-            // 
+            //
             this.tableLayoutPanel14.ColumnCount = 3;
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
@@ -617,9 +618,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(305, 29);
             this.tableLayoutPanel14.TabIndex = 7;
-            // 
+            //
             // label13
-            // 
+            //
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Location = new System.Drawing.Point(3, 0);
@@ -628,9 +629,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label13.TabIndex = 4;
             this.label13.Text = "Node Diameter:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // circular
-            // 
+            //
             this.circular.AutoSize = true;
             this.circular.Dock = System.Windows.Forms.DockStyle.Fill;
             this.circular.Location = new System.Drawing.Point(203, 3);
@@ -639,9 +640,9 @@ namespace WinFormsSampleControls.CLayout {
             this.circular.TabIndex = 2;
             this.circular.Text = "Circular";
             this.circular.UseVisualStyleBackColor = true;
-            // 
+            //
             // pythagorean
-            // 
+            //
             this.pythagorean.AutoSize = true;
             this.pythagorean.Checked = true;
             this.pythagorean.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -652,9 +653,9 @@ namespace WinFormsSampleControls.CLayout {
             this.pythagorean.TabStop = true;
             this.pythagorean.Text = "Pythagorean";
             this.pythagorean.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel15
-            // 
+            //
             this.tableLayoutPanel15.ColumnCount = 3;
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -668,9 +669,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel15.Size = new System.Drawing.Size(408, 29);
             this.tableLayoutPanel15.TabIndex = 1;
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Location = new System.Drawing.Point(143, 0);
@@ -679,17 +680,17 @@ namespace WinFormsSampleControls.CLayout {
             this.label8.TabIndex = 4;
             this.label8.Text = "(along X axis; NaN > 0)";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // radius
-            // 
+            //
             this.radius.Location = new System.Drawing.Point(103, 3);
             this.radius.Name = "radius";
             this.radius.Size = new System.Drawing.Size(34, 23);
             this.radius.TabIndex = 1;
             this.radius.Text = "NaN";
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(3, 0);
@@ -698,9 +699,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label7.TabIndex = 3;
             this.label7.Text = "Radius:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel16
-            // 
+            //
             this.tableLayoutPanel16.ColumnCount = 2;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24F));
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76F));
@@ -712,9 +713,9 @@ namespace WinFormsSampleControls.CLayout {
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel16.Size = new System.Drawing.Size(411, 29);
             this.tableLayoutPanel16.TabIndex = 9;
-            // 
+            //
             // label14
-            // 
+            //
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Location = new System.Drawing.Point(101, 0);
@@ -723,9 +724,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label14.TabIndex = 6;
             this.label14.Text = "(use \"Optimized\" to reduce the number of link crossings)";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // sorting
-            // 
+            //
             this.sorting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sorting.FormattingEnabled = true;
             this.sorting.Items.AddRange(new object[] {
@@ -739,9 +740,9 @@ namespace WinFormsSampleControls.CLayout {
             this.sorting.Size = new System.Drawing.Size(92, 23);
             this.sorting.TabIndex = 7;
             this.sorting.Text = "Sorting";
-            // 
+            //
             // label6
-            // 
+            //
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -751,9 +752,9 @@ namespace WinFormsSampleControls.CLayout {
             this.label6.TabIndex = 14;
             this.label6.Text = "CircularLayout Properties";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // arrangement
-            // 
+            //
             this.arrangement.FormattingEnabled = true;
             this.arrangement.Items.AddRange(new object[] {
             "ConstantDistance",
@@ -765,9 +766,9 @@ namespace WinFormsSampleControls.CLayout {
             this.arrangement.Size = new System.Drawing.Size(125, 23);
             this.arrangement.TabIndex = 15;
             this.arrangement.Text = "Arrangement";
-            // 
+            //
             // direction
-            // 
+            //
             this.direction.FormattingEnabled = true;
             this.direction.Items.AddRange(new object[] {
             "Clockwise",
@@ -779,9 +780,9 @@ namespace WinFormsSampleControls.CLayout {
             this.direction.Size = new System.Drawing.Size(125, 23);
             this.direction.TabIndex = 16;
             this.direction.Text = "Direction";
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 348);
@@ -789,9 +790,9 @@ namespace WinFormsSampleControls.CLayout {
             this.diagramControl1.Size = new System.Drawing.Size(994, 429);
             this.diagramControl1.TabIndex = 2;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -800,9 +801,9 @@ namespace WinFormsSampleControls.CLayout {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 41);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // CircularLayoutSampleControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

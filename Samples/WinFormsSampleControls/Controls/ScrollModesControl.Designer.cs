@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.ScrollModes {
   partial class ScrollModesControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.ScrollModes {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -37,9 +38,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -65,9 +66,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -75,9 +76,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.diagramControl1.Size = new System.Drawing.Size(994, 494);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // checkBxScroll
-            // 
+            //
             this.checkBxScroll.AutoSize = true;
             this.checkBxScroll.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBxScroll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -87,9 +88,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.checkBxScroll.TabIndex = 1;
             this.checkBxScroll.Text = "Enable Infinite Scrolling, setting Diagram.scrollMode";
             this.checkBxScroll.UseVisualStyleBackColor = true;
-            // 
+            //
             // txtScroll
-            // 
+            //
             this.txtScroll.BackColor = System.Drawing.Color.Black;
             this.txtScroll.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtScroll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -101,9 +102,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.txtScroll.TabIndex = 2;
             this.txtScroll.Text = "\r\n myDiagram.scrollMode = checked ? go.Diagram.InfiniteScroll : go.Diagram.Docume" +
     "ntScroll;";
-            // 
+            //
             // checkBxPosComp
-            // 
+            //
             this.checkBxPosComp.AutoSize = true;
             this.checkBxPosComp.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBxPosComp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -113,9 +114,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.checkBxPosComp.TabIndex = 3;
             this.checkBxPosComp.Text = "Enable Diagram.positionComputation function";
             this.checkBxPosComp.UseVisualStyleBackColor = true;
-            // 
+            //
             // txtPosComp
-            // 
+            //
             this.txtPosComp.BackColor = System.Drawing.Color.Black;
             this.txtPosComp.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtPosComp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -126,9 +127,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.txtPosComp.Size = new System.Drawing.Size(994, 164);
             this.txtPosComp.TabIndex = 4;
             this.txtPosComp.Text = resources.GetString("txtPosComp.Text");
-            // 
+            //
             // txtScaleComp
-            // 
+            //
             this.txtScaleComp.BackColor = System.Drawing.Color.Black;
             this.txtScaleComp.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtScaleComp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -139,9 +140,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.txtScaleComp.Size = new System.Drawing.Size(994, 264);
             this.txtScaleComp.TabIndex = 6;
             this.txtScaleComp.Text = resources.GetString("txtScaleComp.Text");
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -150,9 +151,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 94);
             this.goWebBrowser1.TabIndex = 7;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // checkBxScaleComp
-            // 
+            //
             this.checkBxScaleComp.AutoSize = true;
             this.checkBxScaleComp.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkBxScaleComp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -162,9 +163,9 @@ namespace WinFormsSampleControls.ScrollModes {
             this.checkBxScaleComp.TabIndex = 8;
             this.checkBxScaleComp.Text = "Enable Diagram.scaleComputation function";
             this.checkBxScaleComp.UseVisualStyleBackColor = true;
-            // 
+            //
             // ScrollModesControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

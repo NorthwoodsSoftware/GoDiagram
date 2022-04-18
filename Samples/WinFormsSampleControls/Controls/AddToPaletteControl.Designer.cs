@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.AddToPalette {
   partial class AddToPaletteControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.AddToPalette {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -42,9 +43,9 @@ namespace WinFormsSampleControls.AddToPalette {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -64,9 +65,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1145, 1437);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
@@ -84,9 +85,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1139, 512);
             this.tableLayoutPanel2.TabIndex = 6;
-            // 
+            //
             // paletteControl1
-            // 
+            //
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
@@ -94,18 +95,18 @@ namespace WinFormsSampleControls.AddToPalette {
             this.paletteControl1.Size = new System.Drawing.Size(140, 400);
             this.paletteControl1.TabIndex = 0;
             this.paletteControl1.Text = "paletteControl1";
-            // 
+            //
             // overviewControl1
-            // 
+            //
             this.overviewControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overviewControl1.Location = new System.Drawing.Point(3, 409);
             this.overviewControl1.Name = "overviewControl1";
             this.overviewControl1.Size = new System.Drawing.Size(140, 100);
             this.overviewControl1.TabIndex = 1;
             this.overviewControl1.Text = "overviewControl1";
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(149, 3);
@@ -114,9 +115,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.diagramControl1.Size = new System.Drawing.Size(500, 506);
             this.diagramControl1.TabIndex = 7;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // inspectorControl1
-            // 
+            //
             this.inspectorControl1.AutoSize = true;
             this.inspectorControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.inspectorControl1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -125,9 +126,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.tableLayoutPanel2.SetRowSpan(this.inspectorControl1, 2);
             this.inspectorControl1.Size = new System.Drawing.Size(92, 21);
             this.inspectorControl1.TabIndex = 7;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -136,9 +137,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.goWebBrowser1.Size = new System.Drawing.Size(1139, 114);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
@@ -147,9 +148,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(314, 31);
             this.flowLayoutPanel1.TabIndex = 7;
-            // 
+            //
             // btnAdd
-            // 
+            //
             this.btnAdd.AutoSize = true;
             this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -159,9 +160,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add To Palette";
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnDelete
-            // 
+            //
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -171,9 +172,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete From Palette";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(228, 8);
@@ -181,9 +182,9 @@ namespace WinFormsSampleControls.AddToPalette {
             this.label1.Size = new System.Drawing.Size(83, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "Palette model:";
-            // 
+            //
             // txtPalette
-            // 
+            //
             this.txtPalette.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtPalette.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPalette.Location = new System.Drawing.Point(3, 678);
@@ -192,18 +193,18 @@ namespace WinFormsSampleControls.AddToPalette {
             this.txtPalette.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtPalette.Size = new System.Drawing.Size(1139, 200);
             this.txtPalette.TabIndex = 4;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 884);
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(1139, 335);
             this.saveLoadModel1.TabIndex = 5;
-            // 
+            //
             // AddToPaletteControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

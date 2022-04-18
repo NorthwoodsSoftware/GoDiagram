@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.PolygonDrawing {
   partial class PolygonDrawingControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.PolygonDrawing {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -44,9 +45,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -66,9 +67,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 6;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
@@ -89,9 +90,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(819, 44);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // drawPolygon
-            // 
+            //
             this.drawPolygon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.drawPolygon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.drawPolygon.Location = new System.Drawing.Point(103, 3);
@@ -100,9 +101,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.drawPolygon.TabIndex = 5;
             this.drawPolygon.Text = "Draw Polygon";
             this.drawPolygon.UseVisualStyleBackColor = true;
-            // 
+            //
             // undoLastPoint
-            // 
+            //
             this.undoLastPoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.undoLastPoint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.undoLastPoint.Location = new System.Drawing.Point(673, 3);
@@ -111,9 +112,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.undoLastPoint.TabIndex = 4;
             this.undoLastPoint.Text = "Undo Last Point";
             this.undoLastPoint.UseVisualStyleBackColor = true;
-            // 
+            //
             // cancelDrawing
-            // 
+            //
             this.cancelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cancelDrawing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cancelDrawing.Location = new System.Drawing.Point(523, 3);
@@ -122,9 +123,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.cancelDrawing.TabIndex = 3;
             this.cancelDrawing.Text = "Cancel Drawing";
             this.cancelDrawing.UseVisualStyleBackColor = true;
-            // 
+            //
             // finishDrawing
-            // 
+            //
             this.finishDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.finishDrawing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.finishDrawing.Location = new System.Drawing.Point(373, 3);
@@ -133,9 +134,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.finishDrawing.TabIndex = 2;
             this.finishDrawing.Text = "Finish Drawing";
             this.finishDrawing.UseVisualStyleBackColor = true;
-            // 
+            //
             // drawPolyline
-            // 
+            //
             this.drawPolyline.Dock = System.Windows.Forms.DockStyle.Fill;
             this.drawPolyline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.drawPolyline.Location = new System.Drawing.Point(253, 3);
@@ -144,9 +145,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.drawPolyline.TabIndex = 1;
             this.drawPolyline.Text = "Draw Polyline";
             this.drawPolyline.UseVisualStyleBackColor = true;
-            // 
+            //
             // select
-            // 
+            //
             this.select.Dock = System.Windows.Forms.DockStyle.Fill;
             this.select.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.select.Location = new System.Drawing.Point(3, 3);
@@ -155,9 +156,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.select.TabIndex = 0;
             this.select.Text = "Select";
             this.select.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
@@ -172,9 +173,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(531, 44);
             this.tableLayoutPanel3.TabIndex = 1;
-            // 
+            //
             // allowRotating
-            // 
+            //
             this.allowRotating.AutoSize = true;
             this.allowRotating.Checked = true;
             this.allowRotating.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -186,9 +187,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.allowRotating.TabIndex = 2;
             this.allowRotating.Text = "Allow Rotating";
             this.allowRotating.UseVisualStyleBackColor = true;
-            // 
+            //
             // allowReshaping
-            // 
+            //
             this.allowReshaping.AutoSize = true;
             this.allowReshaping.Checked = true;
             this.allowReshaping.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -200,9 +201,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.allowReshaping.TabIndex = 1;
             this.allowReshaping.Text = "Allow Reshaping";
             this.allowReshaping.UseVisualStyleBackColor = true;
-            // 
+            //
             // allowResizing
-            // 
+            //
             this.allowResizing.AutoSize = true;
             this.allowResizing.Checked = true;
             this.allowResizing.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -214,9 +215,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.allowResizing.TabIndex = 0;
             this.allowResizing.Text = "Allow Resizing";
             this.allowResizing.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -224,9 +225,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.diagramControl1.Size = new System.Drawing.Size(994, 394);
             this.diagramControl1.TabIndex = 2;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,18 +236,18 @@ namespace WinFormsExtensionControls.PolygonDrawing {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 224);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 733);
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(994, 464);
             this.saveLoadModel1.TabIndex = 4;
-            // 
+            //
             // PolygonDrawingControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

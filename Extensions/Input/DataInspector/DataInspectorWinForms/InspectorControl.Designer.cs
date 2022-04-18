@@ -1,12 +1,15 @@
-﻿
+﻿/*
+*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*/
+
 namespace Northwoods.Go.Extensions {
   partial class InspectorControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +22,8 @@ namespace Northwoods.Go.Extensions {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -29,9 +32,9 @@ namespace Northwoods.Go.Extensions {
       this.label2 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
-      // 
+      //
       // tableLayoutPanel1
-      // 
+      //
       this.tableLayoutPanel1.AutoSize = true;
       this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.tableLayoutPanel1.ColumnCount = 2;
@@ -45,27 +48,27 @@ namespace Northwoods.Go.Extensions {
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.Size = new System.Drawing.Size(90, 15);
       this.tableLayoutPanel1.TabIndex = 0;
-      // 
+      //
       // label1
-      // 
+      //
       this.label1.AutoSize = true;
       this.label1.Location = new System.Drawing.Point(3, 0);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(39, 15);
       this.label1.TabIndex = 0;
       this.label1.Text = "Name";
-      // 
+      //
       // label2
-      // 
+      //
       this.label2.AutoSize = true;
       this.label2.Location = new System.Drawing.Point(48, 0);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(35, 15);
       this.label2.TabIndex = 1;
       this.label2.Text = "Value";
-      // 
+      //
       // InspectorControl
-      // 
+      //
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;

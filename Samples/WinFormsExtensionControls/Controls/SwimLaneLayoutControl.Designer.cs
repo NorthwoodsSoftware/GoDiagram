@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.SwimLaneLayout {
   partial class SwimLaneLayoutControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -34,9 +35,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -54,9 +55,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(799, 791);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,9 +66,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.goWebBrowser1.Size = new System.Drawing.Size(793, 29);
             this.goWebBrowser1.TabIndex = 0;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 38);
@@ -75,9 +76,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.diagramControl1.Size = new System.Drawing.Size(793, 694);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -90,9 +91,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(97, 50);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // radBtnConferences
-            // 
+            //
             this.radBtnConferences.AutoSize = true;
             this.radBtnConferences.Location = new System.Drawing.Point(3, 3);
             this.radBtnConferences.Name = "radBtnConferences";
@@ -100,9 +101,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.radBtnConferences.TabIndex = 0;
             this.radBtnConferences.Text = "Conferences";
             this.radBtnConferences.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnDivisions
-            // 
+            //
             this.radBtnDivisions.AutoSize = true;
             this.radBtnDivisions.Checked = true;
             this.radBtnDivisions.Location = new System.Drawing.Point(3, 28);
@@ -112,9 +113,9 @@ namespace WinFormsExtensionControls.SwimLaneLayout {
             this.radBtnDivisions.TabStop = true;
             this.radBtnDivisions.Text = "Divisions";
             this.radBtnDivisions.UseVisualStyleBackColor = true;
-            // 
+            //
             // SwimLaneControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;

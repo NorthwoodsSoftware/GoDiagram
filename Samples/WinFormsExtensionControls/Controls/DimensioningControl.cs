@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,7 @@ namespace WinFormsExtensionControls.Dimensioning {
   [ToolboxItem(false)]
   public partial class DimensioningControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
+
     public DimensioningControl() {
       InitializeComponent();
 
@@ -24,7 +26,7 @@ namespace WinFormsExtensionControls.Dimensioning {
    <p>
       This sample makes use of the DimensioningLink class, which inherits from the <a>Link</a> class.
       That class is defined at <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/DimensioningLink/DimensioningLink.cs"">DimensioningLink.cs</a>.
-   </p> 
+   </p>
 ";
 
     }

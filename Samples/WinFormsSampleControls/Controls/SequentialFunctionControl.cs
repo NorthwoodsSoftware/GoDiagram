@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Models;

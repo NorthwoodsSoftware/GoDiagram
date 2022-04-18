@@ -1,4 +1,4 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
 namespace WinFormsDemoApp {
   partial class App {
     /// <summary>
@@ -36,9 +36,9 @@ namespace WinFormsDemoApp {
             this.sampleTab.SuspendLayout();
             this.extensionTab.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
@@ -51,9 +51,9 @@ namespace WinFormsDemoApp {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1246, 637);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tabControl1
-            // 
+            //
             this.tabControl1.Controls.Add(this.sampleTab);
             this.tabControl1.Controls.Add(this.extensionTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -64,9 +64,9 @@ namespace WinFormsDemoApp {
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(190, 633);
             this.tabControl1.TabIndex = 1;
-            // 
+            //
             // sampleTab
-            // 
+            //
             this.sampleTab.Controls.Add(this.sampleList);
             this.sampleTab.Location = new System.Drawing.Point(4, 24);
             this.sampleTab.Name = "sampleTab";
@@ -75,9 +75,9 @@ namespace WinFormsDemoApp {
             this.sampleTab.TabIndex = 0;
             this.sampleTab.Text = "Samples";
             this.sampleTab.UseVisualStyleBackColor = true;
-            // 
+            //
             // sampleList
-            // 
+            //
             this.sampleList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.sampleList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sampleList.IntegralHeight = false;
@@ -87,9 +87,9 @@ namespace WinFormsDemoApp {
             this.sampleList.Name = "sampleList";
             this.sampleList.Size = new System.Drawing.Size(176, 599);
             this.sampleList.TabIndex = 0;
-            // 
+            //
             // extensionTab
-            // 
+            //
             this.extensionTab.Controls.Add(this.extensionList);
             this.extensionTab.Location = new System.Drawing.Point(4, 24);
             this.extensionTab.Name = "extensionTab";
@@ -98,9 +98,9 @@ namespace WinFormsDemoApp {
             this.extensionTab.TabIndex = 1;
             this.extensionTab.Text = "Extensions";
             this.extensionTab.UseVisualStyleBackColor = true;
-            // 
+            //
             // extensionList
-            // 
+            //
             this.extensionList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.extensionList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extensionList.IntegralHeight = false;
@@ -110,9 +110,9 @@ namespace WinFormsDemoApp {
             this.extensionList.Name = "extensionList";
             this.extensionList.Size = new System.Drawing.Size(176, 599);
             this.extensionList.TabIndex = 0;
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(250, 250);
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -123,9 +123,9 @@ namespace WinFormsDemoApp {
             this.panel1.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel1.Size = new System.Drawing.Size(1050, 633);
             this.panel1.TabIndex = 1;
-            // 
+            //
             // App
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1600, 900);

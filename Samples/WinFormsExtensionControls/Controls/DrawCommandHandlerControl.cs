@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -8,7 +10,7 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
   [ToolboxItem(false)]
   public partial class DrawCommandHandlerControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public DrawCommandHandlerControl() {
       InitializeComponent();
 
@@ -45,7 +47,7 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
     and uses a ""paste offset"" so that pasting objects will cascade them rather than place them on top of one another.
     It is defined in its own file, as <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Input/DrawCommandHandler/DrawCommandHandler.cs"">DrawCommandHandler.cs</a>.
   </p>
- 
+
    <p>
      The above buttons can be used to align Parts, rotate Parts, or change the behavior of the arrow keys.
   </p>
@@ -65,8 +67,8 @@ namespace WinFormsExtensionControls.DrawCommandHandler {
         (myDiagram.CommandHandler as Northwoods.Go.Extensions.DrawCommandHandler).ArrowKeyBehavior = ArrowBehavior.Tree;
 
     }
-    
-    
+
+
 
     // begin Blazor callbacks
     private void LeftAlign() {

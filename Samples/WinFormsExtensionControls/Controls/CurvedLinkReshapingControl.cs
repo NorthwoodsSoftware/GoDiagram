@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -9,7 +11,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
   [ToolboxItem(false)]
   public partial class CurvedLinkReshapingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public CurvedLinkReshapingControl() {
       InitializeComponent();
 
@@ -22,7 +24,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
     that makes use of the CurvedLinkReshapingTool that is defined in its own file,
     as <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshapingTool.cs"">CurvedLinkReshapingTool.cs</a>.
    </p>
- 
+
    <p>
      Note that unlike the standard case of a Bezier - curved Link that is <a>Part.Reshapable</a>, there is only one reshape handle
      When the user drags that handle, the value of <a>Link.Curviness</a> is modified, causing the link to be curved differently.
@@ -211,7 +213,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
   public class NodeData : Model.NodeData {
     public string Id { get; set; }
     public string Loc { get; set; }
-   
+
   }
 
   public class LinkData : Model.LinkData {

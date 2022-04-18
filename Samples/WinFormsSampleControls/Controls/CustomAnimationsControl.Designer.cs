@@ -1,11 +1,13 @@
-﻿namespace WinFormsSampleControls.CustomAnimations {
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+namespace WinFormsSampleControls.CustomAnimations {
   partial class CustomAnimationsControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -18,8 +20,8 @@
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -40,9 +42,9 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -58,18 +60,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1249, 720);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(700, 600);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -78,9 +80,9 @@
             this.goWebBrowser1.Size = new System.Drawing.Size(1243, 130);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.label2);
@@ -95,9 +97,9 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(316, 133);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.flowLayoutPanel1.SetFlowBreak(this.label1, true);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -106,9 +108,9 @@
             this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Options:";
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 22);
@@ -116,9 +118,9 @@
             this.label2.Size = new System.Drawing.Size(114, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Creation Animation:";
-            // 
+            //
             // creation
-            // 
+            //
             this.creation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel1.SetFlowBreak(this.creation, true);
             this.creation.FormattingEnabled = true;
@@ -126,9 +128,9 @@
             this.creation.Name = "creation";
             this.creation.Size = new System.Drawing.Size(121, 23);
             this.creation.TabIndex = 2;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 51);
@@ -136,9 +138,9 @@
             this.label3.Size = new System.Drawing.Size(113, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "Deletion Animation:";
-            // 
+            //
             // deletion
-            // 
+            //
             this.deletion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel1.SetFlowBreak(this.deletion, true);
             this.deletion.FormattingEnabled = true;
@@ -146,9 +148,9 @@
             this.deletion.Name = "deletion";
             this.deletion.Size = new System.Drawing.Size(121, 23);
             this.deletion.TabIndex = 4;
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 80);
@@ -156,9 +158,9 @@
             this.label4.Size = new System.Drawing.Size(97, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Drawn Link Style:";
-            // 
+            //
             // links
-            // 
+            //
             this.links.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel1.SetFlowBreak(this.links, true);
             this.links.FormattingEnabled = true;
@@ -166,9 +168,9 @@
             this.links.Name = "links";
             this.links.Size = new System.Drawing.Size(121, 23);
             this.links.TabIndex = 6;
-            // 
+            //
             // button1
-            // 
+            //
             this.button1.AutoSize = true;
             this.button1.Location = new System.Drawing.Point(3, 105);
             this.button1.Name = "button1";
@@ -177,9 +179,9 @@
             this.button1.Text = "Add Node + Link from selected Node";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += Button1_Click;
-            // 
+            //
             // button2
-            // 
+            //
             this.button2.AutoSize = true;
             this.button2.Location = new System.Drawing.Point(223, 105);
             this.button2.Name = "button2";
@@ -188,9 +190,9 @@
             this.button2.Text = "Reload model";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += Button2_Click;
-            // 
+            //
             // CustomAnimationsControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -223,6 +225,6 @@
     private System.Windows.Forms.ComboBox links;
     private System.Windows.Forms.Button button1;
     private System.Windows.Forms.Button button2;
-    
+
   }
 }

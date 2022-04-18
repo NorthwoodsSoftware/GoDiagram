@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Layouts.Extensions;
@@ -8,7 +10,7 @@ namespace WinFormsExtensionControls.Parallel {
   [ToolboxItem(false)]
   public partial class ParallelControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
+
     public ParallelControl() {
       InitializeComponent();
 
@@ -21,7 +23,7 @@ namespace WinFormsExtensionControls.Parallel {
     other than links that connect with a single ""Merge"" node.
     The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/Parallel/ParallelLayout.cs"">ParallelLayout.cs</a>.
    </p>
- 
+
    <p>
      Both the <a>Diagram.Layout</a> and the <a>Group.Layout</a> are instances of ParallelLayout,
     allowing for nested layouts that appear in parallel.

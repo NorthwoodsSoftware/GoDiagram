@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -36,9 +38,9 @@ namespace WinFormsExtensionControls.TreeMap {
           Each Group gets a size that is the sum of all of its member Nodes.
           </p>
           <p>
-          The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/TreeMap/TreeMapLayout.cs"">TreeMapLayout.cs</a>. 
+          The layout is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Layouts/TreeMap/TreeMapLayout.cs"">TreeMapLayout.cs</a>.
           </p>
- 
+
           <p>
           Clicking repeatedly at the same point will initially select the Node at that point, and then its containing Group, and so on up the chain of containers.
           </p>

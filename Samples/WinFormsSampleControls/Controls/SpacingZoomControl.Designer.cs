@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.SpacingZoom {
   partial class SpacingZoomControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.SpacingZoom {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -32,9 +33,9 @@ namespace WinFormsSampleControls.SpacingZoom {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -52,18 +53,18 @@ namespace WinFormsSampleControls.SpacingZoom {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(600, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // checkBxYAxis
-            // 
+            //
             this.checkBxYAxis.AutoSize = true;
             this.checkBxYAxis.Checked = true;
             this.checkBxYAxis.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -75,9 +76,9 @@ namespace WinFormsSampleControls.SpacingZoom {
             this.checkBxYAxis.TabIndex = 2;
             this.checkBxYAxis.Text = "Is Y Axis Spaced?";
             this.checkBxYAxis.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -86,9 +87,9 @@ namespace WinFormsSampleControls.SpacingZoom {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 554);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // lblSpacingFactor
-            // 
+            //
             this.lblSpacingFactor.AutoSize = true;
             this.lblSpacingFactor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSpacingFactor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -98,9 +99,9 @@ namespace WinFormsSampleControls.SpacingZoom {
             this.lblSpacingFactor.TabIndex = 4;
             this.lblSpacingFactor.Text = "Spacing factor: 1";
             this.lblSpacingFactor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // SpacingZoomControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.Flowchart {
   partial class FlowchartControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.Flowchart {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -32,9 +33,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -52,9 +53,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 1445);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // paletteControl1
-            // 
+            //
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
@@ -62,9 +63,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.paletteControl1.Size = new System.Drawing.Size(120, 782);
             this.paletteControl1.TabIndex = 2;
             this.paletteControl1.Text = "paletteControl1";
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -73,9 +74,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.diagramControl1.Size = new System.Drawing.Size(1068, 782);
             this.diagramControl1.TabIndex = 3;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -85,9 +86,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.goWebBrowser1.Size = new System.Drawing.Size(1194, 256);
             this.goWebBrowser1.TabIndex = 4;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -95,9 +96,9 @@ namespace WinFormsSampleControls.Flowchart {
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(1194, 335);
             this.saveLoadModel1.TabIndex = 5;
-            // 
+            //
             // FlowchartControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

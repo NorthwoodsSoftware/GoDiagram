@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.ContentAlign {
   partial class ContentAlignControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.ContentAlign {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -80,9 +81,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(50, 0);
             this.tableLayoutPanel1.AutoSize = true;
@@ -100,9 +101,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 624);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -110,9 +111,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.diagramControl1.Size = new System.Drawing.Size(494, 400);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -151,9 +152,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(347, 453);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // tableLayoutPanel9
-            // 
+            //
             this.tableLayoutPanel9.AutoSize = true;
             this.tableLayoutPanel9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel9.ColumnCount = 2;
@@ -168,27 +169,27 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.Size = new System.Drawing.Size(222, 15);
             this.tableLayoutPanel9.TabIndex = 18;
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(157, 15);
             this.label8.TabIndex = 0;
             this.label8.Text = "Diagram.DocumentBounds: ";
-            // 
+            //
             // docBounds
-            // 
+            //
             this.docBounds.AutoSize = true;
             this.docBounds.Location = new System.Drawing.Point(166, 0);
             this.docBounds.Name = "docBounds";
             this.docBounds.Size = new System.Drawing.Size(53, 15);
             this.docBounds.TabIndex = 1;
             this.docBounds.Text = "x, y, w, h";
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 15);
             this.label1.Name = "label1";
@@ -196,9 +197,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.label1.TabIndex = 13;
             this.label1.Text = "Diagram.ContentAlignment:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -218,9 +219,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(131, 75);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
+            //
             // bottomBtn
-            // 
+            //
             this.bottomBtn.AutoSize = true;
             this.bottomBtn.Location = new System.Drawing.Point(63, 53);
             this.bottomBtn.Name = "bottomBtn";
@@ -228,9 +229,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.bottomBtn.TabIndex = 5;
             this.bottomBtn.Text = "Bottom";
             this.bottomBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // topBtn
-            // 
+            //
             this.topBtn.AutoSize = true;
             this.topBtn.Location = new System.Drawing.Point(3, 53);
             this.topBtn.Name = "topBtn";
@@ -238,9 +239,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.topBtn.TabIndex = 4;
             this.topBtn.Text = "Top";
             this.topBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // rightBtn
-            // 
+            //
             this.rightBtn.AutoSize = true;
             this.rightBtn.Location = new System.Drawing.Point(63, 28);
             this.rightBtn.Name = "rightBtn";
@@ -248,9 +249,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.rightBtn.TabIndex = 3;
             this.rightBtn.Text = "Right";
             this.rightBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // leftBtn
-            // 
+            //
             this.leftBtn.AutoSize = true;
             this.leftBtn.Location = new System.Drawing.Point(3, 28);
             this.leftBtn.Name = "leftBtn";
@@ -258,9 +259,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.leftBtn.TabIndex = 2;
             this.leftBtn.Text = "Left";
             this.leftBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // centerBtn
-            // 
+            //
             this.centerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.centerBtn.AutoSize = true;
             this.centerBtn.Location = new System.Drawing.Point(63, 3);
@@ -269,9 +270,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.centerBtn.TabIndex = 1;
             this.centerBtn.Text = "Center";
             this.centerBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // noneBtn
-            // 
+            //
             this.noneBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.noneBtn.AutoSize = true;
             this.noneBtn.Checked = true;
@@ -282,9 +283,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.noneBtn.TabStop = true;
             this.noneBtn.Text = "None";
             this.noneBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 111);
             this.label2.Name = "label2";
@@ -292,9 +293,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.label2.TabIndex = 14;
             this.label2.Text = "Diagram.Position:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -308,32 +309,32 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(232, 29);
             this.tableLayoutPanel4.TabIndex = 4;
-            // 
+            //
             // positionX
-            // 
+            //
             this.positionX.Location = new System.Drawing.Point(3, 3);
             this.positionX.Name = "positionX";
             this.positionX.Size = new System.Drawing.Size(69, 23);
             this.positionX.TabIndex = 0;
-            // 
+            //
             // positionY
-            // 
+            //
             this.positionY.Location = new System.Drawing.Point(78, 3);
             this.positionY.Name = "positionY";
             this.positionY.Size = new System.Drawing.Size(69, 23);
             this.positionY.TabIndex = 1;
-            // 
+            //
             // positionChangeBtn
-            // 
+            //
             this.positionChangeBtn.Location = new System.Drawing.Point(153, 3);
             this.positionChangeBtn.Name = "positionChangeBtn";
             this.positionChangeBtn.Size = new System.Drawing.Size(75, 23);
             this.positionChangeBtn.TabIndex = 2;
             this.positionChangeBtn.Text = "Change";
             this.positionChangeBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 161);
             this.label3.Name = "label3";
@@ -341,9 +342,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.label3.TabIndex = 15;
             this.label3.Text = "Diagram.Scale:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel5
-            // 
+            //
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
@@ -355,26 +356,26 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(158, 29);
             this.tableLayoutPanel5.TabIndex = 6;
-            // 
+            //
             // scale
-            // 
+            //
             this.scale.Location = new System.Drawing.Point(3, 3);
             this.scale.Name = "scale";
             this.scale.Size = new System.Drawing.Size(69, 23);
             this.scale.TabIndex = 0;
             this.scale.Text = "1";
-            // 
+            //
             // scaleChangeBtn
-            // 
+            //
             this.scaleChangeBtn.Location = new System.Drawing.Point(78, 3);
             this.scaleChangeBtn.Name = "scaleChangeBtn";
             this.scaleChangeBtn.Size = new System.Drawing.Size(75, 23);
             this.scaleChangeBtn.TabIndex = 1;
             this.scaleChangeBtn.Text = "Change";
             this.scaleChangeBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 211);
             this.label4.Name = "label4";
@@ -382,9 +383,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.label4.TabIndex = 16;
             this.label4.Text = "Diagram.FixedBounds (x, y, width, height):";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel6
-            // 
+            //
             this.tableLayoutPanel6.ColumnCount = 5;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -402,50 +403,50 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(341, 29);
             this.tableLayoutPanel6.TabIndex = 8;
-            // 
+            //
             // fixedX
-            // 
+            //
             this.fixedX.Location = new System.Drawing.Point(3, 3);
             this.fixedX.Name = "fixedX";
             this.fixedX.Size = new System.Drawing.Size(69, 23);
             this.fixedX.TabIndex = 0;
             this.fixedX.Text = "NaN";
-            // 
+            //
             // fixedY
-            // 
+            //
             this.fixedY.Location = new System.Drawing.Point(78, 3);
             this.fixedY.Name = "fixedY";
             this.fixedY.Size = new System.Drawing.Size(69, 23);
             this.fixedY.TabIndex = 1;
             this.fixedY.Text = "NaN";
-            // 
+            //
             // fixedW
-            // 
+            //
             this.fixedW.Location = new System.Drawing.Point(153, 3);
             this.fixedW.Name = "fixedW";
             this.fixedW.Size = new System.Drawing.Size(69, 23);
             this.fixedW.TabIndex = 2;
             this.fixedW.Text = "NaN";
-            // 
+            //
             // fixedH
-            // 
+            //
             this.fixedH.Location = new System.Drawing.Point(228, 3);
             this.fixedH.Name = "fixedH";
             this.fixedH.Size = new System.Drawing.Size(69, 23);
             this.fixedH.TabIndex = 3;
             this.fixedH.Text = "NaN";
-            // 
+            //
             // fixedBoundsSetBtn
-            // 
+            //
             this.fixedBoundsSetBtn.Location = new System.Drawing.Point(303, 3);
             this.fixedBoundsSetBtn.Name = "fixedBoundsSetBtn";
             this.fixedBoundsSetBtn.Size = new System.Drawing.Size(35, 23);
             this.fixedBoundsSetBtn.TabIndex = 4;
             this.fixedBoundsSetBtn.Text = "Set";
             this.fixedBoundsSetBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 261);
             this.label5.Name = "label5";
@@ -453,9 +454,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.label5.TabIndex = 17;
             this.label5.Text = "Diagram.Padding (top, right, bottom, left):";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // tableLayoutPanel7
-            // 
+            //
             this.tableLayoutPanel7.ColumnCount = 5;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -473,59 +474,59 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(341, 29);
             this.tableLayoutPanel7.TabIndex = 10;
-            // 
+            //
             // padT
-            // 
+            //
             this.padT.Location = new System.Drawing.Point(3, 3);
             this.padT.Name = "padT";
             this.padT.Size = new System.Drawing.Size(69, 23);
             this.padT.TabIndex = 0;
             this.padT.Text = "5";
-            // 
+            //
             // padR
-            // 
+            //
             this.padR.Location = new System.Drawing.Point(78, 3);
             this.padR.Name = "padR";
             this.padR.Size = new System.Drawing.Size(69, 23);
             this.padR.TabIndex = 1;
             this.padR.Text = "5";
-            // 
+            //
             // pabB
-            // 
+            //
             this.pabB.Location = new System.Drawing.Point(153, 3);
             this.pabB.Name = "pabB";
             this.pabB.Size = new System.Drawing.Size(69, 23);
             this.pabB.TabIndex = 2;
             this.pabB.Text = "5";
-            // 
+            //
             // padL
-            // 
+            //
             this.padL.Location = new System.Drawing.Point(228, 3);
             this.padL.Name = "padL";
             this.padL.Size = new System.Drawing.Size(69, 23);
             this.padL.TabIndex = 3;
             this.padL.Text = "5";
-            // 
+            //
             // paddingSetBtn
-            // 
+            //
             this.paddingSetBtn.Location = new System.Drawing.Point(303, 3);
             this.paddingSetBtn.Name = "paddingSetBtn";
             this.paddingSetBtn.Size = new System.Drawing.Size(35, 23);
             this.paddingSetBtn.TabIndex = 4;
             this.paddingSetBtn.Text = "Set";
             this.paddingSetBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label6
-            // 
+            //
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 311);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Diagram.AutoScale:";
-            // 
+            //
             // tableLayoutPanel8
-            // 
+            //
             this.tableLayoutPanel8.AutoSize = true;
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -540,9 +541,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.Size = new System.Drawing.Size(102, 75);
             this.tableLayoutPanel8.TabIndex = 20;
-            // 
+            //
             // autoScaleNoneBtn
-            // 
+            //
             this.autoScaleNoneBtn.AutoSize = true;
             this.autoScaleNoneBtn.Checked = true;
             this.autoScaleNoneBtn.Location = new System.Drawing.Point(3, 3);
@@ -552,9 +553,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.autoScaleNoneBtn.TabStop = true;
             this.autoScaleNoneBtn.Text = "None";
             this.autoScaleNoneBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // autoScaleUniformBtn
-            // 
+            //
             this.autoScaleUniformBtn.AutoSize = true;
             this.autoScaleUniformBtn.Location = new System.Drawing.Point(3, 28);
             this.autoScaleUniformBtn.Name = "autoScaleUniformBtn";
@@ -562,9 +563,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.autoScaleUniformBtn.TabIndex = 1;
             this.autoScaleUniformBtn.Text = "Uniform";
             this.autoScaleUniformBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // autoScaleUTFBtn
-            // 
+            //
             this.autoScaleUTFBtn.AutoSize = true;
             this.autoScaleUTFBtn.Location = new System.Drawing.Point(3, 53);
             this.autoScaleUTFBtn.Name = "autoScaleUTFBtn";
@@ -572,18 +573,18 @@ namespace WinFormsSampleControls.ContentAlign {
             this.autoScaleUTFBtn.TabIndex = 2;
             this.autoScaleUTFBtn.Text = "UniformToFill";
             this.autoScaleUTFBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 407);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(287, 15);
             this.label7.TabIndex = 21;
             this.label7.Text = "(but no greater than CommandHandler.DefaultScale)";
-            // 
+            //
             // zoomToFitBtn
-            // 
+            //
             this.zoomToFitBtn.AutoSize = true;
             this.zoomToFitBtn.Location = new System.Drawing.Point(3, 425);
             this.zoomToFitBtn.Name = "zoomToFitBtn";
@@ -591,9 +592,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.zoomToFitBtn.TabIndex = 22;
             this.zoomToFitBtn.Text = "Zoom To Fit";
             this.zoomToFitBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -603,9 +604,9 @@ namespace WinFormsSampleControls.ContentAlign {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 159);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // ContentAlignmentControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;

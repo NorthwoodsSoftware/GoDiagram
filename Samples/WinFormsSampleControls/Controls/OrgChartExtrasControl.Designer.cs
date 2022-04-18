@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.OrgChartExtras {
   partial class OrgChartExtrasControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.OrgChartExtras {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -40,9 +41,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.propertyTable.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -60,9 +61,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1220, 1128);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -71,9 +72,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.goWebBrowser1.Size = new System.Drawing.Size(1214, 94);
             this.goWebBrowser1.TabIndex = 8;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.propertyTable.ColumnCount = 2;
             this.propertyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.propertyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -94,25 +95,25 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.propertyTable.Size = new System.Drawing.Size(286, 140);
             this.propertyTable.TabIndex = 10;
             this.propertyTable.Visible = false;
-            // 
+            //
             // commentBox
-            // 
+            //
             this.commentBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.commentBox.Location = new System.Drawing.Point(146, 111);
             this.commentBox.Name = "commentBox";
             this.commentBox.Size = new System.Drawing.Size(100, 23);
             this.commentBox.TabIndex = 10;
-            // 
+            //
             // titleBox
-            // 
+            //
             this.titleBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.titleBox.Location = new System.Drawing.Point(146, 76);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(100, 23);
             this.titleBox.TabIndex = 9;
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -122,9 +123,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.label7.TabIndex = 6;
             this.label7.Text = "Comment:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -134,9 +135,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.label5.TabIndex = 4;
             this.label5.Text = "Title:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -146,9 +147,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.label3.TabIndex = 2;
             this.label3.Text = "Name:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -158,26 +159,26 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.label1.TabIndex = 0;
             this.label1.Text = "Properties";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // nameBox
-            // 
+            //
             this.nameBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nameBox.Location = new System.Drawing.Point(146, 41);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 23);
             this.nameBox.TabIndex = 7;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 885);
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(1087, 343);
             this.saveLoadModel1.TabIndex = 4;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -185,9 +186,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
             this.diagramControl1.Size = new System.Drawing.Size(1214, 494);
             this.diagramControl1.TabIndex = 11;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // OrgChartExtrasControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

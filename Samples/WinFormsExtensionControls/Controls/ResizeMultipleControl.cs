@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using System.ComponentModel;
@@ -16,7 +18,7 @@ namespace WinFormsExtensionControls.ResizeMultiple {
            <p>
           This sample demonstrates a custom <a>ResizingTool</a> which allows the user to resize many selected objects at once.
           It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/ResizeMultiple/ResizeMultipleTool.cs"">ResizeMultipleTool.cs</a>.
-          </p> 
+          </p>
 ";
     }
 

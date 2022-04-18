@@ -1,4 +1,5 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSharedControls {
   partial class WrappingLabel {
     /// <summary>
@@ -6,7 +7,7 @@ namespace WinFormsSharedControls {
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>

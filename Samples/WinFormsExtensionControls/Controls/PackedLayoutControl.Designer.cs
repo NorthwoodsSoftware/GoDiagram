@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.PackedLayout {
   partial class PackedLayoutControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.PackedLayout {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -86,9 +87,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -109,9 +110,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1234, 1632);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -142,9 +143,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(294, 279);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // txtLayoutHeight
-            // 
+            //
             this.txtLayoutHeight.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtLayoutHeight.Enabled = false;
             this.txtLayoutHeight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -153,9 +154,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtLayoutHeight.Size = new System.Drawing.Size(100, 23);
             this.txtLayoutHeight.TabIndex = 13;
             this.txtLayoutHeight.Text = "600";
-            // 
+            //
             // lblLayoutHeight
-            // 
+            //
             this.lblLayoutHeight.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblLayoutHeight.AutoSize = true;
             this.lblLayoutHeight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -164,9 +165,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblLayoutHeight.Size = new System.Drawing.Size(85, 15);
             this.lblLayoutHeight.TabIndex = 12;
             this.lblLayoutHeight.Text = "Layout Height:";
-            // 
+            //
             // txtLayoutWidth
-            // 
+            //
             this.txtLayoutWidth.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtLayoutWidth.Enabled = false;
             this.txtLayoutWidth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -175,9 +176,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtLayoutWidth.Size = new System.Drawing.Size(100, 23);
             this.txtLayoutWidth.TabIndex = 11;
             this.txtLayoutWidth.Text = "600";
-            // 
+            //
             // lbllayoutWidth
-            // 
+            //
             this.lbllayoutWidth.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbllayoutWidth.AutoSize = true;
             this.lbllayoutWidth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -186,9 +187,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lbllayoutWidth.Size = new System.Drawing.Size(81, 15);
             this.lbllayoutWidth.TabIndex = 10;
             this.lbllayoutWidth.Text = "Layout Width:";
-            // 
+            //
             // lblGeneralProp
-            // 
+            //
             this.lblGeneralProp.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.lblGeneralProp, 2);
             this.lblGeneralProp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -197,9 +198,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblGeneralProp.Size = new System.Drawing.Size(135, 19);
             this.lblGeneralProp.TabIndex = 0;
             this.lblGeneralProp.Text = "General Properties";
-            // 
+            //
             // lblPackShape
-            // 
+            //
             this.lblPackShape.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.lblPackShape, 2);
             this.lblPackShape.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -208,9 +209,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblPackShape.Size = new System.Drawing.Size(67, 15);
             this.lblPackShape.TabIndex = 1;
             this.lblPackShape.Text = "PackShape:";
-            // 
+            //
             // lblPackMode
-            // 
+            //
             this.lblPackMode.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.lblPackMode, 2);
             this.lblPackMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -219,9 +220,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblPackMode.Size = new System.Drawing.Size(66, 15);
             this.lblPackMode.TabIndex = 4;
             this.lblPackMode.Text = "PackMode:";
-            // 
+            //
             // lblAspectRatio
-            // 
+            //
             this.lblAspectRatio.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAspectRatio.AutoSize = true;
             this.lblAspectRatio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -230,9 +231,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblAspectRatio.Size = new System.Drawing.Size(76, 15);
             this.lblAspectRatio.TabIndex = 8;
             this.lblAspectRatio.Text = "Aspect Ratio:";
-            // 
+            //
             // txtAspectRatio
-            // 
+            //
             this.txtAspectRatio.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtAspectRatio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAspectRatio.Location = new System.Drawing.Point(94, 193);
@@ -240,9 +241,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtAspectRatio.Size = new System.Drawing.Size(100, 23);
             this.txtAspectRatio.TabIndex = 9;
             this.txtAspectRatio.Text = "1";
-            // 
+            //
             // tableLayoutPanel5
-            // 
+            //
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel5, 2);
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -256,9 +257,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.Size = new System.Drawing.Size(325, 50);
             this.tableLayoutPanel5.TabIndex = 14;
-            // 
+            //
             // radBtnEllipticalPackShape
-            // 
+            //
             this.radBtnEllipticalPackShape.AutoSize = true;
             this.radBtnEllipticalPackShape.Checked = true;
             this.radBtnEllipticalPackShape.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -269,9 +270,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnEllipticalPackShape.TabStop = true;
             this.radBtnEllipticalPackShape.Text = "Elliptical";
             this.radBtnEllipticalPackShape.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnRectPackShape
-            // 
+            //
             this.radBtnRectPackShape.AutoSize = true;
             this.radBtnRectPackShape.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnRectPackShape.Location = new System.Drawing.Point(3, 28);
@@ -280,9 +281,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnRectPackShape.TabIndex = 1;
             this.radBtnRectPackShape.Text = "Rectangular";
             this.radBtnRectPackShape.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel6
-            // 
+            //
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel6, 2);
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -298,9 +299,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.Size = new System.Drawing.Size(325, 79);
             this.tableLayoutPanel6.TabIndex = 15;
-            // 
+            //
             // radBtnFit
-            // 
+            //
             this.radBtnFit.AutoSize = true;
             this.radBtnFit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnFit.Location = new System.Drawing.Point(3, 53);
@@ -309,9 +310,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnFit.TabIndex = 2;
             this.radBtnFit.Text = "Fit";
             this.radBtnFit.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnExpandToFit
-            // 
+            //
             this.radBtnExpandToFit.AutoSize = true;
             this.radBtnExpandToFit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnExpandToFit.Location = new System.Drawing.Point(3, 28);
@@ -320,9 +321,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnExpandToFit.TabIndex = 1;
             this.radBtnExpandToFit.Text = "Expand To Fit";
             this.radBtnExpandToFit.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnAspectRatio
-            // 
+            //
             this.radBtnAspectRatio.AutoSize = true;
             this.radBtnAspectRatio.Checked = true;
             this.radBtnAspectRatio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -333,9 +334,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnAspectRatio.TabStop = true;
             this.radBtnAspectRatio.Text = "Aspect Ratio";
             this.radBtnAspectRatio.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -367,9 +368,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(294, 279);
             this.tableLayoutPanel3.TabIndex = 1;
-            // 
+            //
             // lblNodeSortingProp
-            // 
+            //
             this.lblNodeSortingProp.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.lblNodeSortingProp, 3);
             this.lblNodeSortingProp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -378,9 +379,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblNodeSortingProp.Size = new System.Drawing.Size(173, 19);
             this.lblNodeSortingProp.TabIndex = 0;
             this.lblNodeSortingProp.Text = "Node Sorting Properties";
-            // 
+            //
             // lblSortOrder
-            // 
+            //
             this.lblSortOrder.AutoSize = true;
             this.lblSortOrder.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblSortOrder.Location = new System.Drawing.Point(3, 19);
@@ -388,9 +389,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblSortOrder.Size = new System.Drawing.Size(61, 15);
             this.lblSortOrder.TabIndex = 1;
             this.lblSortOrder.Text = "SortOrder:";
-            // 
+            //
             // lblSortMode
-            // 
+            //
             this.lblSortMode.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.lblSortMode, 3);
             this.lblSortMode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -399,9 +400,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblSortMode.Size = new System.Drawing.Size(62, 15);
             this.lblSortMode.TabIndex = 4;
             this.lblSortMode.Text = "SortMode:";
-            // 
+            //
             // lblPadding
-            // 
+            //
             this.lblPadding.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.lblPadding, 3);
             this.lblPadding.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -410,9 +411,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblPadding.Size = new System.Drawing.Size(173, 19);
             this.lblPadding.TabIndex = 8;
             this.lblPadding.Text = "Padding Between Nodes";
-            // 
+            //
             // lblSpacing
-            // 
+            //
             this.lblSpacing.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSpacing.AutoSize = true;
             this.lblSpacing.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -421,9 +422,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblSpacing.Size = new System.Drawing.Size(52, 15);
             this.lblSpacing.TabIndex = 9;
             this.lblSpacing.Text = "Spacing:";
-            // 
+            //
             // txtSpacing
-            // 
+            //
             this.txtSpacing.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tableLayoutPanel3.SetColumnSpan(this.txtSpacing, 2);
             this.txtSpacing.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -432,9 +433,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtSpacing.Size = new System.Drawing.Size(100, 23);
             this.txtSpacing.TabIndex = 10;
             this.txtSpacing.Text = "0";
-            // 
+            //
             // tableLayoutPanel7
-            // 
+            //
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel7, 2);
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -447,9 +448,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.Size = new System.Drawing.Size(313, 25);
             this.tableLayoutPanel7.TabIndex = 11;
-            // 
+            //
             // radBtnDescending
-            // 
+            //
             this.radBtnDescending.AutoSize = true;
             this.radBtnDescending.Checked = true;
             this.radBtnDescending.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -460,9 +461,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnDescending.TabStop = true;
             this.radBtnDescending.Text = "Descending";
             this.radBtnDescending.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnAscending
-            // 
+            //
             this.radBtnAscending.AutoSize = true;
             this.radBtnAscending.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnAscending.Location = new System.Drawing.Point(96, 3);
@@ -471,9 +472,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnAscending.TabIndex = 1;
             this.radBtnAscending.Text = "Ascending";
             this.radBtnAscending.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel8
-            // 
+            //
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel8, 3);
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -489,9 +490,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.Size = new System.Drawing.Size(438, 74);
             this.tableLayoutPanel8.TabIndex = 12;
-            // 
+            //
             // radBtnNone
-            // 
+            //
             this.radBtnNone.AutoSize = true;
             this.radBtnNone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnNone.Location = new System.Drawing.Point(3, 3);
@@ -500,9 +501,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnNone.TabIndex = 0;
             this.radBtnNone.Text = "None (do not sort nodes)";
             this.radBtnNone.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnMaxSideLength
-            // 
+            //
             this.radBtnMaxSideLength.AutoSize = true;
             this.radBtnMaxSideLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnMaxSideLength.Location = new System.Drawing.Point(3, 28);
@@ -511,9 +512,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnMaxSideLength.TabIndex = 1;
             this.radBtnMaxSideLength.Text = "Max Side Length";
             this.radBtnMaxSideLength.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnArea
-            // 
+            //
             this.radBtnArea.AutoSize = true;
             this.radBtnArea.Checked = true;
             this.radBtnArea.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -524,9 +525,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnArea.TabStop = true;
             this.radBtnArea.Text = "Area";
             this.radBtnArea.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblCirclePacking
-            // 
+            //
             this.lblCirclePacking.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.lblCirclePacking, 3);
             this.lblCirclePacking.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -535,9 +536,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblCirclePacking.Size = new System.Drawing.Size(104, 19);
             this.lblCirclePacking.TabIndex = 13;
             this.lblCirclePacking.Text = "Circle Packing";
-            // 
+            //
             // checkBxCircular
-            // 
+            //
             this.checkBxCircular.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.checkBxCircular, 3);
             this.checkBxCircular.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -547,9 +548,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.checkBxCircular.TabIndex = 14;
             this.checkBxCircular.Text = "hasCircularNodes";
             this.checkBxCircular.UseVisualStyleBackColor = true;
-            // 
+            //
             // checkBxSpiral
-            // 
+            //
             this.checkBxSpiral.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.checkBxSpiral, 3);
             this.checkBxSpiral.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -559,9 +560,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.checkBxSpiral.TabIndex = 15;
             this.checkBxSpiral.Text = "isSpiralPacked";
             this.checkBxSpiral.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.52599F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.47401F));
@@ -589,9 +590,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(294, 279);
             this.tableLayoutPanel4.TabIndex = 2;
-            // 
+            //
             // lblNodeGen
-            // 
+            //
             this.lblNodeGen.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.lblNodeGen, 2);
             this.lblNodeGen.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -600,9 +601,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblNodeGen.Size = new System.Drawing.Size(124, 19);
             this.lblNodeGen.TabIndex = 0;
             this.lblNodeGen.Text = "Node Generation";
-            // 
+            //
             // lblNumNodes
-            // 
+            //
             this.lblNumNodes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblNumNodes.AutoSize = true;
             this.lblNumNodes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -611,9 +612,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblNumNodes.Size = new System.Drawing.Size(105, 15);
             this.lblNumNodes.TabIndex = 1;
             this.lblNumNodes.Text = "Number of Nodes:";
-            // 
+            //
             // txtNumNodes
-            // 
+            //
             this.txtNumNodes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtNumNodes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNumNodes.Location = new System.Drawing.Point(192, 25);
@@ -621,9 +622,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtNumNodes.Size = new System.Drawing.Size(99, 23);
             this.txtNumNodes.TabIndex = 2;
             this.txtNumNodes.Text = "100";
-            // 
+            //
             // lblNodeShape
-            // 
+            //
             this.lblNodeShape.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblNodeShape.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.lblNodeShape, 2);
@@ -633,9 +634,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblNodeShape.Size = new System.Drawing.Size(73, 15);
             this.lblNodeShape.TabIndex = 3;
             this.lblNodeShape.Text = "Node shape:";
-            // 
+            //
             // tableLayoutPanel9
-            // 
+            //
             this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel4.SetColumnSpan(this.tableLayoutPanel9, 2);
@@ -649,9 +650,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel9.Size = new System.Drawing.Size(288, 53);
             this.tableLayoutPanel9.TabIndex = 4;
-            // 
+            //
             // radBtnRectNodeShape
-            // 
+            //
             this.radBtnRectNodeShape.AutoSize = true;
             this.radBtnRectNodeShape.Checked = true;
             this.radBtnRectNodeShape.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -662,9 +663,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnRectNodeShape.TabStop = true;
             this.radBtnRectNodeShape.Text = "Rectangles";
             this.radBtnRectNodeShape.UseVisualStyleBackColor = true;
-            // 
+            //
             // radBtnEllipsesNodeShape
-            // 
+            //
             this.radBtnEllipsesNodeShape.AutoSize = true;
             this.radBtnEllipsesNodeShape.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radBtnEllipsesNodeShape.Location = new System.Drawing.Point(3, 28);
@@ -673,9 +674,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.radBtnEllipsesNodeShape.TabIndex = 1;
             this.radBtnEllipsesNodeShape.Text = "Ellipses";
             this.radBtnEllipsesNodeShape.UseVisualStyleBackColor = true;
-            // 
+            //
             // lblMinSideLength
-            // 
+            //
             this.lblMinSideLength.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMinSideLength.AutoSize = true;
             this.lblMinSideLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -684,9 +685,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblMinSideLength.Size = new System.Drawing.Size(125, 15);
             this.lblMinSideLength.TabIndex = 5;
             this.lblMinSideLength.Text = "Minimum Side Length";
-            // 
+            //
             // txtMinSideLength
-            // 
+            //
             this.txtMinSideLength.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtMinSideLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMinSideLength.Location = new System.Drawing.Point(192, 149);
@@ -694,9 +695,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtMinSideLength.Size = new System.Drawing.Size(99, 23);
             this.txtMinSideLength.TabIndex = 6;
             this.txtMinSideLength.Text = "30";
-            // 
+            //
             // lblMaxSideLength
-            // 
+            //
             this.lblMaxSideLength.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblMaxSideLength.AutoSize = true;
             this.lblMaxSideLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -705,9 +706,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.lblMaxSideLength.Size = new System.Drawing.Size(127, 15);
             this.lblMaxSideLength.TabIndex = 7;
             this.lblMaxSideLength.Text = "Maximum Side Length";
-            // 
+            //
             // txtMaxSideLength
-            // 
+            //
             this.txtMaxSideLength.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtMaxSideLength.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMaxSideLength.Location = new System.Drawing.Point(192, 177);
@@ -715,9 +716,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.txtMaxSideLength.Size = new System.Drawing.Size(99, 23);
             this.txtMaxSideLength.TabIndex = 8;
             this.txtMaxSideLength.Text = "50";
-            // 
+            //
             // checkBxSameWidthHeight
-            // 
+            //
             this.checkBxSameWidthHeight.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.checkBxSameWidthHeight, 2);
             this.checkBxSameWidthHeight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -727,9 +728,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.checkBxSameWidthHeight.TabIndex = 9;
             this.checkBxSameWidthHeight.Text = "Same width/height";
             this.checkBxSameWidthHeight.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnRandomize
-            // 
+            //
             this.tableLayoutPanel4.SetColumnSpan(this.btnRandomize, 2);
             this.btnRandomize.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRandomize.Location = new System.Drawing.Point(3, 236);
@@ -738,9 +739,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.btnRandomize.TabIndex = 10;
             this.btnRandomize.Text = "Randomize Graph";
             this.btnRandomize.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.tableLayoutPanel1.SetColumnSpan(this.diagramControl1, 4);
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -749,9 +750,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.diagramControl1.Size = new System.Drawing.Size(1228, 560);
             this.diagramControl1.TabIndex = 3;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 4);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -761,9 +762,9 @@ namespace WinFormsExtensionControls.PackedLayout {
             this.goWebBrowser1.Size = new System.Drawing.Size(1228, 775);
             this.goWebBrowser1.TabIndex = 4;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // PackedLayoutSampleControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

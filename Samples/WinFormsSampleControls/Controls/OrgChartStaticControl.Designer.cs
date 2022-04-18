@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.OrgChartStatic {
   partial class OrgChartStaticControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.OrgChartStatic {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -35,9 +36,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -56,9 +57,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1430, 1435);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,9 +68,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(1420, 1063);
             this.diagramControl1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
@@ -81,16 +82,16 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(231, 48);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
+            //
             // textBox1
-            // 
+            //
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(143, 31);
             this.textBox1.TabIndex = 3;
-            // 
+            //
             // searchBtn
-            // 
+            //
             this.searchBtn.AutoSize = true;
             this.searchBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.searchBtn.Location = new System.Drawing.Point(153, 3);
@@ -99,9 +100,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.searchBtn.TabIndex = 4;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -110,9 +111,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.goWebBrowser1.Size = new System.Drawing.Size(1424, 300);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // overviewControl1
-            // 
+            //
             this.overviewControl1.AllowDrop = true;
             this.overviewControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.overviewControl1.Location = new System.Drawing.Point(10, 10);
@@ -120,9 +121,9 @@ namespace WinFormsSampleControls.OrgChartStatic {
             this.overviewControl1.Name = "overviewControl1";
             this.overviewControl1.Size = new System.Drawing.Size(286, 167);
             this.overviewControl1.TabIndex = 3;
-            // 
+            //
             // OrgChartStaticControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;

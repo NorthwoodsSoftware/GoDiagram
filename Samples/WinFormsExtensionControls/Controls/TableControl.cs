@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -52,7 +54,7 @@ namespace WinFormsExtensionControls.Table {
           </p>
           <p>
           This example assumes the Groups are predefined and exist in each cell at a particular row/column,
-          but this sample could be extended to allow adding and removing rows and/or columns. 
+          but this sample could be extended to allow adding and removing rows and/or columns.
           </p>
 ";
     }

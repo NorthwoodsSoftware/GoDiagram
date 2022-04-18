@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -8,7 +10,7 @@ namespace WinFormsExtensionControls.GuidedDragging {
   [ToolboxItem(false)]
   public partial class GuidedDraggingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public GuidedDraggingControl() {
       InitializeComponent();
 

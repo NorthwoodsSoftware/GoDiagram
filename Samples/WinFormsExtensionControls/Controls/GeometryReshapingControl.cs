@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using System.ComponentModel;
@@ -20,8 +22,8 @@ namespace WinFormsExtensionControls.GeometryReshaping {
         </p>
         <p>
           Usage can also be seen in the <a href=""FreehandDrawing"">Freehand Drawing</a>
-          and <a href=""PolygonDrawing"">Polygon Drawing</a> samples.             
-        </p>       
+          and <a href=""PolygonDrawing"">Polygon Drawing</a> samples.
+        </p>
       ";
     }
 

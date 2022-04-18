@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
@@ -172,7 +174,7 @@ namespace WinFormsSampleControls.TLayout {
     private void button1_Click(object sender, EventArgs e) {
       _RebuildGraph();
     }
-    
+
     private void _PropertyChanged(object sender, EventArgs e) {
       if (sender is RadioButton rb) {
         if (rb.Checked) {

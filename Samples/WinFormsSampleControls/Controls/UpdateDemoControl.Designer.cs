@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.UpdateDemo {
   partial class UpdateDemoControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.UpdateDemo {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -43,9 +44,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser2)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -68,9 +69,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -80,9 +81,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 24);
             this.goWebBrowser1.TabIndex = 0;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 33);
@@ -90,9 +91,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.diagramControl1.Size = new System.Drawing.Size(494, 224);
             this.diagramControl1.TabIndex = 1;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -106,18 +107,18 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.08696F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(494, 224);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // clearLogModelBtn
-            // 
+            //
             this.clearLogModelBtn.Location = new System.Drawing.Point(3, 3);
             this.clearLogModelBtn.Name = "clearLogModelBtn";
             this.clearLogModelBtn.Size = new System.Drawing.Size(163, 25);
             this.clearLogModelBtn.TabIndex = 0;
             this.clearLogModelBtn.Text = "Clear Model Log";
             this.clearLogModelBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // listBox1
-            // 
+            //
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
@@ -125,9 +126,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(488, 184);
             this.listBox1.TabIndex = 1;
-            // 
+            //
             // diagramControl2
-            // 
+            //
             this.diagramControl2.AllowDrop = true;
             this.diagramControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl2.Location = new System.Drawing.Point(3, 263);
@@ -135,9 +136,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.diagramControl2.Size = new System.Drawing.Size(494, 274);
             this.diagramControl2.TabIndex = 3;
             this.diagramControl2.Text = "diagramControl2";
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.64777F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.35223F));
@@ -153,27 +154,27 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(494, 274);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
+            //
             // redoBtn
-            // 
+            //
             this.redoBtn.Location = new System.Drawing.Point(104, 3);
             this.redoBtn.Name = "redoBtn";
             this.redoBtn.Size = new System.Drawing.Size(75, 26);
             this.redoBtn.TabIndex = 2;
             this.redoBtn.Text = "Redo";
             this.redoBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // undoBtn
-            // 
+            //
             this.undoBtn.Location = new System.Drawing.Point(3, 3);
             this.undoBtn.Name = "undoBtn";
             this.undoBtn.Size = new System.Drawing.Size(93, 26);
             this.undoBtn.TabIndex = 1;
             this.undoBtn.Text = "Undo";
             this.undoBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl3
-            // 
+            //
             this.diagramControl3.AllowDrop = true;
             this.tableLayoutPanel3.SetColumnSpan(this.diagramControl3, 2);
             this.diagramControl3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -182,9 +183,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.diagramControl3.Size = new System.Drawing.Size(488, 235);
             this.diagramControl3.TabIndex = 3;
             this.diagramControl3.Text = "diagramControl3";
-            // 
+            //
             // goWebBrowser2
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser2, 2);
             this.goWebBrowser2.CreationProperties = null;
             this.goWebBrowser2.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -194,9 +195,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.goWebBrowser2.Size = new System.Drawing.Size(994, 344);
             this.goWebBrowser2.TabIndex = 5;
             this.goWebBrowser2.ZoomFactor = 1D;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -204,9 +205,9 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(994, 304);
             this.saveLoadModel1.TabIndex = 6;
-            // 
+            //
             // UpdateDemoControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

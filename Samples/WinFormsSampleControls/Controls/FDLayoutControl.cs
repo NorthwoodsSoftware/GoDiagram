@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
@@ -143,7 +145,7 @@ namespace WinFormsSampleControls.FDLayout {
     // Changing the properties will invalidate the layout
     private void _Layout() {
       if (myDiagram.Layout is not ForceDirectedLayout lay) return;
-      
+
       myDiagram.StartTransaction("changed Layout");
 
       if (!int.TryParse(maxIter.Text.Trim(), out var iters)) iters = 100;

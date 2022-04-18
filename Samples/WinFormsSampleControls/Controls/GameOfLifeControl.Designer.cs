@@ -1,12 +1,12 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
 namespace WinFormsSampleControls.GameOfLife {
   partial class GameOfLifeControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +19,8 @@ namespace WinFormsSampleControls.GameOfLife {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -36,9 +36,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
       this.SuspendLayout();
-      // 
+      //
       // tableLayoutPanel1
-      // 
+      //
       this.tableLayoutPanel1.AutoScroll = true;
       this.tableLayoutPanel1.ColumnCount = 6;
       this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -65,9 +65,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.Size = new System.Drawing.Size(2144, 3000);
       this.tableLayoutPanel1.TabIndex = 0;
-      // 
+      //
       // diagramControl1
-      // 
+      //
       this.diagramControl1.AllowDrop = true;
       this.tableLayoutPanel1.SetColumnSpan(this.diagramControl1, 6);
       this.diagramControl1.Location = new System.Drawing.Point(4, 5);
@@ -76,9 +76,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.diagramControl1.Size = new System.Drawing.Size(500, 500);
       this.diagramControl1.TabIndex = 0;
       this.diagramControl1.Text = "diagramControl1";
-      // 
+      //
       // lblGameControls
-      // 
+      //
       this.lblGameControls.AutoSize = true;
       this.lblGameControls.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.lblGameControls.Location = new System.Drawing.Point(4, 515);
@@ -88,9 +88,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.lblGameControls.TabIndex = 1;
       this.lblGameControls.Text = "Game Controls:";
       this.lblGameControls.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
+      //
       // btnStart
-      // 
+      //
       this.btnStart.AutoSize = true;
       this.btnStart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.btnStart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -101,9 +101,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.btnStart.TabIndex = 2;
       this.btnStart.Text = "Start";
       this.btnStart.UseVisualStyleBackColor = true;
-      // 
+      //
       // btnStep
-      // 
+      //
       this.btnStep.AutoSize = true;
       this.btnStep.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.btnStep.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -114,9 +114,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.btnStep.TabIndex = 3;
       this.btnStep.Text = "Step";
       this.btnStep.UseVisualStyleBackColor = true;
-      // 
+      //
       // btnClear
-      // 
+      //
       this.btnClear.AutoSize = true;
       this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.btnClear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -127,9 +127,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.btnClear.TabIndex = 4;
       this.btnClear.Text = "Clear";
       this.btnClear.UseVisualStyleBackColor = true;
-      // 
+      //
       // lblSamplePatterns
-      // 
+      //
       this.lblSamplePatterns.AutoSize = true;
       this.lblSamplePatterns.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.lblSamplePatterns.Location = new System.Drawing.Point(434, 515);
@@ -139,9 +139,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.lblSamplePatterns.TabIndex = 5;
       this.lblSamplePatterns.Text = "Sample Patterns:";
       this.lblSamplePatterns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
+      //
       // goWebBrowser1
-      // 
+      //
       this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 6);
       this.goWebBrowser1.CreationProperties = null;
       this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -152,9 +152,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.goWebBrowser1.Size = new System.Drawing.Size(2136, 907);
       this.goWebBrowser1.TabIndex = 7;
       this.goWebBrowser1.ZoomFactor = 1D;
-      // 
+      //
       // patterns
-      // 
+      //
       this.patterns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.patterns.FormattingEnabled = true;
       this.patterns.Items.AddRange(new object[] {
@@ -167,9 +167,9 @@ namespace WinFormsSampleControls.GameOfLife {
       this.patterns.Name = "patterns";
       this.patterns.Size = new System.Drawing.Size(182, 33);
       this.patterns.TabIndex = 8;
-      // 
+      //
       // GameOfLifeControl
-      // 
+      //
       this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tableLayoutPanel1);

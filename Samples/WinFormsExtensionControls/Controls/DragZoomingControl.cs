@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
@@ -10,7 +12,7 @@ namespace WinFormsExtensionControls.DragZooming {
   [ToolboxItem(false)]
   public partial class DragZoomingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public DragZoomingControl() {
       InitializeComponent();
 

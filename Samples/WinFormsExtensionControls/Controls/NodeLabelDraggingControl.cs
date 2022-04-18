@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -9,7 +11,7 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
   [ToolboxItem(false)]
   public partial class NodeLabelDraggingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public NodeLabelDraggingControl() {
       InitializeComponent();
 
@@ -22,7 +24,7 @@ namespace WinFormsExtensionControls.NodeLabelDragging {
           that makes use of the NodeLabelDraggingTool that is defined in its own file,
           as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/NodeLabelDragging/NodeLabelDraggingTool.cs"">NodeLabelDraggingTool.cs</a>.
         </p>
- 
+
         <p>
           Note that after dragging a node label you can move that node and the label maintains the same position relative to the node.
           That relative position is specified by the <a>GraphObject.Alignment</a> property, used by the ""Spot"" <a>Panel</a>.

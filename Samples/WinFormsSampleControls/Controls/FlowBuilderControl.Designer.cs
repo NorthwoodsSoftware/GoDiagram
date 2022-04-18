@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.FlowBuilder {
   partial class FlowBuilderControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.FlowBuilder {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -30,9 +31,9 @@ namespace WinFormsSampleControls.FlowBuilder {
             this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -48,9 +49,9 @@ namespace WinFormsSampleControls.FlowBuilder {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -58,27 +59,27 @@ namespace WinFormsSampleControls.FlowBuilder {
             this.diagramControl1.Size = new System.Drawing.Size(994, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // btnDoLayout
-            // 
+            //
             this.btnDoLayout.Location = new System.Drawing.Point(3, 603);
             this.btnDoLayout.Name = "btnDoLayout";
             this.btnDoLayout.Size = new System.Drawing.Size(115, 33);
             this.btnDoLayout.TabIndex = 1;
             this.btnDoLayout.Text = "Do Layout";
             this.btnDoLayout.UseVisualStyleBackColor = true;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.saveLoadModel1.Location = new System.Drawing.Point(3, 642);
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(994, 555);
             this.saveLoadModel1.TabIndex = 2;
-            // 
+            //
             // FlowBuilderControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

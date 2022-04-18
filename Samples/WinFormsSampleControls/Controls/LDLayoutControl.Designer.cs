@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.LDLayout {
   partial class LDLayoutControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.LDLayout {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -82,9 +83,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.aggressive.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -100,9 +101,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 923);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
@@ -113,9 +114,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(994, 304);
             this.flowLayoutPanel1.TabIndex = 4;
-            // 
+            //
             // flowLayoutPanel2
-            // 
+            //
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.label2);
@@ -127,9 +128,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(191, 112);
             this.flowLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label1, true);
@@ -139,9 +140,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "New Graph";
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 24);
@@ -149,18 +150,18 @@ namespace WinFormsSampleControls.LDLayout {
             this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Min Nodes:";
-            // 
+            //
             // minNodesTB
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.minNodesTB, true);
             this.minNodesTB.Location = new System.Drawing.Point(85, 20);
             this.minNodesTB.Name = "minNodesTB";
             this.minNodesTB.Size = new System.Drawing.Size(100, 25);
             this.minNodesTB.TabIndex = 2;
             this.minNodesTB.Text = "20";
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 55);
@@ -168,18 +169,18 @@ namespace WinFormsSampleControls.LDLayout {
             this.label3.Size = new System.Drawing.Size(79, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Max Nodes:";
-            // 
+            //
             // maxNodesTB
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.maxNodesTB, true);
             this.maxNodesTB.Location = new System.Drawing.Point(88, 51);
             this.maxNodesTB.Name = "maxNodesTB";
             this.maxNodesTB.Size = new System.Drawing.Size(100, 25);
             this.maxNodesTB.TabIndex = 4;
             this.maxNodesTB.Text = "100";
-            // 
+            //
             // button1
-            // 
+            //
             this.button1.AutoSize = true;
             this.button1.Location = new System.Drawing.Point(3, 82);
             this.button1.Name = "button1";
@@ -188,9 +189,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.button1.Text = "Generate Digraph";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
+            //
             // flowLayoutPanel3
-            // 
+            //
             this.flowLayoutPanel3.AutoSize = true;
             this.flowLayoutPanel3.Controls.Add(this.label4);
             this.flowLayoutPanel3.Controls.Add(this.label5);
@@ -216,9 +217,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(480, 298);
             this.flowLayoutPanel3.TabIndex = 1;
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label4, true);
             this.label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -227,9 +228,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label4.Size = new System.Drawing.Size(215, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "LayeredDigraphLayout Properties";
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 25);
@@ -237,9 +238,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "Direction:";
-            // 
+            //
             // direction
-            // 
+            //
             this.direction.AutoSize = true;
             this.direction.Controls.Add(this.rightRB);
             this.direction.Controls.Add(this.downRB);
@@ -250,9 +251,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.direction.Name = "direction";
             this.direction.Size = new System.Drawing.Size(340, 27);
             this.direction.TabIndex = 2;
-            // 
+            //
             // rightRB
-            // 
+            //
             this.rightRB.AutoSize = true;
             this.rightRB.Checked = true;
             this.rightRB.Location = new System.Drawing.Point(3, 3);
@@ -263,9 +264,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.rightRB.Text = "Right (0)";
             this.rightRB.UseVisualStyleBackColor = true;
             this.rightRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // downRB
-            // 
+            //
             this.downRB.AutoSize = true;
             this.downRB.Location = new System.Drawing.Point(84, 3);
             this.downRB.Name = "downRB";
@@ -274,9 +275,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.downRB.Text = "Down (90)";
             this.downRB.UseVisualStyleBackColor = true;
             this.downRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // leftRB
-            // 
+            //
             this.leftRB.AutoSize = true;
             this.leftRB.Location = new System.Drawing.Point(175, 3);
             this.leftRB.Name = "leftRB";
@@ -285,9 +286,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.leftRB.Text = "Left (180)";
             this.leftRB.UseVisualStyleBackColor = true;
             this.leftRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // upRB
-            // 
+            //
             this.upRB.AutoSize = true;
             this.upRB.Location = new System.Drawing.Point(261, 3);
             this.upRB.Name = "upRB";
@@ -296,9 +297,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.upRB.Text = "Up (270)";
             this.upRB.UseVisualStyleBackColor = true;
             this.upRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label6
-            // 
+            //
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 57);
@@ -306,9 +307,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label6.Size = new System.Drawing.Size(88, 17);
             this.label6.TabIndex = 3;
             this.label6.Text = "LayerSpacing:";
-            // 
+            //
             // layerSpacingTB
-            // 
+            //
             this.flowLayoutPanel3.SetFlowBreak(this.layerSpacingTB, true);
             this.layerSpacingTB.Location = new System.Drawing.Point(97, 53);
             this.layerSpacingTB.Name = "layerSpacingTB";
@@ -316,9 +317,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.layerSpacingTB.TabIndex = 4;
             this.layerSpacingTB.Text = "25";
             this.layerSpacingTB.Leave += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 88);
@@ -326,9 +327,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label7.Size = new System.Drawing.Size(101, 17);
             this.label7.TabIndex = 5;
             this.label7.Text = "ColumnSpacing:";
-            // 
+            //
             // columnSpacingTB
-            // 
+            //
             this.flowLayoutPanel3.SetFlowBreak(this.columnSpacingTB, true);
             this.columnSpacingTB.Location = new System.Drawing.Point(110, 84);
             this.columnSpacingTB.Name = "columnSpacingTB";
@@ -336,9 +337,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.columnSpacingTB.TabIndex = 6;
             this.columnSpacingTB.Text = "25";
             this.columnSpacingTB.Leave += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 120);
@@ -346,9 +347,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label8.Size = new System.Drawing.Size(88, 17);
             this.label8.TabIndex = 7;
             this.label8.Text = "CycleRemove:";
-            // 
+            //
             // cycleRemove
-            // 
+            //
             this.cycleRemove.AutoSize = true;
             this.cycleRemove.Controls.Add(this.depthFirstRB);
             this.cycleRemove.Controls.Add(this.greedyRB);
@@ -357,9 +358,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.cycleRemove.Name = "cycleRemove";
             this.cycleRemove.Size = new System.Drawing.Size(165, 27);
             this.cycleRemove.TabIndex = 8;
-            // 
+            //
             // depthFirstRB
-            // 
+            //
             this.depthFirstRB.AutoSize = true;
             this.depthFirstRB.Checked = true;
             this.depthFirstRB.Location = new System.Drawing.Point(3, 3);
@@ -370,9 +371,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.depthFirstRB.Text = "DepthFirst";
             this.depthFirstRB.UseVisualStyleBackColor = true;
             this.depthFirstRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // greedyRB
-            // 
+            //
             this.greedyRB.AutoSize = true;
             this.greedyRB.Location = new System.Drawing.Point(94, 3);
             this.greedyRB.Name = "greedyRB";
@@ -381,9 +382,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.greedyRB.Text = "Greedy";
             this.greedyRB.UseVisualStyleBackColor = true;
             this.greedyRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label9
-            // 
+            //
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 153);
@@ -391,9 +392,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label9.Size = new System.Drawing.Size(60, 17);
             this.label9.TabIndex = 9;
             this.label9.Text = "Layering:";
-            // 
+            //
             // layering
-            // 
+            //
             this.layering.AutoSize = true;
             this.layering.Controls.Add(this.optimalLinkLengthRB);
             this.layering.Controls.Add(this.longestPathSourceRB);
@@ -403,9 +404,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.layering.Name = "layering";
             this.layering.Size = new System.Drawing.Size(408, 27);
             this.layering.TabIndex = 10;
-            // 
+            //
             // optimalLinkLengthRB
-            // 
+            //
             this.optimalLinkLengthRB.AutoSize = true;
             this.optimalLinkLengthRB.Checked = true;
             this.optimalLinkLengthRB.Location = new System.Drawing.Point(3, 3);
@@ -416,9 +417,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.optimalLinkLengthRB.Text = "OptimalLinkLength";
             this.optimalLinkLengthRB.UseVisualStyleBackColor = true;
             this.optimalLinkLengthRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // longestPathSourceRB
-            // 
+            //
             this.longestPathSourceRB.AutoSize = true;
             this.longestPathSourceRB.Location = new System.Drawing.Point(142, 3);
             this.longestPathSourceRB.Name = "longestPathSourceRB";
@@ -427,9 +428,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.longestPathSourceRB.Text = "LongestPathSource";
             this.longestPathSourceRB.UseVisualStyleBackColor = true;
             this.longestPathSourceRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // longestPathSinkRB
-            // 
+            //
             this.longestPathSinkRB.AutoSize = true;
             this.longestPathSinkRB.Location = new System.Drawing.Point(285, 3);
             this.longestPathSinkRB.Name = "longestPathSinkRB";
@@ -438,9 +439,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.longestPathSinkRB.Text = "LongestPathSink";
             this.longestPathSinkRB.UseVisualStyleBackColor = true;
             this.longestPathSinkRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label10
-            // 
+            //
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 186);
@@ -448,9 +449,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label10.Size = new System.Drawing.Size(57, 17);
             this.label10.TabIndex = 11;
             this.label10.Text = "Initialize:";
-            // 
+            //
             // initialize
-            // 
+            //
             this.initialize.AutoSize = true;
             this.initialize.Controls.Add(this.depthFirstOutRB);
             this.initialize.Controls.Add(this.depthFirstInRB);
@@ -460,9 +461,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.initialize.Name = "initialize";
             this.initialize.Size = new System.Drawing.Size(278, 27);
             this.initialize.TabIndex = 12;
-            // 
+            //
             // depthFirstOutRB
-            // 
+            //
             this.depthFirstOutRB.AutoSize = true;
             this.depthFirstOutRB.Checked = true;
             this.depthFirstOutRB.Location = new System.Drawing.Point(3, 3);
@@ -473,9 +474,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.depthFirstOutRB.Text = "DepthFirstOut";
             this.depthFirstOutRB.UseVisualStyleBackColor = true;
             this.depthFirstOutRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // depthFirstInRB
-            // 
+            //
             this.depthFirstInRB.AutoSize = true;
             this.depthFirstInRB.Location = new System.Drawing.Point(115, 3);
             this.depthFirstInRB.Name = "depthFirstInRB";
@@ -484,9 +485,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.depthFirstInRB.Text = "DepthFirstIn";
             this.depthFirstInRB.UseVisualStyleBackColor = true;
             this.depthFirstInRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // naiveRB
-            // 
+            //
             this.naiveRB.AutoSize = true;
             this.naiveRB.Location = new System.Drawing.Point(216, 3);
             this.naiveRB.Name = "naiveRB";
@@ -495,9 +496,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.naiveRB.Text = "Naive";
             this.naiveRB.UseVisualStyleBackColor = true;
             this.naiveRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label11
-            // 
+            //
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 219);
@@ -505,9 +506,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label11.Size = new System.Drawing.Size(75, 17);
             this.label11.TabIndex = 13;
             this.label11.Text = "Aggressive:";
-            // 
+            //
             // aggressive
-            // 
+            //
             this.aggressive.AutoSize = true;
             this.aggressive.Controls.Add(this.noneRB);
             this.aggressive.Controls.Add(this.lessRB);
@@ -517,9 +518,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.aggressive.Name = "aggressive";
             this.aggressive.Size = new System.Drawing.Size(185, 27);
             this.aggressive.TabIndex = 14;
-            // 
+            //
             // noneRB
-            // 
+            //
             this.noneRB.AutoSize = true;
             this.noneRB.Location = new System.Drawing.Point(3, 3);
             this.noneRB.Name = "noneRB";
@@ -528,9 +529,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.noneRB.Text = "None";
             this.noneRB.UseVisualStyleBackColor = true;
             this.noneRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // lessRB
-            // 
+            //
             this.lessRB.AutoSize = true;
             this.lessRB.Checked = true;
             this.lessRB.Location = new System.Drawing.Point(67, 3);
@@ -541,9 +542,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.lessRB.Text = "Less";
             this.lessRB.UseVisualStyleBackColor = true;
             this.lessRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // moreRB
-            // 
+            //
             this.moreRB.AutoSize = true;
             this.moreRB.Location = new System.Drawing.Point(124, 3);
             this.moreRB.Name = "moreRB";
@@ -552,9 +553,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.moreRB.Text = "More";
             this.moreRB.UseVisualStyleBackColor = true;
             this.moreRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // label12
-            // 
+            //
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 249);
@@ -562,9 +563,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.label12.Size = new System.Drawing.Size(37, 17);
             this.label12.TabIndex = 15;
             this.label12.Text = "Pack:";
-            // 
+            //
             // medianCB
-            // 
+            //
             this.medianCB.AutoSize = true;
             this.medianCB.Checked = true;
             this.medianCB.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -575,9 +576,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.medianCB.Text = "Median";
             this.medianCB.UseVisualStyleBackColor = true;
             this.medianCB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // straightenCB
-            // 
+            //
             this.straightenCB.AutoSize = true;
             this.straightenCB.Checked = true;
             this.straightenCB.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -588,9 +589,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.straightenCB.Text = "Straighten";
             this.straightenCB.UseVisualStyleBackColor = true;
             this.straightenCB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // expandCB
-            // 
+            //
             this.expandCB.AutoSize = true;
             this.expandCB.Checked = true;
             this.expandCB.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -602,9 +603,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.expandCB.Text = "Expand";
             this.expandCB.UseVisualStyleBackColor = true;
             this.expandCB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // setsPortSpotsCB
-            // 
+            //
             this.setsPortSpotsCB.AutoSize = true;
             this.setsPortSpotsCB.Checked = true;
             this.setsPortSpotsCB.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -615,9 +616,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.setsPortSpotsCB.Text = "SetsPortSpots";
             this.setsPortSpotsCB.UseVisualStyleBackColor = true;
             this.setsPortSpotsCB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.White;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -626,9 +627,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(992, 494);
             this.diagramControl1.TabIndex = 2;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -637,9 +638,9 @@ namespace WinFormsSampleControls.LDLayout {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 60);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // LayeredDigraphControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

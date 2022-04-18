@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace WinFormsExtensionControls.PackedLayout {
   [ToolboxItem(false)]
   public partial class PackedLayoutControl : System.Windows.Forms.UserControl {
     private Diagram MyDiagram;
-    
+
     public PackedLayoutControl() {
       InitializeComponent();
 
@@ -21,13 +23,13 @@ namespace WinFormsExtensionControls.PackedLayout {
       radBtnAspectRatio.CheckedChanged += (e, obj) => ChangePackMode();
       radBtnExpandToFit.CheckedChanged += (e, obj) => ChangePackMode();
       radBtnFit.CheckedChanged += (e, obj) => ChangePackMode();
-      
+
       radBtnDescending.CheckedChanged += (e, obj) => ChangeSortOrder();
 
       radBtnNone.CheckedChanged += (e, obj) => ChangeSortMode();
       radBtnMaxSideLength.CheckedChanged += (e, obj) => ChangeSortMode();
       radBtnArea.CheckedChanged += (e, obj) => ChangeSortMode();
-      
+
       radBtnRectNodeShape.CheckedChanged += (e, obj) => ChangeShapeToPack();
 
 
@@ -89,7 +91,7 @@ namespace WinFormsExtensionControls.PackedLayout {
 
       checkBxCircular.CheckedChanged += (e, obj) => ChangeCircularNodes();
       checkBxSpiral.CheckedChanged += (e, obj) => ChangeSpiralPacked();
-      
+
       checkBxSameWidthHeight.CheckedChanged += (e, obj) => ChangeSameWidthHeight();
 
       btnRandomize.Click += (e, obj) => Randomize();
@@ -117,11 +119,11 @@ namespace WinFormsExtensionControls.PackedLayout {
     public int LayoutWidth { get; set; } = 600;
     public int LayoutHeight { get; set; } = 600;
     public int NodeSpacing { get; set; } = 0;
-    
+
     public bool IsSpiralPacked { get; set; } = false;
     public int NodeMinSide { get; set; } = 30;
     public int NodeMaxSide { get; set; } = 50;
-    
+
     public int _PackShape { get; set; } = 0;
     public int _PackMode { get; set; } = 0;
     public int _SortOrder { get; set; } = 0;

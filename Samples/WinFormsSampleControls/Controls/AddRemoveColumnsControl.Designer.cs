@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.AddRemoveColumns {
   partial class AddRemoveColumnsControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.AddRemoveColumns {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -41,9 +42,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser4)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -71,9 +72,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // btnSwapColumns
-            // 
+            //
             this.btnSwapColumns.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSwapColumns.Location = new System.Drawing.Point(3, 830);
             this.btnSwapColumns.Name = "btnSwapColumns";
@@ -81,9 +82,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.btnSwapColumns.TabIndex = 10;
             this.btnSwapColumns.Text = "Swap Two Columns";
             this.btnSwapColumns.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnRemoveColumn
-            // 
+            //
             this.btnRemoveColumn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRemoveColumn.Location = new System.Drawing.Point(103, 742);
             this.btnRemoveColumn.Name = "btnRemoveColumn";
@@ -91,9 +92,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.btnRemoveColumn.TabIndex = 7;
             this.btnRemoveColumn.Text = "Remove Column";
             this.btnRemoveColumn.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnAddColumn
-            // 
+            //
             this.btnAddColumn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddColumn.Location = new System.Drawing.Point(3, 742);
             this.btnAddColumn.Name = "btnAddColumn";
@@ -101,9 +102,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.btnAddColumn.TabIndex = 6;
             this.btnAddColumn.Text = "Add Column";
             this.btnAddColumn.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnRemoveFromArray
-            // 
+            //
             this.btnRemoveFromArray.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRemoveFromArray.Location = new System.Drawing.Point(103, 653);
             this.btnRemoveFromArray.Name = "btnRemoveFromArray";
@@ -111,9 +112,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.btnRemoveFromArray.TabIndex = 3;
             this.btnRemoveFromArray.Text = "Remove From Array";
             this.btnRemoveFromArray.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.tableLayoutPanel1.SetColumnSpan(this.diagramControl1, 2);
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -122,9 +123,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.diagramControl1.Size = new System.Drawing.Size(994, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -134,9 +135,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 44);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // btnInsertIntoArray
-            // 
+            //
             this.btnInsertIntoArray.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInsertIntoArray.Location = new System.Drawing.Point(3, 653);
             this.btnInsertIntoArray.Name = "btnInsertIntoArray";
@@ -144,9 +145,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.btnInsertIntoArray.TabIndex = 2;
             this.btnInsertIntoArray.Text = "Insert Into Array";
             this.btnInsertIntoArray.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser2
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser2, 2);
             this.goWebBrowser2.CreationProperties = null;
             this.goWebBrowser2.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -156,9 +157,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.goWebBrowser2.Size = new System.Drawing.Size(994, 44);
             this.goWebBrowser2.TabIndex = 11;
             this.goWebBrowser2.ZoomFactor = 1D;
-            // 
+            //
             // goWebBrowser3
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser3, 2);
             this.goWebBrowser3.CreationProperties = null;
             this.goWebBrowser3.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -168,9 +169,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.goWebBrowser3.Size = new System.Drawing.Size(994, 44);
             this.goWebBrowser3.TabIndex = 12;
             this.goWebBrowser3.ZoomFactor = 1D;
-            // 
+            //
             // goWebBrowser4
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser4, 2);
             this.goWebBrowser4.CreationProperties = null;
             this.goWebBrowser4.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -180,9 +181,9 @@ namespace WinFormsSampleControls.AddRemoveColumns {
             this.goWebBrowser4.Size = new System.Drawing.Size(994, 130);
             this.goWebBrowser4.TabIndex = 14;
             this.goWebBrowser4.ZoomFactor = 1D;
-            // 
+            //
             // AddRemoveColumnsControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

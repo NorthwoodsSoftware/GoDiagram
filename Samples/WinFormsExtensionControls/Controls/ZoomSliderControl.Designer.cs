@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.ZoomSlider {
   partial class ZoomSliderControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.ZoomSlider {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -38,9 +39,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -54,9 +55,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 730);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,18 +66,18 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 234);
             this.goWebBrowser1.TabIndex = 0;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.Controls.Add(this.tableLayoutPanel3);
             this.panel1.Controls.Add(this.diagramControl1);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(532, 474);
             this.panel1.TabIndex = 1;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -92,9 +93,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(31, 220);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
+            //
             // minusButton
-            // 
+            //
             this.minusButton.AutoSize = true;
             this.minusButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.minusButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -104,9 +105,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.minusButton.TabIndex = 7;
             this.minusButton.Text = "-";
             this.minusButton.UseVisualStyleBackColor = true;
-            // 
+            //
             // trackBar1
-            // 
+            //
             this.trackBar1.Location = new System.Drawing.Point(3, 40);
             this.trackBar1.Maximum = 1200;
             this.trackBar1.Minimum = 100;
@@ -116,9 +117,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.trackBar1.TabIndex = 4;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Value = 100;
-            // 
+            //
             // plusButton
-            // 
+            //
             this.plusButton.AutoSize = true;
             this.plusButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.plusButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -128,9 +129,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.plusButton.TabIndex = 6;
             this.plusButton.Text = "+";
             this.plusButton.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.diagramControl1.Location = new System.Drawing.Point(0, 0);
@@ -138,9 +139,9 @@ namespace WinFormsExtensionControls.ZoomSlider {
             this.diagramControl1.Size = new System.Drawing.Size(529, 474);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // ZoomSliderSampleControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

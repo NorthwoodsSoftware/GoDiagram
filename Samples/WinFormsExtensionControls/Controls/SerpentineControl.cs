@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using System.ComponentModel;
@@ -20,7 +22,7 @@ namespace WinFormsExtensionControls.Serpentine {
         </p>
         <p>
           It also has <a>Layout.IsViewportSized</a> set to true, so that resizing the Diagram will automatically re-layout.
-        </p> 
+        </p>
 ";
     }
 

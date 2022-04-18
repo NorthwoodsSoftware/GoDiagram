@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,7 +56,7 @@ namespace WinFormsExtensionControls.Arranging {
         ArrangeLayout = new CircularLayout() {
           NodeDiameterFormula = CircularNodeDiameterFormula.Circular,
           Spacing = 30
-          
+
         },
 
         // Uncommenting this filter will force all of the nodes and links to go into the main subset and thus

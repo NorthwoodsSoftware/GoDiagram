@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.VisualTree {
   partial class VisualTreeControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.VisualTree {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -41,9 +42,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.AutoScroll = true;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -59,9 +60,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1000, 844);
             this.tableLayoutPanel4.TabIndex = 5;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.goWebBrowser2, 0, 0);
@@ -76,9 +77,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(994, 384);
             this.tableLayoutPanel3.TabIndex = 5;
-            // 
+            //
             // goWebBrowser2
-            // 
+            //
             this.goWebBrowser2.CreationProperties = null;
             this.goWebBrowser2.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -87,9 +88,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.goWebBrowser2.Size = new System.Drawing.Size(988, 44);
             this.goWebBrowser2.TabIndex = 0;
             this.goWebBrowser2.ZoomFactor = 1D;
-            // 
+            //
             // diagramControl2
-            // 
+            //
             this.diagramControl2.AllowDrop = true;
             this.diagramControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl2.Location = new System.Drawing.Point(3, 53);
@@ -97,9 +98,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.diagramControl2.Size = new System.Drawing.Size(988, 244);
             this.diagramControl2.TabIndex = 1;
             this.diagramControl2.Text = "diagramControl2";
-            // 
+            //
             // goWebBrowser3
-            // 
+            //
             this.goWebBrowser3.CreationProperties = null;
             this.goWebBrowser3.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -108,9 +109,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.goWebBrowser3.Size = new System.Drawing.Size(988, 174);
             this.goWebBrowser3.TabIndex = 2;
             this.goWebBrowser3.ZoomFactor = 1D;
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 677F));
@@ -124,9 +125,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 294);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 48);
@@ -134,9 +135,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.diagramControl1.Size = new System.Drawing.Size(344, 244);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -145,9 +146,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.goWebBrowser1.Size = new System.Drawing.Size(344, 39);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // visualTreeBtn
-            // 
+            //
             this.visualTreeBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.visualTreeBtn.Location = new System.Drawing.Point(3, 303);
             this.visualTreeBtn.Name = "visualTreeBtn";
@@ -155,9 +156,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.visualTreeBtn.TabIndex = 2;
             this.visualTreeBtn.Text = "Draw Visual Tree";
             this.visualTreeBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -167,9 +168,9 @@ namespace WinFormsSampleControls.VisualTree {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // VisualTreeControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel4);

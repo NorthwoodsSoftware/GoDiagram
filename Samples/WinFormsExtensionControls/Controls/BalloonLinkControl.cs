@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -8,7 +10,7 @@ namespace WinFormsExtensionControls.BalloonLink {
   [ToolboxItem(false)]
   public partial class BalloonLinkControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public BalloonLinkControl() {
       InitializeComponent();
 
@@ -20,7 +22,7 @@ namespace WinFormsExtensionControls.BalloonLink {
     It will create a triangular shape with the base at the FromNode and the other point at the ToNode.
     It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/BalloonLink/BalloonLink.cs"">BalloonLink.cs</a>.
    </p>
- 
+
    <p>
      Usage can also be seen in the <a href=""Comments"">Comments</a> sample.
    </p>

@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.Navigation {
   partial class NavigationControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.Navigation {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -64,9 +65,9 @@ namespace WinFormsSampleControls.Navigation {
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -82,9 +83,9 @@ namespace WinFormsSampleControls.Navigation {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 850);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.White;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -93,9 +94,9 @@ namespace WinFormsSampleControls.Navigation {
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(795, 629);
             this.diagramControl1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -110,9 +111,9 @@ namespace WinFormsSampleControls.Navigation {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 629);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.Gainsboro;
@@ -153,9 +154,9 @@ namespace WinFormsSampleControls.Navigation {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.Size = new System.Drawing.Size(185, 395);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -165,9 +166,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label1.TabIndex = 5;
             this.label1.Text = "Related Parts Highlighted";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // unhighlightAll
-            // 
+            //
             this.unhighlightAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.unhighlightAll.AutoSize = true;
             this.unhighlightAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -178,9 +179,9 @@ namespace WinFormsSampleControls.Navigation {
             this.unhighlightAll.Text = "Unhighlight All";
             this.unhighlightAll.UseVisualStyleBackColor = true;
             this.unhighlightAll.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // linksIn
-            // 
+            //
             this.linksIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linksIn.AutoSize = true;
             this.linksIn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -191,9 +192,9 @@ namespace WinFormsSampleControls.Navigation {
             this.linksIn.Text = "Links Into";
             this.linksIn.UseVisualStyleBackColor = true;
             this.linksIn.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // linksOut
-            // 
+            //
             this.linksOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linksOut.AutoSize = true;
             this.linksOut.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -204,9 +205,9 @@ namespace WinFormsSampleControls.Navigation {
             this.linksOut.Text = "Links Out Of";
             this.linksOut.UseVisualStyleBackColor = true;
             this.linksOut.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // linksAll
-            // 
+            //
             this.linksAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linksAll.AutoSize = true;
             this.linksAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -217,9 +218,9 @@ namespace WinFormsSampleControls.Navigation {
             this.linksAll.Text = "Links Connected";
             this.linksAll.UseVisualStyleBackColor = true;
             this.linksAll.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesIn
-            // 
+            //
             this.nodesIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesIn.AutoSize = true;
             this.nodesIn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -230,9 +231,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesIn.Text = "Nodes Into";
             this.nodesIn.UseVisualStyleBackColor = true;
             this.nodesIn.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesOut
-            // 
+            //
             this.nodesOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesOut.AutoSize = true;
             this.nodesOut.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -243,9 +244,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesOut.Text = "Nodes Out Of";
             this.nodesOut.UseVisualStyleBackColor = true;
             this.nodesOut.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesConnect
-            // 
+            //
             this.nodesConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesConnect.AutoSize = true;
             this.nodesConnect.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -256,9 +257,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesConnect.Text = "Nodes Connected";
             this.nodesConnect.UseVisualStyleBackColor = true;
             this.nodesConnect.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesReach
-            // 
+            //
             this.nodesReach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesReach.AutoSize = true;
             this.nodesReach.Checked = true;
@@ -271,9 +272,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesReach.Text = "Nodes Reachable";
             this.nodesReach.UseVisualStyleBackColor = true;
             this.nodesReach.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // group
-            // 
+            //
             this.group.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.group.AutoSize = true;
             this.group.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -284,9 +285,9 @@ namespace WinFormsSampleControls.Navigation {
             this.group.Text = "Containing Group (Parent)";
             this.group.UseVisualStyleBackColor = true;
             this.group.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // groupsAll
-            // 
+            //
             this.groupsAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupsAll.AutoSize = true;
             this.groupsAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -297,9 +298,9 @@ namespace WinFormsSampleControls.Navigation {
             this.groupsAll.Text = "Containing Groups (All)";
             this.groupsAll.UseVisualStyleBackColor = true;
             this.groupsAll.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesMember
-            // 
+            //
             this.nodesMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesMember.AutoSize = true;
             this.nodesMember.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -310,9 +311,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesMember.Text = "Member Nodes (Children)";
             this.nodesMember.UseVisualStyleBackColor = true;
             this.nodesMember.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // nodesMembersAll
-            // 
+            //
             this.nodesMembersAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nodesMembersAll.AutoSize = true;
             this.nodesMembersAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -323,9 +324,9 @@ namespace WinFormsSampleControls.Navigation {
             this.nodesMembersAll.Text = "Member Nodes (All)";
             this.nodesMembersAll.UseVisualStyleBackColor = true;
             this.nodesMembersAll.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // linksMember
-            // 
+            //
             this.linksMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linksMember.AutoSize = true;
             this.linksMember.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -336,9 +337,9 @@ namespace WinFormsSampleControls.Navigation {
             this.linksMember.Text = "Member Links (Children)";
             this.linksMember.UseVisualStyleBackColor = true;
             this.linksMember.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // linksMembersAll
-            // 
+            //
             this.linksMembersAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.linksMembersAll.AutoSize = true;
             this.linksMembersAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -349,9 +350,9 @@ namespace WinFormsSampleControls.Navigation {
             this.linksMembersAll.Text = "Member Links (All)";
             this.linksMembersAll.UseVisualStyleBackColor = true;
             this.linksMembersAll.CheckedChanged += new System.EventHandler(this._RadioChanged);
-            // 
+            //
             // tableLayoutPanel4
-            // 
+            //
             this.tableLayoutPanel4.AutoSize = true;
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Gainsboro;
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -384,9 +385,9 @@ namespace WinFormsSampleControls.Navigation {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(185, 222);
             this.tableLayoutPanel4.TabIndex = 1;
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.label2, 2);
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -397,9 +398,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label2.TabIndex = 6;
             this.label2.Text = "Relationship Colors";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // blackPanel
-            // 
+            //
             this.blackPanel.BackColor = System.Drawing.Color.Black;
             this.blackPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.blackPanel.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -408,9 +409,9 @@ namespace WinFormsSampleControls.Navigation {
             this.blackPanel.Name = "blackPanel";
             this.blackPanel.Size = new System.Drawing.Size(25, 24);
             this.blackPanel.TabIndex = 0;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 26);
@@ -419,9 +420,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label3.TabIndex = 20;
             this.label3.Text = "Not related";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // bluePanel
-            // 
+            //
             this.bluePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.bluePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bluePanel.Location = new System.Drawing.Point(6, 56);
@@ -429,9 +430,9 @@ namespace WinFormsSampleControls.Navigation {
             this.bluePanel.Name = "bluePanel";
             this.bluePanel.Size = new System.Drawing.Size(25, 24);
             this.bluePanel.TabIndex = 2;
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(40, 60);
@@ -440,9 +441,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label4.TabIndex = 21;
             this.label4.Text = "Directly related";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // greenPanel
-            // 
+            //
             this.greenPanel.BackColor = System.Drawing.Color.DarkGreen;
             this.greenPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.greenPanel.Location = new System.Drawing.Point(6, 90);
@@ -450,9 +451,9 @@ namespace WinFormsSampleControls.Navigation {
             this.greenPanel.Name = "greenPanel";
             this.greenPanel.Size = new System.Drawing.Size(25, 24);
             this.greenPanel.TabIndex = 1;
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(40, 94);
@@ -461,9 +462,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label5.TabIndex = 22;
             this.label5.Text = "2 relationships apart";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // orangePanel
-            // 
+            //
             this.orangePanel.BackColor = System.Drawing.Color.Orange;
             this.orangePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.orangePanel.Location = new System.Drawing.Point(6, 124);
@@ -471,9 +472,9 @@ namespace WinFormsSampleControls.Navigation {
             this.orangePanel.Name = "orangePanel";
             this.orangePanel.Size = new System.Drawing.Size(25, 24);
             this.orangePanel.TabIndex = 1;
-            // 
+            //
             // label6
-            // 
+            //
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(40, 128);
@@ -482,9 +483,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label6.TabIndex = 23;
             this.label6.Text = "3 relationships apart";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // redPanel
-            // 
+            //
             this.redPanel.BackColor = System.Drawing.Color.Red;
             this.redPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.redPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -493,9 +494,9 @@ namespace WinFormsSampleControls.Navigation {
             this.redPanel.Name = "redPanel";
             this.redPanel.Size = new System.Drawing.Size(25, 24);
             this.redPanel.TabIndex = 1;
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(40, 162);
@@ -504,9 +505,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label7.TabIndex = 24;
             this.label7.Text = "4 relationships apart";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // purplePanel
-            // 
+            //
             this.purplePanel.BackColor = System.Drawing.Color.Purple;
             this.purplePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.purplePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -515,9 +516,9 @@ namespace WinFormsSampleControls.Navigation {
             this.purplePanel.Name = "purplePanel";
             this.purplePanel.Size = new System.Drawing.Size(25, 25);
             this.purplePanel.TabIndex = 1;
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(40, 197);
@@ -526,9 +527,9 @@ namespace WinFormsSampleControls.Navigation {
             this.label8.TabIndex = 25;
             this.label8.Text = "Very indirectly related";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -538,9 +539,9 @@ namespace WinFormsSampleControls.Navigation {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 112);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // NavigationControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

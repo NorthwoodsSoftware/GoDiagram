@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using System.ComponentModel;
@@ -45,7 +47,7 @@ namespace WinFormsExtensionControls.PortShifting {
             </p>
 ";
       saveLoadModel1.ModelJson = @"
-        { 
+        {
           ""LinkFromPortIdProperty"": ""FromPort"",
           ""LinkToPortIdProperty"": ""ToPort"",
           ""NodeDataSource"": [
@@ -65,7 +67,7 @@ namespace WinFormsExtensionControls.PortShifting {
             { ""From"":""Or2"", ""FromPort"":""out"", ""To"":""Xor1"", ""ToPort"":""in2""},
             { ""From"":""Xor1"", ""FromPort"":""out"", ""To"":""Output1"", ""ToPort"":""""}
           ]}
-  
+
 ";
 
       Setup();
@@ -111,7 +113,7 @@ namespace WinFormsExtensionControls.PortShifting {
 
       // load initial model
       LoadModel();
-      
+
 
       // start logic
       Loop(myDiagram);

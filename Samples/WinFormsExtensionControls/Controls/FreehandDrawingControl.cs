@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -8,7 +10,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
   [ToolboxItem(false)]
   public partial class FreehandDrawingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public FreehandDrawingControl() {
       InitializeComponent();
 
@@ -30,7 +32,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
     It also demonstrates the GeometryReshapingTool, another custom tool,
     defined in <a href = ""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>.
   </p>
- 
+
   <p>
      Press and drag to draw a line.
   </p>

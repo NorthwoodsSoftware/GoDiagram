@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.VirtualizedPacked {
   partial class VirtualizedPackedControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -34,9 +35,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -54,9 +55,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 948);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -64,9 +65,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.diagramControl1.Size = new System.Drawing.Size(988, 600);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,9 +76,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.goWebBrowser1.Size = new System.Drawing.Size(988, 300);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -91,9 +92,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(988, 30);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
+            //
             // linkLabel
-            // 
+            //
             this.linkLabel.AutoSize = true;
             this.linkLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.linkLabel.Location = new System.Drawing.Point(3, 15);
@@ -102,9 +103,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.linkLabel.TabIndex = 1;
             this.linkLabel.Text = "Links";
             this.linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // nodeLabel
-            // 
+            //
             this.nodeLabel.AutoSize = true;
             this.nodeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nodeLabel.Location = new System.Drawing.Point(3, 0);
@@ -113,9 +114,9 @@ namespace WinFormsExtensionControls.VirtualizedPacked {
             this.nodeLabel.TabIndex = 0;
             this.nodeLabel.Text = "Nodes";
             this.nodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
+            //
             // VirtualizedPackedControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;

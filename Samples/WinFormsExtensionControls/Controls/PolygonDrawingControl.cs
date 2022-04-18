@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using System.ComponentModel;
 using System.Linq;
@@ -32,9 +34,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     This sample demonstrates the PolygonDrawingTool, a custom <a>Tool</a> added to the Diagram's MouseDownTools.
     It is defined in its own file, as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/PolygonDrawing/PolygonDrawingTool.cs"">PolygonDrawingTool.cs</a>.
     It also demonstrates the GeometryReshapingTool, another custom tool,
-    defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>. 
+    defined in <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/GeometryReshaping/GeometryReshapingTool.cs"">GeometryReshapingTool.cs</a>.
           </p>
- 
+
           <p>
     These extensions serve as examples of features that can be added to GoDiagram by writing new classes.
     With the PolygonDrawingTool, a new mode is supported that allows the user to draw custom shapes.
@@ -45,12 +47,12 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     Click a ""Draw"" button and then click in the diagram to place a new point in a polygon or polyline shape.
     Right-click, double-click, or Enter to finish.  Press <b>Escape</b> to cancel, or <b>Z</b> to remove the last point.
     Click the ""Select"" button to switch back to the normal selection behavior, so that you can select, resize, and rotate the shapes.
-    The checkboxes control whether you can resize, reshape, and /or rotate selected shapes. 
+    The checkboxes control whether you can resize, reshape, and /or rotate selected shapes.
          </p>
 
 ";
       saveLoadModel1.ModelJson = @"
-        { 
+        {
           ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Category"": ""PolygonDrawing"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
           ""SharedData"": { ""Position"":""0 0"" }
         }";

@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsSampleControls.SelectableFields {
   partial class SelectableFieldsControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsSampleControls.SelectableFields {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -33,9 +34,9 @@ namespace WinFormsSampleControls.SelectableFields {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser2)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -53,9 +54,9 @@ namespace WinFormsSampleControls.SelectableFields {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 944);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -63,9 +64,9 @@ namespace WinFormsSampleControls.SelectableFields {
             this.diagramControl1.Size = new System.Drawing.Size(994, 394);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -74,18 +75,18 @@ namespace WinFormsSampleControls.SelectableFields {
             this.goWebBrowser1.Size = new System.Drawing.Size(994, 79);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // textBox1
-            // 
+            //
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox1.Location = new System.Drawing.Point(3, 488);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(994, 344);
             this.textBox1.TabIndex = 2;
-            // 
+            //
             // goWebBrowser2
-            // 
+            //
             this.goWebBrowser2.CreationProperties = null;
             this.goWebBrowser2.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,9 +95,9 @@ namespace WinFormsSampleControls.SelectableFields {
             this.goWebBrowser2.Size = new System.Drawing.Size(994, 103);
             this.goWebBrowser2.TabIndex = 3;
             this.goWebBrowser2.ZoomFactor = 1D;
-            // 
+            //
             // SelectableFieldsControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

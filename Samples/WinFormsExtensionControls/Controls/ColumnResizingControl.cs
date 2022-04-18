@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Northwoods.Go;
@@ -9,7 +11,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
   [ToolboxItem(false)]
   public partial class ColumnResizingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public ColumnResizingControl() {
       InitializeComponent();
 
@@ -23,27 +25,27 @@ namespace WinFormsExtensionControls.ColumnResizing {
     Each tool adds an <a>Adornment</a> to a selected node that has a resize handle for each column or each row of a ""Table"" <a>Panel</a>.
     While resizing, you can press the Tab or the Delete key in order to stop the tool and restore the column or row to its natural size.
   </p>
- 
+
   <p>
     This sample also adds TwoWay Bindings to the <a>ColumnDefinition.Width</a> property for the columns.
-    Each column width is stored in the corresponding index of the node data's ""Widths"" property, which must be an Array of numbers.    
-    The default value is NaN, allowing the column to occupy its natural width.      
-    Note that there are <b>no</b> Bindings for the row heights.            
+    Each column width is stored in the corresponding index of the node data's ""Widths"" property, which must be an Array of numbers.
+    The default value is NaN, allowing the column to occupy its natural width.
+    Note that there are <b>no</b> Bindings for the row heights.
   </p>
-             
-  <p> 
+
+  <p>
     The model data, automatically updated after each change or undo or redo:
-  </p>            
+  </p>
 ";
       goWebBrowser2.Html = @"
-  <p> 
+  <p>
     See also the <a href=""AddRemoveColumns"">Add & Remove Rows & Columns</a> sample.
   </p>
 ";
 
     }
 
-    
+
     private void Save() {
       if (myDiagram == null) return;
       txtJSON.Text = myDiagram.Model.ToJson();

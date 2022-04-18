@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -9,7 +11,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
   [ToolboxItem(false)]
   public partial class LinkLabelDraggingControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
-    
+
     public LinkLabelDraggingControl() {
       InitializeComponent();
 
@@ -22,7 +24,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
           that makes use of the LinkLabelDraggingTool that is defined in its own file,
           as <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/LinkLabelDragging/LinkLabelDraggingTool.cs"">LinkLabelDraggingTool.cs</a>.
         </p>
- 
+
         <p>
           Note that after dragging a link label you can move a node connected by that link and the label maintains the same position relative to the link route.
           That relative position is specified by the <a>GraphObject.SegmentOffset</a> property.
@@ -35,7 +37,7 @@ namespace WinFormsExtensionControls.LinkLabelDragging {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{ 
+      saveLoadModel1.ModelJson = @"{
   ""NodeKeyProperty"": ""Id"",
   ""NodeDataSource"": [
     { ""Id"": ""0"", ""Loc"": ""120 120"", ""Text"": ""Initial"" },

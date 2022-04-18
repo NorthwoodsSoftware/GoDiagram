@@ -1,12 +1,12 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
 namespace WinFormsExtensionControls.DragCreating {
   partial class DragCreatingControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +19,8 @@ namespace WinFormsExtensionControls.DragCreating {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -31,9 +31,9 @@ namespace WinFormsExtensionControls.DragCreating {
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -49,9 +49,9 @@ namespace WinFormsExtensionControls.DragCreating {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1245, 1119);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
@@ -59,9 +59,9 @@ namespace WinFormsExtensionControls.DragCreating {
             this.diagramControl1.Size = new System.Drawing.Size(1239, 944);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // checkBxEnable
-            // 
+            //
             this.checkBxEnable.AutoSize = true;
             this.checkBxEnable.Checked = true;
             this.checkBxEnable.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -72,9 +72,9 @@ namespace WinFormsExtensionControls.DragCreating {
             this.checkBxEnable.TabIndex = 1;
             this.checkBxEnable.Text = "DragCreatingTool enabled";
             this.checkBxEnable.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -83,9 +83,9 @@ namespace WinFormsExtensionControls.DragCreating {
             this.goWebBrowser1.Size = new System.Drawing.Size(1239, 123);
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // DragCreatingControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

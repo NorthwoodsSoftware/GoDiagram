@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
+using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using System.ComponentModel;
@@ -44,7 +46,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
           </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{ 
+      saveLoadModel1.ModelJson = @"{
   ""LinkFromPortIdProperty"": ""FromPort"",
   ""LinkToPortIdProperty"": ""ToPort"",
   ""NodeDataSource"": [
@@ -62,7 +64,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
   ""LinkDataSource"": [
     { ""From"":-10, ""To"":-11, ""FromPort"":""R"", ""ToPort"":""L"", ""Routing"": 2,
       ""Points"": [
-        ""118.60896682739258 240"", 
+        ""118.60896682739258 240"",
         ""128.60896682739258 240"",
         ""132 240"",
         ""132 240"",
@@ -272,7 +274,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.LinkReshaped += (obj, e) => (e.Subject as Link).Routing = LinkRouting.Orthogonal;
       myDiagram.ToolManager.LinkReshapingTool = new SnapLinkReshapingTool();
-      
+
 
       myDiagram.Grid = new Panel("Grid") {
         GridCellSize = new Size(8, 8)

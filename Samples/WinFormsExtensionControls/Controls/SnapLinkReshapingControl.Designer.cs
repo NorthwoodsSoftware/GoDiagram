@@ -1,12 +1,13 @@
-﻿
+﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+
 namespace WinFormsExtensionControls.SnapLinkReshaping {
   partial class SnapLinkReshapingControl {
-    /// <summary> 
+    /// <summary>
     /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
+    /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -19,8 +20,8 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
 
     #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
+    /// <summary>
+    /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
@@ -36,9 +37,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -58,9 +59,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1099);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(153, 3);
@@ -68,18 +69,18 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.diagramControl1.Size = new System.Drawing.Size(844, 554);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // paletteControl1
-            // 
+            //
             this.paletteControl1.AllowDrop = true;
             this.paletteControl1.Location = new System.Drawing.Point(3, 3);
             this.paletteControl1.Name = "paletteControl1";
             this.paletteControl1.Size = new System.Drawing.Size(144, 554);
             this.paletteControl1.TabIndex = 1;
             this.paletteControl1.Text = "paletteControl1";
-            // 
+            //
             // avoidsNodes
-            // 
+            //
             this.avoidsNodes.AutoSize = true;
             this.avoidsNodes.Checked = true;
             this.avoidsNodes.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -90,9 +91,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.avoidsNodes.TabIndex = 2;
             this.avoidsNodes.Text = "avoidsNodes";
             this.avoidsNodes.UseVisualStyleBackColor = true;
-            // 
+            //
             // goWebBrowser2
-            // 
+            //
             this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser2, 2);
             this.goWebBrowser2.CreationProperties = null;
             this.goWebBrowser2.DefaultBackgroundColor = System.Drawing.Color.White;
@@ -102,9 +103,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.goWebBrowser2.Size = new System.Drawing.Size(994, 144);
             this.goWebBrowser2.TabIndex = 3;
             this.goWebBrowser2.ZoomFactor = 1D;
-            // 
+            //
             // saveLoadModel1
-            // 
+            //
             this.saveLoadModel1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
             this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -112,9 +113,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.saveLoadModel1.Name = "saveLoadModel1";
             this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
             this.saveLoadModel1.TabIndex = 4;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -124,9 +125,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // goWebBrowser1
-            // 
+            //
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,9 +136,9 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.goWebBrowser1.Size = new System.Drawing.Size(194, 194);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
-            // 
+            //
             // SnapLinkReshapeControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
