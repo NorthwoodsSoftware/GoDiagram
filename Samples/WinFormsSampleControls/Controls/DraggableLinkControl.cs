@@ -19,10 +19,10 @@ namespace WinFormsSampleControls.DraggableLink {
     public DraggableLinkControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""LinkFromPortIdProperty"": ""FromPort"",
   ""LinkToPortIdProperty"": ""ToPort"",
   ""NodeDataSource"": [ ],
@@ -402,12 +402,12 @@ namespace WinFormsSampleControls.DraggableLink {
     private void SaveModel() {
       if (myDiagram == null) return;
       SaveDiagramProperties(); // do this first, before writing to JSON
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
       if (!(myDiagram.Model.SharedData is SharedData)) {
         myDiagram.Model.SharedData = new SharedData();

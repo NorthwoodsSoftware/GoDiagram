@@ -20,9 +20,9 @@ namespace WinFormsSampleControls.Pipes {
     public PipesControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.JsonText = @"{
   ""LinkFromPortIdProperty"": ""Fid"",
   ""LinkToPortIdProperty"": ""Tid"",
   ""NodeDataSource"": [
@@ -476,12 +476,12 @@ namespace WinFormsSampleControls.Pipes {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
   }
 

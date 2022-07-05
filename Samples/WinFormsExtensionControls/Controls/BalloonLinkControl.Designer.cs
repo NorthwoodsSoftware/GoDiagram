@@ -1,5 +1,5 @@
 ﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
-namespace WinFormsExtensionControls.BalloonLink {
+namespace WinFormsExtensionControls.Balloon {
   partial class BalloonLinkControl {
     /// <summary>
     /// Required designer variable.

@@ -28,7 +28,7 @@ namespace WinFormsSampleControls.SelectableFields {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mySavedModel = new System.Windows.Forms.TextBox();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
@@ -42,7 +42,7 @@ namespace WinFormsSampleControls.SelectableFields {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mySavedModel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -78,12 +78,12 @@ namespace WinFormsSampleControls.SelectableFields {
             //
             // textBox1
             //
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(3, 488);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(994, 344);
-            this.textBox1.TabIndex = 2;
+            this.mySavedModel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.mySavedModel.Location = new System.Drawing.Point(3, 488);
+            this.mySavedModel.Multiline = true;
+            this.mySavedModel.Name = "textBox1";
+            this.mySavedModel.Size = new System.Drawing.Size(994, 344);
+            this.mySavedModel.TabIndex = 2;
             //
             // goWebBrowser2
             //
@@ -117,7 +117,7 @@ namespace WinFormsSampleControls.SelectableFields {
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox mySavedModel;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
   }
 }

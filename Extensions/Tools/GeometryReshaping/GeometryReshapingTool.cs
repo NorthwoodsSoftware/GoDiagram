@@ -10,6 +10,7 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Northwoods.Go.Tools.Extensions {
@@ -31,6 +32,9 @@ namespace Northwoods.Go.Tools.Extensions {
   public class GeometryReshapingTool : Tool {
 
     private GraphObject _HandleArchetype;
+    private GraphObject _MidHandleArchetype;
+    private bool _IsResegmenting;
+    private int _ResegmentingDistance = 3;
     private string _ReshapeElementName = "SHAPE";  // ??? can't add Part.ReshapeElementName property
     // there's no Part.ReshapeAdornmentTemplate either
 
@@ -43,15 +47,25 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Constructs a GeometryReshapingTool and sets the handle and name of the tool.
     /// </summary>
     public GeometryReshapingTool() : base() {
+      Name = "GeometryReshaping";
+
       var h = new Shape {
         Figure = "Diamond",
-        DesiredSize = new Size(7, 7),
+        DesiredSize = new Size(8, 8),
         Fill = "lightblue",
         Stroke = "dodgerblue",
         Cursor = "move"
       };
       _HandleArchetype = h;
-      Name = "GeometryReshaping";
+
+      h = new Shape {
+        Figure = "Circle",
+        DesiredSize = new Size(7, 7),
+        Fill = "lightblue",
+        Stroke = "dodgerblue",
+        Cursor = "move"
+      };
+      _MidHandleArchetype = h;
     }
 
     /// <summary>
@@ -68,8 +82,57 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
+    /// A small GraphObject used as a reshape handle at the middle of each segment for inserting a new segment.
+    /// The default GraphObject is a small blue circle.
+    /// </summary>
+    public GraphObject MidHandleArchetype {
+      get {
+        return _MidHandleArchetype;
+      }
+      set {
+        _MidHandleArchetype = value;
+      }
+    }
+
+    /// <summary>
+    /// Gets or sets whether this tool supports the user's addition or removal of segments in the geometry.
+    /// </summary>
+    /// <remarks>
+    /// The default value is false.
+    /// When the value is true, copies of the <see cref="MidHandleArchetype"/> will appear in the middle of each segment.
+    /// At the current time, resegmenting is limited to straight segments, not curved ones.
+    /// </remarks>
+    public bool IsResegmenting {
+      get {
+        return _IsResegmenting;
+      }
+      set {
+        _IsResegmenting = value;
+      }
+    }
+
+    /// <summary>
+    /// The maximum distance at which a resegmenting handle being positioned on a straight line
+    /// between the adjacent points will cause one of the segments to be removed from the geometry.
+    /// </summary>
+    /// <remarks>
+    /// The default value is 3.
+    /// </remarks>
+    public int ResegmentingDistance {
+      get {
+        return _ResegmentingDistance;
+      }
+      set {
+        _ResegmentingDistance = value;
+      }
+    }
+
+    /// <summary>
     /// The name of the GraphObject to be reshaped.
     /// </summary>
+    /// <remarks>
+    /// The default name is "SHAPE".
+    /// </remarks>
     public string ReshapeElementName {
       get {
         return _ReshapeElementName;
@@ -89,6 +152,9 @@ namespace Northwoods.Go.Tools.Extensions {
     public GraphObject Handle {
       get {
         return _Handle;
+      }
+      set {
+        _Handle = value;
       }
     }
 
@@ -116,7 +182,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Show an <see cref="Adornment"/> with a reshape handle at each point of the geometry.
     /// </summary>
     /// <remarks>
-    /// Don't show anything if <see cref="ReshapeElementName"/> doesn't identify a <see cref="Shape"/>
+    /// Don't show anything if <see cref="ReshapeElementName"/> doesn't return a <see cref="Shape"/>
     /// that has a <see cref="Shape.Geometry"/> of type <see cref="GeometryType.Path"/>.
     /// </remarks>
     public override void UpdateAdornments(Part part) {
@@ -126,33 +192,53 @@ namespace Northwoods.Go.Tools.Extensions {
             selelt.ActualBounds.IsReal() && selelt.IsVisibleElement() &&
             part.CanReshape() && part.ActualBounds.IsReal() && part.IsVisible() &&
             selelt.Geometry.Type == GeometryType.Path) {
+          var geo = selelt.Geometry;
           var adornment = part.FindAdornment(Name);
-          if (adornment == null) {
+          if (adornment == null || _CountHandles(geo) != adornment.Elements.Count() - 1) {
             adornment = MakeAdornment(selelt);
           }
           if (adornment != null) {
             // update the position/alignment of each handle
-            var geo = selelt.Geometry;
             var b = geo.Bounds;
             // update the size of the adornment
             var body = adornment.FindElement("BODY");
             if (body != null) body.DesiredSize = b.Size;
+            List<GraphObject> unneeded = null;
             foreach (var h in adornment.Elements) {
-              if (h["_Typ"] == null) continue;
-              // null-coalesce operator so ElementAt throws exception if property isn't set
-              var figIdx = h["_Fig"] as int? ?? -1;
-              var segIdx = h["_Seg"] as int? ?? -1;
-              var fig = geo.Figures.ElementAt(figIdx);
-              var seg = fig.Segments.ElementAt(segIdx);
+              if (h["_Typ"] is not int) continue;
+              var typ = (int)h["_Typ"];
+              if (h["_Fig"] is not int) continue;
+              var figi = (int)h["_Fig"];
+              if (figi >= geo.Figures.Count) {
+                if (unneeded == null) unneeded = new();
+                unneeded.Add(h);
+                continue;
+              }
+              var fig = geo.Figures[figi];
+              if (h["_Seg"] is not int) continue;
+              var segi = (int)h["_Seg"];
+              if (segi >= fig.Segments.Count) {
+                if (unneeded == null) unneeded = new();
+                unneeded.Add(h);
+                continue;
+              }
+              var seg = fig.Segments[segi];
               var x = 0d;
               var y = 0d;
-              switch (h["_Typ"]) {
+              switch (typ) {
                 case 0: x = fig.StartX; y = fig.StartY; break;
                 case 1: x = seg.EndX; y = seg.EndY; break;
                 case 2: x = seg.Point1X; y = seg.Point1Y; break;
                 case 3: x = seg.Point2X; y = seg.Point2Y; break;
+                case 4: x = (fig.StartX + seg.EndX) / 2; y = (fig.StartY + seg.EndY) / 2; break;
+                case 5: x = (fig.Segments[segi - 1].EndX + seg.EndX) / 2; y = (fig.Segments[segi - 1].EndY + seg.EndY) / 2; break;
+                case 6: x = (fig.StartX + seg.EndX) / 2; y = (fig.StartY + seg.EndY) / 2; break;
+                default: throw new System.Exception("unexpected handle type");
               }
               h.Alignment = new Spot(0, 0, x - b.X, y - b.Y);
+            }
+            if (unneeded != null) {
+              foreach (var h in unneeded) { if (adornment != null) adornment.Remove(h); }
             }
 
             part.AddAdornment(Name, adornment);
@@ -165,62 +251,107 @@ namespace Northwoods.Go.Tools.Extensions {
       part.RemoveAdornment(Name);
     }
 
+    private int _CountHandles(Geometry geo) {
+      var reseg = IsResegmenting;
+      var c = 0;
+      foreach (var fig in geo.Figures) {
+        c++;
+        foreach (var seg in fig.Segments) {
+          if (reseg) {
+            if (seg.Type == SegmentType.Line) c++;
+            if (seg.IsClosed) c++;
+          }
+          c++;
+          if (seg.Type == SegmentType.QuadraticBezier) c++;
+          else if (seg.Type == SegmentType.Bezier) c += 2;
+        }
+      }
+      return c;
+    }
+
     /// <summary>
-    /// Undocumented.
+    /// (undocumented)
     /// </summary>
     [Undocumented]
     public Adornment MakeAdornment(Shape selelt) {
-      var adornment = new Adornment {
-        Type = PanelLayoutSpot.Instance,
+      var adornment = new Adornment("Spot") {
         LocationElementName = "BODY",
         LocationSpot = new Spot(0, 0, -selelt.StrokeWidth / 2, -selelt.StrokeWidth / 2)
       };
-      var h = new Shape {
+      var body = new Shape {
         Name = "BODY",
         Fill = (Brush)null,
         Stroke = (Brush)null,
         StrokeWidth = 0
       };
-      adornment.Add(h);
+      adornment.Add(body);
 
       var geo = selelt.Geometry;
+      GraphObject h = null;
       if (geo != null) {
+        if (IsResegmenting) {
+          for (var f = 0; f < geo.Figures.Count; f++) {
+            var fig = geo.Figures[f];
+            for (var g = 0; g < fig.Segments.Count; g++) {
+              var seg = fig.Segments[g];
+              if (seg.Type == SegmentType.Line) {
+                h = MakeResegmentHandle(selelt, fig, seg);
+                if (h != null) {
+                  h["_Typ"] = (g == 0) ? 4 : 5;
+                  h["_Fig"] = f;
+                  h["_Seg"] = g;
+                  adornment.Add(h);
+                }
+              }
+              if (seg.IsClosed) {
+                h = MakeResegmentHandle(selelt, fig, seg);
+                if (h != null) {
+                  h["_Typ"] = 6;
+                  h["_Fig"] = f;
+                  h["_Seg"] = g;
+                  adornment.Add(h);
+                }
+              }
+            }
+          }
+        }
+
         // requires Path Geometry, checked above in UpdateAdornments
         for (var f = 0; f < geo.Figures.Count; f++) {
-          var fig = geo.Figures.ElementAt(f);
+          var fig = geo.Figures[f];
           for (var g = 0; g < fig.Segments.Count; g++) {
-            var seg = fig.Segments.ElementAt(g);
+            var seg = fig.Segments[g];
             if (g == 0) {
-              var h0 = MakeHandle(selelt, fig, seg);
-              if (h0 != null) {
-                h0["_Typ"] = 0;
-                h0["_Fig"] = f;
-                h0["_Seg"] = g;
-                adornment.Add(h0);
+              h = MakeHandle(selelt, fig, seg);
+              if (h != null) {
+                h["_Typ"] = 0;
+                h["_Fig"] = f;
+                h["_Seg"] = g;
+                adornment.Add(h);
               }
             }
-            var h1 = MakeHandle(selelt, fig, seg);
-            if (h1 != null) {
-              h1["_Typ"] = 1;
-              h1["_Fig"] = f;
-              h1["_Seg"] = g;
-              adornment.Add(h1);
+            h = MakeHandle(selelt, fig, seg);
+            if (h != null) {
+              h["_Typ"] = 1;
+              h["_Fig"] = f;
+              h["_Seg"] = g;
+              adornment.Add(h);
             }
             if (seg.Type == SegmentType.QuadraticBezier || seg.Type == SegmentType.Bezier) {
-              var h2 = MakeHandle(selelt, fig, seg);
-              if (h2 != null) {
-                h2["_Typ"] = 2;
-                h2["_Fig"] = f;
-                h2["_Seg"] = g;
-                adornment.Add(h2);
+              h = MakeHandle(selelt, fig, seg);
+              if (h != null) {
+                h["_Typ"] = 2;
+                h["_Fig"] = f;
+                h["_Seg"] = g;
+                adornment.Add(h);
               }
               if (seg.Type == SegmentType.Bezier) {
-                var h3 = MakeHandle(selelt, fig, seg);
-                if (h3 != null) {
-                  h3["_Typ"] = 3;
-                  h3["_Fig"] = f;
-                  h3["_Seg"] = g;
-                  adornment.Add(h3);
+                h = MakeHandle(selelt, fig, seg);
+                if (h != null) {
+                  h["_Typ"] = 3;
+                  h["_Fig"] = f;
+                  h["_Seg"] = g;
+                  adornment.Add(h);
                 }
               }
             }
@@ -233,11 +364,21 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Undocumented.
+    /// (undocumented)
     /// </summary>
     [Undocumented]
-    public GraphObject MakeHandle(GraphObject selelt, PathFigure fig, PathSegment seg) {
+    public GraphObject MakeHandle(Shape selelt, PathFigure fig, PathSegment seg) {
       var h = HandleArchetype;
+      if (h == null) return null;
+      return h.Copy();
+    }
+
+    /// <summary>
+    /// (undocumented)
+    /// </summary>
+    [Undocumented]
+    public GraphObject MakeResegmentHandle(Shape selelt, PathFigure fig, PathSegment seg) {
+      var h = MidHandleArchetype;
       if (h == null) return null;
       return h.Copy();
     }
@@ -267,12 +408,60 @@ namespace Northwoods.Go.Tools.Extensions {
     /// </remarks>
     public override void DoActivate() {
       var diagram = Diagram;
+      if (diagram == null) return;
       _Handle = FindToolHandleAt(diagram.FirstInput.DocumentPoint, Name);
-      if (_Handle == null) return;
-      if ((_Handle.Part as Adornment).AdornedElement is not Shape shape) return;
+      var h = _Handle;
+      if (h == null) return;
+      if ((h.Part as Adornment).AdornedElement is not Shape shape || shape.Part == null) return;
       _AdornedShape = shape;
       diagram.IsMouseCaptured = true;
       StartTransaction(Name);
+
+      var typ = (int)h["_Typ"];
+      var figi = (int)h["_Fig"];
+      var segi = (int)h["_Seg"];
+      if (IsResegmenting && typ >= 4 && shape.Geometry != null) {
+        var locpt = shape.GetLocalPoint(diagram.FirstInput.DocumentPoint);
+        var geo = shape.Geometry.Copy();
+        var fig = geo.Figures[figi];
+        var seg = fig.Segments[segi];
+        var newseg = seg.Copy();
+        switch (typ) {
+          case 4: {
+            newseg.EndX = (fig.StartX + seg.EndX) / 2;
+            newseg.EndY = (fig.StartY + seg.EndY) / 2;
+            newseg.IsClosed = false;
+            fig.Segments.Insert(segi, newseg);
+            break;
+          }
+          case 5: {
+            var prevseg = fig.Segments[segi - 1];
+            newseg.EndX = (prevseg.EndX + seg.EndX) / 2;
+            newseg.EndY = (prevseg.EndY + seg.EndY) / 2;
+            newseg.IsClosed = false;
+            fig.Segments.Insert(segi, newseg);
+            break;
+          }
+          case 6: {
+            newseg.EndX = (fig.StartX + seg.EndX) / 2;
+            newseg.EndY = (fig.StartY + seg.EndY) / 2;
+            newseg.IsClosed = seg.IsClosed;
+            seg.IsClosed = false;
+            fig.Add(newseg);
+            break;
+          }
+        }
+        shape.Geometry = geo;  // modify the Shape
+        var part = shape.Part;
+        part.EnsureBounds();
+        UpdateAdornments(part);  // update any Adornments of the Part
+        _Handle = FindToolHandleAt(diagram.FirstInput.DocumentPoint, Name);
+        if (_Handle == null) {
+          DoDeactivate();  // need to rollback the transaction and not set .isActive
+          return;
+        }
+      }
+
       _OriginalGeometry = shape.Geometry;
       IsActive = true;
     }
@@ -286,7 +475,7 @@ namespace Northwoods.Go.Tools.Extensions {
       _Handle = null;
       _AdornedShape = null;
       var diagram = Diagram;
-      diagram.IsMouseCaptured = false;
+      if (diagram != null) diagram.IsMouseCaptured = false;
       IsActive = false;
     }
 
@@ -308,7 +497,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// </summary>
     public override void DoMouseMove() {
       var diagram = Diagram;
-      if (IsActive) {
+      if (IsActive && diagram != null) {
         var newpt = ComputeReshape(diagram.LastInput.DocumentPoint);
         Reshape(newpt);
       }
@@ -320,9 +509,59 @@ namespace Northwoods.Go.Tools.Extensions {
     /// </summary>
     public override void DoMouseUp() {
       var diagram = Diagram;
-      if (IsActive) {
+      if (IsActive && diagram != null) {
         var newpt = ComputeReshape(diagram.LastInput.DocumentPoint);
         Reshape(newpt);
+        var shape = AdornedShape;
+        if (IsResegmenting && shape != null && shape.Geometry != null && shape.Part != null) {
+          var typ = (int)Handle["_Typ"];
+          var figi = (int)Handle["_Fig"];
+          var segi = (int)Handle["_Seg"];
+          var fig = shape.Geometry.Figures.ElementAtOrDefault(figi);
+          if (fig != null && fig.Segments.Count > 2) {  // avoid making a degenerate polygon
+            double ax, ay, bx, by, cx, cy;
+            if (typ == 0) {
+              var lastseg = fig.Segments.Count - 1;
+              ax = fig.Segments[lastseg].EndX; ay = fig.Segments[lastseg].EndY;
+              bx = fig.StartX; by = fig.StartY;
+              cx = fig.Segments[0].EndX; cy = fig.Segments[0].EndY;
+            } else {
+              if (segi <= 0) {
+                ax = fig.StartX; ay = fig.StartY;
+              } else {
+                ax = fig.Segments[segi - 1].EndX; ay = fig.Segments[segi - 1].EndY;
+              }
+              bx = fig.Segments[segi].EndX; by = fig.Segments[segi].EndY;
+              if (segi >= fig.Segments.Count - 1) {
+                cx = fig.StartX; cy = fig.StartY;
+              } else {
+                cx = fig.Segments[segi + 1].EndX; cy = fig.Segments[segi + 1].EndY;
+              }
+            }
+            var q = new Point(bx, by);
+            q = q.ProjectOntoLineSegment(ax, ay, cx, cy);
+            // if B is within resegmentingDistance of the line from A to C,
+            // and if Q is between A and C, remove that point from the geometry
+            var dist = q.DistanceSquared(new Point(bx, by));
+            if (dist < ResegmentingDistance * ResegmentingDistance) {
+              var geo = shape.Geometry.Copy();
+              fig = geo.Figures[figi];
+              if (typ == 0) {
+                var first = fig.Segments.FirstOrDefault();
+                if (first != null) { fig.StartX = first.EndX; fig.StartY = first.EndY; }
+              }
+              if (segi > 0) {
+                var prev = fig.Segments[segi - 1];
+                var seg = fig.Segments[segi];
+                prev.IsClosed = seg.IsClosed;
+              }
+              fig.Segments.RemoveAt(segi);
+              shape.Geometry = geo;
+              shape.Part.RemoveAdornment(Name);
+              UpdateAdornments(shape.Part);
+            }
+          }
+        }
         TransactionResult = Name;  // success
       }
       StopTool();
@@ -342,13 +581,14 @@ namespace Northwoods.Go.Tools.Extensions {
       if (shape == null || shape.Geometry == null) return;
       var locpt = shape.GetLocalPoint(newPoint);
       var geo = shape.Geometry.Copy();
-      var type = Handle["_Typ"];
-      if (type == null) return;
-      // null-coalesce operator so ElementAt throws exception if property isn't set
-      var figIdx = Handle["_Fig"] as int? ?? -1;
-      var segIdx = Handle["_Seg"] as int? ?? -1;
-      var fig = geo.Figures.ElementAt(figIdx);
-      var seg = fig.Segments.ElementAt(segIdx);
+      var h = Handle;
+      if (h == null) return;
+      if (h["_Typ"] is not int) return;
+      var type = (int)h["_Typ"];
+      if (h["_Fig"] is not int) return;
+      var fig = geo.Figures[(int)h["_Fig"]];
+      if (h["_Seg"] is not int) return;
+      var seg = fig.Segments[(int)h["_Seg"]];
       switch (type) {
         case 0: fig.StartX = locpt.X; fig.StartY = locpt.Y; break;
         case 1: seg.EndX = locpt.X; seg.EndY = locpt.Y; break;
@@ -365,7 +605,7 @@ namespace Northwoods.Go.Tools.Extensions {
         // support the whole Node being rotated
         part.Move(part.Position.Subtract(offset.Rotate(part.Angle)));
       }
-      UpdateAdornments(AdornedShape.Part);  // update any Adornments of the Part
+      UpdateAdornments(part);  // update any Adornments of the Part
       Diagram.MaybeUpdate();  // force more frequent drawing for smoother looking behavior
     }
 

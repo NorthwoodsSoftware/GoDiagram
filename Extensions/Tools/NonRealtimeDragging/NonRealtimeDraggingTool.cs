@@ -23,9 +23,21 @@ namespace Northwoods.Go.Tools.Extensions {
   /// </remarks>
   /// @category Tool Extension
   public class NonRealtimeDraggingTool : DraggingTool {
+    private int _Duration;  // duration of movement animation; <= 0 to disable
     private Part _ImagePart;  // a Part holding a translucent image of what would be dragged
     private IDictionary<Part, DraggingInfo> _GhostDraggedParts;  // a Map of the _ImagePart and its dragging information
     private IDictionary<Part, DraggingInfo> _OriginalDraggedParts;  // the saved normal value of DraggingTool.DraggedParts
+
+    /// <summary>
+    /// Gets or sets how long the movement animation should be to move the actual parts upon a mouse-up.
+    /// </summary>
+    /// <remarks>
+    /// The default value is zero -- there is no animation of the movement.
+    /// </remarks>
+    public int Duration {
+      get { return _Duration; }
+      set { _Duration = value; }
+    }
 
     /// <summary>
     /// Call the base method, and then make an image of the returned collection,
@@ -84,10 +96,19 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Do the normal mouse-up behavior, but only after restoring <see cref="DraggingTool.DraggedParts"/>.
     /// </summary>
     public override void DoMouseUp() {
-      if (_OriginalDraggedParts != null) {
-        DraggedParts = _OriginalDraggedParts;
+      var partsmap = _OriginalDraggedParts;
+      if (partsmap != null) {
+        DraggedParts = partsmap;
       }
       base.DoMouseUp();
+      if (partsmap != null && Duration > 0) {
+        var anim = new Animation { Duration = Duration };
+        foreach (var kvp in partsmap) {
+          var part = kvp.Key;
+          anim.Add(part, "Location", kvp.Value.Point, part.Location);
+        }
+        anim.Start();
+      }
     }
 
     /// <summary>

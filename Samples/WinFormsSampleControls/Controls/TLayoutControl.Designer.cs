@@ -163,9 +163,9 @@ namespace WinFormsSampleControls.TLayout {
             ((System.ComponentModel.ISupportInitialize)(this.altRowSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.altRowIndent)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // tableLayoutPanel1
-            //
+            // 
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -181,19 +181,20 @@ namespace WinFormsSampleControls.TLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1501, 1649);
             this.tableLayoutPanel1.TabIndex = 0;
-            //
+            // 
             // diagramControl1
-            //
+            // 
             this.diagramControl1.AllowDrop = true;
+            this.diagramControl1.BackColor = System.Drawing.Color.White;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.diagramControl1.Location = new System.Drawing.Point(3, 419);
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.Size = new System.Drawing.Size(1495, 369);
             this.diagramControl1.TabIndex = 2;
             this.diagramControl1.Text = "diagramControl1";
-            //
+            // 
             // goWebBrowser1
-            //
+            // 
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -202,9 +203,9 @@ namespace WinFormsSampleControls.TLayout {
             this.goWebBrowser1.Size = new System.Drawing.Size(1495, 42);
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
-            //
+            // 
             // flowLayoutPanel1
-            //
+            // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
@@ -216,9 +217,9 @@ namespace WinFormsSampleControls.TLayout {
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1495, 410);
             this.flowLayoutPanel1.TabIndex = 4;
-            //
+            // 
             // flowLayoutPanel2
-            //
+            // 
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.style);
@@ -237,82 +238,82 @@ namespace WinFormsSampleControls.TLayout {
             this.flowLayoutPanel2.Controls.Add(this.button1);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(221, 313);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(221, 306);
             this.flowLayoutPanel2.TabIndex = 0;
-            //
+            // 
             // label1
-            //
+            // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label1, true);
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label1.Location = new System.Drawing.Point(3, 5);
+            this.label1.Location = new System.Drawing.Point(3, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tree Style";
-            //
+            // 
             // style
-            //
+            // 
             this.style.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel2.SetFlowBreak(this.style, true);
             this.style.FormattingEnabled = true;
-            this.style.Location = new System.Drawing.Point(3, 28);
+            this.style.Location = new System.Drawing.Point(3, 26);
             this.style.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.style.Name = "style";
             this.style.Size = new System.Drawing.Size(121, 25);
             this.style.TabIndex = 1;
             this.style.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label2
-            //
+            // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label2, true);
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label2.Location = new System.Drawing.Point(3, 61);
+            this.label2.Location = new System.Drawing.Point(3, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Layer Style";
-            //
+            // 
             // layerStyle
-            //
+            // 
             this.layerStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel2.SetFlowBreak(this.layerStyle, true);
             this.layerStyle.FormattingEnabled = true;
-            this.layerStyle.Location = new System.Drawing.Point(3, 84);
+            this.layerStyle.Location = new System.Drawing.Point(3, 78);
             this.layerStyle.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.layerStyle.Name = "layerStyle";
             this.layerStyle.Size = new System.Drawing.Size(121, 25);
             this.layerStyle.TabIndex = 3;
             this.layerStyle.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label3
-            //
+            // 
             this.label3.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label3, true);
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.label3.Location = new System.Drawing.Point(3, 122);
+            this.label3.Location = new System.Drawing.Point(3, 115);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "New Tree";
-            //
+            // 
             // label4
-            //
+            // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 139);
+            this.label4.Location = new System.Drawing.Point(3, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "MinNodes:";
-            //
+            // 
             // minNodes
-            //
+            // 
             this.flowLayoutPanel2.SetFlowBreak(this.minNodes, true);
-            this.minNodes.Location = new System.Drawing.Point(79, 140);
+            this.minNodes.Location = new System.Drawing.Point(79, 133);
             this.minNodes.Margin = new System.Windows.Forms.Padding(1);
             this.minNodes.Name = "minNodes";
             this.minNodes.Size = new System.Drawing.Size(84, 25);
@@ -322,20 +323,20 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0,
             0});
-            //
+            // 
             // label5
-            //
+            // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 166);
+            this.label5.Location = new System.Drawing.Point(3, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "MaxNodes:";
-            //
+            // 
             // maxNodes
-            //
+            // 
             this.flowLayoutPanel2.SetFlowBreak(this.maxNodes, true);
-            this.maxNodes.Location = new System.Drawing.Point(82, 167);
+            this.maxNodes.Location = new System.Drawing.Point(82, 160);
             this.maxNodes.Margin = new System.Windows.Forms.Padding(1);
             this.maxNodes.Name = "maxNodes";
             this.maxNodes.Size = new System.Drawing.Size(59, 25);
@@ -345,20 +346,20 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0,
             0});
-            //
+            // 
             // label6
-            //
+            // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 193);
+            this.label6.Location = new System.Drawing.Point(3, 186);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "MinChildren:";
-            //
+            // 
             // minChil
-            //
+            // 
             this.flowLayoutPanel2.SetFlowBreak(this.minChil, true);
-            this.minChil.Location = new System.Drawing.Point(88, 194);
+            this.minChil.Location = new System.Drawing.Point(88, 187);
             this.minChil.Margin = new System.Windows.Forms.Padding(1);
             this.minChil.Name = "minChil";
             this.minChil.Size = new System.Drawing.Size(84, 25);
@@ -368,20 +369,20 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0,
             0});
-            //
+            // 
             // label7
-            //
+            // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 220);
+            this.label7.Location = new System.Drawing.Point(3, 213);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 17);
             this.label7.TabIndex = 11;
             this.label7.Text = "MaxChildren:";
-            //
+            // 
             // maxChil
-            //
+            // 
             this.flowLayoutPanel2.SetFlowBreak(this.maxChil, true);
-            this.maxChil.Location = new System.Drawing.Point(91, 221);
+            this.maxChil.Location = new System.Drawing.Point(91, 214);
             this.maxChil.Margin = new System.Windows.Forms.Padding(1);
             this.maxChil.Name = "maxChil";
             this.maxChil.Size = new System.Drawing.Size(84, 25);
@@ -391,31 +392,31 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0,
             0});
-            //
+            // 
             // randomSizes
-            //
+            // 
             this.randomSizes.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.randomSizes, true);
-            this.randomSizes.Location = new System.Drawing.Point(3, 250);
+            this.randomSizes.Location = new System.Drawing.Point(3, 243);
             this.randomSizes.Name = "randomSizes";
             this.randomSizes.Size = new System.Drawing.Size(109, 21);
             this.randomSizes.TabIndex = 15;
             this.randomSizes.Text = "Random Sizes";
             this.randomSizes.UseVisualStyleBackColor = true;
-            //
+            // 
             // button1
-            //
+            // 
             this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(3, 283);
+            this.button1.Location = new System.Drawing.Point(3, 276);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 27);
             this.button1.TabIndex = 13;
             this.button1.Text = "Generate Tree";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            //
+            // 
             // flowLayoutPanel3
-            //
+            // 
             this.flowLayoutPanel3.AutoSize = true;
             this.flowLayoutPanel3.Controls.Add(this.label8);
             this.flowLayoutPanel3.Controls.Add(this.label9);
@@ -456,9 +457,9 @@ namespace WinFormsSampleControls.TLayout {
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(393, 404);
             this.flowLayoutPanel3.TabIndex = 1;
-            //
+            // 
             // label8
-            //
+            // 
             this.label8.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label8, true);
             this.label8.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -467,9 +468,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label8.Size = new System.Drawing.Size(121, 17);
             this.label8.TabIndex = 0;
             this.label8.Text = "Default Properties";
-            //
+            // 
             // label9
-            //
+            // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 25);
@@ -477,9 +478,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label9.Size = new System.Drawing.Size(44, 17);
             this.label9.TabIndex = 1;
             this.label9.Text = "Angle:";
-            //
+            // 
             // angle
-            //
+            // 
             this.angle.AutoSize = true;
             this.angle.Controls.Add(this.rightRB);
             this.angle.Controls.Add(this.downRB);
@@ -490,9 +491,9 @@ namespace WinFormsSampleControls.TLayout {
             this.angle.Name = "angle";
             this.angle.Size = new System.Drawing.Size(229, 27);
             this.angle.TabIndex = 2;
-            //
+            // 
             // rightRB
-            //
+            // 
             this.rightRB.AutoSize = true;
             this.rightRB.Checked = true;
             this.rightRB.Location = new System.Drawing.Point(3, 3);
@@ -503,9 +504,9 @@ namespace WinFormsSampleControls.TLayout {
             this.rightRB.Text = "Right";
             this.rightRB.UseVisualStyleBackColor = true;
             this.rightRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // downRB
-            //
+            // 
             this.downRB.AutoSize = true;
             this.downRB.Location = new System.Drawing.Point(65, 3);
             this.downRB.Name = "downRB";
@@ -514,9 +515,9 @@ namespace WinFormsSampleControls.TLayout {
             this.downRB.Text = "Down";
             this.downRB.UseVisualStyleBackColor = true;
             this.downRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // leftRB
-            //
+            // 
             this.leftRB.AutoSize = true;
             this.leftRB.Location = new System.Drawing.Point(130, 3);
             this.leftRB.Name = "leftRB";
@@ -525,9 +526,9 @@ namespace WinFormsSampleControls.TLayout {
             this.leftRB.Text = "Left";
             this.leftRB.UseVisualStyleBackColor = true;
             this.leftRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // upRB
-            //
+            // 
             this.upRB.AutoSize = true;
             this.upRB.Location = new System.Drawing.Point(183, 3);
             this.upRB.Name = "upRB";
@@ -536,9 +537,9 @@ namespace WinFormsSampleControls.TLayout {
             this.upRB.Text = "Up";
             this.upRB.UseVisualStyleBackColor = true;
             this.upRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label10
-            //
+            // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 57);
@@ -546,9 +547,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 3;
             this.label10.Text = "Alignment:";
-            //
+            // 
             // align
-            //
+            // 
             this.align.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel3.SetFlowBreak(this.align, true);
             this.align.FormattingEnabled = true;
@@ -557,9 +558,9 @@ namespace WinFormsSampleControls.TLayout {
             this.align.Size = new System.Drawing.Size(121, 25);
             this.align.TabIndex = 4;
             this.align.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label11
-            //
+            // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 87);
@@ -567,9 +568,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label11.Size = new System.Drawing.Size(90, 17);
             this.label11.TabIndex = 5;
             this.label11.Text = "NodeSpacing:";
-            //
+            // 
             // nodeSpacing
-            //
+            // 
             this.nodeSpacing.Location = new System.Drawing.Point(98, 83);
             this.nodeSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.nodeSpacing.Minimum = new decimal(new int[] {
@@ -586,9 +587,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.nodeSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label12
-            //
+            // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label12, true);
@@ -597,9 +598,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label12.Size = new System.Drawing.Size(162, 17);
             this.label12.TabIndex = 7;
             this.label12.Text = "(negative causes overlaps)";
-            //
+            // 
             // label13
-            //
+            // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(3, 116);
@@ -607,28 +608,29 @@ namespace WinFormsSampleControls.TLayout {
             this.label13.Size = new System.Drawing.Size(80, 17);
             this.label13.TabIndex = 8;
             this.label13.Text = "NodeIndent:";
-            //
+            // 
             // nodeIndent
-            //
+            // 
             this.nodeIndent.Location = new System.Drawing.Point(88, 112);
             this.nodeIndent.Margin = new System.Windows.Forms.Padding(2);
             this.nodeIndent.Name = "nodeIndent";
             this.nodeIndent.Size = new System.Drawing.Size(120, 25);
             this.nodeIndent.TabIndex = 9;
             this.nodeIndent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label14
-            //
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label14.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label14, true);
-            this.label14.Location = new System.Drawing.Point(213, 110);
+            this.label14.Location = new System.Drawing.Point(213, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(156, 17);
             this.label14.TabIndex = 10;
             this.label14.Text = "(when Start or End; >= 0)";
-            //
+            // 
             // label15
-            //
+            // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(3, 145);
@@ -636,9 +638,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label15.Size = new System.Drawing.Size(141, 17);
             this.label15.TabIndex = 11;
             this.label15.Text = "NodeIndentPastParent:";
-            //
+            // 
             // nodeIndentPastParent
-            //
+            // 
             this.nodeIndentPastParent.DecimalPlaces = 2;
             this.nodeIndentPastParent.Increment = new decimal(new int[] {
             1,
@@ -656,9 +658,9 @@ namespace WinFormsSampleControls.TLayout {
             this.nodeIndentPastParent.Size = new System.Drawing.Size(120, 25);
             this.nodeIndentPastParent.TabIndex = 12;
             this.nodeIndentPastParent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label16
-            //
+            // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label16.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label16, true);
@@ -667,9 +669,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label16.Size = new System.Drawing.Size(86, 17);
             this.label16.TabIndex = 13;
             this.label16.Text = "(fraction; 0-1)";
-            //
+            // 
             // label17
-            //
+            // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(3, 174);
@@ -677,9 +679,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label17.Size = new System.Drawing.Size(88, 17);
             this.label17.TabIndex = 14;
             this.label17.Text = "LayerSpacing:";
-            //
+            // 
             // layerSpacing
-            //
+            // 
             this.layerSpacing.Location = new System.Drawing.Point(96, 170);
             this.layerSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.layerSpacing.Minimum = new decimal(new int[] {
@@ -696,9 +698,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.layerSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label18
-            //
+            // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label18.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label18, true);
@@ -707,9 +709,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label18.Size = new System.Drawing.Size(162, 17);
             this.label18.TabIndex = 16;
             this.label18.Text = "(negative causes overlaps)";
-            //
+            // 
             // label19
-            //
+            // 
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(3, 203);
@@ -717,9 +719,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label19.Size = new System.Drawing.Size(171, 17);
             this.label19.TabIndex = 17;
             this.label19.Text = "LayerSpacingParentOverlap:";
-            //
+            // 
             // layerSpacingParentOverlap
-            //
+            // 
             this.layerSpacingParentOverlap.DecimalPlaces = 2;
             this.layerSpacingParentOverlap.Increment = new decimal(new int[] {
             1,
@@ -737,9 +739,9 @@ namespace WinFormsSampleControls.TLayout {
             this.layerSpacingParentOverlap.Size = new System.Drawing.Size(120, 25);
             this.layerSpacingParentOverlap.TabIndex = 18;
             this.layerSpacingParentOverlap.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label20
-            //
+            // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label20.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label20, true);
@@ -748,9 +750,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label20.Size = new System.Drawing.Size(86, 17);
             this.label20.TabIndex = 19;
             this.label20.Text = "(fraction; 0-1)";
-            //
+            // 
             // label21
-            //
+            // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(3, 233);
@@ -758,9 +760,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label21.Size = new System.Drawing.Size(53, 17);
             this.label21.TabIndex = 20;
             this.label21.Text = "Sorting:";
-            //
+            // 
             // sorting
-            //
+            // 
             this.sorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel3.SetFlowBreak(this.sorting, true);
             this.sorting.FormattingEnabled = true;
@@ -769,9 +771,9 @@ namespace WinFormsSampleControls.TLayout {
             this.sorting.Size = new System.Drawing.Size(121, 25);
             this.sorting.TabIndex = 21;
             this.sorting.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label22
-            //
+            // 
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(3, 265);
@@ -779,9 +781,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label22.Size = new System.Drawing.Size(81, 17);
             this.label22.TabIndex = 22;
             this.label22.Text = "Compaction:";
-            //
+            // 
             // compaction
-            //
+            // 
             this.compaction.AutoSize = true;
             this.compaction.Controls.Add(this.blockRB);
             this.compaction.Controls.Add(this.noneRB);
@@ -790,9 +792,9 @@ namespace WinFormsSampleControls.TLayout {
             this.compaction.Name = "compaction";
             this.compaction.Size = new System.Drawing.Size(126, 27);
             this.compaction.TabIndex = 23;
-            //
+            // 
             // blockRB
-            //
+            // 
             this.blockRB.AutoSize = true;
             this.blockRB.Checked = true;
             this.blockRB.Location = new System.Drawing.Point(3, 3);
@@ -803,9 +805,9 @@ namespace WinFormsSampleControls.TLayout {
             this.blockRB.Text = "Block";
             this.blockRB.UseVisualStyleBackColor = true;
             this.blockRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // noneRB
-            //
+            // 
             this.noneRB.AutoSize = true;
             this.noneRB.Location = new System.Drawing.Point(65, 3);
             this.noneRB.Name = "noneRB";
@@ -814,9 +816,9 @@ namespace WinFormsSampleControls.TLayout {
             this.noneRB.Text = "None";
             this.noneRB.UseVisualStyleBackColor = true;
             this.noneRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label23
-            //
+            // 
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(3, 296);
@@ -824,18 +826,18 @@ namespace WinFormsSampleControls.TLayout {
             this.label23.Size = new System.Drawing.Size(83, 17);
             this.label23.TabIndex = 24;
             this.label23.Text = "BreadthLimit:";
-            //
+            // 
             // breadthLimit
-            //
+            // 
             this.breadthLimit.Location = new System.Drawing.Point(91, 292);
             this.breadthLimit.Margin = new System.Windows.Forms.Padding(2);
             this.breadthLimit.Name = "breadthLimit";
             this.breadthLimit.Size = new System.Drawing.Size(120, 25);
             this.breadthLimit.TabIndex = 25;
             this.breadthLimit.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label24
-            //
+            // 
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label24.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label24, true);
@@ -844,9 +846,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label24.Size = new System.Drawing.Size(112, 17);
             this.label24.TabIndex = 26;
             this.label24.Text = "(0 means no limit)";
-            //
+            // 
             // label25
-            //
+            // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(3, 325);
@@ -854,9 +856,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label25.Size = new System.Drawing.Size(82, 17);
             this.label25.TabIndex = 27;
             this.label25.Text = "RowSpacing:";
-            //
+            // 
             // rowSpacing
-            //
+            // 
             this.rowSpacing.Location = new System.Drawing.Point(90, 321);
             this.rowSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.rowSpacing.Minimum = new decimal(new int[] {
@@ -873,9 +875,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.rowSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label26
-            //
+            // 
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label26.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label26, true);
@@ -884,9 +886,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label26.Size = new System.Drawing.Size(162, 17);
             this.label26.TabIndex = 29;
             this.label26.Text = "(negative causes overlaps)";
-            //
+            // 
             // label27
-            //
+            // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(3, 354);
@@ -894,9 +896,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label27.Size = new System.Drawing.Size(72, 17);
             this.label27.TabIndex = 30;
             this.label27.Text = "RowIndent:";
-            //
+            // 
             // rowIndent
-            //
+            // 
             this.rowIndent.Location = new System.Drawing.Point(80, 350);
             this.rowIndent.Margin = new System.Windows.Forms.Padding(2);
             this.rowIndent.Name = "rowIndent";
@@ -908,9 +910,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.rowIndent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label28
-            //
+            // 
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label28.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label28, true);
@@ -919,9 +921,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label28.Size = new System.Drawing.Size(45, 17);
             this.label28.TabIndex = 32;
             this.label28.Text = "(>= 0)";
-            //
+            // 
             // setsPortSpot
-            //
+            // 
             this.setsPortSpot.AutoSize = true;
             this.setsPortSpot.Checked = true;
             this.setsPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -932,9 +934,9 @@ namespace WinFormsSampleControls.TLayout {
             this.setsPortSpot.Text = "SetsPortSpot";
             this.setsPortSpot.UseVisualStyleBackColor = true;
             this.setsPortSpot.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // setsChildPortSpot
-            //
+            // 
             this.setsChildPortSpot.AutoSize = true;
             this.setsChildPortSpot.Checked = true;
             this.setsChildPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -945,9 +947,9 @@ namespace WinFormsSampleControls.TLayout {
             this.setsChildPortSpot.Text = "SetsChildPortSpot";
             this.setsChildPortSpot.UseVisualStyleBackColor = true;
             this.setsChildPortSpot.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // flowLayoutPanel4
-            //
+            // 
             this.flowLayoutPanel4.AutoSize = true;
             this.flowLayoutPanel4.Controls.Add(this.label29);
             this.flowLayoutPanel4.Controls.Add(this.label30);
@@ -988,9 +990,9 @@ namespace WinFormsSampleControls.TLayout {
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(393, 404);
             this.flowLayoutPanel4.TabIndex = 2;
-            //
+            // 
             // label29
-            //
+            // 
             this.label29.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label29, true);
             this.label29.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -999,9 +1001,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label29.Size = new System.Drawing.Size(71, 17);
             this.label29.TabIndex = 0;
             this.label29.Text = "Alternates";
-            //
+            // 
             // label30
-            //
+            // 
             this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(3, 25);
@@ -1009,9 +1011,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label30.Size = new System.Drawing.Size(44, 17);
             this.label30.TabIndex = 1;
             this.label30.Text = "Angle:";
-            //
+            // 
             // altAngle
-            //
+            // 
             this.altAngle.AutoSize = true;
             this.altAngle.Controls.Add(this.altRightRB);
             this.altAngle.Controls.Add(this.altDownRB);
@@ -1022,9 +1024,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altAngle.Name = "altAngle";
             this.altAngle.Size = new System.Drawing.Size(229, 27);
             this.altAngle.TabIndex = 2;
-            //
+            // 
             // altRightRB
-            //
+            // 
             this.altRightRB.AutoSize = true;
             this.altRightRB.Checked = true;
             this.altRightRB.Location = new System.Drawing.Point(3, 3);
@@ -1035,9 +1037,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altRightRB.Text = "Right";
             this.altRightRB.UseVisualStyleBackColor = true;
             this.altRightRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // altDownRB
-            //
+            // 
             this.altDownRB.AutoSize = true;
             this.altDownRB.Location = new System.Drawing.Point(65, 3);
             this.altDownRB.Name = "altDownRB";
@@ -1046,9 +1048,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altDownRB.Text = "Down";
             this.altDownRB.UseVisualStyleBackColor = true;
             this.altDownRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // altLeftRB
-            //
+            // 
             this.altLeftRB.AutoSize = true;
             this.altLeftRB.Location = new System.Drawing.Point(130, 3);
             this.altLeftRB.Name = "altLeftRB";
@@ -1057,9 +1059,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altLeftRB.Text = "Left";
             this.altLeftRB.UseVisualStyleBackColor = true;
             this.altLeftRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // altUpRB
-            //
+            // 
             this.altUpRB.AutoSize = true;
             this.altUpRB.Location = new System.Drawing.Point(183, 3);
             this.altUpRB.Name = "altUpRB";
@@ -1068,9 +1070,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altUpRB.Text = "Up";
             this.altUpRB.UseVisualStyleBackColor = true;
             this.altUpRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label31
-            //
+            // 
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(3, 57);
@@ -1078,9 +1080,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label31.Size = new System.Drawing.Size(69, 17);
             this.label31.TabIndex = 3;
             this.label31.Text = "Alignment:";
-            //
+            // 
             // altAlign
-            //
+            // 
             this.altAlign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel4.SetFlowBreak(this.altAlign, true);
             this.altAlign.FormattingEnabled = true;
@@ -1089,9 +1091,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altAlign.Size = new System.Drawing.Size(121, 25);
             this.altAlign.TabIndex = 4;
             this.altAlign.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label32
-            //
+            // 
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(3, 87);
@@ -1099,9 +1101,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label32.Size = new System.Drawing.Size(90, 17);
             this.label32.TabIndex = 5;
             this.label32.Text = "NodeSpacing:";
-            //
+            // 
             // altNodeSpacing
-            //
+            // 
             this.altNodeSpacing.Location = new System.Drawing.Point(98, 83);
             this.altNodeSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altNodeSpacing.Minimum = new decimal(new int[] {
@@ -1118,9 +1120,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.altNodeSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label33
-            //
+            // 
             this.label33.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label33.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label33, true);
@@ -1129,9 +1131,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label33.Size = new System.Drawing.Size(162, 17);
             this.label33.TabIndex = 7;
             this.label33.Text = "(negative causes overlaps)";
-            //
+            // 
             // label34
-            //
+            // 
             this.label34.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(3, 116);
@@ -1139,28 +1141,29 @@ namespace WinFormsSampleControls.TLayout {
             this.label34.Size = new System.Drawing.Size(80, 17);
             this.label34.TabIndex = 8;
             this.label34.Text = "NodeIndent:";
-            //
+            // 
             // altNodeIndent
-            //
+            // 
             this.altNodeIndent.Location = new System.Drawing.Point(88, 112);
             this.altNodeIndent.Margin = new System.Windows.Forms.Padding(2);
             this.altNodeIndent.Name = "altNodeIndent";
             this.altNodeIndent.Size = new System.Drawing.Size(120, 25);
             this.altNodeIndent.TabIndex = 9;
             this.altNodeIndent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label35
-            //
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label35.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label35, true);
-            this.label35.Location = new System.Drawing.Point(213, 110);
+            this.label35.Location = new System.Drawing.Point(213, 116);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(156, 17);
             this.label35.TabIndex = 10;
             this.label35.Text = "(when Start or End; >= 0)";
-            //
+            // 
             // label36
-            //
+            // 
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(3, 145);
@@ -1168,9 +1171,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label36.Size = new System.Drawing.Size(141, 17);
             this.label36.TabIndex = 11;
             this.label36.Text = "NodeIndentPastParent:";
-            //
+            // 
             // altNodeIndentPastParent
-            //
+            // 
             this.altNodeIndentPastParent.DecimalPlaces = 2;
             this.altNodeIndentPastParent.Increment = new decimal(new int[] {
             1,
@@ -1188,9 +1191,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altNodeIndentPastParent.Size = new System.Drawing.Size(120, 25);
             this.altNodeIndentPastParent.TabIndex = 12;
             this.altNodeIndentPastParent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label37
-            //
+            // 
             this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label37.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label37, true);
@@ -1199,9 +1202,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label37.Size = new System.Drawing.Size(86, 17);
             this.label37.TabIndex = 13;
             this.label37.Text = "(fraction; 0-1)";
-            //
+            // 
             // label38
-            //
+            // 
             this.label38.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(3, 174);
@@ -1209,9 +1212,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label38.Size = new System.Drawing.Size(88, 17);
             this.label38.TabIndex = 14;
             this.label38.Text = "LayerSpacing:";
-            //
+            // 
             // altLayerSpacing
-            //
+            // 
             this.altLayerSpacing.Location = new System.Drawing.Point(96, 170);
             this.altLayerSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altLayerSpacing.Minimum = new decimal(new int[] {
@@ -1228,9 +1231,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.altLayerSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label39
-            //
+            // 
             this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label39.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label39, true);
@@ -1239,9 +1242,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label39.Size = new System.Drawing.Size(162, 17);
             this.label39.TabIndex = 16;
             this.label39.Text = "(negative causes overlaps)";
-            //
+            // 
             // label40
-            //
+            // 
             this.label40.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(3, 203);
@@ -1249,9 +1252,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label40.Size = new System.Drawing.Size(171, 17);
             this.label40.TabIndex = 17;
             this.label40.Text = "LayerSpacingParentOverlap:";
-            //
+            // 
             // altLayerSpacingParentOverlap
-            //
+            // 
             this.altLayerSpacingParentOverlap.DecimalPlaces = 2;
             this.altLayerSpacingParentOverlap.Increment = new decimal(new int[] {
             1,
@@ -1269,9 +1272,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altLayerSpacingParentOverlap.Size = new System.Drawing.Size(120, 25);
             this.altLayerSpacingParentOverlap.TabIndex = 18;
             this.altLayerSpacingParentOverlap.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label41
-            //
+            // 
             this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label41.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label41, true);
@@ -1280,9 +1283,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label41.Size = new System.Drawing.Size(86, 17);
             this.label41.TabIndex = 19;
             this.label41.Text = "(fraction; 0-1)";
-            //
+            // 
             // label42
-            //
+            // 
             this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(3, 233);
@@ -1290,9 +1293,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label42.Size = new System.Drawing.Size(53, 17);
             this.label42.TabIndex = 20;
             this.label42.Text = "Sorting:";
-            //
+            // 
             // altSorting
-            //
+            // 
             this.altSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel4.SetFlowBreak(this.altSorting, true);
             this.altSorting.FormattingEnabled = true;
@@ -1301,9 +1304,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altSorting.Size = new System.Drawing.Size(121, 25);
             this.altSorting.TabIndex = 21;
             this.altSorting.SelectedIndexChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label43
-            //
+            // 
             this.label43.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(3, 265);
@@ -1311,9 +1314,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label43.Size = new System.Drawing.Size(81, 17);
             this.label43.TabIndex = 22;
             this.label43.Text = "Compaction:";
-            //
+            // 
             // altCompaction
-            //
+            // 
             this.altCompaction.AutoSize = true;
             this.altCompaction.Controls.Add(this.altBlockRB);
             this.altCompaction.Controls.Add(this.altNoneRB);
@@ -1322,9 +1325,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altCompaction.Name = "altCompaction";
             this.altCompaction.Size = new System.Drawing.Size(126, 27);
             this.altCompaction.TabIndex = 23;
-            //
+            // 
             // altBlockRB
-            //
+            // 
             this.altBlockRB.AutoSize = true;
             this.altBlockRB.Checked = true;
             this.altBlockRB.Location = new System.Drawing.Point(3, 3);
@@ -1335,9 +1338,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altBlockRB.Text = "Block";
             this.altBlockRB.UseVisualStyleBackColor = true;
             this.altBlockRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // altNoneRB
-            //
+            // 
             this.altNoneRB.AutoSize = true;
             this.altNoneRB.Location = new System.Drawing.Point(65, 3);
             this.altNoneRB.Name = "altNoneRB";
@@ -1346,9 +1349,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altNoneRB.Text = "None";
             this.altNoneRB.UseVisualStyleBackColor = true;
             this.altNoneRB.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label44
-            //
+            // 
             this.label44.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(3, 296);
@@ -1356,18 +1359,18 @@ namespace WinFormsSampleControls.TLayout {
             this.label44.Size = new System.Drawing.Size(83, 17);
             this.label44.TabIndex = 24;
             this.label44.Text = "BreadthLimit:";
-            //
+            // 
             // altBreadthLimit
-            //
+            // 
             this.altBreadthLimit.Location = new System.Drawing.Point(91, 292);
             this.altBreadthLimit.Margin = new System.Windows.Forms.Padding(2);
             this.altBreadthLimit.Name = "altBreadthLimit";
             this.altBreadthLimit.Size = new System.Drawing.Size(120, 25);
             this.altBreadthLimit.TabIndex = 25;
             this.altBreadthLimit.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label45
-            //
+            // 
             this.label45.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label45.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label45, true);
@@ -1376,9 +1379,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label45.Size = new System.Drawing.Size(112, 17);
             this.label45.TabIndex = 26;
             this.label45.Text = "(0 means no limit)";
-            //
+            // 
             // label46
-            //
+            // 
             this.label46.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(3, 325);
@@ -1386,9 +1389,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label46.Size = new System.Drawing.Size(82, 17);
             this.label46.TabIndex = 27;
             this.label46.Text = "RowSpacing:";
-            //
+            // 
             // altRowSpacing
-            //
+            // 
             this.altRowSpacing.Location = new System.Drawing.Point(90, 321);
             this.altRowSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altRowSpacing.Minimum = new decimal(new int[] {
@@ -1405,9 +1408,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.altRowSpacing.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label47
-            //
+            // 
             this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label47.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label47, true);
@@ -1416,9 +1419,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label47.Size = new System.Drawing.Size(162, 17);
             this.label47.TabIndex = 29;
             this.label47.Text = "(negative causes overlaps)";
-            //
+            // 
             // label48
-            //
+            // 
             this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(3, 354);
@@ -1426,9 +1429,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label48.Size = new System.Drawing.Size(72, 17);
             this.label48.TabIndex = 30;
             this.label48.Text = "RowIndent:";
-            //
+            // 
             // altRowIndent
-            //
+            // 
             this.altRowIndent.Location = new System.Drawing.Point(80, 350);
             this.altRowIndent.Margin = new System.Windows.Forms.Padding(2);
             this.altRowIndent.Name = "altRowIndent";
@@ -1440,9 +1443,9 @@ namespace WinFormsSampleControls.TLayout {
             0,
             0});
             this.altRowIndent.ValueChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // label49
-            //
+            // 
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label49.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label49, true);
@@ -1451,9 +1454,9 @@ namespace WinFormsSampleControls.TLayout {
             this.label49.Size = new System.Drawing.Size(45, 17);
             this.label49.TabIndex = 32;
             this.label49.Text = "(>= 0)";
-            //
+            // 
             // altSetsPortSpot
-            //
+            // 
             this.altSetsPortSpot.AutoSize = true;
             this.altSetsPortSpot.Checked = true;
             this.altSetsPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -1464,9 +1467,9 @@ namespace WinFormsSampleControls.TLayout {
             this.altSetsPortSpot.Text = "SetsPortSpot";
             this.altSetsPortSpot.UseVisualStyleBackColor = true;
             this.altSetsPortSpot.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
+            // 
             // altSetsChildPortSpot
-            //
+            // 
             this.altSetsChildPortSpot.AutoSize = true;
             this.altSetsChildPortSpot.Checked = true;
             this.altSetsChildPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -1477,13 +1480,13 @@ namespace WinFormsSampleControls.TLayout {
             this.altSetsChildPortSpot.Text = "SetsChildPortSpot";
             this.altSetsChildPortSpot.UseVisualStyleBackColor = true;
             this.altSetsChildPortSpot.CheckedChanged += new System.EventHandler(this._PropertyChanged);
-            //
-            // TreeLayoutSampleControl
-            //
+            // 
+            // TLayoutControl
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "TreeLayoutSampleControl";
+            this.Name = "TLayoutControl";
             this.Size = new System.Drawing.Size(1501, 1649);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

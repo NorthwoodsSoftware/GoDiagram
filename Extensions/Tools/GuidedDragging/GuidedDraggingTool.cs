@@ -301,6 +301,21 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
+    /// This predicate decides whether or not the given Part should guide the draggred part.
+    /// </summary>
+    /// <param name="part">a stationary Part to which the dragged part might be aligned</param>
+    /// <param name="guidedpart">the Part being dragged</param>
+    /// <returns></returns>
+    protected virtual bool IsGuiding(Part part, Part guidedpart) {
+      return part != null &&
+        !part.IsSelected &&
+        part is not Link &&
+        guidedpart != null &&
+        part.ContainingGroup == guidedpart.ContainingGroup &&
+        part.Layer != null && !part.Layer.IsTemporary;
+    }
+
+    /// <summary>
     /// This finds parts that are aligned near the selected part along horizontal lines. It compares the selected
     /// part to all parts within a rectangle approximately twice the <see cref="SearchDistance"/> wide.
     /// The guidelines appear when a part is aligned within a margin-of-error equal to <see cref="GuidelineSnapDistance"/>.
@@ -320,7 +335,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var area = objBounds.Inflate(distance, marginOfError + 1);
       var otherObjs = Diagram.FindElementsIn(area,
         (obj) => obj.Part,
-        (obj) => obj is Part p && !p.IsSelected && p is not Link && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
+        (obj) => IsGuiding(obj as Part, part),
         true);
 
       var bestDiff = marginOfError;
@@ -433,7 +448,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var area = objBounds.Inflate(marginOfError + 1, distance);
       var otherObjs = Diagram.FindElementsIn(area,
         (obj) => obj.Part as Part,
-        (obj) => obj is Part p && !p.IsSelected && p is not Link && p.IsTopLevel && p.Layer != null && !p.Layer.IsTemporary,
+        (obj) => IsGuiding(obj as Part, part),
         true);
 
       var bestDiff = marginOfError;

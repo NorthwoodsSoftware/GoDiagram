@@ -83,7 +83,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (double.IsNaN(w)) w = 1000;
       if (double.IsNaN(h)) h = 1000;
       // collect all top-level nodes, and sum their totals
-      var tops = new HashSet<Node>();
+      var tops = new HashSet<Part>();
       var total = 0.0;
 
       foreach (var n in Diagram.Nodes) {
@@ -96,31 +96,30 @@ namespace Northwoods.Go.Layouts.Extensions {
       var gx = x;
       var gy = y;
       var lay = this;
-      foreach (var n in tops) {
-        var tot = (n.Data as ITreeMapData).Total;
+      foreach (var part in tops) {
+        var tot = (part.Data as ITreeMapData).Total;
         if (horiz) {
           var pw = w * tot / total;
-          lay.LayoutNode(!horiz, n, gx, gy, pw, h);
+          lay.LayoutNode(!horiz, part, gx, gy, pw, h);
           gx += pw;
         } else {
           var ph = h * tot / total;
-          lay.LayoutNode(!horiz, n, gx, gy, w, ph);
+          lay.LayoutNode(!horiz, part, gx, gy, w, ph);
           gy += ph;
         }
       }
     }
 
-    private void LayoutNode(bool horiz, Panel n, double x, double y, double w, double h) {
-      n.Position = new Point(x, y);
-      n.DesiredSize = new Size(w, h);
+    private void LayoutNode(bool horiz, Part part, double x, double y, double w, double h) {
+      part.MoveTo(x, y);
+      part.DesiredSize = new Size(w, h);
 
-      if (n is Group) {
-        var g = n;
+      if (part is Group g) {
         var total = (g.Data as ITreeMapData).Total;
         var gx = x;
         var gy = y;
         var lay = this;
-        foreach (var p in (g as Group).MemberParts) {
+        foreach (var p in g.MemberParts) {
           if (p is Link) continue;
           var tot = (p.Data as ITreeMapData).Total;
           if (horiz) {

@@ -27,7 +27,7 @@ namespace WinFormsSampleControls.Flowgrammer {
       myPalette = paletteControl1.Diagram as Palette;
       myOverview = overviewControl1.Diagram as Overview;
 
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
       btnNewDiagram.Click += (e, obj) => NewDiagram();
 
       goWebBrowser1.Html = @"
@@ -47,7 +47,7 @@ namespace WinFormsSampleControls.Flowgrammer {
         </p>
       ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"":1, ""Text"":""S"", ""Category"":""Start""},
     { ""Key"":-1, ""IsGroup"":true, ""Cat"":""For""},
@@ -139,48 +139,49 @@ namespace WinFormsSampleControls.Flowgrammer {
       }
 
       // Define the group template, required but unseen
-      myDiagram.GroupTemplate = new Group("Auto") {
-          LocationSpot = Spot.Center,
-          AvoidableMargin = 10,  // extra space on the sides
-          Layout = new ParallelLayout { Angle = 90, LayerSpacing = 24, NodeSpacing = 30 },
-          MouseDragEnter = (e, obj, prev) => {
-            var group = (Group)obj;
-            var sh = group.FindElement("SHAPE") as Shape;
-            if (sh != null) {
-              sh.Width = Math.Max(20, group.ActualBounds.Width - 20);
-              sh.Stroke = "lime";
-            }
-          },
-          MouseDragLeave = (e, obj, prev) => {
-            var group = (Group)obj;
-            var sh = group.FindElement("SHAPE") as Shape;
-            if (sh != null) sh.Stroke = null;
-          },
-          MouseDrop = _DropOntoNode
-        }
-        .Add(
-          new Shape("RoundedRectangle") {
-              Fill = "rgba(0, 0, 0, 0.05)",
-              StrokeWidth = 0,
-              Spot1 = Spot.TopLeft,
-              Spot2 = Spot.BottomRight
-            }
-            .Bind("Fill", "Cat", groupColor),
-          new Placeholder(),
-          new Shape("LineH") {
-              Name = "SHAPE",
-              Height = 0,
-              Alignment = Spot.Bottom,
-              Stroke = null,
-              StrokeWidth = 8
-            }
-         );
+      myDiagram.GroupTemplate =
+        new Group("Spot") {
+            LocationSpot = Spot.Center,
+            AvoidableMargin = 10,  // extra space on the sides
+            Layout = new ParallelLayout { Angle = 90, LayerSpacing = 24, NodeSpacing = 30 },
+            MouseDragEnter = (e, obj, prev) => {
+              var group = (Group)obj;
+              var sh = group.FindElement("SHAPE") as Shape;
+              if (sh != null) sh.Stroke = "lime";
+            },
+            MouseDragLeave = (e, obj, prev) => {
+              var group = (Group)obj;
+              var sh = group.FindElement("SHAPE") as Shape;
+              if (sh != null) sh.Stroke = null;
+            },
+            MouseDrop = _DropOntoNode
+          }
+          .Add(
+            new Panel("Auto")
+              .Add(
+                new Shape("RoundedRectangle") {
+                    Fill = "rgba(0, 0, 0, 0.05)",
+                    StrokeWidth = 0,
+                    Spot1 = Spot.TopLeft,
+                    Spot2 = Spot.BottomRight
+                  }
+                  .Bind("Fill", "Cat", groupColor),
+                new Placeholder()
+              ),
+              new Shape("LineH") {
+                Name = "SHAPE",
+                Alignment = Spot.Bottom,
+                Height = 0, Stretch = Stretch.Horizontal,
+                Stroke = null, StrokeWidth = 8
+              }
+          );
 
       // Define the link template
       myDiagram.LinkTemplate = new Link {
           Selectable = false,
           Deletable = false,  // links cannot be deleted
           Routing = LinkRouting.Orthogonal, Corner = 5,
+          FromEndSegmentLength = 4, ToEndSegmentLength = 4,
           ToShortLength = 2,
           // If a node from the Palette is dragged over this link, its outline will turn green
           MouseDragEnter = (e, obj, prev) => {
@@ -623,12 +624,12 @@ namespace WinFormsSampleControls.Flowgrammer {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

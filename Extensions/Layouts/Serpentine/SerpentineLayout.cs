@@ -23,6 +23,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// positioning nodes in horizontal rows back and forth, alternating between left-to-right
   /// and right-to-left within the <see cref="Wrap"/> limit.
   /// <see cref="Spacing"/> controls the distance between nodes.
+  /// <see cref="LeftSpot"/> and <see cref="RightSpot"/> determine the Spots to use for the <see cref="Link.FromSpot"/> and <see cref="Link.ToSpot"/>.
   ///
   /// When this layout is the Diagram.Layout, it is automatically invalidated when the viewport changes size.
   ///
@@ -32,6 +33,9 @@ namespace Northwoods.Go.Layouts.Extensions {
   public class SerpentineLayout : Layout {
     private Size _Spacing = new Size(30, 30);
     private double _Wrap = double.NaN;
+    private Node _Root;
+    private Spot _LeftSpot = Spot.Left;
+    private Spot _RightSpot = Spot.Right;
 
     /// <summary>
     /// Constructs a SerpentineLayout and sets the <see cref="Layout.IsViewportSized"/> property to true.
@@ -51,6 +55,9 @@ namespace Northwoods.Go.Layouts.Extensions {
       var copy = (SerpentineLayout)c;
       copy._Spacing = _Spacing;
       copy._Wrap = _Wrap;
+      // don't copy root
+      copy._LeftSpot = _LeftSpot;
+      copy._RightSpot = _RightSpot;
     }
 
     /// <summary>
@@ -92,6 +99,60 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
+    /// Gets or sets the starting node of the sequence.
+    /// </summary>
+    /// <remarks>
+    /// The default value is null, which causes the layout to look for a node without any incoming links.
+    /// </remarks>
+    public Node Root {
+      get {
+        return _Root;
+      }
+      set {
+        if (_Root != value) {
+          _Root = value;
+          InvalidateLayout();
+        }
+      }
+    }
+
+    /// <summary>
+    /// Gets or sets the Spot to use on the left side of a Node.
+    /// </summary>
+    /// <remarks>
+    /// The default value is <see cref="Spot.Left"/>.
+    /// </remarks>
+    public Spot LeftSpot {
+      get {
+        return _LeftSpot;
+      }
+      set {
+        if (_LeftSpot != value) {
+          _LeftSpot = value;
+          InvalidateLayout();
+        }
+      }
+    }
+
+    /// <summary>
+    /// Gets or sets the Spot to use on the right side of a Node.
+    /// </summary>
+    /// <remarks>
+    /// The default value is <see cref="Spot.Right"/>.
+    /// </remarks>
+    public Spot RightSpot {
+      get {
+        return _RightSpot;
+      }
+      set {
+        if (_RightSpot != value) {
+          _RightSpot = value;
+          InvalidateLayout();
+        }
+      }
+    }
+
+    /// <summary>
     /// This method actually positions all of the Nodes, assuming that the ordering of the nodes
     /// is given by a single link from one node to the next.
     /// </summary>
@@ -110,21 +171,23 @@ namespace Northwoods.Go.Layouts.Extensions {
       } else {
         return; // Nothing to layout!
       }
-      Node root = null;
-      // find a root node -- one without any incoming links
-      foreach (var p in allparts) {
-        if (!(p is Node n)) continue;
-        if (root == null) root = n;
-        if (n.FindLinksInto().Count() == 0) {
-          root = n;
-          break;
+
+      var root = Root;
+      if (root == null) {
+        // find a root node -- one without any incoming links
+        foreach (var p in allparts) {
+          if (p is not Node n) continue;
+          if (root == null) root = n;
+          if (!n.FindLinksInto().Any()) {
+            root = n;
+            break;
+          }
         }
       }
       // couldn't find a root node
       if (root == null) return;
 
       var spacing = Spacing;
-
       // calculate the width at which we should start a new row
       var wrap = Wrap;
       if (Diagram != null && double.IsNaN(wrap)) {
@@ -148,10 +211,17 @@ namespace Northwoods.Go.Layouts.Extensions {
       var increasing = true;
       var node = root;
       while (node != null) {
+        var orignode = node;
+        if (node.ContainingGroup != null) node = node.ContainingGroup;
         var b = GetLayoutBounds(node);
         // get the next node, if any
-        var nextlink = node.FindLinksOutOf().FirstOrDefault();
+        Link nextlink = null;
+        foreach (var l in orignode.FindLinksOutOf()) {
+          if (allparts.Contains(l)) { nextlink = l; break; }
+        }
         var nextnode = nextlink?.ToNode;
+        var orignextnode = nextnode;
+        if (nextnode != null && nextnode.ContainingGroup != null) nextnode = nextnode.ContainingGroup;
         var nb = nextnode != null ? GetLayoutBounds(nextnode) : new Rect();
         if (increasing) {
           node.Move(new Point(x, y));
@@ -194,7 +264,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             }
           }
         }
-        node = nextnode;
+        node = orignextnode;
       }
 
       if (Diagram != null) Diagram.CommitTransaction("Serpentine Layout");

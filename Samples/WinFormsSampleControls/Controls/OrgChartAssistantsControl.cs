@@ -16,8 +16,8 @@ namespace WinFormsSampleControls.OrgChartAssistants {
     public OrgChartAssistantsControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
   <p>
@@ -35,7 +35,7 @@ namespace WinFormsSampleControls.OrgChartAssistants {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     {""Key"":1, ""Name"":""Stella Payne Diaz"", ""Title"":""CEO""},
     {""Key"":2, ""Name"":""Luke Warm"", ""Title"":""VP Marketing/Sales"", ""Parent"":1},
@@ -363,12 +363,12 @@ namespace WinFormsSampleControls.OrgChartAssistants {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

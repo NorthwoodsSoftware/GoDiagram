@@ -6,13 +6,30 @@ using System.Windows.Forms;
 
 namespace WinFormsSharedControls {
   [ToolboxItem(true)]
-  public partial class SaveLoadModel : UserControl {
-    private string _ModelJson;
+  public partial class ModelJson : UserControl {
+    private bool _CanSaveLoad = true;
+    private string _JsonText;
 
-    public SaveLoadModel() {
+    public ModelJson() {
       InitializeComponent();
 
-      _ModelJson = textBox1.Text;
+      _JsonText = textBox1.Text;
+    }
+
+    [
+      Description("Whether user can save/load JSON text")
+    ]
+    public bool CanSaveLoad {
+      get { return _CanSaveLoad; }
+      set {
+        _CanSaveLoad = value;
+        saveBtn.Visible = _CanSaveLoad;
+        loadBtn.Visible = _CanSaveLoad;
+        textBox1.ReadOnly = !_CanSaveLoad;
+        textBox1.BackColor = _CanSaveLoad ? System.Drawing.SystemColors.ControlLightLight : System.Drawing.SystemColors.Control;
+        tableLayoutPanel1.SetColumn(label1, _CanSaveLoad ? 2 : 0);
+        Invalidate();
+      }
     }
 
     /// <summary>
@@ -51,18 +68,18 @@ namespace WinFormsSharedControls {
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public string ModelJson {
-      get { return _ModelJson; }
+    public string JsonText {
+      get { return _JsonText; }
       set {
-        if (value != _ModelJson) {
-          _ModelJson = value;
-          textBox1.Text = _ModelJson;
+        if (value != _JsonText) {
+          _JsonText = value;
+          textBox1.Text = _JsonText;
         }
       }
     }
 
     private void textBox1_TextChanged(object sender, EventArgs e) {
-      if (_ModelJson != textBox1.Text) _ModelJson = textBox1.Text;
+      if (_JsonText != textBox1.Text) _JsonText = textBox1.Text;
     }
   }
 }

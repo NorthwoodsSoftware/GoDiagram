@@ -27,7 +27,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -39,7 +39,7 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,14 +71,14 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 553);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1251, 343);
-            this.saveLoadModel1.TabIndex = 2;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 553);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1251, 343);
+            this.modelJson1.TabIndex = 2;
             //
             // CurvedLinkReshapingControl
             //
@@ -99,6 +99,6 @@ namespace WinFormsExtensionControls.CurvedLinkReshaping {
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

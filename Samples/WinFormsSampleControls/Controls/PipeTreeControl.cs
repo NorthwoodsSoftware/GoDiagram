@@ -53,13 +53,13 @@ namespace WinFormsSampleControls.PipeTree {
     }
 
     // give all shapes the appropriate dimensions and text color, size, and orientation.
-    private void updatePipes(Diagram myDiagram) {
+    private void updatePipes(Diagram diagram) {
       var updated = 1; // when this is 0, no more nodes are in need of updating
       while (updated != 0) {
         // have layout determine node position first, but don't draw
-        myDiagram.Layout.DoLayout();
+        diagram.LayoutDiagram();
         updated = 0;
-        var nodes = myDiagram.Nodes;
+        var nodes = diagram.Nodes;
         foreach (var node in nodes) {
           var shape = node.FindElement("SHAPE") as Shape;
           if (!areChildrenUpdated(node) || !(shape.Width == shape.Height)) { continue; }

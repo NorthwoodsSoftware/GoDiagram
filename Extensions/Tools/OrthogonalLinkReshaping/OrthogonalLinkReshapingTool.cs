@@ -89,6 +89,7 @@ namespace Northwoods.Go.Tools.Extensions {
             Handle.SegmentIndex = index;
           } else if (index == link.LastPickIndex - 1) {
             link.InsertPoint(index, link.GetPoint(index));
+            if (index - 1 == link.FirstPickIndex + 1) Handle.SegmentIndex = index - 1;
           }
         }
         var behavior = GetReshapingBehavior(Handle);

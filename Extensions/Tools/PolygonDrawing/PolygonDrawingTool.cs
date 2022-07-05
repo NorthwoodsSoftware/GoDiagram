@@ -176,12 +176,23 @@ namespace Northwoods.Go.Tools.Extensions {
     /// Start a transaction, capture the mouse, use a "crosshair" cursor,
     /// and start accumulating points in the geometry of the <see cref="TemporaryShape"/>.
     /// </summary>
+    public override void DoStart() {
+      base.DoStart();
+      var diagram = Diagram;
+      if (diagram == null) return;
+      StartTransaction(Name);
+      diagram.CurrentCursor = diagram.DefaultCursor = "crosshair";
+      if (!diagram.LastInput.IsTouchEvent) diagram.IsMouseCaptured = true;
+    }
+
+    /// <summary>
+    /// Start a transaction, capture the mouse, use a "crosshair" cursor,
+    /// and start accumulating points in the geometry of the <see cref="TemporaryShape"/>.
+    /// </summary>
     public override void DoActivate() {
       base.DoActivate();
       var diagram = Diagram;
-      StartTransaction(Name);
-      if (!diagram.LastInput.IsTouchEvent) diagram.IsMouseCaptured = true;
-      diagram.CurrentCursor = "crosshair";
+      if (diagram == null) return;
       // the first point
       if (!diagram.LastInput.IsTouchEvent) AddPoint(diagram.LastInput.DocumentPoint);
     }
@@ -189,13 +200,14 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <summary>
     /// Stop the transaction and clean up.
     /// </summary>
-    public override void DoDeactivate() {
-      base.DoDeactivate();
+    public override void DoStop() {
+      base.DoStop();
       var diagram = Diagram;
+      if (diagram == null) return;
+      diagram.CurrentCursor = diagram.DefaultCursor = "auto";
       if (TemporaryShape != null && TemporaryShape.Part != null) {
         diagram.Remove(TemporaryShape.Part);
       }
-      diagram.CurrentCursor = "";
       if (diagram.IsMouseCaptured) diagram.IsMouseCaptured = false;
       StopTransaction();
     }

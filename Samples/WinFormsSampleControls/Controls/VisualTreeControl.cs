@@ -70,7 +70,7 @@ namespace WinFormsSampleControls.VisualTree {
 
       myDiagram.NodeTemplate =
         new Node("Auto")
-          .Bind("Location")
+          .Bind(new Binding("Location").MakeTwoWay())
           .Add(
             new Shape("RoundedRectangle") { Fill = "white", StrokeWidth = 0 }.Bind("Fill", "Color"),
             new TextBlock { Margin = 5 }.Bind("Text", "Key")

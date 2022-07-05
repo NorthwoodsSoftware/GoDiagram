@@ -35,7 +35,7 @@ namespace Northwoods.Go.Tools.Extensions {
     public override void Resize(Rect newr) {
       var diagram = Diagram;
       foreach (var part in diagram.Selection) {
-        if (part is Link || part is Group) continue; // only Nodes and simple Parts
+        if (part is Link) continue; // only Nodes and simple Parts
         var obj = part.ResizeElement;
 
         // calculate new location
@@ -59,7 +59,7 @@ namespace Northwoods.Go.Tools.Extensions {
         pos.Y += sc * ((newr.X + deltaWidth * angleTop) * angleSin + (newr.Y + deltaHeight * angleLeft) * angleCos);
 
         obj.DesiredSize = newr.Size;
-        part.Position = pos;
+        part.Move(pos);
       }
     }
 

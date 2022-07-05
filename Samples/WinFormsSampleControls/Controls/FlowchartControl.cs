@@ -35,7 +35,7 @@ namespace WinFormsSampleControls.Flowchart {
         </p>
       ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""LinkFromPortIdProperty"": ""FromPort"",
   ""LinkToPortIdProperty"": ""ToPort"",
   ""NodeDataSource"": [
@@ -67,8 +67,8 @@ namespace WinFormsSampleControls.Flowchart {
     {""From"":10, ""To"":4, ""FromPort"":""B"", ""ToPort"":""T""}
   ]
 }";
-      saveLoadModel1.SaveClick += (obj, e) => SaveModel();
-      saveLoadModel1.LoadClick += (obj, e) => LoadModel();
+      modelJson1.SaveClick += (obj, e) => SaveModel();
+      modelJson1.LoadClick += (obj, e) => LoadModel();
 
       Setup();
       SetupPalette();
@@ -116,7 +116,7 @@ namespace WinFormsSampleControls.Flowchart {
       }
 
       var textStyle = new {
-        Font = new Font("Lato", 11, FontWeight.Bold, FontUnit.Point),
+        Font = new Font("Segoe UI", 11, FontWeight.Bold, FontUnit.Point),
         Stroke = "#F8F8F8"
       };
 
@@ -346,12 +346,12 @@ namespace WinFormsSampleControls.Flowchart {
 
     private void SaveModel() {
       if (_Diagram == null) return;
-      saveLoadModel1.ModelJson = _Diagram.Model.ToJson();
+      modelJson1.JsonText = _Diagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (_Diagram == null) return;
-      _Diagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
 
   }

@@ -15,8 +15,8 @@ namespace WinFormsSampleControls.StateChart {
     public StateChartControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
         <p>
@@ -44,7 +44,7 @@ namespace WinFormsSampleControls.StateChart {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeKeyProperty"": ""Id"",
   ""NodeDataSource"": [
     { ""Id"": ""-1"", ""Loc"": ""155 -138"", ""Category"": ""Start"" },
@@ -275,12 +275,12 @@ namespace WinFormsSampleControls.StateChart {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

@@ -26,7 +26,7 @@ namespace WinFormsSampleControls.LogicCircuit {
     /// </summary>
     private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.paletteControl1 = new Northwoods.Go.WinForms.PaletteControl();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
@@ -40,7 +40,7 @@ namespace WinFormsSampleControls.LogicCircuit {
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.paletteControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
@@ -54,15 +54,15 @@ namespace WinFormsSampleControls.LogicCircuit {
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1268, 1261);
             this.tableLayoutPanel1.TabIndex = 0;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 753);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1262, 505);
-            this.saveLoadModel1.TabIndex = 10;
+            this.modelJson1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modelJson1.Location = new System.Drawing.Point(3, 753);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1262, 505);
+            this.modelJson1.TabIndex = 10;
             //
             // paletteControl1
             //
@@ -116,6 +116,6 @@ namespace WinFormsSampleControls.LogicCircuit {
     private Northwoods.Go.WinForms.PaletteControl paletteControl1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

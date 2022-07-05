@@ -10,14 +10,15 @@ using Northwoods.Go.Tools;
 namespace WinFormsSampleControls.RuleredDiagram {
   [ToolboxItem(false)]
   public partial class RuleredDiagramControl : System.Windows.Forms.UserControl {
-    private Diagram myDiagram;
+    private static Diagram myDiagram;
+
+    private static Part gradIndicatorHoriz = null;
+    private static Part gradIndicatorVert = null;
 
     public RuleredDiagramControl() {
       InitializeComponent();
-
+      myDiagram = diagramControl1.Diagram;
       Setup();
-      diagramControl1.MouseEnter += (s, e) => ShowIndicators();
-      diagramControl1.MouseLeave += (s, e) => HideIndicators();
 
       goWebBrowser1.Html = @"
         <p>
@@ -58,46 +59,33 @@ namespace WinFormsSampleControls.RuleredDiagram {
 
     }
 
-    // instance variables
-    private Part gradIndicatorHoriz = null;
-    private Part gradIndicatorVert = null;
-
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
       myDiagram.UndoManager.IsEnabled = true;
-      myDiagram.ScrollMode = ScrollMode.Infinite; // allow the diagram to be scrolled beyond content
-      myDiagram.Padding = 0; // scales should be allowed right up against the edges of the viewport
-      myDiagram.Grid.Visible = true;
+      myDiagram.ScrollMode = ScrollMode.Infinite;  // allow the diagram to be scrolled beyond content
+      myDiagram.Padding = 0;  // scales should be allowed right up against the edges of the viewport
+      myDiagram.Grid.Visible = true;  // show that the ticks of the rulers always line up with the grid lines
 
       // override tools and ToolManager
-      var toolManager = new RuleredDiagramToolManager(this);
+      var toolManager = new RuleredDiagramToolManager();
       toolManager.InitializeStandardTools();
-      toolManager.LinkingTool = new RuleredDiagramLinkingTool(this);
-      toolManager.DraggingTool = new RuleredDiagramDraggingTool(this);
-      toolManager.DragSelectingTool = new RuleredDiagramDragSelectingTool(this);
+      toolManager.LinkingTool = new RuleredDiagramLinkingTool();
+      toolManager.DraggingTool = new RuleredDiagramDraggingTool();
+      toolManager.DragSelectingTool = new RuleredDiagramDragSelectingTool();
       myDiagram.ToolManager = toolManager;
       myDiagram.DefaultTool = toolManager;
 
       // node template
       myDiagram.NodeTemplate =
-        new Node(PanelLayoutAuto.Instance).Add(
-          new Shape {
-            Figure = "RoundedRectangle",
-            StrokeWidth = 0,
-            PortId = "",
-            FromLinkable = true,
-            ToLinkable = true
-          }.Bind(
-            new Binding("Fill", "Color")
-          ),
-          new TextBlock {
-            Margin = 8
-          }.Bind(
-            new Binding("Text", "Key")
-          )
-        );
+        new Node("Auto")
+          .Add(
+            new Shape("RoundedRectangle") {
+                StrokeWidth = 0, PortId = "", FromLinkable = true, ToLinkable = true
+              }
+              .Bind("Fill", "Color"),
+            new TextBlock { Margin = 8 }
+              .Bind("Text", "Key")
+          );
 
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
@@ -117,96 +105,58 @@ namespace WinFormsSampleControls.RuleredDiagram {
 
       // Keep references to the scales and indicators to easily update them
       var gradScaleHoriz =
-        new Part(PanelLayoutGraduated.Instance) {
-          GraduatedTickUnit = 10,
-          Pickable = false,
-          LayerName = "Grid",
-          IsAnimated = false
-        }.Add(
-          new Shape {
-            GeometryString = "M0 0 H400"
-          },
-          new Shape {
-            GeometryString = "M0 0 V3",
-            Interval = 1
-          },
-          new Shape {
-            GeometryString = "M0 0 V15",
-            Interval = 5
-          },
-          new TextBlock {
-            Font = new Font("Segoe UI", 10),
-            Interval = 5,
-            AlignmentFocus = Spot.TopLeft,
-            SegmentOffset = new Point(0, 7)
+        new Part("Graduated") {
+            GraduatedTickUnit = 10, Pickable = false, LayerName = "Grid", IsAnimated = false
           }
-        );
+          .Add(
+            new Shape { GeometryString = "M0 0 H400" },
+            new Shape { GeometryString = "M0 0 V3", Interval = 1 },
+            new Shape { GeometryString = "M0 0 V15", Interval = 5 },
+            new TextBlock {
+                Font = new Font("Segoe UI", 10),
+                Interval = 5,
+                AlignmentFocus = Spot.TopLeft,
+                SegmentOffset = new Point(0, 7)
+              }
+          );
 
       var gradScaleVert =
-        new Part(PanelLayoutGraduated.Instance) {
-          GraduatedTickUnit = 10,
-          Pickable = false,
-          LayerName = "Grid",
-          IsAnimated = false
-        }.Add(
-          new Shape {
-            GeometryString = "M0 0 V400"
-          },
-          new Shape {
-            GeometryString = "M0 0 V3",
-            Interval = 1,
-            AlignmentFocus = Spot.Bottom
-          },
-          new Shape {
-            GeometryString = "M0 0 V15",
-            Interval = 5,
-            AlignmentFocus = Spot.Bottom
-          },
-          new TextBlock {
-            Font = new Font("Segoe UI", 10),
-            SegmentOrientation = Orientation.Opposite,
-            Interval = 5,
-            AlignmentFocus = Spot.BottomLeft,
-            SegmentOffset = new Point(0, -7)
+        new Part("Graduated") {
+            GraduatedTickUnit = 10, Pickable = false, LayerName = "Grid", IsAnimated = false
           }
-        );
+          .Add(
+            new Shape { GeometryString = "M0 0 V400" },
+            new Shape { GeometryString = "M0 0 V3", Interval = 1, AlignmentFocus = Spot.Bottom },
+            new Shape { GeometryString = "M0 0 V15", Interval = 5, AlignmentFocus = Spot.Bottom },
+            new TextBlock {
+                Font = new Font("Segoe UI", 10),
+                SegmentOrientation = Orientation.Opposite,
+                Interval = 5,
+                AlignmentFocus = Spot.BottomLeft,
+                SegmentOffset = new Point(0, -7)
+              }
+          );
 
-      // These indicators are globally defined so they can be accessed by the div's mouseevents
       gradIndicatorHoriz =
         new Part {
-          Pickable = false,
-          LayerName = "Grid",
-          Visible = false,
-          IsAnimated = false,
-          LocationSpot = Spot.Top
-        }.Add(
-          new Shape {
-            GeometryString = "M0 0 V15",
-            StrokeWidth = 2,
-            Stroke = "red"
+            Pickable = false, LayerName = "Grid", Visible = false,
+            IsAnimated = false, LocationSpot = Spot.Top
           }
-        );
+          .Add(new Shape { GeometryString = "M0 0 V15", StrokeWidth = 2, Stroke = "red" });
 
       gradIndicatorVert =
         new Part {
-          Pickable = false,
-          LayerName = "Grid",
-          Visible = false,
-          IsAnimated = false,
-          LocationSpot = Spot.Left
-        }.Add(
-          new Shape {
-            GeometryString = "M0 0 H15",
-            StrokeWidth = 2,
-            Stroke = "red"
+            Pickable = false, LayerName = "Grid", Visible = false,
+            IsAnimated = false, LocationSpot = Spot.Left
           }
-        );
+          .Add(new Shape { GeometryString = "M0 0 H15", StrokeWidth = 2, Stroke = "red" });
 
-      myDiagram.InitialLayoutCompleted += SetupScalesAndIndicators;
-      myDiagram.ViewportBoundsChanged += UpdateScales;
-      myDiagram.ViewportBoundsChanged += UpdateIndicators;
+      myDiagram.InitialLayoutCompleted += (s, e) => SetupScalesAndIndicators();
+      myDiagram.MouseEnter = (e) => ShowIndicators(true);
+      myDiagram.MouseLeave = (e) => ShowIndicators(false);
+      myDiagram.ViewportBoundsChanged += (s, e) => { UpdateScales(); UpdateIndicators(); };
 
-      void SetupScalesAndIndicators(object _ = null, DiagramEvent e = null) {
+      void SetupScalesAndIndicators() {
         myDiagram.Commit((d) => {
           // Add each node to the diagram
           d.Add(gradScaleHoriz);
@@ -218,7 +168,7 @@ namespace WinFormsSampleControls.RuleredDiagram {
         }, null);  // null says to skip UndoManager recording of changes
       }
 
-      void UpdateScales(object _ = null, DiagramEvent e = null) {
+      void UpdateScales() {
         var vb = myDiagram.ViewportBounds;
         if (!vb.IsReal()) return;
         myDiagram.Commit((diag) => {
@@ -238,7 +188,7 @@ namespace WinFormsSampleControls.RuleredDiagram {
       }
     }
 
-    public void UpdateIndicators(object _ = null, DiagramEvent e = null) {
+    public static void UpdateIndicators() {
       if (myDiagram == null) return;
       var vb = myDiagram.ViewportBounds;
       if (!vb.IsReal()) return;
@@ -252,22 +202,40 @@ namespace WinFormsSampleControls.RuleredDiagram {
       }, null);
     }
 
-    // Show indicators on mouseover of the diagram div
-    private void ShowIndicators() {
+    // Show indicators on MouseEnter of the diagram; hide on MouseLeave
+    private void ShowIndicators(bool show) {
       myDiagram.Commit((diag) => {
-        gradIndicatorHoriz.Visible = true;
-        gradIndicatorVert.Visible = true;
+        gradIndicatorHoriz.Visible = show;
+        gradIndicatorVert.Visible = show;
       }, null);
     }
 
-    // Hide indicators on mouseout of the diagram div
-    private void HideIndicators() {
-      myDiagram.Commit((diag) => {
-        gradIndicatorHoriz.Visible = false;
-        gradIndicatorVert.Visible = false;
-      }, null);
+    // Override mousemove Tools such that DoMouseMove will keep indicators in sync
+    public class RuleredDiagramToolManager : ToolManager {
+      public override void DoMouseMove() {
+        base.DoMouseMove();
+        UpdateIndicators();
+      }
     }
-
+    public class RuleredDiagramLinkingTool : LinkingTool {
+      public override void DoMouseMove() {
+        base.DoMouseMove();
+        UpdateIndicators();
+      }
+    }
+    public class RuleredDiagramDraggingTool : DraggingTool {
+      public override void DoMouseMove() {
+        base.DoMouseMove();
+        UpdateIndicators();
+      }
+    }
+    public class RuleredDiagramDragSelectingTool : DragSelectingTool {
+      public override void DoMouseMove() {
+        base.DoMouseMove();
+        UpdateIndicators();
+      }
+    }
+    // no need to override PanningTool since the ViewportBoundsChanged listener will fire
   }
 
   // define the model data
@@ -277,53 +245,4 @@ namespace WinFormsSampleControls.RuleredDiagram {
   }
 
   public class LinkData : Model.LinkData { }
-
-  // override tools to update rulers
-  public class RuleredDiagramToolManager : ToolManager {
-    // need to keep track of app instance to update indicator variables
-    private RuleredDiagramControl _AppInstance;
-    public RuleredDiagramToolManager(RuleredDiagramControl appInstance) : base() {
-      _AppInstance = appInstance;
-    }
-    public override void DoMouseMove() {
-      base.DoMouseMove();
-      _AppInstance.UpdateIndicators();
-    }
-  }
-  public class RuleredDiagramLinkingTool : LinkingTool {
-    // need to keep track of app instance to update indicator variables
-    private RuleredDiagramControl _AppInstance;
-    public RuleredDiagramLinkingTool(RuleredDiagramControl appInstance) : base() {
-      _AppInstance = appInstance;
-    }
-    public override void DoMouseMove() {
-      base.DoMouseMove();
-      _AppInstance.UpdateIndicators();
-    }
-  }
-  // no need to override PanningTool since the ViewportBoundsChanged listener will fire
-  public class RuleredDiagramDraggingTool : DraggingTool {
-    // need to keep track of app instance to update indicator variables
-    private RuleredDiagramControl _AppInstance;
-    public RuleredDiagramDraggingTool(RuleredDiagramControl appInstance) : base() {
-      _AppInstance = appInstance;
-    }
-    public override void DoMouseMove() {
-      base.DoMouseMove();
-      _AppInstance.UpdateIndicators();
-    }
-  }
-
-  public class RuleredDiagramDragSelectingTool : DragSelectingTool {
-    // need to keep track of app instance to update indicator variables
-    private RuleredDiagramControl _AppInstance;
-    public RuleredDiagramDragSelectingTool(RuleredDiagramControl appInstance) : base() {
-      _AppInstance = appInstance;
-    }
-    public override void DoMouseMove() {
-      base.DoMouseMove();
-      _AppInstance.UpdateIndicators();
-    }
-  }
-
 }

@@ -20,8 +20,8 @@ namespace WinFormsSampleControls.Kanban {
     public KanbanControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
 
@@ -41,7 +41,7 @@ namespace WinFormsSampleControls.Kanban {
   </ul>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"":""Problems"", ""Text"":""Problems"", ""IsGroup"":true, ""Loc"":""0 23.52284749830794"" },
     { ""Key"":""Reproduced"", ""Text"":""Reproduced"", ""IsGroup"":true, ""Color"":0, ""Loc"":""109 23.52284749830794"" },
@@ -107,32 +107,32 @@ namespace WinFormsSampleControls.Kanban {
         new Node("Horizontal")
           .Add(
             new Shape("Rectangle") {
-              Fill = "#009CCC", StrokeWidth = 1, Stroke = "#009CCC",
-              Width = 6, Stretch = Stretch.Vertical, Alignment = Spot.Left,
-              // if a user clicks the colored portion of a node, cycle through colors
-              Click = (e, obj) => {
-                myDiagram.StartTransaction("Update node color");
-                var newColor = 1 + (obj.Part.Data as NodeData).Color;
-                if (newColor > noteColors.Length - 1) newColor = 0;
-                myDiagram.Model.Set(obj.Part.Data, "Color", newColor);
-                myDiagram.CommitTransaction("Update node color");
+                Fill = "#009CCC", StrokeWidth = 1, Stroke = "#009CCC",
+                Width = 6, Stretch = Stretch.Vertical, Alignment = Spot.Left,
+                // if a user clicks the colored portion of a node, cycle through colors
+                Click = (e, obj) => {
+                  myDiagram.StartTransaction("Update node color");
+                  var newColor = 1 + (obj.Part.Data as NodeData).Color;
+                  if (newColor > noteColors.Length - 1) newColor = 0;
+                  myDiagram.Model.Set(obj.Part.Data, "Color", newColor);
+                  myDiagram.CommitTransaction("Update node color");
+                }
               }
-            }
               .Bind("Fill", "Color", getNoteColor)
               .Bind("Stroke", "Color", getNoteColor),
             new Panel("Auto")
               .Add(
                 new Shape("Rectangle") { Fill = "white", Stroke = "#CCCCCC" },
                 new Panel("Table") {
-                  Width = 130, MinSize = new Size(double.NaN, 50)
-                }
+                    Width = 130, MinSize = new Size(double.NaN, 50)
+                  }
                   .Add(
                     new TextBlock {
-                      Name = "TEXT",
-                      Margin = 6, Font = new Font("Segoe UI", 11), Editable = true,
-                      Stroke = "#000", MaxSize = new Size(130, double.NaN),
-                      Alignment = Spot.TopLeft
-                    }
+                        Name = "TEXT",
+                        Margin = 6, Font = new Font("Segoe UI", 11), Editable = true,
+                        Stroke = "#000", MaxSize = new Size(130, double.NaN),
+                        Alignment = Spot.TopLeft
+                      }
                       .Bind(new Binding("Text").MakeTwoWay())
                   )
               )
@@ -141,18 +141,18 @@ namespace WinFormsSampleControls.Kanban {
       // unmovable node that acts as a button
       myDiagram.NodeTemplateMap.Add("NewButton",
         new Node("Horizontal") {
-          Selectable = false,
-          Click = (e, node) => {
-            myDiagram.StartTransaction("add node");
-            var newdata = new NodeData { Group = "Problems", Loc = "0 50", Text = "New item " + (node as Node).ContainingGroup.MemberParts.Count, Color = 0 };
-            myDiagram.Model.AddNodeData(newdata);
-            myDiagram.CommitTransaction("add node");
-            var newnode = myDiagram.FindNodeForData(newdata);
-            myDiagram.Select(newnode);
-            myDiagram.CommandHandler.EditTextBlock();
-          },
-          Background = "white"
-        }
+            Selectable = false,
+            Click = (e, node) => {
+              myDiagram.StartTransaction("add node");
+              var newdata = new NodeData { Group = "Problems", Loc = "0 50", Text = "New item " + (node as Node).ContainingGroup.MemberParts.Count, Color = 0 };
+              myDiagram.Model.AddNodeData(newdata);
+              myDiagram.CommitTransaction("add node");
+              var newnode = myDiagram.FindNodeForData(newdata);
+              myDiagram.Select(newnode);
+              myDiagram.CommandHandler.EditTextBlock();
+            },
+            Background = "white"
+          }
           .Bind("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             new Panel("Auto")
@@ -178,48 +178,48 @@ namespace WinFormsSampleControls.Kanban {
 
       myDiagram.GroupTemplate =
         new Group("Vertical") {
-          Selectable = false,
-          SelectionElementName = "SHAPE",  // even though its not selectable, this is used in the layout
-          LayerName = "Background",  // all lanes are always behind all nodes and links
-          Layout = new GridLayout {  // automatically lay out the lane's subgraph
-            WrappingColumn = 1,
-            CellSize = new Size(1, 1),
-            Spacing = new Size(5, 5),
-            Alignment = GridAlignment.Position,
-            Comparer = (a, b) => {  // can re-order tasks within a lane
-              var ay = a.Location.Y;
-              var by = b.Location.Y;
-              if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
-              if (ay < by) return -1;
-              if (ay > by) return 1;
-              return 0;
-            }
-          },
-          Click = (e, grp) => {  // allow simple click on group to clear selection
-            if (!e.Shift && !e.Control && !e.Meta) e.Diagram.ClearSelection();
-          },
-          ComputesBoundsAfterDrag = true,  // needed to prevent recomputing Group.placeholder bounds too soon
-          HandlesDragDropForMembers = true,  // don't need to define handlers on member nodes and links
-          MouseDragEnter = (e, grp, prev) => highlightGroup(grp, true),
-          MouseDragLeave = (e, grp, next) => highlightGroup(grp, false),
-          MouseDrop = (e, grp) => {  // dropping a copy of some Nodes and links onto theis Group adds them to this Group
-                                     // don't allow drag-and-dropping a mix of regular Nodes and Groups
-            if (e.Diagram.Selection.All(n => !(n is Group))) {
-              var ok = (grp as Group).AddMembers(grp.Diagram.Selection, true);
-              if (!ok) grp.Diagram.CurrentTool.DoCancel();
-            }
-          },
-          SubGraphExpandedChanged = (grp) => {
-            var shp = grp.SelectionElement;
-            if (grp.Diagram.UndoManager.IsUndoingRedoing) return;
-            if (grp.IsSubGraphExpanded) {
-              shp.Width = (double)grp["_SavedBreadth"];
-            } else {   // remember the original width
-              grp["_SavedBreadth"] = shp.Width;
-              shp.Width = double.NaN;
+            Selectable = false,
+            SelectionElementName = "SHAPE",  // even though its not selectable, this is used in the layout
+            LayerName = "Background",  // all lanes are always behind all nodes and links
+            Layout = new GridLayout {  // automatically lay out the lane's subgraph
+              WrappingColumn = 1,
+              CellSize = new Size(1, 1),
+              Spacing = new Size(5, 5),
+              Alignment = GridAlignment.Position,
+              Comparer = (a, b) => {  // can re-order tasks within a lane
+                var ay = a.Location.Y;
+                var by = b.Location.Y;
+                if (double.IsNaN(ay) || double.IsNaN(by)) return 0;
+                if (ay < by) return -1;
+                if (ay > by) return 1;
+                return 0;
+              }
+            },
+            Click = (e, grp) => {  // allow simple click on group to clear selection
+              if (!e.Shift && !e.Control && !e.Meta) e.Diagram.ClearSelection();
+            },
+            ComputesBoundsAfterDrag = true,  // needed to prevent recomputing Group.placeholder bounds too soon
+            HandlesDragDropForMembers = true,  // don't need to define handlers on member nodes and links
+            MouseDragEnter = (e, grp, prev) => highlightGroup(grp, true),
+            MouseDragLeave = (e, grp, next) => highlightGroup(grp, false),
+            MouseDrop = (e, grp) => {  // dropping a copy of some Nodes and links onto theis Group adds them to this Group
+              // don't allow drag-and-dropping a mix of regular Nodes and Groups
+              if (e.Diagram.Selection.All(n => !(n is Group))) {
+                var ok = (grp as Group).AddMembers(grp.Diagram.Selection, true);
+                if (!ok) grp.Diagram.CurrentTool.DoCancel();
+              }
+            },
+            SubGraphExpandedChanged = (grp) => {
+              var shp = grp.SelectionElement;
+              if (grp.Diagram.UndoManager.IsUndoingRedoing) return;
+              if (grp.IsSubGraphExpanded) {
+                shp.Width = (grp.Data as NodeData).SavedBreadth;
+              } else {   // remember the original width
+                if (!double.IsNaN(shp.Width)) grp.Diagram.Model.Set(grp.Data, "SavedBreadth", shp.Width);
+                shp.Width = double.NaN;
+              }
             }
           }
-        }
           .Bind(
             new Binding("Location", "Loc", Point.Parse, Point.Stringify),
             new Binding("IsSubGraphExpanded", "Expanded").MakeTwoWay()
@@ -227,13 +227,14 @@ namespace WinFormsSampleControls.Kanban {
           .Add(
             // the lane header consisting of a TextBlock and an expander button
             new Panel("Horizontal") {
-              Name = "HEADER", Alignment = Spot.Left
-            }
+                Name = "HEADER", Alignment = Spot.Left
+              }
               .Add(
                 Builder.Make<Panel>("SubGraphExpanderButton").Set(new { Margin = 5 }),  // this remains always visible
                 new TextBlock { // the lane label
-                  Font = new Font("Segoe UI", 15), Editable = true, Margin = new Margin(2, 0, 0, 0)
-                }.Bind(
+                    Font = new Font("Segoe UI", 15), Editable = true, Margin = new Margin(2, 0, 0, 0)
+                  }
+                  .Bind(
                     // this is hidden when the swimlane is collapsed
                     new Binding("Visible", "IsSubGraphExpanded").OfElement(),
                     new Binding("Text").MakeTwoWay()
@@ -242,17 +243,18 @@ namespace WinFormsSampleControls.Kanban {
             new Panel("Auto")  // the lane consisting of a background Shape and a Placeholder representing the subgraph
               .Add(
                 new Shape("Rectangle") {  // this is the resized object
-                  Name = "SHAPE", Fill = "#F1F1F1", Stroke = null, StrokeWidth = 4 // strokeWidth controls spacing
-                }
+                    Name = "SHAPE", Fill = "#F1F1F1", Stroke = null, StrokeWidth = 4 // strokeWidth controls spacing
+                  }
                   .Bind(
                     new Binding("Fill", "IsHighlighted", (h, _) => (bool)h ? "#D6D6D6" : "#F1F1F1").OfElement(),
                     new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify)
                   ),
                 new Placeholder { Padding = 12, Alignment = Spot.TopLeft },
                 new TextBlock {  // this TextBlock is only seen when the swimlane is collapsed
-                  Name = "LABEL", Font = new Font("Segoe UI", 15, FontWeight.Bold), Editable = true,
-                  Angle = 90, Alignment = Spot.TopLeft, Margin = new Margin(4, 0, 0, 2)
-                }.Bind(
+                    Name = "LABEL", Font = new Font("Segoe UI", 15, FontWeight.Bold), Editable = true,
+                    Angle = 90, Alignment = Spot.TopLeft, Margin = new Margin(4, 0, 0, 2)
+                  }
+                  .Bind(
                     new Binding("Visible", "IsSubGraphExpanded", (e, _) => !(bool)e).OfElement(),
                     new Binding("Text").MakeTwoWay()
                   )
@@ -262,44 +264,24 @@ namespace WinFormsSampleControls.Kanban {
       // Set up an unmodeled Part as a legend, and place it directly on the diagram.
       myDiagram.Add(
         new Part("Table") {
-          Position = new Point(10, 10), Selectable = false, Name = "LEGEND"
-        }
+            Position = new Point(10, 10), Selectable = false, Name = "LEGEND"
+          }
           .Add(
-            new TextBlock("Key") {
-              Row = 0, Font = new Font("Segoe UI", 14, FontWeight.Bold)
-            },  // end Row 0
-            new Panel("Horizontal") {
-              Row = 1, Alignment = Spot.Left
-            }
+            new TextBlock("Key") { Row = 0, Font = new Font("Segoe UI", 14, FontWeight.Bold) },  // end Row 0
+            new Panel("Horizontal") { Row = 1, Alignment = Spot.Left }
               .Add(
-                new Shape("Rectangle") {
-                  DesiredSize = new Size(10, 10), Fill = "#CC293D", Margin = 5
-                },
-                new TextBlock("Halted") {
-                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
-                }
+                new Shape("Rectangle") { DesiredSize = new Size(10, 10), Fill = "#CC293D", Margin = 5 },
+                new TextBlock("Halted") { Font = new Font("Segoe UI", 13, FontWeight.Bold) }
               ), // end row 1
-            new Panel("Horizontal") {
-              Row = 2, Alignment = Spot.Left
-            }
+            new Panel("Horizontal") { Row = 2, Alignment = Spot.Left }
               .Add(
-                new Shape("Rectangle") {
-                  DesiredSize = new Size(10, 10), Fill = "#FFD700", Margin = 5
-                },
-                new TextBlock("In Progress") {
-                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
-                }
+                new Shape("Rectangle") { DesiredSize = new Size(10, 10), Fill = "#FFD700", Margin = 5 },
+                new TextBlock("In Progress") { Font = new Font("Segoe UI", 13, FontWeight.Bold) }
               ), // end row 2
-            new Panel("Horizontal") {
-              Row = 3, Alignment = Spot.Left
-            }
+            new Panel("Horizontal") { Row = 3, Alignment = Spot.Left }
               .Add(
-                new Shape("Rectangle") {
-                  DesiredSize = new Size(10, 10), Fill = "#009CCC", Margin = 5
-                },
-                new TextBlock("Completed") {
-                  Font = new Font("Segoe UI", 13, FontWeight.Bold)
-                }
+                new Shape("Rectangle") { DesiredSize = new Size(10, 10), Fill = "#009CCC", Margin = 5 },
+                new TextBlock("Completed") { Font = new Font("Segoe UI", 13, FontWeight.Bold) }
               ) // end row 3
           )
         );
@@ -415,12 +397,12 @@ namespace WinFormsSampleControls.Kanban {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 
@@ -433,6 +415,7 @@ namespace WinFormsSampleControls.Kanban {
     public string Loc { get; set; }
     public string Size { get; set; }
     public bool Expanded { get; set; } = true;
+    public double SavedBreadth { get; set; } = double.NaN;
   }
 
   public class LinkData : Model.LinkData { }

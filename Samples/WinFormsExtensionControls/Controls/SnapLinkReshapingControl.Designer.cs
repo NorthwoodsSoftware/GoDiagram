@@ -30,7 +30,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.paletteControl1 = new Northwoods.Go.WinForms.PaletteControl();
             this.avoidsNodes = new System.Windows.Forms.CheckBox();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
@@ -48,7 +48,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.tableLayoutPanel1.Controls.Add(this.paletteControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.avoidsNodes, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -104,15 +104,15 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
             this.goWebBrowser2.TabIndex = 3;
             this.goWebBrowser2.ZoomFactor = 1D;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 744);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
-            this.saveLoadModel1.TabIndex = 4;
+            this.modelJson1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 744);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 343);
+            this.modelJson1.TabIndex = 4;
             //
             // tableLayoutPanel2
             //
@@ -161,6 +161,6 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
     private System.Windows.Forms.CheckBox avoidsNodes;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

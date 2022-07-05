@@ -90,8 +90,7 @@ namespace WinFormsExtensionControls.Parallel {
       // define the Link template to be minimal
       MyDiagram.LinkTemplate = new Link {
         Routing = LinkRouting.Orthogonal,
-        Corner = 5,
-        Reshapable = true
+        Corner = 5
       }.Add(
         new Shape {
           Stroke = "gray",

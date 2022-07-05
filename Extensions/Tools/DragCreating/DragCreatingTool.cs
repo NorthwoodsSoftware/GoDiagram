@@ -246,7 +246,7 @@ namespace Northwoods.Go.Tools.Extensions {
         }
       }
       if (part != null) {
-        part.Position = bounds.Position;
+        part.Move(bounds.Position);
         part.ResizeElement.DesiredSize = bounds.Size;
         if (diagram.AllowSelect) {
           diagram.ClearSelection();

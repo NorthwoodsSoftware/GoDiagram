@@ -118,7 +118,7 @@ namespace WinFormsSampleControls.ProductionProcess {
         return c ?? "gray";
       }
 
-      // A data binding conversion function. Given an name, return the Geometry.
+      // A data binding conversion function. Given a name, return the Geometry.
       Geometry GeoFunc(object geonameAsObj, object _) {
         return icons[geonameAsObj as string];
       }

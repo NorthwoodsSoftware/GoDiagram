@@ -53,26 +53,14 @@ namespace Northwoods.Go.Extensions {
     }
 
     /// <summary>
-    /// Reflect properties from a dummy InputEvent into a given input event. 
-    /// </summary>
-    /// <param name="n">an InputEvent that will receive the properties</param>
-    /// <param name="eventprops">the InputEvent that acts as a source for the properties</param>
-    private static void InitializeEvent(InputEvent n, InputEvent eventprops) {
-      if (eventprops == null) return;
-      foreach (var prop in eventprops.GetType().GetProperties()) {
-        prop.SetValue(n, prop.GetValue(eventprops));
-      }
-    }
-
-    /// <summary>
     /// Simulate a mouse down event.
     /// </summary>
     /// <param name="x">the X-coordinate of the mouse point in document coordinates.</param>
     /// <param name="y">the Y-coordinate of the mouse point in document coordinates.</param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
     /// <param name="sourceDiagram">the optional source diagram to apply the InputEvent</param>
-    /// <param name="eventprops">the optional properties for the InputEvent, which will be reflected</param>
-    public void MouseDown(double x, double y, long time = 0, Diagram sourceDiagram = null, InputEvent eventprops = null) {
+    public void MouseDown(double x, double y, long time = 0, Action<InputEvent> evtFn = null, Diagram sourceDiagram = null) {
       var diagram = _Diagram;
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
@@ -87,7 +75,7 @@ namespace Northwoods.Go.Extensions {
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
       n.Down = true;
 
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.FirstInput = new InputEvent(n);
       diagram.CurrentTool.DoMouseDown();
@@ -99,9 +87,9 @@ namespace Northwoods.Go.Extensions {
     /// <param name="x">the X-coordinate of the mouse point in document coordinates.</param>
     /// <param name="y">the Y-coordinate of the mouse point in document coordinates.</param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
     /// <param name="sourceDiagram">the optional source diagram to apply the InputEvent</param>
-    /// <param name="eventprops">the optional properties for the InputEvent, which will be reflected</param>
-    public void MouseMove(double x, double y, long time = 0, Diagram sourceDiagram = null, InputEvent eventprops = null) {
+    public void MouseMove(double x, double y, long time = 0, Action<InputEvent> evtFn = null, Diagram sourceDiagram = null) {
       var diagram = _Diagram;
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
@@ -115,7 +103,7 @@ namespace Northwoods.Go.Extensions {
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
 
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.CurrentTool.DoMouseMove();
     }
@@ -126,9 +114,9 @@ namespace Northwoods.Go.Extensions {
     /// <param name="x">the X-coordinate of the mouse point in document coordinates.</param>
     /// <param name="y">the Y-coordinate of the mouse point in document coordinates.</param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
     /// <param name="sourceDiagram">the optional source diagram to apply the InputEvent</param>
-    /// <param name="eventprops">the optional properties for the InputEvent, which will be reflected</param>
-    public void MouseUp(double x, double y, long time = 0, Diagram sourceDiagram = null, InputEvent eventprops = null) {
+    public void MouseUp(double x, double y, long time = 0, Action<InputEvent> evtFn = null, Diagram sourceDiagram = null) {
       var diagram = _Diagram;
       if (sourceDiagram != null) diagram = sourceDiagram;
       if (!diagram.IsEnabled) return;
@@ -145,7 +133,7 @@ namespace Northwoods.Go.Extensions {
 
       if (diagram.FirstInput.DocumentPoint.Equals(n.DocumentPoint)) n.ClickCount = 1;
 
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.CurrentTool.DoMouseUp();
     }
@@ -155,8 +143,8 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     /// <param name="delta">non-zero turn</param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
-    /// <param name="eventprops">the optional properties for the InputEvent, which will be reflected</param>
-    public void MouseWheel(double delta, long time = 0, InputEvent eventprops = null) {
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
+    public void MouseWheel(double delta, long time = 0, Action<InputEvent> evtFn = null) {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
 
@@ -168,7 +156,7 @@ namespace Northwoods.Go.Extensions {
       var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
 
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.CurrentTool.DoMouseWheel();
     }
@@ -178,8 +166,8 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     /// <param name="key"></param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
-    /// <param name="eventprops">the optional properties for the InputEvent, which will be reflected</param>
-    public void KeyDown(string key, long time = 0, InputEvent eventprops = null) {
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
+    public void KeyDown(string key, long time = 0, Action<InputEvent> evtFn = null) {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
 
@@ -192,7 +180,7 @@ namespace Northwoods.Go.Extensions {
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
 
       n.Down = true;
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.CurrentTool.DoKeyDown();
     }
@@ -202,8 +190,8 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     /// <param name="key"></param>
     /// <param name="time">the timestamp of the simulated event, in milliseconds; default zero</param>
-    /// <param name="eventprops">an optional argument providing properties for the InputEvent</param>
-    public void KeyUp(string key, long time = 0, InputEvent eventprops = null) {
+    /// <param name="evtFn">an optional function to apply to the InputEvent, which can be used to set properties</param>
+    public void KeyUp(string key, long time = 0, Action<InputEvent> evtFn = null) {
       var diagram = _Diagram;
       if (!diagram.IsEnabled) return;
       var n = new InputEvent(diagram.LastInput) {
@@ -216,7 +204,7 @@ namespace Northwoods.Go.Extensions {
       n.Timestamp = start.AddMilliseconds(time).ToLocalTime();
 
       n.Up = true;
-      InitializeEvent(n, eventprops);
+      evtFn?.Invoke(n);
       diagram.LastInput = n;
       diagram.CurrentTool.DoKeyUp();
     }

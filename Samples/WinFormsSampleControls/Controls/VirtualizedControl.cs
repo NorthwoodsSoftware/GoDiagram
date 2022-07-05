@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
 using Northwoods.Go.Layouts.Extensions;
@@ -38,6 +39,8 @@ namespace WinFormsSampleControls.Virtualized {
       myDiagram = diagramControl1.Diagram;
       myDiagram.InitialDocumentSpot = Spot.Center;
       myDiagram.InitialViewportSpot = Spot.Center;
+      myDiagram.MaxSelectionCount = 1;
+      myDiagram.AnimationManager.IsEnabled = false;
 
       // Assume there's no layout -- all data.bounds are provided
       myDiagram.Layout = new Layout {
@@ -101,8 +104,12 @@ namespace WinFormsSampleControls.Virtualized {
       myDiagram.ModelChanged += _OnModelChanged;
       (myDiagram.Model as Model).MakeUniqueKeyFunction = _VirtualUniqueKey; // ensure uniqueness in MyWholeModel
 
-      // todo add a loading animation
-      _Load();
+      myDiagram.DelayInitialization(async (diagram) => {
+        var form = diagramControl1.FindForm();
+        form.UseWaitCursor = true;
+        await Task.Run(() => _Load());
+        form.UseWaitCursor = false;
+      });
     }
 
     private void _Load() {

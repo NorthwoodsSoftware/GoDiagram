@@ -12,7 +12,7 @@ namespace WinFormsSampleControls.Minimal {
 
     public MinimalControl() {
       InitializeComponent();
-
+      _Diagram = diagramControl1.Diagram;
       Setup();
       goWebBrowser1.Html = @"
         <p>
@@ -37,24 +37,25 @@ namespace WinFormsSampleControls.Minimal {
     }
 
     private void Setup() {
-      _Diagram = diagramControl1.Diagram;
-
-      // diagram properties
       _Diagram.UndoManager.IsEnabled = true;  // enable undo & redo
 
       // define a simple Node template
       _Diagram.NodeTemplate =
-        new Node(PanelLayoutAuto.Instance)  // the Shape will go around the TextBlock
+        new Node("Auto")  // the Shape will go around the TextBlock
           .Add(
             new Shape("RoundedRectangle") {
-                StrokeWidth = 0,
-                Fill = "lightgray"
-            }.Bind("Fill", "Color"),
-            new TextBlock {
-                Font = new Font("Segoe UI", 14, FontWeight.Bold), Margin = 8, // Specify a margin to add some room around the text
-                Editable = true
+                StrokeWidth = 0,  // no border
+                Fill = "white"  // default fill is white
               }
-              .Bind("Text")
+              // Shape.Fill is bound to Node.Data.Color
+              .Bind("Fill", "Color"),
+            new TextBlock {
+                Margin = 8, // some room around the text
+                Font = new Font("Segoe UI", 14, FontWeight.Bold),
+                Stroke = "#333"
+              }
+              // TextBlock.Text is bound to Node.Data.Key
+              .Bind("Text", "Key")
           );
 
       // but use the default Link template, by not setting Diagram.LinkTemplate
@@ -62,17 +63,17 @@ namespace WinFormsSampleControls.Minimal {
       // create the model data that will be represented by Nodes and Links
       _Diagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = "n0", Text = "Alpha", Color = "lightblue" },
-          new NodeData { Key = "n1", Text = "Beta", Color = "orange" },
-          new NodeData { Key = "n2", Text = "Gamma", Color = "lightgreen" },
-          new NodeData { Key = "n3", Text = "Delta", Color = "pink" }
+          new NodeData { Key = "Alpha", Color = "lightblue" },
+          new NodeData { Key = "Beta", Color = "orange" },
+          new NodeData { Key = "Gamma", Color = "lightgreen" },
+          new NodeData { Key = "Delta", Color = "pink" }
         },
         LinkDataSource = new List<LinkData> {
-          new LinkData { From = "n0", To = "n1" },
-          new LinkData { From = "n0", To = "n2" },
-          new LinkData { From = "n1", To = "n1" },
-          new LinkData { From = "n2", To = "n3" },
-          new LinkData { From = "n3", To = "n0" }
+          new LinkData { From = "Alpha", To = "Beta" },
+          new LinkData { From = "Alpha", To = "Gamma" },
+          new LinkData { From = "Beta", To = "Beta" },
+          new LinkData { From = "Gamma", To = "Delta" },
+          new LinkData { From = "Delta", To = "Alpha" }
         }
       };
     }
@@ -83,6 +84,5 @@ namespace WinFormsSampleControls.Minimal {
   public class NodeData : Model.NodeData {
     public string Color { get; set; }
   }
-
   public class LinkData : Model.LinkData { }
 }

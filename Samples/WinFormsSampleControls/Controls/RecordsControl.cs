@@ -12,7 +12,9 @@ namespace WinFormsSampleControls.Records {
     public RecordsControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
       Setup();
+
       goWebBrowser1.Html = @"
         <p>
       This record mapper shows a number of ""fields"" for each ""record"" and how they are mapped between each other.
@@ -30,14 +32,9 @@ namespace WinFormsSampleControls.Records {
       Diagram Model saved in JSON format, automatically updated after each change or undo or redo:
         </p>
 ";
-      textBox1.Leave += (e, obj) => Setup();
-
-
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.ValidCycle = CycleMode.NotDirected;  // don't allow loops
       // For this sample, automatically show the state of the diagram's model on the page
       myDiagram.ModelChanged += (object sender, ChangedEvent e) => {
@@ -49,39 +46,37 @@ namespace WinFormsSampleControls.Records {
       // The Panel is data bound to the item object.
       var fieldTemplate =
         new Panel("TableRow") {  // this Panel is a row in the containing Table
-          Background = "transparent",  // so this port's background can be picked by the mouse
-          FromSpot = Spot.Right,  // links only go from the right side to the left side
-          ToSpot = Spot.Left,
-          // allow drawing links from or to this port:
-          FromLinkable = true, ToLinkable = true
-        }
+            Background = "transparent",  // so this port's background can be picked by the mouse
+            FromSpot = Spot.Right,  // links only go from the right side to the left side
+            ToSpot = Spot.Left,
+            // allow drawing links from or to this port:
+            FromLinkable = true, ToLinkable = true
+          }
           .Bind("PortId", "Name")
           .Add(
             new Shape {
-              Width = 12, Height = 12, Column = 0, StrokeWidth = 2, Margin = 4,
-              // but disallow drawing links from or to this shape:
-              FromLinkable = false, ToLinkable = false
-            }
+                Width = 12, Height = 12, Column = 0, StrokeWidth = 2, Margin = 4,
+                // but disallow drawing links from or to this shape:
+                FromLinkable = false, ToLinkable = false
+              }
               .Bind("Figure")
               .Bind("Fill", "Color"),
             new TextBlock {
-              Margin = new Margin(0, 5), Column = 1, Font = new Font("Segoe UI", 13, FontWeight.Bold),
-              Alignment = Spot.Left,
-              // and disallow drawing links from or to this text:
-              FromLinkable = false, ToLinkable = false
-            }
+                Margin = new Margin(0, 5), Column = 1, Font = new Font("Segoe UI", 13, FontWeight.Bold),
+                Alignment = Spot.Left,
+                // and disallow drawing links from or to this text:
+                FromLinkable = false, ToLinkable = false
+              }
               .Bind("Text", "Name"),
             new TextBlock {
-              Margin = new Margin(0, 5), Column = 2, Font = new Font("Segoe UI", 13, FontWeight.Bold), Alignment = Spot.Left
-            }
+                Margin = new Margin(0, 5), Column = 2, Font = new Font("Segoe UI", 13), Alignment = Spot.Left
+              }
               .Bind("Text", "Info")
           );
 
       // This template represents a whole "record"
       myDiagram.NodeTemplate =
-        new Node("Auto") {
-          Copyable = false, Deletable = false
-        }
+        new Node("Auto") { Copyable = false, Deletable = false }
           .Bind("Location", "Loc", Point.Parse, Point.Stringify)
           .Add(
             // this rectangular shape surrounds the contents of the node
@@ -90,37 +85,35 @@ namespace WinFormsSampleControls.Records {
             new Panel("Vertical")
               .Add(
                 // this is the header for the whole node
-                new Panel("Auto") {
-                  Stretch = Stretch.Horizontal  // as wide as the whole node
-                }
+                new Panel("Auto") { Stretch = Stretch.Horizontal }  // as wide as the whole node
                   .Add(
                     new Shape { Fill = "#1570A6", Stroke = null },
                     new TextBlock {
-                      Alignment = Spot.Center,
-                      Margin = 3,
-                      Stroke = "white",
-                      TextAlign = TextAlign.Center,
-                      Font = new Font("Segoe UI", 12, FontWeight.Bold)
-                    }
+                        Alignment = Spot.Center,
+                        Margin = 3,
+                        Stroke = "white",
+                        TextAlign = TextAlign.Center,
+                        Font = new Font("Segoe UI", 16, FontWeight.Bold)
+                      }
                       .Bind("Text", "Key")
                   ),
                 // this panel holds a panel for each item object in the ItemList
                 // each item panel is defined by the ItemTemplate to be a TableRow in this Table
                 new Panel("Table") {
-                  Padding = 2,
-                  MinSize = new Size(100, 10),
-                  DefaultStretch = Stretch.Horizontal,
-                  ItemTemplate = fieldTemplate
-                }
+                    Padding = 2,
+                    MinSize = new Size(100, 10),
+                    DefaultStretch = Stretch.Horizontal,
+                    ItemTemplate = fieldTemplate
+                  }
                   .Bind("ItemList", "Fields")
             ) // end vertical panel
           ); // end node
 
       myDiagram.LinkTemplate =
         new Link {
-          RelinkableFrom = true, RelinkableTo = true,  // let user reconnect links
-          ToShortLength = 4, FromShortLength = 2
-        }
+            RelinkableFrom = true, RelinkableTo = true,  // let user reconnect links
+            ToShortLength = 4, FromShortLength = 2
+          }
           .Add(
             new Shape { StrokeWidth = 1.5 },
             new Shape { ToArrow = "Standard", Stroke = null }
@@ -157,41 +150,25 @@ namespace WinFormsSampleControls.Records {
         }
       };
 
-
       ShowModel();  // show the diagram's initial model
-
-
     }
 
     private void ShowModel() {
-      textBox1.Text = myDiagram.Model.ToJson();
-      textBox1.ScrollToCaret();
-      //myDiagram.Model = Model.FromJson<Model>(textBox1.Text);
-      //await InvokeAsync(StateHasChanged);  // tell Blazor to rerender without using an event
+      if (myDiagram == null) return;
+      mySavedModel.Text = myDiagram.Model.ToJson();
     }
-
-
-
-
-
-
   }
 
   public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { };
-
   public class NodeData : Model.NodeData {
     public List<FieldData> Fields { get; set; }
     public string Loc { get; set; }
   }
-
   public class LinkData : Model.LinkData { }
-
   public class FieldData {
     public string Name { get; set; }
     public string Info { get; set; }
     public string Color { get; set; }
     public string Figure { get; set; }
   }
-
-
 }

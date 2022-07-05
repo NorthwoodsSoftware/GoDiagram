@@ -31,6 +31,8 @@ namespace WinFormsSampleControls.KittenMonitor {
     }
 
     private void Setup() {
+      var INTERVAL = 2000;
+
       // diagram properties
       myDiagram.InitialContentAlignment = Spot.TopLeft;
       myDiagram.IsReadOnly = true;
@@ -77,7 +79,8 @@ namespace WinFormsSampleControls.KittenMonitor {
               .Bind("Fill", "Color", MakeFill)
               .Bind("Stroke", "Color", MakeStroke)  // also specified by data
           )
-          .Trigger(new AnimationTrigger("Position", (2000, null, Animation.EaseLinear)));
+          // don't animate if INTERVAL is <= 20 milliseconds
+          .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", (INTERVAL, null, Animation.EaseLinear)) : null);
 
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
@@ -88,6 +91,7 @@ namespace WinFormsSampleControls.KittenMonitor {
         }
       };
 
+      // simulate some real-time position monitoring, once every INTERVAL milliseconds
       void RandomMovement() {
         var rand = new Random();
         var model = myDiagram.Model;
@@ -96,20 +100,21 @@ namespace WinFormsSampleControls.KittenMonitor {
         var picture = myDiagram.Parts.First();
         for (var i = 0; i < arr.Count; i++) {
           var data = arr[i];
+          // determine the new random location
           var pt = data.Loc;
-          var x = pt.X + 25 * rand.NextDouble() - 10;
-          var y = pt.Y + 25 * rand.NextDouble() - 10;
+          var x = pt.X + 25 * (rand.NextDouble() - 0.5);
+          var y = pt.Y + 25 * (rand.NextDouble() - 0.5);
           // make sure the kittens stay inside the house
           var b = picture.ActualBounds;
-          if (x < b.X || x > b.Right) x = pt.X;
-          if (y < b.Y || y > b.Bottom) y = pt.Y;
+          if (x < b.X + 40 || x > b.Right - 80) x = pt.X;
+          if (y < b.Y + 40 || y > b.Bottom - 40) y = pt.Y;
           model.Set(data, "Loc", new Point(x, y));
         }
         model.CommitTransaction("update locations");
       }
 
       async void Loop() {
-        await Task.Delay(2100);
+        await Task.Delay(INTERVAL + 20);
         RandomMovement();
         Loop();
       }

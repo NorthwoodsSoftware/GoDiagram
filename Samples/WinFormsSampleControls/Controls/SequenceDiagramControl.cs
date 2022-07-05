@@ -16,8 +16,8 @@ namespace WinFormsSampleControls.SequenceDiagram {
     public SequenceDiagramControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
         <p>
@@ -34,7 +34,7 @@ namespace WinFormsSampleControls.SequenceDiagram {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     {""Key"":""Fred"", ""Text"":""Fred: Patron"", ""IsGroup"":true, ""Loc"":""0 0"", ""Duration"":9},
     {""Key"":""Bob"", ""Text"":""Bob: Waiter"", ""IsGroup"":true, ""Loc"":""100 0"", ""Duration"":9},
@@ -239,12 +239,12 @@ namespace WinFormsSampleControls.SequenceDiagram {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

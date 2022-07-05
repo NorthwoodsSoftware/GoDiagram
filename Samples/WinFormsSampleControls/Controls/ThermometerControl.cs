@@ -106,7 +106,7 @@ namespace WinFormsSampleControls.Thermometer {
                 new TextBlock { Interval = 20, Font = new Font("Georgia", 22), AlignmentFocus = new Spot(1, 0.5, 20, 0) },
                 // Mark 32 degrees on the farenheit scale:
                 new TextBlock {
-                    Interval = 32, GraduatedFunction = (n) => { return n == 32 ? "32—" : ""; },
+                    Interval = 32, GraduatedFunction = (n, _) => { return n == 32 ? "32—" : ""; },
                     Font = new Font("Georgia", 12, FontWeight.Bold), Stroke = "red", AlignmentFocus = new Spot(1, 0.5, 20, 0)
                   }
               ),

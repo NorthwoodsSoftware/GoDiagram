@@ -13,8 +13,8 @@ namespace WinFormsSampleControls.LinksToLinks {
     public LinksToLinksControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
     <p>
@@ -35,7 +35,7 @@ namespace WinFormsSampleControls.LinksToLinks {
       The category (i.e. template) of each link is determined by what kinds of nodes the link is connected with.
     </p>
 ";
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""LinkLabelKeysProperty"": ""LabelKeys"",
   ""NodeDataSource"": [
 { ""Key"": ""Alpha"", ""Color"": ""lightblue"", ""Loc"": ""29 14"" },
@@ -142,13 +142,13 @@ namespace WinFormsSampleControls.LinksToLinks {
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     // define the model data

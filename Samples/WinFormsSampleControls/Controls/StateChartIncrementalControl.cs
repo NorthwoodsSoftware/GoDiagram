@@ -16,8 +16,8 @@ namespace WinFormsSampleControls.StateChartIncremental {
     public StateChartIncrementalControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
         <p>
@@ -34,7 +34,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeKeyProperty"": ""Id"",
   ""LinkKeyProperty"": ""Id"",
   ""NodeDataSource"": [
@@ -235,12 +235,12 @@ namespace WinFormsSampleControls.StateChartIncremental {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
       ShowIncremental("");
     }
 
     private void LoadModel() {
-      var model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      var model = Model.FromJson<Model>(modelJson1.JsonText);
       // establish GraphLinksModel functions:
       // node data id's are odd numbers
       model.MakeUniqueKeyFunction = (model, data) => {

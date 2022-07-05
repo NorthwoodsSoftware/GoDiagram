@@ -106,7 +106,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Determines the split and merge nodes for a set of vertexes.
+    /// Find a Split vertex and a Merge vertex for this layout.
     /// </summary>
     /// <remarks>
     /// This signals an error if there is not exactly one Node that <see cref="IsSplit(Node)"/>
@@ -158,6 +158,17 @@ namespace Northwoods.Go.Layouts.Extensions {
       FindSplitMerge(net.Vertexes);
       // Don't have TreeLayout lay out the Merge node; CommitNodes will do it
       if (MergeNode != null) net.DeleteNode(MergeNode);
+      // for each vertex that does not have an incoming edge,
+      // connect to it from the splitNode vertex with a dummy edge
+      if (SplitNode != null) {
+        var splitv = net.FindVertex(SplitNode);
+        foreach (var v in net.Vertexes) {
+          if (splitv == null || v == splitv) continue;
+          if (v.SourceEdges.Count == 0) {
+            net.LinkVertexes(splitv, v, null);
+          }
+        }
+      }
       return net;
     }
 

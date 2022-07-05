@@ -150,7 +150,7 @@ namespace WinFormsDemoApp {
       /****** LAYOUTS ******/
       { "Arranging", new NavItem("Arranging Layout", typeof(WinFormsExtensionControls.Arranging.ArrangingControl)) },
       { "Fishbone", new NavItem("Fishbone Layout", typeof(WinFormsExtensionControls.Fishbone.FishboneControl)) },
-      { "PackedLayout", new NavItem("Packed Layout", typeof(WinFormsExtensionControls.PackedLayout.PackedLayoutControl)) },
+      { "PackedLayout", new NavItem("Packed Layout", typeof(WinFormsExtensionControls.Packed.PackedControl)) },
       { "Parellel", new NavItem("Parallel Layout", typeof(WinFormsExtensionControls.Parallel.ParallelControl)) },
       { "Serpentine", new NavItem("Serpentine Layout", typeof(WinFormsExtensionControls.Serpentine.SerpentineControl)) },
       { "Spiral", new NavItem("Spiral Layout", typeof(WinFormsExtensionControls.Spiral.SpiralControl)) },
@@ -186,12 +186,12 @@ namespace WinFormsDemoApp {
 
       /****** GRAPH OBJECTS ******/
       // scrolling table
-      { "BalloonLink", new NavItem("Balloon Link", typeof(WinFormsExtensionControls.BalloonLink.BalloonLinkControl)) },
+      { "BalloonLink", new NavItem("Balloon Link", typeof(WinFormsExtensionControls.Balloon.BalloonLinkControl)) },
       { "ParallelRoute", new NavItem("Parallel Route Links", typeof(WinFormsExtensionControls.ParallelRoute.ParallelRouteControl)) },
       { "Dimensioning", new NavItem("Dimensioning Links", typeof(WinFormsExtensionControls.Dimensioning.DimensioningControl)) },
       { "DrawCommandHandler", new NavItem("Drawing Commands", typeof(WinFormsExtensionControls.DrawCommandHandler.DrawCommandHandlerControl)) },
       // local storage?
-      // simulating input (robot)
+      { "Robot", new NavItem("Simulating Input", typeof(WinFormsExtensionControls.Robot.RobotControl)) },
       // data inspector
 
       /****** BIG SAMPLES ******/

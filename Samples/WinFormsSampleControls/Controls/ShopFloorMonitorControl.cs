@@ -40,12 +40,12 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
     private string myModelData =
 @"{
   ""NodeDataSource"": [
-    {""Key"":""1"", ""Text"":""Switch 23"", ""Type"":""S2"", ""Loc"":""195 225""},
-    {""Key"":""2"", ""Text"":""Machine 17"", ""Type"":""M4"", ""Loc"":""183.5 94""},
-    {""Key"":""3"", ""Text"":""Panel 7"", ""Type"":""P2"", ""Loc"":""75 211.5""},
-    {""Key"":""4"", ""Text"":""Switch 24"", ""Type"":""S3"", ""Loc"":""306 225""},
-    {""Key"":""5"", ""Text"":""Machine 18"", ""Type"":""M5"", ""Loc"":""288.5 95""},
-    {""Key"":""6"", ""Text"":""Panel 9"", ""Type"":""P1"", ""Loc"":""426 211""},
+    {""Key"":""1"", ""Text"":""Switch 23"", ""Type"":""S2"", ""Loc"":""195 218""},
+    {""Key"":""2"", ""Text"":""Machine 17"", ""Type"":""M4"", ""Loc"":""195 94""},
+    {""Key"":""3"", ""Text"":""Panel 7"", ""Type"":""P2"", ""Loc"":""75 218""},
+    {""Key"":""4"", ""Text"":""Switch 24"", ""Type"":""S3"", ""Loc"":""306 218""},
+    {""Key"":""5"", ""Text"":""Machine 18"", ""Type"":""M5"", ""Loc"":""306 95""},
+    {""Key"":""6"", ""Text"":""Panel 9"", ""Type"":""P1"", ""Loc"":""426 218""},
     {""Key"":""7"", ""Text"":""Instr 3"", ""Type"":""I1"", ""Loc"":""-50 218""}
   ],
   ""LinkDataSource"": [
@@ -112,7 +112,7 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
       // node template
       myDiagram.NodeTemplate =
         new Node(PanelLayoutVertical.Instance) {
-          LocationElementName = "ICON"
+          LocationElementName = "ICON", LocationSpot = Spot.Center
         }.Bind(
           new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify)
         ).Add(
@@ -188,22 +188,22 @@ namespace WinFormsSampleControls.ShopFloorMonitor {
       // simulate some real-time problem monitoring, once every two seconds:
       void RandomProblems() {
         var model = myDiagram.Model as Model;
-        // update all nodes
-        var arr = model.NodeDataSource as List<NodeData>;
-        for (var i = 0; i < arr.Count; i++) {
-          var data = arr[i];
-          data.Problem = (rand.NextDouble() < 0.8) ? "" : "Power loss due to ...";
-          data.Status = rand.NextDouble() * 3;
-          data.Operation = rand.NextDouble() * 3;
-          model.UpdateTargetBindings(data);
-        }
-        // and update all links
-        var larr = model.LinkDataSource as List<LinkData>;
-        for (var i = 0; i < larr.Count; i++) {
-          var data = larr[i];
-          data.Problem = (rand.NextDouble() < 0.7) ? "" : "No Power";
-          model.UpdateTargetBindings(data);
-        }
+        model.Commit(m => {
+          // update all nodes
+          var arr = m.NodeDataSource as List<NodeData>;
+          for (var i = 0; i < arr.Count; i++) {
+            var data = arr[i];
+            m.Set(data, "Problem", (rand.NextDouble() < 0.8) ? "" : "Power loss due to ...");
+            m.Set(data, "Status", rand.NextDouble() * 3);
+            m.Set(data, "Operation", rand.NextDouble() * 3);
+          }
+          // and update all links
+          var larr = model.LinkDataSource as List<LinkData>;
+          for (var i = 0; i < larr.Count; i++) {
+            var data = larr[i];
+            m.Set(data, "Problem", (rand.NextDouble() < 0.7) ? "" : "No Power");
+          }
+        }, null);  // null temporarily sets SkipsUndoManager to true, to avoid recording these changes
       }
 
       void Loop() {

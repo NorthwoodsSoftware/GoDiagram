@@ -21,8 +21,8 @@ namespace WinFormsSampleControls.DraggablePorts {
 
       Setup();
 
-      saveLoadModel1.SaveClick += (e, obj) => _Save();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => _Save();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
 
@@ -367,7 +367,7 @@ namespace WinFormsSampleControls.DraggablePorts {
         newData.ToPort = (l.ToNode.Data as HiddenNodeData).Name;
         m.AddLinkData(newData);
       }
-      saveLoadModel1.ModelJson = m.ToJson();
+      modelJson1.JsonText = m.ToJson();
       foreach (var g in myDiagram.Nodes) {
         if (g is Group) {
           (g.Data as HiddenNodeData).Ins = null;
@@ -380,7 +380,7 @@ namespace WinFormsSampleControls.DraggablePorts {
     private void LoadModel() {
       if (myDiagram == null) return;
       myDiagram.Model.UndoManager.IsEnabled = true;
-      var m = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      var m = Model.FromJson<Model>(modelJson1.JsonText);
       SetupDiagram(m.NodeDataSource, m.LinkDataSource);
     }
   }

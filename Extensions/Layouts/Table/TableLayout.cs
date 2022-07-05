@@ -411,7 +411,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         lcol = 1 + row.Keys.Max();
         var rowHerald = GetRowDefinition(rowIdx);
-        rowHerald.ActualHeight = 0;  // Reset rows (only on first pass)
+        rowHerald.MeasuredHeight = 0;  // Reset rows (only on first pass)
 
         foreach (var colpair in row) {
           var colIdx = colpair.Key;
@@ -421,7 +421,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           var colHerald = GetColumnDefinition(colIdx);
 
           if (!resetCols[colIdx]) {
-            colHerald.ActualWidth = 0;
+            colHerald.MeasuredWidth = 0;
             resetCols[colIdx] = true;
           }
 
@@ -481,6 +481,7 @@ namespace Northwoods.Go.Layouts.Extensions {
               var def = GetRowDefinition(rowIdx);
               amt = Math.Max(mheight - def.ActualHeight, 0);
               if (amt > rowleft) amt = rowleft;
+              def.MeasuredHeight = def.MeasuredHeight + amt;
               def.ActualHeight += amt;
               rowleft = Math.Max(rowleft - amt, 0);
             }
@@ -489,6 +490,7 @@ namespace Northwoods.Go.Layouts.Extensions {
               var def = GetColumnDefinition(colIdx);
               amt = Math.Max(mwidth - def.ActualWidth, 0);
               if (amt > colleft) amt = colleft;
+              def.MeasuredWidth = def.MeasuredWidth + amt;
               def.ActualWidth += amt;
               colleft = Math.Max(colleft - amt, 0);
             }
@@ -502,11 +504,11 @@ namespace Northwoods.Go.Layouts.Extensions {
       var totalRowHeight = 0.0;
 
       foreach (var coldef in _ColDefs) {
-        if (coldef.Value != null) totalColWidth += GetColumnDefinition(coldef.Key).ActualWidth;
+        if (coldef.Value != null) totalColWidth += GetColumnDefinition(coldef.Key).MeasuredWidth;
       }
 
       foreach (var rowdef in _RowDefs) {
-        if (rowdef.Value != null) totalRowHeight += GetRowDefinition(rowdef.Key).ActualHeight;
+        if (rowdef.Value != null) totalRowHeight += GetRowDefinition(rowdef.Key).MeasuredHeight;
       }
 
       colleft = Math.Max(width - totalColWidth, 0);
@@ -524,13 +526,13 @@ namespace Northwoods.Go.Layouts.Extensions {
         var margw = marg.Right + marg.Left;
         var margh = marg.Top + marg.Bottom;
 
-        if (colHerald.ActualWidth == 0 && nosizeCols[child.Column] != 0) {
+        if (colHerald.MeasuredWidth == 0 && nosizeCols[child.Column] != 0) {
           nosizeCols[child.Column] = Math.Max(mb.Width + margw, nosizeCols[child.Column]);
         } else {
           nosizeCols[child.Column] = 0; // obey the column herald
         }
 
-        if (rowHerald.ActualHeight == 0 && nosizeRows[child.Row] != 0) {
+        if (rowHerald.MeasuredHeight == 0 && nosizeRows[child.Row] != 0) {
           nosizeRows[child.Row] = Math.Max(mb.Height + margh, nosizeRows[child.Row]);
         } else {
           nosizeRows[child.Row] = 0; // obey the row herald
@@ -607,11 +609,13 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         oldAmount = rowHerald.ActualHeight;
         rowHerald.ActualHeight = Math.Max(rowHerald.ActualHeight, mheight);
+        rowHerald.MeasuredHeight = Math.Max(rowHerald.MeasuredHeight, mheight);
         amt = rowHerald.ActualHeight - oldAmount;
         rowleft = Math.Max(rowleft - amt, 0);
 
         oldAmount = colHerald.ActualWidth;
         colHerald.ActualWidth = Math.Max(colHerald.ActualWidth, mwidth);
+        colHerald.MeasuredWidth = Math.Max(colHerald.MeasuredWidth, mwidth);
         amt = colHerald.ActualWidth - oldAmount;
         colleft = Math.Max(colleft - amt, 0);
       }  // end no fixed size objects
@@ -828,6 +832,18 @@ namespace Northwoods.Go.Layouts.Extensions {
         if (row == null) continue;
         lcol = Math.Max(lcol, 1 + row.Keys.Max());  // column length in this row
       }
+      var firstRow = 0;
+      var firstColumn = 0;
+      var ll = ColumnCount;
+      for (var ii = 0; ii < ll; ii++) {
+        if (!_ColDefs.ContainsKey(ii)) continue;
+        firstColumn = ii; break;
+      }
+      ll = RowCount;
+      for (var ii = 0; ii < ll; ii++) {
+        if (!_RowDefs.ContainsKey(ii)) continue;
+        firstRow = ii; break;
+      }
 
       var additionalSpan = new Size();
       var i = -1;
@@ -838,7 +854,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         if (row == null) continue;
         lcol = 1 + row.Keys.Max();
         var rowHerald = GetRowDefinition(i);
-        y = origin.Y + rowHerald.ActualY + rowHerald.ComputeEffectiveSpacingTop();
+        y = origin.Y + rowHerald.ActualY + rowHerald.ComputeEffectiveSpacingTop(firstRow);
 
         var j = -1;
         foreach (var colpair in row) {
@@ -846,7 +862,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           var col = colpair.Value;
           if (col == null) continue;
           var colHerald = GetColumnDefinition(j);
-          x = origin.X + colHerald.ActualX + colHerald.ComputeEffectiveSpacingTop();
+          x = origin.X + colHerald.ActualX + colHerald.ComputeEffectiveSpacingTop(firstColumn);
 
           var cell = rowcol[i][j];
           foreach (var child in cell) {

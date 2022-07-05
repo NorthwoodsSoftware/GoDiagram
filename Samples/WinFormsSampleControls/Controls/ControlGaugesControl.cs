@@ -460,7 +460,7 @@ namespace WinFormsSampleControls.ControlGauges {
                 CommonScaleBindings()
               ).Add(
                 // the main path of the graduated panel, an arc starting at 135 degrees and sweeping for 270 degrees
-                new Shape { Name = "PATH", GeometryString = "M-70.7 70.7 B135 270 0 0 100 100 M0 100", Stroke = "white", StrokeWidth = 4 },
+                new Shape { Name = "PATH", GeometryString = "M-70.7107 70.7107 B135 270 0 0 100 100 M0 100", Stroke = "white", StrokeWidth = 4 },
                 // three differently sized tick marks
                 new Shape { GeometryString = "M0 0 V10", Stroke = "white", StrokeWidth = 1 },
                 new Shape { GeometryString = "M0 0 V12", Stroke = "white", StrokeWidth = 2, Interval = 2 },
@@ -549,7 +549,7 @@ namespace WinFormsSampleControls.ControlGauges {
                 CommonScaleBindings()
               ).Add(
                 // the main path of the graduated panel, an arc starting at 135 degrees and sweeping for 270 degrees
-                new Shape { Name = "PATH", GeometryString = "M-70.7 70.7 B135 270 0 0 100 100 M0 100", Stroke = "white", StrokeWidth = 4 },
+                new Shape { Name = "PATH", GeometryString = "M-70.7107 70.7107 B135 270 0 0 100 100 M0 100", Stroke = "white", StrokeWidth = 4 },
                 // three differently sized tick marks
                 new Shape { GeometryString = "M0 0 V10", Stroke = "white", StrokeWidth = 1 },
                 new Shape { GeometryString = "M0 0 V12", Stroke = "white", StrokeWidth = 2, Interval = 2 },

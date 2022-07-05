@@ -18,8 +18,8 @@ namespace WinFormsSampleControls.AddRemoveColumns {
     public AddRemoveColumnsControl() {
       InitializeComponent();
 
+      myDiagram = diagramControl1.Diagram;
       Setup();
-
 
       btnInsertIntoArray.Click += (e, obj) => InsertIntoArray();
       btnRemoveFromArray.Click += (e, obj) => RemoveFromArray();
@@ -28,32 +28,19 @@ namespace WinFormsSampleControls.AddRemoveColumns {
       btnSwapColumns.Click += (e, obj) => SwapTwoColumns();
 
       goWebBrowser1.Html = @"
-
-   <p>Add a row or Remove the second row of the table held by the selected node:</p>
-
-";
+   <p>Add a row or Remove the second row of the table held by the selected node:</p>";
 
       goWebBrowser2.Html = @"
-
-   <p>Add a column or remove the fourth column from the table of the selected node:</p>
-
-";
+   <p>Add a column or remove the fourth column from the table of the selected node:</p>";
 
       goWebBrowser3.Html = @"
-
-   <p>Swap the ""phone"" and ""office"" columns for each selected node:</p>
-";
+   <p>Swap the ""phone"" and ""office"" columns for each selected node:</p>";
 
       goWebBrowser4.Html = @"
-
-   <p>See also the <a href=""ColumnResizing"">Column and Row Resizing Tools</a></p>
-";
-
+   <p>See also the <a href=""ColumnResizing"">Column and Row Resizing Tools</a></p>";
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
       myDiagram.UndoManager.IsEnabled = true;
 
@@ -65,8 +52,10 @@ namespace WinFormsSampleControls.AddRemoveColumns {
           },
           new Panel(PanelLayoutTable.Instance) {
             // the rows for the people
+            Name = "TABLE",
             DefaultAlignment = Spot.Left,
             DefaultColumnSeparatorStroke = "black",
+            Margin = 0.5,
             ItemTemplate =  // bound to a person/row data object
               new Panel(PanelLayoutTableRow.Instance) {
                 ItemTemplate =  // bound to a cell object
@@ -335,6 +324,7 @@ namespace WinFormsSampleControls.AddRemoveColumns {
       myDiagram.StartTransaction("removeColumn");
       var model = myDiagram.Model;
       model.RemoveListItem(d.ColumnDefinitions, 3);
+      (n.FindElement("TABLE") as Panel).RemoveColumnDefinition((int)coldef.Column);
       // update columns for each person in this table
       var people = d.People;
       for (var j = 0; j < people.Count; j++) {

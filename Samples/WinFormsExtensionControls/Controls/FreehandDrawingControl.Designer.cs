@@ -35,7 +35,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
             this.checkBxReshaping = new System.Windows.Forms.CheckBox();
             this.checkBxRotating = new System.Windows.Forms.CheckBox();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -50,7 +50,7 @@ namespace WinFormsExtensionControls.FreehandDrawing {
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -167,14 +167,14 @@ namespace WinFormsExtensionControls.FreehandDrawing {
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 909);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1336, 414);
-            this.saveLoadModel1.TabIndex = 3;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modelJson1.Location = new System.Drawing.Point(3, 909);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1336, 414);
+            this.modelJson1.TabIndex = 3;
             //
             // contextMenuStrip1
             //
@@ -209,6 +209,6 @@ namespace WinFormsExtensionControls.FreehandDrawing {
     private System.Windows.Forms.CheckBox checkBxResizing;
     private System.Windows.Forms.CheckBox checkBxReshaping;
     private System.Windows.Forms.CheckBox checkBxRotating;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

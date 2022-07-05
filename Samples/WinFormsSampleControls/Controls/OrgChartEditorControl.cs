@@ -22,10 +22,10 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
       zoomFitBtn.Click += (e, obj) => ZoomToFit();
       centerRootBtn.Click += (e, obj) => CenterRoot();
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     {""Key"":1, ""Name"":""Stella Payne Diaz"", ""Title"":""CEO""},
     {""Key"":2, ""Name"":""Luke Warm"", ""Title"":""VP Marketing/Sales"", ""Parent"":1},
@@ -364,12 +364,12 @@ namespace WinFormsSampleControls.OrgChartEditor {
 
     private void SaveModel() {
       if (_Diagram == null) return;
-      saveLoadModel1.ModelJson = _Diagram.Model.ToJson();
+      modelJson1.JsonText = _Diagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (_Diagram == null) return;
-      var model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      var model = Model.FromJson<Model>(modelJson1.JsonText);
       var lastkey = 1;
       model.MakeUniqueKeyFunction = (model, data) => {
         var k = data.Key;

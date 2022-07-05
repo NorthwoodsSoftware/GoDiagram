@@ -263,7 +263,6 @@ namespace WinFormsSampleControls.OrgChartStatic {
 
       if (input != "") {
         // search four different data properties for the string, any of which may match for success
-        // create a case insensitive RegExp from what the user typed
         var data = myDiagram.Model.NodeDataSource as IEnumerable<NodeData>;
         var results = new HashSet<Node>();
         foreach (var nd in data) {

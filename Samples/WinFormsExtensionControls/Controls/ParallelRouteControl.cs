@@ -31,7 +31,7 @@ namespace WinFormsExtensionControls.ParallelRoute {
       myDiagram.UndoManager.IsEnabled = true;
 
       myDiagram.NodeTemplate = new Node(PanelLayoutAuto.Instance)
-        .Bind("Location", "Loc", Point.Parse).Add(
+        .Bind("Location", "Loc", Point.Parse, Point.Stringify).Add(
           new Shape {
             PortId = "",
             FromLinkable = true,

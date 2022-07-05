@@ -25,8 +25,8 @@ namespace WinFormsSampleControls.DynamicPorts {
       leftBtn.Click += (e, obj) => AddPort("Left");
       rightBtn.Click += (e, obj) => AddPort("Right");
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
   <p>
@@ -45,7 +45,7 @@ namespace WinFormsSampleControls.DynamicPorts {
     See the <a href=""intro/ports.html"">Ports Intro page</a> for an explanation of GoDiagram ports.
       </p>
 ";
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""LinkFromPortIdProperty"": ""FromPort"",
   ""LinkToPortIdProperty"": ""ToPort"",
   ""NodeDataSource"": [
@@ -306,6 +306,8 @@ namespace WinFormsSampleControls.DynamicPorts {
             newarr[i + 1] = arr[i];
             // remember the new list in the model
             myDiagram.Model.Set(port.Part.Data, port["_Side"] + "List", newarr);
+            foreach (var l in ((Node)port.Part).FindLinksConnected(newarr[i].PortId)) l.InvalidateRoute();
+            foreach (var l in ((Node)port.Part).FindLinksConnected(newarr[i + 1].PortId)) l.InvalidateRoute();
             myDiagram.CommitTransaction("swap ports");
             break;
           }
@@ -355,12 +357,12 @@ namespace WinFormsSampleControls.DynamicPorts {
     // Show the diagram's model in JSON format that the user may edit
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
 
     // define the model data

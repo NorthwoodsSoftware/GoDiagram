@@ -19,8 +19,8 @@ namespace WinFormsSampleControls.SwimLanesVertical {
 
       Setup();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
       btnLayout.Click += (e, obj) => _RelayoutLanes();
 
       goWebBrowser1.Html = @"
@@ -46,7 +46,7 @@ namespace WinFormsSampleControls.SwimLanesVertical {
         </p>
         <p>
       Each Group is collapsible.
-      The previous breadth of that lane is saved in the _SavedBreadth property, to be restored when expanded.
+      The previous breadth of that lane is saved in the SavedBreadth property, to be restored when expanded.
         </p>
         <p>
       When a Group/lane is selected, its custom <a>Part.ResizeAdornmentTemplate</a>
@@ -81,14 +81,14 @@ namespace WinFormsSampleControls.SwimLanesVertical {
     }
 
     // this is called after nodes have been moved or lanes resized, to layout all of the Pool Groups again
-    public void RelayoutDiagram(Diagram diag) {
-      diag.Layout.InvalidateLayout();
-      var itr = diag.FindTopLevelGroups();
+    public void RelayoutDiagram(Diagram diagram) {
+      diagram.Layout.InvalidateLayout();
+      var itr = diagram.FindTopLevelGroups();
       while (itr.MoveNext()) {
         var g = itr.Current;
         if (g.Category == "Pool") g.Layout.InvalidateLayout();
       }
-      diag.LayoutDiagram();
+      diagram.LayoutDiagram();
     }
 
     // compute the minimum size of a Pool Group needed to hold all the Lane Groups
@@ -249,9 +249,9 @@ namespace WinFormsSampleControls.SwimLanesVertical {
               var shp = grp.ResizeElement;
               if (grp.Diagram.UndoManager.IsUndoingRedoing) return;
               if (grp.IsSubGraphExpanded) {
-                shp.Width = (double)grp["_SavedBreadth"];
-              } else {
-                grp["_SavedBreadth"] = shp.Width;
+                shp.Width = (grp.Data as NodeData).SavedBreadth;
+              } else {   // remember the original width
+                if (!double.IsNaN(shp.Width)) grp.Diagram.Model.Set(grp.Data, "SavedBreadth", shp.Width);
                 shp.Width = double.NaN;
               }
               updateCrossLaneLinks(grp);
@@ -425,12 +425,12 @@ namespace WinFormsSampleControls.SwimLanesVertical {
 
     private void SaveModel() {
       if (_Diagram == null) return;
-      saveLoadModel1.ModelJson = _Diagram.Model.ToJson();
+      modelJson1.JsonText = _Diagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (_Diagram == null) return;
-      _Diagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       _Diagram.DelayInitialization(RelayoutDiagram);
     }
 
@@ -444,6 +444,7 @@ namespace WinFormsSampleControls.SwimLanesVertical {
     public string Color { get; set; }
     public string Size { get; set; }
     public bool Expanded { get; set; } = true;
+    public double SavedBreadth { get; set; } = double.NaN;
   }
 
   public class LinkData : Model.LinkData { }

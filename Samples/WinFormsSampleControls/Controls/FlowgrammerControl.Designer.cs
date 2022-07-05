@@ -31,7 +31,7 @@ namespace WinFormsSampleControls.Flowgrammer {
             this.overviewControl1 = new Northwoods.Go.WinForms.OverviewControl();
             this.btnNewDiagram = new System.Windows.Forms.Button();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +47,7 @@ namespace WinFormsSampleControls.Flowgrammer {
             this.tableLayoutPanel1.Controls.Add(this.overviewControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnNewDiagram, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -110,15 +110,15 @@ namespace WinFormsSampleControls.Flowgrammer {
             this.goWebBrowser1.TabIndex = 5;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.saveLoadModel1, 2);
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 794);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
-            this.saveLoadModel1.TabIndex = 6;
+            this.modelJson1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 794);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 343);
+            this.modelJson1.TabIndex = 6;
             //
             // FlowgrammerControl
             //
@@ -142,6 +142,6 @@ namespace WinFormsSampleControls.Flowgrammer {
     private Northwoods.Go.WinForms.OverviewControl overviewControl1;
     private System.Windows.Forms.Button btnNewDiagram;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

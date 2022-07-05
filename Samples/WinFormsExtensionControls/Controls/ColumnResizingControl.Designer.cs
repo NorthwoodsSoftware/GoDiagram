@@ -28,7 +28,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
-            this.txtJSON = new System.Windows.Forms.TextBox();
+            this.mySavedModel = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser2)).BeginInit();
@@ -42,7 +42,7 @@ namespace WinFormsExtensionControls.ColumnResizing {
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtJSON, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mySavedModel, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,12 +88,12 @@ namespace WinFormsExtensionControls.ColumnResizing {
             //
             // txtJSON
             //
-            this.txtJSON.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtJSON.Location = new System.Drawing.Point(3, 683);
-            this.txtJSON.Multiline = true;
-            this.txtJSON.Name = "txtJSON";
-            this.txtJSON.Size = new System.Drawing.Size(994, 335);
-            this.txtJSON.TabIndex = 4;
+            this.mySavedModel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mySavedModel.Location = new System.Drawing.Point(3, 683);
+            this.mySavedModel.Multiline = true;
+            this.mySavedModel.Name = "txtJSON";
+            this.mySavedModel.Size = new System.Drawing.Size(994, 335);
+            this.mySavedModel.TabIndex = 4;
             //
             // ColumnResizingControl
             //
@@ -116,6 +116,6 @@ namespace WinFormsExtensionControls.ColumnResizing {
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
-    private System.Windows.Forms.TextBox txtJSON;
+    private System.Windows.Forms.TextBox mySavedModel;
   }
 }

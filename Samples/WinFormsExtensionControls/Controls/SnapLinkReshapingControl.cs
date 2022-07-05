@@ -18,8 +18,8 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
     public SnapLinkReshapingControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       avoidsNodes.CheckedChanged += (e, obj) => (myDiagram.ToolManager.LinkReshapingTool as SnapLinkReshapingTool).AvoidsNodes = avoidsNodes.Checked;
 
@@ -46,7 +46,7 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
           </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""LinkFromPortIdProperty"": ""FromPort"",
   ""LinkToPortIdProperty"": ""ToPort"",
   ""NodeDataSource"": [
@@ -396,11 +396,11 @@ namespace WinFormsExtensionControls.SnapLinkReshaping {
     private void SaveModel() {
       if (myDiagram == null) return;
       (myDiagram.Model.SharedData as SharedData).Position = Point.Stringify(myDiagram.Position);
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
       if (!(myDiagram.Model.SharedData is SharedData)) {
         myDiagram.Model.SharedData = new SharedData();

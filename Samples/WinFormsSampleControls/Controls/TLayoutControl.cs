@@ -45,8 +45,7 @@ namespace WinFormsSampleControls.TLayout {
           }
           .Bind("Text")
           .Add(
-            new Shape {
-                Figure = "Ellipse",
+            new Shape("Ellipse") {
                 Fill = "lightgray", // data binding may provide different value
                 Stroke = null,
                 DesiredSize = new Size(30, 30)

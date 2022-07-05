@@ -54,7 +54,7 @@ namespace WinFormsExtensionControls.GeometryReshaping {
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(994, 494);
+            this.diagramControl1.Size = new System.Drawing.Size(994, 550);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
             //

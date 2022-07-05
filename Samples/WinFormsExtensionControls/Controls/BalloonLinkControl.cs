@@ -3,10 +3,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
+using Northwoods.Go.Extensions;
 using Northwoods.Go.Models;
 
 
-namespace WinFormsExtensionControls.BalloonLink {
+namespace WinFormsExtensionControls.Balloon {
   [ToolboxItem(false)]
   public partial class BalloonLinkControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
@@ -37,22 +38,18 @@ namespace WinFormsExtensionControls.BalloonLink {
 
       // define a simple Node template
       myDiagram.NodeTemplate =
-        new Node(PanelLayoutAuto.Instance).Add(  // the Shape will go around the TextBlock
-          new Shape {
-            Figure = "Rectangle",
-            StrokeWidth = 0
-          }.Bind("Fill", "Color"),  // Shape.Fill is bound to Node.Data.Color
-          new TextBlock {
-            Margin = 8  // some room around the text
-          }.Bind("Text", "Key")  // TextBlock.Text is bound to Node.Data.Key
-        );
+        new Node("Auto") { Margin = 2 }
+          .Add(  // the Shape will go around the TextBlock
+            new Shape("Rectangle") { StrokeWidth = 0 }
+              .Bind("Fill", "Color"),  // Shape.Fill is bound to Node.Data.Color
+            new TextBlock { Margin = 8 } // some room around the text
+              .Bind("Text", "Key")  // TextBlock.Text is bound to Node.Data.Key
+          );
 
       // use BalloonLink extension as default link template
-      myDiagram.LinkTemplate = new Northwoods.Go.Extensions.BalloonLink().Add(
-        new Shape {
-          Stroke = "limegreen", StrokeWidth = 3, Fill = "limegreen"
-        }
-      );
+      myDiagram.LinkTemplate =
+        new BalloonLink()
+          .Add(new Shape { Stroke = "limegreen", StrokeWidth = 3, Fill = "limegreen"});
 
       myDiagram.Model = new Model() {
         NodeDataSource = new List<NodeData>() {
@@ -63,18 +60,13 @@ namespace WinFormsExtensionControls.BalloonLink {
           new LinkData{ From = "Alpha", To = "Beta" }
         }
       };
-
     }
-
   }
 
   // define the model types
   public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
-
   public class NodeData : Model.NodeData {
     public Brush Color { get; set; }
   }
-
   public class LinkData : Model.LinkData { }
-
 }

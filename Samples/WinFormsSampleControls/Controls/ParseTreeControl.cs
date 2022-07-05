@@ -136,7 +136,7 @@ namespace WinFormsSampleControls.ParseTree {
       foreach (var v in Network.Vertexes) {
         if (v.DestinationEdges.Count == 0) {
           // shift the node down to Y
-          v.Node.Position = new Point(v.Node.Position.X, y);
+          v.Node.MoveTo(v.Node.Position.X, y);
           // extend the last segment vertically
           v.Node.ToEndSegmentLength = Math.Abs(v.CenterY - y);
         } else { // restore to normal value

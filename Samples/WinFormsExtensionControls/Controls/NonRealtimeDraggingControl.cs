@@ -33,7 +33,7 @@ namespace WinFormsExtensionControls.NonRealtimeDragging {
       myDiagram = diagramControl1.Diagram;
 
       // diagram properties
-      myDiagram.ToolManager.DraggingTool = new NonRealtimeDraggingTool();
+      myDiagram.ToolManager.DraggingTool = new NonRealtimeDraggingTool { Duration = 600 };
       myDiagram.UndoManager.IsEnabled = true;
 
       // node template

@@ -264,7 +264,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     ///     };
     /// </code>
     /// </remarks>
-    public Func<Node, Node, double> Comparer {
+    public Comparison<Node> Comparer {
       get {
         return _Comparer;
       }
@@ -320,8 +320,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Size;
       }
       set {
-        // check if both width and height are NaN, as per https://stackoverflow.Com/a/16988441
-        if (value.Width != value.Width && value.Height != value.Height) {
+        if (double.IsNaN(value.Width) && double.IsNaN(value.Height)) {
           _Size = value;
           _FillViewport = true;
           InvalidateLayout();
@@ -484,7 +483,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     private PackMode _PackMode = PackMode.AspectOnly;
     private SortMode _SortMode = SortMode.None;
     private SortOrder _SortOrder = SortOrder.Descending;
-    private Func<Node, Node, double> _Comparer = null;
+    private Comparison<Node> _Comparer = null;
     private double _AspectRatio = 1;
     private Size _Size = new(500, 500);
     private Size _DefaultSize = new(500, 500);
@@ -591,7 +590,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             return 0;
           };
         }
-        nodes.Sort(new FuncComparer<Node>(Comparer));
+        nodes.Sort(Comparer);
       }
 
       var targetWidth = Size.Width != 0 ? Size.Width : 1;
@@ -616,7 +615,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       // in the Fit and ExpandToFit modes, we need to run the packing another time to figure out what the correct
       // _FixedModeSpacing should be. Then the layout is run a final time with the correct spacing.
       if (PackMode == PackMode.Fit || PackMode == PackMode.ExpandToFit) {
-        var bounds0 = new Rect(_Bounds.X, _Bounds.Y, _Bounds.Width, _Bounds.Height);
+        var bounds0 = _Bounds;
         _Bounds = new Rect();
         _FixedSizeModeSpacing = Math.Floor(averageSize);
         fits = HasCircularNodes || PackShape == PackShape.Spiral ? FitCircles(nodes) : FitRects(nodes);
@@ -668,7 +667,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         node.MoveTo(fit.X, fit.Y);
         nodeBounds.Add(node.ActualBounds);
-        _ActualBounds = _ActualBounds.Union(node.ActualBounds); //TODO should this set _Actualbounds?
+        _ActualBounds = _ActualBounds.Union(node.ActualBounds);
       }
       _NodeBounds = nodeBounds; // save node bounds in case we want to calculate the smallest enclosing circle later
 
@@ -744,44 +743,33 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       if (nodes.Count == 0) return fits;
 
-      var n1 = new ListNode<Rect>(nodes[0].ActualBounds.Inflate(sideSpacing, sideSpacing));
-      n1.Data = new Rect(0, 0, n1.Data.Width == 0 ? 0.1 : n1.Data.Width, n1.Data.Height == 0 ? 0.1 : n1.Data.Height);
-      fits.Add(n1.Data);
-      _Bounds = _Bounds.Union(n1.Data);
+      var r1 = nodes[0].ActualBounds.Inflate(sideSpacing, sideSpacing);
+      r1 = new Rect(0, 0, r1.Width == 0 ? 0.1 : r1.Width, r1.Height == 0 ? 0.1 : r1.Height);
+      fits.Add(r1);
+      _Bounds = _Bounds.Union(r1);
       if (nodes.Count < 2) return fits;
 
-      var n2 = new ListNode<Rect>(nodes[1].ActualBounds.Inflate(sideSpacing, sideSpacing));
-      n2.Data.Width = n2.Data.Width == 0 ? 0.1 : n2.Data.Width;
-      n2.Data.Height = n2.Data.Height == 0 ? 0.1 : n2.Data.Height;
-      n2.Data.X = -n2.Data.Width;
-      n2.Data.Y = n1.Data.CenterY - n2.Data.Width / 2;
-
-      fits.Add(n2.Data);
-      _Bounds = _Bounds.Union(n2.Data);
+      var r2 = nodes[1].ActualBounds.Inflate(sideSpacing, sideSpacing);
+      r2 = new Rect(0, 0, r2.Width == 0 ? 0.1 : r2.Width, r2.Height == 0 ? 0.1 : r2.Height);
+      r2 = new Rect(-r2.Width, r1.CenterY - r2.Width / 2, r2.Width, r2.Height);
+      fits.Add(r2);
+      _Bounds = _Bounds.Union(r2);
       if (nodes.Count < 3) return fits;
 
-      var n3 = new ListNode<Rect>(nodes[2].ActualBounds.Inflate(sideSpacing, sideSpacing));
-      n3.Data.X = 0;
-      n3.Data.Y = 0;
-      n3.Data.Width = n3.Data.Width == 0 ? 0.1 : n3.Data.Width;
-      n3.Data.Height = n3.Data.Height == 0 ? 0.1 : n3.Data.Height;
-      n3.Data = place(n2.Data, n1.Data, n3.Data);
+      var r3 = nodes[2].ActualBounds.Inflate(sideSpacing, sideSpacing);
+      r3 = new Rect(0, 0, r3.Width == 0 ? 0.1 : r3.Width, r3.Height == 0 ? 0.1 : r3.Height);
+      r3 = place(r2, r1, r3);
+      fits.Add(r3);
+      _Bounds = _Bounds.Union(r3);
 
-      fits.Add(n3.Data);
-      _Bounds = _Bounds.Union(n3.Data);
-
-      n2 = frontChain.Push(n2.Data);
-      n3 = frontChain.Push(n3.Data);
-      n1 = frontChain.Push(n1.Data);
+      var n2 = frontChain.Push(r2);
+      var n3 = frontChain.Push(r3);
+      var n1 = frontChain.Push(r1);
 
       for (var i = 3; i < nodes.Count; i++) {
-        n3 = new ListNode<Rect>(nodes[i].ActualBounds.Inflate(sideSpacing, sideSpacing));
-        n3.Data.X = 0;
-        n3.Data.Y = 0;
-        n3.Data.Width = n3.Data.Width == 0 ? 0.1 : n3.Data.Width;
-        n3.Data.Height = n3.Data.Height == 0 ? 0.1 : n3.Data.Height;
-
-        n3.Data = place(n1.Data, n2.Data, n3.Data);
+        r3 = nodes[i].ActualBounds.Inflate(sideSpacing, sideSpacing);
+        r3 = new Rect(0, 0, r3.Width == 0 ? 0.1 : r3.Width, r3.Height == 0 ? 0.1 : r3.Height);
+        r3 = place(n1.Data, n2.Data, r3);
 
         var j = n2.Next;
         var k = n1.Prev;
@@ -790,13 +778,13 @@ namespace Northwoods.Go.Layouts.Extensions {
         var skip = false;
         do {
           if (sj <= sk) {
-            if (intersects(j.Data, n3.Data)) {
+            if (intersects(j.Data, r3)) {
               n2 = frontChain.RemoveBetween(n1, j); i--;
               skip = true; break;
             }
             sj += j.Data.Width / 2; j = j.Next;
           } else {
-            if (intersects(k.Data, n3.Data)) {
+            if (intersects(k.Data, r3)) {
               frontChain.RemoveBetween(k, n2);
               n1 = k; i--;
               skip = true; break;
@@ -807,11 +795,10 @@ namespace Northwoods.Go.Layouts.Extensions {
 
         if (skip) continue;
 
-        fits.Add(n3.Data);
-        _Bounds = _Bounds.Union(n3.Data);
+        fits.Add(r3);
+        _Bounds = _Bounds.Union(r3);
 
-        n3 = frontChain.InsertAfter(n3.Data, n1);
-        n2 = n3;
+        n2 = n3 = frontChain.InsertAfter(r3, n1);
 
         if (PackShape != PackShape.Spiral) {
           var aa = score(n1);
@@ -1305,6 +1292,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         nextConvexCornerOrientation = testOrientation;
         UpdateMinMaxSegments(newSegment);
       }
+
       var sNext = fit.S2 ?? s0;
       while (PointIsOnFitPerimeter(sNext.Data.X2, sNext.Data.Y2, fit.Bounds)) {
         sNext = sNext.Next;
@@ -1837,7 +1825,9 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       while (i < n) {
         p = circles[i];
-        if (e != null && EnclosesWeak(e, p)) { ++i; } else {
+        if (e != null && EnclosesWeak(e, p)) {
+          ++i;
+        } else {
           e = EncloseBasis(B = ExtendBasis(B, p));
           i = 0;
         }

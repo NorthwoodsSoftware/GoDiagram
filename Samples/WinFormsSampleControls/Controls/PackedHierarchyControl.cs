@@ -299,7 +299,10 @@ namespace WinFormsSampleControls.PackedHierarchy {
           return -1;
         }
         // otherwise sort in ascending order by size (all nodes are circular, so using width or height here doesn't matter)
-        return (na.ActualBounds.Width - nb.ActualBounds.Width);
+        var diff = na.ActualBounds.Width - nb.ActualBounds.Width;
+        if (diff > 0) return 1;
+        if (diff < 0) return -1;
+        return 0;
       };
     }
 

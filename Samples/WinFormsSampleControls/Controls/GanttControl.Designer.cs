@@ -26,13 +26,15 @@ namespace WinFormsSampleControls.Gantt {
     /// </summary>
     private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tasksControl = new Northwoods.Go.WinForms.DiagramControl();
+            this.ganttControl = new Northwoods.Go.WinForms.DiagramControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -40,44 +42,57 @@ namespace WinFormsSampleControls.Gantt {
             // tableLayoutPanel1
             //
             this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tasksControl, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ganttControl, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 500));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 690);
             this.tableLayoutPanel1.TabIndex = 0;
             //
-            // tableLayoutPanel2
+            // tasksControl
             //
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.trackBar1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 503);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 34);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tasksControl.AllowDrop = true;
+            this.tasksControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tasksControl.Location = new System.Drawing.Point(3, 3);
+            this.tasksControl.Name = "tasksControl";
+            this.tasksControl.Size = new System.Drawing.Size(200, 494);
+            this.tasksControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.tasksControl.TabIndex = 0;
+            this.tasksControl.Text = "tasksControl";
             //
-            // trackBar1
+            // ganttControl
             //
-            this.trackBar1.Location = new System.Drawing.Point(103, 3);
-            this.trackBar1.Maximum = 90;
-            this.trackBar1.Minimum = 2;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(94, 28);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.Value = 30;
+            this.ganttControl.AllowDrop = true;
+            this.ganttControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ganttControl.Location = new System.Drawing.Point(3, 3);
+            this.ganttControl.Name = "ganttControl";
+            this.ganttControl.Size = new System.Drawing.Size(994, 494);
+            this.ganttControl.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.ganttControl.TabIndex = 1;
+            this.ganttControl.Text = "ganttControl";
+            //
+            // flowLayoutPanel1
+            //
+            this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 2);
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.trackBar1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 503);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 34);
+            this.flowLayoutPanel1.TabIndex = 2;
             //
             // label1
             //
@@ -87,28 +102,40 @@ namespace WinFormsSampleControls.Gantt {
             this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Spacing:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             //
-            // diagramControl1
+            // trackBar1
             //
-            this.diagramControl1.AllowDrop = true;
-            this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.diagramControl1.Location = new System.Drawing.Point(3, 3);
-            this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(994, 494);
-            this.diagramControl1.TabIndex = 1;
-            this.diagramControl1.Text = "diagramControl1";
+            this.trackBar1.Location = new System.Drawing.Point(103, 3);
+            this.trackBar1.Maximum = 24;
+            this.trackBar1.Minimum = 8;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(94, 28);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.Value = 12;
             //
             // goWebBrowser1
             //
+            this.tableLayoutPanel1.SetColumnSpan(this.goWebBrowser1, 2);
             this.goWebBrowser1.CreationProperties = null;
             this.goWebBrowser1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Top;
             this.goWebBrowser1.Location = new System.Drawing.Point(3, 543);
             this.goWebBrowser1.Name = "goWebBrowser1";
-            this.goWebBrowser1.Size = new System.Drawing.Size(994, 125);
-            this.goWebBrowser1.TabIndex = 2;
+            this.goWebBrowser1.Size = new System.Drawing.Size(994, 75);
+            this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
+            //
+            // modelJson1
+            //
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 885);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1087, 343);
+            this.modelJson1.TabIndex = 4;
+            this.modelJson1.CanSaveLoad = false;
             //
             // GanttControl
             //
@@ -118,8 +145,8 @@ namespace WinFormsSampleControls.Gantt {
             this.Name = "GanttControl";
             this.Size = new System.Drawing.Size(1000, 690);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).EndInit();
             this.ResumeLayout(false);
@@ -129,10 +156,12 @@ namespace WinFormsSampleControls.Gantt {
     #endregion
 
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+    private Northwoods.Go.WinForms.DiagramControl tasksControl;
+    private Northwoods.Go.WinForms.DiagramControl ganttControl;
+    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     private System.Windows.Forms.TrackBar trackBar1;
     private System.Windows.Forms.Label label1;
-    private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

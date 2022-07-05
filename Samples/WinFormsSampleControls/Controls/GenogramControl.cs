@@ -89,17 +89,17 @@ namespace WinFormsSampleControls.Genogram {
         { Key: -20, n: ""Uncle"", s: ""M"", m: -11, f: -10, a:[""A""] },
 
         // ""Alice""'s ancestors
-        { Key: -12, n: ""Maternal Grandfather"", s: ""M"", ux: -13, a:[""D"", ""L""] },
-        { Key: -13, n: ""Maternal Grandmother"", s: ""F"", m: -31, f: -30, a:[""H""] },
+        { Key: -12, n: ""Maternal Grandfather"", s: ""M"", ux: -13, a:[""D"", ""L"", ""S""] },
+        { Key: -13, n: ""Maternal Grandmother"", s: ""F"", m: -31, f: -30, a:[""H"", ""S""] },
         { Key: -21, n: ""Aunt"", s: ""F"", m: -13, f: -12, a:[""C"", ""I""] },
-        { Key: -22, n: ""uncle"", s: ""M"", ux: -21 },
-        { Key: -23, n: ""cousin"", s: ""M"", m: -21, f: -22 },
-        { Key: -30, n: ""Maternal Great"", s: ""M"", ux: -31, a:[""D"", ""J""] },
-        { Key: -31, n: ""Maternal Great"", s: ""F"", m: -50, f: -51, a:[""B"", ""H"", ""L""] },
-        { Key: -42, n: ""Great Uncle"", s: ""M"", m: -30, f: -31, a:[""C"", ""J""] },
-        { Key: -43, n: ""Great Aunt"", s: ""F"", m: -30, f: -31, a:[""E"", ""G""] },
-        { Key: -50, n: ""Maternal Great Great"", s: ""F"", ux: -51, a:[""D"", ""I""] },
-        { Key: -51, n: ""Maternal Great Great"", s: ""M"", a:[""B"", ""H""] }
+        { Key: -22, n: ""Uncle"", s: ""M"", ux: -21 },
+        { Key: -23, n: ""Cousin"", s: ""M"", m: -21, f: -22 },
+        { Key: -30, n: ""Maternal Great"", s: ""M"", ux: -31, a:[""D"", ""J"", ""S""] },
+        { Key: -31, n: ""Maternal Great"", s: ""F"", m: -50, f: -51, a:[""B"", ""H"", ""L"", ""S""] },
+        { Key: -42, n: ""Great Uncle"", s: ""M"", m: -30, f: -31, a:[""C"", ""J"", ""S""] },
+        { Key: -43, n: ""Great Aunt"", s: ""F"", m: -30, f: -31, a:[""E"", ""G"", ""S""] },
+        { Key: -50, n: ""Maternal Great Great"", s: ""F"", vir: -51, a:[""D"", ""I"", ""S""] },
+        { Key: -51, n: ""Maternal Great Great"", s: ""M"", a:[""B"", ""H"", ""S""] }
       ]";
     }
 
@@ -288,7 +288,6 @@ namespace WinFormsSampleControls.Genogram {
         })
       );
 
-      // TODO diagram model goes here
       _SetupDiagram(new List<NodeData> {
         new NodeData { Key = -1, n = "Aaron", s = "M", m = -10, f = -11, ux = 1, a = new List<string> {"C", "F", "K"} }, // don't use key 0 since it's default
         new NodeData { Key = 1, n = "Alice", s = "F", m = -12, f = -13, a = new List<string> {"B", "H", "K"} },
@@ -333,7 +332,7 @@ namespace WinFormsSampleControls.Genogram {
         new NodeData { Key = -31, n = "Maternal Great", s = "F", m = -50, f = -51, a = new List<string> {"B", "H", "L", "S"} },
         new NodeData { Key = -42, n = "Great Uncle", s = "M", m = -30, f = -31, a = new List<string> {"C", "J", "S"} },
         new NodeData { Key = -43, n = "Great Aunt", s = "F", m = -30, f = -31, a = new List<string> {"E", "G", "S"} },
-        new NodeData { Key = -50, n = "Maternal Great Great", s = "F", ux = -51, a = new List<string> {"D", "I", "S"} },
+        new NodeData { Key = -50, n = "Maternal Great Great", s = "F", vir = -51, a = new List<string> {"D", "I", "S"} },
         new NodeData { Key = -51, n = "Maternal Great Great", s = "M", a = new List<string> {"B", "H", "S"} }
       }, 4);
     }
@@ -393,8 +392,8 @@ namespace WinFormsSampleControls.Genogram {
           var l = new List<int> { uxs };
           for (var j = 0; j < l.Count; j++) {
             var wife = l[j];
-            if (key == wife) {
-              // or warn no reflexive marriages
+            if (key == wife || model.FindNodeDataForKey(wife) is not NodeData wdata || wdata.s != "F") {
+              System.Diagnostics.Trace.TraceWarning($"cannot create Marriage relationship with self or unknown person {wife}");
               continue;
             }
             var link = _FindMarriage(key, wife);
@@ -414,8 +413,8 @@ namespace WinFormsSampleControls.Genogram {
           var l = new List<int> { virs };
           for (var j = 0; j < l.Count; j++) {
             var husband = l[j];
-            if (key == husband) {
-              // or warn no reflexive marriages
+            if (key == husband || model.FindNodeDataForKey(husband) is not NodeData hdata || hdata.s != "M") {
+              System.Diagnostics.Trace.TraceWarning($"cannot create Marriage relationship with self or unknown person {husband}");
               continue;
             }
             var link = _FindMarriage(key, husband);
@@ -440,17 +439,18 @@ namespace WinFormsSampleControls.Genogram {
       for (var i = 0; i < nodeDataSource.Count; i++) {
         var data = nodeDataSource[i];
         var key = data.Key;
-        var _mother = data.m;
-        var _father = data.f;
-        if (_mother != null && _father != null) {
-          var link = _FindMarriage(_mother.Value, _father.Value);
+        var mother = data.m;
+        var father = data.f;
+        if (mother != null && father != null) {
+          var link = _FindMarriage(mother.Value, father.Value);
           if (link == null) {
             // or warn no known mother or no known father or no known marriage between them
-            Console.WriteLine("unknown marriage " + _mother.Value + " & " + _father.Value);
+            System.Diagnostics.Trace.TraceWarning($"unknown marriage: {mother.Value} & {father.Value}");
             continue;
           }
-          var mdata = link.Data;
-          var mlabkey = (mdata as LinkData).LabelKeys[0];
+          var mdata = link.Data as LinkData;
+          if (mdata.LabelKeys == null) continue;
+          var mlabkey = mdata.LabelKeys[0];
           var cdata = new LinkData { From = mlabkey, To = key };
           (model as Model).AddLinkData(cdata);
         }
@@ -620,7 +620,7 @@ namespace WinFormsSampleControls.Genogram {
       // position regular nodes
       foreach (var v in Network.Vertexes) {
         if (v.Node != null && !v.Node.IsLinkLabel) {
-          v.Node.Position = new Point(v.X, v.Y);
+          v.Node.MoveTo(v.X, v.Y);
         }
       }
       // position the spouses of each marriage vertex
@@ -651,16 +651,16 @@ namespace WinFormsSampleControls.Genogram {
           spouseA = spouseB;
           spouseB = temp;
         }
-        spouseA.Position = new Point(v.X, v.Y);
-        spouseB.Position = new Point(v.X + spouseA.ActualBounds.Width + layout.SpouseSpacing, v.Y);
+        spouseA.MoveTo(v.X, v.Y);
+        spouseB.MoveTo(v.X + spouseA.ActualBounds.Width + layout.SpouseSpacing, v.Y);
         if (spouseA.Opacity == 0) {
           var pos = new Point(v.CenterX - spouseA.ActualBounds.Width / 2, v.Y);
-          spouseA.Position = pos;
-          spouseB.Position = pos;
+          spouseA.Move(pos);
+          spouseB.Move(pos);
         } else if (spouseB.Opacity == 0) {
           var pos = new Point(v.CenterX - spouseB.ActualBounds.Width / 2, v.Y);
-          spouseA.Position = pos;
-          spouseB.Position = pos;
+          spouseA.Move(pos);
+          spouseB.Move(pos);
         }
       }
       // position only-child nodes to be under the marriage label node

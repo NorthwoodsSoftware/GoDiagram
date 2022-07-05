@@ -15,8 +15,8 @@ namespace WinFormsSampleControls.MindMap {
     public MindMapControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
       btnLayout.Click += (e, obj) => _LayoutAll();
 
       goWebBrowser1.Html = @"
@@ -42,7 +42,7 @@ namespace WinFormsSampleControls.MindMap {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
        ""NodeDataSource"": [
         {""Key"":-1, ""Text"":""Mind Map"", ""Loc"":""0 0""},
         {""Key"":1, ""Parent"":-1, ""Text"":""Getting more time"", ""Brush"":""skyblue"", ""Dir"":""right"", ""Loc"":""77 -22""},
@@ -283,12 +283,12 @@ namespace WinFormsSampleControls.MindMap {
 
     private void SaveModel() {
       if (MyDiagram == null) return;
-      saveLoadModel1.ModelJson = MyDiagram.Model.ToJson();
+      modelJson1.JsonText = MyDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (MyDiagram == null) return;
-      MyDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      MyDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       MyDiagram.Model.UndoManager.IsEnabled = true;
     }
 

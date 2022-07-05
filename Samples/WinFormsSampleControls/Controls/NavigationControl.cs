@@ -42,7 +42,7 @@ namespace WinFormsSampleControls.Navigation {
                     .Bind("Text", "", _GetInfo)
                 )
           }
-          .Bind("Location")
+          .Bind(new Binding("Location").MakeTwoWay())
           .Add(
             new Shape {
                 Name = "OBJSHAPE",

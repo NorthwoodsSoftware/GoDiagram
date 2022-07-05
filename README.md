@@ -3,9 +3,6 @@ GoDiagram — .NET Library for Interactive Diagrams
 
 # *GoDiagram is currently in beta*
 
-
-<img align="right" height="150" src="https://camo.githubusercontent.com/9f7806c2bd58e9d2435f9b213881facc0e3ad8cf3efeb5ba973c89e669f535dd/68747470733a2f2f676f6469616772616d2e636f6d2f6173736574732f696d616765732f69636f6e2e706e67">
-
 [GoDiagram](https://godiagram.com) is a .NET library for creating interactive diagrams, charts, and graphs. It is based on the [GoJS](https://gojs.net) JavaScript diagramming library, also from Northwoods Software.
 
 [![open issues](https://img.shields.io/github/issues-raw/NorthwoodsSoftware/GoDiagram.svg)](https://github.com/NorthwoodsSoftware/GoDiagram/issues)
@@ -86,7 +83,7 @@ Graphs are constructed by creating one or more templates, with desired propertie
 
 The above diagram and model code creates the following graph.
 
-<img width="200" height="200" src="https://camo.githubusercontent.com/6b156093255a909563a2726c34f8f7a7b1b38c333098ab0a54618d7386c2fba1/68747470733a2f2f676f6469616772616d2e636f6d2f6173736574732f696d616765732f73637265656e73686f74732f6d696e696d616c2e706e67">
+![diagram](https://camo.githubusercontent.com/6b156093255a909563a2726c34f8f7a7b1b38c333098ab0a54618d7386c2fba1/68747470733a2f2f676f6469616772616d2e636f6d2f6173736574732f696d616765732f73637265656e73686f74732f6d696e696d616c2e706e67)
 
 
 ## License

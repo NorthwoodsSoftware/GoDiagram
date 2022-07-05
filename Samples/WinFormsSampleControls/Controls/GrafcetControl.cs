@@ -19,8 +19,8 @@ namespace WinFormsSampleControls.Grafcet {
     public GrafcetControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
 
@@ -35,7 +35,7 @@ namespace WinFormsSampleControls.Grafcet {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"": 1, ""Category"": ""Start"", ""Loc"": ""300 50"", ""Step"": 1, ""Text"": ""Action 1"" },
     { ""Key"": 2, ""Category"": ""Parallel"", ""Loc"": ""300 100"" },
@@ -445,12 +445,12 @@ namespace WinFormsSampleControls.Grafcet {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

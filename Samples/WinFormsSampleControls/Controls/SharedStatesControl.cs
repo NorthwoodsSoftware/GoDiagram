@@ -21,8 +21,8 @@ namespace WinFormsSampleControls.SharedStates {
     public SharedStatesControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => _Save();
-      saveLoadModel1.LoadClick += (e, obj) => _Load();
+      modelJson1.SaveClick += (e, obj) => _Save();
+      modelJson1.LoadClick += (e, obj) => _Load();
 
       goWebBrowser1.Html = @"
         <p>
@@ -41,7 +41,7 @@ namespace WinFormsSampleControls.SharedStates {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"
+      modelJson1.JsonText = @"
       {
         ""NodeDataSource"": [
           { ""Key"": -1, ""Text"": ""Operating"", ""Category"": ""Super"" },
@@ -70,13 +70,13 @@ namespace WinFormsSampleControls.SharedStates {
 
     private void _Save() {
       if (MyDiagram == null) return;
-      saveLoadModel1.ModelJson = MyDiagram.Model.ToJson();
+      modelJson1.JsonText = MyDiagram.Model.ToJson();
       MyDiagram.IsModified = false;
     }
 
     public void _Load() {
       if (MyDiagram == null) return;
-      MyDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      MyDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       // make sure all data have up-to-date "members" collections
       // this does not prevent any "cycles" of membership, which would result in undefined behavior
 

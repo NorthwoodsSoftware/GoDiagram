@@ -30,28 +30,30 @@ namespace WinFormsExtensionControls.GeometryReshaping {
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
       myDiagram.UndoManager.IsEnabled = true; // enable undo and redo
-      myDiagram.ToolManager.MouseDownTools.Insert(3, new GeometryReshapingTool()); // enable geometry reshaping
+      myDiagram.ToolManager.MouseDownTools.Insert(3,
+        new GeometryReshapingTool { IsResegmenting = true }); // enable geometry reshaping
 
       // node template
       myDiagram.NodeTemplate =
         new Node {
-          Reshapable = true
-        }.Add(
-          new Shape {
-            Name = "SHAPE",
-            Fill = "lightgray",
-            StrokeWidth = 1.5
-          }.Bind(
-            new Binding("GeometryString", "Geo").MakeTwoWay()
-          )
-        );
+            Resizable = true, ResizeElementName = "SHAPE",
+            Reshapable = true,  // GeometryReshapingTool assumes nonexistent Part.reshapeObjectName would be "SHAPE"
+            Rotatable = true, RotationSpot = Spot.Center
+          }
+          .Add(
+            new Shape { Name = "SHAPE", Fill = "lightgray", StrokeWidth = 1.5 }
+              .Bind(new Binding("GeometryString", "Geo").MakeTwoWay())
+          );
 
-      // model
-      myDiagram.Model = new Model() {
-        NodeDataSource = new List<NodeData>() {
+      myDiagram.Model = new Model {
+        NodeDataSource = new List<NodeData> {
           new NodeData {
-            Geo = "F M0 145 L75 2 L131 87 L195 0 L249 143z",
-            Key = "-1"
+            Key = "1",
+            Geo = "F M20 0 40 20 20 40 0 20z"
+          },
+          new NodeData {
+            Key = "2",
+            Geo = "F M0 145 L75 8 C100 20 120 40 131 87 C160 70 180 50 195 0 L249 133z"
           }
         }
       };

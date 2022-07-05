@@ -12,9 +12,17 @@ namespace WinFormsSampleControls.TreeMapper {
   public partial class TreeMapperControl : System.Windows.Forms.UserControl {
     private Diagram myDiagram;
 
+    // Control how Mapping links are routed:
+    // - "Normal": normal routing with fixed FromEndSegmentLength & ToEndSegmentLength
+    // - "ToGroup": so that the link routes stop at the edge of the group,
+    //     rather than going all the way to the connected nodes
+    // - "ToNode": so that they go all the way to the connected nodes
+    //     but only bend at the edge of the group
+    private static string ROUTINGSTYLE = "ToGroup";
+
     public TreeMapperControl() {
       InitializeComponent();
-
+      myDiagram = diagramControl1.Diagram;
       Setup();
 
       goWebBrowser1.Html = @"
@@ -27,17 +35,11 @@ namespace WinFormsSampleControls.TreeMapper {
       Draw new links by dragging from any field (i.e. any tree node).
       Reconnect a selected link by dragging its diamond-shaped handle.
         </p>
-        <p>
-      The model data, automatically updated after each change or undo or redo:
-        </p>
 ";
 
     }
 
     private void Setup() {
-
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.CommandHandler.CopiesTree = true;
       myDiagram.CommandHandler.DeletesTree = true;
       // newly drawn links always map a node in one tree to a ndoe in another tree
@@ -59,60 +61,90 @@ namespace WinFormsSampleControls.TreeMapper {
 
       var treeExpander = Builder.Make<Panel>("TreeExpanderButton");
       treeExpander.Width = 14; treeExpander.Height = 14;
+      treeExpander.Position = new Point(0, 2);
 
       // Each node in a tree is defined using the default NodeTemplate.
-      myDiagram.NodeTemplate = new TreeNode {
-        Movable = false,
-        Copyable = false,
-        Deletable = false, // user cannot move an individual node
-        // no Adornment: instead change panel background color by binding to Node.IsSelected
-        SelectionAdorned = false
-      }.Add(
-        treeExpander, // support expanding/collapsing subtrees
-        new Panel(PanelLayoutHorizontal.Instance) {
-          Position = new Point(16, 0)
-        }.Add(
-          // TODO add optional picture icon
-          new TextBlock()
-            .Bind("Text", "Key", (s, _) => "item " + ((int)s - 1).ToString())
-        ).Bind(
-          new Binding("Background", "IsSelected", (s, _) => (bool)s ? "lightblue" : "white").OfElement()
-        )
-      ).Bind(
-        // whether the user can start drawing a link from or to this ndoe depends on which group it's in
-        new Binding("FromLinkable", "Group", (k, _) => (int)k == -1),
-        new Binding("ToLinkable", "Group", (k, _) => (int)k == -2)
-      );
+      myDiagram.NodeTemplate =
+        new TreeNode {
+            Movable = false,
+            Copyable = false,
+            Deletable = false, // user cannot move an individual node
+            // no Adornment: instead change panel background color by binding to Node.IsSelected
+            SelectionAdorned = false,
+            Background = "white",
+            MouseEnter = (e, obj, _) => { (obj as Node).Background = "aquamarine"; },
+            MouseLeave = (e, obj, _) => {
+              var n = obj as Node;
+              n.Background = n.IsSelected ? "skyblue" : "white";
+            }
+          }
+          .Add(
+            treeExpander, // support expanding/collapsing subtrees
+            new Panel("Horizontal") { Position = new Point(16, 0) }
+              .Add(
+                //// optional icon for each tree node
+                //new Picture("defaultIcon") {
+                //    Width = 14, Height = 14,
+                //    Margin = new Margin(0, 4, 0, 0),
+                //    ImageStretch = ImageStretch.Uniform
+                //  }
+                //  .Bind("Source", "Src"),
+                new TextBlock()
+                  .Bind("Text", "Key", (s) => "item " + ((int)s - 1).ToString())
+            )
+          )
+          .Bind(
+            new Binding("Background", "IsSelected", (s, _) => (bool)s ? "skyblue" : "white").OfElement(),
+            // whether the user can start drawing a link from or to this ndoe depends on which group it's in
+            new Binding("FromLinkable", "Group", (k, _) => (int)k == -1),
+            new Binding("ToLinkable", "Group", (k, _) => (int)k == -2)
+          );
 
       // These are the links connecting tree nodes within each group.
 
       // myDiagram.LinkTemplate = new Link(); // without lines
 
-      myDiagram.LinkTemplate = new Link { // with lines
-        Selectable = false,
-        Routing = LinkRouting.Orthogonal,
-        FromEndSegmentLength = 4,
-        ToEndSegmentLength = 4,
-        FromSpot = new Spot(0.001, 1, 7, 0),
-        ToSpot = Spot.Left
-      }.Add(new Shape { Stroke = "lightgray" });
+      myDiagram.LinkTemplate =
+        new Link { // with lines
+            Selectable = false,
+            Routing = LinkRouting.Orthogonal,
+            FromEndSegmentLength = 4,
+            ToEndSegmentLength = 4,
+            FromSpot = new Spot(0.001, 1, 7, 0),
+            ToSpot = Spot.Left
+          }
+          .Add(new Shape { Stroke = "lightgray" });
 
       // These are the blue links connecting a tree node on the left side with one on the right side
       myDiagram.LinkTemplateMap.Add("Mapping",
         new MappingLink {
-          IsTreeLink = false, IsLayoutPositioned = false, LayerName = "Foreground",
-          FromSpot = Spot.Right, ToSpot = Spot.Left,
-          RelinkableFrom = true, RelinkableTo = true
-        }.Add(
-          new Shape {
-            Stroke = "blue", StrokeWidth = 2
+            IsTreeLink = false, IsLayoutPositioned = false, LayerName = "Foreground",
+            FromSpot = Spot.Right, ToSpot = Spot.Left,
+            RelinkableFrom = true, RelinkableTo = true
           }
-        )
+          .Add(new Shape { Stroke = "blue", StrokeWidth = 2 })
       );
 
-      myDiagram.GroupTemplate = new Group(PanelLayoutAuto.Instance) {
-        Deletable = false,
-        Layout = new TreeLayout {
+      myDiagram.GroupTemplate =
+        new Group("Auto") {
+            Deletable = false, Layout = makeGroupLayout()
+          }
+          .Bind("Position", "XY", Point.Parse, Point.Stringify)
+          .Bind("Layout", "Width", (w) => makeGroupLayout())
+          .Add(
+            new Shape { Fill = "white", Stroke = "lightgray" },
+            new Panel("Vertical") { DefaultAlignment = Spot.Left }
+              .Add(
+                new TextBlock {
+                    Font = new Font("Segoe UI", 14, FontWeight.Bold), Margin = new Margin(5, 5, 0, 5)
+                  }
+                  .Bind("Text"),
+                new Placeholder { Padding = 5 }
+              )
+          );
+
+      static TreeViewLayout makeGroupLayout() {
+        return new TreeViewLayout {  // taken from TreeView sample
           Alignment = TreeAlignment.Start,
           Angle = 0,
           Compaction = TreeCompaction.None,
@@ -122,22 +154,12 @@ namespace WinFormsSampleControls.TreeMapper {
           NodeSpacing = 0,
           SetsPortSpot = false,
           SetsChildPortSpot = false
-        }
-      }.Bind(
-        new Binding("Position", "XY", Point.Parse, Point.Stringify)
-      ).Add(
-        new Shape { Fill = "white", Stroke = "lightgray" },
-        new Panel(PanelLayoutVertical.Instance) { DefaultAlignment = Spot.Left }.Add(
-          new TextBlock {
-            Font = new Font("Segoe UI", 14, FontWeight.Bold), Margin = new Margin(5, 5, 0, 5)
-          }.Bind("Text"),
-          new Placeholder { Padding = 5 }
-        )
-      );
+        };
+      }
 
       var nodeDataSource = new List<NodeData> {
-        new NodeData { IsGroup = true, Key = -1, Text = "Left Side", XY = "0 0" },
-        new NodeData { IsGroup = true, Key = -2, Text = "Right Side", XY = "300 0" }
+        new NodeData { IsGroup = true, Key = -1, Text = "Left Side", XY = "0 0", Width = 150 },
+        new NodeData { IsGroup = true, Key = -2, Text = "Right Side", XY = "300 0", Width = 150 }
       };
 
       var linkDataSource = new List<LinkData> {
@@ -190,48 +212,135 @@ namespace WinFormsSampleControls.TreeMapper {
       return count;
     }
 
-  }
+    private static void _UpdateNodeWidths(Group group, double width) {
+      if (double.IsNaN(width)) {
+        foreach (var n in group.MemberParts) {
+          if (n is Node) n.Width = double.NaN;  // back to natural width
+        }
+      } else {  // figure out minimum group width
+        var minx = double.PositiveInfinity;
+        foreach (var n in group.MemberParts) {
+          if (n is Node) minx = Math.Min(minx, n.ActualBounds.X);
+        }
+        if (minx == double.PositiveInfinity) return;
+        var right = minx + width;
+        foreach (var n in group.MemberParts) {
+          if (n is Node) n.Width = Math.Max(0, right - n.ActualBounds.X);
+        }
+      }
+    }
 
-  public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
+    private void _ChangeStyle(object sender, EventArgs e) {
+      if (sender is System.Windows.Forms.RadioButton rb) {
+        if (rb.Checked) {
+          // find user-chosen style name
+          var stylename = "ToGroup";
+          switch (rb.Name) {
+            case "normalRB": stylename = "Normal"; break;
+            case "toGroupRB": stylename = "ToGroup"; break;
+            case "toNodeRB": stylename = "ToNode"; break;
+            default: stylename = "ToGroup"; break;
+          }
+          if (stylename != ROUTINGSTYLE) {
+            myDiagram.Commit(diag => {
+              ROUTINGSTYLE = stylename;
+              var git = diag.FindTopLevelGroups();
+              while (git.MoveNext()) {
+                var g = git.Current;
+                _UpdateNodeWidths(g, double.NaN);
+              }
+              diag.LayoutDiagram(true);  // force layouts to happen again
+              foreach (var l in diag.Links) {
+                l.InvalidateRoute();
+              }
+            });
+          }
+        } else {
+          return;  // ignore radio button changes that aren't checked
+        }
+      }
+    }
 
-  public class NodeData : Model.NodeData {
-    public string XY { get; set; }
-  }
+    public class Model : GraphLinksModel<NodeData, int, object, LinkData, int, string> { }
+    public class NodeData : Model.NodeData {
+      public string XY { get; set; }
+      public double Width { get; set; } = 100;
+    }
+    public class LinkData : Model.LinkData { }
 
-  public class LinkData : Model.LinkData { }
+    // Use a TreeNode so that when a node is not visible because a parent is collapsed,
+    // connected links seem to be connected with the lowest visible parent node.
+    // This also forces other links connecting with nodes in the group to be rerouted,
+    // because collapsing/expanding nodes will cause many nodes to move and to appear or disappear.
+    public class TreeNode : Node {
+      public TreeNode() : base() {
+        TreeExpandedChanged = (node) => {
+          if (node.ContainingGroup != null) {
+            foreach (var l in node.ContainingGroup.FindExternalLinksConnected()) {
+              l.InvalidateRoute();
+            }
+          }
+        };
+      }
 
-  public class TreeNode : Node {
-    public TreeNode() : base() {
-      TreeExpandedChanged = (node) => {
-        if (node.ContainingGroup != null) {
-          foreach (var l in node.ContainingGroup.FindExternalLinksConnected()) {
-            l.InvalidateRoute();
+      public override Node FindVisibleNode() {
+        // redirect links to lowest visible "ancestor" in the tree
+        Node n = this;
+        while (n != null && !n.IsVisible()) {
+          n = n.FindTreeParentNode();
+        }
+        return n;
+      }
+    }
+    // end treeNode
+
+    // If you want the regular routing where the Link.[From/To]EndSegmentLength controls
+    // the length of the horizontal segment adjacent to the port, don't use this class.
+    // Replace MappingLink with a Link in the "Mapping" link template.
+    public class MappingLink : Link {
+      public override Point GetLinkPoint(Node node, GraphObject port, Spot spot, bool from, bool ortho, Node othernode, GraphObject otherport) {
+        if (ROUTINGSTYLE != "ToGroup") {
+          return base.GetLinkPoint(node, port, spot, from, ortho, othernode, otherport);
+        } else {
+          var r = port.GetDocumentBounds();
+          var group = node.ContainingGroup;
+          var b = (group != null) ? group.ActualBounds : node.ActualBounds;
+          var op = othernode.GetDocumentPoint(Spot.Center);
+          var x = (op.X > r.CenterX) ? b.Right : b.Left;
+          return new Point(x, r.CenterY);
+        }
+      }
+
+      public override bool ComputePoints() {
+        var result = base.ComputePoints();
+        if (result && ROUTINGSTYLE == "ToNode") {
+          var fn = FromNode;
+          var tn = ToNode;
+          if (fn != null && tn != null) {
+            var fg = fn.ContainingGroup;
+            var fb = fg != null ? fg.ActualBounds : fn.ActualBounds;
+            var fpt = GetPoint(0);
+            var tg = tn.ContainingGroup;
+            var tb = tg != null ? tg.ActualBounds : tn.ActualBounds;
+            var tpt = GetPoint(PointsCount - 1);
+            SetPoint(1, new Point((fpt.X < tpt.X) ? fb.Right : fb.Left, fpt.Y));
+            SetPoint(PointsCount - 2, new Point((fpt.X < tpt.X) ? tb.Left : tb.Right, tpt.Y));
           }
         }
-      };
-    }
-
-    public override Node FindVisibleNode() {
-      // redirect links to lowest visible "ancestor" in the tree
-      Node n = this;
-      while (n != null && !n.IsVisible()) {
-        n = n.FindTreeParentNode();
+        return result;
       }
-      return n;
+    }
+    // end mappingLink
+
+    public class TreeViewLayout : TreeLayout {
+      // after the tree layout, change the width of each node so that all
+      // of the nodes have widths such that the collection has a given width
+      protected override void CommitNodes() {
+        base.CommitNodes();
+        if (ROUTINGSTYLE == "ToGroup") {
+          _UpdateNodeWidths(Group, (Group.Data as NodeData).Width);
+        }
+      }
     }
   }
-  // end treeNode
-
-  public class MappingLink : Link {
-    public override Point GetLinkPoint(Node node, GraphObject port, Spot spot, bool from, bool ortho, Node othernode, GraphObject otherport) {
-      var r = port.GetDocumentBounds();
-      var group = node.ContainingGroup;
-      var b = (group != null) ? group.ActualBounds : node.ActualBounds;
-      var op = othernode.GetDocumentPoint(Spot.Center);
-      var x = (op.X > r.CenterX) ? b.Right : b.Left;
-      return new Point(x, r.CenterY);
-    }
-  }
-  // end mappingLink
-
 }

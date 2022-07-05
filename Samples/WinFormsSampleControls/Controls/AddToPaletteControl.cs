@@ -29,8 +29,8 @@ namespace WinFormsSampleControls.AddToPalette {
 
       DefineTemplates();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
       btnAdd.Click += (e, obj) => AddToPalette();
       btnDelete.Click += (e, obj) => RemoveFromPalette();
 
@@ -50,7 +50,7 @@ namespace WinFormsSampleControls.AddToPalette {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"": 1, ""Text"":""Hello"", ""Figure"":""Circle"", ""Color"":""Green"", ""Loc"":""0 0"" },
     { ""Key"": 2, ""Text"":""World"", ""Figure"":""Rectangle"", ""Color"":""Red"", ""Loc"":""100 0"" }
@@ -142,12 +142,12 @@ namespace WinFormsSampleControls.AddToPalette {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
 
     private void AddToPalette() {

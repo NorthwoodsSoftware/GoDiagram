@@ -6,6 +6,7 @@ using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 using Northwoods.Go.Layouts;
+using System.Threading.Tasks;
 
 namespace WinFormsSampleControls.UpdateDemo {
   [ToolboxItem(false)]
@@ -246,7 +247,7 @@ namespace WinFormsSampleControls.UpdateDemo {
       Node editToRedo = null;
       var editList = new List<Node>();
 
-      void ChangedEvent(object _, ChangedEvent e) {
+      async void ChangedEvent(object _, ChangedEvent e) {
         // do not display some uninteresting kinds of transaction notifications
         if (e.Change == ChangeType.Transaction) {
           if (e.PropertyName == "CommittingTransaction" || e.ModelChange == ModelChangeType.SourceChanged) return;
@@ -281,6 +282,8 @@ namespace WinFormsSampleControls.UpdateDemo {
             }
           }
 
+          // delay the update of the undoDisplay tree, to catch the results of calls to Transaction.Optimize
+          await Task.Delay(10);
           var tx = e.Object as Transaction;
           var txname = (tx != null ? tx.Name : "");
           var parentData = new TreeNodeData {

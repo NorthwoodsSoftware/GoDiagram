@@ -205,7 +205,6 @@ namespace Northwoods.Go.Extensions {
         }
       }
 
-      UpdateTargetBindings();
       return true;
     }
   }

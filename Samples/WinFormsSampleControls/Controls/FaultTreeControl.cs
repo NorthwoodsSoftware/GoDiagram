@@ -19,8 +19,8 @@ namespace WinFormsSampleControls.FaultTree {
     public FaultTreeControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
 
@@ -46,7 +46,7 @@ namespace WinFormsSampleControls.FaultTree {
   </p>
 ";
 
-      saveLoadModel1.ModelJson = @"
+      modelJson1.JsonText = @"
        {
         ""NodeDataSource"": [
         {""Key"":1, ""Text"":""No flow to receiver"", ""Figure"":""None""},
@@ -185,12 +185,12 @@ namespace WinFormsSampleControls.FaultTree {
 
     private void SaveModel() {
       if (MyDiagram == null) return;
-      saveLoadModel1.ModelJson = MyDiagram.Model.ToJson();
+      modelJson1.JsonText = MyDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (MyDiagram == null) return;
-      MyDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      MyDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       MyDiagram.Model.UndoManager.IsEnabled = true;
     }
 

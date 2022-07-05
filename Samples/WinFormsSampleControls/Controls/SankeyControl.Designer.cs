@@ -28,8 +28,7 @@ namespace WinFormsSampleControls.Sankey {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.readBtn = new System.Windows.Forms.Button();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
@@ -43,14 +42,12 @@ namespace WinFormsSampleControls.Sankey {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.readBtn, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -75,28 +72,18 @@ namespace WinFormsSampleControls.Sankey {
             this.goWebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.goWebBrowser1.Location = new System.Drawing.Point(3, 743);
             this.goWebBrowser1.Name = "goWebBrowser1";
-            this.goWebBrowser1.Size = new System.Drawing.Size(994, 54);
+            this.goWebBrowser1.Size = new System.Drawing.Size(994, 25);
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // readBtn
+            // modelJson1
             //
-            this.readBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.readBtn.Location = new System.Drawing.Point(3, 803);
-            this.readBtn.Name = "readBtn";
-            this.readBtn.Size = new System.Drawing.Size(100, 34);
-            this.readBtn.TabIndex = 2;
-            this.readBtn.Text = "Read";
-            this.readBtn.UseVisualStyleBackColor = true;
-            //
-            // saveLoadModel1
-            //
-            this.saveLoadModel1.AutoSize = true;
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 843);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
-            this.saveLoadModel1.TabIndex = 3;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modelJson1.Location = new System.Drawing.Point(3, 843);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 343);
+            this.modelJson1.TabIndex = 3;
             //
             // goWebBrowser2
             //
@@ -105,7 +92,7 @@ namespace WinFormsSampleControls.Sankey {
             this.goWebBrowser2.Dock = System.Windows.Forms.DockStyle.Top;
             this.goWebBrowser2.Location = new System.Drawing.Point(3, 1192);
             this.goWebBrowser2.Name = "goWebBrowser2";
-            this.goWebBrowser2.Size = new System.Drawing.Size(994, 60);
+            this.goWebBrowser2.Size = new System.Drawing.Size(994, 25);
             this.goWebBrowser2.TabIndex = 4;
             this.goWebBrowser2.ZoomFactor = 1D;
             //
@@ -130,8 +117,7 @@ namespace WinFormsSampleControls.Sankey {
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
-    private System.Windows.Forms.Button readBtn;
+    private WinFormsSharedControls.ModelJson modelJson1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
   }
 }

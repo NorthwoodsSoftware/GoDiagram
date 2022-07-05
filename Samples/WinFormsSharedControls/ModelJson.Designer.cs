@@ -1,7 +1,7 @@
 ﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
 
 namespace WinFormsSharedControls {
-  partial class SaveLoadModel {
+  partial class ModelJson {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -79,7 +79,7 @@ namespace WinFormsSharedControls {
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Diagram Model saved in JSON format:";
+            this.label1.Text = "Diagram Model in JSON format:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             //
             // textBox1
@@ -95,13 +95,13 @@ namespace WinFormsSharedControls {
             this.textBox1.Text = "Model JSON";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             //
-            // SaveLoadModel
+            // ModelJson
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "SaveLoadModel";
+            this.Name = "ModelJson";
             this.Size = new System.Drawing.Size(800, 335);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

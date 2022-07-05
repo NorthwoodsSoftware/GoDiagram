@@ -11,27 +11,27 @@ using System.Globalization;
 namespace WinFormsSampleControls.Sankey {
   [ToolboxItem(false)]
   public partial class SankeyControl : System.Windows.Forms.UserControl {
-
     private Diagram myDiagram;
 
     public SankeyControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
-      readBtn.Click += (e, obj) => Setup();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
-         <p>
-      A Sankey diagram is a type of flow diagram where the Link thickness is proportional to the flow quantity.
-         </p>
+        <p>
+          A Sankey diagram is a type of flow diagram where the Link thickness is proportional to the flow quantity.
+        </p>";
 
-";
       goWebBrowser2.Html = @"
-         <p>
-      This sample demonstrates one way of generating a Sankey or flow diagram.
-      The data was derived from <a href=""https://tamc.github.io/Sankey/"">https://tamc.github.io/Sankey/</a>.
-        </p>
-";
-      saveLoadModel1.ModelJson = @"
+        <p>
+          This sample demonstrates one way of generating a Sankey or flow diagram.
+          The data was derived from <a href=""https://tamc.github.io/Sankey/"">https://tamc.github.io/Sankey/</a>.
+        </p>";
+
+      modelJson1.JsonText = @"
         {
      ""NodeDataSource"": [
     {""Key"":""Coal reserves"", ""Text"":""Coal reserves"", ""Color"":""#9d75c2""},
@@ -175,110 +175,112 @@ namespace WinFormsSampleControls.Sankey {
     {""From"":""Liquid"", ""To"":""International shipping"", ""Width"":13},
     {""From"":""Electricity grid"", ""To"":""Geosequestration"", ""Width"":1},
     {""From"":""Gas"", ""To"":""Losses"", ""Width"":2}
-     ]}
-";
+     ]}";
 
       Setup();
     }
 
     private void Setup() {
-
-      myDiagram = diagramControl1.Diagram;
-
       myDiagram.InitialAutoScale = AutoScale.UniformToFill;
+      myDiagram.AnimationManager.IsEnabled = false;
       myDiagram.Layout = new SankeyLayout {
-        SetsPortSpots = false, // to allowthe side spots on the nodes to take effect
-        Direction = 0, // rightwards
+        SetsPortSpots = false,  // to allow the "Side" spots on the nodes to take effect
+        Direction = 0,  // rightwards
         LayeringOption = LayeredDigraphLayering.OptimalLinkLength,
         PackOption = LayeredDigraphPack.Straighten | LayeredDigraphPack.Median,
-        LayerSpacing = 150, // lots of space between layers, for nicer thick links
+        LayerSpacing = 150,  // lots of space between layers, for nicer thick links
         ColumnSpacing = 1
       };
 
-      var colors = new List<string>
-        {"#AC193D/#BF1E4B", "#2672EC/#2E8DEF", "#8C0095/#A700AE", "#5133AB/#643EBF", "#008299/#00A0B1", "#D24726/#DC572E", "#008A00/#00A600", "#094AB2/#0A5BC4"};
+      var colors = new List<string> {
+        "#AC193D/#BF1E4B", "#2672EC/#2E8DEF",
+        "#8C0095/#A700AE", "#5133AB/#643EBF",
+        "#008299/#00A0B1", "#D24726/#DC572E",
+        "#008A00/#00A600", "#094AB2/#0A5BC4"
+      };
 
-      myDiagram.NodeTemplate = new Node(PanelLayoutHorizontal.Instance) {
-        LocationElementName = "SHAPE",
-        LocationSpot = Spot.Left,
-        PortSpreading = PortSpreading.Packed // rather than the default PortSpreading.SpreadingEvenly
-      }.Add(
-        new TextBlock {
-          Font = new Font("Segoe UI", 12, FontWeight.Bold),
-          Stroke = "black",
-          Margin = 5,
-          Name = "LTEXT"
-        }.Bind("Text", "LText"),
-        new Shape {
-          Name = "SHAPE",
-          Figure = "Rectangle",
-          Fill = "#2E8DEF", // default fill color
-          Stroke = null,
-          StrokeWidth = 0,
-          PortId = "",
-          FromSpot = Spot.RightSide,
-          ToSpot = Spot.LeftSide,
-          Height = 50,
-          Width = 20
-        }.Bind("Fill", "Color"),
-        new TextBlock {
-          Font = new Font("Segoe UI", 12, FontWeight.Bold),
-          Stroke = "black",
-          Margin = 5,
-          Name = "TEXT"
-        }.Bind("Text")
-      );
+      void textStyle(TextBlock tb) {
+        tb.Font = new Font("Segoe UI", 12, FontWeight.Bold);
+        tb.Stroke = "black";
+        tb.Margin = 5;
+      }
 
-      Brush getAutoLinkColor(LinkData data) {
-        var nodedata = myDiagram.Model.FindNodeDataForKey(data.From) as NodeData;
-        var hex = nodedata.Color.ToString();
+      myDiagram.NodeTemplate =
+        new Node("Horizontal") {
+            LocationElementName = "SHAPE",
+            LocationSpot = Spot.Left,
+            PortSpreading = PortSpreading.Packed  // rather than the default PortSpreading.SpreadingEvenly
+          }
+          .Add(
+            new TextBlock { Name = "LTEXT" }
+              .Apply(textStyle)
+              .Bind("Text", "LText"),
+            new Shape("Rectangle") {
+                Name = "SHAPE",
+                Fill = "#2E8DEF",  // default fill color
+                StrokeWidth = 0,
+                PortId = "",
+                FromSpot = Spot.RightSide,
+                ToSpot = Spot.LeftSide,
+                Height = 10,
+                Width = 20
+              }
+              .Bind("Fill", "Color"),
+            new TextBlock { Name = "TEXT" }
+              .Apply(textStyle)
+              .Bind("Text")
+        );
+
+      object getAutoLinkColor(object data) {
+        var linkdata = data as LinkData;
+        var nodedata = myDiagram.Model.FindNodeDataForKey(linkdata.From) as NodeData;
+        var hex = nodedata.Color;
         if (hex[0] == '#') {
           var rgb = int.Parse(hex.Substring(1, 6), NumberStyles.HexNumber);
           var r = rgb >> 16;
           var g = rgb >> 8 & 0xFF;
           var b = rgb & 0xFF;
           var alpha = 0.4;
-          if (data.Width <= 2) alpha = 1;
+          if (linkdata.Width <= 2) alpha = 1;
           var rgba = "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
           return rgba;
         }
         return "rgba(173, 173, 173, 0.25)";
       }
 
-      var linkSelectionAdornmentTemplate = new Adornment(PanelLayoutLink.Instance).Add(
-        new Shape {
-          IsPanelMain = true,
-          Fill = null,
-          Stroke = "rgba(0, 0, 255, 0.3)",
-          StrokeWidth = 0
-        }
-      );
+      // define the Link template
+      var linkSelectionAdornmentTemplate =
+        new Adornment("Link")
+          .Add(
+            new Shape { IsPanelMain = true, Fill = null, Stroke = "rgba(0, 0, 255, 0.3)", StrokeWidth = 0 }  // use selection object's StrokeWidth
+          );
 
-      myDiagram.LinkTemplate = new Link {
-        Curve = LinkCurve.Bezier,
-        SelectionAdornmentTemplate = linkSelectionAdornmentTemplate,
-        LayerName = "Background",
-        FromEndSegmentLength = 150, ToEndSegmentLength = 150,
-        Adjusting = LinkAdjusting.End
-      }.Add(
-        new Shape {
-          StrokeWidth = 4,
-          Stroke = "rgba(173, 173, 173, 0.25)"
-        }.Bind("Stroke", "", (data, _) => getAutoLinkColor(data as LinkData))
-         .Bind("StrokeWidth", "Width")
-      );
+      myDiagram.LinkTemplate =
+        new Link {
+            Curve = LinkCurve.Bezier,
+            SelectionAdornmentTemplate = linkSelectionAdornmentTemplate,
+            LayerName = "Background",
+            FromEndSegmentLength = 150, ToEndSegmentLength = 150,
+            Adjusting = LinkAdjusting.End
+          }
+          .Add(
+            new Shape { StrokeWidth = 4, Stroke = "rgba(173, 173, 173, 0.25)" }
+              .Bind("Stroke", "", getAutoLinkColor)
+              .Bind("StrokeWidth", "Width")
+          );
 
       // read in the JSON-format data from the Textarea element
       LoadModel();
     }
 
     private void SaveModel() {
-      var myDiagram = diagramControl1.Diagram;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      if (myDiagram == null) return;
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      if (myDiagram == null) return;
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
 
     public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
@@ -293,21 +295,32 @@ namespace WinFormsSampleControls.Sankey {
     }
 
     public class SankeyLayout : LayeredDigraphLayout {
-      // Before creating the LayeredDigraphLayoutNetwork of vertexes and edges,
-      // determine the desired height of each node (shape).
+      // determine the desired height of each node/vertex,
+      // based on the thicknesses of the connected links;
+      // actually modify the height of each node's SHAPE
       public override LayeredDigraphNetwork CreateNetwork() {
+        var net = base.CreateNetwork();
         foreach (var node in Diagram.Nodes) {
+          // figure out how tall the node's bar should be
           var height = _GetAutoHeightForNode(node);
           var font = new Font("Segoe UI", (float)Math.Max(12, Math.Round(height / 8)), FontWeight.Bold);
           var shape = node.FindElement("SHAPE");
-          var text = node.FindElement("TEXT");
-          var ltext = node.FindElement("LTEXT");
+          var text = node.FindElement("TEXT") as TextBlock;
+          var ltext = node.FindElement("LTEXT") as TextBlock;
           if (shape != null) shape.Height = height;
-          if (text != null) (text as TextBlock).Font = font;
-          if (ltext != null) (ltext as TextBlock).Font = font;
-
+          if (text != null) text.Font = font;
+          if (ltext != null) ltext.Font = font;
+          // and update the vertex's dimensions accordingly
+          var v = net.FindVertex(node);
+          if (v != null) {
+            node.EnsureBounds();
+            var r = node.ActualBounds;
+            v.Width = r.Width;
+            v.Height = r.Height;
+            v.FocusY = v.Height / 2;
+          }
         }
-        return base.CreateNetwork();
+        return net;
       }
 
       private double _GetAutoHeightForNode(Node node) {
@@ -339,11 +352,17 @@ namespace WinFormsSampleControls.Sankey {
                 break;
               }
             }
-            return (int)Math.Ceiling(max / ColumnSpacing);
+            return Math.Max(2, (int)Math.Ceiling(max / ColumnSpacing));
           }
-          return 1;
+          return 2;
         }
         return base.NodeMinColumnSpace(v, topleft);
+      }
+
+      // treat dummy vertexes as being thicker, so that the Bezier curves are gentler
+      protected override double NodeMinLayerSpace(LayeredDigraphVertex v, bool topleft) {
+        if (v.Node == null) return 100;
+        return base.NodeMinLayerSpace(v, topleft);
       }
 
       protected override void AssignLayers() {
@@ -359,9 +378,21 @@ namespace WinFormsSampleControls.Sankey {
             v.Layer = maxlayer;
           }
         }
-      }
       // from now on, the LayeredDigraphLayout will think that the Node is bigger than it really is
       // (other than the ones that are the widest or tallest in their respective layer).
+      }
+
+      protected override void CommitLayout() {
+        base.CommitLayout();
+        foreach (var e in Network.Edges) {
+          var link = e.Link;
+          if (link != null && link.Curve == LinkCurve.Bezier) {
+            // depend on Link.Adjusting == LinkAdjusting.End to fix up the end points of the links
+            // without losing the intermediate points of the route as determined by LayeredDigraphLayout
+            link.InvalidateRoute();
+          }
+        }
+      }
     }
     // end of SankeyLayout
   }

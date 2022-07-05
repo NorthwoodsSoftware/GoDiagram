@@ -14,7 +14,7 @@ namespace WinFormsSampleControls.Timeline {
 
     public TimelineControl() {
       InitializeComponent();
-
+      myDiagram = diagramControl1.Diagram;
       Setup();
 
       goWebBrowser1.Html = @"
@@ -42,101 +42,76 @@ namespace WinFormsSampleControls.Timeline {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
       // diagram properties
+      myDiagram.AnimationManager.IsEnabled = false;
+      myDiagram.CommandHandler = new CustomCommandHandler();
       myDiagram.Layout = new TimelineLayout();
-      myDiagram.IsTreePathToChildren = false; // arrows from children (events) to the parent (timeline bar)
+      myDiagram.IsTreePathToChildren = false;  // arrows from children (events) to the parent (timeline bar)
 
       // node template
       myDiagram.NodeTemplate =
-        new Node(PanelLayoutTable.Instance) {
-          LocationSpot = Spot.Center,
-          Movable = false
-        }.Add(
-          new Panel(PanelLayoutAuto.Instance).Add(
-            new Shape {
-              Figure = "RoundedRectangle",
-              Fill = "#252526",
-              Stroke = "#519ABA",
-              StrokeWidth = 3
-            },
-            new Panel(PanelLayoutTable.Instance).Add(
-              new TextBlock {
-                Row = 0,
-                Stroke = "#CCCCCC",
-                Wrap = Wrap.Fit,
-                Font = new Font("Segoe UI", 12, FontWeight.Bold),
-                TextAlign = TextAlign.Center,
-                Margin = 4
-              }.Bind(
-                new Binding("Text", "Event")
-              ),
-              new TextBlock {
-                Row = 1,
-                Stroke = "#A074C4",
-                TextAlign = TextAlign.Center,
-                Margin = 4
-              }.Bind(
-                new Binding("Text", "Date", (d, _) => {
-                  return ((DateTime)d).ToShortDateString();
-                })
+        new Node("Table") {
+            LocationSpot = Spot.Center, Movable = false
+          }
+          .Add(
+            new Panel("Auto")
+              .Add(
+                new Shape("RoundedRectangle") { Fill = "#252526", Stroke = "#519ABA", StrokeWidth = 3 },
+                new Panel("Table")
+                  .Add(
+                    new TextBlock {
+                        Row = 0,
+                        Stroke = "#CCCCCC",
+                        Wrap = Wrap.Fit,
+                        Font = new Font("Segoe UI", 12, FontWeight.Bold),
+                        TextAlign = TextAlign.Center, Margin = 4
+                      }
+                      .Bind("Text", "Event"),
+                    new TextBlock {
+                        Row = 1,
+                        Stroke = "#A074C4",
+                        TextAlign = TextAlign.Center, Margin = 4
+                      }
+                      .Bind("Text", "Date", (d) => ((DateTime)d).ToShortDateString())
+                  )
               )
-            )
-          )
-        );
+          );
 
       myDiagram.NodeTemplateMap.Add("Line",
-        new Node(PanelLayoutGraduated.Instance) {
-          Movable = false,
-          Copyable = false,
-          Resizable = true,
-          ResizeElementName = "MAIN",
-          Background = "transparent",
-          GraduatedMin = 0,
-          GraduatedMax = 365,
-          GraduatedTickUnit = 1,
-          ResizeAdornmentTemplate =  // only resizing at right end
-            new Adornment(PanelLayoutSpot.Instance).Add(
-              new Placeholder(),
-              new Shape {
-                Alignment = Spot.Right,
-                Cursor = "e-resize",
-                DesiredSize = new Size(4, 16),
-                Fill = "lightblue",
-                Stroke = "deepskyblue"
+        new Node("Graduated") {
+            Movable = false, Copyable = false,
+            Resizable = true, ResizeElementName = "MAIN",
+            Background = "transparent",
+            GraduatedMin = 0,
+            GraduatedMax = 365,
+            GraduatedTickUnit = 1,
+            ResizeAdornmentTemplate =  // only resizing at right end
+              new Adornment("Spot")
+                .Add(
+                  new Placeholder(),
+                  new Shape { Alignment = Spot.Right, Cursor = "e-resize", DesiredSize = new Size(4, 16), Fill = "lightblue", Stroke = "deepskyblue" }
+                )
+          }
+          .Bind("GraduatedMax", "", TimelineDays)
+          .Add(
+            new Shape("LineH") {
+                Name = "MAIN", Stroke = "#519ABA", Height = 1, StrokeWidth = 3
               }
-            )
-        }.Bind(
-          new Binding("GraduatedMax", "", TimelineDays)
-        ).Add(
-          new Shape {
-            Figure = "LineH",
-            IsPanelMain = true,
-            Name = "MAIN",
-            Stroke = "#519ABA",
-            Height = 1,
-            StrokeWidth = 3
-          }.Bind(
-            new Binding("Width", "Length").MakeTwoWay()
-          ),
-          new Shape {
-            GeometryString = "M0 0 V10",
-            Interval = 7,
-            Stroke = "#519ABA",
-            StrokeWidth = 2
-          },
-          new TextBlock {
-            Font = new Font("Segoe UI", 10),
-            Stroke = "#CCCCCC",
-            Interval = 14,
-            AlignmentFocus = Spot.Right,
-            SegmentOrientation = Orientation.Minus90,
-            SegmentOffset = new Point(0, 12),
-            GraduatedFunction = ValueToDate
-          }.Bind(
-            new Binding("Interval", "Length", CalculateLabelInterval)
-          )
+              .Bind("Width", "Length",
+                (l, shape) => { return (double)l * ((shape as Shape).Diagram.Model.SharedData as SharedData).Scale; },
+                (w, data, model) => { return (double)w / (model.SharedData as SharedData).Scale; }
+              ),
+            new Shape { GeometryString = "M0 0 V10", Interval = 7, Stroke = "#519ABA", StrokeWidth = 2 },
+            new TextBlock {
+                Font = new Font("Segoe UI", 10),
+                Stroke = "#CCCCCC",
+                Interval = 14,
+                AlignmentFocus = Spot.Right,
+                SegmentOrientation = Orientation.Minus90,
+                SegmentOffset = new Point(0, 12),
+                GraduatedFunction = ValueToDate
+              }
+              .Bind("Interval", "Length", CalculateLabelInterval)
         )
       );
 
@@ -152,15 +127,10 @@ namespace WinFormsSampleControls.Timeline {
 
       // The template for the link connecting the event node with the timeline bar node:
       myDiagram.LinkTemplate =
-        new TimelineBarLink {// defined below
-          ToShortLength = 2,
-          LayerName = "Background"
-        }.Add(
-          new Shape {
-            Stroke = "#E37933",
-            StrokeWidth = 2
+        new BarLink {  // defined below
+            ToShortLength = 2, LayerName = "Background"
           }
-        );
+          .Add(new Shape { Stroke = "#E37933", StrokeWidth = 2 });
 
       // model data
 
@@ -186,6 +156,7 @@ namespace WinFormsSampleControls.Timeline {
         new NodeData { Event = "Thanksgiving", Date = new DateTime(2016, 11, 24) },
         new NodeData { Event = "Christmas", Date = new DateTime(2016, 12, 25) }
       };
+
       // prepare the model by adding links to the Line
       for (var i = 0; i < nodeDataSource.Count; i++) {
         var d = nodeDataSource[i];
@@ -193,6 +164,7 @@ namespace WinFormsSampleControls.Timeline {
       }
 
       myDiagram.Model = new Model {
+        SharedData = new(),
         NodeDataSource = nodeDataSource
       };
     }
@@ -202,14 +174,15 @@ namespace WinFormsSampleControls.Timeline {
       var startDate = (DateTime)timeline.Start;
       var endDate = (DateTime)timeline.End;
 
-      int DaysBetween(DateTime startDate, DateTime endDate) {
-        TimeSpan timeBetween = (endDate.ToUniversalTime().Subtract(startDate.ToUniversalTime()));
+      static int DaysBetween(DateTime startDate, DateTime endDate) {
+        var timeBetween = endDate.ToUniversalTime().Subtract(startDate.ToUniversalTime());
         return timeBetween.Days;
       }
+
       return DaysBetween(startDate, endDate);
     }
 
-    private string ValueToDate(double n) {
+    private string ValueToDate(double n, GraphObject _) {
       var timeline = myDiagram.Model.FindNodeDataForKey("timeline") as NodeData;
       var startDate = (DateTime)timeline.Start;
       return startDate.AddDays(n).ToShortDateString();
@@ -218,7 +191,7 @@ namespace WinFormsSampleControls.Timeline {
   }
 
   // define the model data
-  public class Model : TreeModel<NodeData, string, object> { }
+  public class Model : TreeModel<NodeData, string, SharedData> { }
   public class NodeData : Model.NodeData {
     public DateTime? Date { get; set; }
     public string Event { get; set; }
@@ -226,6 +199,39 @@ namespace WinFormsSampleControls.Timeline {
     public double? Length { get; set; }
     public DateTime? Start { get; set; }
     public DateTime? End { get; set; }
+  }
+  public class SharedData {
+    public double Scale { get; set; } = 1;
+  }
+
+  public class CustomCommandHandler : CommandHandler {
+    public override void DecreaseZoom(double factor = -1) { _ChangeScale(1 / 1.05); }
+    public override void IncreaseZoom(double factor = -1) { _ChangeScale(1.05); }
+    public override void ResetZoom(double newscale = -1) { _SetScale(1.0); }
+
+    private void _ChangeScale(double factor) {
+      var oldscale = (Diagram.Model.SharedData as SharedData).Scale;
+      var newscale = factor != 0 ? oldscale * factor : 1;
+      _SetScale(newscale);
+    }
+
+    private void _SetScale(double scale) {
+      var docpt = Diagram.LastInput.DocumentPoint;
+      Node line = null;
+      Diagram.Commit(diag => {
+        diag.Model.Set(diag.Model.SharedData, "Scale", scale);
+        foreach (var n in diag.Nodes) {
+          if (n.Category == "Line") {
+            line = n;
+            n.UpdateTargetBindings();
+            continue;
+          }
+        }
+      }, null);  // no UndoManager
+      if (line != null && docpt.X > line.Position.X) {
+        Diagram.Position = new Point(docpt.X - (docpt.X - line.Position.X) / scale, Diagram.Position.Y);
+      }
+    }
   }
 
   // extend layout
@@ -235,11 +241,12 @@ namespace WinFormsSampleControls.Timeline {
       var timeline = Diagram.Model.FindNodeDataForKey("timeline") as NodeData;
       var startDate = ((DateTime)timeline.Start).ToUniversalTime();
       var date = d.ToUniversalTime();
-      TimeSpan diff = date.Subtract(startDate);
+      var diff = date.Subtract(startDate);
       return diff.Days;
     }
+
     public override void DoLayout(IEnumerable<Part> coll) {
-      var diagram = this.Diagram;
+      var diagram = Diagram;
       if (diagram == null) return;
 
       if (coll != null) {
@@ -306,7 +313,7 @@ namespace WinFormsSampleControls.Timeline {
   }
 
   // extend Link
-  public class TimelineBarLink : Link {
+  public class BarLink : Link {
     public override Point GetLinkPoint(Node node, GraphObject port, Spot spot, bool from, bool ortho, Node othernode, GraphObject otherport) {
       var r = port.GetDocumentBounds();
       var op = otherport.GetDocumentPoint(Spot.Center);

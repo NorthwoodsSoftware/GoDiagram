@@ -34,7 +34,7 @@ namespace WinFormsSampleControls.DynamicPorts {
             this.label1 = new System.Windows.Forms.Label();
             this.topBtn = new System.Windows.Forms.Button();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,7 +59,7 @@ namespace WinFormsSampleControls.DynamicPorts {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -154,14 +154,14 @@ namespace WinFormsSampleControls.DynamicPorts {
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 838);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(994, 343);
-            this.saveLoadModel1.TabIndex = 3;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 838);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 343);
+            this.modelJson1.TabIndex = 3;
             //
             // diagramControl1
             //
@@ -199,7 +199,7 @@ namespace WinFormsSampleControls.DynamicPorts {
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button topBtn;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
   }
 }

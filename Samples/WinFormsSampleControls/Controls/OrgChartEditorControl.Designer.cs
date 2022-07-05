@@ -30,7 +30,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.zoomFitBtn = new System.Windows.Forms.Button();
             this.centerRootBtn = new System.Windows.Forms.Button();
-            this.saveLoadModel1 = new WinFormsSharedControls.SaveLoadModel();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
             this.inspectorControl1 = new Northwoods.Go.Extensions.InspectorControl();
             this.tableLayoutPanel1.SuspendLayout();
@@ -45,7 +45,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.saveLoadModel1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.inspectorControl1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,14 +101,14 @@ namespace WinFormsSampleControls.OrgChartEditor {
             this.centerRootBtn.Text = "Center on root";
             this.centerRootBtn.UseVisualStyleBackColor = true;
             //
-            // saveLoadModel1
+            // modelJson1
             //
-            this.saveLoadModel1.AutoSize = true;
-            this.saveLoadModel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveLoadModel1.Location = new System.Drawing.Point(3, 885);
-            this.saveLoadModel1.Name = "saveLoadModel1";
-            this.saveLoadModel1.Size = new System.Drawing.Size(1087, 343);
-            this.saveLoadModel1.TabIndex = 4;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 885);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1087, 343);
+            this.modelJson1.TabIndex = 4;
             //
             // goWebBrowser1
             //
@@ -154,7 +154,7 @@ namespace WinFormsSampleControls.OrgChartEditor {
     private System.Windows.Forms.Button zoomFitBtn;
     private System.Windows.Forms.Button centerRootBtn;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private WinFormsSharedControls.SaveLoadModel saveLoadModel1;
+    private WinFormsSharedControls.ModelJson modelJson1;
     private Northwoods.Go.Extensions.InspectorControl inspectorControl1;
   }
 }

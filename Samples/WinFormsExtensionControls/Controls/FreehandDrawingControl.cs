@@ -18,8 +18,8 @@ namespace WinFormsExtensionControls.FreehandDrawing {
 
       btnSelect.Click += (e, obj) => Mode(false);
       btnDraw.Click += (e, obj) => Mode(true);
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
       checkBxResizing.CheckStateChanged += (e, obj) => AllowResizing();
       checkBxReshaping.CheckStateChanged += (e, obj) => AllowReshaping();
       checkBxRotating.CheckStateChanged += (e, obj) => AllowRotating();
@@ -167,12 +167,12 @@ namespace WinFormsExtensionControls.FreehandDrawing {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

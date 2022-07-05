@@ -206,8 +206,6 @@ namespace Northwoods.Go.Layouts.Extensions {
       _LaneBreadths.Clear();
       _Layers.Clear();
       _NeededSpaces.Clear();
-      _LaneNames.Clear();  // clear out for next layout
-
     }
 
     /// <inheritdoc/>
@@ -569,7 +567,9 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (laneV == null) laneV = "";
       var laneW = FindLane(w);
       if (laneW == null) laneW = "";
-      return laneV.CompareTo(laneW);
+      var ret =  laneV.CompareTo(laneW);
+      if (ret != 0) return ret;
+      return v.Column.CompareTo(w.Column);
     }
   }
 }

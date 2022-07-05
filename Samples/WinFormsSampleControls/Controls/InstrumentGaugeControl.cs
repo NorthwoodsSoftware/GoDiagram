@@ -67,7 +67,7 @@ namespace WinFormsSampleControls.InstrumentGauge {
                     // the main path of the graduated panel, an arc starting at 135 degrees and sweeping for 270 degrees
               new Shape {
                 Name = "SHAPE",
-                GeometryString = "M-70.7 70.7 B135 270 0 0 100 100 M0 100",
+                GeometryString = "M-70.7107 70.7107 B135 270 0 0 100 100 M0 100",
                 Stroke = "white",
                 StrokeWidth = 4
               },

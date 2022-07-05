@@ -73,21 +73,40 @@ namespace WinFormsSampleControls.Absolute {
           })
         );
 
-      // this function is the Node.DragComputation, to limit the movement of the parts
-      // use GRIDPT instead of PT if DraggingTool.IsGridSnapEnabled and movement should snap to grid
+      // This function is the Node.DragComputation, to limit the movement of the parts.
       Point StayInFixedArea(Part part, Point pt, Point gridpt) {
         var diagram = part.Diagram;
         if (diagram == null) return pt;
         // compute the document area without padding
-        var v = diagram.DocumentBounds;
-        v = v.SubtractMargin(diagram.Padding);
+        var v = diagram.DocumentBounds.SubtractMargin(diagram.Padding);
         // get the bounds of the part being dragged
-        var b = part.ActualBounds;
+        var bnd = part.ActualBounds;
         var loc = part.Location;
         // now limit the location appropriately
-        var x = Math.Max(v.X, Math.Min(pt.X, v.Right - b.Width)) + (loc.X - b.X);
-        var y = Math.Max(v.Y, Math.Min(pt.Y, v.Bottom - b.Height)) + (loc.Y - b.Y);
-        return new Point(x, y);
+        var l = v.X + (loc.X - bnd.X);
+        var r = v.Right - (bnd.Right - loc.X);
+        var t = v.Y + (loc.Y - bnd.Y);
+        var b = v.Bottom - (bnd.Bottom - loc.Y);
+        if (l <= gridpt.X && gridpt.X <= r && t <= gridpt.Y && gridpt.Y <= b) return gridpt;
+        var p = gridpt;
+        if (diagram.ToolManager.DraggingTool.IsGridSnapEnabled) {
+          // find a location that is inside V but also keeps the part's bounds within V
+          var cw = diagram.Grid.GridCellSize.Width;
+          if (cw > 0) {
+            while (p.X > r) p.X -= cw;
+            while (p.X < l) p.X += cw;
+          }
+          var ch = diagram.Grid.GridCellSize.Height;
+          if (ch > 0) {
+            while (p.Y > b) p.Y -= ch;
+            while (p.Y < t) p.Y += ch;
+          }
+          return p;
+        } else {
+          p.X = Math.Max(l, Math.Min(p.X, r));
+          p.Y = Math.Max(t, Math.Min(p.Y, b));
+          return p;
+        }
       }
 
       // node template

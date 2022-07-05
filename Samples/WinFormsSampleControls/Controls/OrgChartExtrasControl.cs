@@ -19,9 +19,9 @@ namespace WinFormsSampleControls.OrgChartExtras {
       titleBox.Leave += (e, obj) => UpdateData(titleBox.Text, "title");
       commentBox.Leave += (e, obj) => UpdateData(commentBox.Text, "comments");
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.JsonText = @"{
         ""NodeDataSource"": [
           {""Key"":""1"", ""Name"":""Corrado 'Junior' Soprano"", ""Title"":""The Boss""},
           {""Key"":""2"", ""Name"":""Tony Soprano"", ""Title"":""Underboss""},
@@ -411,12 +411,12 @@ namespace WinFormsSampleControls.OrgChartExtras {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

@@ -103,7 +103,7 @@ namespace Northwoods.Go.Tools.Extensions {
       // show handles if link is selected, remove them if no longer selected
       var category = "LinkShiftingFrom";
       Adornment adornment = null;
-      if (link.IsSelected && !Diagram.IsReadOnly) {
+      if (link.IsSelected && !Diagram.IsReadOnly && link.FromPort != null) {
         var selelt = link.SelectionElement;
         if (selelt != null && link.ActualBounds.IsReal() && link.IsVisible() &&
           selelt.ActualBounds.IsReal() && selelt.IsVisibleElement()) {
@@ -125,7 +125,7 @@ namespace Northwoods.Go.Tools.Extensions {
 
       category = "LinkShiftingTo";
       adornment = null;
-      if (link.IsSelected && !Diagram.IsReadOnly) {
+      if (link.IsSelected && !Diagram.IsReadOnly && link.ToPort != null) {
         var selelt = link.SelectionElement;
         if (selelt != null && link.ActualBounds.IsReal() && link.IsVisible() &&
           selelt.ActualBounds.IsReal() && selelt.IsVisibleElement()) {

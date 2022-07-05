@@ -1,12 +1,11 @@
 ﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
 
-using System.Collections.Generic;
-using Northwoods.Go;
+using System;
 using System.ComponentModel;
 using System.Linq;
+using Northwoods.Go;
 using Northwoods.Go.Models;
 using Northwoods.Go.Tools.Extensions;
-using System.Text.Json;
 
 namespace WinFormsExtensionControls.PolygonDrawing {
   [ToolboxItem(false)]
@@ -15,8 +14,8 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     public PolygonDrawingControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       select.Click += (e, obj) => SelectShape();
       drawPolygon.Click += (e, obj) => DrawPolygon();
@@ -24,10 +23,6 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       finishDrawing.Click += (e, obj) => Finish(true);
       cancelDrawing.Click += (e, obj) => Finish(false);
       undoLastPoint.Click += (e, obj) => Undo();
-
-      allowResizing.CheckedChanged += (e, obj) => AllowResizing();
-      allowReshaping.CheckedChanged += (e, obj) => AllowReshaping();
-      allowRotating.CheckedChanged += (e, obj) => AllowRotating();
 
       goWebBrowser1.Html = @"
           <p>
@@ -51,9 +46,9 @@ namespace WinFormsExtensionControls.PolygonDrawing {
          </p>
 
 ";
-      saveLoadModel1.ModelJson = @"
+      modelJson1.JsonText = @"
         {
-          ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Category"": ""PolygonDrawing"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
+          ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
           ""SharedData"": { ""Position"":""0 0"" }
         }";
 
@@ -64,48 +59,41 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       myDiagram = diagramControl1.Diagram;
 
       // diagram properties
-      myDiagram.ToolManager.MouseDownTools.Insert(3, new GeometryReshapingTool());
+      myDiagram.ToolManager.MouseDownTools.Insert(3, new GeometryReshapingTool { IsResegmenting = true });
 
       // node template map "PolygonDrawing"
-      myDiagram.NodeTemplateMap.Add("PolygonDrawing",
+      myDiagram.NodeTemplate =
         new Node {
-          LocationSpot = Spot.Center, // support rotation about the center
-          SelectionAdorned = true,
-          SelectionElementName = "SHAPE",
-          SelectionAdornmentTemplate = // custom selection adornment: a blue rectangle
-            new Adornment(PanelLayoutAuto.Instance).Add(
-              new Shape {
-                Stroke = "dodgerblue",
-                Fill = (Brush)null
-              }
-            ),
-          Resizable = true,
-          ResizeElementName = "SHAPE",
-          Rotatable = true,
-          RotateElementName = "SHAPE",
-          Reshapable = true // GeomtryReshapingTool assumes nonexistent Part.ReshapeObjectName would be "SHAPE"
-        }
-        .Bind(new Binding("Location", "Loc", Point.Parse).MakeTwoWay(Point.Stringify))
-        .Add(new Shape {
-          Name = "SHAPE",
-          Fill = "lightgray",
-          StrokeWidth = 1.5
-        }.Bind(
-            new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify),
-            new Binding("Angle").MakeTwoWay(),
-            new Binding("GeometryString", "Geo").MakeTwoWay(),
-            new Binding("Fill"),
-            new Binding("Stroke"),
-            new Binding("StrokeWidth")
-          )
-        )
-      );
+            SelectionElementName = "SHAPE",
+            SelectionAdornmentTemplate = // custom selection adornment: a blue rectangle
+              new Adornment("Auto")
+                .Add(
+                  new Shape { Stroke = "dodgerblue", Fill = (Brush)null },
+                  new Placeholder { Margin = -1 }
+                ),
+            Resizable = true, ResizeElementName = "SHAPE",
+            Rotatable = true, RotationSpot = Spot.Center,
+            Reshapable = true
+          }
+          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
+          .Bind(new Binding("Angle").MakeTwoWay())
+          .Add(
+            new Shape { Name = "SHAPE", Fill = "lightgray", StrokeWidth = 1.5 }
+              .Bind(
+                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse).MakeTwoWay(Northwoods.Go.Size.Stringify),
+                new Binding("GeometryString", "Geo").MakeTwoWay(),
+                new Binding("Fill"),
+                new Binding("Stroke"),
+                new Binding("StrokeWidth")
+              )
+          );
 
       // create a polygon drawing tool, defined in PolygonDrawingTool.cs
       var tool = new PolygonDrawingTool {
         // provide default model data
-        ArchetypePartData = new NodeData { Fill = "yellow", Stroke = "blue", StrokeWidth = 3, Category = "PolygonDrawing" },
-        IsPolygon = true
+        ArchetypePartData = new NodeData { Fill = "yellow", Stroke = "blue", StrokeWidth = 3 },
+        IsPolygon = true,
+        IsEnabled = false
       };
       // install as first mouse-down tool
       myDiagram.ToolManager.MouseDownTools.Insert(0, tool);
@@ -120,6 +108,7 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       tool.IsPolygon = polygon;
       (tool.ArchetypePartData as NodeData).Fill = (polygon ? "yellow" : "transparent");
       tool.TemporaryShape.Fill = (polygon ? "yellow" : "transparent");
+      if (draw) myDiagram.CurrentTool = tool;
     }
 
     private void Finish(bool commit) {
@@ -149,11 +138,11 @@ namespace WinFormsExtensionControls.PolygonDrawing {
     private void SaveModel() {
       if (myDiagram == null) return;
       (myDiagram.Model.SharedData as SharedData).Position = Point.Stringify(myDiagram.Position);
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
       var pos = (myDiagram.Model.SharedData as SharedData).Position;
       myDiagram.InitialPosition = Point.Parse(pos);
@@ -180,21 +169,26 @@ namespace WinFormsExtensionControls.PolygonDrawing {
       Mode(true, false);
     }
 
-    private void AllowResizing() {
+    private void _ToggleResizing(object sender, EventArgs e) {
       myDiagram.AllowResize = !myDiagram.AllowResize;
       UpdateAllAdornments();
     }
 
-    private void AllowReshaping() {
+    private void _ToggleReshaping(object sender, EventArgs e) {
       myDiagram.AllowReshape = !myDiagram.AllowReshape;
       UpdateAllAdornments();
     }
 
-    private void AllowRotating() {
-      myDiagram.AllowRotate = !myDiagram.AllowRotate;
+    private void _ToggleResegmenting(object sender, EventArgs e) {
+      var tool = myDiagram.ToolManager.FindTool("GeometryReshaping") as GeometryReshapingTool;
+      tool.IsResegmenting = !tool.IsResegmenting;
       UpdateAllAdornments();
     }
 
+    private void _ToggleRotating(object sender, EventArgs e) {
+      myDiagram.AllowRotate = !myDiagram.AllowRotate;
+      UpdateAllAdornments();
+    }
   }
 
   public class Model : Model<NodeData, string, SharedData> { }

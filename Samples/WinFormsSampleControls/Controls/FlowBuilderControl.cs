@@ -24,10 +24,10 @@ namespace WinFormsSampleControls.FlowBuilder {
 
       btnDoLayout.Click += (e, obj) => doLayout();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
-      saveLoadModel1.ModelJson = @"
+      modelJson1.JsonText = @"
     {
       ""NodeDataSource"": [
         { ""Key"":1, ""Text"":""Loading Screen"", ""Category"":""Loading"" },
@@ -519,19 +519,19 @@ namespace WinFormsSampleControls.FlowBuilder {
           var exist = list.First();
           if (exist == null) break;
           // try shifting down beyond the existing node to see if there's empty space
-          node.Position = new Point(node.ActualBounds.X, exist.ActualBounds.Bottom + 10);
+          node.MoveTo(node.ActualBounds.X, exist.ActualBounds.Bottom + 10);
         }
       }
     }
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

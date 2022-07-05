@@ -102,7 +102,7 @@ namespace WinFormsExtensionControls.DragZooming {
     }
 
     // make node data
-    private void LoadTree(Diagram diag) {
+    private void LoadTree(Diagram diagram) {
       // set diagram's model data
       var total = 99;
       var rand = new Random();
@@ -116,12 +116,12 @@ namespace WinFormsExtensionControls.DragZooming {
       }
 
       // give the Diagram's model all the data
-      diag.Model = new Model {
+      diagram.Model = new Model {
         NodeDataSource = treedata,
       };
 
       // remove status indicator
-      diag.Remove(myLoading);
+      diagram.Remove(myLoading);
     }
 
   }

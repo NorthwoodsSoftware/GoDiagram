@@ -15,8 +15,8 @@ namespace WinFormsSampleControls.ProcessFlow {
     public ProcessFlowControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
         <p>
@@ -33,7 +33,7 @@ namespace WinFormsSampleControls.ProcessFlow {
         </p>
 ";
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"": ""P1"", ""Category"": ""Process"", ""Pos"": ""150 120"", ""Text"": ""Process"" },
     { ""Key"": ""P2"", ""Category"": ""Process"", ""Pos"": ""330 320"", ""Text"": ""Tank"" },
@@ -173,12 +173,12 @@ namespace WinFormsSampleControls.ProcessFlow {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
       myDiagram.Model.UndoManager.IsEnabled = true;
     }
 

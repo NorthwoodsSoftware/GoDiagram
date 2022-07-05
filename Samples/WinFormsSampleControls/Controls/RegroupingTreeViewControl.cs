@@ -17,8 +17,8 @@ namespace WinFormsSampleControls.RegroupingTreeView {
     public RegroupingTreeViewControl() {
       InitializeComponent();
 
-      saveLoadModel1.SaveClick += (e, obj) => SaveModel();
-      saveLoadModel1.LoadClick += (e, obj) => LoadModel();
+      modelJson1.SaveClick += (e, obj) => SaveModel();
+      modelJson1.LoadClick += (e, obj) => LoadModel();
 
       goWebBrowser1.Html = @"
         <p>
@@ -36,7 +36,7 @@ namespace WinFormsSampleControls.RegroupingTreeView {
         </p>";
 
 
-      saveLoadModel1.ModelJson = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"":1, ""Text"":""Main 1"", ""IsGroup"":true, ""Category"":""OfGroups""},
     { ""Key"":2, ""Text"":""Main 2"", ""IsGroup"":true, ""Category"":""OfGroups""},
@@ -343,11 +343,11 @@ namespace WinFormsSampleControls.RegroupingTreeView {
     }
 
     private void SaveModel() {
-      saveLoadModel1.ModelJson = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
-      myDiagram.Model = Model.FromJson<Model>(saveLoadModel1.ModelJson);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
 
       // share all of the data with the tree view
       myTreeView.Model.NodeDataSource = myDiagram.Model.NodeDataSource;
