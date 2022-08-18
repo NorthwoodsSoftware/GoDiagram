@@ -28,7 +28,7 @@ namespace WinFormsSampleControls.SelectableFields {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.mySavedModel = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
@@ -42,7 +42,7 @@ namespace WinFormsSampleControls.SelectableFields {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.mySavedModel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -76,14 +76,15 @@ namespace WinFormsSampleControls.SelectableFields {
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // textBox1
+            // modelJson1
             //
-            this.mySavedModel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mySavedModel.Location = new System.Drawing.Point(3, 488);
-            this.mySavedModel.Multiline = true;
-            this.mySavedModel.Name = "textBox1";
-            this.mySavedModel.Size = new System.Drawing.Size(994, 344);
-            this.mySavedModel.TabIndex = 2;
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 488);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 344);
+            this.modelJson1.TabIndex = 2;
             //
             // goWebBrowser2
             //
@@ -117,7 +118,7 @@ namespace WinFormsSampleControls.SelectableFields {
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox mySavedModel;
+    private WinFormsSharedControls.ModelJson modelJson1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
   }
 }

@@ -21,10 +21,18 @@ namespace WinFormsExtensionControls.Packed {
       packMode.DataSource = Enum.GetNames(typeof(PackMode));
       sortOrder.DataSource = Enum.GetNames(typeof(SortOrder));
       sortMode.DataSource = Enum.GetNames(typeof(SortMode));
+
+      packShape.SelectedItem = "Elliptical";
+      packMode.SelectedItem = "AspectOnly";
+      sortOrder.SelectedItem = "Descending";
+      sortMode.SelectedItem = "Area";
+
       packShape.SelectedIndexChanged += _PropertyChanged;
       packMode.SelectedIndexChanged += _PropertyChanged;
       sortOrder.SelectedIndexChanged += _PropertyChanged;
       sortMode.SelectedIndexChanged += _PropertyChanged;
+
+      hasCircularNodes.CheckedChanged += (s, e) => _RebuildGraph();
 
       Setup();
 
@@ -68,10 +76,12 @@ namespace WinFormsExtensionControls.Packed {
 
     private void _RebuildGraph() {
       _ValidateInput();
-      _Diagram.StartTransaction("randomize graph");
-      _GenerateNodeData((int)numNodes.Value, rectangleRb.Checked, (int)nodeMinSide.Value, (int)nodeMaxSide.Value, sameSides.Checked);
-      _Layout();
-      _Diagram.CommitTransaction("randomize graph");
+      _Diagram.DelayInitialization((d) => {
+        d.StartTransaction("randomize graph");
+        _GenerateNodeData((int)numNodes.Value, rectangleRb.Checked, (int)nodeMinSide.Value, (int)nodeMaxSide.Value, sameSides.Checked);
+        _Layout();
+        d.CommitTransaction("randomize graph");
+      });
     }
 
     private void _ValidateInput() {
@@ -81,6 +91,7 @@ namespace WinFormsExtensionControls.Packed {
       if (numNodes.Value < 1) numNodes.Value = 1;
       if (nodeMinSide.Value < 1) nodeMinSide.Value = 1;
       if (nodeMaxSide.Value < 1) nodeMaxSide.Value = 1;
+      if (nodeMaxSide.Value < nodeMinSide.Value) nodeMaxSide.Value = nodeMinSide.Value;
       _DisableInputs();
     }
 
@@ -147,7 +158,7 @@ namespace WinFormsExtensionControls.Packed {
 
       sameSides.Enabled = !myHasCircularNodes;
       if (myHasCircularNodes) {
-        if (_SameSidesSavedState != null) _SameSidesSavedState = sameSides.Checked;
+        if (_SameSidesSavedState == null) _SameSidesSavedState = sameSides.Checked;
         sameSides.Checked = true;
       } else if (_SameSidesSavedState != null) {
         sameSides.Checked = _SameSidesSavedState.Value;

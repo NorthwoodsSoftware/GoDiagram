@@ -28,7 +28,7 @@ namespace WinFormsSampleControls.Absolute {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.txtJSON = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -39,7 +39,7 @@ namespace WinFormsSampleControls.Absolute {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtJSON, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,15 +71,15 @@ namespace WinFormsSampleControls.Absolute {
             this.goWebBrowser1.TabIndex = 1;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // txtJSON
+            // modelJson1
             //
-            this.txtJSON.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtJSON.Location = new System.Drawing.Point(3, 853);
-            this.txtJSON.Multiline = true;
-            this.txtJSON.Name = "txtJSON";
-            this.txtJSON.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtJSON.Size = new System.Drawing.Size(994, 344);
-            this.txtJSON.TabIndex = 2;
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 853);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 344);
+            this.modelJson1.TabIndex = 2;
             //
             // AbsoluteControl
             //
@@ -101,6 +101,6 @@ namespace WinFormsSampleControls.Absolute {
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox txtJSON;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

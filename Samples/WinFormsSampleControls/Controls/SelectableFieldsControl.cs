@@ -24,9 +24,6 @@ namespace WinFormsSampleControls.SelectableFields {
       Draw new links by dragging from the background of any field.
       Reconnect a selected link by dragging its diamond-shaped handle.
       The user can delete a selected field.
-        </p>
-        <p>
-      The model data, automatically updated after each change or undo or redo:
         </p>";
 
       goWebBrowser2.Html = @"
@@ -172,7 +169,7 @@ namespace WinFormsSampleControls.SelectableFields {
 
     private void ShowModel() {
       if (myDiagram == null) return;
-      mySavedModel.Text = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
   }
 

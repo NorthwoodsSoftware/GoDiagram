@@ -35,7 +35,7 @@ namespace WinFormsSampleControls.ProductionEditor {
             this.title = new System.Windows.Forms.Label();
             this.description = new WinFormsSharedControls.WrappingLabel();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.txtJSON = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.caption = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -53,7 +53,7 @@ namespace WinFormsSampleControls.ProductionEditor {
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtJSON, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -155,17 +155,15 @@ namespace WinFormsSampleControls.ProductionEditor {
             this.goWebBrowser1.TabIndex = 3;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // txtJSON
+            // modelJson1
             //
-            this.txtJSON.BackColor = System.Drawing.Color.DimGray;
-            this.txtJSON.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtJSON.ForeColor = System.Drawing.Color.White;
-            this.txtJSON.Location = new System.Drawing.Point(3, 908);
-            this.txtJSON.Multiline = true;
-            this.txtJSON.Name = "txtJSON";
-            this.txtJSON.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtJSON.Size = new System.Drawing.Size(1194, 400);
-            this.txtJSON.TabIndex = 4;
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 908);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(1194, 400);
+            this.modelJson1.TabIndex = 4;
             //
             // ProductionEditorControl
             //
@@ -192,7 +190,7 @@ namespace WinFormsSampleControls.ProductionEditor {
     private Northwoods.Go.WinForms.PaletteControl paletteControl1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox txtJSON;
+    private WinFormsSharedControls.ModelJson modelJson1;
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.PictureBox pictureBox1;

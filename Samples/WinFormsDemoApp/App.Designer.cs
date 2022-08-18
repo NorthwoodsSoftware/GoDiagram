@@ -132,7 +132,7 @@ namespace WinFormsDemoApp {
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(625, 350);
             this.Name = "App";
-            this.Text = "GoWinForms Demo";
+            this.Text = "GoDiagram for WinForms Demo";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.sampleTab.ResumeLayout(false);

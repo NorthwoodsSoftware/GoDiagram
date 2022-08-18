@@ -55,9 +55,6 @@ namespace WinFormsSampleControls.UpdateDemo {
           The <a>ChangedEvent.Object</a> may be a <a>Transaction</a>.
           Look through the <a>Transaction.Changes</a> list for the model changes that you want to save.
         </p>
-        <p>
-          This code demonstrates the basic idea:
-        </p>
 ";
       goWebBrowser1.Html = @"
            <p>Update Demo <b>GoDiagram</b> Sample</p>

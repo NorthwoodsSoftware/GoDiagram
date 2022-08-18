@@ -78,6 +78,15 @@ namespace WinFormsSharedControls {
       }
     }
 
+    public override string Text {
+      get { return label1.Text; }
+      set {
+        if (value != label1.Text) {
+          label1.Text = value;
+        }
+      }
+    }
+
     private void textBox1_TextChanged(object sender, EventArgs e) {
       if (_JsonText != textBox1.Text) _JsonText = textBox1.Text;
     }

@@ -16,16 +16,16 @@ using System.Collections.Generic;
 namespace Northwoods.Go.Layouts.Extensions {
   [Undocumented]
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-  public class QuadNode<T> {
+  public class VQuadNode<T> {
     public Rect Bounds;
-    public QuadNode<T> Parent;
+    public VQuadNode<T> Parent;
     public int Level;
     public List<T> Objects = new();
-    public List<QuadObj<T>> TreeObjects = new();
+    public List<VQuadObj<T>> TreeObjects = new();
     public int TotalObjects = 0; // total in this node + in all children (recursively)
-    public QuadNode<T>[] Nodes = new QuadNode<T>[4];
+    public VQuadNode<T>[] Nodes = new VQuadNode<T>[4];
 
-    public QuadNode(Rect bounds, QuadNode<T> parent, int level) {
+    public VQuadNode(Rect bounds, VQuadNode<T> parent, int level) {
       Bounds = bounds;
       Parent = parent;
       Level = level;
@@ -37,14 +37,14 @@ namespace Northwoods.Go.Layouts.Extensions {
       var x = Bounds.X;
       var y = Bounds.Y;
 
-      Nodes[0] = new QuadNode<T>(new Rect(x + w2, y, w2, h2), this, Level + 1);
-      Nodes[1] = new QuadNode<T>(new Rect(x, y, w2, h2), this, Level + 1);
-      Nodes[2] = new QuadNode<T>(new Rect(x, y + h2, w2, h2), this, Level + 1);
-      Nodes[3] = new QuadNode<T>(new Rect(x + w2, y + h2, w2, h2), this, Level + 1);
+      Nodes[0] = new VQuadNode<T>(new Rect(x + w2, y, w2, h2), this, Level + 1);
+      Nodes[1] = new VQuadNode<T>(new Rect(x, y, w2, h2), this, Level + 1);
+      Nodes[2] = new VQuadNode<T>(new Rect(x, y + h2, w2, h2), this, Level + 1);
+      Nodes[3] = new VQuadNode<T>(new Rect(x + w2, y + h2, w2, h2), this, Level + 1);
     }
 
     public void Clear() {
-      TreeObjects = new List<QuadObj<T>>();
+      TreeObjects = new List<VQuadObj<T>>();
       Objects = new List<T>();
       TotalObjects = 0;
       for (var i = 0; i < Nodes.Length; i++) {
@@ -59,17 +59,17 @@ namespace Northwoods.Go.Layouts.Extensions {
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
   /// <summary>
-  /// Object to be contained by the <see cref="Quadtree{T}"/> class. This object needs
+  /// Object to be contained by the <see cref="VQuadtree{T}"/> class. This object needs
   /// to have rectangular bounds (described by an <see cref="Rect"/> object), as well
   /// as something (of any type) associated with it.
   /// </summary>
   [Undocumented]
-  public class QuadObj<T> {
+  public class VQuadObj<T> {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public Rect Bounds;
     public T Obj;
 
-    public QuadObj(Rect bounds, T obj) {
+    public VQuadObj(Rect bounds, T obj) {
       Bounds = bounds;
       Obj = obj;
     }
@@ -98,12 +98,12 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// Other common operations are detailed below.
   /// </remarks>
   /// @category Layout Extension
-  public class Quadtree<T> {
-    private QuadNode<T> _Root;
+  public class VQuadtree<T> {
+    private VQuadNode<T> _Root;
 
     private readonly int _NodeCapacity = 1;
     private readonly int _MaxLevels = int.MaxValue;
-    private readonly Dictionary<T, QuadObj<T>> _TreeObjectMap = new();
+    private readonly Dictionary<T, VQuadObj<T>> _TreeObjectMap = new();
 
     // we can avoid unnecessary work when adding objects if there are no objects with 0 width or height.
     // Note that after being set to true, these flags are not ever set again to false, even if all objects
@@ -138,7 +138,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Gets the root node of the tree.
     /// </summary>
-    public QuadNode<T> Root {
+    public VQuadNode<T> Root {
       get {
         return _Root;
       }
@@ -151,11 +151,11 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <param name="nodeCapacity">The node capacity of this quadtree. This is the number of objects a node can contain before it splits. Defaults to 1.</param>
     /// <param name="maxLevel">The maximum depth the Quadtree will allow before it will no longer split. Defaults to double.PositiveInfinity (no maximum depth).</param>
     /// <param name="bounds">The bounding box surrounding the entire Quadtree. If the bounds are unset or a node is inserted outside of the bounds, the tree will automatically grow.</param>
-    public Quadtree(int nodeCapacity = 1, int maxLevel = int.MaxValue, Rect bounds = new Rect()) {
+    public VQuadtree(int nodeCapacity = 1, int maxLevel = int.MaxValue, Rect bounds = new Rect()) {
       _NodeCapacity = nodeCapacity;
       _MaxLevels = maxLevel;
 
-      _Root = new QuadNode<T>(bounds, null, 0);
+      _Root = new VQuadNode<T>(bounds, null, 0);
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="rect">the rectangle to test</param>
     /// <param name="node"></param>
-    private static List<int> _GetQuadrants(Rect rect, QuadNode<T> node) {
+    private static List<int> _GetQuadrants(Rect rect, VQuadNode<T> node) {
       var quadrants = new List<int>();
       var horizontalMidpoint = node.Bounds.X + (node.Bounds.Width / 2);
       var verticalMidpoint = node.Bounds.Y + (node.Bounds.Height / 2);
@@ -211,7 +211,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="rect">the rect to test</param>
     /// <param name="node"></param>
-    private static int _GetIndex(Rect rect, QuadNode<T> node) {
+    private static int _GetIndex(Rect rect, VQuadNode<T> node) {
       var index = -1;
       if (node.Bounds.IsEmpty()) { // the quadtree is empty (empty Bounds)
         return index;
@@ -283,7 +283,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// the new dimensions.
     /// </summary>
     /// <param name="obj">the object to insert</param>
-    public void Add(QuadObj<T> obj) {
+    public void Add(VQuadObj<T> obj) {
       Add(obj.Obj, obj.Bounds);
     }
 
@@ -301,7 +301,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <param name="obj">the object to insert</param>
     /// <param name="bounds">The Rect bounds of the object</param>
     private void _Add(T obj, Rect bounds) {
-      var treeObj = new QuadObj<T>(bounds, obj);
+      var treeObj = new VQuadObj<T>(bounds, obj);
 
       if (double.IsNaN(bounds.X) || bounds.X == double.PositiveInfinity ||
         double.IsNaN(bounds.Y) || bounds.Y == double.PositiveInfinity ||
@@ -350,7 +350,7 @@ namespace Northwoods.Go.Layouts.Extensions {
                                     _Root.Bounds.Y - _Root.Bounds.Height,
                                     _Root.Bounds.Width * 2,
                                     _Root.Bounds.Height * 2);
-          _Root = new QuadNode<T>(newBounds, null, 0);
+          _Root = new VQuadNode<T>(newBounds, null, 0);
           _Root.Split();
           _Root.Nodes[2] = old;
           _Root.TotalObjects = old.TotalObjects;
@@ -371,7 +371,7 @@ namespace Northwoods.Go.Layouts.Extensions {
                                     _Root.Bounds.Y - _Root.Bounds.Height,
                                     _Root.Bounds.Width * 2,
                                     _Root.Bounds.Height * 2);
-          _Root = new QuadNode<T>(newBounds, null, 0);
+          _Root = new VQuadNode<T>(newBounds, null, 0);
           _Root.Split();
           _Root.Nodes[3] = old;
           _Root.TotalObjects = old.TotalObjects;
@@ -395,7 +395,7 @@ namespace Northwoods.Go.Layouts.Extensions {
                                     _Root.Bounds.Y,
                                     _Root.Bounds.Width * 2,
                                     _Root.Bounds.Height * 2);
-          _Root = new QuadNode<T>(newBounds, null, 0);
+          _Root = new VQuadNode<T>(newBounds, null, 0);
           _Root.Split();
           _Root.Nodes[1] = old;
           _Root.TotalObjects = old.TotalObjects;
@@ -413,7 +413,7 @@ namespace Northwoods.Go.Layouts.Extensions {
                                     _Root.Bounds.Y,
                                     _Root.Bounds.Width * 2,
                                     _Root.Bounds.Height * 2);
-          _Root = new QuadNode<T>(newBounds, null, 0);
+          _Root = new VQuadNode<T>(newBounds, null, 0);
           _Root.Split();
           _Root.Nodes[0] = old;
           _Root.TotalObjects = old.TotalObjects;
@@ -436,7 +436,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="root">the current node being operated on</param>
     /// <param name="treeObj">the object being added</param>
-    private void _AddHelper(QuadNode<T> root, QuadObj<T> treeObj) {
+    private void _AddHelper(VQuadNode<T> root, VQuadObj<T> treeObj) {
       root.TotalObjects++;
 
       if (root.Nodes[0] != null) {
@@ -483,7 +483,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// are 0 width objects in the tree.
     /// </summary>
     /// <param name="root">the current root node being operated on</param>
-    private void _FixLeftObjectPlacement(QuadNode<T> root) {
+    private void _FixLeftObjectPlacement(VQuadNode<T> root) {
       var nw = root.Nodes[1];
       if (nw != null) { // if root is split
         _FixLeftObjectPlacement(nw); // NW
@@ -494,7 +494,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       var toRemove = new List<int>();
-      var toAdd = new List<QuadObj<T>>();
+      var toAdd = new List<VQuadObj<T>>();
       for (var i = 0; i < root.Objects.Count; i++) {
         var obj = root.TreeObjects[i];
         if (obj.Bounds.Width == 0 && obj.Bounds.X == root.Bounds.X) {
@@ -516,7 +516,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// are 0 height objects in the tree.
     /// </summary>
     /// <param name="root">the current root node being operated on</param>
-    private void _FixTopObjectPlacement(QuadNode<T> root) {
+    private void _FixTopObjectPlacement(VQuadNode<T> root) {
       var ne = root.Nodes[0];
       if (ne != null) { // if root is split
         _FixTopObjectPlacement(ne); // NE
@@ -527,7 +527,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       var toRemove = new List<int>();
-      var toAdd = new List<QuadObj<T>>();
+      var toAdd = new List<VQuadObj<T>>();
       for (var i = 0; i < root.Objects.Count; i++) {
         var obj = root.TreeObjects[i];
         if (obj.Bounds.Height == 0 && obj.Bounds.Y == root.Bounds.Y) {
@@ -546,7 +546,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Used after growing the tree when level>max level.
     /// </summary>
     /// <param name="node">the leaf node to restructure</param>
-    private void _RestructureLevels(QuadNode<T> node) {
+    private void _RestructureLevels(VQuadNode<T> node) {
       if (node != null && _MaxLevels < int.MaxValue && node.Nodes[0] != null) {
         if (node.Level >= _MaxLevels) {
           for (var i = 0; i < node.Nodes.Length; i++) {
@@ -574,7 +574,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="obj">the object to find</param>
     /// <returns>the node containing the given object, null if the object is not found</returns>
-    public QuadNode<T> Find(T obj) {
+    public VQuadNode<T> Find(T obj) {
       if (_TreeObjectMap.TryGetValue(obj, out var treeObj)) {
         return _FindHelper(_Root, treeObj);
       }
@@ -582,7 +582,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return null;
     }
 
-    private QuadNode<T> _FindHelper(QuadNode<T> root, QuadObj<T> treeObj) {
+    private VQuadNode<T> _FindHelper(VQuadNode<T> root, VQuadObj<T> treeObj) {
       foreach (var obj in root.TreeObjects) {
         if (obj == treeObj) {
           return root;
@@ -620,7 +620,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return _FindBoundsHelper(_Root, bounds);
     }
 
-    private Rect? _FindBoundsHelper(QuadNode<T> root, Rect bounds) {
+    private Rect? _FindBoundsHelper(VQuadNode<T> root, Rect bounds) {
       foreach (var obj in root.TreeObjects) {
         if (bounds.EqualsApprox(obj.Bounds)) {
           return bounds;
@@ -681,7 +681,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="owner">the node to remove objects from</param>
     /// <param name="indexes">the indices to remove. Should be given in ascending order.</param>
-    private void _RemoveFromOwner(QuadNode<T> owner, List<int> indexes) {
+    private void _RemoveFromOwner(VQuadNode<T> owner, List<int> indexes) {
       if (indexes.Count == 0) {
         return;
       }
@@ -718,7 +718,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="owner">the tree to add objects to</param>
     /// <param name="root"></param>
-    private void _AddChildObjectsToNode(QuadNode<T> owner, QuadNode<T> root) {
+    private void _AddChildObjectsToNode(VQuadNode<T> owner, VQuadNode<T> root) {
       foreach (var node in root.Nodes) {
         if (node != null) {
           owner.TreeObjects.AddRange(node.TreeObjects);
@@ -732,7 +732,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// Recursively combines parent nodes that should be split, all the way
     /// up the tree. Starts from the given node.
     /// </summary>
-    private void _Restructure(QuadNode<T> root) {
+    private void _Restructure(VQuadNode<T> root) {
       var parent = root.Parent;
       if (parent != null) {
         // if none of the child nodes have any objects, the parent should not be split
@@ -871,7 +871,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return returnObjects;
     }
 
-    private void _IntersectingHelper(Rect rect, QuadNode<T> root, List<T> returnObjects) {
+    private void _IntersectingHelper(Rect rect, VQuadNode<T> root, List<T> returnObjects) {
       var index = _GetIndex(rect, root);
       var selected = index == -1 ? null : root.Nodes[index];
       if (selected != null) {
@@ -925,7 +925,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       return returnObjects;
     }
 
-    private void _ContainingHelper(Rect rect, QuadNode<T> root, List<T> returnObjects) {
+    private void _ContainingHelper(Rect rect, VQuadNode<T> root, List<T> returnObjects) {
       var index = _GetIndex(rect, root);
       var selected = index == -1 ? null : root.Nodes[index];
       if (selected != null) {
@@ -970,7 +970,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="callback">the callback to execute on each node. Takes the form of (n: Quadtree) => void</param>
     /// <param name="root">whether or not to execute the callback on the root node as well. Defaults to true</param>
-    public void Walk(Action<QuadNode<T>> callback, bool root = true) {
+    public void Walk(Action<VQuadNode<T>> callback, bool root = true) {
       Walk(callback, _Root, root);
     }
 
@@ -981,7 +981,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <param name="callback">the callback to execute on each node. Takes the form of (n: Quadtree) => void</param>
     /// <param name="node"></param>
     /// <param name="root">whether or not to execute the callback on the root node as well. Defaults to true</param>
-    public void Walk(Action<QuadNode<T>> callback, QuadNode<T> node, bool root = true) {
+    public void Walk(Action<VQuadNode<T>> callback, VQuadNode<T> node, bool root = true) {
       if (root) {
         root = false;
         callback(node);
@@ -1026,11 +1026,11 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <param name="root">the current root node being searched</param>
     /// <returns>maximum and minimum objects in the tree, in the format [min x, max x, min y, max y].</returns>
-    private (QuadObj<T>, QuadObj<T>, QuadObj<T>, QuadObj<T>) _FindExtremeObjectsHelper(QuadNode<T> root) {
-      QuadObj<T> minX = null;
-      QuadObj<T> maxX = null;
-      QuadObj<T> minY = null;
-      QuadObj<T> maxY = null;
+    private (VQuadObj<T>, VQuadObj<T>, VQuadObj<T>, VQuadObj<T>) _FindExtremeObjectsHelper(VQuadNode<T> root) {
+      VQuadObj<T> minX = null;
+      VQuadObj<T> maxX = null;
+      VQuadObj<T> minY = null;
+      VQuadObj<T> maxY = null;
       if (root.Nodes[0] != null) { // if root is split
         foreach (var node in root.Nodes) {
           if (node != null) {

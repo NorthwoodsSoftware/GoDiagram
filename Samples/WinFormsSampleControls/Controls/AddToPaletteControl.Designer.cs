@@ -35,9 +35,8 @@ namespace WinFormsSampleControls.AddToPalette {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPalette = new System.Windows.Forms.TextBox();
             this.modelJson1 = new WinFormsSharedControls.ModelJson();
+            this.modelJson2 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
@@ -52,8 +51,8 @@ namespace WinFormsSampleControls.AddToPalette {
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtPalette, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson2, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -143,7 +142,6 @@ namespace WinFormsSampleControls.AddToPalette {
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 641);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(314, 31);
@@ -173,35 +171,25 @@ namespace WinFormsSampleControls.AddToPalette {
             this.btnDelete.Text = "Delete From Palette";
             this.btnDelete.UseVisualStyleBackColor = true;
             //
-            // label1
-            //
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Palette model:";
-            //
-            // txtPalette
-            //
-            this.txtPalette.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPalette.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPalette.Location = new System.Drawing.Point(3, 678);
-            this.txtPalette.Multiline = true;
-            this.txtPalette.Name = "txtPalette";
-            this.txtPalette.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPalette.Size = new System.Drawing.Size(1139, 200);
-            this.txtPalette.TabIndex = 4;
-            //
             // modelJson1
             //
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.Text = "Palette Model in JSON format:";
             this.modelJson1.AutoSize = true;
             this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.modelJson1.Location = new System.Drawing.Point(3, 884);
+            this.modelJson1.Location = new System.Drawing.Point(3, 678);
             this.modelJson1.Name = "modelJson1";
-            this.modelJson1.Size = new System.Drawing.Size(1139, 335);
-            this.modelJson1.TabIndex = 5;
+            this.modelJson1.Size = new System.Drawing.Size(1139, 200);
+            this.modelJson1.TabIndex = 4;
+            //
+            // modelJson2
+            //
+            this.modelJson2.AutoSize = true;
+            this.modelJson2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson2.Location = new System.Drawing.Point(3, 884);
+            this.modelJson2.Name = "modelJson2";
+            this.modelJson2.Size = new System.Drawing.Size(1139, 335);
+            this.modelJson2.TabIndex = 5;
             //
             // AddToPaletteControl
             //
@@ -228,14 +216,13 @@ namespace WinFormsSampleControls.AddToPalette {
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
     private System.Windows.Forms.Button btnAdd;
     private System.Windows.Forms.Button btnDelete;
-    private System.Windows.Forms.TextBox txtPalette;
     private WinFormsSharedControls.ModelJson modelJson1;
+    private WinFormsSharedControls.ModelJson modelJson2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private Northwoods.Go.WinForms.PaletteControl paletteControl1;
     private Northwoods.Go.WinForms.OverviewControl overviewControl1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private Northwoods.Go.Extensions.InspectorControl inspectorControl1;
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-    private System.Windows.Forms.Label label1;
   }
 }

@@ -539,6 +539,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (Diagram != null) Diagram.StartTransaction("Layout");
       _Bounds = new Rect();
       _EnclosingCircle = null;
+      _FixedSizeModeSpacing = 0;
 
       // push all nodes in parts iterator to an array for easy sorting
       var nodes = new List<Node>();

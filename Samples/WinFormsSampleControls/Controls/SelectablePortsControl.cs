@@ -20,9 +20,6 @@ namespace WinFormsSampleControls.SelectablePorts {
       Click on a port to toggle its selection.
       The Delete command will only delete selected ports, if there are any; otherwise it will delete Nodes and Links as it normally would.
         </p>
-        <p>
-      The model data, automatically updated after each change or undo or redo:
-        </p>
 ";
 
     }
@@ -175,7 +172,7 @@ namespace WinFormsSampleControls.SelectablePorts {
 
 
     private void ShowModel() {
-      txtJSON.Text = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
   }

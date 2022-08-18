@@ -5,10 +5,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Northwoods.Go;
 using Northwoods.Go.Models;
-using Northwoods.Go.WinForms;
-using Northwoods.Go.Extensions;
-using Northwoods.Go.Layouts;
-using Northwoods.Go.Tools;
 using System.Linq;
 
 namespace WinFormsSampleControls.Planogram {
@@ -52,11 +48,6 @@ namespace WinFormsSampleControls.Planogram {
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
-      myDiagram.ModelChanged += (s, e) => {
-        if (e.IsTransactionFinished) textBox1.Text = myDiagram.Model.ToJson();
-
-      };
-
       myDiagram.Grid =
         new Panel("Grid") { GridCellSize = CellSize }
           .Add(
@@ -69,9 +60,7 @@ namespace WinFormsSampleControls.Planogram {
       myDiagram.ToolManager.ResizingTool.IsGridSnapEnabled = true;
       // for this sample, automatically show the state of the diagram's model on the page
       myDiagram.ModelChanged += (s, e) => {
-        if (e.IsTransactionFinished) {
-          mySavedModel = myDiagram.Model.ToJson();
-        }
+        if (e.IsTransactionFinished) modelJson1.JsonText = myDiagram.Model.ToJson();
       };
       //myDiagram.AnimationManager.IsEnabled = false;
       myDiagram.UndoManager.IsEnabled = true;
@@ -268,8 +257,6 @@ namespace WinFormsSampleControls.Planogram {
 
     public static bool AllowTopLevel = false;
     public static Size CellSize = new Size(50, 50);
-
-    public string mySavedModel { get; set; }
 
     // Groups represent racks where items (Nodes) can be placed.
     // Currently they are movable and resizable, but you can change that

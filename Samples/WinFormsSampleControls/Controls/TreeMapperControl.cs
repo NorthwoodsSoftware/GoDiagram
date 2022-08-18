@@ -190,7 +190,7 @@ namespace WinFormsSampleControls.TreeMapper {
 
       myDiagram.ModelChanged += (obj, e) => {
         if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          textBox1.Text = myDiagram.Model.ToJson();
+          modelJson1.JsonText = myDiagram.Model.ToJson();
         }
       };
 

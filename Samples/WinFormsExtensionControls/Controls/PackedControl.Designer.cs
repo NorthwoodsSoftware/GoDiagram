@@ -410,7 +410,6 @@ namespace WinFormsExtensionControls.Packed {
             this.hasCircularNodes.TabIndex = 6;
             this.hasCircularNodes.Text = "HasCircularNodes";
             this.hasCircularNodes.UseVisualStyleBackColor = true;
-            this.hasCircularNodes.CheckedChanged += new System.EventHandler(this._PropertyChanged);
             // 
             // flowLayoutPanel4
             // 

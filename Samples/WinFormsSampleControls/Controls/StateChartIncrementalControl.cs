@@ -81,7 +81,7 @@ namespace WinFormsSampleControls.StateChartIncremental {
           //txtSave.Text = myTransaction;
           // try-catch until GraphLinksModel.RecurseData is implemented :(
           try {
-            ShowIncremental((myDiagram.Model as Model).ToIncrementalJson(e));
+            ShowIncremental(myDiagram.Model.ToIncrementalJson(e));
           } catch {
             ShowIncremental("Could not load last transaction as JSON");
           }

@@ -29,7 +29,7 @@ namespace WinFormsSampleControls.Macros {
             this.paletteControl1 = new Northwoods.Go.WinForms.PaletteControl();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.txtJSON = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +43,7 @@ namespace WinFormsSampleControls.Macros {
             this.tableLayoutPanel1.Controls.Add(this.paletteControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtJSON, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,18 +85,16 @@ namespace WinFormsSampleControls.Macros {
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // txtJSON
+            // modelJson1
             //
-            this.txtJSON.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel1.SetColumnSpan(this.txtJSON, 2);
-            this.txtJSON.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtJSON.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtJSON.ForeColor = System.Drawing.Color.White;
-            this.txtJSON.Location = new System.Drawing.Point(3, 653);
-            this.txtJSON.Multiline = true;
-            this.txtJSON.Name = "txtJSON";
-            this.txtJSON.Size = new System.Drawing.Size(994, 294);
-            this.txtJSON.TabIndex = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 653);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 294);
+            this.modelJson1.TabIndex = 3;
             //
             // MacrosControl
             //
@@ -118,6 +116,6 @@ namespace WinFormsSampleControls.Macros {
     private Northwoods.Go.WinForms.PaletteControl paletteControl1;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox txtJSON;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

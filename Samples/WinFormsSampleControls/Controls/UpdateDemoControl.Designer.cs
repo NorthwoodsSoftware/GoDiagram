@@ -37,7 +37,6 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.undoBtn = new System.Windows.Forms.Button();
             this.diagramControl3 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser2 = new WinFormsSharedControls.GoWebBrowser();
-            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -57,12 +56,10 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.tableLayoutPanel1.Controls.Add(this.diagramControl2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser2, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -196,16 +193,6 @@ namespace WinFormsSampleControls.UpdateDemo {
             this.goWebBrowser2.TabIndex = 5;
             this.goWebBrowser2.ZoomFactor = 1D;
             //
-            // modelJson1
-            //
-            this.modelJson1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
-            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.modelJson1.Location = new System.Drawing.Point(3, 893);
-            this.modelJson1.Name = "modelJson1";
-            this.modelJson1.Size = new System.Drawing.Size(994, 304);
-            this.modelJson1.TabIndex = 6;
-            //
             // UpdateDemoControl
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -237,6 +224,5 @@ namespace WinFormsSampleControls.UpdateDemo {
     private System.Windows.Forms.Button undoBtn;
     private Northwoods.Go.WinForms.DiagramControl diagramControl3;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser2;
-    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

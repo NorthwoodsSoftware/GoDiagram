@@ -45,7 +45,7 @@ namespace WinFormsSampleControls.SeatingChart {
       Those people are seated at the table if there is room.
         </p>
         <p>
-      Tables can be moved or rotated.Moving or rotating a table automatically repositions the people seated at that table.
+      Tables can be moved or rotated. Moving or rotating a table automatically repositions the people seated at that table.
         </p>
         <p>
       The <a>UndoManager</a> is shared between the two Diagrams, so that one can undo/redo in either diagram
@@ -276,7 +276,7 @@ namespace WinFormsSampleControls.SeatingChart {
       myDiagram.ToolManager.RotatingTool = new HorizontalTextRotatingTool();
       // For this sample, automatically show the state of the diagram's model on the page
       myDiagram.ModelChanged += (s, e) => {
-        if (e.IsTransactionFinished) textBox1.Text = myDiagram.Model.ToJson();
+        if (e.IsTransactionFinished) modelJson1.JsonText = myDiagram.Model.ToJson();
 
       };
       myDiagram.UndoManager.IsEnabled = true;

@@ -43,13 +43,9 @@ namespace WinFormsSampleControls.ProductionEditor {
       Each <a>Node</a> consists of an SVG <a>Shape</a> at the top and a rectangular port at the bottom.
       The designer can draw new pipes (<a>Link</a>s) by dragging from a port to a different node's port.
         </p>
-        <p>
-      Below is the JSON data for the model:
-        </p>
-
 ";
 
-      txtJSON.Text = @"{
+      modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     {""Key"":1, ""Pos"":""-170 -48"", ""Icon"":""Natgas"", ""Color"":""blue"", ""Text"":""Gas Companies"", ""Description"":""Provides natural gas liquids (NGLs)."", ""Caption"":""Gas Drilling Well"", ""Imgsrc"":""https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BarnettShaleDrilling-9323.jpg/256px-BarnettShaleDrilling-9323.jpg""},
     {""Key"":2, ""Pos"":""-170 96"", ""Icon"":""Oil"", ""Color"":""blue"", ""Text"":""Oil Companies"", ""Description"":""Provides associated petroleum gas (APG). This type of gas used to be released as waste from oil drilling, but is now commonly captured for processing."", ""Caption"":""Offshore oil well"", ""Imgsrc"":""https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Oil_platform_P-51_%28Brazil%29.jpg/512px-Oil_platform_P-51_%28Brazil%29.jpg""},
@@ -213,7 +209,7 @@ namespace WinFormsSampleControls.ProductionEditor {
       myDiagram.UndoManager.IsEnabled = true;
       myDiagram.ModelChanged += (_, e) => {
         if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          txtJSON.Text = e.Model.ToJson();
+          modelJson1.JsonText = e.Model.ToJson();
         }
       };
 
@@ -267,10 +263,9 @@ namespace WinFormsSampleControls.ProductionEditor {
           }
         );
 
-      myDiagram.Model = Model.FromJson<Model>(txtJSON.Text);
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
 
-      //Loop();
-
+      Loop();
     }
 
     private void SetupPalette() {

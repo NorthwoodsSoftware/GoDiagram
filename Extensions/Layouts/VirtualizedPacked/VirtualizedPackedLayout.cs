@@ -522,7 +522,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     private Segment _MinYSegment = null;
     private Segment _MaxXSegment = null;
     private Segment _MaxYSegment = null;
-    private readonly Quadtree<Segment> _Tree = new();
+    private readonly VQuadtree<Segment> _Tree = new();
 
     // saved node bounds and segment list to use to calculate enclosing circle in the EnclosingCircle getter
     private List<Rect> _NodeBounds = new();

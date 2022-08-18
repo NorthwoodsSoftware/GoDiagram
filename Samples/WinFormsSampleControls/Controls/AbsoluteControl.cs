@@ -38,8 +38,6 @@ namespace WinFormsSampleControls.Absolute {
    <p>
      Note that the user may still scroll or zoom the whole page.
    </p>
-
-   <p>The model data, automatically updated after each change or undo or redo:</p>
 ";
 
     }
@@ -149,7 +147,7 @@ namespace WinFormsSampleControls.Absolute {
 
     private void Save() {
       if (myDiagram == null) return;
-      txtJSON.Text = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
 
   }

@@ -34,7 +34,7 @@ namespace WinFormsSampleControls.TreeMapper {
             this.normalRB = new System.Windows.Forms.RadioButton();
             this.toGroupRB = new System.Windows.Forms.RadioButton();
             this.toNodeRB = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.routing.SuspendLayout();
@@ -49,7 +49,7 @@ namespace WinFormsSampleControls.TreeMapper {
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -89,7 +89,6 @@ namespace WinFormsSampleControls.TreeMapper {
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.routing);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(994, 304);
@@ -152,15 +151,15 @@ namespace WinFormsSampleControls.TreeMapper {
             this.toNodeRB.UseVisualStyleBackColor = true;
             this.toNodeRB.CheckedChanged += new System.EventHandler(this._ChangeStyle);
             //
-            // textBox1
+            // modelJson1
             //
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(3, 703);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(994, 244);
-            this.textBox1.TabIndex = 3;
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 703);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 244);
+            this.modelJson1.TabIndex = 3;
             //
             // TreeMapperControl
             //
@@ -191,6 +190,6 @@ namespace WinFormsSampleControls.TreeMapper {
     private System.Windows.Forms.RadioButton normalRB;
     private System.Windows.Forms.RadioButton toGroupRB;
     private System.Windows.Forms.RadioButton toNodeRB;
-    private System.Windows.Forms.TextBox textBox1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

@@ -54,7 +54,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var h = new Shape() {
         DesiredSize = new Size(8, 8),
         Fill = "lightblue",
-        Stroke = "didgerblue",
+        Stroke = "dodgerblue",
         StrokeWidth = 1,
         Cursor = "nwse-resize"
       };

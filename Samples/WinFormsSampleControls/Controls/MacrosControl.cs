@@ -115,7 +115,7 @@ namespace WinFormsSampleControls.Macros {
       // Update JSON if model changes
       myDiagram.ModelChanged += (obj, e) => {
         if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          txtJSON.Text = myDiagram.Model.ToJson();
+          modelJson1.JsonText = myDiagram.Model.ToJson();
         }
       };
 
@@ -143,15 +143,6 @@ namespace WinFormsSampleControls.Macros {
           new LinkData { From = "Gb", To = "Gc" }
         }
       };
-
-
-      // Update JSON if model changes
-      myPalette.ModelChanged += (obj, e) => {
-        if (e.IsTransactionFinished) {  // show the model data in the page's TextArea
-          txtJSON.Text = myPalette.Model.ToJson();
-        }
-      };
-
     }
 
   }

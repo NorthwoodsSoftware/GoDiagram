@@ -62,6 +62,9 @@ namespace Northwoods.Go.Tools.Extensions {
         tool.WalkTree(part, infos);
       }
       _InitialInfo = infos;
+
+      // forget the RotationPoint since we use _CenterPoint instead
+      RotationPoint = new Point(double.NaN, double.NaN);
     }
 
     private void WalkTree(Part part, Dictionary<Part, PartInfo> infos) {
@@ -160,7 +163,6 @@ namespace Northwoods.Go.Tools.Extensions {
       }
       return angle;
     }
-
   }
 
   /// <summary>

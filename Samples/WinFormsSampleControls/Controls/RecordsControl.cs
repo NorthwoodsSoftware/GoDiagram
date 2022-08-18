@@ -28,9 +28,6 @@ namespace WinFormsSampleControls.Records {
         <p>
       For a variation on this sample with selectable fields in the record nodes, see the <a href=""SelectableFields"">selectable fields</a> sample.
         </p>
-        <p>
-      Diagram Model saved in JSON format, automatically updated after each change or undo or redo:
-        </p>
 ";
     }
 
@@ -155,7 +152,7 @@ namespace WinFormsSampleControls.Records {
 
     private void ShowModel() {
       if (myDiagram == null) return;
-      mySavedModel.Text = myDiagram.Model.ToJson();
+      modelJson1.JsonText = myDiagram.Model.ToJson();
     }
   }
 

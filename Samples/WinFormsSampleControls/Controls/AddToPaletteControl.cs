@@ -29,8 +29,8 @@ namespace WinFormsSampleControls.AddToPalette {
 
       DefineTemplates();
 
-      modelJson1.SaveClick += (e, obj) => SaveModel();
-      modelJson1.LoadClick += (e, obj) => LoadModel();
+      modelJson2.SaveClick += (e, obj) => SaveModel();
+      modelJson2.LoadClick += (e, obj) => LoadModel();
       btnAdd.Click += (e, obj) => AddToPalette();
       btnDelete.Click += (e, obj) => RemoveFromPalette();
 
@@ -50,7 +50,9 @@ namespace WinFormsSampleControls.AddToPalette {
   </p>
 ";
 
-      modelJson1.JsonText = @"{
+      modelJson1.JsonText = "";
+
+      modelJson2.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"": 1, ""Text"":""Hello"", ""Figure"":""Circle"", ""Color"":""Green"", ""Loc"":""0 0"" },
     { ""Key"": 2, ""Text"":""World"", ""Figure"":""Rectangle"", ""Color"":""Red"", ""Loc"":""100 0"" }
@@ -59,7 +61,6 @@ namespace WinFormsSampleControls.AddToPalette {
     { ""From"":1, ""To"":2 }
   ]
 }";
-      txtPalette.Text = "";
 
       Setup();
       SetupPalette();
@@ -118,7 +119,7 @@ namespace WinFormsSampleControls.AddToPalette {
       };
       myPalette.ModelChanged += (_, e) => {  // just for demonstration purposes,
         if (e.IsTransactionFinished) {  // show the model data in the page's text box
-          txtPalette.Text = e.Model.ToJson();
+          modelJson1.JsonText = e.Model.ToJson();
         }
       };
 
@@ -142,12 +143,12 @@ namespace WinFormsSampleControls.AddToPalette {
 
     private void SaveModel() {
       if (myDiagram == null) return;
-      modelJson1.JsonText = myDiagram.Model.ToJson();
+      modelJson2.JsonText = myDiagram.Model.ToJson();
     }
 
     private void LoadModel() {
       if (myDiagram == null) return;
-      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
+      myDiagram.Model = Model.FromJson<Model>(modelJson2.JsonText);
     }
 
     private void AddToPalette() {

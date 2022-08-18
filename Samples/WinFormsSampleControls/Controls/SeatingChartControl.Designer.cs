@@ -29,7 +29,7 @@ namespace WinFormsSampleControls.SeatingChart {
             this.guestsControl = new Northwoods.Go.WinForms.DiagramControl();
             this.diagramControl1 = new Northwoods.Go.WinForms.DiagramControl();
             this.goWebBrowser1 = new WinFormsSharedControls.GoWebBrowser();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.modelJson1 = new WinFormsSharedControls.ModelJson();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goWebBrowser1)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +43,7 @@ namespace WinFormsSampleControls.SeatingChart {
             this.tableLayoutPanel1.Controls.Add(this.guestsControl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.diagramControl1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.goWebBrowser1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.modelJson1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,17 +85,16 @@ namespace WinFormsSampleControls.SeatingChart {
             this.goWebBrowser1.TabIndex = 2;
             this.goWebBrowser1.ZoomFactor = 1D;
             //
-            // textBox1
+            // modelJson1
             //
-            this.textBox1.BackColor = System.Drawing.Color.DimGray;
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox1, 2);
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(3, 833);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(994, 364);
-            this.textBox1.TabIndex = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.modelJson1, 2);
+            this.modelJson1.CanSaveLoad = false;
+            this.modelJson1.AutoSize = true;
+            this.modelJson1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modelJson1.Location = new System.Drawing.Point(3, 833);
+            this.modelJson1.Name = "modelJson1";
+            this.modelJson1.Size = new System.Drawing.Size(994, 364);
+            this.modelJson1.TabIndex = 3;
             //
             // SeatingChartControl
             //
@@ -117,6 +116,6 @@ namespace WinFormsSampleControls.SeatingChart {
     private Northwoods.Go.WinForms.DiagramControl guestsControl;
     private Northwoods.Go.WinForms.DiagramControl diagramControl1;
     private WinFormsSharedControls.GoWebBrowser goWebBrowser1;
-    private System.Windows.Forms.TextBox textBox1;
+    private WinFormsSharedControls.ModelJson modelJson1;
   }
 }

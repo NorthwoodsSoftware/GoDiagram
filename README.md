@@ -18,7 +18,7 @@ Read more about GoDiagram at [godiagram.com](https://godiagram.com).
 [This repository](https://github.com/NorthwoodsSoftware/GoDiagram) contains the sources for all samples and extensions.
 You can use the GitHub repository to quickly [search through the sample sources](https://github.com/NorthwoodsSoftware/GoDiagram/search?q=FindNodeDataForKey&type=Code).
 
-In your project, we recommend referencing the library via [NuGet](https://www.nuget.org/packages/Northwoods.GoWinForms) as it will more reliably add toolbox items and necessary references.
+In your project, we recommend referencing the library via [NuGet](https://www.nuget.org/packages/Northwoods.GoDiagram.WinForms) as it will more reliably add toolbox items and necessary references.
 
 ## Minimal Sample
 
