@@ -42,8 +42,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// This tool does not utilize any <see cref="Adornment"/>s or tool handles,
   /// but it does temporarily add the <see cref="Box"/> Part to the diagram.
   /// This tool does conduct a transaction when inserting the new node.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/DragCreating.html">Drag Creating</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class DragCreatingTool : Tool {

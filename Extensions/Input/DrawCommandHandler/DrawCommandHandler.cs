@@ -508,7 +508,7 @@ namespace Northwoods.Go.Extensions {
     /// <param name="dir">the direction in degrees</param>
     /// <returns>closest Part found in the given direction</returns>
     private Part _FindNearestPartTowards(double dir) {
-      var originalPart = Diagram.Selection.First();
+      var originalPart = Diagram.Selection.FirstOrDefault();
       if (originalPart == null) return null;
       var originalPoint = originalPart.ActualBounds.Center;
       var allparts = _GetAllParts();

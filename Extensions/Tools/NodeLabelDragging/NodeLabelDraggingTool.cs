@@ -10,6 +10,8 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using Northwoods.Go.PanelLayouts;
+
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
@@ -20,8 +22,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// by the "_IsNodeLabel" property that is positioned in a Spot Panel.
   /// It works by modifying that label's <see cref="GraphObject.Alignment"/> property to have an
   /// offset from the center of the panel.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/NodeLabelDragging.html">Node Label Dragging</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class NodeLabelDraggingTool : Tool {

@@ -19,9 +19,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// via the dragging of a single tool handle at the middle of the link.
   /// Dragging the handle changes the value of <see cref="Link.Curviness"/>.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/CurvedLinkReshaping.html">Curved Link Reshaping</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class CurvedLinkReshapingTool : LinkReshapingTool {
     private double _OriginalCurviness = double.NaN;
@@ -39,7 +36,7 @@ namespace Northwoods.Go.Tools.Extensions {
     [Undocumented]
     public override Adornment MakeAdornment(GraphObject pathshape) {
       if (pathshape.Part is Link link && link.Curve == LinkCurve.Bezier && link.PointsCount == 4) {
-        var adornment = new Adornment(PanelLayoutLink.Instance);
+        var adornment = new Adornment(PanelType.Link);
         var h = MakeHandle(pathshape, 0);
         SetReshapingBehavior(h, ReshapingBehavior.All);
         h.Cursor = "move";

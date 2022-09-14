@@ -18,9 +18,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// The NonRealtimeDraggingTool class lets the user drag an image instead of actually moving any selected nodes,
   /// until the mouse-up event.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/NonRealtimeDragging.html">Non Realtime Dragging</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class NonRealtimeDraggingTool : DraggingTool {
     private int _Duration;  // duration of movement animation; <= 0 to disable

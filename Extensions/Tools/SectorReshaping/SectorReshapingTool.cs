@@ -22,8 +22,6 @@ namespace Northwoods.Go.Tools.Extensions {
   ///
   /// This depends on there being three data properties, "Angle", "Sweep", and "Radius",
   /// that hold the needed information to be able to reproduce the sector.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/SectorReshaping.html">Sector Reshaping</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class SectorReshapingTool : Tool {
@@ -110,7 +108,7 @@ namespace Northwoods.Go.Tools.Extensions {
         var ad = part.FindAdornment(Name);
         if (ad == null) {
           ad =
-              new Adornment(PanelLayoutSpot.Instance).Add(
+              new Adornment(PanelType.Spot).Add(
                   new Placeholder(),
                   new Shape {
                     Figure = "Diamond",

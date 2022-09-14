@@ -1,0 +1,1 @@
+This sample demostrates the use of the [ZoomSlider] extension.

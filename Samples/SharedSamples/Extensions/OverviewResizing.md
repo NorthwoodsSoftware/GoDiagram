@@ -1,0 +1,2 @@
+This sample demonstrates a custom [ResizingTool] which allows the user to resize the overview box.
+It is defined in its own file, as [OverviewResizingTool.cs](https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/OverviewResizing/OverviewResizingTool.cs).

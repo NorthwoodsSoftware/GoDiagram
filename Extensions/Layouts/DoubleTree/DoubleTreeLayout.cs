@@ -30,8 +30,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// there is a real root node and make all of the apparent root nodes children of that pretend root.
   ///
   /// If there is no root node, all nodes are involved in cycles, so the first given node is chosen.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../samples/doubleTree.html">Double Tree</a> sample.
   /// </remarks>
   public class DoubleTreeLayout : Layout {
     private bool _Vertical = false;

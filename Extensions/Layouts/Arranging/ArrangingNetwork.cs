@@ -10,10 +10,6 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// This class represents an abstract graph of <see cref="ArrangingVertex"/>es and <see cref="ArrangingEdge"/>s
@@ -22,10 +18,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// is time to commit any node positioning or link routing.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}"/>.
   /// </remarks>
-  public class ArrangingNetwork : GenericNetwork<ArrangingVertex, ArrangingEdge, ArrangingLayout> {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork(Y)"/>
+  public class ArrangingNetwork : Network<ArrangingVertex, ArrangingEdge, ArrangingLayout> {
+    /// <inheritdoc cref="Network{V, E, Y}.Network(Y)"/>
     public ArrangingNetwork(ArrangingLayout layout) : base(layout) { }
 
     /// <inheritdoc/>
@@ -43,10 +39,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This holds <see cref="ArrangingLayout"/>-specific information about <see cref="Node"/>s.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Vertex"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}.Vertex"/>.
   /// </remarks>
   public class ArrangingVertex : ArrangingNetwork.Vertex {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex(GenericNetwork{V, E, Y})"/>
+    /// <inheritdoc cref="Network{V, E, Y}.Vertex.Vertex(Network{V, E, Y})"/>
     public ArrangingVertex(ArrangingNetwork network) : base(network) { }
   }
 
@@ -54,10 +50,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This holds <see cref="ArrangingLayout"/>-specific information about <see cref="Link"/>s.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Edge"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}.Edge"/>.
   /// </remarks>
   public class ArrangingEdge : ArrangingNetwork.Edge {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge(GenericNetwork{V, E, Y})"/>
+    /// <inheritdoc cref="Network{V, E, Y}.Edge.Edge(Network{V, E, Y})"/>
     public ArrangingEdge(ArrangingNetwork network) : base(network) { }
   }
 }

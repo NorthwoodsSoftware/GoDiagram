@@ -24,8 +24,6 @@ namespace Northwoods.Go.Extensions {
   /// The <see cref="Link.Corner"/> property controls the radius of the curves at the corners of the rectangular area surrounding the comment node,
   /// rather than the curve at corners along the route, which is always straight.
   /// The default value is 10.
-  /// 
-  /// If you want to experiment with this extension, try the <a href="../../extensions/BalloonLink.html">Balloon Links</a> sample.
   /// </remarks>
   /// @category Part Extension
   public class BalloonLink : Link {
@@ -70,7 +68,7 @@ namespace Northwoods.Go.Extensions {
     public override Geometry MakeGeometry() {
       if (FromNode == null) return base.MakeGeometry();
       // assume the FromNode is the comment and the ToNode is the commented-upon node
-      var bb = FromNode.ActualBounds.AddMargin(FromNode.Margin);
+      var bb = FromNode.ActualBounds.Inflate(FromNode.Margin);
 
       var pn = PointsCount == 0 ? bb.Center : GetPoint(PointsCount - 1);
       if (ToNode != null && bb.Intersects(ToNode.ActualBounds)) {

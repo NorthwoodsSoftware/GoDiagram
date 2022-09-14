@@ -26,8 +26,6 @@ namespace Northwoods.Go.Tools.Extensions {
   ///
   /// This tool uses a temporary <see cref="Shape"/>, <see cref="TemporaryShape"/>, held by a <see cref="Part"/> in the "Tool" layer,
   /// to show interactively what the user is drawing.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/PolygonDrawing.html">Polygon Drawing</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class PolygonDrawingTool : Tool {

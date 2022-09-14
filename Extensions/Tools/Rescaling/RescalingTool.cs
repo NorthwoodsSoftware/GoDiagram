@@ -28,8 +28,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// So although you cannot customize any Node to affect this tool, you can set
   /// <see cref="RescaleElementName"/> and set <see cref="Tool.IsEnabled"/> to control
   /// whether objects are rescalable and when.
-  /// 
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Rescaling.html">Rescaling</a> sample.
   /// </remarks>
   public class RescalingTool : Tool {
     private GraphObject _AdornedElement;
@@ -164,7 +162,6 @@ namespace Northwoods.Go.Tools.Extensions {
     [Undocumented]
     public Adornment MakeAdornment(GraphObject rescaleObj) {
       var adornment = new Adornment {
-        Type = PanelLayoutPosition.Instance,
         LocationSpot = Spot.Center
       };
       adornment.Add(_HandleArchetype.Copy());

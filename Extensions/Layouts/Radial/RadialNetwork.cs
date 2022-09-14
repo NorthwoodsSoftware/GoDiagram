@@ -20,10 +20,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// is time to commit any node positioning or link routing.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}"/>.
   /// </remarks>
-  public class RadialNetwork : GenericNetwork<RadialVertex, RadialEdge, RadialLayout> {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.GenericNetwork(Y)"/>
+  public class RadialNetwork : Network<RadialVertex, RadialEdge, RadialLayout> {
+    /// <inheritdoc cref="Network{V, E, Y}.Network(Y)"/>
     public RadialNetwork(RadialLayout layout) : base(layout) { }
 
     /// <inheritdoc/>
@@ -41,7 +41,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This holds <see cref="RadialLayout"/>-specific information about <see cref="Node"/>s.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Vertex"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}.Vertex"/>.
   /// </remarks>
   public class RadialVertex : RadialNetwork.Vertex {
     private int _Distance = int.MaxValue;
@@ -51,7 +51,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     private double _Radius = 0;
     private List<RadialVertex> _Children = null;
 
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Vertex.Vertex(GenericNetwork{V, E, Y})"/>
+    /// <inheritdoc cref="Network{V, E, Y}.Vertex.Vertex(Network{V, E, Y})"/>
     public RadialVertex(RadialNetwork network) : base(network) { }
 
     /// <summary>
@@ -143,10 +143,10 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// This holds <see cref="RadialLayout"/>-specific information about <see cref="Link"/>s.
   /// </summary>
   /// <remarks>
-  /// This class inherits from <see cref="GenericNetwork{V, E, Y}.Edge"/>.
+  /// This class inherits from <see cref="Network{V, E, Y}.Edge"/>.
   /// </remarks>
   public class RadialEdge : RadialNetwork.Edge {
-    /// <inheritdoc cref="GenericNetwork{V, E, Y}.Edge.Edge(GenericNetwork{V, E, Y})"/>
+    /// <inheritdoc cref="Network{V, E, Y}.Edge.Edge(Network{V, E, Y})"/>
     public RadialEdge(RadialNetwork network) : base(network) { }
   }
 }

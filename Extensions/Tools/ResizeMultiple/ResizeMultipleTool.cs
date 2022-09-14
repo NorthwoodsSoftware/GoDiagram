@@ -16,9 +16,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The ResizeMultipleTool class lets the user resize multiple objects at once.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/ResizeMultiple.html">Resize Multiple</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class ResizeMultipleTool : ResizingTool {
     /// <summary>

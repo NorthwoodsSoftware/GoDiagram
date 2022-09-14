@@ -117,7 +117,7 @@ namespace Northwoods.Go.Extensions {
       /// <summary>
       /// When <see cref="Type"/> == "select", the IList or Array of choices.
       /// </summary>
-      public object Choices { get; set; }
+      public IEnumerable Choices { get; set; }
     }
 
     /// <summary>
@@ -303,6 +303,7 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Node"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
+    /// <param name="_">unused</param>
     public static bool ShowIfNode(object part, string _) { return part is Node; }
 
     /// <summary>
@@ -310,6 +311,7 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Link"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
+    /// <param name="_">unused</param>
     public static bool ShowIfLink(object part, string _) { return part is Link; }
 
     /// <summary>
@@ -317,6 +319,7 @@ namespace Northwoods.Go.Extensions {
     /// When used, the property will only be shown when inspecting a <see cref="Group"/>.
     /// </summary>
     /// <param name="part">the Part being inspected</param>
+    /// <param name="_">unused</param>
     public static bool ShowIfGroup(object part, string _) { return part is Group; }
 
     /// <summary>
@@ -472,6 +475,9 @@ namespace Northwoods.Go.Extensions {
       return arr;
     }
 
+    /// <summary>
+    /// (undocumented)
+    /// </summary>
     [Undocumented]
     public static string ConvertToString(object x) {
       if (x == null) return "null";
@@ -490,6 +496,9 @@ namespace Northwoods.Go.Extensions {
       return x.ToString();
     }
 
+    /// <summary>
+    /// (undocumented)
+    /// </summary>
     [Undocumented]
     public static object ParseValue(PropertyOptions decProp, object value, object oldval) {
       // If it's a bool, or if its previous value was bool,

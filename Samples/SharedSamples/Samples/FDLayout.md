@@ -1,0 +1,1 @@
+For information on **ForceDirectedLayout** and its properties, see the [ForceDirectedLayout] documentation page.

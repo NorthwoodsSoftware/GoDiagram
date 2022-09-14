@@ -19,8 +19,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// This tool only works when the Link has a label
   /// that is positioned at the <see cref="Link.MidPoint"/> plus some offset.
   /// It does not work for labels that have a particular <see cref="GraphObject.SegmentIndex"/>.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkLabelDragging.html">Link Label Dragging</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class LinkLabelDraggingTool : Tool {

@@ -30,8 +30,6 @@ namespace Northwoods.Go.Tools.Extensions {
   ///
   /// The Shape used during the drawing operation can be customized by setting <see cref="TemporaryShape"/>.
   /// The node data added to the model can be customized by setting <see cref="ArchetypePartData"/>.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/FreehandDrawing.html">Freehand Drawing</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class FreehandDrawingTool : Tool {

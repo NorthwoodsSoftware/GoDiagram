@@ -23,8 +23,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// side layout, by default in a grid underneath the main body of subgraphs.
   /// </summary>
   /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Arranging.html">Arranging Layout</a> sample.
-  /// 
   /// This layout uses three separate Layouts.
   ///
   /// One is used for laying out nodes and links that are connected together: <see cref="PrimaryLayout"/>.

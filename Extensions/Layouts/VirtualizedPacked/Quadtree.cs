@@ -98,6 +98,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// Other common operations are detailed below.
   /// </remarks>
   /// @category Layout Extension
+  [Undocumented]
   public class VQuadtree<T> {
     private VQuadNode<T> _Root;
 

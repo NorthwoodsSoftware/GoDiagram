@@ -666,7 +666,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           fit.Y = fit.Y - _Bounds.Y + ArrangementOrigin.Y;
         }
 
-        node.MoveTo(fit.X, fit.Y);
+        node.Move(fit.X, fit.Y);
         nodeBounds.Add(node.ActualBounds);
         _ActualBounds = _ActualBounds.Union(node.ActualBounds);
       }

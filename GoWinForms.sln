@@ -7,14 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{F47C7D25-0675-4963-B2F3-953275C208EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsDemoApp", "Samples\WinFormsDemoApp\WinFormsDemoApp.csproj", "{FAFBF616-B668-4C5A-B51B-F430CCC113A5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsExtensionControls", "Samples\WinFormsExtensionControls\WinFormsExtensionControls.csproj", "{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsSampleControls", "Samples\WinFormsSampleControls\WinFormsSampleControls.csproj", "{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsSharedControls", "Samples\WinFormsSharedControls\WinFormsSharedControls.csproj", "{F30C039E-2CAB-4192-9C83-15FF02BA15CA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphObjects", "GraphObjects", "{5C4C9964-9691-4DCF-B41E-4B699FAB8637}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Input", "Input", "{7385AE62-1DA4-4046-8A6B-8B47EB52F254}"
@@ -303,28 +295,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalloonLinkWinForms", "Exte
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Arrowheads", "Extensions\GraphObjects\Arrowheads\Arrowheads.shproj", "{B6B65B89-2C9F-4ADB-BE11-3AF97ECCED69}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedSamples", "Samples\SharedSamples\SharedSamples.shproj", "{EDC3E065-E850-4B61-B58A-5C58C71162B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsDemoApp", "Samples\WinForms\WinFormsDemoApp\WinFormsDemoApp.csproj", "{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88985D68-51BF-44E2-9A3A-B64909EF62C7}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FAFBF616-B668-4C5A-B51B-F430CCC113A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAFBF616-B668-4C5A-B51B-F430CCC113A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAFBF616-B668-4C5A-B51B-F430CCC113A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAFBF616-B668-4C5A-B51B-F430CCC113A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F30C039E-2CAB-4192-9C83-15FF02BA15CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F30C039E-2CAB-4192-9C83-15FF02BA15CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F30C039E-2CAB-4192-9C83-15FF02BA15CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F30C039E-2CAB-4192-9C83-15FF02BA15CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4473FAA1-BA28-4006-8B34-0669E9B01304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4473FAA1-BA28-4006-8B34-0669E9B01304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4473FAA1-BA28-4006-8B34-0669E9B01304}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -505,15 +490,15 @@ Global
 		{454BD4E8-6376-4CF0-8075-EC8BD7979AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{454BD4E8-6376-4CF0-8075-EC8BD7979AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{454BD4E8-6376-4CF0-8075-EC8BD7979AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FAFBF616-B668-4C5A-B51B-F430CCC113A5} = {F47C7D25-0675-4963-B2F3-953275C208EC}
-		{3BF075BF-9AB2-40F1-B9CD-D5EE0A9598FD} = {F47C7D25-0675-4963-B2F3-953275C208EC}
-		{C1147A99-D150-4D67-8FE9-2DD75DD6CAA0} = {F47C7D25-0675-4963-B2F3-953275C208EC}
-		{F30C039E-2CAB-4192-9C83-15FF02BA15CA} = {F47C7D25-0675-4963-B2F3-953275C208EC}
 		{5C4C9964-9691-4DCF-B41E-4B699FAB8637} = {B84F4BE9-2845-45AE-813D-0012AB35310F}
 		{7385AE62-1DA4-4046-8A6B-8B47EB52F254} = {B84F4BE9-2845-45AE-813D-0012AB35310F}
 		{B30E1353-4A6A-465F-AD99-52BC6721EE27} = {B84F4BE9-2845-45AE-813D-0012AB35310F}
@@ -658,6 +643,8 @@ Global
 		{94559C12-C82F-4422-AD1D-FB2D5604F3CA} = {AA0A3B48-BDC0-4ED9-BCCF-1D0045A77066}
 		{454BD4E8-6376-4CF0-8075-EC8BD7979AA6} = {AA0A3B48-BDC0-4ED9-BCCF-1D0045A77066}
 		{B6B65B89-2C9F-4ADB-BE11-3AF97ECCED69} = {729ADAFC-FB52-4F40-8901-6E3EC0D358B5}
+		{EDC3E065-E850-4B61-B58A-5C58C71162B1} = {F47C7D25-0675-4963-B2F3-953275C208EC}
+		{C98CD18F-F7DD-4BC0-BE1A-F24F7796CA8F} = {F47C7D25-0675-4963-B2F3-953275C208EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C89B836-2426-44C4-8876-01E6C8B96E3C}
@@ -739,6 +726,7 @@ Global
 		Extensions\Tools\DragCreating\DragCreating.projitems*{c35544fe-fb69-4617-98b2-6cad9fb21c22}*SharedItemsImports = 5
 		Extensions\Layouts\Packed\Packed.projitems*{c7c14489-0cdc-4fbd-831d-4367c07b7a24}*SharedItemsImports = 5
 		Extensions\Input\DrawCommandHandler\DrawCommandHandler.projitems*{c7cba915-9d3b-435f-ba75-704af103e936}*SharedItemsImports = 13
+		Samples\SharedSamples\SharedSamples.projitems*{c98cd18f-f7dd-4bc0-be1a-f24f7796ca8f}*SharedItemsImports = 5
 		Extensions\Layouts\TreeMap\TreeMap.projitems*{ccb397c7-4416-4da5-853e-474ecfbf2cb4}*SharedItemsImports = 5
 		Extensions\Tools\ColumnResizing\ColumnResizing.projitems*{d02aceb2-ab05-475e-a3bc-3ca9757db009}*SharedItemsImports = 13
 		Extensions\Tools\ColumnResizing\ColumnResizing.projitems*{d03a89ad-3680-4de5-a137-8194e23bf24e}*SharedItemsImports = 5
@@ -747,6 +735,7 @@ Global
 		Extensions\Tools\SectorReshaping\SectorReshaping.projitems*{deae1f3c-e7cc-41a5-8465-79d5f9f0a10b}*SharedItemsImports = 5
 		Extensions\Tools\RowResizing\RowResizing.projitems*{e04d66ab-80a4-4cb3-8e5a-22261cf02d33}*SharedItemsImports = 13
 		Extensions\GraphObjects\Templates\Templates.projitems*{e50b4043-9137-4b43-85e7-7542ddfdf53a}*SharedItemsImports = 13
+		Samples\SharedSamples\SharedSamples.projitems*{edc3e065-e850-4b61-b58a-5c58c71162b1}*SharedItemsImports = 13
 		Extensions\GraphObjects\DimensioningLink\DimensioningLink.projitems*{ee564964-6211-4374-b987-f1ed21120bed}*SharedItemsImports = 13
 		Extensions\GraphObjects\DimensioningLink\DimensioningLink.projitems*{f011acae-5218-4e14-b676-002a4603520d}*SharedItemsImports = 5
 		Extensions\Tools\PortShifting\PortShifting.projitems*{f33fb0b7-f57b-4343-9f02-b5cb2d16c3ef}*SharedItemsImports = 5

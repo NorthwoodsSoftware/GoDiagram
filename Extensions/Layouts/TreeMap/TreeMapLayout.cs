@@ -111,7 +111,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     private void LayoutNode(bool horiz, Part part, double x, double y, double w, double h) {
-      part.MoveTo(x, y);
+      part.Move(x, y);
       part.DesiredSize = new Size(w, h);
 
       if (part is Group g) {

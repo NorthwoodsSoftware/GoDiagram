@@ -16,8 +16,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// </summary>
   /// <remarks>
   /// This tool only works when the Link has a label marked by the "_IsLinkLabel" property.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkLabelOnPathDragging.html">Link Label On Path Dragging</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class LinkLabelOnPathDraggingTool : Tool {

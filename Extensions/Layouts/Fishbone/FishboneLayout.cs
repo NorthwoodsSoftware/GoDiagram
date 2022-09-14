@@ -24,8 +24,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// This layout assumes Links are automatically routed in the way needed by fishbone diagrams
   /// by using the FishboneLink class instead of <see cref="Link"/>.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Fishbone.html">Fishbone Layout</a> sample.
   /// </remarks>
   public class FishboneLayout : TreeLayout {
     private readonly Dictionary<TreeVertex, int> _Direction = new();

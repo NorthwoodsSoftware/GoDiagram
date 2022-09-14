@@ -18,9 +18,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// The GuidedDraggingTool class makes guidelines visible as the parts are dragged around a diagram
   /// when the selected part is nearly aligned with another part.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/GuidedDragging.html">Guided Dragging</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class GuidedDraggingTool : DraggingTool {
     // horizontal guidelines

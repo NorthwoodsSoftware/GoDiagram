@@ -25,8 +25,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// If the shape cannot be found or if its <see cref="Shape.Geometry"/> is not of type <see cref="GeometryType.Path"/>,
   /// this will not show any GeometryReshaping <see cref="Adornment"/>.
   /// At the current time this tool does not support adding or removing <see cref="PathSegment"/>s to the Geometry.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/GeometryReshaping.html">Geometry Reshaping</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class GeometryReshapingTool : Tool {

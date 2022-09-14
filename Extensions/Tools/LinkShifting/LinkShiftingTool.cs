@@ -24,8 +24,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <code language="cs">
   /// myDiagram.ToolManager.MouseDownTools.Add(new LinkShiftingTool());
   /// </code>
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/LinkShifting.html">Link Shifting</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class LinkShiftingTool : Tool {
@@ -151,9 +149,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// </summary>
     [Undocumented]
     public virtual Adornment MakeAdornment(GraphObject selelt, bool toend) {
-      var adornment = new Adornment {
-        Type = PanelLayoutLink.Instance
-      };
+      var adornment = new Adornment(PanelType.Link);
       var h = (toend ? ToHandleArchetype : FromHandleArchetype);
       if (h != null) {
         // add a single handle for shifting at one end

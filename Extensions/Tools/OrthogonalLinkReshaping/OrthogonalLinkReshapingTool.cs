@@ -17,9 +17,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The OrthogonalLinkReshapingTool class lets a user drag a tool handle along the link segment, which will move the whole segment.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/OrthogonalLinkReshaping.html">Orthogonal Link Reshaping</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class OrthogonalLinkReshapingTool : LinkReshapingTool {
     /// <summary>
@@ -95,12 +92,12 @@ namespace Northwoods.Go.Tools.Extensions {
         var behavior = GetReshapingBehavior(Handle);
         if (behavior == ReshapingBehavior.Vertical) {
           // move segment vertically
-          link.SetPointAt(index, link.GetPoint(index - 1).X, newpt.Y);
-          link.SetPointAt(index + 1, link.GetPoint(index + 2).X, newpt.Y);
+          link.SetPoint(index, link.GetPoint(index - 1).X, newpt.Y);
+          link.SetPoint(index + 1, link.GetPoint(index + 2).X, newpt.Y);
         } else if (behavior == ReshapingBehavior.Horizontal) {
           // move segment horizontally
-          link.SetPointAt(index, newpt.X, link.GetPoint(index - 1).Y);
-          link.SetPointAt(index + 1, newpt.X, link.GetPoint(index + 2).Y);
+          link.SetPoint(index, newpt.X, link.GetPoint(index - 1).Y);
+          link.SetPoint(index + 1, newpt.X, link.GetPoint(index + 2).Y);
         }
         link.CommitRoute();
       } else {

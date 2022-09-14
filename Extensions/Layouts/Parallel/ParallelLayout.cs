@@ -10,7 +10,6 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
-using System;
 using System.Collections.Generic;
 
 
@@ -25,8 +24,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// You can set all of the TreeLayout properties that you like,
   /// except that for simplicity this code just works for angle == 0 or angle == 90.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Parellel.html">Parallel Layout</a> sample.
   /// </remarks>
   /// @category Layout Extension
   public class ParallelLayout : TreeLayout {

@@ -1,0 +1,2 @@
+This sample makes use of the [DimensioningLink] class, which inherits from the [Link] class.
+That class is defined at [DimensioningLink.cs](https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/DimensioningLink/DimensioningLink.cs).

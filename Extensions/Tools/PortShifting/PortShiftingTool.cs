@@ -11,6 +11,7 @@
 */
 
 using System;
+using Northwoods.Go.PanelLayouts;
 
 namespace Northwoods.Go.Tools.Extensions {
 
@@ -22,8 +23,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// a non-null and non-empty PortId that is positioned in a Spot Panel,
   /// and the user holds down the Shift key.
   /// It works by modifying that port's <see cref="GraphObject.Alignment"/> property.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/PortShifting.html">Port Shifting</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class PortShiftingTool : Tool {

@@ -25,8 +25,7 @@ namespace Northwoods.Go.Extensions {
   /// as size, button size, alignment, etc should be handled separately and are not passed as parameters to this Extension.
   /// 
   /// The Extension takes as parameters two delegates, which should respectively get and set the value parameter of the Range
-  /// component. This is best implemented via accessors to a two-way binding property. An example of this implementation can
-  /// be found in the ZoomSlider sample.
+  /// component. An example of this implementation can be found in the ZoomSlider sample.
   /// </remarks>
   public class ZoomSlider {
     private readonly Diagram _Diagram;

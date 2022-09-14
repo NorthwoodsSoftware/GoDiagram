@@ -25,8 +25,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// appearance and behavior of the temporary link that is shown during the linking operation.
   /// You can customize the <see cref="LinkingTool.ArchetypeLinkData"/> to specify property values
   /// that can be data-bound by your link template for the Links that are actually created.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/PolylineLinking.html">Polyline Linking</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class PolylineLinkingTool : LinkingTool {

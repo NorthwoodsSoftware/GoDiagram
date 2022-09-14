@@ -23,8 +23,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// If the control key is held down during rotation, rotates all parts individually.
   ///
   /// Caution: this only works for Groups that do *not* have a Placeholder.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/RotateMultiple.html">Rotate Multiple</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class RotateMultipleTool : RotatingTool {

@@ -19,9 +19,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// Given a root <see cref="Node"/>, this arranges connected nodes in concentric rings,
   /// layered by the minimum link distance from the root.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Radial.html">Radial Layout</a> sample.
-  /// </remarks>
   /// @category Layout Extension
   public class RadialLayout : NetworkLayout<RadialNetwork, RadialVertex, RadialEdge, RadialLayout> {
     private Node _Root = null;

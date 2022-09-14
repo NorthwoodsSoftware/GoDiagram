@@ -18,9 +18,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// The RealtimeDragSelectingTool class lets the user select and deselect Parts within the <see cref="DragSelectingTool.Box"/>
   /// during a drag, not just at the end of the drag.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/RealtimeDragSelecting.html">Realtime Drag Selecting</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class RealtimeDragSelectingTool : DragSelectingTool {
     private HashSet<Part> _OriginalSelection;

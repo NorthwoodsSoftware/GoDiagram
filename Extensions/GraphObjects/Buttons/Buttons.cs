@@ -12,6 +12,7 @@
 
 using System;
 using Northwoods.Go.Models;
+using Northwoods.Go.PanelLayouts;
 
 /// These are the definitions for all of the predefined buttons.
 /// You do not need to load this file in order to use buttons.

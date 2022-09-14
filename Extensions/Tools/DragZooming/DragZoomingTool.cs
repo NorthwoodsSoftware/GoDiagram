@@ -43,8 +43,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// This tool does not utilize any <see cref="Adornment"/>s or tool handles,
   /// but it does temporarily add the <see cref="Box"/> part to the diagram.
   /// This tool does not modify the model or conduct any transaction.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/DragZooming.html">Drag Zooming</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class DragZoomingTool : Tool {

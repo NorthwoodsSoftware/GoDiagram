@@ -1,0 +1,1 @@
+For information on **CircularLayout** and its properties, see the [CircularLayout] documentation page.

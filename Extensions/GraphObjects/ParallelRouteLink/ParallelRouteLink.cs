@@ -70,8 +70,8 @@ namespace Northwoods.Go.Extensions {
             qy = slope * (qx - mx) + my;
           }
 
-          InsertPointAt(pidx + 1, px, py);
-          InsertPointAt(qidx + 1, qx, qy);
+          InsertPoint(pidx + 1, px, py);
+          InsertPoint(qidx + 1, qx, qy);
         }
       }
 

@@ -21,8 +21,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// <remarks>
   /// This layout assumes the graph is a chain of <see cref="Node"/>s,
   /// <see cref="Spacing"/> controls the spacing between nodes.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Spiral.html">Spiral Layout</a> sample.
   /// </remarks>
   /// @category Layout Extension
   public class SpiralLayout : NetworkLayout<SpiralNetwork, SpiralVertex, SpiralEdge, SpiralLayout> {

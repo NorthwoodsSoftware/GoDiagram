@@ -154,12 +154,12 @@ namespace Northwoods.Go.Extensions {
         q = q.Rotate(ang + 90);
         var g = new Point(Gap, 0);
         g = g.Rotate(ang + 90);
-        AddPointAt(frompoint.X + g.X, frompoint.Y + g.Y);
-        AddPointAt(frompoint.X + p.X, frompoint.Y + p.Y);
-        AddPointAt(frompoint.X + q.X, frompoint.Y + q.Y);
-        AddPointAt(topoint.X + q.X, topoint.Y + q.Y);
-        AddPointAt(topoint.X + p.X, topoint.Y + p.Y);
-        AddPointAt(topoint.X + g.X, topoint.Y + g.Y);
+        AddPoint(frompoint.X + g.X, frompoint.Y + g.Y);
+        AddPoint(frompoint.X + p.X, frompoint.Y + p.Y);
+        AddPoint(frompoint.X + q.X, frompoint.Y + q.Y);
+        AddPoint(topoint.X + q.X, topoint.Y + q.Y);
+        AddPoint(topoint.X + p.X, topoint.Y + p.Y);
+        AddPoint(topoint.X + g.X, topoint.Y + g.Y);
       } else {
         var dist = Extension;
         var r = 0.0;
@@ -178,12 +178,12 @@ namespace Northwoods.Go.Extensions {
             t0 = frompoint.Y + Gap;
             t1 = topoint.Y + Gap;
           }
-          AddPointAt(frompoint.X, t0);
-          AddPointAt(frompoint.X + 0.01, r);
-          AddPointAt(frompoint.X, s);
-          AddPointAt(topoint.X, s);
-          AddPointAt(topoint.X - 0.01, r);
-          AddPointAt(topoint.X, t1);
+          AddPoint(frompoint.X, t0);
+          AddPoint(frompoint.X + 0.01, r);
+          AddPoint(frompoint.X, s);
+          AddPoint(topoint.X, s);
+          AddPoint(topoint.X - 0.01, r);
+          AddPoint(topoint.X, t1);
         } else if (ang == 90 || ang == 270) {
           if (ang == 90) {
             r = Math.Max(frompoint.X, topoint.X) + Extension;
@@ -196,12 +196,12 @@ namespace Northwoods.Go.Extensions {
             t0 = frompoint.X - Gap;
             t1 = topoint.X - Gap;
           }
-          AddPointAt(t0, frompoint.Y);
-          AddPointAt(r, frompoint.Y + 0.01);
-          AddPointAt(s, frompoint.Y);
-          AddPointAt(s, topoint.Y);
-          AddPointAt(r, topoint.Y - 0.01);
-          AddPointAt(t1, topoint.Y);
+          AddPoint(t0, frompoint.Y);
+          AddPoint(r, frompoint.Y + 0.01);
+          AddPoint(s, frompoint.Y);
+          AddPoint(s, topoint.Y);
+          AddPoint(r, topoint.Y - 0.01);
+          AddPoint(t1, topoint.Y);
         }
       }
 

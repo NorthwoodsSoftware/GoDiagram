@@ -11,15 +11,13 @@
 */
 
 using System;
+using Northwoods.Go.PanelLayouts;
 
 namespace Northwoods.Go.Tools.Extensions {
 
   /// <summary>
   /// The ColumnResizingTool class lets the user resize each column of a named Table Panel in a selected Part.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/ColumnResizing.html">Column Resizing</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class ColumnResizingTool : Tool {
     private Shape _HandleArchetype;

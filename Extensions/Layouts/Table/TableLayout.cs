@@ -52,8 +52,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// and <see cref="RowDefinition.SeparatorDashArray"/> properties)
   /// nor background (<see cref="RowDefinition.Background"/> and <see cref="RowDefinition.CoversSeparators"/> properties).
   /// There is no support for <see cref="RowDefinition.Sizing"/>, either.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Table.html">Table Layout</a> sample.
   /// </remarks>
   /// @category Layout Extension
   public class TableLayout : Layout {
@@ -854,7 +852,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         if (row == null) continue;
         lcol = 1 + row.Keys.Max();
         var rowHerald = GetRowDefinition(i);
-        y = origin.Y + rowHerald.ActualY + rowHerald.ComputeEffectiveSpacingTop(firstRow);
+        y = origin.Y + rowHerald.ActualY + rowHerald.ComputeEffectiveSpacing(firstRow);
 
         var j = -1;
         foreach (var colpair in row) {
@@ -862,7 +860,7 @@ namespace Northwoods.Go.Layouts.Extensions {
           var col = colpair.Value;
           if (col == null) continue;
           var colHerald = GetColumnDefinition(j);
-          x = origin.X + colHerald.ActualX + colHerald.ComputeEffectiveSpacingTop(firstColumn);
+          x = origin.X + colHerald.ActualX + colHerald.ComputeEffectiveSpacing(firstColumn);
 
           var cell = rowcol[i][j];
           foreach (var child in cell) {
@@ -974,7 +972,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             ar.X += (ar.Width * alignx) - (widthmarg * alignx) + alignoffsetX + marg.Left;
             ar.Y += (ar.Height * aligny) - (heightmarg * aligny) + alignoffsetY + marg.Top;
 
-            child.MoveTo(ar.X, ar.Y);
+            child.Move(ar.X, ar.Y);
             if (stretch != Stretch.None) {
               child.ResizeElement.DesiredSize = new Size(width, height);
             }

@@ -26,8 +26,6 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// <see cref="LeftSpot"/> and <see cref="RightSpot"/> determine the Spots to use for the <see cref="Link.FromSpot"/> and <see cref="Link.ToSpot"/>.
   ///
   /// When this layout is the Diagram.Layout, it is automatically invalidated when the viewport changes size.
-  ///
-  /// If you want to experiment with this extension, try the <a href="../../extensions/Serpentine.html">Serpentine Layout</a> sample.
   /// </remarks>
   /// @category Layout Extension
   public class SerpentineLayout : Layout {

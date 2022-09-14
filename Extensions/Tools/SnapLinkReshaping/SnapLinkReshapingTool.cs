@@ -20,8 +20,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <remarks>
   /// If <see cref="AvoidsNodes"/> is true and the link is orthogonal,
   /// it also avoids reshaping the link so that any adjacent segments cross over any avoidable nodes.
-  /// 
-  /// If you want to experiment with this extension, try the <a href="../../extensions/SnapLinkReshaping.html">Snap Link Reshaping</a> sample.
   /// </remarks>
   /// @category Tool Extension
   public class SnapLinkReshapingTool : LinkReshapingTool {

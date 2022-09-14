@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>edc3e065-e850-4b61-b58a-5c58c71162b1</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SharedSamples</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ExtensionMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Arranging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColumnResizing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CurvedLinkReshaping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Dimensioning.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DragCreating.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DragZooming.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DrawCommandHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fishbone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\FreehandDrawing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\GeometryReshaping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\GuidedDragging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Hyperlink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LinkLabelDragging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LinkLabelOnPathDragging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\LinkShifting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\NodeLabelDragging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\NonRealtimeDragging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\OrthogonalLinkReshaping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\OverviewResizing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Packed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Parallel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ParallelRoute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PolygonDrawing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PolylineLinking.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\PortShifting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\RealtimeDragSelecting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Rescaling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ResizeMultiple.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Robot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\RotateMultiple.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SectorReshaping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Serpentine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SnapLinkReshaping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Spiral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SwimLane.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Table.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TreeMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\VirtualizedPacked.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ZoomSlider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Arrowheads.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Basic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DescriptionReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BalloonLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\BeatPaths.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\BlockEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ClassHierarchy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\CLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Comments.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ConceptMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ContentAlign.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DataFlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DecisionTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Distances.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DoubleTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DraggableLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\DynamicPorts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\EntityRelationship.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Euler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\FamilyTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\FDLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Flowchart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\FriendWheel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Gantt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Genogram.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\GLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Grafcet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Icons.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IncrementalTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\InteractiveForce.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\IvrTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Kanban.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\KittenMonitor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\LDLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\LinksToLinks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\LocalView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\LogicCircuit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\MindMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Minimal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Navigation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\OrgChartEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\OrgChartStatic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\PageFlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ParseTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Pert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Pipes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Planogram.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ProcessFlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Radial.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\RadialPartition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Records.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Regrouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Sankey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SeatingChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SequenceDiagram.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SequentialFunction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Shapes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\ShopFloorMonitor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\StateChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SwimBands.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SwimLanes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\SystemDynamics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\TLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\Tournament.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\TreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\UmlClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\UpdateDemo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Samples\VisualTree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Basic.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Minimal.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\OrgChartEditor.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\BalloonLink.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Flowchart.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\OrgChartStatic.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\FamilyTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Genogram.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\DoubleTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\MindMap.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\DecisionTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\IvrTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\IncrementalTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ParseTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\TreeView.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Tournament.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\LocalView.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\BlockEditor.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\PageFlow.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ProcessFlow.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SystemDynamics.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\StateChart.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Kanban.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SequentialFunction.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Grafcet.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SequenceDiagram.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\LogicCircuit.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Records.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\DataFlow.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\DynamicPorts.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Planogram.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SeatingChart.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Regrouping.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Pipes.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\DraggableLink.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\LinksToLinks.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\BeatPaths.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ConceptMap.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Euler.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\EntityRelationship.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\FriendWheel.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Radial.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\RadialPartition.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Distances.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Arranging.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\ColumnResizing.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Fishbone.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Packed.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Parallel.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Serpentine.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Spiral.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\SwimLane.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Table.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\TreeMap.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\RealtimeDragSelecting.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\DragCreating.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\DragZooming.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\ResizeMultiple.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\RotateMultiple.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\CurvedLinkReshaping.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\GeometryReshaping.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\OrthogonalLinkReshaping.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Rescaling.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\SectorReshaping.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\SnapLinkReshaping.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\FreehandDrawing.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\PolygonDrawing.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\PolylineLinking.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\GuidedDragging.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\LinkLabelDragging.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\LinkLabelOnPathDragging.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\LinkShifting.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\NodeLabelDragging.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\NonRealtimeDragging.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\OverviewResizing.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\PortShifting.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Dimensioning.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\DrawCommandHandler.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\ParallelRoute.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Hyperlink.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\ZoomSlider.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\VirtualizedPacked.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Extensions\Robot.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Gantt.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Grouping.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\KittenMonitor.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Pert.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Sankey.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ShopFloorMonitor.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SwimBands.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\SwimLanes.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\UmlClass.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Arrowheads.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ClassHierarchy.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Icons.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Shapes.md" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\VisualTree.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Navigation.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\UpdateDemo.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\ContentAlign.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\Comments.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\GLayout.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\TLayout.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\FDLayout.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\LDLayout.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\CLayout.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Samples\InteractiveForce.md" />
+  </ItemGroup>
+</Project>

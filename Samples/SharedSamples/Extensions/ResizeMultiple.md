@@ -1,0 +1,2 @@
+This sample demonstrates a custom [ResizingTool] which allows the user to resize many selected objects at once.
+It is defined in its own file, as [ResizeMultipleTool.cs](https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/Tools/ResizeMultiple/ResizeMultipleTool.cs).

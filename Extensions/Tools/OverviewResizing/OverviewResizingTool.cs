@@ -17,9 +17,6 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <summary>
   /// The OverviewResizingTool class lets the user resize the box within an overview.
   /// </summary>
-  /// <remarks>
-  /// If you want to experiment with this extension, try the <a href="../../extensions/OverviewResizing.html">Overview Resizing</a> sample.
-  /// </remarks>
   /// @category Tool Extension
   public class OverviewResizingTool : ResizingTool {
     // Internal property used to keep track of changing handle size
