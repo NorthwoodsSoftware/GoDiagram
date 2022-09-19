@@ -123,7 +123,7 @@ namespace Demo.Samples.TLayout {
     // Update the layout from the controls, and then perform the layout again
     private void _Layout() {
       if (_Diagram.Layout is not TreeLayout lay) return;
-      _Diagram.StartTransaction("change Layout");
+      _Diagram.StartTransaction("change layout");
 
       lay.TreeStyle = (TreeStyle)Enum.Parse(typeof(TreeStyle), (string)style.SelectedItem);
       lay.LayerStyle = (TreeLayerStyle)Enum.Parse(typeof(TreeLayerStyle), (string)layerStyle.SelectedItem);
@@ -159,7 +159,8 @@ namespace Demo.Samples.TLayout {
         lay.AlternateSetsPortSpot = _GetChecked(altSetsPortSpot);
         lay.AlternateSetsChildPortSpot = _GetChecked(altSetsChildPortSpot);
       }
-      _Diagram.CommitTransaction("change Layout");
+
+      _Diagram.CommitTransaction("change layout");
     }
 
     private int _Angle = 0;

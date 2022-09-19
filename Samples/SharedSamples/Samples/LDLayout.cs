@@ -117,7 +117,8 @@ namespace Demo.Samples.LDLayout {
     }
 
     private void _Layout() {
-      var lay = _Diagram.Layout as LayeredDigraphLayout;
+      if (_Diagram.Layout is not LayeredDigraphLayout lay) return;
+      _Diagram.StartTransaction("change layout");
 
       lay.Direction = _Direction;
       if (!double.TryParse(layerSpacing.Text.Trim(), out var ls)) ls = 25;
@@ -138,7 +139,7 @@ namespace Demo.Samples.LDLayout {
 
       lay.SetsPortSpots = _GetChecked(setsPortSpots);
 
-      _Diagram.CommitTransaction("change Layout");
+      _Diagram.CommitTransaction("change layout");
     }
 
     private int _Direction = 0;

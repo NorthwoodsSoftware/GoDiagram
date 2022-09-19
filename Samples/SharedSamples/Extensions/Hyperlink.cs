@@ -23,10 +23,10 @@ namespace Demo.Extensions.Hyperlink {
       HyperlinkText.DefineBuilders();
 
       Func<object, string> func1 = (node) => {
-        return "https://gojs.net/" + ((node as Node).Data as NodeData).Version;
+        return "https://godiagram.com/winforms/" + ((node as Node).Data as NodeData).Version;
       };
       Func<object, string> func2 = (node) => {
-        return "Visit GoJS " + ((node as Node).Data as NodeData).Version;
+        return "Visit GoDiagram " + ((node as Node).Data as NodeData).Version;
       };
       TextBlock hyperlinkObj =
         Builder.Make<TextBlock>("HyperlinkText", new object[] {

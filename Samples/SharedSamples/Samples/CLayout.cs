@@ -151,7 +151,7 @@ namespace Demo.Samples.CLayout {
 
     private void _Layout() {
       if (_Diagram.Layout is not CircularLayout lay) return;
-      _Diagram.StartTransaction("change Layout");
+      _Diagram.StartTransaction("change layout");
 
       if (!double.TryParse(radius.Text, out var rad)) rad = double.NaN;
       lay.Radius = rad;
@@ -168,7 +168,8 @@ namespace Demo.Samples.CLayout {
       lay.NodeDiameterFormula = _DiamFormula;
       lay.Direction = (CircularDirection)Enum.Parse(typeof(CircularDirection), (string)direction.SelectedItem);
       lay.Sorting = (CircularSorting)Enum.Parse(typeof(CircularSorting), (string)sorting.SelectedItem);
-      _Diagram.CommitTransaction("change Layout");
+
+      _Diagram.CommitTransaction("change layout");
     }
 
     private void button1_Click(object sender, EventArgs e) {

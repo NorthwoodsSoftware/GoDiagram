@@ -75,8 +75,8 @@ namespace Demo.Samples.GLayout {
     }
 
     private void _Layout() {
+      if (_Diagram.Layout is not GridLayout lay) return;
       _Diagram.StartTransaction("change layout");
-      var lay = _Diagram.Layout as GridLayout;
 
       if (!int.TryParse(wrapColTb.Text.Trim(), out var c)) c = 0;
       lay.WrappingColumn = c;

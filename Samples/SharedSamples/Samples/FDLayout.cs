@@ -142,8 +142,7 @@ namespace Demo.Samples.FDLayout {
     // Changing the properties will invalidate the layout
     private void _Layout() {
       if (_Diagram.Layout is not ForceDirectedLayout lay) return;
-
-      _Diagram.StartTransaction("changed Layout");
+      _Diagram.StartTransaction("change layout");
 
       if (!int.TryParse(maxIter.Text.Trim(), out var iters)) iters = 100;
       lay.MaxIterations = iters;
@@ -163,7 +162,7 @@ namespace Demo.Samples.FDLayout {
       if (!double.TryParse(length.Text.Trim(), out var len)) len = 50;
       lay.DefaultSpringLength = len;
 
-      _Diagram.CommitTransaction("changed Layout");
+      _Diagram.CommitTransaction("change layout");
     }
   }
 

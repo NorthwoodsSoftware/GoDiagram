@@ -214,9 +214,6 @@ namespace Demo.Samples.AdornmentButtons {
         node.Diagram.StartTransaction("Change color");
         shape.Fill = (Brush)NextColor(shape.Fill, null);
         button["_ButtonFillNormal"] = NextColor(shape.Fill, null);  // update the button too
-        // DEBUG
-        Console.Write("button fill: " + button["_ButtonFillNormal"]);
-        // END DEBUG
         node.Diagram.CommitTransaction("Change color");
       }
 
