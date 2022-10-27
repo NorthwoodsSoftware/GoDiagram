@@ -25,8 +25,8 @@ namespace Demo.Samples.SelectablePorts {
     }
 
     // consts
-    public const string SelectedBrush = "dodgerblue";
-    public const string UnselectedBrush = "lightgray";
+    public static Brush SelectedBrush = "dodgerblue";
+    public static Brush UnselectedBrush = "lightgray";
 
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
@@ -114,7 +114,7 @@ namespace Demo.Samples.SelectablePorts {
                 new Binding("Text", "Name")
               ),
               new Picture {
-                Source = "https://godiagram.com/samples/images/60x90.png",
+                Source = "https://nwoods.com/go/images/samples/60x90.png",
                 Width = 30,
                 Height = 45,
                 Margin = new Margin(10, 10)

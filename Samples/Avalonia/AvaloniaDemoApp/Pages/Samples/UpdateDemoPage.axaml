@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             xmlns:md="clr-namespace:Markdown.Avalonia;assembly=Markdown.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.UpdateDemo.UpdateDemo">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="300" />
+        <RowDefinition Height="300" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl Name="diagramControl1"
+                         BorderBrush="Blue" BorderThickness="1"
+                         Grid.Row="0" Grid.Column="0" />
+      <StackPanel Spacing="3" Grid.Row="0" Grid.Column="1">
+        <Button Name="clearModelLogBtn">Clear Model Log</Button>
+        <ListBox Name="modelLog" Items="{Binding $parent[3].Log}" Height="250"></ListBox>
+      </StackPanel>
+      <go:DiagramControl Name="diagramControl2"
+                         BorderBrush="Blue" BorderThickness="1"
+                         Grid.Column="0" Grid.Row="1"/>
+      <StackPanel Spacing="3" Grid.Row="1" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Spacing="3">
+          <Button Name="undoBtn">Undo</Button>
+          <Button Name="redoBtn">Redo</Button>
+        </StackPanel>
+        <go:DiagramControl
+          Name="diagramControl3"
+          Height="250"
+          BorderBrush="Black" BorderThickness="1" />
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="2" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

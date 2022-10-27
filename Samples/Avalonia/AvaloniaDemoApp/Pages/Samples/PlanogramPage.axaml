@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.Planogram.Planogram">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="145" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="545" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel
+        Orientation="Vertical"
+        Grid.Column="0" Grid.Row="0"
+        Margin="0,0,2,0">
+        <StackPanel.Resources>
+          <Thickness x:Key="ExpanderHeaderPadding">8,16</Thickness>
+          <Thickness x:Key="ExpanderContentPadding">0</Thickness>
+        </StackPanel.Resources>
+        <Expander Name="smallExpander" Header="Small items" IsExpanded="True" >
+          <go:PaletteControl
+            Name="paletteControl1"
+            Width="140" Height="340" />
+        </Expander>
+        <Expander Name="tallExpander" Header="Tall items">
+          <go:PaletteControl
+            Name="paletteControl2"
+            Width="140" Height="340"/>
+        </Expander>
+        <Expander Name="wideExpander" Header="Wide items">
+          <go:PaletteControl
+            Name="paletteControl3"
+            Width="140" Height="340"/>
+        </Expander>
+        <Expander Name="bigExpander" Header="Big items">
+          <go:PaletteControl
+            Name="paletteControl4"
+            Width="140" Height="340"/>
+        </Expander>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Column="1" Grid.Row="0" />
+      <views:DescriptionView Name="desc1" Grid.Row="1" Grid.ColumnSpan="2" />
+      <views:ModelJsonView Name="modelJson1" CanSaveLoad="False" Grid.Row="2" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

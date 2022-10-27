@@ -21,7 +21,7 @@ namespace Demo.Samples.KittenMonitor {
     }
 
     private void Setup() {
-      var INTERVAL = 2000;
+      var INTERVAL = 1000;
 
       _Diagram.InitialContentAlignment = Spot.TopLeft;
       _Diagram.IsReadOnly = true;
@@ -53,7 +53,7 @@ namespace Demo.Samples.KittenMonitor {
                   new Panel("Vertical")
                     .Add(
                       new Picture { Margin = 3 }
-                        .Bind("Source", "Src", (s) => { return "https://godiagram.com/samples/images/" + s + ".png"; }),
+                        .Bind("Source", "Src", (s) => { return "https://nwoods.com/go/images/samples/" + s + ".png"; }),
                       new TextBlock { Margin = 3 }
                         .Bind("Text", "Key")
                   )
@@ -103,7 +103,7 @@ namespace Demo.Samples.KittenMonitor {
       }
 
       async void Loop() {
-        await Task.Delay(INTERVAL + 20);
+        await Task.Delay(INTERVAL * 2);
         RandomMovement();
         Loop();
       }

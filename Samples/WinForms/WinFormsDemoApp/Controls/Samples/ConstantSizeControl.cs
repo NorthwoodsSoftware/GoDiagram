@@ -16,6 +16,7 @@ namespace Demo.Samples.ConstantSize {
 
     public ConstantSizeControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
       Setup();
 
@@ -29,9 +30,8 @@ namespace Demo.Samples.ConstantSize {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
-      // diagram properties
+      var INTERVAL = 1000;
+      
       myDiagram.InitialContentAlignment = Spot.TopLeft;
       myDiagram.IsReadOnly = true; // allow selection but not moving or copying or deleting
       myDiagram.ToolManager.HoverDelay = 100; // how quickly tooltips are shown
@@ -40,55 +40,47 @@ namespace Demo.Samples.ConstantSize {
       // the background image, a floor plan
       myDiagram.Add(
         new Part {  // this Part is not bound to any model data
-          LayerName = "Background",
-          Position = new Point(0, 0),
-          Selectable = false,
-          Pickable = false
-        }.Add(
-          new Picture {
-            DesiredSize = new Size(842, 569),
-            Source = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Sample_Floorplan.jpg"
+            Width = 840, Height = 570,
+            LayerName = "Background", Position = new Point(0, 0),
+            Selectable = false, Pickable = false
           }
-        )
+          .Add(new Picture { Source = "https://upload.wikimedia.org/wikipedia/commons/9/9a/Sample_Floorplan.jpg" })
       );
 
       // the template for each kitten, for now just a colored circle
       myDiagram.NodeTemplate =
-        new Node { // at center of node
-          LocationSpot = Spot.Center,
-          ToolTip = Builder.Make<Adornment>("ToolTip").Add(
-            new Panel(PanelType.Vertical).Add(
-              new Picture().Bind(
-                new Binding("Source", "Src", (s, _) => {
-                  return "https://godiagram.com/samples/images/" + (s as string) + ".png";
-                })),
-              new TextBlock {
-                Margin = 3
-              }.Bind(
-                new Binding("Text", "Key")
-              )
-            )
+        new Node { // this tooltip shows the name and picture of the kitten
+            ToolTip =
+                Builder.Make<Adornment>("ToolTip")
+                  .Add(
+                    new Panel("Vertical")
+                      .Add(
+                        new Picture { Margin = 3 }
+                          .Bind("Source", "Src", (s) => { return "https://nwoods.com/go/images/samples/" + s + ".png"; }),
+                        new TextBlock { Margin = 3 }
+                          .Bind("Text", "Key")
+                    )
+                  ),  // end Adornment
+            LocationSpot = Spot.Center // at center of node
+          }
+          .Bind("Location", "Loc")  // specified by data
+          .Add(
+            new Shape("Circle") {
+                Width = 15, Height = 15, StrokeWidth = 3
+              }
+              .Bind("Fill", "Color", MakeFill)
+              .Bind("Stroke", "Color", MakeStroke)  // also specified by data
           )
-        }.Bind( // specified by data
-          new Binding("Location", "Loc")
-        ).Add(
-          new Shape {
-            Figure = "Circle",
-            Width = 12,
-            Height = 12,
-            Stroke = (Brush)null
-          }.Bind(
-            new Binding("Fill", "Color") // also specified by data
-          )
-        );
+          // don't animate if INTERVAL is <= 20 milliseconds
+          .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", (INTERVAL, null, Animation.EaseLinear)) : null);
 
       // pretend there are four kittens
       myDiagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = "Alonzo", Src = "50x40", Loc = new Point(220, 130), Color = "blue" },
-          new NodeData { Key = "Coricopat", Src = "55x55", Loc = new Point(420, 250), Color = "green" },
-          new NodeData { Key = "Garfield", Src = "60x90", Loc = new Point(640, 450), Color = "red" },
-          new NodeData { Key = "Demeter", Src = "80x50", Loc = new Point(140, 350), Color = "purple" }
+          new NodeData { Key = "Alonzo", Src = "50x40", Loc = new Point(220, 130), Color = 2 },
+          new NodeData { Key = "Coricopat", Src = "55x55", Loc = new Point(420, 250), Color = 4 },
+          new NodeData { Key = "Garfield", Src = "60x90", Loc = new Point(640, 450), Color = 6 },
+          new NodeData { Key = "Demeter", Src = "80x50", Loc = new Point(140, 350), Color = 8 }
         }
       };
 
@@ -97,13 +89,13 @@ namespace Demo.Samples.ConstantSize {
       // This code ignores simple Parts;
       // Links will automatically be rerouted as Nodes change size.
       var origscale = double.NaN;
-      myDiagram.InitialLayoutCompleted += (_, e) => {
+      myDiagram.InitialLayoutCompleted += (s, e) => {
         origscale = myDiagram.Scale;
       };
-      myDiagram.ViewportBoundsChanged += (_, e) => {
+      myDiagram.ViewportBoundsChanged += (s, e) => {
         if (double.IsNaN(origscale)) return;
         var newscale = myDiagram.Scale;
-        var subject = (ValueTuple<double, Point, Rect, bool>)e.Subject;
+        var subject = (ValueTuple<double, Point, Rect, Size, Size, bool>)e.Subject;
         if (subject.Item1 == newscale) return;  // Optimization = don't scale Nodes when just scrolling/panning
         myDiagram.SkipsUndoManager = true;
         myDiagram.StartTransaction("scale Nodes");
@@ -114,33 +106,65 @@ namespace Demo.Samples.ConstantSize {
         myDiagram.SkipsUndoManager = false;
       };
 
-      // simulate some real-time position monitoring, once every 2 seconds
+      // simulate some real-time position monitoring, once every INTERVAL milliseconds
       void RandomMovement() {
+        var rand = new Random();
         var model = myDiagram.Model;
         model.StartTransaction("update locations");
-        var rand = new Random();
         var arr = model.NodeDataSource as List<NodeData>;
         var picture = myDiagram.Parts.First();
         for (var i = 0; i < arr.Count; i++) {
           var data = arr[i];
+          // determine the new random location
           var pt = data.Loc;
-          var x = pt.X + 20 * rand.NextDouble() - 10;
-          var y = pt.Y + 20 * rand.NextDouble() - 10;
+          var x = pt.X + 25 * (rand.NextDouble() - 0.5);
+          var y = pt.Y + 25 * (rand.NextDouble() - 0.5);
           // make sure the kittens stay inside the house
           var b = picture.ActualBounds;
-          if (x < b.X || x > b.Right) x = pt.X;
-          if (y < b.Y || y > b.Bottom) y = pt.Y;
-          (model as Model).Set(data, "Loc", new Point(x, y));
+          if (x < b.X + 40 || x > b.Right - 80) x = pt.X;
+          if (y < b.Y + 40 || y > b.Bottom - 40) y = pt.Y;
+          model.Set(data, "Loc", new Point(x, y));
         }
         model.CommitTransaction("update locations");
       }
-      void Loop() {
-        Task.Delay(2000).ContinueWith((t) => {
-          RandomMovement();
-          Loop();
-        });
+
+      async void Loop() {
+        await Task.Delay(INTERVAL * 2);
+        RandomMovement();
+        Loop();
       }
-      Loop();  // start the simulation
+      Loop();
+
+      // generate some colors based on hue value
+      string MakeFill(object num) {
+        var number = (int)num;
+        return HSVtoRGB(0.1 * number, 0.5, 0.7);
+      }
+      string MakeStroke(object num) {
+        var number = (int)num;
+        return HSVtoRGB(0.1 * number, 0.5, 0.5); // same color but darker (less V in HSV)
+      }
+      string HSVtoRGB(double h, double s, double v) {
+        int i;
+        double r, g, b, f, p, q, t;
+        i = (int)Math.Floor(h * 6);
+        f = h * 6 - i;
+        p = v * (1 - s);
+        q = v * (1 - f * s);
+        t = v * (1 - (1 - f) * s);
+        switch (i % 6) {
+          default: r = v; g = t; b = p; break; // default instead of 0 for compiler errors
+          case 1: r = q; g = v; b = p; break;
+          case 2: r = p; g = v; b = t; break;
+          case 3: r = p; g = q; b = v; break;
+          case 4: r = t; g = p; b = v; break;
+          case 5: r = v; g = p; b = q; break;
+        }
+        return "rgb(" +
+          (int)Math.Floor(r * 255) + ',' +
+          (int)Math.Floor(g * 255) + ',' +
+          (int)Math.Floor(b * 255) + ')';
+      }
     }
 
   }
@@ -150,7 +174,6 @@ namespace Demo.Samples.ConstantSize {
   public class NodeData : Model.NodeData {
     public string Src { get; set; }
     public Point Loc { get; set; }
-    public string Color { get; set; }
+    public int Color { get; set; }
   }
-
 }

@@ -1,0 +1,747 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{10C6DD15-6F25-4FC1-9031-8D58813671CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphObjects", "GraphObjects", "{C1C61D6D-D5DC-4563-851E-E55B312E0A39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arrowheads", "Arrowheads", "{295AB254-92B1-4474-BE07-9D692B10A72E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Arrowheads", "Extensions\GraphObjects\Arrowheads\Arrowheads.shproj", "{B6B65B89-2C9F-4ADB-BE11-3AF97ECCED69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BalloonLink", "BalloonLink", "{51A9A560-416F-4D89-821D-514FAF350C7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalloonLinkAvalonia", "Extensions\GraphObjects\BalloonLink\BalloonLinkAvalonia\BalloonLinkAvalonia.csproj", "{AD3836D4-9770-4125-9BAB-CA840131436E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BalloonLink", "Extensions\GraphObjects\BalloonLink\BalloonLink.shproj", "{94559C12-C82F-4422-AD1D-FB2D5604F3CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buttons", "Buttons", "{EA28F8A2-25A6-4CC0-AC61-7D3B0802A7A6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Buttons", "Extensions\GraphObjects\Buttons\Buttons.shproj", "{AF11E29C-D168-438E-96BB-F147F4896908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DimensioningLink", "DimensioningLink", "{EF2C702F-C59E-406A-8955-51FC97E628C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DimensioningLinkAvalonia", "Extensions\GraphObjects\DimensioningLink\DimensioningLinkAvalonia\DimensioningLinkAvalonia.csproj", "{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DimensioningLink", "Extensions\GraphObjects\DimensioningLink\DimensioningLink.shproj", "{EE564964-6211-4374-B987-F1ED21120BED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Figures", "Figures", "{B098E25D-83A0-40CE-A5DD-9281272CC937}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiguresAvalonia", "Extensions\GraphObjects\Figures\FiguresAvalonia\FiguresAvalonia.csproj", "{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Figures", "Extensions\GraphObjects\Figures\Figures.shproj", "{329DC35C-75B2-4E2B-BF97-3335E432697C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HyperlinkText", "HyperlinkText", "{42FB32C8-C768-461A-ACC9-8A457512AB50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HyperlinkTextAvalonia", "Extensions\GraphObjects\HyperlinkText\HyperlinkTextAvalonia\HyperlinkTextAvalonia.csproj", "{82AB62C8-1379-4372-A815-7877190EDE7A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HyperlinkText", "Extensions\GraphObjects\HyperlinkText\HyperlinkText.shproj", "{C98992DC-A274-46E3-8D01-4FDD989F6CE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ParallelRouteLink", "ParallelRouteLink", "{791A6BE8-B5F5-4A4F-B716-72507EF27FDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelRouteLinkAvalonia", "Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLinkAvalonia\ParallelRouteLinkAvalonia.csproj", "{07D9C590-2250-4A40-88D1-77141FA54640}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ParallelRouteLink", "Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLink.shproj", "{1DACF3ED-F6F5-48F3-8732-713EBD7568CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{F6154842-8415-45B1-9CA2-FEF9328449F2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Templates", "Extensions\GraphObjects\Templates\Templates.shproj", "{E50B4043-9137-4B43-85E7-7542DDFDF53A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Input", "Input", "{B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataInspector", "DataInspector", "{9283D8DE-38F5-48E7-AF59-16AF2D08C070}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataInspectorAvalonia", "Extensions\Input\DataInspector\DataInspectorAvalonia\DataInspectorAvalonia.csproj", "{1D772CFC-2955-4377-AEB9-3E1D31E9605E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DataInspector", "Extensions\Input\DataInspector\DataInspector.shproj", "{7CCFEC86-64B9-40CD-B8CB-3E888BB60E1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DrawCommandHandler", "DrawCommandHandler", "{0EA54EE9-CDA2-4D7B-B6A6-EFE5C142D792}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawCommandHandlerAvalonia", "Extensions\Input\DrawCommandHandler\DrawCommandHandlerAvalonia\DrawCommandHandlerAvalonia.csproj", "{1118D5C7-16BF-44E2-A45E-F5C92A89D888}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DrawCommandHandler", "Extensions\Input\DrawCommandHandler\DrawCommandHandler.shproj", "{C7CBA915-9D3B-435F-BA75-704AF103E936}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Robot", "Robot", "{BF086F07-071B-4844-BE78-3D2D6D5D76F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotAvalonia", "Extensions\Input\Robot\RobotAvalonia\RobotAvalonia.csproj", "{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Robot", "Extensions\Input\Robot\Robot.shproj", "{D72E0838-787E-47CF-888D-B1F5F82D26F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZoomSlider", "ZoomSlider", "{5AFAEF3E-C876-4934-95AB-BDFA557112B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomSliderAvalonia", "Extensions\Input\ZoomSlider\ZoomSliderAvalonia\ZoomSliderAvalonia.csproj", "{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ZoomSlider", "Extensions\Input\ZoomSlider\ZoomSlider.shproj", "{AE8BB8F7-91BE-47DC-B994-ECD9B791D4BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layouts", "Layouts", "{FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arranging", "Arranging", "{F81C975F-187E-451C-B946-07AB6B0C115D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DoubleTree", "DoubleTree", "{CC44278D-FD61-460A-9FEC-F888D174F37D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fishbone", "Fishbone", "{1C9AA92D-41B9-4119-A321-EDB8422609A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packed", "Packed", "{A79C2372-5E3E-4F25-955F-67A253EAA5BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parallel", "Parallel", "{A14C610B-7150-4684-A098-812E5CE3EDD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Radial", "Radial", "{B85A0A3F-FBA0-49F1-943D-5C1B58680D44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serpentine", "Serpentine", "{59D2DA4F-8797-44BA-A41B-911A4CA2D98E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spiral", "Spiral", "{DBA56A0D-A8C5-4E17-8365-26D6AB229461}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwimLane", "SwimLane", "{38FF5E67-1C31-4ED3-B818-7C3222BA0924}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Table", "Table", "{CB2006FB-D3D3-4244-9029-40B045980AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TreeMap", "TreeMap", "{69B9A5FD-079A-4FAE-9EA3-931CC07718D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VirtualizedPacked", "VirtualizedPacked", "{831CF159-0C61-4B24-88A0-2A3661795688}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangingAvalonia", "Extensions\Layouts\Arranging\ArrangingAvalonia\ArrangingAvalonia.csproj", "{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Arranging", "Extensions\Layouts\Arranging\Arranging.shproj", "{F935CF7E-B607-4855-8E98-B6B261B8AB6E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoubleTreeAvalonia", "Extensions\Layouts\DoubleTree\DoubleTreeAvalonia\DoubleTreeAvalonia.csproj", "{D7CF87F3-D100-4322-9821-604B056DE1E5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DoubleTree", "Extensions\Layouts\DoubleTree\DoubleTree.shproj", "{090CA8CF-8BDE-49D8-9487-2DBBE00295DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishboneAvalonia", "Extensions\Layouts\Fishbone\FishboneAvalonia\FishboneAvalonia.csproj", "{AE1E740A-D913-40F9-8685-DE7B4E629E38}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Fishbone", "Extensions\Layouts\Fishbone\Fishbone.shproj", "{1AF29BC9-36F7-45A3-BD2E-126F4BBE172B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackedAvalonia", "Extensions\Layouts\Packed\PackedAvalonia\PackedAvalonia.csproj", "{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Packed", "Extensions\Layouts\Packed\Packed.shproj", "{2B2558C8-5C5F-45B9-B047-D17D186FFBF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelAvalonia", "Extensions\Layouts\Parallel\ParallelAvalonia\ParallelAvalonia.csproj", "{ED6144D1-B8D9-429E-94A5-D3A77AB5C735}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Parallel", "Extensions\Layouts\Parallel\Parallel.shproj", "{BD4725E2-5A41-4D6F-A539-DBAA910DA8AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadialAvalonia", "Extensions\Layouts\Radial\RadialAvalonia\RadialAvalonia.csproj", "{A70B23E1-7205-402C-A31A-36773B1CF025}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Radial", "Extensions\Layouts\Radial\Radial.shproj", "{8AED5969-BFEF-4919-8C00-537069213FC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerpentineAvalonia", "Extensions\Layouts\Serpentine\SerpentineAvalonia\SerpentineAvalonia.csproj", "{3B502771-D979-4C41-9C61-BC911AF56BF5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Serpentine", "Extensions\Layouts\Serpentine\Serpentine.shproj", "{AABDBAF2-EBA9-4A89-8B62-7C0226457C92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpiralAvalonia", "Extensions\Layouts\Spiral\SpiralAvalonia\SpiralAvalonia.csproj", "{30D30500-3471-4CE7-AC93-1B972CECEEBE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Spiral", "Extensions\Layouts\Spiral\Spiral.shproj", "{96131E33-40E7-4B75-AFE9-05210FF52043}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwimLaneAvalonia", "Extensions\Layouts\SwimLane\SwimLaneAvalonia\SwimLaneAvalonia.csproj", "{D3619735-3D15-4F05-A66D-97EBD90F4C83}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SwimLane", "Extensions\Layouts\SwimLane\SwimLane.shproj", "{F7FD71F2-AFC5-43D1-9297-A9DA1F7E5522}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableAvalonia", "Extensions\Layouts\Table\TableAvalonia\TableAvalonia.csproj", "{0DA228B6-75E5-4211-8629-FFF39BAE52FA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Table", "Extensions\Layouts\Table\Table.shproj", "{8DDD8BE6-33A1-4D90-BCA2-5A0F6669C221}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeMapAvalonia", "Extensions\Layouts\TreeMap\TreeMapAvalonia\TreeMapAvalonia.csproj", "{366BC7A1-7A8C-4AE0-80AE-49B56CB46641}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TreeMap", "Extensions\Layouts\TreeMap\TreeMap.shproj", "{A76A3CEA-CB2B-4F23-8535-0BA9F1242B4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualizedPackedAvalonia", "Extensions\Layouts\VirtualizedPacked\VirtualizedPackedAvalonia\VirtualizedPackedAvalonia.csproj", "{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "VirtualizedPacked", "Extensions\Layouts\VirtualizedPacked\VirtualizedPacked.shproj", "{20571F14-6385-4AB3-B359-AE7A756BA5DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ColumnResizing", "ColumnResizing", "{3719B193-BA37-4128-BF36-35F39F366F35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CurvedLinkReshaping", "CurvedLinkReshaping", "{A069CCC0-AA5B-4904-9CDC-3181DCB44223}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DragCreating", "DragCreating", "{D48F7496-5E98-45CE-8DE3-01797277636B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DragZooming", "DragZooming", "{D0BAC9CA-9E82-4192-9105-A7C60431576B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FreehandDrawing", "FreehandDrawing", "{73B5BA4C-6351-4E31-AA28-97636DBBC8B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GeometryReshaping", "GeometryReshaping", "{22946330-AD41-45AE-95D3-A92D19A9B80C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuidedDragging", "GuidedDragging", "{0B99BD97-F5E3-4CF2-9302-0E9FFFDF9B47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkLabelDragging", "LinkLabelDragging", "{706E2AF1-AAC4-4021-A240-B4068B992AC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkLabelOnPathDragging", "LinkLabelOnPathDragging", "{F4C77FCE-0381-47F1-957F-D5CB92FD2D51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkShifting", "LinkShifting", "{E813BEB5-9BAF-49A2-95CA-7A7803E906D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NodeLabelDragging", "NodeLabelDragging", "{070F55E6-BB79-42E3-90C6-A6F796397BEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NonRealtimeDragging", "NonRealtimeDragging", "{28473A56-E712-4765-BEE2-0F4E9286B49D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrthogonalLinkReshaping", "OrthogonalLinkReshaping", "{7E8939AA-FAD6-490C-8D7C-07B667C79C06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OverviewResizing", "OverviewResizing", "{49F479D2-A39B-45B4-9881-7491F4268120}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PolygonDrawing", "PolygonDrawing", "{4AC96477-0B24-4937-B0F6-80FDE22D7FC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PolylineLinking", "PolylineLinking", "{F3053945-8AE4-470B-AFCA-45FF495A0326}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PortShifting", "PortShifting", "{1BB314B4-A336-48FE-B7BE-AAD23CFF3CA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealtimeDragSelecting", "RealtimeDragSelecting", "{4686B41A-7CD5-40E2-A978-7ED0408BB807}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rescaling", "Rescaling", "{1C858894-E882-46A1-AC90-56A3F6CA1693}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResizeMultiple", "ResizeMultiple", "{2CF658DE-6694-4C50-AB63-0D1CC9714AB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RotateMultiple", "RotateMultiple", "{06124F57-E784-45D0-902C-C64B0A612591}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RowResizing", "RowResizing", "{4D16F62C-63DB-4DB1-9477-C274BF1A49A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SectorReshaping", "SectorReshaping", "{A56AFFA7-4E3F-46D6-898D-F0851091F392}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SnapLinkReshaping", "SnapLinkReshaping", "{2E16046C-7E14-4BB0-A555-D8C43FA8AA74}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColumnResizingAvalonia", "Extensions\Tools\ColumnResizing\ColumnResizingAvalonia\ColumnResizingAvalonia.csproj", "{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ColumnResizing", "Extensions\Tools\ColumnResizing\ColumnResizing.shproj", "{D02ACEB2-AB05-475E-A3BC-3CA9757DB009}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurvedLinkReshapingAvalonia", "Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshapingAvalonia\CurvedLinkReshapingAvalonia.csproj", "{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CurvedLinkReshaping", "Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshaping.shproj", "{BB4C5EE3-806D-4658-9139-A8555D45D786}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DragCreatingAvalonia", "Extensions\Tools\DragCreating\DragCreatingAvalonia\DragCreatingAvalonia.csproj", "{CE6855D3-F923-4D36-B84A-0170DBBADD9A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DragCreating", "Extensions\Tools\DragCreating\DragCreating.shproj", "{65378708-4235-41E1-A84B-1244C26CF48F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DragZoomingAvalonia", "Extensions\Tools\DragZooming\DragZoomingAvalonia\DragZoomingAvalonia.csproj", "{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DragZooming", "Extensions\Tools\DragZooming\DragZooming.shproj", "{A293E6C7-BD02-4589-B962-9EC901B593AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreehandDrawingAvalonia", "Extensions\Tools\FreehandDrawing\FreehandDrawingAvalonia\FreehandDrawingAvalonia.csproj", "{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FreehandDrawing", "Extensions\Tools\FreehandDrawing\FreehandDrawing.shproj", "{BE700145-EB97-4AB1-B5CF-128EE15F010F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometryReshapingAvalonia", "Extensions\Tools\GeometryReshaping\GeometryReshapingAvalonia\GeometryReshapingAvalonia.csproj", "{48CD8E55-9860-4F25-8CEF-FCEFA58928BF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GeometryReshaping", "Extensions\Tools\GeometryReshaping\GeometryReshaping.shproj", "{9A8984B3-3E26-4EF0-A923-F76D2BBB3B40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuidedDraggingAvalonia", "Extensions\Tools\GuidedDragging\GuidedDraggingAvalonia\GuidedDraggingAvalonia.csproj", "{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GuidedDragging", "Extensions\Tools\GuidedDragging\GuidedDragging.shproj", "{464CB1C4-65BA-43E8-822E-8739EDCC73F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkLabelDraggingAvalonia", "Extensions\Tools\LinkLabelDragging\LinkLabelDraggingAvalonia\LinkLabelDraggingAvalonia.csproj", "{C3C4A535-5242-4563-901F-282A1065A4DE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LinkLabelDragging", "Extensions\Tools\LinkLabelDragging\LinkLabelDragging.shproj", "{5EAB0C20-1B09-4526-846C-F2E7447F0B47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkLabelOnPathDraggingAvalonia", "Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDraggingAvalonia\LinkLabelOnPathDraggingAvalonia.csproj", "{2DBDAD07-ACC1-4555-B59D-8039C8F827F8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LinkLabelOnPathDragging", "Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDragging.shproj", "{3E5BCD55-2F87-426C-9014-D22B3F274183}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkShiftingAvalonia", "Extensions\Tools\LinkShifting\LinkShiftingAvalonia\LinkShiftingAvalonia.csproj", "{FA0E2A08-817E-466E-B95B-1AE8B1AA4912}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LinkShifting", "Extensions\Tools\LinkShifting\LinkShifting.shproj", "{5CF6ABC4-9ADC-4314-86DF-6990C424614B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeLabelDraggingAvalonia", "Extensions\Tools\NodeLabelDragging\NodeLabelDraggingAvalonia\NodeLabelDraggingAvalonia.csproj", "{467A34DC-2871-401B-B650-22F52BA47CC7}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NodeLabelDragging", "Extensions\Tools\NodeLabelDragging\NodeLabelDragging.shproj", "{985AF160-31CC-4F16-8116-EC01B7B954CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NonRealtimeDraggingAvalonia", "Extensions\Tools\NonRealtimeDragging\NonRealtimeDraggingAvalonia\NonRealtimeDraggingAvalonia.csproj", "{6C9B6C88-86F2-4731-B80A-970F3802318E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NonRealtimeDragging", "Extensions\Tools\NonRealtimeDragging\NonRealtimeDragging.shproj", "{1CBA62A6-2822-4434-9C8E-09EBDC2EA250}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrthogonalLinkReshapingAvalonia", "Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshapingAvalonia\OrthogonalLinkReshapingAvalonia.csproj", "{179971F8-A027-41D6-BF92-36DA0A80DB7F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OrthogonalLinkReshaping", "Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshaping.shproj", "{689FD15D-D471-4E50-8D5A-20803446E0D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverviewResizingAvalonia", "Extensions\Tools\OverviewResizing\OverviewResizingAvalonia\OverviewResizingAvalonia.csproj", "{E008180C-AF1A-4793-9424-A1FF188586BD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "OverviewResizing", "Extensions\Tools\OverviewResizing\OverviewResizing.shproj", "{231D891C-CA7F-4D4D-9F5E-379BFE512A6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolygonDrawingAvalonia", "Extensions\Tools\PolygonDrawing\PolygonDrawingAvalonia\PolygonDrawingAvalonia.csproj", "{905CCD46-1363-4324-BCFA-8BFEA8393789}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PolygonDrawing", "Extensions\Tools\PolygonDrawing\PolygonDrawing.shproj", "{12E1C174-B142-43D3-AC46-2CA78DB08919}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolylineLinkingAvalonia", "Extensions\Tools\PolylineLinking\PolylineLinkingAvalonia\PolylineLinkingAvalonia.csproj", "{4DE80EFA-E446-416B-88FE-72E56FA1CC9A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PolylineLinking", "Extensions\Tools\PolylineLinking\PolylineLinking.shproj", "{05A288D0-CEE2-4532-8A9A-0BC931417F92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortShiftingAvalonia", "Extensions\Tools\PortShifting\PortShiftingAvalonia\PortShiftingAvalonia.csproj", "{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PortShifting", "Extensions\Tools\PortShifting\PortShifting.shproj", "{9DB96531-3AB5-4522-B6C9-005F7A9018F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealtimeDragSelectingAvalonia", "Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelectingAvalonia\RealtimeDragSelectingAvalonia.csproj", "{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RealtimeDragSelecting", "Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelecting.shproj", "{82BEAB38-F4CB-492F-8B63-C20B97D5BD75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RescalingAvalonia", "Extensions\Tools\Rescaling\RescalingAvalonia\RescalingAvalonia.csproj", "{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rescaling", "Extensions\Tools\Rescaling\Rescaling.shproj", "{91D310D1-67FE-4A06-B996-17C4EEF107FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResizeMultipleAvalonia", "Extensions\Tools\ResizeMultiple\ResizeMultipleAvalonia\ResizeMultipleAvalonia.csproj", "{8B54A976-5D8A-46B5-8605-EBD44CBD55FE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ResizeMultiple", "Extensions\Tools\ResizeMultiple\ResizeMultiple.shproj", "{248F159E-D856-4F75-BDC8-CDF3506DBEAD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RotateMultipleAvalonia", "Extensions\Tools\RotateMultiple\RotateMultipleAvalonia\RotateMultipleAvalonia.csproj", "{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RotateMultiple", "Extensions\Tools\RotateMultiple\RotateMultiple.shproj", "{AE53BBBC-7ED7-4D59-8155-B8FFE8A6E95C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RowResizingAvalonia", "Extensions\Tools\RowResizing\RowResizingAvalonia\RowResizingAvalonia.csproj", "{4B6F7547-4C05-4BD9-AD0D-5441D22731AC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RowResizing", "Extensions\Tools\RowResizing\RowResizing.shproj", "{E04D66AB-80A4-4CB3-8E5A-22261CF02D33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SectorReshapingAvalonia", "Extensions\Tools\SectorReshaping\SectorReshapingAvalonia\SectorReshapingAvalonia.csproj", "{62DDF14E-3A76-48BC-816B-63968649BE4D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SectorReshaping", "Extensions\Tools\SectorReshaping\SectorReshaping.shproj", "{4EE90504-C99E-4400-8990-0A56A6621CB2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnapLinkReshapingAvalonia", "Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingAvalonia\SnapLinkReshapingAvalonia.csproj", "{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SnapLinkReshaping", "Extensions\Tools\SnapLinkReshaping\SnapLinkReshaping.shproj", "{865C65DC-0589-4BC3-AE7A-F04D4CFDBA91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{281353F8-438C-4A8F-9B66-6E0AAA620AAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaDemoApp", "Samples\Avalonia\AvaloniaDemoApp\AvaloniaDemoApp.csproj", "{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedSamples", "Samples\SharedSamples\SharedSamples.shproj", "{EDC3E065-E850-4B61-B58A-5C58C71162B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD3836D4-9770-4125-9BAB-CA840131436E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3836D4-9770-4125-9BAB-CA840131436E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3836D4-9770-4125-9BAB-CA840131436E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3836D4-9770-4125-9BAB-CA840131436E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82AB62C8-1379-4372-A815-7877190EDE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82AB62C8-1379-4372-A815-7877190EDE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82AB62C8-1379-4372-A815-7877190EDE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82AB62C8-1379-4372-A815-7877190EDE7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D9C590-2250-4A40-88D1-77141FA54640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D9C590-2250-4A40-88D1-77141FA54640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D9C590-2250-4A40-88D1-77141FA54640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D9C590-2250-4A40-88D1-77141FA54640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D772CFC-2955-4377-AEB9-3E1D31E9605E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D772CFC-2955-4377-AEB9-3E1D31E9605E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D772CFC-2955-4377-AEB9-3E1D31E9605E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D772CFC-2955-4377-AEB9-3E1D31E9605E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1118D5C7-16BF-44E2-A45E-F5C92A89D888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1118D5C7-16BF-44E2-A45E-F5C92A89D888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1118D5C7-16BF-44E2-A45E-F5C92A89D888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1118D5C7-16BF-44E2-A45E-F5C92A89D888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CF87F3-D100-4322-9821-604B056DE1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CF87F3-D100-4322-9821-604B056DE1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CF87F3-D100-4322-9821-604B056DE1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CF87F3-D100-4322-9821-604B056DE1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1E740A-D913-40F9-8685-DE7B4E629E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1E740A-D913-40F9-8685-DE7B4E629E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1E740A-D913-40F9-8685-DE7B4E629E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1E740A-D913-40F9-8685-DE7B4E629E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED6144D1-B8D9-429E-94A5-D3A77AB5C735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6144D1-B8D9-429E-94A5-D3A77AB5C735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6144D1-B8D9-429E-94A5-D3A77AB5C735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6144D1-B8D9-429E-94A5-D3A77AB5C735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70B23E1-7205-402C-A31A-36773B1CF025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70B23E1-7205-402C-A31A-36773B1CF025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70B23E1-7205-402C-A31A-36773B1CF025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70B23E1-7205-402C-A31A-36773B1CF025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B502771-D979-4C41-9C61-BC911AF56BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B502771-D979-4C41-9C61-BC911AF56BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B502771-D979-4C41-9C61-BC911AF56BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B502771-D979-4C41-9C61-BC911AF56BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D30500-3471-4CE7-AC93-1B972CECEEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D30500-3471-4CE7-AC93-1B972CECEEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D30500-3471-4CE7-AC93-1B972CECEEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D30500-3471-4CE7-AC93-1B972CECEEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3619735-3D15-4F05-A66D-97EBD90F4C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3619735-3D15-4F05-A66D-97EBD90F4C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3619735-3D15-4F05-A66D-97EBD90F4C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3619735-3D15-4F05-A66D-97EBD90F4C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA228B6-75E5-4211-8629-FFF39BAE52FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA228B6-75E5-4211-8629-FFF39BAE52FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA228B6-75E5-4211-8629-FFF39BAE52FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA228B6-75E5-4211-8629-FFF39BAE52FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{366BC7A1-7A8C-4AE0-80AE-49B56CB46641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366BC7A1-7A8C-4AE0-80AE-49B56CB46641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366BC7A1-7A8C-4AE0-80AE-49B56CB46641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366BC7A1-7A8C-4AE0-80AE-49B56CB46641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6855D3-F923-4D36-B84A-0170DBBADD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6855D3-F923-4D36-B84A-0170DBBADD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6855D3-F923-4D36-B84A-0170DBBADD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6855D3-F923-4D36-B84A-0170DBBADD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CD8E55-9860-4F25-8CEF-FCEFA58928BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CD8E55-9860-4F25-8CEF-FCEFA58928BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CD8E55-9860-4F25-8CEF-FCEFA58928BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CD8E55-9860-4F25-8CEF-FCEFA58928BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3C4A535-5242-4563-901F-282A1065A4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3C4A535-5242-4563-901F-282A1065A4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3C4A535-5242-4563-901F-282A1065A4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3C4A535-5242-4563-901F-282A1065A4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBDAD07-ACC1-4555-B59D-8039C8F827F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBDAD07-ACC1-4555-B59D-8039C8F827F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBDAD07-ACC1-4555-B59D-8039C8F827F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBDAD07-ACC1-4555-B59D-8039C8F827F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA0E2A08-817E-466E-B95B-1AE8B1AA4912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA0E2A08-817E-466E-B95B-1AE8B1AA4912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA0E2A08-817E-466E-B95B-1AE8B1AA4912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA0E2A08-817E-466E-B95B-1AE8B1AA4912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467A34DC-2871-401B-B650-22F52BA47CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467A34DC-2871-401B-B650-22F52BA47CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467A34DC-2871-401B-B650-22F52BA47CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467A34DC-2871-401B-B650-22F52BA47CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9B6C88-86F2-4731-B80A-970F3802318E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9B6C88-86F2-4731-B80A-970F3802318E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9B6C88-86F2-4731-B80A-970F3802318E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9B6C88-86F2-4731-B80A-970F3802318E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179971F8-A027-41D6-BF92-36DA0A80DB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179971F8-A027-41D6-BF92-36DA0A80DB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179971F8-A027-41D6-BF92-36DA0A80DB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179971F8-A027-41D6-BF92-36DA0A80DB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E008180C-AF1A-4793-9424-A1FF188586BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E008180C-AF1A-4793-9424-A1FF188586BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E008180C-AF1A-4793-9424-A1FF188586BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E008180C-AF1A-4793-9424-A1FF188586BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905CCD46-1363-4324-BCFA-8BFEA8393789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905CCD46-1363-4324-BCFA-8BFEA8393789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905CCD46-1363-4324-BCFA-8BFEA8393789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905CCD46-1363-4324-BCFA-8BFEA8393789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE80EFA-E446-416B-88FE-72E56FA1CC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE80EFA-E446-416B-88FE-72E56FA1CC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE80EFA-E446-416B-88FE-72E56FA1CC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE80EFA-E446-416B-88FE-72E56FA1CC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B54A976-5D8A-46B5-8605-EBD44CBD55FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B54A976-5D8A-46B5-8605-EBD44CBD55FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B54A976-5D8A-46B5-8605-EBD44CBD55FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B54A976-5D8A-46B5-8605-EBD44CBD55FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6F7547-4C05-4BD9-AD0D-5441D22731AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6F7547-4C05-4BD9-AD0D-5441D22731AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6F7547-4C05-4BD9-AD0D-5441D22731AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6F7547-4C05-4BD9-AD0D-5441D22731AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DDF14E-3A76-48BC-816B-63968649BE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DDF14E-3A76-48BC-816B-63968649BE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DDF14E-3A76-48BC-816B-63968649BE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DDF14E-3A76-48BC-816B-63968649BE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1C61D6D-D5DC-4563-851E-E55B312E0A39} = {10C6DD15-6F25-4FC1-9031-8D58813671CF}
+		{295AB254-92B1-4474-BE07-9D692B10A72E} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{B6B65B89-2C9F-4ADB-BE11-3AF97ECCED69} = {295AB254-92B1-4474-BE07-9D692B10A72E}
+		{51A9A560-416F-4D89-821D-514FAF350C7E} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{AD3836D4-9770-4125-9BAB-CA840131436E} = {51A9A560-416F-4D89-821D-514FAF350C7E}
+		{94559C12-C82F-4422-AD1D-FB2D5604F3CA} = {51A9A560-416F-4D89-821D-514FAF350C7E}
+		{EA28F8A2-25A6-4CC0-AC61-7D3B0802A7A6} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{AF11E29C-D168-438E-96BB-F147F4896908} = {EA28F8A2-25A6-4CC0-AC61-7D3B0802A7A6}
+		{EF2C702F-C59E-406A-8955-51FC97E628C8} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{A987ED16-4C3D-4B78-8D8B-BC9BAA33B8FE} = {EF2C702F-C59E-406A-8955-51FC97E628C8}
+		{EE564964-6211-4374-B987-F1ED21120BED} = {EF2C702F-C59E-406A-8955-51FC97E628C8}
+		{B098E25D-83A0-40CE-A5DD-9281272CC937} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{4106CFCD-7AFE-4A74-B7FB-78EACAA78A83} = {B098E25D-83A0-40CE-A5DD-9281272CC937}
+		{329DC35C-75B2-4E2B-BF97-3335E432697C} = {B098E25D-83A0-40CE-A5DD-9281272CC937}
+		{42FB32C8-C768-461A-ACC9-8A457512AB50} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{82AB62C8-1379-4372-A815-7877190EDE7A} = {42FB32C8-C768-461A-ACC9-8A457512AB50}
+		{C98992DC-A274-46E3-8D01-4FDD989F6CE9} = {42FB32C8-C768-461A-ACC9-8A457512AB50}
+		{791A6BE8-B5F5-4A4F-B716-72507EF27FDC} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{07D9C590-2250-4A40-88D1-77141FA54640} = {791A6BE8-B5F5-4A4F-B716-72507EF27FDC}
+		{1DACF3ED-F6F5-48F3-8732-713EBD7568CF} = {791A6BE8-B5F5-4A4F-B716-72507EF27FDC}
+		{F6154842-8415-45B1-9CA2-FEF9328449F2} = {C1C61D6D-D5DC-4563-851E-E55B312E0A39}
+		{E50B4043-9137-4B43-85E7-7542DDFDF53A} = {F6154842-8415-45B1-9CA2-FEF9328449F2}
+		{B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0} = {10C6DD15-6F25-4FC1-9031-8D58813671CF}
+		{9283D8DE-38F5-48E7-AF59-16AF2D08C070} = {B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0}
+		{1D772CFC-2955-4377-AEB9-3E1D31E9605E} = {9283D8DE-38F5-48E7-AF59-16AF2D08C070}
+		{7CCFEC86-64B9-40CD-B8CB-3E888BB60E1F} = {9283D8DE-38F5-48E7-AF59-16AF2D08C070}
+		{0EA54EE9-CDA2-4D7B-B6A6-EFE5C142D792} = {B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0}
+		{1118D5C7-16BF-44E2-A45E-F5C92A89D888} = {0EA54EE9-CDA2-4D7B-B6A6-EFE5C142D792}
+		{C7CBA915-9D3B-435F-BA75-704AF103E936} = {0EA54EE9-CDA2-4D7B-B6A6-EFE5C142D792}
+		{BF086F07-071B-4844-BE78-3D2D6D5D76F8} = {B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0}
+		{62BED7CC-881D-4DCD-A26B-62AB8E6DA24E} = {BF086F07-071B-4844-BE78-3D2D6D5D76F8}
+		{D72E0838-787E-47CF-888D-B1F5F82D26F0} = {BF086F07-071B-4844-BE78-3D2D6D5D76F8}
+		{5AFAEF3E-C876-4934-95AB-BDFA557112B3} = {B12A65DB-B8DC-40BD-8081-9D7C08FBF6D0}
+		{9B4BAFC3-E8EE-4222-9D71-7639AC4C27C2} = {5AFAEF3E-C876-4934-95AB-BDFA557112B3}
+		{AE8BB8F7-91BE-47DC-B994-ECD9B791D4BF} = {5AFAEF3E-C876-4934-95AB-BDFA557112B3}
+		{FC63BC20-3FB6-4856-AB62-C2E54AE6E20B} = {10C6DD15-6F25-4FC1-9031-8D58813671CF}
+		{F81C975F-187E-451C-B946-07AB6B0C115D} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{CC44278D-FD61-460A-9FEC-F888D174F37D} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{1C9AA92D-41B9-4119-A321-EDB8422609A3} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{A79C2372-5E3E-4F25-955F-67A253EAA5BE} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{A14C610B-7150-4684-A098-812E5CE3EDD6} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{B85A0A3F-FBA0-49F1-943D-5C1B58680D44} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{59D2DA4F-8797-44BA-A41B-911A4CA2D98E} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{DBA56A0D-A8C5-4E17-8365-26D6AB229461} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{38FF5E67-1C31-4ED3-B818-7C3222BA0924} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{CB2006FB-D3D3-4244-9029-40B045980AD1} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{69B9A5FD-079A-4FAE-9EA3-931CC07718D0} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{831CF159-0C61-4B24-88A0-2A3661795688} = {FC63BC20-3FB6-4856-AB62-C2E54AE6E20B}
+		{4E60B89B-9991-4685-9E6E-C04B5BAB1CB4} = {F81C975F-187E-451C-B946-07AB6B0C115D}
+		{F935CF7E-B607-4855-8E98-B6B261B8AB6E} = {F81C975F-187E-451C-B946-07AB6B0C115D}
+		{D7CF87F3-D100-4322-9821-604B056DE1E5} = {CC44278D-FD61-460A-9FEC-F888D174F37D}
+		{090CA8CF-8BDE-49D8-9487-2DBBE00295DF} = {CC44278D-FD61-460A-9FEC-F888D174F37D}
+		{AE1E740A-D913-40F9-8685-DE7B4E629E38} = {1C9AA92D-41B9-4119-A321-EDB8422609A3}
+		{1AF29BC9-36F7-45A3-BD2E-126F4BBE172B} = {1C9AA92D-41B9-4119-A321-EDB8422609A3}
+		{5A064E15-E18D-4F99-BB0D-7D331E6B0EE6} = {A79C2372-5E3E-4F25-955F-67A253EAA5BE}
+		{2B2558C8-5C5F-45B9-B047-D17D186FFBF5} = {A79C2372-5E3E-4F25-955F-67A253EAA5BE}
+		{ED6144D1-B8D9-429E-94A5-D3A77AB5C735} = {A14C610B-7150-4684-A098-812E5CE3EDD6}
+		{BD4725E2-5A41-4D6F-A539-DBAA910DA8AF} = {A14C610B-7150-4684-A098-812E5CE3EDD6}
+		{A70B23E1-7205-402C-A31A-36773B1CF025} = {B85A0A3F-FBA0-49F1-943D-5C1B58680D44}
+		{8AED5969-BFEF-4919-8C00-537069213FC7} = {B85A0A3F-FBA0-49F1-943D-5C1B58680D44}
+		{3B502771-D979-4C41-9C61-BC911AF56BF5} = {59D2DA4F-8797-44BA-A41B-911A4CA2D98E}
+		{AABDBAF2-EBA9-4A89-8B62-7C0226457C92} = {59D2DA4F-8797-44BA-A41B-911A4CA2D98E}
+		{30D30500-3471-4CE7-AC93-1B972CECEEBE} = {DBA56A0D-A8C5-4E17-8365-26D6AB229461}
+		{96131E33-40E7-4B75-AFE9-05210FF52043} = {DBA56A0D-A8C5-4E17-8365-26D6AB229461}
+		{D3619735-3D15-4F05-A66D-97EBD90F4C83} = {38FF5E67-1C31-4ED3-B818-7C3222BA0924}
+		{F7FD71F2-AFC5-43D1-9297-A9DA1F7E5522} = {38FF5E67-1C31-4ED3-B818-7C3222BA0924}
+		{0DA228B6-75E5-4211-8629-FFF39BAE52FA} = {CB2006FB-D3D3-4244-9029-40B045980AD1}
+		{8DDD8BE6-33A1-4D90-BCA2-5A0F6669C221} = {CB2006FB-D3D3-4244-9029-40B045980AD1}
+		{366BC7A1-7A8C-4AE0-80AE-49B56CB46641} = {69B9A5FD-079A-4FAE-9EA3-931CC07718D0}
+		{A76A3CEA-CB2B-4F23-8535-0BA9F1242B4F} = {69B9A5FD-079A-4FAE-9EA3-931CC07718D0}
+		{D7A5FC0E-6BDB-4F87-BE0D-8AA70916031C} = {831CF159-0C61-4B24-88A0-2A3661795688}
+		{20571F14-6385-4AB3-B359-AE7A756BA5DC} = {831CF159-0C61-4B24-88A0-2A3661795688}
+		{95930A84-0AB5-4AD3-8CD7-1AA57E932DD5} = {10C6DD15-6F25-4FC1-9031-8D58813671CF}
+		{3719B193-BA37-4128-BF36-35F39F366F35} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{A069CCC0-AA5B-4904-9CDC-3181DCB44223} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{D48F7496-5E98-45CE-8DE3-01797277636B} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{D0BAC9CA-9E82-4192-9105-A7C60431576B} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{73B5BA4C-6351-4E31-AA28-97636DBBC8B1} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{22946330-AD41-45AE-95D3-A92D19A9B80C} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{0B99BD97-F5E3-4CF2-9302-0E9FFFDF9B47} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{706E2AF1-AAC4-4021-A240-B4068B992AC2} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{F4C77FCE-0381-47F1-957F-D5CB92FD2D51} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{E813BEB5-9BAF-49A2-95CA-7A7803E906D0} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{070F55E6-BB79-42E3-90C6-A6F796397BEE} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{28473A56-E712-4765-BEE2-0F4E9286B49D} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{7E8939AA-FAD6-490C-8D7C-07B667C79C06} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{49F479D2-A39B-45B4-9881-7491F4268120} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{4AC96477-0B24-4937-B0F6-80FDE22D7FC8} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{F3053945-8AE4-470B-AFCA-45FF495A0326} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{1BB314B4-A336-48FE-B7BE-AAD23CFF3CA7} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{4686B41A-7CD5-40E2-A978-7ED0408BB807} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{1C858894-E882-46A1-AC90-56A3F6CA1693} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{2CF658DE-6694-4C50-AB63-0D1CC9714AB8} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{06124F57-E784-45D0-902C-C64B0A612591} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{4D16F62C-63DB-4DB1-9477-C274BF1A49A9} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{A56AFFA7-4E3F-46D6-898D-F0851091F392} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{2E16046C-7E14-4BB0-A555-D8C43FA8AA74} = {95930A84-0AB5-4AD3-8CD7-1AA57E932DD5}
+		{CE3CD509-D9A0-42CD-84E8-C09161EFEFFF} = {3719B193-BA37-4128-BF36-35F39F366F35}
+		{D02ACEB2-AB05-475E-A3BC-3CA9757DB009} = {3719B193-BA37-4128-BF36-35F39F366F35}
+		{6C50E14C-BCDA-44B0-91D4-C06AFDC0FD15} = {A069CCC0-AA5B-4904-9CDC-3181DCB44223}
+		{BB4C5EE3-806D-4658-9139-A8555D45D786} = {A069CCC0-AA5B-4904-9CDC-3181DCB44223}
+		{CE6855D3-F923-4D36-B84A-0170DBBADD9A} = {D48F7496-5E98-45CE-8DE3-01797277636B}
+		{65378708-4235-41E1-A84B-1244C26CF48F} = {D48F7496-5E98-45CE-8DE3-01797277636B}
+		{9438E206-5C9C-4EEE-A777-DE4FC7B8DBD5} = {D0BAC9CA-9E82-4192-9105-A7C60431576B}
+		{A293E6C7-BD02-4589-B962-9EC901B593AB} = {D0BAC9CA-9E82-4192-9105-A7C60431576B}
+		{2C7059C8-4CEE-4CD9-ABA8-69A07FE583A8} = {73B5BA4C-6351-4E31-AA28-97636DBBC8B1}
+		{BE700145-EB97-4AB1-B5CF-128EE15F010F} = {73B5BA4C-6351-4E31-AA28-97636DBBC8B1}
+		{48CD8E55-9860-4F25-8CEF-FCEFA58928BF} = {22946330-AD41-45AE-95D3-A92D19A9B80C}
+		{9A8984B3-3E26-4EF0-A923-F76D2BBB3B40} = {22946330-AD41-45AE-95D3-A92D19A9B80C}
+		{926EDC4B-CF8D-4AF3-B480-AE5AFE4C0B61} = {0B99BD97-F5E3-4CF2-9302-0E9FFFDF9B47}
+		{464CB1C4-65BA-43E8-822E-8739EDCC73F3} = {0B99BD97-F5E3-4CF2-9302-0E9FFFDF9B47}
+		{C3C4A535-5242-4563-901F-282A1065A4DE} = {706E2AF1-AAC4-4021-A240-B4068B992AC2}
+		{5EAB0C20-1B09-4526-846C-F2E7447F0B47} = {706E2AF1-AAC4-4021-A240-B4068B992AC2}
+		{2DBDAD07-ACC1-4555-B59D-8039C8F827F8} = {F4C77FCE-0381-47F1-957F-D5CB92FD2D51}
+		{3E5BCD55-2F87-426C-9014-D22B3F274183} = {F4C77FCE-0381-47F1-957F-D5CB92FD2D51}
+		{FA0E2A08-817E-466E-B95B-1AE8B1AA4912} = {E813BEB5-9BAF-49A2-95CA-7A7803E906D0}
+		{5CF6ABC4-9ADC-4314-86DF-6990C424614B} = {E813BEB5-9BAF-49A2-95CA-7A7803E906D0}
+		{467A34DC-2871-401B-B650-22F52BA47CC7} = {070F55E6-BB79-42E3-90C6-A6F796397BEE}
+		{985AF160-31CC-4F16-8116-EC01B7B954CD} = {070F55E6-BB79-42E3-90C6-A6F796397BEE}
+		{6C9B6C88-86F2-4731-B80A-970F3802318E} = {28473A56-E712-4765-BEE2-0F4E9286B49D}
+		{1CBA62A6-2822-4434-9C8E-09EBDC2EA250} = {28473A56-E712-4765-BEE2-0F4E9286B49D}
+		{179971F8-A027-41D6-BF92-36DA0A80DB7F} = {7E8939AA-FAD6-490C-8D7C-07B667C79C06}
+		{689FD15D-D471-4E50-8D5A-20803446E0D0} = {7E8939AA-FAD6-490C-8D7C-07B667C79C06}
+		{E008180C-AF1A-4793-9424-A1FF188586BD} = {49F479D2-A39B-45B4-9881-7491F4268120}
+		{231D891C-CA7F-4D4D-9F5E-379BFE512A6F} = {49F479D2-A39B-45B4-9881-7491F4268120}
+		{905CCD46-1363-4324-BCFA-8BFEA8393789} = {4AC96477-0B24-4937-B0F6-80FDE22D7FC8}
+		{12E1C174-B142-43D3-AC46-2CA78DB08919} = {4AC96477-0B24-4937-B0F6-80FDE22D7FC8}
+		{4DE80EFA-E446-416B-88FE-72E56FA1CC9A} = {F3053945-8AE4-470B-AFCA-45FF495A0326}
+		{05A288D0-CEE2-4532-8A9A-0BC931417F92} = {F3053945-8AE4-470B-AFCA-45FF495A0326}
+		{EC6B2F5F-1B18-4513-8CCE-DBDE54AB76DC} = {1BB314B4-A336-48FE-B7BE-AAD23CFF3CA7}
+		{9DB96531-3AB5-4522-B6C9-005F7A9018F7} = {1BB314B4-A336-48FE-B7BE-AAD23CFF3CA7}
+		{CB45F632-5C00-4E58-94B6-79F2FA4BCAE0} = {4686B41A-7CD5-40E2-A978-7ED0408BB807}
+		{82BEAB38-F4CB-492F-8B63-C20B97D5BD75} = {4686B41A-7CD5-40E2-A978-7ED0408BB807}
+		{95F80B94-CA00-43E8-A4E9-AA0E1BFE9CD7} = {1C858894-E882-46A1-AC90-56A3F6CA1693}
+		{91D310D1-67FE-4A06-B996-17C4EEF107FC} = {1C858894-E882-46A1-AC90-56A3F6CA1693}
+		{8B54A976-5D8A-46B5-8605-EBD44CBD55FE} = {2CF658DE-6694-4C50-AB63-0D1CC9714AB8}
+		{248F159E-D856-4F75-BDC8-CDF3506DBEAD} = {2CF658DE-6694-4C50-AB63-0D1CC9714AB8}
+		{CD6E5F7E-8357-4C8F-ADB1-EA45B0A6F3A3} = {06124F57-E784-45D0-902C-C64B0A612591}
+		{AE53BBBC-7ED7-4D59-8155-B8FFE8A6E95C} = {06124F57-E784-45D0-902C-C64B0A612591}
+		{4B6F7547-4C05-4BD9-AD0D-5441D22731AC} = {4D16F62C-63DB-4DB1-9477-C274BF1A49A9}
+		{E04D66AB-80A4-4CB3-8E5A-22261CF02D33} = {4D16F62C-63DB-4DB1-9477-C274BF1A49A9}
+		{62DDF14E-3A76-48BC-816B-63968649BE4D} = {A56AFFA7-4E3F-46D6-898D-F0851091F392}
+		{4EE90504-C99E-4400-8990-0A56A6621CB2} = {A56AFFA7-4E3F-46D6-898D-F0851091F392}
+		{1D44D96B-D29F-43C5-B2F6-B44D1CE27AA2} = {2E16046C-7E14-4BB0-A555-D8C43FA8AA74}
+		{865C65DC-0589-4BC3-AE7A-F04D4CFDBA91} = {2E16046C-7E14-4BB0-A555-D8C43FA8AA74}
+		{C0E06CFE-3DBF-42AC-BB85-CE5CE7392C8C} = {281353F8-438C-4A8F-9B66-6E0AAA620AAE}
+		{EDC3E065-E850-4B61-B58A-5C58C71162B1} = {281353F8-438C-4A8F-9B66-6E0AAA620AAE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF344BEB-0E24-4E2A-A44A-26A8F9E93345}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Extensions\Tools\PolylineLinking\PolylineLinking.projitems*{05a288d0-cee2-4532-8a9a-0bc931417f92}*SharedItemsImports = 13
+		Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLink.projitems*{07d9c590-2250-4a40-88d1-77141fa54640}*SharedItemsImports = 5
+		Extensions\Layouts\DoubleTree\DoubleTree.projitems*{090ca8cf-8bde-49d8-9487-2dbbe00295df}*SharedItemsImports = 13
+		Extensions\Layouts\Table\Table.projitems*{0da228b6-75e5-4211-8629-fff39bae52fa}*SharedItemsImports = 5
+		Extensions\Input\DrawCommandHandler\DrawCommandHandler.projitems*{1118d5c7-16bf-44e2-a45e-f5c92a89d888}*SharedItemsImports = 5
+		Extensions\Tools\PolygonDrawing\PolygonDrawing.projitems*{12e1c174-b142-43d3-ac46-2ca78db08919}*SharedItemsImports = 13
+		Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshaping.projitems*{179971f8-a027-41d6-bf92-36da0a80db7f}*SharedItemsImports = 5
+		Extensions\Layouts\Fishbone\Fishbone.projitems*{1af29bc9-36f7-45a3-bd2e-126f4bbe172b}*SharedItemsImports = 13
+		Extensions\Tools\NonRealtimeDragging\NonRealtimeDragging.projitems*{1cba62a6-2822-4434-9c8e-09ebdc2ea250}*SharedItemsImports = 13
+		Extensions\Tools\SnapLinkReshaping\SnapLinkReshaping.projitems*{1d44d96b-d29f-43c5-b2f6-b44d1ce27aa2}*SharedItemsImports = 5
+		Extensions\Input\DataInspector\DataInspector.projitems*{1d772cfc-2955-4377-aeb9-3e1d31e9605e}*SharedItemsImports = 5
+		Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLink.projitems*{1dacf3ed-f6f5-48f3-8732-713ebd7568cf}*SharedItemsImports = 13
+		Extensions\Layouts\VirtualizedPacked\VirtualizedPacked.projitems*{20571f14-6385-4ab3-b359-ae7a756ba5dc}*SharedItemsImports = 13
+		Extensions\Tools\OverviewResizing\OverviewResizing.projitems*{231d891c-ca7f-4d4d-9f5e-379bfe512a6f}*SharedItemsImports = 13
+		Extensions\Tools\ResizeMultiple\ResizeMultiple.projitems*{248f159e-d856-4f75-bdc8-cdf3506dbead}*SharedItemsImports = 13
+		Extensions\Layouts\Packed\Packed.projitems*{2b2558c8-5c5f-45b9-b047-d17d186ffbf5}*SharedItemsImports = 13
+		Extensions\Tools\FreehandDrawing\FreehandDrawing.projitems*{2c7059c8-4cee-4cd9-aba8-69a07fe583a8}*SharedItemsImports = 5
+		Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDragging.projitems*{2dbdad07-acc1-4555-b59d-8039c8f827f8}*SharedItemsImports = 5
+		Extensions\Layouts\Spiral\Spiral.projitems*{30d30500-3471-4ce7-ac93-1b972ceceebe}*SharedItemsImports = 5
+		Extensions\GraphObjects\Figures\Figures.projitems*{329dc35c-75b2-4e2b-bf97-3335e432697c}*SharedItemsImports = 13
+		Extensions\Layouts\TreeMap\TreeMap.projitems*{366bc7a1-7a8c-4ae0-80ae-49b56cb46641}*SharedItemsImports = 5
+		Extensions\Layouts\Serpentine\Serpentine.projitems*{3b502771-d979-4c41-9c61-bc911af56bf5}*SharedItemsImports = 5
+		Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDragging.projitems*{3e5bcd55-2f87-426c-9014-d22b3f274183}*SharedItemsImports = 13
+		Extensions\GraphObjects\Figures\Figures.projitems*{4106cfcd-7afe-4a74-b7fb-78eacaa78a83}*SharedItemsImports = 5
+		Extensions\Tools\GuidedDragging\GuidedDragging.projitems*{464cb1c4-65ba-43e8-822e-8739edcc73f3}*SharedItemsImports = 13
+		Extensions\Tools\NodeLabelDragging\NodeLabelDragging.projitems*{467a34dc-2871-401b-b650-22f52ba47cc7}*SharedItemsImports = 5
+		Extensions\Tools\GeometryReshaping\GeometryReshaping.projitems*{48cd8e55-9860-4f25-8cef-fcefa58928bf}*SharedItemsImports = 5
+		Extensions\Tools\RowResizing\RowResizing.projitems*{4b6f7547-4c05-4bd9-ad0d-5441d22731ac}*SharedItemsImports = 5
+		Extensions\Tools\PolylineLinking\PolylineLinking.projitems*{4de80efa-e446-416b-88fe-72e56fa1cc9a}*SharedItemsImports = 5
+		Extensions\Layouts\Arranging\Arranging.projitems*{4e60b89b-9991-4685-9e6e-c04b5bab1cb4}*SharedItemsImports = 5
+		Extensions\Tools\SectorReshaping\SectorReshaping.projitems*{4ee90504-c99e-4400-8990-0a56a6621cb2}*SharedItemsImports = 13
+		Extensions\Layouts\Packed\Packed.projitems*{5a064e15-e18d-4f99-bb0d-7d331e6b0ee6}*SharedItemsImports = 5
+		Extensions\Tools\LinkShifting\LinkShifting.projitems*{5cf6abc4-9adc-4314-86df-6990c424614b}*SharedItemsImports = 13
+		Extensions\Tools\LinkLabelDragging\LinkLabelDragging.projitems*{5eab0c20-1b09-4526-846c-f2e7447f0b47}*SharedItemsImports = 13
+		Extensions\Input\Robot\Robot.projitems*{62bed7cc-881d-4dcd-a26b-62ab8e6da24e}*SharedItemsImports = 5
+		Extensions\Tools\SectorReshaping\SectorReshaping.projitems*{62ddf14e-3a76-48bc-816b-63968649be4d}*SharedItemsImports = 5
+		Extensions\Tools\DragCreating\DragCreating.projitems*{65378708-4235-41e1-a84b-1244c26cf48f}*SharedItemsImports = 13
+		Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshaping.projitems*{689fd15d-d471-4e50-8d5a-20803446e0d0}*SharedItemsImports = 13
+		Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshaping.projitems*{6c50e14c-bcda-44b0-91d4-c06afdc0fd15}*SharedItemsImports = 5
+		Extensions\Tools\NonRealtimeDragging\NonRealtimeDragging.projitems*{6c9b6c88-86f2-4731-b80a-970f3802318e}*SharedItemsImports = 5
+		Extensions\Input\DataInspector\DataInspector.projitems*{7ccfec86-64b9-40cd-b8cb-3e888bb60e1f}*SharedItemsImports = 13
+		Extensions\GraphObjects\HyperlinkText\HyperlinkText.projitems*{82ab62c8-1379-4372-a815-7877190ede7a}*SharedItemsImports = 5
+		Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelecting.projitems*{82beab38-f4cb-492f-8b63-c20b97d5bd75}*SharedItemsImports = 13
+		Extensions\Tools\SnapLinkReshaping\SnapLinkReshaping.projitems*{865c65dc-0589-4bc3-ae7a-f04d4cfdba91}*SharedItemsImports = 13
+		Extensions\Layouts\Radial\Radial.projitems*{8aed5969-bfef-4919-8c00-537069213fc7}*SharedItemsImports = 13
+		Extensions\Tools\ResizeMultiple\ResizeMultiple.projitems*{8b54a976-5d8a-46b5-8605-ebd44cbd55fe}*SharedItemsImports = 5
+		Extensions\Layouts\Table\Table.projitems*{8ddd8be6-33a1-4d90-bca2-5a0f6669c221}*SharedItemsImports = 13
+		Extensions\Tools\PolygonDrawing\PolygonDrawing.projitems*{905ccd46-1363-4324-bcfa-8bfea8393789}*SharedItemsImports = 5
+		Extensions\Tools\Rescaling\Rescaling.projitems*{91d310d1-67fe-4a06-b996-17c4eef107fc}*SharedItemsImports = 13
+		Extensions\Tools\GuidedDragging\GuidedDragging.projitems*{926edc4b-cf8d-4af3-b480-ae5afe4c0b61}*SharedItemsImports = 5
+		Extensions\Tools\DragZooming\DragZooming.projitems*{9438e206-5c9c-4eee-a777-de4fc7b8dbd5}*SharedItemsImports = 5
+		Extensions\GraphObjects\BalloonLink\BalloonLink.projitems*{94559c12-c82f-4422-ad1d-fb2d5604f3ca}*SharedItemsImports = 13
+		Extensions\Tools\Rescaling\Rescaling.projitems*{95f80b94-ca00-43e8-a4e9-aa0e1bfe9cd7}*SharedItemsImports = 5
+		Extensions\Layouts\Spiral\Spiral.projitems*{96131e33-40e7-4b75-afe9-05210ff52043}*SharedItemsImports = 13
+		Extensions\Tools\NodeLabelDragging\NodeLabelDragging.projitems*{985af160-31cc-4f16-8116-ec01b7b954cd}*SharedItemsImports = 13
+		Extensions\Tools\GeometryReshaping\GeometryReshaping.projitems*{9a8984b3-3e26-4ef0-a923-f76d2bbb3b40}*SharedItemsImports = 13
+		Extensions\Input\ZoomSlider\ZoomSlider.projitems*{9b4bafc3-e8ee-4222-9d71-7639ac4c27c2}*SharedItemsImports = 5
+		Extensions\Tools\PortShifting\PortShifting.projitems*{9db96531-3ab5-4522-b6c9-005f7a9018f7}*SharedItemsImports = 13
+		Extensions\Tools\DragZooming\DragZooming.projitems*{a293e6c7-bd02-4589-b962-9ec901b593ab}*SharedItemsImports = 13
+		Extensions\Layouts\Radial\Radial.projitems*{a70b23e1-7205-402c-a31a-36773b1cf025}*SharedItemsImports = 5
+		Extensions\Layouts\TreeMap\TreeMap.projitems*{a76a3cea-cb2b-4f23-8535-0ba9f1242b4f}*SharedItemsImports = 13
+		Extensions\GraphObjects\DimensioningLink\DimensioningLink.projitems*{a987ed16-4c3d-4b78-8d8b-bc9baa33b8fe}*SharedItemsImports = 5
+		Extensions\Layouts\Serpentine\Serpentine.projitems*{aabdbaf2-eba9-4a89-8b62-7c0226457c92}*SharedItemsImports = 13
+		Extensions\GraphObjects\BalloonLink\BalloonLink.projitems*{ad3836d4-9770-4125-9bab-ca840131436e}*SharedItemsImports = 5
+		Extensions\Layouts\Fishbone\Fishbone.projitems*{ae1e740a-d913-40f9-8685-de7b4e629e38}*SharedItemsImports = 5
+		Extensions\Tools\RotateMultiple\RotateMultiple.projitems*{ae53bbbc-7ed7-4d59-8155-b8ffe8a6e95c}*SharedItemsImports = 13
+		Extensions\Input\ZoomSlider\ZoomSlider.projitems*{ae8bb8f7-91be-47dc-b994-ecd9b791d4bf}*SharedItemsImports = 13
+		Extensions\GraphObjects\Buttons\Buttons.projitems*{af11e29c-d168-438e-96bb-f147f4896908}*SharedItemsImports = 13
+		Extensions\GraphObjects\Arrowheads\Arrowheads.projitems*{b6b65b89-2c9f-4adb-be11-3af97ecced69}*SharedItemsImports = 13
+		Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshaping.projitems*{bb4c5ee3-806d-4658-9139-a8555d45d786}*SharedItemsImports = 13
+		Extensions\Layouts\Parallel\Parallel.projitems*{bd4725e2-5a41-4d6f-a539-dbaa910da8af}*SharedItemsImports = 13
+		Extensions\Tools\FreehandDrawing\FreehandDrawing.projitems*{be700145-eb97-4ab1-b5cf-128ee15f010f}*SharedItemsImports = 13
+		Samples\SharedSamples\SharedSamples.projitems*{c0e06cfe-3dbf-42ac-bb85-ce5ce7392c8c}*SharedItemsImports = 5
+		Extensions\Tools\LinkLabelDragging\LinkLabelDragging.projitems*{c3c4a535-5242-4563-901f-282a1065a4de}*SharedItemsImports = 5
+		Extensions\Input\DrawCommandHandler\DrawCommandHandler.projitems*{c7cba915-9d3b-435f-ba75-704af103e936}*SharedItemsImports = 13
+		Extensions\GraphObjects\HyperlinkText\HyperlinkText.projitems*{c98992dc-a274-46e3-8d01-4fdd989f6ce9}*SharedItemsImports = 13
+		Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelecting.projitems*{cb45f632-5c00-4e58-94b6-79f2fa4bcae0}*SharedItemsImports = 5
+		Extensions\Tools\RotateMultiple\RotateMultiple.projitems*{cd6e5f7e-8357-4c8f-adb1-ea45b0a6f3a3}*SharedItemsImports = 5
+		Extensions\Tools\ColumnResizing\ColumnResizing.projitems*{ce3cd509-d9a0-42cd-84e8-c09161efefff}*SharedItemsImports = 5
+		Extensions\Tools\DragCreating\DragCreating.projitems*{ce6855d3-f923-4d36-b84a-0170dbbadd9a}*SharedItemsImports = 5
+		Extensions\Tools\ColumnResizing\ColumnResizing.projitems*{d02aceb2-ab05-475e-a3bc-3ca9757db009}*SharedItemsImports = 13
+		Extensions\Layouts\SwimLane\SwimLane.projitems*{d3619735-3d15-4f05-a66d-97ebd90f4c83}*SharedItemsImports = 5
+		Extensions\Input\Robot\Robot.projitems*{d72e0838-787e-47cf-888d-b1f5f82d26f0}*SharedItemsImports = 13
+		Extensions\Layouts\VirtualizedPacked\VirtualizedPacked.projitems*{d7a5fc0e-6bdb-4f87-be0d-8aa70916031c}*SharedItemsImports = 5
+		Extensions\Layouts\DoubleTree\DoubleTree.projitems*{d7cf87f3-d100-4322-9821-604b056de1e5}*SharedItemsImports = 5
+		Extensions\Tools\OverviewResizing\OverviewResizing.projitems*{e008180c-af1a-4793-9424-a1ff188586bd}*SharedItemsImports = 5
+		Extensions\Tools\RowResizing\RowResizing.projitems*{e04d66ab-80a4-4cb3-8e5a-22261cf02d33}*SharedItemsImports = 13
+		Extensions\GraphObjects\Templates\Templates.projitems*{e50b4043-9137-4b43-85e7-7542ddfdf53a}*SharedItemsImports = 13
+		Extensions\Tools\PortShifting\PortShifting.projitems*{ec6b2f5f-1b18-4513-8cce-dbde54ab76dc}*SharedItemsImports = 5
+		Extensions\Layouts\Parallel\Parallel.projitems*{ed6144d1-b8d9-429e-94a5-d3a77ab5c735}*SharedItemsImports = 5
+		Samples\SharedSamples\SharedSamples.projitems*{edc3e065-e850-4b61-b58a-5c58c71162b1}*SharedItemsImports = 13
+		Extensions\GraphObjects\DimensioningLink\DimensioningLink.projitems*{ee564964-6211-4374-b987-f1ed21120bed}*SharedItemsImports = 13
+		Extensions\Layouts\SwimLane\SwimLane.projitems*{f7fd71f2-afc5-43d1-9297-a9da1f7e5522}*SharedItemsImports = 13
+		Extensions\Layouts\Arranging\Arranging.projitems*{f935cf7e-b607-4855-8e98-b6b261b8ab6e}*SharedItemsImports = 13
+		Extensions\Tools\LinkShifting\LinkShifting.projitems*{fa0e2a08-817e-466e-b95b-1ae8b1aa4912}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal

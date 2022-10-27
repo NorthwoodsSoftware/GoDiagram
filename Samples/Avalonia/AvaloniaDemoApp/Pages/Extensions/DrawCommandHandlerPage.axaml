@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Extensions.DrawCommandHandler.DrawCommandHandler">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        HorizontalAlignment="Left"
+        Width="400" Height="400"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="1">
+        <TextBlock>Align:</TextBlock>
+        <Button Name="leftsBtn">Left Sides</Button>
+        <Button Name="rightsBtn">Right Sides</Button>
+        <Button Name="topsBtn">Tops</Button>
+        <Button Name="bottomsBtn">Bottoms</Button>
+        <Button Name="centerXBtn">Center X</Button>
+        <Button Name="centerYBtn">Center Y</Button>
+        <Button Name="rowBtn">Row</Button>
+        <Button Name="columnBtn">Column</Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="2">
+        <TextBlock>Rotate:</TextBlock>
+        <Button Name="fortyFiveBtn">45°</Button>
+        <Button Name="negFortyFiveBtn">-45°</Button>
+        <Button Name="ninetyBtn">90°</Button>
+        <Button Name="negNinetyBtn">-90°</Button>
+        <Button Name="oneEightyBtn">180°</Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="3">
+        <TextBlock>Z-Order:</TextBlock>
+        <Button Name="frontBtn">Pull to Front</Button>
+        <Button Name="backBtn">Push to Back</Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="4">
+        <TextBlock>Arrow Mode:</TextBlock>
+        <RadioButton Name="moveRb" GroupName="arrowMode" IsChecked="True">Move</RadioButton>
+        <RadioButton Name="selectRb" GroupName="arrowMode">Select</RadioButton>
+        <RadioButton Name="scrollRb" GroupName="arrowMode">Scroll</RadioButton>
+        <RadioButton Name="treeRb" GroupName="arrowMode">Tree</RadioButton>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="5" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

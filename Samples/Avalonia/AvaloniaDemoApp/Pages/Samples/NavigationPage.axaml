@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             xmlns:md="clr-namespace:Markdown.Avalonia;assembly=Markdown.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.Navigation.Navigation">
+  <UserControl.Styles>
+    <Style Selector="Rectangle">
+      <Setter Property="Margin" Value="5" />
+      <Setter Property="Width" Value="20" />
+      <Setter Property="Height" Value="20" />
+    </Style>
+    <Style Selector="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+  </UserControl.Styles>
+  
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="220" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="750" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Column="0" Grid.Row="0" />
+      <StackPanel Spacing="5" Grid.Row="0" Grid.Column="1" Margin="5,0,0,0">
+        <StackPanel Spacing="5" Background="#eaeaea">
+          <TextBlock FontWeight="Bold">Related Parts Highlighted</TextBlock>
+          <RadioButton Name="unhighlightAllRb" GroupName="relatedGroup">Unhighlight All</RadioButton>
+          <RadioButton Name="linksIntoRb" GroupName="relatedGroup">Links Into</RadioButton>
+          <RadioButton Name="linksOutOfRb" GroupName="relatedGroup">Links Out Of</RadioButton>
+          <RadioButton Name="linksConnectedRb" GroupName="relatedGroup">Links Connected</RadioButton>
+          <RadioButton Name="nodesIntoRb" GroupName="relatedGroup">Nodes Into</RadioButton>
+          <RadioButton Name="nodesOutOfRb" GroupName="relatedGroup">Nodes Out Of</RadioButton>
+          <RadioButton Name="nodesConnectedRb" GroupName="relatedGroup">Nodes Connected</RadioButton>
+          <RadioButton Name="nodesReachableRb" GroupName="relatedGroup" IsChecked="True">Nodes Reachable</RadioButton>
+          <RadioButton Name="containingGroupParentRb" GroupName="relatedGroup">Containing Group (Parent)</RadioButton>
+          <RadioButton Name="containingGroupsAllRb" GroupName="relatedGroup">Containing Groups (All)</RadioButton>
+          <RadioButton Name="memberNodesChildrenRb" GroupName="relatedGroup">Member Nodes (Children)</RadioButton>
+          <RadioButton Name="memberNodesAllRb" GroupName="relatedGroup">Member Nodes (All)</RadioButton>
+          <RadioButton Name="memberLinksChildrenRb" GroupName="relatedGroup">Member Links (Children)</RadioButton>
+          <RadioButton Name="memberLinksAllRb" GroupName="relatedGroup">Member Links (All)</RadioButton>
+        </StackPanel>
+        <StackPanel Spacing="5" Background="#eaeaea">
+          <TextBlock FontWeight="Bold">Relationship Colors</TextBlock>
+          <Grid
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="Auto,Auto">
+            <Rectangle Fill="Black" Grid.Row="0" Grid.Column="0" />
+            <TextBlock Grid.Row="0" Grid.Column="1">Not related</TextBlock>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="0" />
+            <TextBlock Grid.Row="1" Grid.Column="1">Directly related</TextBlock>
+            <Rectangle Fill="Green" Grid.Row="2" Grid.Column="0" />
+            <TextBlock Grid.Row="2" Grid.Column="1">2 relationships apart</TextBlock>
+            <Rectangle Fill="Orange" Grid.Row="3" Grid.Column="0" />
+            <TextBlock Grid.Row="3" Grid.Column="1">3 relationships apart</TextBlock>
+            <Rectangle Fill="Red" Grid.Row="4" Grid.Column="0" />
+            <TextBlock Grid.Row="4" Grid.Column="1">4 relationships apart</TextBlock>
+            <Rectangle Fill="Purple" Grid.Row="5" Grid.Column="0" />
+            <TextBlock Grid.Row="5" Grid.Column="1">Very indirectly related</TextBlock>
+          </Grid>
+        </StackPanel>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="1" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

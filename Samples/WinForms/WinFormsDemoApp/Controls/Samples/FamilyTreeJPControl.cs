@@ -18,8 +18,8 @@ namespace Demo.Samples.FamilyTreeJP {
 
       goWebBrowser1.Html = @"
 
-  <p>For a variation of this tree, see the <a href=""FamilyTree"">British family tree sample</a>.</p>
-  <p>For a more complex family tree see the <a href=""Genogram"">genogram sample</a>.</p>
+  <p>For a variation of this tree, see the <a href=""demo/FamilyTree"">British family tree sample</a>.</p>
+  <p>For a more complex family tree see the <a href=""demo/Genogram"">genogram sample</a>.</p>
 ";
 
     }

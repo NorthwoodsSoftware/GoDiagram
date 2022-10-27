@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             x:Class="Demo.Extensions.ZoomSlider.ZoomSlider">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="800"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="0">
+        <Button
+          Name="plusBtn"
+          Width="30" Height="30"
+          Content="+"
+          HorizontalAlignment="Center"
+          HorizontalContentAlignment="Center"
+          VerticalContentAlignment="Center" />
+        <Slider
+          Name="slider"
+          Orientation="Vertical"
+          Minimum="-50" Maximum="100"
+          TickPlacement="None"
+          Height="75" />
+        <Button
+          Name="minusBtn"
+          Width="30" Height="30"
+          Content="-"
+          HorizontalAlignment="Center"
+          HorizontalContentAlignment="Center"
+          VerticalContentAlignment="Center" />
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="1" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

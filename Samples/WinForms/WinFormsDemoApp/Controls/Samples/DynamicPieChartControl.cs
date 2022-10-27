@@ -23,7 +23,7 @@ namespace Demo.Samples.DynamicPieChart {
     This sample demonstrates the ability to build an updateable pie chart with selectable slices.
     The Geometry for each slice is built using a <a>PathFigure</a> with a <a>SegmentType.Arc</a>.
     Slices use a custom <b>Click</b> function, which sets a stroke and offsets slices as they are selected.
-    Functionality for ""selection"" and deletion of these slices is similar to the <a href=""SelectableFields"">Selectable Fields sample</a>,
+    Functionality for ""selection"" and deletion of these slices is similar to the <a href=""demo/SelectableFields"">Selectable Fields sample</a>,
     using some overridden <a>CommandHandler</a> functions.
     Each slice also has a tooltip showing the text and percentage of votes.
   </p>

@@ -21,7 +21,7 @@ namespace Demo.Samples.OrgChartAssistants {
 
       goWebBrowser1.Html = @"
   <p>
-    This editable organizational chart sample was derived from <a href=""OrgChartEditor"">Org Chart Editor</a>
+    This editable organizational chart sample was derived from <a href=""demo/OrgChartEditor"">Org Chart Editor</a>
     and adds support for ""assistant"" nodes that are laid out by a custom <a>TreeLayout</a> below the side
     of the parent node and above the regular child nodes.
   </p>

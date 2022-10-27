@@ -1,0 +1,88 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Extensions.Packed.Packed">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <WrapPanel Background="AliceBlue">
+        <StackPanel Margin="3">
+          <TextBlock FontWeight="Bold">General Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>PackShape:</TextBlock>
+            <ComboBox Name="packShape" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>PackMode:</TextBlock>
+            <ComboBox Name="packMode" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Aspect ratio:</TextBlock>
+            <NumericUpDown Name="aspectRatio" Minimum=".1" Increment=".5" Value="1" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Layout width:</TextBlock>
+            <NumericUpDown Name="width" Minimum="1" Maximum="1200" Increment="50" Value="600" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Layout height:</TextBlock>
+            <NumericUpDown Name="height" Minimum="1" Maximum="1200" Increment="50" Value="600" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Spacing:</TextBlock>
+            <NumericUpDown Name="spacing" Minimum="0" Maximum="100" Increment="1" Value="0" />
+          </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="20,3">
+          <TextBlock FontWeight="Bold">Node Sorting Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>SortOrder:</TextBlock>
+            <ComboBox Name="sortOrder" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>SortMode:</TextBlock>
+            <ComboBox Name="sortMode" />
+          </StackPanel>
+          <TextBlock FontWeight="Bold">Circle Packing</TextBlock>
+          <CheckBox Name="hasCircularNodes">HasCircularNodes</CheckBox>
+        </StackPanel>
+        <StackPanel Margin="3">
+          <TextBlock FontWeight="Bold">Node Generation</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock># of nodes:</TextBlock>
+            <NumericUpDown Name="numNodes" Minimum="1" Maximum="300" Increment="1" Value="100" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Node shape:</TextBlock>
+            <RadioButton Name="rectangleRb" IsChecked="true" GroupName="nodeShape">Rectangle</RadioButton>
+            <RadioButton Name="ellipseRb" GroupName="nodeShape">Ellipse</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Min side length:</TextBlock>
+            <NumericUpDown Name="nodeMinSide" Minimum="1" Maximum="100" Increment="1" Value="30" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Max side length:</TextBlock>
+            <NumericUpDown Name="nodeMaxSide" Minimum="1" Maximum="100" Increment="1" Value="50" />
+          </StackPanel>
+          <CheckBox Name="sameSides">Same width/height</CheckBox>
+          <Button Name="randomizeBtn">Randomize Graph</Button>
+        </StackPanel>
+      </WrapPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

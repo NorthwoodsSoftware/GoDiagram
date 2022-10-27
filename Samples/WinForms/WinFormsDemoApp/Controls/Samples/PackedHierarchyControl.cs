@@ -27,13 +27,13 @@ namespace Demo.Samples.PackedHierarchy {
         <p>
       Circle packing can be a useful way to visualize hierarchical data, as demonstrated here
       with a visualization of the class hierarchy of the GoDiagram library. This layout is performed
-      automatically by the <a href=""PackedLayout"">PackedLayout</a> extension. Nodes
+      automatically by the <a href=""demo/PackedLayout"">PackedLayout</a> extension. Nodes
       are sized according to how many properties their corresponding class has, or has inherited.
       As a result, larger nodes generally represent more complex classes.Mouse over nodes to see
       their full name and the number of properties on their corresponding class.
         </p>
         <p>
-      This sample is very similar to the<a href=""ClassHierarchy""> Class Hierarchy</a> sample,
+      This sample is very similar to the<a href=""demo/ClassHierarchy""> Class Hierarchy</a> sample,
       except that instead of showing the class hierarchy as a tree, it is displayed using nested circles.
       Opening the API page is achieved by double-clicking on a node, rather than using a ""HyperlinkText"".
         </p>

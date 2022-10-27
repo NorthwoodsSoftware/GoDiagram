@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.Gantt.Gantt">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="400" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="150" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <go:DiagramControl
+        Name="tasksControl"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" Grid.Column="0" />
+      <go:DiagramControl
+        Name="ganttControl"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" Grid.Column="1" />
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="1" Grid.ColumnSpan="2">
+        <TextBlock>Spacing:</TextBlock>
+        <Slider Name="widthSlider" Width="150" Minimum="8" Maximum="24" Value="12" />
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="2" Grid.ColumnSpan="2" />
+      <views:ModelJsonView Name="modelJson1" CanSaveLoad="False" Grid.Row="3" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

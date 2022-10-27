@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.Radial.Radial">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="600"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="1">
+        <TextBlock VerticalAlignment="Center">Max Layers:</TextBlock>
+        <TextBox Name="layersTxt" Width="20">2</TextBox>
+        <Button Name="maxLayersBtn">Set Max Layers</Button>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

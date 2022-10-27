@@ -19,6 +19,7 @@ You can use the GitHub repository to quickly [search through the sample sources]
 In your project, we recommend referencing the library via NuGet as it will more reliably add toolbox items and necessary references:
 
 - [WinForms](https://www.nuget.org/packages/Northwoods.GoDiagram.WinForms)
+- [Avalonia](https://www.nuget.org/packages/Northwoods.GoDiagram.Avalonia)
 
 ## Minimal Sample
 

@@ -36,7 +36,7 @@ namespace Demo.Samples.FaultTree {
       </p>
 
       <p>
-        Related to deductive failure analysis is root cause analysis, or RCA. See the <a href=""Fishbone"">fishbone layout</a>
+        Related to deductive failure analysis is root cause analysis, or RCA. See the <a href=""demo/Fishbone"">fishbone layout</a>
           extension page for a diagram format typically used in root cause analysis.
   </p>
 ";

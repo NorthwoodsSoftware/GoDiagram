@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Extensions.PolygonDrawing.PolygonDrawing">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="350"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="1">
+        <Button Name="selectBtn">Select</Button>
+        <Button Name="drawPolygonBtn">Draw Polygon</Button>
+        <Button Name="drawPolylineBtn">Draw Polyline</Button>
+        <Button Name="finishBtn">Finish Drawing</Button>
+        <Button Name="cancelBtn">Cancel Drawing</Button>
+        <Button Name="undoPtBtn">Undo Last Point</Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="2">
+        <CheckBox Name="resizingCb" IsChecked="True">Allow Resizing</CheckBox>
+        <CheckBox Name="reshapingCb" IsChecked="True">Allow Reshaping</CheckBox>
+        <CheckBox Name="resegmentingCb" IsChecked="True">Allow Resegmenting</CheckBox>
+        <CheckBox Name="rotatingCb" IsChecked="True">Allow Rotating</CheckBox>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="3" />
+      <views:ModelJsonView Name="modelJson1" Grid.Row="4" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

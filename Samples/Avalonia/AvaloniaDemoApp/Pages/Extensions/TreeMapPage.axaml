@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Extensions.TreeMap.TreeMap">
+  <UserControl.Styles>
+    <Style Selector="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style Selector="StackPanel">
+      <Setter Property="Margin" Value="0 5 0 0" />
+    </Style>
+  </UserControl.Styles>
+  
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Background="AliceBlue" Grid.Row="0">
+        <TextBlock FontWeight="Bold">New Tree</TextBlock>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock>MinNodes:</TextBlock>
+          <TextBox Name="minNodes">300</TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock>MaxNodes:</TextBlock>
+          <TextBox Name="maxNodes">500</TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock>MinChildren:</TextBlock>
+          <TextBox Name="minChildren">2</TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock>MaxChildren:</TextBlock>
+          <TextBox Name="maxChildren">5</TextBox>
+        </StackPanel>
+        <Button Name="generateTreeBtn">Generate Tree</Button>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

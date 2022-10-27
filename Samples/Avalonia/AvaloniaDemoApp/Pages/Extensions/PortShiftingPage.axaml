@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Extensions.PortShifting.PortShifting">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="500" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:PaletteControl
+        Name="paletteControl1"
+        BorderBrush="Black" BorderThickness="1"
+        Background="WhiteSmoke"
+        Grid.Row="0" Grid.Column="0" />
+      <go:DiagramControl
+        Name="diagramControl1"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" Grid.Column="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="1" Grid.ColumnSpan="2" />
+      <views:ModelJsonView Name="modelJson1" Grid.Row="2" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

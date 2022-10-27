@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.FDLayout.FDLayout">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal" Background="AliceBlue" Grid.Row="0">
+        <StackPanel>
+          <TextBlock FontWeight="Bold">New Tree</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MinNodes:</TextBlock>
+            <TextBox Name="minNodes">20</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MaxNodes:</TextBlock>
+            <TextBox Name="maxNodes">100</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MinChildren:</TextBlock>
+            <TextBox Name="minChil">1</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MaxChildren:</TextBlock>
+            <TextBox Name="maxChil">10</TextBox>
+          </StackPanel>
+          <Button Name="generateBtn">Generate Tree</Button>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">ForceDirectedLayout Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Max Iterations:</TextBlock>
+            <TextBox Name="maxIter">100</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Epsilon:</TextBlock>
+            <TextBox Name="epsilon">1</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Infinity:</TextBlock>
+            <TextBox Name="infinity">1000</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>ArrangementSpacing:</TextBlock>
+            <TextBox Name="arrangement">100 100</TextBox>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">Vertex Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Electrical Charge:</TextBlock>
+            <TextBox Name="charge">150</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Gravitational Mass:</TextBlock>
+            <TextBox Name="mass">1</TextBox>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">Edge Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Spring Stiffness:</TextBlock>
+            <TextBox Name="stiffness">0.05</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Spring Length:</TextBlock>
+            <TextBox Name="length">50</TextBox>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

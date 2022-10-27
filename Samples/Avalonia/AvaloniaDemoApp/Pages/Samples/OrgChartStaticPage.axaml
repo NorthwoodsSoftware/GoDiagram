@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.OrgChartStatic.OrgChartStatic">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:OverviewControl
+        Name="overviewControl1"
+        HorizontalAlignment="Left" VerticalAlignment="Top"
+        Margin="10" ZIndex="300"
+        Width="200" Height="100"
+        Background="#f2f2f2"
+        BorderThickness="1" BorderBrush="#7986cb"
+        Grid.Row="0" />
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="700"
+        Background="#f2f2f2"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <StackPanel Orientation="Horizontal" Spacing="5" Grid.Row="1" Margin="0, 3, 0, 0">
+        <TextBox Name="textBox1" Width="120"></TextBox>
+        <Button Name="searchBtn">Search</Button>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

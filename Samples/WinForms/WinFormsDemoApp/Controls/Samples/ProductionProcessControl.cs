@@ -32,7 +32,7 @@ namespace Demo.Samples.ProductionProcess {
         </p>
         <p>
       This diagram cannot be modified by the user, but its model was created in the corresponding editor:
-      <a href=""ProductionEditor"">Production Process Editor</a>, which shares the same templates
+      <a href=""demo/ProductionEditor"">Production Process Editor</a>, which shares the same templates
       and has additional tools for editing diagrams.
         </p>
         <p>

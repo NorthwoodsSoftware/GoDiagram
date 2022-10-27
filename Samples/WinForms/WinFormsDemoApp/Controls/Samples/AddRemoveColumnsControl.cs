@@ -34,7 +34,7 @@ namespace Demo.Samples.AddRemoveColumns {
    <p>Swap the ""phone"" and ""office"" columns for each selected node:</p>";
 
       goWebBrowser4.Html = @"
-   <p>See also the <a href=""ColumnResizing"">Column and Row Resizing Tools</a></p>";
+   <p>See also the <a href=""demo/ColumnResizing"">Column and Row Resizing Tools</a></p>";
     }
 
     private void Setup() {

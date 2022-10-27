@@ -20,7 +20,7 @@ namespace Demo.Samples.TriStateCheckBoxTree {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample is derived from the <a href=""TreeView"">Tree View</a> sample.
+      This sample is derived from the <a href=""demo/TreeView"">Tree View</a> sample.
       It adds the definition of the ""TriStateCheckBoxButton"" which is defined only to be used in a tree.
         </p>
 ";

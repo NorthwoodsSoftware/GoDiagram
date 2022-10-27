@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="150" d:DesignHeight="100"
+        x:Class="Demo.DialogView"
+        MinWidth="300"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Assets/avalonia-logo.ico"
+        CanResize="False"
+        ShowInTaskbar="False"
+        Padding="15">
+
+  <Window.Styles>
+    <Style Selector="Button">
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="Margin" Value="15 0 0 0" />
+      <Setter Property="MinHeight" Value="24" />
+      <Setter Property="MinWidth" Value="75" />
+    </Style>
+  </Window.Styles>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" MaxHeight="150" />
+      <RowDefinition Height="15" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    
+    <TextBlock Text="{Binding $parent[1].Text}" HorizontalAlignment="Center" Grid.Row="0" />
+
+    <Button HorizontalAlignment="Right" Click="OnOkClick" Grid.Row="2">OK</Button>
+  </Grid>
+</Window>

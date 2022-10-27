@@ -1,0 +1,13 @@
+<Window xmlns="https://github.com/avaloniaui" MinWidth="625" MinHeight="350"
+        Width="1600" Height="900"
+        Title="AvaloniaDemoApp"
+        Icon="/Assets/avalonia-logo.ico"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AvaloniaDemoApp.ViewModels"
+        xmlns:views="clr-namespace:AvaloniaDemoApp.Views"
+        Background="Transparent"
+        x:Class="AvaloniaDemoApp.Views.MainWindow">
+  <Panel>
+    <views:MainView />
+  </Panel>
+</Window>

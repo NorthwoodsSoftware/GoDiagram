@@ -45,16 +45,16 @@ namespace Demo.Samples.ShopFloorMonitor {
     private void Setup() {
       // conversion functions for bindings in the node template
       string NodeTypeImage(object type) {
-        var str = "https://godiagram.com/samples/";
+        var str = "https://nwoods.com/go/images/samples/";
         switch (type as string) {                                     // Image sizes
-          case "S2": return $"{str}images/voice atm switch.jpg";      // 55x55
-          case "S3": return $"{str}images/server switch.jpg";         // 55x55
-          case "P1": return $"{str}images/general processor.jpg";     // 60x85
-          case "P2": return $"{str}images/storage array.jpg";         // 55x80
-          case "M4": return $"{str}images/iptv broadcast server.jpg"; // 80x50
-          case "M5": return $"{str}images/content engine.jpg";        // 90x65
-          case "I1": return $"{str}images/pc.jpg";                    // 80x70
-          default: return $"{str}images/pc.jpg";                      // 80x70
+          case "S2": return $"{str}voice atm switch.jpg";             // 55x55
+          case "S3": return $"{str}server switch.jpg";                // 55x55
+          case "P1": return $"{str}general processor.jpg";            // 60x85
+          case "P2": return $"{str}storage array.jpg";                // 55x80
+          case "M4": return $"{str}iptv broadcast server.jpg";        // 80x50
+          case "M5": return $"{str}content engine.jpg";               // 90x65
+          case "I1": return $"{str}pc.jpg";                           // 80x70
+          default: return $"{str}pc.jpg";                             // 80x70
         }
       }
 

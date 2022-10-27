@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.LocalView.LocalView">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <go:DiagramControl
+        Name="fullDiagram"
+        Height="250"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" />
+      <go:DiagramControl
+        Name="localDiagram"
+        Height="350"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <Button Name="newTreeBtn" Grid.Row="2" Margin="0, 3, 0, 0">Create New Tree</Button>
+      <views:DescriptionView Name="desc1" Grid.Row="3" Margin="0, 3, 0, 0" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

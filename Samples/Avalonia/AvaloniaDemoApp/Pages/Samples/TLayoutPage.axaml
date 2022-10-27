@@ -1,0 +1,188 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.TLayout.TLayout">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal" Background="AliceBlue" Grid.Row="0">
+        <StackPanel>
+          <TextBlock FontWeight="Bold">Tree Style</TextBlock>
+          <ComboBox Name="style"></ComboBox>
+          <TextBlock FontWeight="Bold">Layer Style</TextBlock>
+          <ComboBox Name="layerStyle"></ComboBox>
+          <TextBlock FontWeight="Bold" Margin="0,10,0,0">New Tree</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MinNodes:</TextBlock>
+            <NumericUpDown Name="minNodes" Value="20" Increment="1" Minimum="1" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MaxNodes:</TextBlock>
+            <NumericUpDown Name="maxNodes" Value="100" Increment="1" Minimum="1" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MinChildren:</TextBlock>
+            <NumericUpDown Name="minChil" Value="1" Increment="1" Minimum="0" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MaxChildren:</TextBlock>
+            <NumericUpDown Name="maxChil" Value="3" Increment="1" Minimum="0" />
+          </StackPanel>
+          <CheckBox Name="randomSizes">Random sizes</CheckBox>
+          <Button Name="generateBtn">Generate Tree</Button>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">Default Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Angle:</TextBlock>
+            <RadioButton Name="right" GroupName="angle" IsChecked="True">Right</RadioButton>
+            <RadioButton Name="down" GroupName="angle">Down</RadioButton>
+            <RadioButton Name="left" GroupName="angle">Left</RadioButton>
+            <RadioButton Name="up" GroupName="angle">Up</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Alignment:</TextBlock>
+            <ComboBox Name="align" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeSpacing:</TextBlock>
+            <NumericUpDown Name="nodeSpacing" Value="20" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeIndent:</TextBlock>
+            <NumericUpDown Name="nodeIndent" Value="0" Increment="1" Minimum="0" />
+            <TextBlock>(when Start or End; >= 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeIndentPastParent:</TextBlock>
+            <NumericUpDown Name="nodeIndentPastParent" Value="0.0" Increment=".1" Minimum="0.0" Maximum="1.0" />
+            <TextBlock>(fraction; 0-1)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>LayerSpacing:</TextBlock>
+            <NumericUpDown Name="layerSpacing" Value="50" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>LayerSpacingParentOverlap:</TextBlock>
+            <NumericUpDown Name="layerSpacingParentOverlap" Value="0.0" Increment=".1" Minimum="0.0" Maximum="1.0" />
+            <TextBlock>(fraction; 0-1)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Sorting:</TextBlock>
+            <ComboBox Name="sorting" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Compaction:</TextBlock>
+            <RadioButton Name="block" GroupName="compaction" IsChecked="True">Block</RadioButton>
+            <RadioButton Name="none" GroupName="angle">None</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>BreadthLimit:</TextBlock>
+            <NumericUpDown Name="breadthLimit" Value="0" Increment="1" />
+            <TextBlock>(0 means no limit)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>RowSpacing:</TextBlock>
+            <NumericUpDown Name="rowSpacing" Value="25" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>RowIndent:</TextBlock>
+            <NumericUpDown Name="rowIndent" Value="10" Increment="1" Minimum="0"/>
+            <TextBlock>(>= 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <CheckBox Name="setsPortSpot" IsChecked="True">SetsPortSpot</CheckBox>
+            <CheckBox Name="setsChildPortSpot" IsChecked="True">SetsChildPortSpot</CheckBox>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel>
+          <StackPanel>
+            <TextBlock FontWeight="Bold">Alternates</TextBlock>
+            <TextBlock>(only when TreeStyle is not Layered)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Angle:</TextBlock>
+            <RadioButton Name="altRight" GroupName="altAngle" IsChecked="True">Right</RadioButton>
+            <RadioButton Name="altDown" GroupName="altAngle">Down</RadioButton>
+            <RadioButton Name="altLeft" GroupName="altAngle">Left</RadioButton>
+            <RadioButton Name="altUp" GroupName="altAngle">Up</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Alignment:</TextBlock>
+            <ComboBox Name="altAlign" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeSpacing:</TextBlock>
+            <NumericUpDown Name="altNodeSpacing" Value="20" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeIndent:</TextBlock>
+            <NumericUpDown Name="altNodeIndent" Value="0" Increment="1" Minimum="0" />
+            <TextBlock>(when Start or End; >= 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>NodeIndentPastParent:</TextBlock>
+            <NumericUpDown Name="altNodeIndentPastParent" Value="0.0" Increment=".1" Minimum="0.0" Maximum="1.0" />
+            <TextBlock>(fraction; 0-1)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>LayerSpacing:</TextBlock>
+            <NumericUpDown Name="altLayerSpacing" Value="50" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>LayerSpacingParentOverlap:</TextBlock>
+            <NumericUpDown Name="altLayerSpacingParentOverlap" Value="0.0" Increment=".1" Minimum="0.0" Maximum="1.0" />
+            <TextBlock>(fraction; 0-1)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Sorting:</TextBlock>
+            <ComboBox Name="altSorting" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Compaction:</TextBlock>
+            <RadioButton Name="altBlock" GroupName="altCompaction" IsChecked="True">Block</RadioButton>
+            <RadioButton Name="altNone" GroupName="altCompaction">None</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>BreadthLimit:</TextBlock>
+            <NumericUpDown Name="altBreadthLimit" Value="0" Increment="1" />
+            <TextBlock>(0 means no limit)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>RowSpacing:</TextBlock>
+            <NumericUpDown Name="altRowSpacing" Value="25" Increment="1" />
+            <TextBlock>(negative causes overlaps)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>RowIndent:</TextBlock>
+            <NumericUpDown Name="altRowIndent" Value="10" Increment="1" Minimum="0" />
+            <TextBlock>(>= 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <CheckBox Name="altSetsPortSpot" IsChecked="True">SetsPortSpot</CheckBox>
+            <CheckBox Name="altSetsChildPortSpot" IsChecked="True">SetsChildPortSpot</CheckBox>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

@@ -21,7 +21,7 @@ namespace Demo.Samples.StateChartIncremental {
 
       goWebBrowser1.Html = @"
         <p>
-      This sample is derived from the <a href=""StateChart"">State Chart</a> sample.
+      This sample is derived from the <a href=""demo/StateChart"">State Chart</a> sample.
       This makes use of the <a>GraphLinksModel.LinkKeyProperty</a> property
       and the <a>Model.ToIncrementalJson</a> method.
       It also demonstrates custom functions for <a>Model.MakeUniqueKeyFunction</a> and

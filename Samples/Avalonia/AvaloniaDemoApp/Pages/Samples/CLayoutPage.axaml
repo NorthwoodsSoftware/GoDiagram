@@ -1,0 +1,96 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.CLayout.CLayout">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal" Background="AliceBlue" Grid.Row="0">
+        <StackPanel>
+          <TextBlock FontWeight="Bold">New Graph</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock># of nodes:</TextBlock>
+            <TextBox Name="numNodes">16</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Node Size:</TextBlock>
+            <TextBox Name="width">25</TextBox>
+            <TextBox Name="height">25</TextBox>
+          </StackPanel>
+          <CheckBox Name="randSizes" IsChecked="True">Random Sizes (&lt;= 65)</CheckBox>
+          <CheckBox Name="circ">Circular Nodes</CheckBox>
+          <CheckBox Name="cyclic">Graph is simple ring</CheckBox>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Min Links from Node:</TextBlock>
+            <TextBox Name="minLinks">1</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Max Links from Node:</TextBlock>
+            <TextBox Name="maxLinks">2</TextBox>
+          </StackPanel>
+          <Button Name="generateBtn">Generate Circle</Button>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">CircularLayout Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Radius:</TextBlock>
+            <TextBox Name="radius">NaN</TextBox>
+            <TextBlock>(along X axis; NaN or > 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Aspect Ratio:</TextBlock>
+            <TextBox Name="aspectRatio">1</TextBox>
+            <TextBlock>(1 is circular; > 0)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Start Angle:</TextBlock>
+            <TextBox Name="startAngle">0</TextBox>
+            <TextBlock>(angle at first element)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Sweep Angle:</TextBlock>
+            <TextBox Name="sweepAngle">360</TextBox>
+            <TextBlock>(degrees occupied; >= 1, &lt;= 360)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Spacing:</TextBlock>
+            <TextBox Name="spacing">6</TextBox>
+            <TextBlock>(actual spacing also depends on radius)</TextBlock>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Arrangement:</TextBlock>
+            <ComboBox Name="arrangement" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Node Diameter:</TextBlock>
+            <RadioButton Name="pythagorean" GroupName="diamFormula" IsChecked="True">Pythagorean</RadioButton>
+            <RadioButton Name="circular" GroupName="diamFormula">Circular</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Direction:</TextBlock>
+            <ComboBox Name="direction" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Sorting:</TextBlock>
+            <ComboBox Name="sorting" />
+            <TextBlock>(use "Optimized" to reduce number of link crossings)</TextBlock>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

@@ -31,7 +31,7 @@ namespace Demo.Samples.SwimLanesVertical {
       That custom layout makes sure all of the pool's lanes have the same length.
       If you don't want each lane/group to have its own layout,
       you could use set the lane group's <a>Group.Layout</a> to null and set the pool group's
-      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href=""SwimLaneLayout"">Swim Lane Layout</a>.
+      <a>Group.layout </a> to an instance of <a>SwimLaneLayout</a>, shown at <a href=""demo/SwimLaneLayout"">Swim Lane Layout</a>.
         </p>
         <p>
       When dragging nodes note that the nodes are limited to stay within the lanes.
@@ -61,7 +61,7 @@ namespace Demo.Samples.SwimLanesVertical {
       being too narrow even if there are no member <a>Part</a>s at all.
         </p>
         <p>
-      A different sample has its swim lanes horizontally oriented: <a href=""SwimLanes"">Swim Lanes (horizontal)</a>.
+      A different sample has its swim lanes horizontally oriented: <a href=""demo/SwimLanes"">Swim Lanes (horizontal)</a>.
        </p>
 ";
     }

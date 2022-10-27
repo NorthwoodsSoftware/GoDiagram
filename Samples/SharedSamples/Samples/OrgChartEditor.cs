@@ -129,48 +129,48 @@ namespace Demo.Samples.OrgChartEditor {
       // This converter is used by the Picture.
       string FindHeadShot(object keyAsObj, object _) {
         var key = (keyAsObj as int? ?? int.MinValue);
-        if (key < 0 || key > 16) return "https://nwoods.com/go/iamges/samples/HSnopic.png"; // There are only 16 images
+        if (key < 0 || key > 16) return "https://nwoods.com/go/images/samples/HSnopic.png"; // There are only 16 images
         return $"https://nwoods.com/go/images/samples/hs{key}.jpg";
       }
 
       // define the Node template
       _Diagram.NodeTemplate =
         new Node(PanelType.Auto) {
-          DoubleClick = NodeDoubleClick,
-          // handle dragging a Node onto a Node to (maybe) change the reporting relationship
-          MouseDragEnter = (e, nodeAsObj, prev) => {
-            var node = nodeAsObj as Node;
-            var diagram = node.Diagram;
-            var selnode = diagram.Selection.First() as Node;
-            if (!MayWorkFor(selnode, node)) return;
-            var shape = node.FindElement("SHAPE") as Shape;
-            if (shape != null) {
-              shape["_PrevFill"] = shape.Fill;  // remember the original brush
-              shape.Fill = "darkred";
-            }
-          },
-          MouseDragLeave = (e, nodeAsObj, next) => {
-            var node = nodeAsObj as Node;
-            var shape = node.FindElement("SHAPE") as Shape;
-            if (shape != null && shape["_PrevFill"] != null) {
-              shape.Fill = (Brush)shape["_PrevFill"];  // restore the original brush
-            }
-          },
-          MouseDrop = (e, nodeAsObj) => {
-            var node = nodeAsObj as Node;
-            var diagram = node.Diagram;
-            var selnode = diagram.Selection.First() as Node;  // assume just one Node in selection
-            if (MayWorkFor(selnode, node)) {
-              // find any existing link into the selected node
-              var link = selnode.FindTreeParentLink();
-              if (link != null) {  // reconnect any existing link
-                link.FromNode = node;
-              } else {  // else create a new link
-                diagram.ToolManager.LinkingTool.InsertLink(node, node.Port, selnode, selnode.Port);
+            DoubleClick = NodeDoubleClick,
+            // handle dragging a Node onto a Node to (maybe) change the reporting relationship
+            MouseDragEnter = (e, nodeAsObj, prev) => {
+              var node = nodeAsObj as Node;
+              var diagram = node.Diagram;
+              var selnode = diagram.Selection.First() as Node;
+              if (!MayWorkFor(selnode, node)) return;
+              var shape = node.FindElement("SHAPE") as Shape;
+              if (shape != null) {
+                shape["_PrevFill"] = shape.Fill;  // remember the original brush
+                shape.Fill = "darkred";
+              }
+            },
+            MouseDragLeave = (e, nodeAsObj, next) => {
+              var node = nodeAsObj as Node;
+              var shape = node.FindElement("SHAPE") as Shape;
+              if (shape != null && shape["_PrevFill"] != null) {
+                shape.Fill = (Brush)shape["_PrevFill"];  // restore the original brush
+              }
+            },
+            MouseDrop = (e, nodeAsObj) => {
+              var node = nodeAsObj as Node;
+              var diagram = node.Diagram;
+              var selnode = diagram.Selection.First() as Node;  // assume just one Node in selection
+              if (MayWorkFor(selnode, node)) {
+                // find any existing link into the selected node
+                var link = selnode.FindTreeParentLink();
+                if (link != null) {  // reconnect any existing link
+                  link.FromNode = node;
+                } else {  // else create a new link
+                  diagram.ToolManager.LinkingTool.InsertLink(node, node.Port, selnode, selnode.Port);
+                }
               }
             }
           }
-        }
           .Bind(
             // for sorting, have the Node.Text be the data.Name
             new Binding("Text", "Name"),
@@ -180,43 +180,43 @@ namespace Demo.Samples.OrgChartEditor {
           .Add(
             // define the node's outer shape
             new Shape("Rectangle") {
-              Name = "SHAPE", Fill = "#333333", Stroke = "white", StrokeWidth = 3.5,
-              // set the port properties:
-              PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
-            },
+                Name = "SHAPE", Fill = "#333333", Stroke = "white", StrokeWidth = 3.5,
+                // set the port properties:
+                PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
+              },
             new Panel(PanelType.Horizontal)
               .Add(
                 new Picture {
-                  Name = "Picture",
-                  DesiredSize = new Size(80, 80),
-                  Margin = 1.5
-                }
+                    Name = "Picture",
+                    DesiredSize = new Size(80, 80),
+                    Margin = 1.5
+                  }
                   .Bind("Source", "Key", FindHeadShot),
                 // define the panel where the text will appear
                 new Panel(PanelType.Table) {
-                  MinSize = new Size(130, double.NaN),
-                  MaxSize = new Size(150, double.NaN),
-                  Margin = new Margin(6, 10, 0, 6),
-                  DefaultAlignment = Spot.Left
-                }
+                    MinSize = new Size(130, double.NaN),
+                    MaxSize = new Size(150, double.NaN),
+                    Margin = new Margin(6, 10, 0, 6),
+                    DefaultAlignment = Spot.Left
+                  }
                   .Add(new ColumnDefinition { Column = 2, Width = 4 })
                   .Add(
                     new TextBlock { // the name
-                      Row = 0, Column = 0, ColumnSpan = 5,
-                      Font = new Font("Segoe UI", 16),
-                      Stroke = "white",
-                      Editable = true, IsMultiline = false,
-                      MinSize = new Size(10, 16)
-                    }
+                        Row = 0, Column = 0, ColumnSpan = 5,
+                        Font = new Font("Segoe UI", 16),
+                        Stroke = "white",
+                        Editable = true, IsMultiline = false,
+                        MinSize = new Size(10, 16)
+                      }
                       .Bind(new Binding("Text", "Name").MakeTwoWay()),
                     new TextBlock("Title: ") { Row = 1, Column = 0 }
                       .Set(textStyle),
                     new TextBlock {
-                      Row = 1, Column = 1, ColumnSpan = 4,
-                      Editable = true, IsMultiline = false,
-                      MinSize = new Size(10, 14),
-                      Margin = new Margin(0, 0, 0, 3)
-                    }
+                        Row = 1, Column = 1, ColumnSpan = 4,
+                        Editable = true, IsMultiline = false,
+                        MinSize = new Size(10, 14),
+                        Margin = new Margin(0, 0, 0, 3)
+                      }
                       .Set(textStyle)
                       .Bind(new Binding("Text", "Title").MakeTwoWay()),
                     new TextBlock { Row = 2, Column = 0 }
@@ -226,13 +226,13 @@ namespace Demo.Samples.OrgChartEditor {
                       .Set(textStyle)
                       .Bind("Text", "Parent", (v, _) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); }),
                     new TextBlock {  // the comments
-                      Row = 3, Column = 0, ColumnSpan = 5,
-                      Font = new Font("Segoe UI", 12, Northwoods.Go.FontStyle.Italic),
-                      Stroke = "white",
-                      Wrap = Wrap.Fit,
-                      Editable = true,  // by default newlines are allowed
-                      MinSize = new Size(10, 14)
-                    }
+                        Row = 3, Column = 0, ColumnSpan = 5,
+                        Font = new Font("Segoe UI", 12, Northwoods.Go.FontStyle.Italic),
+                        Stroke = "white",
+                        Wrap = Wrap.Fit,
+                        Editable = true,  // by default newlines are allowed
+                        MinSize = new Size(10, 14)
+                      }
                       .Bind(new Binding("Text", "Comments").MakeTwoWay())
                   )  // end Table Panel
               ) // end Horizontal Panel

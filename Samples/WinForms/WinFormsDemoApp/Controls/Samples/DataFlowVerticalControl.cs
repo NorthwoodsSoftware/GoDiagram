@@ -33,7 +33,7 @@ namespace Demo.Samples.DataFlowVertical {
     to be added to the <a>Diagram.NodeTemplateMap</a>.
   </p>
   <p>
-    For the same data model rendered somewhat differently, see the <a href=""DataFlow"">Data Flow (horizontal)</a> sample.
+    For the same data model rendered somewhat differently, see the <a href=""demo/DataFlow"">Data Flow (horizontal)</a> sample.
   </p>
 ";
 

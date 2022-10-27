@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.GLayout.GLayout">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Spacing="5" Background="AliceBlue" Grid.Row="0">
+        <TextBlock FontWeight="Bold">GridLayout Properties</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Wrapping Column:</TextBlock>
+          <TextBox Name="wrapColTb">0</TextBox>
+          <TextBlock>(0 means there's no limit)</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Wrapping Width:</TextBlock>
+          <TextBox Name="wrapWidthTb">NaN</TextBox>
+          <TextBlock>(NaN means use the diagram's viewport width)</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Cell Size:</TextBlock>
+          <TextBox Name="cellSizeTb">NaN NaN</TextBox>
+          <TextBlock>(NaN x NaN means use a cell size big enough to hold any node)</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Spacing:</TextBlock>
+          <TextBox Name="spacingTb">10 10</TextBox>
+          <TextBlock>(the minimum space between the nodes)</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Alignment:</TextBlock>
+          <RadioButton Name="alignPosRb" GroupName="align">Position</RadioButton>
+          <RadioButton Name="alignLocRb" GroupName="align" IsChecked="True">Location</RadioButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Arrangement:</TextBlock>
+          <RadioButton Name="arrangeLTRRb" GroupName="arrange" IsChecked="True">LeftToRight</RadioButton>
+          <RadioButton Name="arrangeRTLRb" GroupName="arrange">RightToLeft</RadioButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBlock>Sorting:</TextBlock>
+          <ComboBox Name="sortingCb"></ComboBox>
+        </StackPanel>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="400"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.ContentAlign.ContentAlign">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="400" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <go:DiagramControl
+        Name="diagramControl1"
+        VerticalAlignment="Top"
+        Height="400"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="0" Grid.Column="0" />
+      <StackPanel Spacing="5" Grid.Row="0" Grid.Column="1">
+        <StackPanel Orientation="Horizontal" Spacing="2">
+          <TextBlock>Diagram.DocumentBounds:</TextBlock>
+          <TextBlock Name="documentBoundsTb" />
+        </StackPanel>
+        <TextBlock>Diagram.ContentAlignment:</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <RadioButton Name="alignNoneRb" GroupName="contentAlign" IsChecked="True">None</RadioButton>
+          <RadioButton Name="alignCenterRb" GroupName="contentAlign">Center</RadioButton>
+          <RadioButton Name="alignLeftRb" GroupName="contentAlign">Left</RadioButton>
+          <RadioButton Name="alignRightRb" GroupName="contentAlign">Right</RadioButton>
+          <RadioButton Name="alignTopRb" GroupName="contentAlign">Top</RadioButton>
+          <RadioButton Name="alignBottomRb" GroupName="contentAlign">Bottom</RadioButton>
+        </StackPanel>
+        <TextBlock>Diagram.Position:</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBox Name="positionXTb" />
+          <TextBox Name="positionYTb" />
+          <Button Name="posBtn">Change</Button>
+        </StackPanel>
+        <TextBlock>Diagram.Scale:</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBox Name="scaleTb">1</TextBox>
+          <Button Name="scaleBtn">Change</Button>
+        </StackPanel>
+        <TextBlock>Diagram.FixedBounds (x, y, width, height):</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBox Name="fixedBoundsXTb">NaN</TextBox>
+          <TextBox Name="fixedBoundsYTb">NaN</TextBox>
+          <TextBox Name="fixedBoundsWidthTb">NaN</TextBox>
+          <TextBox Name="fixedBoundsHeightTb">NaN</TextBox>
+          <Button Name="fixedBoundsBtn">Set</Button>
+        </StackPanel>
+        <TextBlock>Diagram.Padding (top, right, bottom, left):</TextBlock>
+        <StackPanel Orientation="Horizontal" Spacing="5">
+          <TextBox Name="paddingTopTb">5</TextBox>
+          <TextBox Name="paddingRightTb">5</TextBox>
+          <TextBox Name="paddingBottomTb">5</TextBox>
+          <TextBox Name="paddingLeftTb">5</TextBox>
+          <Button Name="paddingBtn">Set</Button>
+        </StackPanel>
+        <TextBlock>Diagram.AutoScale:</TextBlock>
+        <StackPanel>
+          <RadioButton Name="autoScaleNoneRb" GroupName="autoScale" IsChecked="True">None</RadioButton>
+          <RadioButton Name="autoScaleUniformRb" GroupName="autoScale">Uniform</RadioButton>
+          <RadioButton Name="autoScaleUniformToFillRb" GroupName="autoScale">UniformToFill</RadioButton>
+        </StackPanel>
+        <TextBlock>(but no greater than CommandHandler.DefaultScale)</TextBlock>
+        <Button Name="zoomFitBtn">Zoom to Fit</Button>
+      </StackPanel>
+      <views:DescriptionView Name="desc1" Grid.Row="1" Grid.ColumnSpan="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

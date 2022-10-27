@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
+             xmlns:go="using:Northwoods.Go.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Demo.Samples.LDLayout.LDLayout">
+  <ScrollViewer Classes="paddedSv">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Orientation="Horizontal" Background="AliceBlue" Grid.Row="0">
+        <StackPanel>
+          <TextBlock FontWeight="Bold">New Graph</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MinNodes:</TextBlock>
+            <TextBox Name="minNodes">20</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>MaxNodes:</TextBlock>
+            <TextBox Name="maxNodes">100</TextBox>
+          </StackPanel>
+          <Button Name="generateBtn">Generate Digraph</Button>
+        </StackPanel>
+        <StackPanel>
+          <TextBlock FontWeight="Bold">LayeredDigraphLayout Properties</TextBlock>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Direction:</TextBlock>
+            <RadioButton Name="right" GroupName="direction" IsChecked="True">Right</RadioButton>
+            <RadioButton Name="down" GroupName="direction">Down</RadioButton>
+            <RadioButton Name="left" GroupName="direction">Left</RadioButton>
+            <RadioButton Name="up" GroupName="direction">Up</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>LayerSpacing:</TextBlock>
+            <TextBox Name="layerSpacing">25</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>ColumnSpacing:</TextBlock>
+            <TextBox Name="columnSpacing">25</TextBox>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>CycleRemove:</TextBlock>
+            <RadioButton Name="depthFirst" GroupName="cycleRemove" IsChecked="True">DepthFirst</RadioButton>
+            <RadioButton Name="greedy" GroupName="cycleRemove">Greedy</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Layering:</TextBlock>
+            <RadioButton Name="optimalLinkLength" GroupName="layering" IsChecked="True">OptimalLinkLength</RadioButton>
+            <RadioButton Name="longestPathSource" GroupName="layering">LongestPathSource</RadioButton>
+            <RadioButton Name="longestPathSink" GroupName="layering">LongestPathSink</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Initialize:</TextBlock>
+            <RadioButton Name="depthFirstOut" GroupName="initialize" IsChecked="True">DepthFirstOut</RadioButton>
+            <RadioButton Name="depthFirstIn" GroupName="initialize">DepthFirstIn</RadioButton>
+            <RadioButton Name="naive" GroupName="initialize">Naive</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Aggressive:</TextBlock>
+            <RadioButton Name="none" GroupName="aggressive">None</RadioButton>
+            <RadioButton Name="less" GroupName="aggressive" IsChecked="True">Less</RadioButton>
+            <RadioButton Name="more" GroupName="aggressive">More</RadioButton>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock>Pack:</TextBlock>
+            <CheckBox Name="median" IsChecked="True">Median</CheckBox>
+            <CheckBox Name="straighten" IsChecked="True">Straighten</CheckBox>
+            <CheckBox Name="expand" IsChecked="True">Expand</CheckBox>
+          </StackPanel>
+          <CheckBox Name="setsPortSpots" IsChecked="True">SetsPortSpots</CheckBox>
+        </StackPanel>
+      </StackPanel>
+      <go:DiagramControl
+        Name="diagramControl1"
+        Height="500"
+        BorderBrush="Black" BorderThickness="1"
+        Grid.Row="1" />
+      <views:DescriptionView Name="desc1" Grid.Row="2" />
+    </Grid>
+  </ScrollViewer>
+</UserControl>

@@ -29,7 +29,7 @@ namespace Demo.Samples.ProductionEditor {
 
       goWebBrowser1.Html = @"
         <p>
-      This process flow editor lets the user design diagrams to be shown by <a href=""ProductionProcess"">Production Process</a>.
+      This process flow editor lets the user design diagrams to be shown by <a href=""demo/ProductionProcess"">Production Process</a>.
         </p>
         <p>
       At the top is a <a>Palette</a>, from which the designer can drag-and-drop nodes down into the main <a>Diagram</a>.
