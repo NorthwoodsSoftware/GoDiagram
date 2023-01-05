@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using Northwoods.Go.PanelLayouts;
 
 namespace Demo.Samples.Gantt {
   public partial class Gantt : DemoControl {
-    // Custom layout for myGantt Diagram
+    // Custom layout for _Gantt Diagram
     public class GanttLayout : Layout {
       public int CellHeight { get; set; }
 
@@ -58,7 +58,7 @@ namespace Demo.Samples.Gantt {
           }
           var st = nd.Start;
           if (double.IsNaN(st)) {
-            st = start;
+            st = start;  // use given START
             model.Set(nd, "Start", st);
           }
           return st + dur;
@@ -85,9 +85,9 @@ namespace Demo.Samples.Gantt {
     }
     // end of GanttLayout
 
-    private static readonly int GridCellHeight = 20;  // document units
-    private static int GridCellWidth = 12;  // document units per day
-    private static readonly int TimelineHeight = 24;  // document units
+    private static readonly int GridCellHeight = 20;  // document units; cannot be changed dynamically
+    private static int GridCellWidth = 12;  // document units per day; this can be modified -- see Rescale()
+    private static readonly int TimelineHeight = 24;  // document units; cannot be changed dynamically
 
     // By default the values for the data properties Start and Duration are in days,
     // and the Start value is relative to the StartDate.
@@ -111,6 +111,9 @@ namespace Demo.Samples.Gantt {
     private static Diagram _Tasks;
     private static Diagram _Gantt;
     private static Part _Timeline;
+    private static Part _Grid;
+    private static Part _HighlightDay;
+    private static Part _HighlightTask;
 
     public Gantt() {
       InitializeComponent();
@@ -165,9 +168,10 @@ namespace Demo.Samples.Gantt {
             );
       }
 
-      // the left side of the whole diagram
+      // the tree on the left side of the page
       _Tasks.InitialContentAlignment = Spot.Right;
-      _Tasks.Padding = new Margin(TimelineHeight, 0, 0, 0);
+      // make room on top for myTimeline and a bit of spacing; on bottom for whole task row and a bit more
+      _Tasks.Padding = new Margin(TimelineHeight + 4, 0, GridCellHeight, 0);  // needs to be the same vertically as for _Gantt
       _Tasks.HasVerticalScrollbar = false;
       _Tasks.AllowMove = false;
       _Tasks.AllowCopy = false;
@@ -184,13 +188,33 @@ namespace Demo.Samples.Gantt {
           ChildPortSpot = Spot.Left,
           ArrangementSpacing = new Size(0, 0)
         };
+      _Tasks.MouseLeave = (e) => { _HighlightTask.Visible = false; };
       _Tasks.AnimationManager.IsInitial = false;
       _Tasks.TreeCollapsed += (s, e) => _Gantt.LayoutDiagram(true);
       _Tasks.TreeExpanded += (s, e) => _Gantt.LayoutDiagram(true);
 
       _Tasks.NodeTemplate =
-        new Node("Horizontal") { Height = 20 }
-          .Bind(new Binding("IsTreeExpanded").MakeTwoWay())
+        new Node("Horizontal") {
+            ColumnSizing = Sizing.None,
+            SelectionAdorned = false,
+            Height = GridCellHeight,
+            MouseEnter = (e, obj, prev) => {
+              var node = obj as Node;
+              obj.Background = "rgba(0,0,255,0.2)";
+              _HighlightTask.Position = new Point(_Grid.ActualBounds.X, node.ActualBounds.Y);
+              _HighlightTask.Width = _Grid.ActualBounds.Width;
+              _HighlightTask.Visible = true;
+            },
+            MouseLeave = (e, obj, prev) => {
+              var node = obj as Node;
+              node.Background = node.IsSelected ? "dodgerblue" : "transparent";
+              _HighlightTask.Visible = false;
+            }
+          }
+          .Bind(
+            new Binding("Background", "IsSelected", s => (bool)s ? "dodgerblue" : "transparent").OfElement(),
+            new Binding("IsTreeExpanded").MakeTwoWay()
+          )
           .Add(
             Builder.Make<Panel>("TreeExpanderButton")
               .Set(new { PortId = "", Scale = 0.85 }),
@@ -210,10 +234,21 @@ namespace Demo.Samples.Gantt {
       _Tasks.LinkTemplateMap["Dep"] =  // ignore these links in the Tasks diagram
         new Link { Visible = false, IsTreeLink = false };
 
-      // the right side of the whole diagram
-      _Gantt.InitialPosition = new Point(-7, -100);  // show labels
-      _Gantt.Padding = new Margin(TimelineHeight, 0, 0, 0);
-      _Gantt.ScrollMargin = new Margin(0, GridCellWidth * 7, 0, 0);  // show a week beyond
+      void ganttMouseOver(InputEvent e) {
+        if (_Grid == null || _HighlightDay == null) return;
+        var lp = _Grid.GetLocalPoint(e.DocumentPoint);
+        var day = Math.Floor(ConvertXToStart(lp.X));
+        _HighlightDay.Position = new Point(ConvertStartToX(day), _Grid.Position.Y);
+        _HighlightDay.Width = GridCellWidth;  // 1 day
+        _HighlightDay.Height = _Grid.ActualBounds.Height;
+        _HighlightDay.Visible = true;
+      }
+
+      // the right side of the page, holding both the timeline and all of the task bars
+      _Gantt.InitialPosition = new Point(-10, -100);  // show labels
+      // make room on top for _Timeline and a bit of spacing; on bottom for whole task row and a bit more
+      _Gantt.Padding = new Margin(TimelineHeight + 4, GridCellWidth * 7, 0, 0);  // needs to be the same vertically as for _Tasks
+      _Gantt.ScrollMargin = new Margin(0, GridCellWidth * 7, GridCellHeight, 0);  // and allow scrolling to a week beyond that
       _Gantt.AllowCopy = false;
       _Gantt.CommandHandler.DeletesTree = true;
       _Gantt.ToolManager.DraggingTool.IsGridSnapEnabled = true;
@@ -223,6 +258,8 @@ namespace Demo.Samples.Gantt {
       _Gantt.ToolManager.ResizingTool.CellSize = new Size(GridCellWidth, GridCellHeight);
       _Gantt.ToolManager.ResizingTool.MinSize = new Size(GridCellWidth, GridCellHeight);
       _Gantt.Layout = new GanttLayout();
+      _Gantt.MouseOver = ganttMouseOver;
+      _Gantt.MouseLeave = e => _HighlightDay.Visible = false;
       _Gantt.AnimationManager.IsInitial = false;
       _Gantt.SelectionMoved += (s, e) => e.Diagram.LayoutDiagram(true);
       _Gantt.DocumentBoundsChanged += (s, e) => {
@@ -230,20 +267,71 @@ namespace Demo.Samples.Gantt {
         var b = e.Diagram.DocumentBounds;
         var gridpart = e.Diagram.Parts.FirstOrDefault();
         if (gridpart != null && gridpart.Type == PanelLayoutGrid.Instance) {
-          gridpart.DesiredSize = new Size(b.Right - gridpart.Position.X, b.Bottom);
+          gridpart.DesiredSize = new Size(b.Width + GridCellWidth * 7, b.Bottom);
         }
-        // the timeline only covers the needed area
-        _Timeline.FindElement("MAIN").Width = b.Right;
-        _Timeline.FindElement("TICKS").Height = e.Diagram.ViewportBounds.Height;
-        _Timeline.GraduatedMax = b.Right;
+        // the timeline, which is not in the DocumentBounds, only covers the needed area
+        // widen to cover whole weeks
+        _Timeline.GraduatedMax = Math.Ceiling(b.Width / (GridCellWidth * 7)) * (GridCellWidth * 7);
+        _Timeline.FindElement("MAIN").Width = _Timeline.GraduatedMax;
+        _Timeline.FindElement("TICKS").Height = Math.Max(e.Diagram.DocumentBounds.Height, e.Diagram.ViewportBounds.Height);
       };
 
-      _Gantt.Add(
-        new Part("Grid") {
-            LayerName = "Grid", Position = new Point(-10, 0), GridCellSize = new Size(3000, GridCellHeight)
+      // the timeline at the top of the _Gantt viewport
+      _Timeline =
+        new Part("Graduated") {
+            LayerName = "Adornment",
+            Pickable = false,
+            Position = new Point(-26, 0),  // position will be set in "ViewportBoundsChanged" listener
+            GraduatedTickUnit = GridCellWidth // each tick is one day
+            // assume GraduatedMax == length of line
           }
-          .Add(new Shape("LineH") { StrokeWidth = 0.5 })
-      );
+          .Add(
+            new Shape("LineH") {
+                Name = "MAIN",
+                StrokeWidth = 0,  // don't draw the actual line
+                Height = TimelineHeight,  // width will be set in "DocumentBoundsChanged" listener
+                Background = "lightgray"
+              },
+            new Shape("LineV") {
+                Name = "TICKS",
+                Interval = 7,  // once per week
+                AlignmentFocus = new Spot(0.5, 0, 0, -TimelineHeight / 2),  // tick marks cross over the timeline itself
+                Stroke = "lightgray", StrokeWidth = 0.5
+              },
+            new TextBlock {
+                AlignmentFocus = Spot.Left,
+                Interval = 7,  // once per week
+                GraduatedFunction = (n, tb) => {  // N document units after StartDate
+                  return StartDate.AddDays(n).ToShortDateString();
+                },
+                GraduatedSkip = (val, tb) => val > tb.Panel.GraduatedMax - GridCellWidth * 7  // don't show last label
+              }
+          );
+      _Gantt.Add(_Timeline);
+
+      // the grid of horizontal lines
+      _Grid =
+        new Part("Grid") {
+            LayerName = "Grid", Pickable = false, Position = new Point(0, 0), GridCellSize = new Size(3000, GridCellHeight)
+          }
+          .Add(new Shape("LineH") { StrokeWidth = 0.5 });
+      _Gantt.Add(_Grid);
+
+      // the vertical highlighter covering the day where the mouse is
+      _HighlightDay =
+        new Part {
+          LayerName = "Grid", Visible = false, Pickable = false, Background = "rgba(255, 0, 0, 0.2)",
+          Position = new Point(0, 0), Width = GridCellWidth, Height = GridCellHeight
+        };
+      _Gantt.Add(_HighlightDay);
+
+      // the horizontal highlighter covering the current task
+      _HighlightTask =
+        new Part {
+          LayerName = "Grid", Visible = false, Pickable = false, Background = "rgba(0, 0, 255, 0.2)",
+          Position = new Point(0, 0), Width = GridCellWidth, Height = GridCellHeight
+        };
+      _Gantt.Add(_HighlightTask);
 
       _Gantt.NodeTemplate =
         new Node("Spot") {
@@ -281,7 +369,8 @@ namespace Demo.Samples.Gantt {
                       Fill = "fuchsia",
                       Cursor = "e-resize"
                     }
-                  )
+                  ),
+            MouseOver = (e, obj) => ganttMouseOver(e)
           }
           .Apply(standardContextMenus)
           .Bind(
@@ -309,7 +398,6 @@ namespace Demo.Samples.Gantt {
               .Bind("Stroke", "Color", c => Brush.IsDark((string)c) ? "#ddd" : "#333")
           );
 
-      // create the link template
       _Gantt.LinkTemplate = new Link { Visible = false };
 
       _Gantt.LinkTemplateMap["Dep"] =
@@ -323,34 +411,12 @@ namespace Demo.Samples.Gantt {
             new Shape { ToArrow = "Standard", Fill = "brown", StrokeWidth = 0, Scale = 0.75 }
           );
 
-      // the timeline
-      _Timeline =
-        new Part("Graduated") {
-            LayerName = "Adornment",
-            Location = new Point(0, 0),
-            LocationSpot = Spot.Left,
-            LocationElementName = "MAIN",
-            GraduatedTickUnit = GridCellWidth
-          }
-          .Add(
-            new Shape("LineH") { Name = "MAIN", StrokeWidth = 0, Height = TimelineHeight, Background = "lightgray" },
-            new Shape { Name = "TICKS", GeometryString = "M0 0 V1000", Interval = 7, Stroke = "lightgray", StrokeWidth = 0.5 },
-            new TextBlock {
-              AlignmentFocus = Spot.Left,
-              Interval = 7,  // once per week
-              GraduatedFunction = (n, tb) => {  // n is in days since StartDate
-                return StartDate.AddDays(n).ToShortDateString();
-              }
-            }
-          );
-      _Gantt.Add(_Timeline);
-
       // The Model that is shared by both Diagrams
       var myModel = new Model {
         NodeDataSource = new List<NodeData> {
           new NodeData { Key = -1, Text = "Project X" },
             new NodeData { Key = 1, Text = "Task 1", Color = "darkgreen" },
-              new NodeData { Key = 11, Text = "Task 1.1", Color = "green", Duration = ConvertDaysToUnits(10) },
+              new NodeData { Key = 11, Text = "Task 1.1", Color = "green", Duration = ConvertDaysToUnits(7) },
               new NodeData { Key = 12, Text = "Task 1.2", Color = "green" },
                 new NodeData { Key = 121, Text = "Task 1.2.1", Color = "lightgreen", Duration = ConvertDaysToUnits(3) },
                 new NodeData { Key = 122, Text = "Task 1.2.2", Color = "lightgreen", Duration = ConvertDaysToUnits(5) },
@@ -404,29 +470,30 @@ namespace Demo.Samples.Gantt {
       _Gantt.Model = myModel;
       myModel.UndoManager.IsEnabled = true;
 
-      // just for debugging:
-      myModel.Changed += (s, e) => {
-        if (e.IsTransactionFinished) {  // show the model data in the page's ModelJson control
-          modelJson1.JsonText = e.Model.ToJson();
-        }
-      };
-
       // sync viewports
       _Tasks.ViewportBoundsChanged += (s, e) => {
         if (ChangingView) return;
         ChangingView = true;
         _Gantt.Scale = _Tasks.Scale;
         _Gantt.Position = new Point(_Gantt.Position.X, _Tasks.Position.Y);
-        _Timeline.Position = new Point(_Timeline.Position.X, _Tasks.ViewportBounds.Position.Y);
+        _Timeline.Position = new Point(_Timeline.Position.X, _Gantt.ViewportBounds.Position.Y);
         ChangingView = false;
       };
       _Gantt.ViewportBoundsChanged += (s, e) => {
         if (ChangingView) return;
         ChangingView = true;
-        _Tasks.Scale = _Tasks.Scale;
+        _Tasks.Scale = _Gantt.Scale;
         _Tasks.Position = new Point(_Tasks.Position.X, _Gantt.Position.Y);
+        _Gantt.Position = new Point(_Gantt.Position.X, _Tasks.Position.Y);  // don't scroll more if _Tasks can't scroll more
         _Timeline.Position = new Point(_Timeline.Position.X, _Gantt.ViewportBounds.Position.Y);
         ChangingView = false;
+      };
+
+      // just for debugging:
+      myModel.Changed += (s, e) => {
+        if (e.IsTransactionFinished) {  // show the model data in the page's ModelJson control
+          modelJson1.JsonText = e.Model.ToJson();
+        }
       };
     }
 
@@ -443,8 +510,8 @@ namespace Demo.Samples.Gantt {
         (diag.Layout as GanttLayout).CellHeight = GridCellHeight;
         diag.LayoutDiagram(true);
         _Timeline.GraduatedTickUnit = GridCellWidth;
-        diag.Padding = new Margin(TimelineHeight, 0, 0, 0);
-        _Tasks.Padding = new Margin(TimelineHeight, 0, 0, 0);
+        diag.Padding = new Margin(TimelineHeight + 4, GridCellWidth * 7, GridCellHeight, 0);
+        _Tasks.Padding = new Margin(TimelineHeight + 4, 0, GridCellHeight, 0);
       }, null);  // SkipsUndoManager
     }
   }

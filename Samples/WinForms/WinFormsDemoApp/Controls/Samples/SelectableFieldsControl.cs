@@ -1,7 +1,8 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 
@@ -9,6 +10,8 @@ namespace Demo.Samples.SelectableFields {
   [ToolboxItem(false)]
   public partial class SelectableFieldsControl : DemoControl {
     private Diagram myDiagram;
+    private static Brush _UnselectedBrush = "transparent";  // item appearance, if not "selected"
+    private static Brush _SelectedBrush = "dodgerblue";  // item appearance, if "selected"
 
     public SelectableFieldsControl() {
       InitializeComponent();
@@ -43,27 +46,48 @@ namespace Demo.Samples.SelectableFields {
       // override CommandHandler
       myDiagram.CommandHandler = new SelectableFieldsCommandHandler();
 
+      var setFieldSelected = (GraphObject item, bool sel) => {
+        if (sel) {
+          item.Background = _SelectedBrush;
+        } else {
+          item.Background = _UnselectedBrush;
+        }
+      };
+
+      var onFieldClick = (InputEvent e, GraphObject item) => {
+        var oldskips = item.Diagram.SkipsUndoManager;
+        item.Diagram.SkipsUndoManager = true;
+        if (e.Control || e.Meta) {
+          setFieldSelected(item, !IsFieldSelected(item));
+          item.Part.IsSelected = item.Panel.Elements.Any(IsFieldSelected);
+        } else if (e.Shift) {
+          // alternative policy: select all fields between this item and some other one??
+          if (!IsFieldSelected(item)) setFieldSelected(item, true);
+          item.Part.IsSelected = true;
+        } else {
+          if (!IsFieldSelected(item)) {
+            // deselect all sibling items
+            foreach (var it in item.Panel.Elements) {
+              if (it != item) setFieldSelected(it, false);
+            }
+            setFieldSelected(item, true);
+          }
+          item.Part.IsSelected = true;
+        }
+        item.Diagram.SkipsUndoManager = oldskips;
+      };
+
       // this template is a panel that is used to represent each item in a Panel.ItemList
       // the panel is data bound to the item object
       var fieldTemplate =
         new Panel("TableRow") {  // this Panel is a row in the containing Table
-            Background = "transparent",  // so this port's background can be picked by the mouse
+            Background = _UnselectedBrush,  // so this port's background can be picked by the mouse
             FromSpot = Spot.Right,  // links only go from the right side to the left side
             ToSpot = Spot.Left,
             // allow drawing links from or to this port:
             FromLinkable = true, ToLinkable = true,
-            // allow the user to select items -- background color indicates whether selected
-            Click = (e, item) => {
-              // assume "transparent" means not "selected", for items
-              var oldskips = item.Diagram.SkipsUndoManager;
-              item.Diagram.SkipsUndoManager = true;
-              if (item.Background == "transparent") {
-                item.Background = "dodgerblue";
-              } else {
-                item.Background = "transparent";
-              }
-              item.Diagram.SkipsUndoManager = oldskips;
-            }
+            // select items -- the background indicates "selected" when not UnselectedBrush
+            Click = onFieldClick
           }
           .Bind("PortId", "Name")
           .Add(
@@ -167,6 +191,10 @@ namespace Demo.Samples.SelectableFields {
       ShowModel();  // show the diagram's initial model
     }
 
+    internal static bool IsFieldSelected(GraphObject item) {
+      return item.Background != _UnselectedBrush;
+    }
+
     private void ShowModel() {
       if (myDiagram == null) return;
       modelJson1.JsonText = myDiagram.Model.ToJson();
@@ -224,7 +252,7 @@ namespace Demo.Samples.SelectableFields {
           var iit = table.Elements.GetEnumerator();
           while (iit.MoveNext()) {
             var itempanel = iit.Current;
-            if (itempanel.Background != "transparent") items.Add(itempanel);
+            if (SelectableFieldsControl.IsFieldSelected(itempanel)) items.Add(itempanel);
           }
         }
       }

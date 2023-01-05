@@ -1,5 +1,8 @@
 ﻿A *genogram* or *pedigree chart* is an extended family tree diagram that displays information about each person or each relationship.
 
+Note that the term "marriage" here does not refer to a legal or cultural kind of relationship,
+but simply one representing the female and male genetic sources for any children.
+
 There are functions that convert an attribute value into a brush color or Shape geometry,
 to be added to the Node representing the person.
 

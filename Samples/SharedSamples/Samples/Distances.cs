@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -28,8 +28,7 @@ namespace Demo.Samples.Distances {
     }
 
     private void Setup() {
-      _Diagram.InitialAutoScale = AutoScale.UniformToFill;
-      _Diagram.Padding = 10;
+      _Diagram.InitialAutoScale = AutoScale.Uniform;
       _Diagram.ContentAlignment = Spot.Center;
       _Diagram.Layout = new ForceDirectedLayout {
         DefaultSpringLength = 10, MaxIterations = 300
@@ -40,65 +39,58 @@ namespace Demo.Samples.Distances {
       // define the Node template
       _Diagram.NodeTemplate =
         new Node(PanelType.Horizontal) {
-          LocationSpot = Spot.Center,  // Node.Location is the center of the Shape
-          LocationElementName = "SHAPE",
-          SelectionAdorned = false,
-          SelectionChanged = NodeSelectionChanged
-        }.Add(
-          new Panel(PanelType.Auto).Add(
-            new Shape {
-              Figure = "Ellipse",
-              Name = "SHAPE",
-              Fill = "lightgray",  // default value, but also data-bound
-              Stroke = "transparent",  // modified by highlighting
-              StrokeWidth = 2,
-              DesiredSize = new Size(30, 30),
-              PortId = ""
-            }.Bind(  // so links will go to the shape, not the whole node
-              new Binding("Fill", "IsSelected", (s, obj) => {
-                return (bool)s ? "red" : ((obj as GraphObject).Part.Data as NodeData).Color;
-              }).OfElement()
-            ),
-            new TextBlock().Bind(
-              new Binding("Text", "Distance", (d) => {
-                if ((int)d == -1) return "INF";
-                return d.ToString();
-              })
-            )
-          ),
-          new TextBlock().Bind(
-            new Binding("Text")
-          )
-        );
+            LocationSpot = Spot.Center,  // Node.Location is the center of the Shape
+            LocationElementName = "SHAPE",
+            SelectionAdorned = false,
+            SelectionChanged = NodeSelectionChanged
+          }
+          .Add(
+            new Panel(PanelType.Spot)
+              .Add(
+                new Shape("Circle") {
+                    Name = "SHAPE",
+                    Fill = "lightgray",  // default value, but also data-bound
+                    StrokeWidth = 0,
+                    DesiredSize = new Size(30, 30),
+                    PortId = ""  // so links will go to the shape, not the whole node
+                  }
+                  .Bind(
+                    new Binding("Fill", "IsSelected", (s, obj) => {
+                      return (bool)s ? "red" : ((obj as GraphObject).Part.Data as NodeData).Color;
+                    }).OfElement()
+                  ),
+                new TextBlock()
+                  .Bind("Text", "Distance", (d) => {
+                    if ((int)d == -1) return "INF";
+                    return d.ToString();
+                  })
+              ),
+            new TextBlock().Bind("Text")
+          );
 
       // define the Link template
       _Diagram.LinkTemplate =
         new Link {
-          Selectable = false,      // links cannot be selected by the user
-          Curve = LinkCurve.Bezier,
-          LayerName = "Background"  // don't cross in front of any nodes
-        }.Add(
-          new Shape { // this shape only shows when it IsHighlighted
-            IsPanelMain = true,
-            Stroke = "red",
-            StrokeWidth = 5
-          }.Bind(
-            new Binding("Opacity", "IsHighlighted", (h) => {
-              return (bool)h ? 1 : 0;
-            }).OfElement()
-          ),
-          new Shape {
-            // mark each Shape to get the link geometry with IsPanelMain = true
-            IsPanelMain = true,
-            Stroke = "black",
-            StrokeWidth = 1
-          }.Bind(
-            new Binding("Stroke", "Color")
-          ),
-          new Shape {
-            ToArrow = "Standard"
+            Selectable = false,      // links cannot be selected by the user
+            Curve = LinkCurve.Bezier,
+            LayerName = "Background"  // don't cross in front of any nodes
           }
-        );
+          .Add(
+            new Shape { // this shape only shows when it IsHighlighted
+                IsPanelMain = true, Stroke = null, StrokeWidth = 5
+              }
+              .Bind(
+                new Binding("Stroke", "IsHighlighted", (h) => {
+                  return (bool)h ? "red" : null;
+                }).OfElement()
+              ),
+            new Shape {
+                // mark each Shape to get the link geometry with IsPanelMain = true
+                IsPanelMain = true, Stroke = "black", StrokeWidth = 1
+              }
+              .Bind("Stroke", "Color"),
+            new Shape { ToArrow = "Standard" }
+          );
 
       // generate model data
       GenerateGraph();
@@ -124,7 +116,7 @@ namespace Demo.Samples.Distances {
       for (var i = 0; i < num * 2; i++) {
         var a = (int)Math.Floor(i / 2f);
         var b = rand.Next(num / 4) + 1;
-        linkDataSource[i] = new LinkData { Key = -1 - i, From = a, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
+        linkDataSource[i] = new LinkData { Key = -1 - i, From = a + 1, To = (a + b) % num + 1, Color = Brush.RandomColor(0, 127) };
       }
 
       _Diagram.Model = new Model {

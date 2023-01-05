@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.ComponentModel;
@@ -94,8 +94,8 @@ namespace Demo.Samples.DataFlowVertical {
       // when the diagram is vertically oriented, left means top and right means bottom
       Panel makePort(string name, bool leftside) {
         var port = new Shape("Circle") {
-          Fill = "black", Stroke = null,
-          DesiredSize = new Size(8, 8),
+          Fill = "#555555", Stroke = null,
+          DesiredSize = new Size(10, 10),
           PortId = name,  // declare this object to be a "port"
           ToMaxLinks = 1,  // don't allow more than one link into a port
           Cursor = "pointer"  // show a different cursor to indicate potential link point
@@ -130,14 +130,16 @@ namespace Demo.Samples.DataFlowVertical {
       }
 
       void makeTemplate(string typename, string icon, string background, Panel[] inports, Panel[] outports) {
-        var node = new Node("Spot")
+        var fill = Brush.Lighten(background);
+        var node = new Node("Spot") { SelectionAdorned = false }
           .Add(
             new Panel("Auto") { Width = 200, Height = 90 }
               .Add(
                 new Shape("RoundedRectangle") {
-                    Fill = background,
+                    Fill = fill, Stroke = "gray",
                     Spot1 = Spot.TopLeft, Spot2 = Spot.BottomRight
-                  },
+                  }
+                  .Bind(new Binding("Fill", "IsSelected", s => (bool)s ? "dodgerblue" : fill).OfElement()),
                 new Panel("Table")
                   .Add(
                     new TextBlock(typename) {
@@ -145,7 +147,7 @@ namespace Demo.Samples.DataFlowVertical {
                         Margin = 3,
                         MaxSize = new Size(80, double.NaN),
                         Stroke = "black",
-                        Font = new Font("Segoe UI", 11, FontWeight.Bold)
+                        Font = new Font("Segoe UI", 13, FontWeight.Bold)
                       },
                     new Picture(icon) {
                         Column = 1, Width = 55, Height = 55
@@ -156,7 +158,7 @@ namespace Demo.Samples.DataFlowVertical {
                         Editable = true,
                         MaxSize = new Size(80, 40),
                         Stroke = "black",
-                        Font = new Font("Segoe UI", 9, FontWeight.Bold)
+                        Font = new Font("Segoe UI", 11, FontWeight.Bold)
                       }
                       .Bind(new Binding("Text", "Name").MakeTwoWay())
                   )
@@ -205,11 +207,12 @@ namespace Demo.Samples.DataFlowVertical {
 
       myDiagram.LinkTemplate =
         new Link {
-            Routing = LinkRouting.Orthogonal, Corner = 5,
+            Curve = LinkCurve.Bezier,
+            FromEndSegmentLength = 30, ToEndSegmentLength = 30,
             RelinkableFrom = true, RelinkableTo = true
           }
           .Add(
-            new Shape { Stroke = "black", StrokeWidth = 2 }
+            new Shape { Stroke = "#555555", StrokeWidth = 2 }
           );
 
       // read in the JSON data from the "mySavedModel" element

@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -340,7 +340,7 @@ namespace Northwoods.Go.Extensions {
       }
 
       // if same object, just update existing table
-      if (inspectedObject != null && _InspectedObject == inspectedObject) {  
+      if (inspectedObject != null && _InspectedObject == inspectedObject) {
         UpdateInspectorTable(inspectedObject);
         _Inspector.UpdateUI(this);
         return;
@@ -426,7 +426,7 @@ namespace Northwoods.Go.Extensions {
       if (inspectedObject == null) return false;
       // assume property values that are functions of Objects cannot be edited
       var data = (inspectedObject is Part p) ? p.Data : inspectedObject;
-      if (_Diagram.Model is IGroupModel glm && propertyName == glm.NodeIsGroupProperty) return false; 
+      if (_Diagram.Model is IGroupModel glm && propertyName == glm.NodeIsGroupProperty) return false;
       if (opts != null) {
         if (opts.ReadOnly == true) return false;
       }

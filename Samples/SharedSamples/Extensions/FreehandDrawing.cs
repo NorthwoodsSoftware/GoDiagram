@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -84,7 +84,7 @@ namespace Demo.Extensions.FreehandDrawing {
     }
 
     // called after checkboxes change Diagram.Allow...
-    private void UpdateAllAdornments() { 
+    private void UpdateAllAdornments() {
       foreach (var p in _Diagram.Selection) {
         p.UpdateAdornments();
       }

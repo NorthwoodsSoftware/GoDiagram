@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Linq;
 using Northwoods.Go;
@@ -102,7 +102,7 @@ namespace Demo.Extensions.PolygonDrawing {
     }
 
     // called after checkboxes change Diagram.Allow...
-    private void UpdateAllAdornments() { 
+    private void UpdateAllAdornments() {
       foreach (var p in _Diagram.Selection) {
         p.UpdateAdornments();
       }
@@ -147,24 +147,32 @@ namespace Demo.Extensions.PolygonDrawing {
     }
 
     private void _ToggleResizing() {
-      _Diagram.AllowResize = !_Diagram.AllowResize;
-      UpdateAllAdornments();
+      _Diagram.Commit(d => {
+        d.AllowResize = !d.AllowResize;
+        UpdateAllAdornments();
+      });
     }
 
     private void _ToggleReshaping() {
-      _Diagram.AllowReshape = !_Diagram.AllowReshape;
-      UpdateAllAdornments();
+      _Diagram.Commit(d => {
+        d.AllowReshape = !d.AllowReshape;
+        UpdateAllAdornments();
+      });
     }
 
     private void _ToggleResegmenting() {
-      var tool = _Diagram.ToolManager.FindTool("GeometryReshaping") as GeometryReshapingTool;
-      tool.IsResegmenting = !tool.IsResegmenting;
-      UpdateAllAdornments();
+      _Diagram.Commit(d => {
+        var tool = d.ToolManager.FindTool("GeometryReshaping") as GeometryReshapingTool;
+        tool.IsResegmenting = !tool.IsResegmenting;
+        UpdateAllAdornments();
+      });
     }
 
     private void _ToggleRotating() {
-      _Diagram.AllowRotate = !_Diagram.AllowRotate;
-      UpdateAllAdornments();
+      _Diagram.Commit(d => {
+        d.AllowRotate = !d.AllowRotate;
+        UpdateAllAdornments();
+      });
     }
   }
 

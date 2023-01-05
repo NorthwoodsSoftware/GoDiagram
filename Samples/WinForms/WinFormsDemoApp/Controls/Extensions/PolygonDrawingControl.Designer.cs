@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 namespace Demo.Extensions.PolygonDrawing {
   partial class PolygonDrawing {
@@ -46,9 +46,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.desc1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -68,9 +68,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 1200);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutPanel2
-            // 
+            //
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 6;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -92,9 +92,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(560, 31);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // drawPolygonBtn
-            // 
+            //
             this.drawPolygonBtn.AutoSize = true;
             this.drawPolygonBtn.Location = new System.Drawing.Point(57, 3);
             this.drawPolygonBtn.Name = "drawPolygonBtn";
@@ -102,9 +102,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.drawPolygonBtn.TabIndex = 5;
             this.drawPolygonBtn.Text = "Draw Polygon";
             this.drawPolygonBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // undoPtBtn
-            // 
+            //
             this.undoPtBtn.AutoSize = true;
             this.undoPtBtn.Location = new System.Drawing.Point(456, 3);
             this.undoPtBtn.Name = "undoPtBtn";
@@ -112,9 +112,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.undoPtBtn.TabIndex = 4;
             this.undoPtBtn.Text = "Undo Last Point";
             this.undoPtBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // cancelBtn
-            // 
+            //
             this.cancelBtn.AutoSize = true;
             this.cancelBtn.Location = new System.Drawing.Point(350, 3);
             this.cancelBtn.Name = "cancelBtn";
@@ -122,9 +122,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.cancelBtn.TabIndex = 3;
             this.cancelBtn.Text = "Cancel Drawing";
             this.cancelBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // finishBtn
-            // 
+            //
             this.finishBtn.AutoSize = true;
             this.finishBtn.Location = new System.Drawing.Point(249, 3);
             this.finishBtn.Name = "finishBtn";
@@ -132,9 +132,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.finishBtn.TabIndex = 2;
             this.finishBtn.Text = "Finish Drawing";
             this.finishBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // drawPolylineBtn
-            // 
+            //
             this.drawPolylineBtn.AutoSize = true;
             this.drawPolylineBtn.Location = new System.Drawing.Point(154, 3);
             this.drawPolylineBtn.Name = "drawPolylineBtn";
@@ -142,9 +142,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.drawPolylineBtn.TabIndex = 1;
             this.drawPolylineBtn.Text = "Draw Polyline";
             this.drawPolylineBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // selectBtn
-            // 
+            //
             this.selectBtn.AutoSize = true;
             this.selectBtn.Location = new System.Drawing.Point(3, 3);
             this.selectBtn.Name = "selectBtn";
@@ -152,9 +152,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.selectBtn.TabIndex = 0;
             this.selectBtn.Text = "Select";
             this.selectBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // tableLayoutPanel3
-            // 
+            //
             this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -172,9 +172,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(479, 25);
             this.tableLayoutPanel3.TabIndex = 1;
-            // 
+            //
             // rotatingCb
-            // 
+            //
             this.rotatingCb.AutoSize = true;
             this.rotatingCb.Checked = true;
             this.rotatingCb.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -184,9 +184,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.rotatingCb.TabIndex = 2;
             this.rotatingCb.Text = "Allow Rotating";
             this.rotatingCb.UseVisualStyleBackColor = true;
-            // 
+            //
             // reshapingCb
-            // 
+            //
             this.reshapingCb.AutoSize = true;
             this.reshapingCb.Checked = true;
             this.reshapingCb.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -196,9 +196,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.reshapingCb.TabIndex = 1;
             this.reshapingCb.Text = "Allow Reshaping";
             this.reshapingCb.UseVisualStyleBackColor = true;
-            // 
+            //
             // resizingCb
-            // 
+            //
             this.resizingCb.AutoSize = true;
             this.resizingCb.Checked = true;
             this.resizingCb.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -208,9 +208,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.resizingCb.TabIndex = 0;
             this.resizingCb.Text = "Allow Resizing";
             this.resizingCb.UseVisualStyleBackColor = true;
-            // 
+            //
             // resegmentingCb
-            // 
+            //
             this.resegmentingCb.AutoSize = true;
             this.resegmentingCb.Checked = true;
             this.resegmentingCb.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -220,9 +220,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.resegmentingCb.TabIndex = 3;
             this.resegmentingCb.Text = "Allow Resegmenting";
             this.resegmentingCb.UseVisualStyleBackColor = true;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.White;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -231,9 +231,9 @@ namespace Demo.Extensions.PolygonDrawing {
             this.diagramControl1.Size = new System.Drawing.Size(994, 394);
             this.diagramControl1.TabIndex = 2;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // desc1
-            // 
+            //
             this.desc1.CreationProperties = null;
             this.desc1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.desc1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,18 +242,18 @@ namespace Demo.Extensions.PolygonDrawing {
             this.desc1.Size = new System.Drawing.Size(994, 224);
             this.desc1.TabIndex = 3;
             this.desc1.ZoomFactor = 1D;
-            // 
+            //
             // modelJson1
-            // 
+            //
             this.modelJson1.AutoSize = true;
             this.modelJson1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modelJson1.Location = new System.Drawing.Point(3, 701);
             this.modelJson1.Name = "modelJson1";
             this.modelJson1.Size = new System.Drawing.Size(994, 496);
             this.modelJson1.TabIndex = 4;
-            // 
+            //
             // PolygonDrawingControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

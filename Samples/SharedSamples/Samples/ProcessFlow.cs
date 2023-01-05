@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using Northwoods.Go.Models;
 namespace Demo.Samples.ProcessFlow {
   public partial class ProcessFlow : DemoControl {
     private Diagram _Diagram;
+    private Animation _Animation;
 
     public ProcessFlow() {
       InitializeComponent();
@@ -60,31 +61,34 @@ namespace Demo.Samples.ProcessFlow {
       _Diagram.ToolManager.RotatingTool.SnapAngleMultiple = 90;
       _Diagram.ToolManager.RotatingTool.SnapAngleEpsilon = 45;
       _Diagram.UndoManager.IsEnabled = true;
-      _Diagram.AnimationManager.IsEnabled = true;
+      _Diagram.ModelChanged += (s, e) => {
+        if (e.IsTransactionFinished) updateAnimation();
+      };
+
 
       // node templatemap "Process"
       _Diagram.NodeTemplateMap.Add("Process",
         new Node(PanelType.Auto) {
-          LocationSpot = new Spot(0.5, 0.5), LocationElementName = "SHAPE",
-          Resizable = true, ResizeElementName = "SHAPE"
-        }
+            LocationSpot = new Spot(0.5, 0.5), LocationElementName = "SHAPE",
+            Resizable = true, ResizeElementName = "SHAPE"
+          }
           .Bind("Location", "Pos", Point.Parse, Point.Stringify)
           .Add(
             new Shape("Cylinder1") {
-              StrokeWidth = 2,
-              Fill = new Brush(new LinearGradientPaint(
-                    new Dictionary<float, string> { { 0, "gray" }, { .5f, "white" }, { 1, "gray" } },
-                    Spot.Left, Spot.Right
-                  )
-                ),
-              MinSize = new Size(50, 50),
-              PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
-            }
+                StrokeWidth = 2,
+                Fill = new Brush(new LinearGradientPaint(
+                      new Dictionary<float, string> { { 0, "gray" }, { .5f, "white" }, { 1, "gray" } },
+                      Spot.Left, Spot.Right
+                    )
+                  ),
+                MinSize = new Size(50, 50),
+                PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
+              }
               .Bind("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
             new TextBlock {
-              Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5,
-              Editable = true
-            }
+                Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5,
+                Editable = true
+              }
               .Bind(new Binding("Text").MakeTwoWay())
           )
         );
@@ -92,19 +96,19 @@ namespace Demo.Samples.ProcessFlow {
       // note template map "Valve"
       _Diagram.NodeTemplateMap.Add("Valve",
         new Node(PanelType.Vertical) {
-          LocationSpot = new Spot(0.5, 1, 0, -21),
-          LocationElementName = "SHAPE",
-          SelectionElementName = "SHAPE",
-          Rotatable = true
-        }
+            LocationSpot = new Spot(0.5, 1, 0, -21),
+            LocationElementName = "SHAPE",
+            SelectionElementName = "SHAPE",
+            Rotatable = true
+          }
           .Bind(
             new Binding("Angle").MakeTwoWay(),
             new Binding("Location", "Pos", Point.Parse).MakeTwoWay(Point.Stringify)
           )
           .Add(
             new TextBlock {
-              Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5, Editable = true
-            }
+                Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5, Editable = true
+              }
               .Bind(
                 new Binding("Text").MakeTwoWay(),
                 // keep text upright when the node is upside down
@@ -126,12 +130,12 @@ namespace Demo.Samples.ProcessFlow {
       // link template
       _Diagram.LinkTemplate =
         new Link {
-          Routing = LinkRouting.AvoidsNodes,
-          Curve = LinkCurve.JumpGap,
-          Corner = 10,
-          Reshapable = true,
-          ToShortLength = 7
-        }
+            Routing = LinkRouting.AvoidsNodes,
+            Curve = LinkCurve.JumpGap,
+            Corner = 10,
+            Reshapable = true,
+            ToShortLength = 7
+          }
           .Bind(new Binding("Points").MakeTwoWay())
           .Add(
             // mark each Shape to get the link geometry with IsPanelMain = true
@@ -143,14 +147,18 @@ namespace Demo.Samples.ProcessFlow {
 
       LoadModel();
 
-      var animation = new Animation {
-        Easing = Animation.EaseLinear
-      };
-      foreach (var l in _Diagram.Links) {
-        animation.Add((l.FindElement("PIPE") as Shape), "StrokeDashOffset", 20f, 0f);
+      void updateAnimation() {
+        if (_Animation != null) _Animation.Stop();
+        _Animation = new Animation {
+          Easing = Animation.EaseLinear
+        };
+        foreach (var l in _Diagram.Links) {
+          _Animation.Add((l.FindElement("PIPE") as Shape), "StrokeDashOffset", 20f, 0f);
+        }
+        // Run indefinitely
+        _Animation.RunCount = int.MaxValue;
+        _Animation.Start();
       }
-      animation.RunCount = int.MaxValue;
-      animation.Start();
     }
 
     private void SaveModel() {

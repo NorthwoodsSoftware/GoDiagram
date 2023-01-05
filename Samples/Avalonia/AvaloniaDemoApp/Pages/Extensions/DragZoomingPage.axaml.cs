@@ -1,4 +1,4 @@
-/* Copyright 1998-2022 by Northwoods Software Corporation. */
+/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 namespace Demo.Extensions.DragZooming {
   public partial class DragZooming : DemoControl {

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -167,15 +167,14 @@ namespace Demo.Samples.SwimLanesVertical {
         if (back == null) return pt;
         // allow dragging a Node out of a Group if the Shift key is down
         if (part.Diagram.LastInput.Shift) return pt;
-        var p1 = back.GetDocumentPoint(Spot.TopLeft);
-        var p2 = back.GetDocumentPoint(Spot.BottomRight);
+        var r = back.GetDocumentBounds();
         var b = part.ActualBounds;
         var loc = part.Location;
         // find the padding inside the group's placeholder that is around the member parts
         var m = grp.Placeholder.Padding;
         // now limit the location appropriately
-        var x = Math.Max(p1.X + m.Left, Math.Min(pt.X, p2.X - m.Right - b.Width - 1)) + (loc.X - b.X);
-        var y = Math.Max(p1.Y + m.Top, Math.Min(pt.Y, p2.Y - m.Bottom - b.Height - 1)) + (loc.Y - b.Y);
+        var x = Math.Max(r.X + m.Left, Math.Min(pt.X, r.Right - m.Right - b.Width - 1)) + (loc.X - b.X);
+        var y = Math.Max(r.Y + m.Top, Math.Min(pt.Y, r.Bottom - m.Bottom - b.Height - 1)) + (loc.Y - b.Y);
         return new Point(x, y);
       }
 
@@ -216,7 +215,7 @@ namespace Demo.Samples.SwimLanesVertical {
       }
 
       // each Group is a "swimlane" with a header on the top and a resizable lane on the bottom
-      _Diagram.GroupTemplate =
+      _Diagram.GroupTemplateMap["Lane"] =
         new Group("Vertical") {
             SelectionElementName = "SHAPE",  // selecting a lane causes body of the lane to be highlit, not the whole lane
             Resizable = true, ResizeElementName = "SHAPE",  // the custom ResizeAdornmentTemplate only permits two kinds of resizing
@@ -301,7 +300,7 @@ namespace Demo.Samples.SwimLanesVertical {
           ); // end Group
 
       // define a custom resize adornment that has two resize handles if the group is expanded
-      _Diagram.GroupTemplate.ResizeAdornmentTemplate =
+      _Diagram.GroupTemplateMap["Lane"].ResizeAdornmentTemplate =
         new Adornment("Spot")
           .Add(
             new Placeholder(),
@@ -375,10 +374,10 @@ namespace Demo.Samples.SwimLanesVertical {
         NodeDataSource = new List<NodeData> {
           new NodeData { Key = "Pool1", Text = "Pool", IsGroup = true, Category = "Pool" },
           new NodeData { Key = "Pool2", Text = "Pool2", IsGroup = true, Category = "Pool" },
-          new NodeData { Key = "Lane1", Text = "Lane1", IsGroup = true, Group = "Pool1", Color = "lightblue" },
-          new NodeData { Key = "Lane2", Text = "Lane2", IsGroup = true, Group = "Pool1", Color = "lightgreen" },
-          new NodeData { Key = "Lane3", Text = "Lane3", IsGroup = true, Group = "Pool1", Color = "lightyellow" },
-          new NodeData { Key = "Lane4", Text = "Lane4", IsGroup = true, Group = "Pool1", Color = "orange" },
+          new NodeData { Key = "Lane1", Text = "Lane1", IsGroup = true, Category = "Lane", Group = "Pool1", Color = "lightblue" },
+          new NodeData { Key = "Lane2", Text = "Lane2", IsGroup = true, Category = "Lane", Group = "Pool1", Color = "lightgreen" },
+          new NodeData { Key = "Lane3", Text = "Lane3", IsGroup = true, Category = "Lane", Group = "Pool1", Color = "lightyellow" },
+          new NodeData { Key = "Lane4", Text = "Lane4", IsGroup = true, Category = "Lane", Group = "Pool1", Color = "orange" },
           new NodeData { Key = "oneA", Group = "Lane1" },
           new NodeData { Key = "oneB", Group = "Lane1" },
           new NodeData { Key = "oneC", Group = "Lane1" },
@@ -394,8 +393,8 @@ namespace Demo.Samples.SwimLanesVertical {
           new NodeData { Key = "fourB", Group = "Lane4" },
           new NodeData { Key = "fourC", Group = "Lane4" },
           new NodeData { Key = "fourD", Group = "Lane4" },
-          new NodeData { Key = "Lane5", Text = "Lane5", IsGroup = true, Group = "Pool2", Color = "lightyellow" },
-          new NodeData { Key = "Lane6", Text = "Lane6", IsGroup = true, Group = "Pool2", Color = "lightgreen" },
+          new NodeData { Key = "Lane5", Text = "Lane5", IsGroup = true, Category = "Lane", Group = "Pool2", Color = "lightyellow" },
+          new NodeData { Key = "Lane6", Text = "Lane6", IsGroup = true, Category = "Lane", Group = "Pool2", Color = "lightgreen" },
           new NodeData { Key = "fiveA", Group = "Lane5" },
           new NodeData { Key = "sixA", Group = "Lane6" }
         },

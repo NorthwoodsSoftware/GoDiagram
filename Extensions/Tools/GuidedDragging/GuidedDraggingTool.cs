@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -87,9 +87,7 @@ namespace Northwoods.Go.Tools.Extensions {
       }
       set {
         if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuidedDraggingTool.GuidelineSnapDistance must be a non-negative number");
-        if (_GuidelineSnapDistance != value) {
-          _GuidelineSnapDistance = value;
-        }
+        _GuidelineSnapDistance = value;
       }
     }
 
@@ -104,9 +102,7 @@ namespace Northwoods.Go.Tools.Extensions {
         return _IsGuidelineEnabled;
       }
       set {
-        if (_IsGuidelineEnabled != value) {
-          _IsGuidelineEnabled = value;
-        }
+        _IsGuidelineEnabled = value;
       }
     }
 
@@ -168,7 +164,7 @@ namespace Northwoods.Go.Tools.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets the width guidelines.
+    /// Gets or sets the StrokeWidth of the guidelines.
     /// </summary>
     /// <remarks>
     /// The default value is 1.
@@ -204,9 +200,7 @@ namespace Northwoods.Go.Tools.Extensions {
       }
       set {
         if (double.IsNaN(value) || value <= 0) throw new Exception("new value for GuidedDraggingTool.SearchDistance must be a positive number.");
-        if (_SearchDistance != value) {
-          _SearchDistance = value;
-        }
+        _SearchDistance = value;
       }
     }
 
@@ -221,9 +215,7 @@ namespace Northwoods.Go.Tools.Extensions {
         return _IsGuidelineSnapEnabled;
       }
       set {
-        if (_IsGuidelineSnapEnabled != value) {
-          _IsGuidelineSnapEnabled = value;
-        }
+        _IsGuidelineSnapEnabled = value;
       }
     }
 
@@ -328,6 +320,7 @@ namespace Northwoods.Go.Tools.Extensions {
 
       var marginOfError = GuidelineSnapDistance;
       var distance = SearchDistance;
+      if (distance == double.PositiveInfinity) distance = Diagram.DocumentBounds.Width;
       // compares with parts within narrow vertical area
       var area = objBounds.Inflate(distance, marginOfError + 1);
       var otherObjs = Diagram.FindElementsIn(area,
@@ -441,6 +434,7 @@ namespace Northwoods.Go.Tools.Extensions {
 
       var marginOfError = GuidelineSnapDistance;
       var distance = SearchDistance;
+      if (distance == double.PositiveInfinity) distance = Diagram.DocumentBounds.Height;
       // compares with parts within narrow vertical area
       var area = objBounds.Inflate(marginOfError + 1, distance);
       var otherObjs = Diagram.FindElementsIn(area,

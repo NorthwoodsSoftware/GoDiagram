@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -36,7 +36,7 @@ namespace Northwoods.Go.Extensions {
     private void InitializeComponent() {
       AvaloniaXamlLoader.Load(this);
     }
-    
+
     /// <summary>
     /// Implements <see cref="IInspector.UpdateUI"/> to update the input fields or rebuild the table of inputs.
     /// </summary>

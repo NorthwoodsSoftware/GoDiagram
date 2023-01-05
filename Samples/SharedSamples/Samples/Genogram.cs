@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -87,7 +87,7 @@ namespace Demo.Samples.Genogram {
       _Diagram.Layout = new GenogramLayout {
         Direction = 90,
         LayerSpacing = 30,
-        ColumnSpacing = 30
+        ColumnSpacing = 10
       };
 
       // determine the color for each attribute shape
@@ -165,66 +165,80 @@ namespace Demo.Samples.Genogram {
       // named by the category value in the node data object
       _Diagram.NodeTemplateMap.Add("M", // male
         new Node(PanelType.Vertical) {
-          LocationSpot = Spot.Center,
-          LocationElementName = "ICON",
-          SelectionElementName = "ICON"
-        }.Add(
-          new Panel { Name = "ICON" }.Add(
-            new Shape("Square") {
-              Width = 40,
-              Height = 40,
-              StrokeWidth = 2,
-              Fill = "white",
-              Stroke = "#919191",
-              PortId = ""
-            },
-            new Panel { // for each attribute show a Shape at a particular place in the overall square
-              Margin = 1,
-              ItemTemplate = new Panel().Add(
-                new Shape {
-                  Stroke = null,
-                  StrokeWidth = 0
-                }.Bind("Fill", "", (s, _) => attrFill(s as string))
-                  .Bind("Geometry", "", (s, _) => maleGeometry(s as string))
-              )
-            }.Bind("ItemList", "a")
-          ),
-          new TextBlock {
-            TextAlign = TextAlign.Center,
-            MaxSize = new Size(80, double.NaN)
-          }.Bind("Text", "n")
-      ));
+            LocationSpot = Spot.Center,
+            LocationElementName = "ICON",
+            SelectionElementName = "ICON"
+          }
+          .Bind("Opacity", "Hide", h => (bool)h ? 0 : 1)
+          .Bind("Pickable", "Hide", h => !(bool)h)
+          .Add(
+            new Panel { Name = "ICON" }
+              .Add(
+                new Shape("Square") {
+                    Width = 40,
+                    Height = 40,
+                    StrokeWidth = 2,
+                    Fill = "white",
+                    Stroke = "#919191",
+                    PortId = ""
+                  },
+                new Panel { // for each attribute show a Shape at a particular place in the overall square
+                    Margin = 1,
+                    ItemTemplate = new Panel()
+                    .Add(
+                      new Shape {
+                          Stroke = null,
+                          StrokeWidth = 0
+                        }
+                        .Bind("Fill", "", (s, _) => attrFill(s as string))
+                        .Bind("Geometry", "", (s, _) => maleGeometry(s as string))
+                    )
+                  }
+                  .Bind("ItemList", "a")
+              ),
+            new TextBlock {
+                TextAlign = TextAlign.Center, MaxSize = new Size(80, double.NaN), Background = "rgba(255,255,255,0.5)"
+              }
+              .Bind("Text", "n")
+          )
+      );
 
       _Diagram.NodeTemplateMap.Add("F", // female
         new Node(PanelType.Vertical) {
-          LocationSpot = Spot.Center,
-          LocationElementName = "ICON",
-          SelectionElementName = "ICON"
-        }.Add(
-          new Panel { Name = "ICON" }.Add(
-            new Shape("Circle") {
-              Width = 40,
-              Height = 40,
-              StrokeWidth = 2,
-              Fill = "white",
-              Stroke = "#a1a1a1",
-              PortId = ""
-            },
-            new Panel { // for each attribute show a Shape at a particular place in the overall circle
-              Margin = 1,
-              ItemTemplate = new Panel().Add(
-                  new Shape {
-                    Stroke = null, StrokeWidth = 0
-                  }.Bind("Fill", "", (s, _) => attrFill(s as string))
-                   .Bind("Geometry", "", (s, _) => femaleGeometry(s as string))
-                )
-            }.Bind("ItemList", "a")
-          ),
-          new TextBlock {
-            TextAlign = TextAlign.Center, MaxSize = new Size(80, double.NaN)
-          }.Bind("Text", "n")
-        )
-      );
+            LocationSpot = Spot.Center,
+            LocationElementName = "ICON",
+            SelectionElementName = "ICON"
+          }
+          .Bind("Opacity", "Hide", h => (bool)h ? 0 : 1)
+          .Bind("Pickable", "Hide", h => !(bool)h)
+          .Add(
+            new Panel { Name = "ICON" }
+              .Add(
+                new Shape("Circle") {
+                    Width = 40,
+                    Height = 40,
+                    StrokeWidth = 2,
+                    Fill = "white",
+                    Stroke = "#a1a1a1",
+                    PortId = ""
+                  },
+                new Panel { // for each attribute show a Shape at a particular place in the overall circle
+                    Margin = 1,
+                    ItemTemplate = new Panel().Add(
+                        new Shape {
+                          Stroke = null, StrokeWidth = 0
+                        }.Bind("Fill", "", (s, _) => attrFill(s as string))
+                         .Bind("Geometry", "", (s, _) => femaleGeometry(s as string))
+                      )
+                  }
+                  .Bind("ItemList", "a")
+              ),
+            new TextBlock {
+                TextAlign = TextAlign.Center, MaxSize = new Size(80, double.NaN), Background = "rgba(255,255,255,0.5)"
+              }
+              .Bind("Text", "n")
+          )
+        );
 
       // the representation of each label node -- nothing shows on a marriage Link
       _Diagram.NodeTemplateMap["LinkLabel"] =
@@ -237,15 +251,14 @@ namespace Demo.Samples.Genogram {
 
       _Diagram.LinkTemplate = new Link { // for Parent-child relationships
         Routing = LinkRouting.Orthogonal, Corner = 5,
-        LayerName = "Background", Selectable = false,
-        FromSpot = Spot.Bottom, ToSpot = Spot.Top
+        LayerName = "Background", Selectable = false
       }.Add(new Shape {
         Stroke = "#424242", StrokeWidth = 2
       });
 
       _Diagram.LinkTemplateMap.Add("Marriage", // for marriage relationships
         new Link {
-          Selectable = false
+          Selectable = false, LayerName = "Background"
         }.Add(new Shape {
           StrokeWidth = 2.5, Stroke = "#5d8cc1" /* blue */
         })
@@ -307,8 +320,6 @@ namespace Demo.Samples.Genogram {
         LinkLabelKeysProperty = "LabelKeys",
         // this property determines which template is used
         NodeCategoryProperty = "s",
-        // if a node data object is copied, copy its data.A array
-        //CopiesArrays = true,
         // create all of the nodes for people
         NodeDataSource = array
       };
@@ -328,7 +339,7 @@ namespace Demo.Samples.Genogram {
       if (nodeA != null && nodeB != null) {
         var it = nodeA.FindLinksBetween(nodeB); // in either direction
         foreach (var link in it) {
-          // Link.data.category == "Marriage" means its a marriage relationship
+          // Link.Data.Category == "Marriage" means its a marriage relationship
           if (link.Data != null && (link.Data as LinkData).Category == "Marriage") return link;
         }
       }
@@ -442,6 +453,7 @@ namespace Demo.Samples.Genogram {
     // internal method for creating LayeredDigraphNetwork where husband/wife pairs are represented
     // by a single Vertex corresponding to the label node on the marriage Link
     private void _Add(LayeredDigraphNetwork net, IEnumerable<Part> coll, bool nonmemberonly) {
+      var horiz = Direction == 0.0 || Direction == 180.0;
       var multiSpousePeople = new HashSet<Node>();
       // consider all Nodes in the given collection
       foreach (var part in coll) {
@@ -457,9 +469,15 @@ namespace Demo.Samples.Genogram {
           // create vertex representing both husband and wife
           var vertex = net.AddNode(node);
           // now define the vertex size to be big enough to hold both spouses
-          vertex.Width = spouseA.ActualBounds.Width + SpouseSpacing + spouseB.ActualBounds.Width;
-          vertex.Height = Math.Max(spouseA.ActualBounds.Height, spouseB.ActualBounds.Height);
-          vertex.Focus = new Point(spouseA.ActualBounds.Width + SpouseSpacing / 2, vertex.Height / 2);
+          if (horiz) {
+            vertex.Height = spouseA.ActualBounds.Height + SpouseSpacing + spouseB.ActualBounds.Height;
+            vertex.Width = Math.Max(spouseA.ActualBounds.Width, spouseB.ActualBounds.Width);
+            vertex.Focus = new Point(vertex.Width / 2, spouseA.ActualBounds.Height + SpouseSpacing / 2);
+          } else {
+            vertex.Width = spouseA.ActualBounds.Width + SpouseSpacing + spouseB.ActualBounds.Width;
+            vertex.Height = Math.Max(spouseA.ActualBounds.Height, spouseB.ActualBounds.Height);
+            vertex.Focus = new Point(spouseA.ActualBounds.Width + SpouseSpacing / 2, vertex.Height / 2);
+          }
         } else {
           // don't add a vertex for any married person!
           // intead, code above adds label node for marriage Link
@@ -542,7 +560,7 @@ namespace Demo.Samples.Genogram {
 
     protected override void AssignLayers() {
       base.AssignLayers();
-      var horiz = Math.Abs(Direction) < 0.001 || Math.Abs(Direction - 180) < 0.001;
+      var horiz = Direction == 0.0 || Direction == 180.0;
       // for every vertex record the maximum vertex width or height for the vertex's layer
       var maxsizes = new Dictionary<int, double>();
       foreach (var v in Network.Vertexes) {
@@ -572,6 +590,7 @@ namespace Demo.Samples.Genogram {
 
     protected override void CommitNodes() {
       base.CommitNodes();
+      var horiz = Direction == 0.0 || Direction == 180.0;
       // position regular nodes
       foreach (var v in Network.Vertexes) {
         if (v.Node != null && !v.Node.IsLinkLabel) {
@@ -591,32 +610,49 @@ namespace Demo.Samples.Genogram {
         lablink.InvalidateRoute();
         var spouseA = lablink.FromNode;
         var spouseB = lablink.ToNode;
-        // prefer father on the left, mothers on the right
-        if ((spouseA.Data as NodeData).s == "F") { // sex is female
-          var temp = spouseA;
-          spouseA = spouseB;
-          spouseB = temp;
-        }
-        // see if the parents are on the desired sides, to avoid a link crossing
-        var aParentsNode = layout.FindParentsMarriageLabelNode(spouseA);
-        var bParentsNode = layout.FindParentsMarriageLabelNode(spouseB);
-        if (aParentsNode != null && bParentsNode != null && aParentsNode.Position.X > bParentsNode.Position.X) {
-          // swap the spouses again
-          var temp = spouseA;
-          spouseA = spouseB;
-          spouseB = temp;
-        }
-        spouseA.Move(v.X, v.Y);
-        spouseB.Move(v.X + spouseA.ActualBounds.Width + layout.SpouseSpacing, v.Y);
-        if (spouseA.Opacity == 0) {
-          var pos = new Point(v.CenterX - spouseA.ActualBounds.Width / 2, v.Y);
-          spouseA.Move(pos);
+        if (spouseA.Opacity > 0 && spouseB.Opacity > 0) {
+          // prefer father on the left, mothers on the right
+          if ((spouseA.Data as NodeData).s == "F") { // sex is female
+            var temp = spouseA;
+            spouseA = spouseB;
+            spouseB = temp;
+          }
+          // see if the parents are on the desired sides, to avoid a link crossing
+          var aParentsNode = layout.FindParentsMarriageLabelNode(spouseA);
+          var bParentsNode = layout.FindParentsMarriageLabelNode(spouseB);
+          if (aParentsNode != null && bParentsNode != null &&
+              (horiz
+                ? aParentsNode.Position.Y > bParentsNode.Position.Y
+                : aParentsNode.Position.X > bParentsNode.Position.X)) {
+            // swap the spouses again
+            var temp = spouseA;
+            spouseA = spouseB;
+            spouseB = temp;
+          }
+          spouseA.Move(v.X, v.Y);
+          if (horiz) {
+            spouseB.Move(v.X, v.Y + spouseA.ActualBounds.Height + layout.SpouseSpacing);
+          } else {
+            spouseB.Move(v.X + spouseA.ActualBounds.Width + layout.SpouseSpacing, v.Y);
+          }
+        } else if (spouseA.Opacity == 0) {
+          var pos = horiz
+            ? new Point(v.X, v.CenterY - spouseB.ActualBounds.Height / 2)
+            : new Point(v.CenterX - spouseB.ActualBounds.Width / 2, v.Y);
           spouseB.Move(pos);
+          if (horiz) pos.Y++;
+          else pos.X++;
+          spouseA.Move(pos);
         } else if (spouseB.Opacity == 0) {
-          var pos = new Point(v.CenterX - spouseB.ActualBounds.Width / 2, v.Y);
+          var pos = horiz
+            ? new Point(v.X, v.CenterY - spouseA.ActualBounds.Height / 2)
+            : new Point(v.CenterX - spouseA.ActualBounds.Width / 2, v.Y);
           spouseA.Move(pos);
+          if (horiz) pos.Y++;
+          else pos.X++;
           spouseB.Move(pos);
         }
+        lablink.EnsureBounds();
       }
       // position only-child nodes to be under the marriage label node
       foreach (var v in Network.Vertexes) {
@@ -624,8 +660,12 @@ namespace Demo.Samples.Genogram {
         var mnode = layout.FindParentsMarriageLabelNode(v.Node);
         if (mnode != null && mnode.LinksConnected.Count() == 1) { // if only one child
           var mvert = layout.Network.FindVertex(mnode);
-          var newbnds = new Rect(v.Node.ActualBounds.X, v.Node.ActualBounds.Y, v.Node.ActualBounds.Width, v.Node.ActualBounds.Height);
-          newbnds.X = mvert.CenterX - v.Node.ActualBounds.Width / 2;
+          var newbnds = v.Node.ActualBounds;
+          if (horiz) {
+            newbnds.Y = mvert.CenterY - v.Node.ActualBounds.Height / 2;
+          } else {
+            newbnds.X = mvert.CenterX - v.Node.ActualBounds.Width / 2;
+          }
           // see if there's any empty space at the horizontal mid-point in that layer
           var overlaps = new List<Part>();
           layout.Diagram.FindElementsIn(newbnds, x => x.Part, p => p != v.Node, true, overlaps);

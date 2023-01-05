@@ -7,8 +7,9 @@ In order to reduce the size of the GoDiagram library, most predefined figures ar
 [Figures.cs](https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs) file.
 You can load this file or simply load only those figures that you want to use by copying their definitions into your code.
 
-A number of very common figures are predefined in GoDiagram: `"Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle", "TriangleRight",
-"TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "BarH", "BarV", "MinusLine", "PlusLine", "XLine"`.
+A number of very common figures are predefined in GoDiagram: `"Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle",
+"TriangleRight", "TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "BarH", "BarV",
+"MinusLine", "PlusLine", "XLine", "LineRight", "LineDown", "LineLeft", "LineUp"`.
 These figures are filled green above, instead of pink.
 
 With GoDiagram you can also define your own custom shapes with SVG-like path syntax, see the [SVG Icons](demo/Icons)

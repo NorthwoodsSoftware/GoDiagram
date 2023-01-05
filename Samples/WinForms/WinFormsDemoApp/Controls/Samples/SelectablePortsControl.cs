@@ -1,7 +1,8 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 
@@ -9,6 +10,8 @@ namespace Demo.Samples.SelectablePorts {
   [ToolboxItem(false)]
   public partial class SelectablePortsControl : DemoControl {
     private Diagram myDiagram;
+    public static Brush _UnselectedBrush = "lightgray";  // item appearance, if not "selected"
+    public static Brush _SelectedBrush = "dodgerblue";  // item appearance, if "selected"
 
     public SelectablePortsControl() {
       InitializeComponent();
@@ -24,10 +27,6 @@ namespace Demo.Samples.SelectablePorts {
 
     }
 
-    // consts
-    public static Brush SelectedBrush = "dodgerblue";
-    public static Brush UnselectedBrush = "lightgray";
-
     private void Setup() {
       myDiagram = diagramControl1.Diagram;
 
@@ -40,6 +39,41 @@ namespace Demo.Samples.SelectablePorts {
       // override CommandHandler
       myDiagram.CommandHandler = new SelectablePortsCommandHandler();
 
+      var setPortSelected = (GraphObject item, bool sel) => {
+        if (item is not Shape shape) return;
+        if (sel) {
+          shape.Fill = _SelectedBrush;
+        } else {
+          shape.Fill = _UnselectedBrush;
+        }
+      };
+
+      var onPortClick = (InputEvent e, GraphObject tb) => {
+        var shape = tb.Panel.FindElement("SHAPE");
+        if (shape != null) {
+          var oldskips = shape.Diagram.SkipsUndoManager;
+          shape.Diagram.SkipsUndoManager = true;
+          if (e.Control || e.Meta) {
+            setPortSelected(shape, !IsPortSelected(shape));
+            shape.Part.IsSelected = (shape.Part as Node).Ports.Any(IsPortSelected);
+          } else if (e.Shift) {
+            // alternative policy: select all ports between this shape and some other one??
+            if (!IsPortSelected(shape)) setPortSelected(shape, true);
+            shape.Part.IsSelected = true;
+          } else {
+            if (!IsPortSelected(shape)) {
+              // deselect all sibling shapes
+              foreach (var it in (shape.Part as Node).Ports) {
+                if (it != shape) setPortSelected(it, false);
+              }
+              setPortSelected(shape, true);
+            }
+            shape.Part.IsSelected = true;
+          }
+          shape.Diagram.SkipsUndoManager = oldskips;
+        }
+      };
+
       Panel MakeItemTemplate(bool leftside) {
         return
           new Panel(PanelType.Auto) {
@@ -47,7 +81,7 @@ namespace Demo.Samples.SelectablePorts {
           }.Add(
             new Shape {
               Name = "SHAPE",
-              Fill = UnselectedBrush,
+              Fill = _UnselectedBrush,
               Stroke = "gray",
               GeometryString = "F1 m 0,0 l 5,0 1,4 -1,4 -5,0 1,-4 -1,-4 z",
               Spot1 = new Spot(0, 0, 5, 1),  // keep the text inside the shape
@@ -63,22 +97,7 @@ namespace Demo.Samples.SelectablePorts {
             ),
             new TextBlock { // allow the user to select items -- the background color indicates whether "selected"
               IsActionable = true,
-              //?? maybe this should be more sophisticated than simple toggling of selection
-              Click = (e, tb) => {
-                var shape = tb.Panel.FindElement("SHAPE") as Shape;
-                if (shape != null) {
-                  // don't record item selection changes
-                  var oldskips = shape.Diagram.SkipsUndoManager;
-                  shape.Diagram.SkipsUndoManager = true;
-                  // toggle the Shape.Fill
-                  if (shape.Fill == UnselectedBrush) {
-                    shape.Fill = SelectedBrush;
-                  } else {
-                    shape.Fill = UnselectedBrush;
-                  }
-                  shape.Diagram.SkipsUndoManager = oldskips;
-                }
-              }
+              Click = onPortClick
             }.Bind(
               new Binding("Text", "Name")
             )
@@ -103,7 +122,7 @@ namespace Demo.Samples.SelectablePorts {
               StrokeWidth = 2,
               Fill = "transparent"
             }.Bind(
-              new Binding("Stroke", "IsSelected", (b, _) => { return (b as bool? ?? false) ? SelectedBrush : UnselectedBrush; }).OfElement()
+              new Binding("Stroke", "IsSelected", (b, _) => { return (b as bool? ?? false) ? _SelectedBrush : _UnselectedBrush; }).OfElement()
             ),
             new Panel(PanelType.Vertical) {
               Margin = 6
@@ -170,11 +189,13 @@ namespace Demo.Samples.SelectablePorts {
       ShowModel();
     }
 
+    internal static bool IsPortSelected(GraphObject item) {
+      return item != null && (item as Shape).Fill != _UnselectedBrush;  // assume the port is a Shape
+    }
 
     private void ShowModel() {
       modelJson1.JsonText = myDiagram.Model.ToJson();
     }
-
   }
 
   // define the model data
@@ -219,25 +240,8 @@ namespace Demo.Samples.SelectablePorts {
       var nit = Diagram.Nodes.GetEnumerator();
       while (nit.MoveNext()) {
         var node = nit.Current;
-        //?? Maybe this should only return selected items that are within selected Nodes
-        //if (!node.IsSelected) continue;
-        var table = node.FindElement("LEFTPORTS") as Panel;
-        if (table != null) {
-          var iit = table.Elements.GetEnumerator();
-          while (iit.MoveNext()) {
-            var itempanel = iit.Current as Panel;
-            var shape = itempanel.FindElement("SHAPE") as Shape;
-            if (shape != null && shape.Fill == SelectablePortsControl.SelectedBrush) items.Add(itempanel);
-          }
-        }
-        table = node.FindElement("RIGHTPORTS") as Panel;
-        if (table != null) {
-          var iit = table.Elements.GetEnumerator();
-          while (iit.MoveNext()) {
-            var itempanel = iit.Current as Panel;
-            var shape = itempanel.FindElement("SHAPE") as Shape;
-            if (shape != null && shape.Fill == SelectablePortsControl.SelectedBrush) items.Add(itempanel);
-          }
+        foreach (var port in node.Ports) {
+          if (SelectablePortsControl.IsPortSelected(port)) items.Add(port.Panel);
         }
       }
       return items;

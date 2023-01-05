@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Linq;
@@ -467,15 +467,14 @@ namespace Demo.Samples.Grafcet {
   // at "Parallel" and "Exclusive" nodes
   public class BarLink : Link {
     public override Point GetLinkPoint(Node node, GraphObject port, Spot spot, bool from, bool ortho, Node othernode, GraphObject otherport) {
-      var r = new Rect(port.GetDocumentPoint(Spot.TopLeft),
-        port.GetDocumentPoint(Spot.BottomRight));
-      var op = otherport.GetDocumentPoint(Spot.Center);
-      var below = op.Y > r.CenterY;
+      var r = port.GetDocumentBounds();
+      var op = otherport.GetDocumentBounds();
+      var below = op.CenterY > r.CenterY;
       var y = below ? r.Bottom : r.Top;
       if (node.Category == "Parallel" || node.Category == "Exclusive") {
-        if (op.X < r.Left) return new Point(r.Left, y);
-        if (op.X > r.Right) return new Point(r.Right, y);
-        return new Point(op.X, y);
+        if (op.Right < r.Left) return new Point(r.Left, y);
+        if (op.Left > r.Right) return new Point(r.Right, y);
+        return new Point((Math.Max(r.Left, op.Left) + Math.Min(r.Right, op.Right)) / 2, y);
       } else {
         return new Point(r.CenterX, y);
       }

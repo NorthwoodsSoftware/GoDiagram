@@ -1,5 +1,5 @@
 /*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -289,7 +289,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <remarks>
     /// The provided aspect ratio should be a nonzero postive number.
-    /// 
+    ///
     /// Note that this only applies if the <see cref="PackMode"/> is
     /// <see cref="VPackMode.AspectOnly"/>. Otherwise, the <see cref="Size"/>
     /// will determine the aspect ratio of the packed shape.

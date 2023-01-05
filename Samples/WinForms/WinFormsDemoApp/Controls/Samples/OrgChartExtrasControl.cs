@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -93,6 +93,8 @@ namespace Demo.Samples.OrgChartExtras {
       };
       myDiagram.ChangedSelection += OnSelectionChanged; // support editing properties in HTML
       myDiagram.TextEdited += OnTextEdited;
+      // newly drawn links are of type "Support" -- not a regular boss-employee relationship
+      myDiagram.ToolManager.LinkingTool.ArchetypeLinkData = new LinkData { Category = "Support", Text = "100%" };
       myDiagram.UndoManager.IsEnabled = true;
 
       // linear gradient brush
@@ -284,9 +286,7 @@ namespace Demo.Samples.OrgChartExtras {
       myDiagram.LinkTemplate =
         new Link {
           Routing = LinkRouting.Orthogonal,
-          Corner = 5,
-          RelinkableFrom = true,
-          RelinkableTo = true
+          Corner = 5
         }.Add(
           new Shape { // the link shape
             StrokeWidth = 2
@@ -314,9 +314,9 @@ namespace Demo.Samples.OrgChartExtras {
           new TextBlock {
             Stroke = "green",
             Background = "rgba(255,255,255,0.75)",
-            MaxSize = new Size(80, double.NaN)
+            MaxSize = new Size(80, double.NaN), Editable = true
           }.Bind(
-            new Binding("Text", "Text")
+            new Binding("Text").MakeTwoWay()
           )
         )
       );
@@ -342,9 +342,9 @@ namespace Demo.Samples.OrgChartExtras {
           new TextBlock {
             Stroke = "orange",
             Background = "rgba(255,255,255,0.75)",
-            MaxSize = new Size(80, double.NaN)
+            MaxSize = new Size(80, double.NaN), Editable = true
           }.Bind(
-            new Binding("Text", "Text")
+            new Binding("Text").MakeTwoWay()
           )
         )
       );

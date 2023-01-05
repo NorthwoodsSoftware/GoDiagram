@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -142,11 +142,11 @@ namespace Demo.Samples.InteractiveForce {
   public class NodeData : Model.NodeData { }
   public class LinkData : Model.LinkData { }
 
-  // extend dragging tool to invalidate layout
+  // dragging a node causes a layout
   public class InteractiveForceDirectedDraggingTool : DraggingTool {
     public override void DoMouseMove() {
       base.DoMouseMove();
-      if (IsActive) Diagram.Layout.InvalidateLayout();
+      if (IsActive) Diagram.Layout.DoLayout();
     }
   }
 

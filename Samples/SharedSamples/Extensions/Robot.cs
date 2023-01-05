@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace Demo.Extensions.Robot {
         var type = e.ClickCount == 2 ? "Double-Clicked: " : "Clicked: ";
         var msg = type + (node.Data as NodeData).Key;
         outputTb.Text = msg;
-      }      
+      }
 
       _Diagram.NodeTemplate =
         new Node("Auto") {

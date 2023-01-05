@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using Northwoods.Go.Layouts;
@@ -163,9 +163,9 @@ namespace Demo.Samples.TLayout {
             ((System.ComponentModel.ISupportInitialize)(this.altRowSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.altRowIndent)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -181,9 +181,9 @@ namespace Demo.Samples.TLayout {
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1501, 1649);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // diagramControl1
-            // 
+            //
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.BackColor = System.Drawing.Color.White;
             this.diagramControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -192,9 +192,9 @@ namespace Demo.Samples.TLayout {
             this.diagramControl1.Size = new System.Drawing.Size(1495, 369);
             this.diagramControl1.TabIndex = 2;
             this.diagramControl1.Text = "diagramControl1";
-            // 
+            //
             // desc1
-            // 
+            //
             this.desc1.CreationProperties = null;
             this.desc1.DefaultBackgroundColor = System.Drawing.Color.White;
             this.desc1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -203,9 +203,9 @@ namespace Demo.Samples.TLayout {
             this.desc1.Size = new System.Drawing.Size(1495, 42);
             this.desc1.TabIndex = 3;
             this.desc1.ZoomFactor = 1D;
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.AliceBlue;
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
@@ -217,9 +217,9 @@ namespace Demo.Samples.TLayout {
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1495, 410);
             this.flowLayoutPanel1.TabIndex = 4;
-            // 
+            //
             // flowLayoutPanel2
-            // 
+            //
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.style);
@@ -240,9 +240,9 @@ namespace Demo.Samples.TLayout {
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(221, 306);
             this.flowLayoutPanel2.TabIndex = 0;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label1, true);
@@ -252,9 +252,9 @@ namespace Demo.Samples.TLayout {
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tree Style";
-            // 
+            //
             // style
-            // 
+            //
             this.style.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel2.SetFlowBreak(this.style, true);
             this.style.FormattingEnabled = true;
@@ -263,9 +263,9 @@ namespace Demo.Samples.TLayout {
             this.style.Name = "style";
             this.style.Size = new System.Drawing.Size(121, 25);
             this.style.TabIndex = 1;
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label2, true);
@@ -275,9 +275,9 @@ namespace Demo.Samples.TLayout {
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Layer Style";
-            // 
+            //
             // layerStyle
-            // 
+            //
             this.layerStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel2.SetFlowBreak(this.layerStyle, true);
             this.layerStyle.FormattingEnabled = true;
@@ -286,9 +286,9 @@ namespace Demo.Samples.TLayout {
             this.layerStyle.Name = "layerStyle";
             this.layerStyle.Size = new System.Drawing.Size(121, 25);
             this.layerStyle.TabIndex = 3;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label3, true);
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -298,18 +298,18 @@ namespace Demo.Samples.TLayout {
             this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "New Tree";
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "MinNodes:";
-            // 
+            //
             // minNodes
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.minNodes, true);
             this.minNodes.Location = new System.Drawing.Point(79, 133);
             this.minNodes.Margin = new System.Windows.Forms.Padding(1);
@@ -321,18 +321,18 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 7;
             this.label5.Text = "MaxNodes:";
-            // 
+            //
             // maxNodes
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.maxNodes, true);
             this.maxNodes.Location = new System.Drawing.Point(82, 160);
             this.maxNodes.Margin = new System.Windows.Forms.Padding(1);
@@ -344,18 +344,18 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label6
-            // 
+            //
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 186);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "MinChildren:";
-            // 
+            //
             // minChil
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.minChil, true);
             this.minChil.Location = new System.Drawing.Point(88, 187);
             this.minChil.Margin = new System.Windows.Forms.Padding(1);
@@ -367,18 +367,18 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 213);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 17);
             this.label7.TabIndex = 11;
             this.label7.Text = "MaxChildren:";
-            // 
+            //
             // maxChil
-            // 
+            //
             this.flowLayoutPanel2.SetFlowBreak(this.maxChil, true);
             this.maxChil.Location = new System.Drawing.Point(91, 214);
             this.maxChil.Margin = new System.Windows.Forms.Padding(1);
@@ -390,9 +390,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // randomSizes
-            // 
+            //
             this.randomSizes.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.randomSizes, true);
             this.randomSizes.Location = new System.Drawing.Point(3, 243);
@@ -401,9 +401,9 @@ namespace Demo.Samples.TLayout {
             this.randomSizes.TabIndex = 15;
             this.randomSizes.Text = "Random Sizes";
             this.randomSizes.UseVisualStyleBackColor = true;
-            // 
+            //
             // generateBtn
-            // 
+            //
             this.generateBtn.AutoSize = true;
             this.generateBtn.Location = new System.Drawing.Point(3, 276);
             this.generateBtn.Name = "generateBtn";
@@ -411,9 +411,9 @@ namespace Demo.Samples.TLayout {
             this.generateBtn.TabIndex = 13;
             this.generateBtn.Text = "Generate Tree";
             this.generateBtn.UseVisualStyleBackColor = true;
-            // 
+            //
             // flowLayoutPanel3
-            // 
+            //
             this.flowLayoutPanel3.AutoSize = true;
             this.flowLayoutPanel3.Controls.Add(this.label8);
             this.flowLayoutPanel3.Controls.Add(this.label9);
@@ -454,9 +454,9 @@ namespace Demo.Samples.TLayout {
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(393, 404);
             this.flowLayoutPanel3.TabIndex = 1;
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label8, true);
             this.label8.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -465,9 +465,9 @@ namespace Demo.Samples.TLayout {
             this.label8.Size = new System.Drawing.Size(121, 17);
             this.label8.TabIndex = 0;
             this.label8.Text = "Default Properties";
-            // 
+            //
             // label9
-            // 
+            //
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 25);
@@ -475,9 +475,9 @@ namespace Demo.Samples.TLayout {
             this.label9.Size = new System.Drawing.Size(44, 17);
             this.label9.TabIndex = 1;
             this.label9.Text = "Angle:";
-            // 
+            //
             // angle
-            // 
+            //
             this.angle.AutoSize = true;
             this.angle.Controls.Add(this.right);
             this.angle.Controls.Add(this.down);
@@ -488,9 +488,9 @@ namespace Demo.Samples.TLayout {
             this.angle.Name = "angle";
             this.angle.Size = new System.Drawing.Size(229, 27);
             this.angle.TabIndex = 2;
-            // 
+            //
             // right
-            // 
+            //
             this.right.AutoSize = true;
             this.right.Checked = true;
             this.right.Location = new System.Drawing.Point(3, 3);
@@ -500,9 +500,9 @@ namespace Demo.Samples.TLayout {
             this.right.TabStop = true;
             this.right.Text = "Right";
             this.right.UseVisualStyleBackColor = true;
-            // 
+            //
             // down
-            // 
+            //
             this.down.AutoSize = true;
             this.down.Location = new System.Drawing.Point(65, 3);
             this.down.Name = "down";
@@ -510,9 +510,9 @@ namespace Demo.Samples.TLayout {
             this.down.TabIndex = 1;
             this.down.Text = "Down";
             this.down.UseVisualStyleBackColor = true;
-            // 
+            //
             // left
-            // 
+            //
             this.left.AutoSize = true;
             this.left.Location = new System.Drawing.Point(130, 3);
             this.left.Name = "left";
@@ -520,9 +520,9 @@ namespace Demo.Samples.TLayout {
             this.left.TabIndex = 2;
             this.left.Text = "Left";
             this.left.UseVisualStyleBackColor = true;
-            // 
+            //
             // up
-            // 
+            //
             this.up.AutoSize = true;
             this.up.Location = new System.Drawing.Point(183, 3);
             this.up.Name = "up";
@@ -530,9 +530,9 @@ namespace Demo.Samples.TLayout {
             this.up.TabIndex = 3;
             this.up.Text = "Up";
             this.up.UseVisualStyleBackColor = true;
-            // 
+            //
             // label10
-            // 
+            //
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 57);
@@ -540,9 +540,9 @@ namespace Demo.Samples.TLayout {
             this.label10.Size = new System.Drawing.Size(69, 17);
             this.label10.TabIndex = 3;
             this.label10.Text = "Alignment:";
-            // 
+            //
             // align
-            // 
+            //
             this.align.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel3.SetFlowBreak(this.align, true);
             this.align.FormattingEnabled = true;
@@ -550,9 +550,9 @@ namespace Demo.Samples.TLayout {
             this.align.Name = "align";
             this.align.Size = new System.Drawing.Size(121, 25);
             this.align.TabIndex = 4;
-            // 
+            //
             // label11
-            // 
+            //
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 87);
@@ -560,9 +560,9 @@ namespace Demo.Samples.TLayout {
             this.label11.Size = new System.Drawing.Size(90, 17);
             this.label11.TabIndex = 5;
             this.label11.Text = "NodeSpacing:";
-            // 
+            //
             // nodeSpacing
-            // 
+            //
             this.nodeSpacing.Location = new System.Drawing.Point(98, 83);
             this.nodeSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.nodeSpacing.Minimum = new decimal(new int[] {
@@ -578,9 +578,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label12
-            // 
+            //
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label12, true);
@@ -589,9 +589,9 @@ namespace Demo.Samples.TLayout {
             this.label12.Size = new System.Drawing.Size(162, 17);
             this.label12.TabIndex = 7;
             this.label12.Text = "(negative causes overlaps)";
-            // 
+            //
             // label13
-            // 
+            //
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(3, 116);
@@ -599,17 +599,17 @@ namespace Demo.Samples.TLayout {
             this.label13.Size = new System.Drawing.Size(80, 17);
             this.label13.TabIndex = 8;
             this.label13.Text = "NodeIndent:";
-            // 
+            //
             // nodeIndent
-            // 
+            //
             this.nodeIndent.Location = new System.Drawing.Point(88, 112);
             this.nodeIndent.Margin = new System.Windows.Forms.Padding(2);
             this.nodeIndent.Name = "nodeIndent";
             this.nodeIndent.Size = new System.Drawing.Size(120, 25);
             this.nodeIndent.TabIndex = 9;
-            // 
+            //
             // label14
-            // 
+            //
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label14.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label14, true);
@@ -618,9 +618,9 @@ namespace Demo.Samples.TLayout {
             this.label14.Size = new System.Drawing.Size(156, 17);
             this.label14.TabIndex = 10;
             this.label14.Text = "(when Start or End; >= 0)";
-            // 
+            //
             // label15
-            // 
+            //
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(3, 145);
@@ -628,9 +628,9 @@ namespace Demo.Samples.TLayout {
             this.label15.Size = new System.Drawing.Size(141, 17);
             this.label15.TabIndex = 11;
             this.label15.Text = "NodeIndentPastParent:";
-            // 
+            //
             // nodeIndentPastParent
-            // 
+            //
             this.nodeIndentPastParent.DecimalPlaces = 2;
             this.nodeIndentPastParent.Increment = new decimal(new int[] {
             1,
@@ -647,9 +647,9 @@ namespace Demo.Samples.TLayout {
             this.nodeIndentPastParent.Name = "nodeIndentPastParent";
             this.nodeIndentPastParent.Size = new System.Drawing.Size(120, 25);
             this.nodeIndentPastParent.TabIndex = 12;
-            // 
+            //
             // label16
-            // 
+            //
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label16.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label16, true);
@@ -658,9 +658,9 @@ namespace Demo.Samples.TLayout {
             this.label16.Size = new System.Drawing.Size(86, 17);
             this.label16.TabIndex = 13;
             this.label16.Text = "(fraction; 0-1)";
-            // 
+            //
             // label17
-            // 
+            //
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(3, 174);
@@ -668,9 +668,9 @@ namespace Demo.Samples.TLayout {
             this.label17.Size = new System.Drawing.Size(88, 17);
             this.label17.TabIndex = 14;
             this.label17.Text = "LayerSpacing:";
-            // 
+            //
             // layerSpacing
-            // 
+            //
             this.layerSpacing.Location = new System.Drawing.Point(96, 170);
             this.layerSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.layerSpacing.Minimum = new decimal(new int[] {
@@ -686,9 +686,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label18
-            // 
+            //
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label18.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label18, true);
@@ -697,9 +697,9 @@ namespace Demo.Samples.TLayout {
             this.label18.Size = new System.Drawing.Size(162, 17);
             this.label18.TabIndex = 16;
             this.label18.Text = "(negative causes overlaps)";
-            // 
+            //
             // label19
-            // 
+            //
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(3, 203);
@@ -707,9 +707,9 @@ namespace Demo.Samples.TLayout {
             this.label19.Size = new System.Drawing.Size(171, 17);
             this.label19.TabIndex = 17;
             this.label19.Text = "LayerSpacingParentOverlap:";
-            // 
+            //
             // layerSpacingParentOverlap
-            // 
+            //
             this.layerSpacingParentOverlap.DecimalPlaces = 2;
             this.layerSpacingParentOverlap.Increment = new decimal(new int[] {
             1,
@@ -726,9 +726,9 @@ namespace Demo.Samples.TLayout {
             this.layerSpacingParentOverlap.Name = "layerSpacingParentOverlap";
             this.layerSpacingParentOverlap.Size = new System.Drawing.Size(120, 25);
             this.layerSpacingParentOverlap.TabIndex = 18;
-            // 
+            //
             // label20
-            // 
+            //
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label20.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label20, true);
@@ -737,9 +737,9 @@ namespace Demo.Samples.TLayout {
             this.label20.Size = new System.Drawing.Size(86, 17);
             this.label20.TabIndex = 19;
             this.label20.Text = "(fraction; 0-1)";
-            // 
+            //
             // label21
-            // 
+            //
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(3, 233);
@@ -747,9 +747,9 @@ namespace Demo.Samples.TLayout {
             this.label21.Size = new System.Drawing.Size(53, 17);
             this.label21.TabIndex = 20;
             this.label21.Text = "Sorting:";
-            // 
+            //
             // sorting
-            // 
+            //
             this.sorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel3.SetFlowBreak(this.sorting, true);
             this.sorting.FormattingEnabled = true;
@@ -757,9 +757,9 @@ namespace Demo.Samples.TLayout {
             this.sorting.Name = "sorting";
             this.sorting.Size = new System.Drawing.Size(121, 25);
             this.sorting.TabIndex = 21;
-            // 
+            //
             // label22
-            // 
+            //
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(3, 265);
@@ -767,9 +767,9 @@ namespace Demo.Samples.TLayout {
             this.label22.Size = new System.Drawing.Size(81, 17);
             this.label22.TabIndex = 22;
             this.label22.Text = "Compaction:";
-            // 
+            //
             // compaction
-            // 
+            //
             this.compaction.AutoSize = true;
             this.compaction.Controls.Add(this.block);
             this.compaction.Controls.Add(this.none);
@@ -778,9 +778,9 @@ namespace Demo.Samples.TLayout {
             this.compaction.Name = "compaction";
             this.compaction.Size = new System.Drawing.Size(126, 27);
             this.compaction.TabIndex = 23;
-            // 
+            //
             // block
-            // 
+            //
             this.block.AutoSize = true;
             this.block.Checked = true;
             this.block.Location = new System.Drawing.Point(3, 3);
@@ -790,9 +790,9 @@ namespace Demo.Samples.TLayout {
             this.block.TabStop = true;
             this.block.Text = "Block";
             this.block.UseVisualStyleBackColor = true;
-            // 
+            //
             // none
-            // 
+            //
             this.none.AutoSize = true;
             this.none.Location = new System.Drawing.Point(65, 3);
             this.none.Name = "none";
@@ -800,9 +800,9 @@ namespace Demo.Samples.TLayout {
             this.none.TabIndex = 1;
             this.none.Text = "None";
             this.none.UseVisualStyleBackColor = true;
-            // 
+            //
             // label23
-            // 
+            //
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(3, 296);
@@ -810,17 +810,17 @@ namespace Demo.Samples.TLayout {
             this.label23.Size = new System.Drawing.Size(83, 17);
             this.label23.TabIndex = 24;
             this.label23.Text = "BreadthLimit:";
-            // 
+            //
             // breadthLimit
-            // 
+            //
             this.breadthLimit.Location = new System.Drawing.Point(91, 292);
             this.breadthLimit.Margin = new System.Windows.Forms.Padding(2);
             this.breadthLimit.Name = "breadthLimit";
             this.breadthLimit.Size = new System.Drawing.Size(120, 25);
             this.breadthLimit.TabIndex = 25;
-            // 
+            //
             // label24
-            // 
+            //
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label24.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label24, true);
@@ -829,9 +829,9 @@ namespace Demo.Samples.TLayout {
             this.label24.Size = new System.Drawing.Size(112, 17);
             this.label24.TabIndex = 26;
             this.label24.Text = "(0 means no limit)";
-            // 
+            //
             // label25
-            // 
+            //
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(3, 325);
@@ -839,9 +839,9 @@ namespace Demo.Samples.TLayout {
             this.label25.Size = new System.Drawing.Size(82, 17);
             this.label25.TabIndex = 27;
             this.label25.Text = "RowSpacing:";
-            // 
+            //
             // rowSpacing
-            // 
+            //
             this.rowSpacing.Location = new System.Drawing.Point(90, 321);
             this.rowSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.rowSpacing.Minimum = new decimal(new int[] {
@@ -857,9 +857,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label26
-            // 
+            //
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label26.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label26, true);
@@ -868,9 +868,9 @@ namespace Demo.Samples.TLayout {
             this.label26.Size = new System.Drawing.Size(162, 17);
             this.label26.TabIndex = 29;
             this.label26.Text = "(negative causes overlaps)";
-            // 
+            //
             // label27
-            // 
+            //
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(3, 354);
@@ -878,9 +878,9 @@ namespace Demo.Samples.TLayout {
             this.label27.Size = new System.Drawing.Size(72, 17);
             this.label27.TabIndex = 30;
             this.label27.Text = "RowIndent:";
-            // 
+            //
             // rowIndent
-            // 
+            //
             this.rowIndent.Location = new System.Drawing.Point(80, 350);
             this.rowIndent.Margin = new System.Windows.Forms.Padding(2);
             this.rowIndent.Name = "rowIndent";
@@ -891,9 +891,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label28
-            // 
+            //
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label28.AutoSize = true;
             this.flowLayoutPanel3.SetFlowBreak(this.label28, true);
@@ -902,9 +902,9 @@ namespace Demo.Samples.TLayout {
             this.label28.Size = new System.Drawing.Size(45, 17);
             this.label28.TabIndex = 32;
             this.label28.Text = "(>= 0)";
-            // 
+            //
             // setsPortSpot
-            // 
+            //
             this.setsPortSpot.AutoSize = true;
             this.setsPortSpot.Checked = true;
             this.setsPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -914,9 +914,9 @@ namespace Demo.Samples.TLayout {
             this.setsPortSpot.TabIndex = 33;
             this.setsPortSpot.Text = "SetsPortSpot";
             this.setsPortSpot.UseVisualStyleBackColor = true;
-            // 
+            //
             // setsChildPortSpot
-            // 
+            //
             this.setsChildPortSpot.AutoSize = true;
             this.setsChildPortSpot.Checked = true;
             this.setsChildPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -926,9 +926,9 @@ namespace Demo.Samples.TLayout {
             this.setsChildPortSpot.TabIndex = 34;
             this.setsChildPortSpot.Text = "SetsChildPortSpot";
             this.setsChildPortSpot.UseVisualStyleBackColor = true;
-            // 
+            //
             // flowLayoutPanel4
-            // 
+            //
             this.flowLayoutPanel4.AutoSize = true;
             this.flowLayoutPanel4.Controls.Add(this.label29);
             this.flowLayoutPanel4.Controls.Add(this.label30);
@@ -969,9 +969,9 @@ namespace Demo.Samples.TLayout {
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(393, 404);
             this.flowLayoutPanel4.TabIndex = 2;
-            // 
+            //
             // label29
-            // 
+            //
             this.label29.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label29, true);
             this.label29.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
@@ -980,9 +980,9 @@ namespace Demo.Samples.TLayout {
             this.label29.Size = new System.Drawing.Size(71, 17);
             this.label29.TabIndex = 0;
             this.label29.Text = "Alternates";
-            // 
+            //
             // label30
-            // 
+            //
             this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(3, 25);
@@ -990,9 +990,9 @@ namespace Demo.Samples.TLayout {
             this.label30.Size = new System.Drawing.Size(44, 17);
             this.label30.TabIndex = 1;
             this.label30.Text = "Angle:";
-            // 
+            //
             // altAngle
-            // 
+            //
             this.altAngle.AutoSize = true;
             this.altAngle.Controls.Add(this.altRight);
             this.altAngle.Controls.Add(this.altDown);
@@ -1003,9 +1003,9 @@ namespace Demo.Samples.TLayout {
             this.altAngle.Name = "altAngle";
             this.altAngle.Size = new System.Drawing.Size(229, 27);
             this.altAngle.TabIndex = 2;
-            // 
+            //
             // altRight
-            // 
+            //
             this.altRight.AutoSize = true;
             this.altRight.Checked = true;
             this.altRight.Location = new System.Drawing.Point(3, 3);
@@ -1015,9 +1015,9 @@ namespace Demo.Samples.TLayout {
             this.altRight.TabStop = true;
             this.altRight.Text = "Right";
             this.altRight.UseVisualStyleBackColor = true;
-            // 
+            //
             // altDown
-            // 
+            //
             this.altDown.AutoSize = true;
             this.altDown.Location = new System.Drawing.Point(65, 3);
             this.altDown.Name = "altDown";
@@ -1025,9 +1025,9 @@ namespace Demo.Samples.TLayout {
             this.altDown.TabIndex = 1;
             this.altDown.Text = "Down";
             this.altDown.UseVisualStyleBackColor = true;
-            // 
+            //
             // altLeft
-            // 
+            //
             this.altLeft.AutoSize = true;
             this.altLeft.Location = new System.Drawing.Point(130, 3);
             this.altLeft.Name = "altLeft";
@@ -1035,9 +1035,9 @@ namespace Demo.Samples.TLayout {
             this.altLeft.TabIndex = 2;
             this.altLeft.Text = "Left";
             this.altLeft.UseVisualStyleBackColor = true;
-            // 
+            //
             // altUp
-            // 
+            //
             this.altUp.AutoSize = true;
             this.altUp.Location = new System.Drawing.Point(183, 3);
             this.altUp.Name = "altUp";
@@ -1045,9 +1045,9 @@ namespace Demo.Samples.TLayout {
             this.altUp.TabIndex = 3;
             this.altUp.Text = "Up";
             this.altUp.UseVisualStyleBackColor = true;
-            // 
+            //
             // label31
-            // 
+            //
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(3, 57);
@@ -1055,9 +1055,9 @@ namespace Demo.Samples.TLayout {
             this.label31.Size = new System.Drawing.Size(69, 17);
             this.label31.TabIndex = 3;
             this.label31.Text = "Alignment:";
-            // 
+            //
             // altAlign
-            // 
+            //
             this.altAlign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel4.SetFlowBreak(this.altAlign, true);
             this.altAlign.FormattingEnabled = true;
@@ -1065,9 +1065,9 @@ namespace Demo.Samples.TLayout {
             this.altAlign.Name = "altAlign";
             this.altAlign.Size = new System.Drawing.Size(121, 25);
             this.altAlign.TabIndex = 4;
-            // 
+            //
             // label32
-            // 
+            //
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(3, 87);
@@ -1075,9 +1075,9 @@ namespace Demo.Samples.TLayout {
             this.label32.Size = new System.Drawing.Size(90, 17);
             this.label32.TabIndex = 5;
             this.label32.Text = "NodeSpacing:";
-            // 
+            //
             // altNodeSpacing
-            // 
+            //
             this.altNodeSpacing.Location = new System.Drawing.Point(98, 83);
             this.altNodeSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altNodeSpacing.Minimum = new decimal(new int[] {
@@ -1093,9 +1093,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label33
-            // 
+            //
             this.label33.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label33.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label33, true);
@@ -1104,9 +1104,9 @@ namespace Demo.Samples.TLayout {
             this.label33.Size = new System.Drawing.Size(162, 17);
             this.label33.TabIndex = 7;
             this.label33.Text = "(negative causes overlaps)";
-            // 
+            //
             // label34
-            // 
+            //
             this.label34.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(3, 116);
@@ -1114,17 +1114,17 @@ namespace Demo.Samples.TLayout {
             this.label34.Size = new System.Drawing.Size(80, 17);
             this.label34.TabIndex = 8;
             this.label34.Text = "NodeIndent:";
-            // 
+            //
             // altNodeIndent
-            // 
+            //
             this.altNodeIndent.Location = new System.Drawing.Point(88, 112);
             this.altNodeIndent.Margin = new System.Windows.Forms.Padding(2);
             this.altNodeIndent.Name = "altNodeIndent";
             this.altNodeIndent.Size = new System.Drawing.Size(120, 25);
             this.altNodeIndent.TabIndex = 9;
-            // 
+            //
             // label35
-            // 
+            //
             this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label35.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label35, true);
@@ -1133,9 +1133,9 @@ namespace Demo.Samples.TLayout {
             this.label35.Size = new System.Drawing.Size(156, 17);
             this.label35.TabIndex = 10;
             this.label35.Text = "(when Start or End; >= 0)";
-            // 
+            //
             // label36
-            // 
+            //
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(3, 145);
@@ -1143,9 +1143,9 @@ namespace Demo.Samples.TLayout {
             this.label36.Size = new System.Drawing.Size(141, 17);
             this.label36.TabIndex = 11;
             this.label36.Text = "NodeIndentPastParent:";
-            // 
+            //
             // altNodeIndentPastParent
-            // 
+            //
             this.altNodeIndentPastParent.DecimalPlaces = 2;
             this.altNodeIndentPastParent.Increment = new decimal(new int[] {
             1,
@@ -1162,9 +1162,9 @@ namespace Demo.Samples.TLayout {
             this.altNodeIndentPastParent.Name = "altNodeIndentPastParent";
             this.altNodeIndentPastParent.Size = new System.Drawing.Size(120, 25);
             this.altNodeIndentPastParent.TabIndex = 12;
-            // 
+            //
             // label37
-            // 
+            //
             this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label37.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label37, true);
@@ -1173,9 +1173,9 @@ namespace Demo.Samples.TLayout {
             this.label37.Size = new System.Drawing.Size(86, 17);
             this.label37.TabIndex = 13;
             this.label37.Text = "(fraction; 0-1)";
-            // 
+            //
             // label38
-            // 
+            //
             this.label38.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(3, 174);
@@ -1183,9 +1183,9 @@ namespace Demo.Samples.TLayout {
             this.label38.Size = new System.Drawing.Size(88, 17);
             this.label38.TabIndex = 14;
             this.label38.Text = "LayerSpacing:";
-            // 
+            //
             // altLayerSpacing
-            // 
+            //
             this.altLayerSpacing.Location = new System.Drawing.Point(96, 170);
             this.altLayerSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altLayerSpacing.Minimum = new decimal(new int[] {
@@ -1201,9 +1201,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label39
-            // 
+            //
             this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label39.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label39, true);
@@ -1212,9 +1212,9 @@ namespace Demo.Samples.TLayout {
             this.label39.Size = new System.Drawing.Size(162, 17);
             this.label39.TabIndex = 16;
             this.label39.Text = "(negative causes overlaps)";
-            // 
+            //
             // label40
-            // 
+            //
             this.label40.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(3, 203);
@@ -1222,9 +1222,9 @@ namespace Demo.Samples.TLayout {
             this.label40.Size = new System.Drawing.Size(171, 17);
             this.label40.TabIndex = 17;
             this.label40.Text = "LayerSpacingParentOverlap:";
-            // 
+            //
             // altLayerSpacingParentOverlap
-            // 
+            //
             this.altLayerSpacingParentOverlap.DecimalPlaces = 2;
             this.altLayerSpacingParentOverlap.Increment = new decimal(new int[] {
             1,
@@ -1241,9 +1241,9 @@ namespace Demo.Samples.TLayout {
             this.altLayerSpacingParentOverlap.Name = "altLayerSpacingParentOverlap";
             this.altLayerSpacingParentOverlap.Size = new System.Drawing.Size(120, 25);
             this.altLayerSpacingParentOverlap.TabIndex = 18;
-            // 
+            //
             // label41
-            // 
+            //
             this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label41.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label41, true);
@@ -1252,9 +1252,9 @@ namespace Demo.Samples.TLayout {
             this.label41.Size = new System.Drawing.Size(86, 17);
             this.label41.TabIndex = 19;
             this.label41.Text = "(fraction; 0-1)";
-            // 
+            //
             // label42
-            // 
+            //
             this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(3, 233);
@@ -1262,9 +1262,9 @@ namespace Demo.Samples.TLayout {
             this.label42.Size = new System.Drawing.Size(53, 17);
             this.label42.TabIndex = 20;
             this.label42.Text = "Sorting:";
-            // 
+            //
             // altSorting
-            // 
+            //
             this.altSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flowLayoutPanel4.SetFlowBreak(this.altSorting, true);
             this.altSorting.FormattingEnabled = true;
@@ -1272,9 +1272,9 @@ namespace Demo.Samples.TLayout {
             this.altSorting.Name = "altSorting";
             this.altSorting.Size = new System.Drawing.Size(121, 25);
             this.altSorting.TabIndex = 21;
-            // 
+            //
             // label43
-            // 
+            //
             this.label43.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(3, 265);
@@ -1282,9 +1282,9 @@ namespace Demo.Samples.TLayout {
             this.label43.Size = new System.Drawing.Size(81, 17);
             this.label43.TabIndex = 22;
             this.label43.Text = "Compaction:";
-            // 
+            //
             // altCompaction
-            // 
+            //
             this.altCompaction.AutoSize = true;
             this.altCompaction.Controls.Add(this.altBlock);
             this.altCompaction.Controls.Add(this.altNone);
@@ -1293,9 +1293,9 @@ namespace Demo.Samples.TLayout {
             this.altCompaction.Name = "altCompaction";
             this.altCompaction.Size = new System.Drawing.Size(126, 27);
             this.altCompaction.TabIndex = 23;
-            // 
+            //
             // altBlock
-            // 
+            //
             this.altBlock.AutoSize = true;
             this.altBlock.Checked = true;
             this.altBlock.Location = new System.Drawing.Point(3, 3);
@@ -1305,9 +1305,9 @@ namespace Demo.Samples.TLayout {
             this.altBlock.TabStop = true;
             this.altBlock.Text = "Block";
             this.altBlock.UseVisualStyleBackColor = true;
-            // 
+            //
             // altNone
-            // 
+            //
             this.altNone.AutoSize = true;
             this.altNone.Location = new System.Drawing.Point(65, 3);
             this.altNone.Name = "altNone";
@@ -1315,9 +1315,9 @@ namespace Demo.Samples.TLayout {
             this.altNone.TabIndex = 1;
             this.altNone.Text = "None";
             this.altNone.UseVisualStyleBackColor = true;
-            // 
+            //
             // label44
-            // 
+            //
             this.label44.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(3, 296);
@@ -1325,17 +1325,17 @@ namespace Demo.Samples.TLayout {
             this.label44.Size = new System.Drawing.Size(83, 17);
             this.label44.TabIndex = 24;
             this.label44.Text = "BreadthLimit:";
-            // 
+            //
             // altBreadthLimit
-            // 
+            //
             this.altBreadthLimit.Location = new System.Drawing.Point(91, 292);
             this.altBreadthLimit.Margin = new System.Windows.Forms.Padding(2);
             this.altBreadthLimit.Name = "altBreadthLimit";
             this.altBreadthLimit.Size = new System.Drawing.Size(120, 25);
             this.altBreadthLimit.TabIndex = 25;
-            // 
+            //
             // label45
-            // 
+            //
             this.label45.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label45.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label45, true);
@@ -1344,9 +1344,9 @@ namespace Demo.Samples.TLayout {
             this.label45.Size = new System.Drawing.Size(112, 17);
             this.label45.TabIndex = 26;
             this.label45.Text = "(0 means no limit)";
-            // 
+            //
             // label46
-            // 
+            //
             this.label46.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(3, 325);
@@ -1354,9 +1354,9 @@ namespace Demo.Samples.TLayout {
             this.label46.Size = new System.Drawing.Size(82, 17);
             this.label46.TabIndex = 27;
             this.label46.Text = "RowSpacing:";
-            // 
+            //
             // altRowSpacing
-            // 
+            //
             this.altRowSpacing.Location = new System.Drawing.Point(90, 321);
             this.altRowSpacing.Margin = new System.Windows.Forms.Padding(2);
             this.altRowSpacing.Minimum = new decimal(new int[] {
@@ -1372,9 +1372,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label47
-            // 
+            //
             this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label47.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label47, true);
@@ -1383,9 +1383,9 @@ namespace Demo.Samples.TLayout {
             this.label47.Size = new System.Drawing.Size(162, 17);
             this.label47.TabIndex = 29;
             this.label47.Text = "(negative causes overlaps)";
-            // 
+            //
             // label48
-            // 
+            //
             this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(3, 354);
@@ -1393,9 +1393,9 @@ namespace Demo.Samples.TLayout {
             this.label48.Size = new System.Drawing.Size(72, 17);
             this.label48.TabIndex = 30;
             this.label48.Text = "RowIndent:";
-            // 
+            //
             // altRowIndent
-            // 
+            //
             this.altRowIndent.Location = new System.Drawing.Point(80, 350);
             this.altRowIndent.Margin = new System.Windows.Forms.Padding(2);
             this.altRowIndent.Name = "altRowIndent";
@@ -1406,9 +1406,9 @@ namespace Demo.Samples.TLayout {
             0,
             0,
             0});
-            // 
+            //
             // label49
-            // 
+            //
             this.label49.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label49.AutoSize = true;
             this.flowLayoutPanel4.SetFlowBreak(this.label49, true);
@@ -1417,9 +1417,9 @@ namespace Demo.Samples.TLayout {
             this.label49.Size = new System.Drawing.Size(45, 17);
             this.label49.TabIndex = 32;
             this.label49.Text = "(>= 0)";
-            // 
+            //
             // altSetsPortSpot
-            // 
+            //
             this.altSetsPortSpot.AutoSize = true;
             this.altSetsPortSpot.Checked = true;
             this.altSetsPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -1429,9 +1429,9 @@ namespace Demo.Samples.TLayout {
             this.altSetsPortSpot.TabIndex = 33;
             this.altSetsPortSpot.Text = "SetsPortSpot";
             this.altSetsPortSpot.UseVisualStyleBackColor = true;
-            // 
+            //
             // altSetsChildPortSpot
-            // 
+            //
             this.altSetsChildPortSpot.AutoSize = true;
             this.altSetsChildPortSpot.Checked = true;
             this.altSetsChildPortSpot.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -1441,9 +1441,9 @@ namespace Demo.Samples.TLayout {
             this.altSetsChildPortSpot.TabIndex = 34;
             this.altSetsChildPortSpot.Text = "SetsChildPortSpot";
             this.altSetsChildPortSpot.UseVisualStyleBackColor = true;
-            // 
+            //
             // TLayoutControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);

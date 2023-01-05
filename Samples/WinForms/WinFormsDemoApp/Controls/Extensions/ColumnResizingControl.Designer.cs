@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 namespace Demo.Extensions.ColumnResizing {
   partial class ColumnResizing {
     /// <summary>
@@ -77,7 +77,7 @@ namespace Demo.Extensions.ColumnResizing {
             this.modelJson1.Location = new System.Drawing.Point(3, 683);
             this.modelJson1.Name = "modelJson1";
             this.modelJson1.Size = new System.Drawing.Size(994, 335);
-            this.modelJson1.CanSaveLoad = false; 
+            this.modelJson1.CanSaveLoad = false;
             this.modelJson1.TabIndex = 4;
             //
             // ColumnResizingControl

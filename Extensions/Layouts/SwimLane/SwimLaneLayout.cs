@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -28,7 +28,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// and thus that that group represents a lane.
   ///
   /// The lanes can be sorted by specifying the <see cref="LaneComparer"/> function.
-  /// 
+  ///
   /// You can add extra space between the lanes by increasing <see cref="LaneSpacing"/> from its default of zero.
   /// That number's unit is columns, <see cref="LayeredDigraphLayout.ColumnSpacing"/>, not in document coordinates.
   /// </remarks>
@@ -77,7 +77,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <remarks>
     /// If you set this before a layout happens, it will use those lanes in that order.
     /// Any additional lane names that it discovers will be added to the end of this list.
-    /// 
+    ///
     /// This property is reset to an empty list at the end of each layout.
     /// The default value is an empty list.
     /// </remarks>

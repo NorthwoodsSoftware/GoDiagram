@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -269,9 +269,10 @@ namespace Northwoods.Go.Tools.Extensions {
       // support rotated ports
       var portang = port.GetDocumentAngle();
       var center = port.GetDocumentPoint(Spot.Center);
+      var farpt = pt.Offset((pt.X - center.X) * 1000, (pt.Y - center.Y) * 1000);
       var portb = new Rect(port.GetDocumentPoint(Spot.TopLeft).Subtract(center).Rotate(-portang).Add(center),
                                 port.GetDocumentPoint(Spot.BottomRight).Subtract(center).Rotate(-portang).Add(center));
-      var lp = link.GetLinkPointFromPoint(port.Part as Node, port, center, pt, fromend);
+      var lp = link.GetLinkPointFromPoint(port.Part as Node, port, center, farpt, fromend);
       lp = lp.Subtract(center).Rotate(-portang).Add(center);
       var spot = new Spot(Math.Max(0, Math.Min(1, (lp.X - portb.X) / (!double.IsNaN(portb.Width) ? portb.Width : 1))),
                           Math.Max(0, Math.Min(1, (lp.Y - portb.Y) / (!double.IsNaN(portb.Height) ? portb.Height : 1))));

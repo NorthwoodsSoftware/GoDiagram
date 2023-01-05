@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -955,6 +955,48 @@ namespace Northwoods.Go.Extensions {
         geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0);
         geo.Spot2 = new Spot(1, 1, -0.3 * p1, -0.3 * p1);
         return geo;
+      });
+
+      // these two figures have rounded ends
+      Shape.DefineFigureGenerator("CapsuleH", (shape, w, h) => {
+        var geo = new Geometry();
+        if (w < h) {
+          var fig = new PathFigure(w / 2, 0, true);
+          fig.Add(new PathSegment(SegmentType.Bezier, w / 2, h, w, 0, w, h));
+          fig.Add(new PathSegment(SegmentType.Bezier, w / 2, 0, 0, h, 0, 0));
+          geo.Add(fig);
+          return geo;
+        } else {
+          var fig = new PathFigure(h / 2, 0, true);
+          geo.Add(fig);
+          // Outline
+          fig.Add(new PathSegment(SegmentType.Line, w - h / 2, 0));
+          fig.Add(new PathSegment(SegmentType.Arc, 270, 180, w - h / 2, h / 2, h / 2, h / 2));
+          fig.Add(new PathSegment(SegmentType.Line, w - h / 2, h));
+          fig.Add(new PathSegment(SegmentType.Arc, 90, 180, h / 2, h / 2, h / 2, h / 2));
+          return geo;
+        }
+      });
+      Shape.DefineFigureGenerator("Capsule", "CapsuleH"); // synonym
+
+      Shape.DefineFigureGenerator("CapsuleV", (shape, w, h) => {
+        var geo = new Geometry();
+        if (h < w) {
+          var fig = new PathFigure(0, h / 2, true);
+          fig.Add(new PathSegment(SegmentType.Bezier, w, h / 2, 0, h, w, h));
+          fig.Add(new PathSegment(SegmentType.Bezier, 0, h / 2, w, 0, 0, 0));
+          geo.Add(fig);
+          return geo;
+        } else {
+          var fig = new PathFigure(0, w / 2, true);
+          geo.Add(fig);
+          // Outline
+          fig.Add(new PathSegment(SegmentType.Arc, 180, 180, w / 2, w / 2, w / 2, w / 2));
+          fig.Add(new PathSegment(SegmentType.Line, w, h - w / 2));
+          fig.Add(new PathSegment(SegmentType.Arc, 0, 180, w / 2, h - w / 2, w / 2, w / 2));
+          fig.Add(new PathSegment(SegmentType.Line, 0, w / 2));
+          return geo;
+        }
       });
 
       FigureParameter.SetFigureParameter("FramedRectangle", 0, new FigureParameter("ThicknessX", 8));

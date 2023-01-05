@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -14,10 +14,10 @@ using System;
 
 /// These are the definitions for all the predefined arrowheads.
 /// You do not need to load this file in order to use these arrowheads.
-/// 
+///
 /// Typical custom definition:
 /// Shape.DefineArrowheadGeometry("Zigzag", "M0,4 L1,8 3,0 5,8 7,0 8,4");
-/// 
+///
 /// Typical usage in a link template:
 /// myDiagram.LinkTemplate =
 ///   new Link().Add(

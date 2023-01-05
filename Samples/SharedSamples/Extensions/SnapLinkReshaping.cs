@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -351,7 +351,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
 
     private void SetupPalette() {
 
-      
+
 
       _Palette.MaxSelectionCount = 1;
       DefineNodeTemplates();

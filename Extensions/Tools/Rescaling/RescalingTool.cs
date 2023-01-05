@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -21,9 +21,9 @@ namespace Northwoods.Go.Tools.Extensions {
   /// <code language="cs">
   /// myDiagram.ToolManager.MouseDownTools.Add(new RescalingTool());
   /// </code>
-  /// 
+  ///
   /// Normally it would not make sense for the same object to be both resizable and rescalable.
-  /// 
+  ///
   /// Note that there is no `Part.RescaleElementName` property and there is no `Part.Rescalable` property.
   /// So although you cannot customize any Node to affect this tool, you can set
   /// <see cref="RescaleElementName"/> and set <see cref="Tool.IsEnabled"/> to control
@@ -83,7 +83,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <remarks>
     /// By default this is a <see cref="Shape"/> that is a small blue square.
     /// Setting this property does not raise any events.
-    /// 
+    ///
     /// Here is an example of changing the default handle to be green "X":
     /// <code language="cs">
     ///   tool.HandleArchetype =
@@ -140,7 +140,7 @@ namespace Northwoods.Go.Tools.Extensions {
       if (part == null || part is Link link) return;
       if (part.IsSelected && !Diagram.IsReadOnly) {
         var rescaleObj = FindRescaleElement(part);
-        if (rescaleObj != null && part.ActualBounds.IsReal() && part.IsVisible() 
+        if (rescaleObj != null && part.ActualBounds.IsReal() && part.IsVisible()
           && rescaleObj.ActualBounds.IsReal() && rescaleObj.IsVisibleElement()) {
           var adornment = part.FindAdornment(Name);
           if (adornment == null || adornment.AdornedElement != rescaleObj) {
@@ -285,5 +285,5 @@ namespace Northwoods.Go.Tools.Extensions {
       return scale * (newdist / origdist);
     }
   }
-  
+
 }

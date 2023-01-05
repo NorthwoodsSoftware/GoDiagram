@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -143,10 +143,15 @@ namespace Northwoods.Go.Tools.Extensions {
       if (lab.Part is not Link link) return;
 
       var last = Diagram.LastInput.DocumentPoint;
-      var idx = (int)lab.SegmentIndex;
+      var idx = lab.SegmentIndex;
       var numpts = link.PointsCount;
-      // if the label is a "mid" label, assume it is positioned differently from a label at a particular segment
-      if (idx < -numpts || idx >= numpts) {
+      if (double.IsNaN(idx) && link.Path != null) {
+        var labpt = link.Path.GetDocumentPoint(link.Geometry.GetPointAlongPath(lab.SegmentFraction));
+        var angle = link.Geometry.GetAngleAlongPath(lab.SegmentFraction);
+        var p = new Point(last.X - _Offset.X - labpt.X, last.Y - _Offset.Y - labpt.Y);
+        lab.SegmentOffset = p.Rotate(-angle);
+      } if (idx < -numpts || idx >= numpts) {
+        // if the label is a "mid" label, assume it is positioned differently from a label at a particular segment
         var mid = link.MidPoint;
         // need to rotate this point to account for the angle of the link segment at the mid-point
         var p = new Point(last.X - _Offset.X - mid.X, last.Y - _Offset.Y - mid.Y);
@@ -156,10 +161,10 @@ namespace Northwoods.Go.Tools.Extensions {
         Point a;
         Point b;
         if (idx >= 0) {  // indexing forwards
-          a = link.GetPoint(idx);
-          b = (idx < numpts - 1) ? link.GetPoint(idx + 1) : a;
+          a = link.GetPoint((int)idx);
+          b = (idx < numpts - 1) ? link.GetPoint((int)idx + 1) : a;
         } else {  // or backwards if SegmentIndex is negative
-          var i = numpts + idx;
+          var i = numpts + (int)idx;
           a = link.GetPoint(i);
           b = (i > 0) ? link.GetPoint(i - 1) : a;
         }

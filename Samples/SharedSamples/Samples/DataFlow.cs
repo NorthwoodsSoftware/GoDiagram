@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using Northwoods.Go;
@@ -107,41 +107,41 @@ namespace Demo.Samples.DataFlow {
             new Panel("Auto") { Width = 100, Height = 120 }
               .Add(
                 new Shape("Rectangle") {
-                  Fill = background, Stroke = null, StrokeWidth = 0,
-                  Spot1 = Spot.TopLeft, Spot2 = Spot.BottomRight
-                },
+                    Fill = background, Stroke = null, StrokeWidth = 0,
+                    Spot1 = Spot.TopLeft, Spot2 = Spot.BottomRight
+                  },
                 new Panel("Table")
                   .Add(
                     new TextBlock(typename) {
-                      Row = 0,
-                      Margin = 3,
-                      MaxSize = new Size(80, double.NaN),
-                      Stroke = "white",
-                      Font = new Font("Segoe UI", 11, Northwoods.Go.FontWeight.Bold)
-                    },
+                        Row = 0,
+                        Margin = 3,
+                        MaxSize = new Size(80, double.NaN),
+                        Stroke = "black",
+                        Font = new Font("Segoe UI", 13, Northwoods.Go.FontWeight.Bold)
+                      },
                     new Picture(icon) {
-                      Row = 1, Width = 16, Height = 16, Scale = 3
-                    },
+                        Row = 1, Width = 16, Height = 16, Scale = 3
+                      },
                     new TextBlock {
-                      Row = 2,
-                      Margin = 3,
-                      Editable = true,
-                      MaxSize = new Size(80, 40),
-                      Stroke = "white",
-                      Font = new Font("Segoe UI", 9, Northwoods.Go.FontWeight.Bold)
-                    }
+                        Row = 2,
+                        Margin = 3,
+                        Editable = true,
+                        MaxSize = new Size(80, 40),
+                        Stroke = "white",
+                        Font = new Font("Segoe UI", 11, Northwoods.Go.FontWeight.Bold)
+                      }
                       .Bind(new Binding("Text", "Name").MakeTwoWay())
                   )
               ),
             new Panel("Vertical") {
-              Alignment = Spot.Left,
-              AlignmentFocus = new Spot(0, 0.5, 8, 0)
-            }
+                Alignment = Spot.Left,
+                AlignmentFocus = new Spot(0, 0.5, 8, 0)
+              }
               .Add(inports),
             new Panel("Vertical") {
-              Alignment = Spot.Right,
-              AlignmentFocus = new Spot(1, 0.5, -8, 0)
-            }
+                Alignment = Spot.Right,
+                AlignmentFocus = new Spot(1, 0.5, -8, 0)
+              }
               .Add(outports)
         );
         _Diagram.NodeTemplateMap[typename] = node;
@@ -177,9 +177,9 @@ namespace Demo.Samples.DataFlow {
 
       _Diagram.LinkTemplate =
         new Link {
-          Routing = LinkRouting.Orthogonal, Corner = 5,
-          RelinkableFrom = true, RelinkableTo = true
-        }
+            Routing = LinkRouting.Orthogonal, Corner = 25,
+            RelinkableFrom = true, RelinkableTo = true
+          }
           .Add(
             new Shape { Stroke = "gray", StrokeWidth = 2 },
             new Shape { Stroke = "gray", Fill = "gray", ToArrow = "Standard" }

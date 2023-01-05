@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -17,10 +17,10 @@ using System.Linq;
 namespace Northwoods.Go.Layouts.Extensions {
   /// <summary>
   /// A custom Layout that provides one way to have a layout of layouts.
-  /// It partitions nodes and links into separate subgraphs, applies a primary
-  /// layout to each subgraph, and then arranges those results by an
+  /// It partitions nodes and links into separate subnetworks, applies a primary
+  /// layout to each subnetwork, and then arranges those results by an
   /// arranging layout. Any disconnected nodes are laid out later by a
-  /// side layout, by default in a grid underneath the main body of subgraphs.
+  /// side layout, by default in a grid underneath the main body of subnetworks.
   /// </summary>
   /// <remarks>
   /// This layout uses three separate Layouts.
@@ -34,7 +34,7 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// One is used for laying out the additional nodes along one of the sides of the main graph: <see cref="SideLayout"/>.
   /// This also defaults to an instance of <see cref="GridLayout"/>.
-  /// 
+  ///
   /// A filter predicate, <see cref="Filter"/>, splits up the collection of nodes and links into two subsets,
   /// one for the main layout and one for the side layout.
   /// By default, when there is no filter, it puts all nodes that have no link connections into the
@@ -46,17 +46,20 @@ namespace Northwoods.Go.Layouts.Extensions {
   ///
   /// But if there are disconnected subnetworks, the <see cref="PrimaryLayout"/> is applied to each subnetwork,
   /// and then all of those results are arranged by the <see cref="ArrangeLayout"/>.
+  /// If you don't want to use an <see cref="ArrangeLayout"/> and you want to force the <see cref="PrimaryLayout"/> to
+  /// operate on all of the subnetworks, set <see cref="ArrangeLayout"/> to null.
   ///
   /// In either case if there are any nodes in the side graph, those are arranged by the <see cref="SideLayout"/>
   /// to be on the side of the arrangement of the main graph of nodes and links.
+  /// The <see cref="Side"/> property controls which side they will be placed -- the default is BottomSide.
   ///
   /// Note: if you do not want to have singleton nodes be arranged by <see cref="SideLayout"/>,
   /// set <see cref="Filter"/> to <code language="cs">(part) => { return true; }</code>.
   /// That will cause all singleton nodes to be arranged by <see cref="ArrangeLayout"/> as if they
-  /// were each their own subgraph.
+  /// were each their own subnetwork.
   ///
   /// If you both don't want to use <see cref="SideLayout"/> and you don't want to use <see cref="ArrangeLayout"/>
-  /// to lay out connected subgraphs, don't use this ArrangingLayout at all --
+  /// to lay out connected subnetworks, don't use this ArrangingLayout at all --
   /// just use whatever Layout you would have assigned to <see cref="PrimaryLayout"/>.
   /// </remarks>
   /// @category Layout Extension
@@ -116,6 +119,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     /// <remarks>
     /// The default value is Spot.BottomSide.
+    ///
+    /// If the value is Spot.Bottom, Spot.Top, Spot.Right, or Spot.Left,
+    /// the side nodes will be centered along that side.
+    ///
     /// Currently only handles a single side.
     /// </remarks>
     public Spot Side {
@@ -123,8 +130,8 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Side;
       }
       set {
-        if (!value.IsSide()) {
-          throw new Exception("new value for ArrangingLayout.Side must be a side Spot, not: " + value);
+        if (!(value.IsSide() || value.Equals(Spot.Top) || value.Equals(Spot.Right) || value.Equals(Spot.Bottom) || value.Equals(Spot.Left))) {
+          throw new Exception("new value for ArrangingLayout.Side must be a side or middle-side Spot, not: " + value);
         }
         if (_Side != value) {
           _Side = value;
@@ -172,12 +179,12 @@ namespace Northwoods.Go.Layouts.Extensions {
     }
 
     /// <summary>
-    /// Gets or sets the Layout used to arrange multiple separate connected subgraphs of the main graph.
+    /// Gets or sets the Layout used to arrange multiple separate connected subnetworks of the main graph.
     /// </summary>
     /// <remarks>
     /// The default value is an instance of GridLayout.
-    /// Set this property to null in order to get the default behavior of the <see cref="PrimaryLayout"/>
-    /// when dealing with multiple connected graphs as a whole.
+    /// Set this property to null in order to get the <see cref="PrimaryLayout"/> to operate on all
+    /// connected graphs as a whole.
     /// </remarks>
     public Layout ArrangeLayout {
       get {
@@ -249,7 +256,10 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       if (allparts.Count == 0) return; // do nothing for an empty collection
 
+      var diagram = Diagram;
+      if (Diagram == null) diagram = allparts.FirstOrDefault()?.Diagram;
       if (Diagram == null) throw new Exception("No Diagram for this Layout");
+
       // implementations of doLayout that do not make use of a LayoutNetwork
       // need to perform their own transactions
       Diagram.StartTransaction("Arranging Layout");
@@ -259,6 +269,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       ArrangingNetwork mainnet = null;
       IEnumerator<ArrangingNetwork> subnets = null;
       if (ArrangeLayout != null) {
+        ArrangeLayout.Diagram = diagram;
         mainnet = MakeNetwork(maincoll);
         subnets = mainnet.SplitIntoSubNetworks<ArrangingNetwork>();
       }
@@ -269,6 +280,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         while (subnets.MoveNext()) {
           var net = subnets.Current;
           var subcoll = net.FindAllParts();
+          PrimaryLayout.Diagram = diagram;
           PreparePrimaryLayout(PrimaryLayout, subcoll);
           PrimaryLayout.DoLayout(subcoll);
           _AddMainNode(groups, subcoll, Diagram);
@@ -276,6 +288,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         foreach (var v in mainnet.Vertexes) {
           if (v.Node != null) {
             var subcoll = new HashSet<Part> { v.Node };
+            PrimaryLayout.Diagram = diagram;
             PreparePrimaryLayout(PrimaryLayout, subcoll);
             PrimaryLayout.DoLayout(subcoll);
             _AddMainNode(groups, subcoll, Diagram);
@@ -289,6 +302,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
         bounds = Diagram.ComputePartsBounds(groups.Keys); // not maincoll due to links without real bounds
       } else { // no ArrangingLayout
+        PrimaryLayout.Diagram = diagram;
         PreparePrimaryLayout(PrimaryLayout, maincoll);
         PrimaryLayout.DoLayout(maincoll);
         bounds = Diagram.ComputePartsBounds(maincoll);
@@ -379,13 +393,13 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <summary>
     /// Move a Set of Nodes and Links to the given area.
     /// </summary>
-    /// <param name="subColl">the Set of Nodes and Links that form a separate connected subgraph</param>
+    /// <param name="subColl">the Set of Nodes and Links that form a separate connected subnetwork</param>
     /// <param name="subbounds">the area occupied by the subColl</param>
     /// <param name="bounds">the area where they should be moved according to the ArrangingLayout</param>
     public virtual void MoveSubgraph(IEnumerable<Part> subColl, Rect subbounds, Rect bounds) {
       var diagram = Diagram;
       if (diagram == null) return;
-      diagram.MoveParts(subColl, bounds.Position.Subtract(subbounds.Position), false);
+      diagram.MoveParts(subColl, bounds.Position.Subtract(subbounds.Position));
     }
 
     /// <summary>
@@ -417,18 +431,26 @@ namespace Northwoods.Go.Layouts.Extensions {
     public virtual void MoveSideCollection(IEnumerable<Part> sidecoll, Rect mainbounds, Rect sidebounds) {
       var diagram = Diagram;
       if (diagram == null) return;
-      if (Side.IncludesSide(Spot.BottomSide)) {
-        diagram.MoveParts(sidecoll, new Point(mainbounds.X - sidebounds.X, mainbounds.Y + mainbounds.Height + Spacing.Height - sidebounds.Y), false);
+
+      Point? pos = null;
+      if (Side.Equals(Spot.Bottom)) {
+        pos = new Point(mainbounds.CenterX - sidebounds.Width / 2, mainbounds.Y + mainbounds.Height + Spacing.Height);
+      } else if (Side.Equals(Spot.Right)) {
+        pos = new Point(mainbounds.X + mainbounds.Width + Spacing.Width, mainbounds.CenterY - sidebounds.Height / 2);
+      } else if (Side.Equals(Spot.Top)) {
+        pos = new Point(mainbounds.CenterX - sidebounds.Width / 2, mainbounds.Y - sidebounds.Height - Spacing.Height);
+      } else if (Side.Equals(Spot.Left)) {
+        pos = new Point(mainbounds.X - sidebounds.Width - Spacing.Width, mainbounds.CenterY - sidebounds.Height / 2);
+      } else if (Side.IncludesSide(Spot.BottomSide)) {
+        pos = new Point(mainbounds.X, mainbounds.Y + mainbounds.Height + Spacing.Height);
+      } else if (Side.IncludesSide(Spot.RightSide)) {
+        pos = new Point(mainbounds.X + mainbounds.Width + Spacing.Width, mainbounds.Y);
+      } else if (Side.IncludesSide(Spot.TopSide)) {
+        pos = new Point(mainbounds.X, mainbounds.Y - sidebounds.Height - Spacing.Height);
+      } else if (Side.IncludesSide(Spot.LeftSide)) {
+        pos = new Point(mainbounds.X - sidebounds.Width - Spacing.Width, mainbounds.Y);
       }
-      else if (Side.IncludesSide(Spot.RightSide)) {
-        diagram.MoveParts(sidecoll, new Point(mainbounds.X + mainbounds.Width + Spacing.Width - sidebounds.X, mainbounds.Y - sidebounds.Y), false);
-      }
-      else if (Side.IncludesSide(Spot.TopSide)) {
-        diagram.MoveParts(sidecoll, new Point(mainbounds.X - sidebounds.X, mainbounds.Y - sidebounds.Height - Spacing.Height - sidebounds.Y), false);
-      }
-      else if (Side.IncludesSide(Spot.LeftSide)) {
-        diagram.MoveParts(sidecoll, new Point(mainbounds.X - sidebounds.Width - Spacing.Width - sidebounds.X, mainbounds.Y - sidebounds.Y), false);
-      }
+      if (pos is Point p) diagram.MoveParts(sidecoll, p.Subtract(sidebounds.Position));
     }
   }
 }

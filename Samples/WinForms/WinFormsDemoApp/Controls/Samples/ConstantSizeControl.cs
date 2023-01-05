@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace Demo.Samples.ConstantSize {
 
     private void Setup() {
       var INTERVAL = 1000;
-      
+
       myDiagram.InitialContentAlignment = Spot.TopLeft;
       myDiagram.IsReadOnly = true; // allow selection but not moving or copying or deleting
       myDiagram.ToolManager.HoverDelay = 100; // how quickly tooltips are shown

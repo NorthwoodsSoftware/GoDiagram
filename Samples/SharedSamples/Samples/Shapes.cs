@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +44,7 @@ namespace Demo.Samples.Shapes {
       // Names of the built in shapes, which we will color green instead of pink.
       // The pinks shapes are instead defined in the extensions "Figures.cs" file.
       var builtIn = new HashSet<string>() {
-      "Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle", "TriangleRight", "TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "None", "BarH", "BarV", "MinusLine", "PlusLine", "XLine"
+      "Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle", "TriangleRight", "TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "None", "BarH", "BarV", "MinusLine", "PlusLine", "XLine", "LineRight", "LineDown", "LineLeft", "LineUp"
       };
       bool IsBuiltIn(string shapeName) {
         return builtIn.Contains(shapeName);

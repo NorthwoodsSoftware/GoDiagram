@@ -1,5 +1,6 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Demo.Samples.OrgChartAssistants {
 
     public OrgChartAssistantsControl() {
       InitializeComponent();
+      myDiagram = diagramControl1.Diagram;
 
       modelJson1.SaveClick = SaveModel;
       modelJson1.LoadClick = LoadModel;
@@ -37,22 +39,22 @@ namespace Demo.Samples.OrgChartAssistants {
 
       modelJson1.JsonText = @"{
   ""NodeDataSource"": [
-    {""Key"":1, ""Name"":""Stella Payne Diaz"", ""Title"":""CEO""},
-    {""Key"":2, ""Name"":""Luke Warm"", ""Title"":""VP Marketing/Sales"", ""Parent"":1},
-    {""Key"":3, ""Name"":""Meg Meehan Hoffa"", ""Title"":""Sales"", ""Parent"":2},
-    {""Key"":4, ""Name"":""Peggy Flaming"", ""Title"":""VP Engineering"", ""Parent"":1},
-    {""Key"":5, ""Name"":""Saul Wellingood"", ""Title"":""Manufacturing"", ""Parent"":4},
-    {""Key"":6, ""Name"":""Al Ligori"", ""Title"":""Marketing"", ""Parent"":2},
-    {""Key"":7, ""Name"":""Dot Stubadd"", ""Title"":""Sales Rep"", ""Parent"":3},
-    {""Key"":8, ""Name"":""Les Ismore"", ""Title"":""Project Mgr"", ""Parent"":5},
-    {""Key"":9, ""Name"":""April Lynn Parris"", ""Title"":""Events Mgr"", ""Parent"":6},
-    {""Key"":10, ""Name"":""Xavier Breath"", ""Title"":""Engineering"", ""Parent"":4},
-    {""Key"":11, ""Name"":""Anita Hammer"", ""Title"":""Process"", ""Parent"":5},
-    {""Key"":12, ""Name"":""Billy Aiken"", ""Title"":""Software"", ""Parent"":10},
-    {""Key"":13, ""Name"":""Stan Wellback"", ""Title"":""Testing"", ""Parent"":10},
-    {""Key"":14, ""Name"":""Marge Innovera"", ""Title"":""Hardware"", ""Parent"":10},
-    {""Key"":15, ""Name"":""Evan Elpus"", ""Title"":""Quality"", ""Parent"":5},
-    {""Key"":16, ""Name"":""Lotta B. Essen"", ""Title"":""Sales Rep"", ""Parent"":3},
+    {""Key"":1, ""Name"":""Stella Payne Diaz"", ""Title"":""CEO"", ""Pic"": ""1.jpg"" },
+    {""Key"":2, ""Name"":""Luke Warm"", ""Title"":""VP Marketing/Sales"", ""Pic"": ""2.jpg"", ""Parent"":1},
+    {""Key"":3, ""Name"":""Meg Meehan Hoffa"", ""Title"":""Sales"", ""Pic"": ""3.jpg"", ""Parent"":2},
+    {""Key"":4, ""Name"":""Peggy Flaming"", ""Title"":""VP Engineering"", ""Pic"": ""4.jpg"", ""Parent"":1},
+    {""Key"":5, ""Name"":""Saul Wellingood"", ""Title"":""Manufacturing"", ""Pic"": ""5.jpg"", ""Parent"":4},
+    {""Key"":6, ""Name"":""Al Ligori"", ""Title"":""Marketing"", ""Pic"": ""6.jpg"", ""Parent"":2},
+    {""Key"":7, ""Name"":""Dot Stubadd"", ""Title"":""Sales Rep"", ""Pic"": ""7.jpg"", ""Parent"":3},
+    {""Key"":8, ""Name"":""Les Ismore"", ""Title"":""Project Mgr"", ""Pic"": ""8.jpg"", ""Parent"":5},
+    {""Key"":9, ""Name"":""April Lynn Parris"", ""Title"":""Events Mgr"", ""Pic"": ""9.jpg"", ""Parent"":6},
+    {""Key"":10, ""Name"":""Xavier Breath"", ""Title"":""Engineering"", ""Pic"": ""10.jpg"", ""Parent"":4},
+    {""Key"":11, ""Name"":""Anita Hammer"", ""Title"":""Process"", ""Pic"": ""11.jpg"", ""Parent"":5},
+    {""Key"":12, ""Name"":""Billy Aiken"", ""Title"":""Software"", ""Pic"": ""12.jpg"", ""Parent"":10},
+    {""Key"":13, ""Name"":""Stan Wellback"", ""Title"":""Testing"", ""Pic"": ""13.jpg"", ""Parent"":10},
+    {""Key"":14, ""Name"":""Marge Innovera"", ""Title"":""Hardware"", ""Pic"": ""14.jpg"", ""Parent"":10},
+    {""Key"":15, ""Name"":""Evan Elpus"", ""Title"":""Quality"", ""Pic"": ""15.jpg"", ""Parent"":5},
+    {""Key"":16, ""Name"":""Lotta B. Essen"", ""Title"":""Sales Rep"", ""Pic"": ""16.jpg"", ""Parent"":3},
     {""Key"":17, ""Name"":""Joaquin Closet"", ""Title"":""Wardrobe Assistant"", ""IsAssistant"":true, ""Parent"":1},
     {""Key"":18, ""Name"":""Hannah Twomey"", ""Title"":""Engineering Assistant"", ""Parent"":10, ""IsAssistant"":true}
   ]
@@ -62,21 +64,21 @@ namespace Demo.Samples.OrgChartAssistants {
     }
 
     private void Setup() {
-      myDiagram = diagramControl1.Diagram;
-
+      myDiagram.AllowCopy = false;
+      myDiagram.AllowDelete = false;
       myDiagram.InitialAutoScale = AutoScale.Uniform;
-      myDiagram.MaxSelectionCount = 1;
-      myDiagram.ValidCycle = CycleMode.DestinationTree;
+      myDiagram.MaxSelectionCount = 1;  // users can select only one part at a time
+      myDiagram.ValidCycle = CycleMode.DestinationTree;  // make sure users can only create trees
       // custom click creating tool
       myDiagram.ToolManager.ClickCreatingTool = new OrgChartAssistantsClickCreatingTool {
-        ArchetypeNodeData = new NodeData {
+        ArchetypeNodeData = new NodeData {  // allow double-click in background to create a new node
           Name = "(new person)",
           Title = "",
           Comments = ""
         }
       };
       // layout
-      myDiagram.Layout = new OrgChartAssistantsTreeLayout {
+      myDiagram.Layout = new SideTreeLayout {
         TreeStyle = TreeStyle.LastParents,
         Arrangement = TreeArrangement.Horizontal,
         // properties for most of the tree:
@@ -90,45 +92,6 @@ namespace Demo.Samples.OrgChartAssistants {
       };
       myDiagram.UndoManager.IsEnabled = true; // enable undo and redo
 
-
-      // manage boss info manually when a node or link is deleted from the diagram
-      myDiagram.SelectionDeleting += (obj, e) => {
-        var part = (e.Subject as HashSet<Part>).First(); // e.Subject is the myDiagram.Selection collection,
-        // so we'll get the first since we know we only have one selection
-        myDiagram.StartTransaction("clear boss");
-        if (part is Node) {
-          var it = (part as Node).FindTreeChildrenNodes().GetEnumerator(); // find all child nodes
-          while (it.MoveNext()) { // now iterate through them and clear out the boss information
-            var child = it.Current;
-            var bossText = child.FindElement("boss") as TextBlock; // since the boss TextBlock is named, we can access it by name
-            if (bossText == null) return;
-            bossText.Text = "";
-          }
-        } else if (part is Link) {
-          var child = (part as Link).ToNode;
-          var bossText = child.FindElement("boss") as TextBlock; // since the boss TextBlock is named, we can access it by name
-          if (bossText == null) return;
-          bossText.Text = "";
-        }
-        myDiagram.CommitTransaction("clear boss");
-      };
-
-      void NodeDoubleClick(InputEvent e, GraphObject obj) {
-        var clicked = obj.Part;
-        if (clicked != null) {
-          var thisemp = clicked.Data as NodeData;
-          myDiagram.StartTransaction("add employee");
-          var newemp = new NodeData {
-            Name = "(new person)",
-            Title = "",
-            Comments = "",
-            Parent = thisemp.Key
-          };
-          myDiagram.Model.AddNodeData(newemp);
-          myDiagram.CommitTransaction("add employee");
-        }
-      }
-
       // this is used to determine feedback during drags
       bool MayWorkFor(Node node1, Node node2) {
         if (!(node1 is Node)) return false;  // must be a Node
@@ -137,41 +100,42 @@ namespace Demo.Samples.OrgChartAssistants {
         return true;
       }
 
+      // Provides a common style for most of the TextBlocks.
+      var textStyle = new {
+        Font = new Font("Segoe UI", 9, FontUnit.Point), Stroke = "white"
+      };
+
       // This converter is used by the Picture.
-      string FindHeadShot(object keyAsObj, object _) {
-        var key = (keyAsObj as int? ?? int.MinValue);
-        if (key < 0 || key > 16) return "HSnopic"; // There are only 16 images
-        return "hs" + key;
+      string FindHeadShot(object obj) {
+        if (obj is not string pic || pic == "") return "https://nwoods.com/go/images/samples/HSnopic.png"; // There are only 16 images on the server
+        return $"https://nwoods.com/go/images/samples/hs{pic}";
       }
 
       // define the Node template
       myDiagram.NodeTemplate =
         new Node(PanelType.Auto) {
-          DoubleClick = NodeDoubleClick,
           // handle dragging a Node onto a Node to (maybe) change the reporting relationship
-          MouseDragEnter = (e, nodeAsObj, prev) => {
-            var node = nodeAsObj as Node;
+          MouseDragEnter = (e, obj, prev) => {
+            var node = obj as Node;
             var diagram = node.Diagram;
             var selnode = diagram.Selection.First() as Node;
             if (!MayWorkFor(selnode, node)) return;
-            var shape = node.FindElement("SHAPE") as Shape;
-            if (shape != null) {
+            if (node.FindElement("SHAPE") is Shape shape) {
               shape["_PrevFill"] = shape.Fill;  // remember the original brush
               shape.Fill = "darkred";
             }
           },
-          MouseDragLeave = (e, nodeAsObj, next) => {
-            var node = nodeAsObj as Node;
-            var shape = node.FindElement("SHAPE") as Shape;
-            if (shape != null && shape["_PrevFill"] != null) {
+          MouseDragLeave = (e, obj, next) => {
+            var node = obj as Node;
+            if (node.FindElement("SHAPE") is Shape shape && shape["_PrevFill"] != null) {
               shape.Fill = (Brush)shape["_PrevFill"];  // restore the original brush
             }
           },
-          MouseDrop = (e, nodeAsObj) => {
-            var node = nodeAsObj as Node;
+          MouseDrop = (e, obj) => {
+            var node = obj as Node;
             var diagram = node.Diagram;
             var selnode = diagram.Selection.First() as Node;  // assume just one Node in selection
-            if (MayWorkFor(selnode as Node, node)) {
+            if (MayWorkFor(selnode, node)) {
               // find any existing link into the selected node
               var link = selnode.FindTreeParentLink();
               if (link != null) {  // reconnect any existing link
@@ -185,27 +149,20 @@ namespace Demo.Samples.OrgChartAssistants {
           // for sorting, have the Node.Text be the data.Name
           new Binding("Text", "Name"),
           // bind the Part.LayerName to control the Node's layer depending on whether it isSelected
-          new Binding("LayerName", "IsSelected", (sel, _) => { return (sel as bool? ?? false) ? "Foreground" : ""; }).OfElement())
+          new Binding("LayerName", "IsSelected", (sel) => { return (bool)sel ? "Foreground" : ""; }).OfElement())
         .Add(
           // define the node's outer shape
-          new Shape {
-            Figure = "Rectangle",
-            Name = "SHAPE",
-            Fill = "white",
-            Stroke = (Brush)null,
-            // set the port properties:
-            PortId = "",
-            FromLinkable = true,
-            ToLinkable = true,
-            Cursor = "pointer"
+          new Shape("Rectangle") {
+            Name = "SHAPE", Fill = "white", Stroke = null,
           },
           new Panel(PanelType.Horizontal).Add(
             new Picture {
               Name = "Picture",
+              DesiredSize = new Size(39, 50),
               Margin = new Margin(6, 8, 6, 10),
-              DesiredSize = new Size(39, 50)
+              Source = "https://nwoods.com/go/images/samples/HSnopic.png"  // the default image
             }.Bind(
-              new Binding("Source", "Key", FindHeadShot)),
+              new Binding("Source", "Pic", FindHeadShot)),
             // define the panel where the text will appear
             new Panel(PanelType.Table) {
               MaxSize = new Size(150, 999),
@@ -214,151 +171,130 @@ namespace Demo.Samples.OrgChartAssistants {
             }.Add(new ColumnDefinition { Column = 2, Width = 4 })
             .Add(
               new TextBlock { // the name
-                Row = 0,
-                Column = 0,
-                ColumnSpan = 5,
+                Name = "NAMETB",
+                Stroke = "white",
                 Font = new Font("Segoe UI", 12, FontUnit.Point),
-                Editable = true,
-                IsMultiline = false,
+                Row = 0, Column = 0, ColumnSpan = 5,
+                Editable = true, IsMultiline = false,
                 MinSize = new Size(10, 16)
-              }.Bind(
-                new Binding("Text", "Name").MakeTwoWay()),
+              }.Bind(new Binding("Text", "Name").MakeTwoWay()),
+              new TextBlock("Title: ") { Row = 1, Column = 0 }
+                .Set(textStyle),
               new TextBlock {
-                Row = 1,
-                Column = 0,
-                Text = "Title: ",
-                Font = new Font("Segoe UI", 9, FontUnit.Point),
-              },
-              new TextBlock {
-                Row = 1,
-                Column = 1,
-                ColumnSpan = 4,
-                Editable = true,
-                IsMultiline = false,
+                Row = 1, Column = 1, ColumnSpan = 4,
+                Editable = true, IsMultiline = false,
                 MinSize = new Size(10, 14),
-                Margin = new Margin(0, 0, 0, 3),
-                Font = new Font("Segoe UI", 9, FontUnit.Point),
-              }.Bind(
-                new Binding("Text", "Title").MakeTwoWay()),
+                Margin = new Margin(0, 0, 0, 3)
+              }.Set(textStyle).Bind(new Binding("Text", "Title").MakeTwoWay()),
               new TextBlock {
-                Row = 2,
-                Column = 0,
-                Font = new Font("Segoe UI", 9, FontUnit.Point),
-              }.Bind(
-                new Binding("Text", "Key", (v, _) => { return "ID: " + v.ToString(); })),
+                Row = 2, Column = 0
+              }.Set(textStyle).Bind( new Binding("Text", "Key", (v) => { return "ID: " + v.ToString(); })),
               new TextBlock {
-                Name = "boss",
-                Row = 2,
-                Column = 3,
-                Font = new Font("Segoe UI", 9, FontUnit.Point),
-              }.Bind( // we include a name so we can access this TextBlock when deleting Nodes/Links
-                new Binding("Text", "Parent", (v, _) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); })),
-              new TextBlock  // the comments
-                {
-                Row = 3,
-                Column = 0,
-                ColumnSpan = 5,
-                Font = new Font("Segoe UI", 9, FontStyle.Italic, FontUnit.Point),
+                Name = "boss",  // we include a name so we can access this TextBlock when deleting Nodes/Links
+                Row = 2, Column = 3
+              }.Set(textStyle).Bind(new Binding("Text", "Parent", (v) => { return (int)v == 0 ? "" : "Boss: " + v.ToString(); })),
+              new TextBlock {  // the comments
+                Row = 3, Column = 0, ColumnSpan = 5,
+                Stroke = "white",
+                Font = new Font("Segoe UI", 9, Northwoods.Go.FontStyle.Italic, FontUnit.Point),
                 Wrap = Wrap.Fit,
                 Editable = true,  // by default newlines are allowed
                 MinSize = new Size(10, 14),
-              }.Bind(
-                new Binding("Text", "Comments").MakeTwoWay())
+              }.Bind( new Binding("Text", "Comments").MakeTwoWay())
             )  // end Table Panel
           ) // end Horizontal Panel
         );  // end Node
 
-      // the context menu allows users to make a position vacant,
+      // the context menu allows users to add an employee, make a position vacant,
       // remove a role and reassign the subtree, or remove a department
       myDiagram.NodeTemplate.ContextMenu =
         Builder.Make<Adornment>("ContextMenu").Add(
-          Builder.Make<Panel>("ContextMenuButton").Add(
-            new TextBlock {
-              Text = "Vacate Position",
-              Click = (e, obj) => {
-                var node = (obj.Part as Adornment).AdornedPart as Node;
-                if (node != null) {
+          Builder.Make<Panel>("ContextMenuButton")
+            .Add(new TextBlock("Add Employee"))
+            .Set(new {
+              Click = new Action<InputEvent, GraphObject>((e, button) => {
+                if ((button.Part as Adornment).AdornedPart is Node node) {
                   var thisemp = node.Data as NodeData;
-                  myDiagram.StartTransaction("vacate");
-                  // update the key, name, and comments
-                  myDiagram.Model.Set(thisemp, "Name", "(Vacant)");
-                  myDiagram.Model.Set(thisemp, "Comments", "");
-                  myDiagram.CommitTransaction("vacate");
+                  myDiagram.Commit(d => {
+                    var newemp = new NodeData { Name = "(new person)", Title = "", Comments = "", Parent = thisemp.Key };
+                    d.Model.AddNodeData(newemp);
+                    var newnode = d.FindNodeForData(newemp);
+                    if (newnode != null) newnode.Location = node.Location;
+                  }, "add employee");
                 }
-              }
+              })
+            }),
+          Builder.Make<Panel>("ContextMenuButton")
+            .Add(new TextBlock("Vacate Position"))
+            .Set(new {
+              Click = new Action<InputEvent, GraphObject>((e, button) => {
+                if ((button.Part as Adornment).AdornedPart is Node node) {
+                  var thisemp = node.Data as NodeData;
+                  myDiagram.Commit(d => {
+                    // update the key, name, picture, and comments, but leave the title
+                    d.Model.Set(thisemp, "Name", "(Vacant)");
+                    d.Model.Set(thisemp, "Pic", "");
+                    d.Model.Set(thisemp, "Comments", "");
+                  }, "vacate");
+                }
+              })
             }
           ),
-          Builder.Make<Panel>("ContextMenuButton").Add(
-            new TextBlock {
-              Text = "Remove Role",
-              Click = (e, obj) => {
+          Builder.Make<Panel>("ContextMenuButton")
+            .Add(new TextBlock("Remove Role"))
+            .Set(new {
+              Click = new Action<InputEvent, GraphObject>((e, button) => {
                 // reparent the subtree to this node's boss, then remove the node
-                var node = (obj.Part as Adornment).AdornedPart as Node;
-                if (node != null) {
-                  myDiagram.StartTransaction("reparent remove");
-                  var chl = node.FindTreeChildrenNodes().GetEnumerator();
-                  // iterate through the children and set their parent key to our selected node's parent key
-                  while (chl.MoveNext()) {
-                    var emp = chl.Current;
-                    var data = emp.Data as NodeData;
-                    var pdata = node.FindTreeParentNode().Data as NodeData;
-                    (myDiagram.Model as Model).SetParentKeyForNodeData(data, pdata.Key);
-                  }
-                  // and now remove the selected node itself
-                  myDiagram.Model.RemoveNodeData(node.Data);
-                  myDiagram.CommitTransaction("reparent remove");
+                if ((button.Part as Adornment).AdornedPart is Node node) {
+                  myDiagram.Commit(d => {
+                    var chl = node.FindTreeChildrenNodes();
+                    foreach (var emp in chl) {
+                      var data = emp.Data as NodeData;
+                      var pdata = node.FindTreeParentNode().Data as NodeData;
+                      (d.Model as Model).SetParentKeyForNodeData(data, pdata.Key);
+                    }
+                    // and now remove the selected node itself
+                    d.Model.RemoveNodeData(node.Data);
+                  }, "reparent remove");
                 }
-              }
+              })
             }
           ),
-          Builder.Make<Panel>("ContextMenuButton").Add(
-            new TextBlock {
-              Text = "Remove Department",
-              Click = (e, obj) => {
+          Builder.Make<Panel>("ContextMenuButton")
+            .Add(new TextBlock("Remove Department"))
+            .Set(new {
+              Click = new Action<InputEvent, GraphObject>((e, button) => {
                 // remove the whole subtree, including the node itself
-                var node = (obj.Part as Adornment).AdornedPart as Node;
-                if (node != null) {
-                  myDiagram.StartTransaction("remove dept");
-                  myDiagram.RemoveParts(node.FindTreeParts(), true);
-                  myDiagram.CommitTransaction("remove dept");
+                if ((button.Part as Adornment).AdornedPart is Node node) {
+                  myDiagram.Commit(d => {
+                    d.RemoveParts(node.FindTreeParts());
+                  }, "remove dept");
                 }
-              }
+              })
             }
           ),
-          Builder.Make<Panel>("ContextMenuButton").Add(
-            new TextBlock {
-              Text = "Toggle Assistant",
-              Click = (e, obj) => {
+          Builder.Make<Panel>("ContextMenuButton")
+            .Add(new TextBlock("Toggle Assistant"))
+            .Set(new {
+              Click = new Action<InputEvent, GraphObject>((e, button) => {
                 // remove the whole subtree, including the node itself
-                var node = (obj.Part as Adornment).AdornedPart as Node;
-                if (node != null) {
-                  myDiagram.StartTransaction("toggle assistant");
-                  myDiagram.Model.Set(node.Data, "IsAssistant", !(node.Data as NodeData).IsAssistant);
-                  myDiagram.Layout.InvalidateLayout();
-                  myDiagram.CommitTransaction("toggle assistant");
+                if ((button.Part as Adornment).AdornedPart is Node node) {
+                  myDiagram.Commit(d => {
+                    myDiagram.Model.Set(node.Data, "IsAssistant", !(node.Data as NodeData).IsAssistant);
+                    myDiagram.Layout.InvalidateLayout();
+                  }, "toggle assistant");
                 }
-              }
+              })
             }
           )
         );
 
       // define the Link template
       myDiagram.LinkTemplate =
-        new Link {
-          Routing = LinkRouting.Orthogonal,
-          Corner = 5,
-          RelinkableFrom = true,
-          RelinkableTo = true
-        }.Add(
-          new Shape {
-            StrokeWidth = 4,
-            Stroke = "#00a4a4"
-          });  // the link shape
+        new Link { Routing = LinkRouting.Orthogonal, Corner = 5 }
+          .Add(new Shape { StrokeWidth = 4, Stroke = "#00a4a4" });  // the link shape
 
-      myDiagram.Model = new Model();
       LoadModel();
-
-      // TODO data inspector
     }
 
     private void SaveModel() {
@@ -379,16 +315,23 @@ namespace Demo.Samples.OrgChartAssistants {
   public class NodeData : Model.NodeData {
     public string Name { get; set; }
     public string Title { get; set; }
-    public string Comments { get; set; }
+    public string Comments { get; set; } = "";
     public bool IsAssistant { get; set; }
+    public string Pic { get; set; }
   }
 
   // override TreeLayout.CommitNodes to also modify the background brush based on the tree depth level
-  public class OrgChartAssistantsTreeLayout : TreeLayout {
+  public class SideTreeLayout : TreeLayout {
     private static string[] levelColors = new string[] {
         "#AC193D", "#2672EC", "#8C0095", "#5133AB",
         "#008299", "#D24726", "#008A00", "#094AB2"
       };
+
+    private static bool IsAssistant(Node n) {
+      if (n == null) return false;
+      return (n.Data as NodeData).IsAssistant;
+    }
+
     protected override void CommitNodes() {
       base.CommitNodes(); // standard behavior
       // then go through all of the vertexes and set their corresponding node's Shape.Fill
@@ -397,8 +340,7 @@ namespace Demo.Samples.OrgChartAssistants {
         if (v.Node != null) {
           var level = v.Level % (levelColors.Length);
           var color = levelColors[level];
-          var shape = v.Node.FindElement("SHAPE") as Shape;
-          if (shape != null) {
+          if (v.Node.FindElement("SHAPE") is Shape shape) {
             shape.Fill = new Brush(new LinearGradientPaint(
               new Dictionary<float, string> {
                 { 0, color },
@@ -409,18 +351,85 @@ namespace Demo.Samples.OrgChartAssistants {
       }
     }
 
+    // This is a custom TreeLayout that knows about "assistants".
+    // A Node for which IsAssistant(n) is true will be placed at the side below the parent node
+    // but above all of the other child nodes.
+    // An assistant node may be the root of its own subtree.
+    // An assistant node may have its own assistant nodes.
+    public override TreeNetwork MakeNetwork(IEnumerable<Part> coll = null) {
+      var net = base.MakeNetwork(coll);
+      // copy the collection of TreeVertexes, because we will modify the network
+      var vertexcoll = new HashSet<TreeVertex>(net.Vertexes);
+      foreach (var parent in vertexcoll) {
+        // count the number of assistants
+        var acount = 0;
+        foreach (var asst in parent.DestinationVertexes) {
+          if (IsAssistant(asst.Node)) acount++;
+        }
+        // if a vertex has some number of children that should be assistants
+        if (acount > 0) {
+          // remember the assistant edges and the regular child edges
+          var asstedges = new HashSet<TreeEdge>();
+          var childedges = new HashSet<TreeEdge>();
+          //var eit = parent.DestinationEdges.GetEnumerator();
+          foreach (var e in parent.DestinationEdges) {
+            if (IsAssistant(e.ToVertex.Node)) {
+              asstedges.Add(e);
+            } else {
+              childedges.Add(e);
+            }
+          }
+          // first remove all edges from PARENT
+          foreach (var ae in asstedges) {
+            parent.DeleteDestinationEdge(ae);
+          }
+          foreach (var ce in childedges) {
+            parent.DeleteDestinationEdge(ce);
+          }
+          // if the number of assistants is odd, add a dummy assistant, to make the count even
+          if (acount % 2 == 1) {
+            var dummy = net.CreateVertex();
+            net.AddVertex(dummy);
+            net.LinkVertexes(parent, dummy, asstedges.First().Link);
+          }
+          // now PARENT should get all of the assistant children
+          foreach (var e in asstedges) {
+            parent.AddDestinationEdge(e);
+          }
+          // create substitute vertex to be new parent of all regular children
+          var subst = net.CreateVertex();
+          net.AddVertex(subst);
+          // reparent regular children to the new substitute vertex
+          foreach (var ce in childedges) {
+            ce.FromVertex = subst;
+            subst.AddDestinationEdge(ce);
+          }
+          // finally can add substitute vertex as the final odd child,
+          // to be positioned at the end of the PARENT's immediate subtree.
+          var newedge = net.LinkVertexes(parent, subst, null);
+        }
+      }
+      return net;
+    }
 
-    private bool IsAssistant(Node n) {
-      if (n == null) return false;
-      return (n.Data as NodeData).IsAssistant;
+    protected override void AssignTreeVertexValues(TreeVertex v) {
+      // if a vertex has any assistants, use Bus alignment
+      if (v.Children.Any(c => IsAssistant(c.Node))) {
+        // this is the parent for the assistant(s)
+        v.Alignment = TreeAlignment.Bus;  // this is required
+        v.NodeSpacing = 50; // control the distance of the assistants from the parent's main links
+      } else if (v.Node == null && v.ChildrenCount > 0) {
+        // found the substitute parent for non-assistant children
+        //v.Alignment = TreeLayout.AlignmentCenterChildren;
+        //v.BreadthLimit = 3000;
+        v.LayerSpacing = 0;
+      }
     }
 
     protected override void CommitLinks() {
       base.CommitLinks();
       // make sure the middle segment of an orthogonal link does not cross over the assistant subtree
-      var eit = Network.Edges.GetEnumerator();
-      while (eit.MoveNext()) {
-        var e = eit.Current;
+      foreach (var e in Network.Edges) {
         if (e.Link == null) continue;
         var r = e.Link;
         // does this edge come from a substitute parent vertex?
@@ -448,95 +457,11 @@ namespace Demo.Samples.OrgChartAssistants {
         }
       }
     }
-
-    public override TreeNetwork MakeNetwork(IEnumerable<Part> coll = null) {
-      var net = base.MakeNetwork(Diagram.Nodes.Concat<Part>(Diagram.Links));
-      // copy the collection of TreeVertexes, because we will modify the network
-      var vertexcoll = new HashSet<TreeVertex>(net.Vertexes);
-      var it = vertexcoll.GetEnumerator();
-      while (it.MoveNext()) {
-        var parent = it.Current;
-        // count the number of assistants
-        var acount = 0;
-        var ait = parent.DestinationVertexes.GetEnumerator();
-        while (ait.MoveNext()) {
-          if (IsAssistant(ait.Current.Node)) acount++;
-        }
-        // if a vertex has some number of children that should be assistants
-        if (acount > 0) {
-          // remember the assistant edges and the regular child edges
-          var asstedges = new HashSet<TreeEdge>();
-          var childedges = new HashSet<TreeEdge>();
-          var eit = parent.DestinationEdges.GetEnumerator();
-          while (eit.MoveNext()) {
-            var e = eit.Current;
-            if (IsAssistant(e.ToVertex.Node)) {
-              asstedges.Add(e);
-            } else {
-              childedges.Add(e);
-            }
-          }
-          // first remove all edges from PARENT
-          eit = asstedges.GetEnumerator();
-          while (eit.MoveNext()) { parent.DeleteDestinationEdge(eit.Current); }
-          eit = childedges.GetEnumerator();
-          while (eit.MoveNext()) { parent.DeleteDestinationEdge(eit.Current); }
-          // if the number of assistants is odd, add a dummy assistant, to make the count even
-          if (acount % 2 == 1) {
-            var dummy = net.CreateVertex();
-            net.AddVertex(dummy);
-            net.LinkVertexes(parent, dummy, asstedges.First().Link);
-          }
-          // now PARENT should get all of the assistant children
-          eit = asstedges.GetEnumerator();
-          while (eit.MoveNext()) {
-            parent.AddDestinationEdge(eit.Current);
-          }
-          // create substitute vertex to be new parent of all regular children
-          var subst = net.CreateVertex();
-          net.AddVertex(subst);
-          // reparent regular children to the new substitute vertex
-          eit = childedges.GetEnumerator();
-          while (eit.MoveNext()) {
-            var ce = eit.Current;
-            ce.FromVertex = subst;
-            subst.AddDestinationEdge(ce);
-          }
-          // finally can add substitute vertex as the final odd child,
-          // to be positioned at the end of the PARENT's immediate subtree.
-          var newedge = net.LinkVertexes(parent, subst, null);
-        }
-      }
-      return net;
-    }
-
-    protected override void AssignTreeVertexValues(TreeVertex v) {
-      // if a vertex has any assistants, use Bus alignment
-      var any = false;
-      var children = v.Children;
-      for (var i = 0; i < children.Length; i++) {
-        var c = children[i];
-        if (IsAssistant(c.Node)) {
-          any = true;
-          break;
-        }
-      }
-      if (any) {
-        // this is the parent for the assistant(s)
-        v.Alignment = TreeAlignment.Bus;  // this is required
-        v.NodeSpacing = 50; // control the distance of the assistants from the parent's main links
-      } else if (v.Node == null && v.ChildrenCount > 0) {
-        // found the substitute parent for non-assistant children
-        //v.Alignment = TreeLayout.AlignmentCenterChildren;
-        //v.BreadthLimit = 3000;
-        v.LayerSpacing = 0;
-      }
-    }
   }
 
   // extend click creating tool
   public class OrgChartAssistantsClickCreatingTool : ClickCreatingTool {
-    public override Part InsertPart(Point loc) {
+    public override Part InsertPart(Point loc) {  // override to scroll to the new node
       var node = base.InsertPart(loc);
       if (node != null) {
         Diagram.Select(node);

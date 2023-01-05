@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -19,11 +19,11 @@ namespace Northwoods.Go.Extensions {
   /// <remarks>
   /// The constructor has the following arguments:
   ///   - `diagram` ***Diagram*** a reference to a GoDiagram diagram
-  ///   
+  ///
   /// Unlike the GoJS version, this version of the ZoomSlider extension only provides an interface between
   /// a "range" input and the zoom state of a connected Diagram. As such, all properties such
   /// as size, button size, alignment, etc should be handled separately and are not passed as parameters to this Extension.
-  /// 
+  ///
   /// The Extension takes as parameters two delegates, which should respectively get and set the value parameter of the Range
   /// component. An example of this implementation can be found in the ZoomSlider sample.
   /// </remarks>
@@ -44,7 +44,7 @@ namespace Northwoods.Go.Extensions {
 
     /// <summary>
     /// Modify the Diagram.Scale according to the value of the ZoomSlider.
-    /// 
+    ///
     /// This function should be called when the value of the ZoomSlider changes.
     /// </summary>
     public void UpdateScale() {

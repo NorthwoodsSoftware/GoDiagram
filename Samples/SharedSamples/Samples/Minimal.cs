@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System.Collections.Generic;
 using Northwoods.Go;
@@ -23,6 +23,8 @@ namespace Demo.Samples.Minimal {
       // define a simple Node template
       _Diagram.NodeTemplate =
         new Node("Auto")  // the Shape will go around the TextBlock
+          { IsShadowed = true }
+          .Bind("Scale")
           .Add(
             new Shape("RoundedRectangle") {
                 StrokeWidth = 0,  // no border
@@ -44,7 +46,7 @@ namespace Demo.Samples.Minimal {
       // create the model data that will be represented by Nodes and Links
       _Diagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = "Alpha", Color = "lightblue" },
+          new NodeData { Key = "Alpha", Color = "lightblue", Scale = .25 },
           new NodeData { Key = "Beta", Color = "orange" },
           new NodeData { Key = "Gamma", Color = "lightgreen" },
           new NodeData { Key = "Delta", Color = "pink" }
@@ -63,6 +65,7 @@ namespace Demo.Samples.Minimal {
   // define the model data
   public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
   public class NodeData : Model.NodeData {
+    public double Scale { get; set; } = 1.0;
     public string Color { get; set; }
   }
   public class LinkData : Model.LinkData { }

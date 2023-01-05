@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,6 @@ namespace Demo.Samples.Kanban {
     { ""Key"":""Reviewing"", ""Text"":""Reviewing"", ""IsGroup"":true, ""Color"":0, ""Loc"":""451 23.52284749830794"" },
     { ""Key"":""Testing"", ""Text"":""Testing"", ""IsGroup"":true, ""Color"":0, ""Loc"":""562 23.52284749830794"" },
     { ""Key"":""Customer"", ""Text"":""Customer"", ""IsGroup"":true, ""Color"":0, ""Loc"":""671 23.52284749830794"" },
-    { ""Key"":""-1"", ""Group"":""Problems"", ""Category"":""NewButton"",  ""Loc"":""12 35.52284749830794"" },
     { ""Key"":""1"", ""Text"":""text for oneA"", ""Group"":""Problems"", ""Color"":0, ""Loc"":""12 35.52284749830794"" },
     { ""Key"":""2"", ""Text"":""text for oneB"", ""Group"":""Problems"", ""Color"":1, ""Loc"":""12 65.52284749830794"" },
     { ""Key"":""3"", ""Text"":""text for oneC"", ""Group"":""Problems"", ""Color"":0, ""Loc"":""12 95.52284749830794"" },
@@ -115,32 +114,6 @@ namespace Demo.Samples.Kanban {
                   )
               )
           );
-
-      // unmovable node that acts as a button
-      _Diagram.NodeTemplateMap.Add("NewButton",
-        new Node("Horizontal") {
-            Selectable = false,
-            Click = (e, node) => {
-              _Diagram.StartTransaction("add node");
-              var newdata = new NodeData { Group = "Problems", Loc = "0 50", Text = "New item " + (node as Node).ContainingGroup.MemberParts.Count, Color = 0 };
-              _Diagram.Model.AddNodeData(newdata);
-              _Diagram.CommitTransaction("add node");
-              var newnode = _Diagram.FindNodeForData(newdata);
-              _Diagram.Select(newnode);
-              _Diagram.CommandHandler.EditTextBlock();
-            },
-            Background = "white"
-          }
-          .Bind("Location", "Loc", Point.Parse, Point.Stringify)
-          .Add(
-            new Panel("Auto")
-              .Add(
-                new Shape("Rectangle") { StrokeWidth = 0, Stroke = null, Fill = "#6FB583" },
-                new Shape("PlusLine") { Margin = 6, StrokeWidth = 2, Width = 12, Height = 12, Stroke = "white", Background = "#6FB583" }
-              ),
-            new TextBlock("New item") { Font = new Font("Segoe UI", 10), Margin = 6 }
-          )
-      );
 
       // While dragging, highlight the dragged-over group
       void highlightGroup(object grp, object show) {
@@ -260,7 +233,38 @@ namespace Demo.Samples.Kanban {
               .Add(
                 new Shape("Rectangle") { DesiredSize = new Size(10, 10), Fill = "#009CCC", Margin = 5 },
                 new TextBlock("Completed") { Font = new Font("Segoe UI", 13, Northwoods.Go.FontWeight.Bold) }
-              ) // end row 3
+              ), // end row 3
+            new Panel("Horizontal") {
+                Row = 4,
+                Click = (e, node) => {
+                  var d = e.Diagram;
+                  d.StartTransaction("add node");
+                  var sel = d.Selection.FirstOrDefault();
+                  if (sel == null) {
+                    var it = d.FindTopLevelGroups();
+                    if (it.MoveNext()) sel = it.Current;
+                  }
+                  if (sel != null && sel is not Group) sel = sel.ContainingGroup;
+                  if (sel == null) return;
+                  var newdata = new NodeData { Group = (string)sel.Key, Loc = "0 9999", Text = "New item " + ((Group)sel).MemberParts.Count, Color = 0 };
+                  d.Model.AddNodeData(newdata);
+                  d.CommitTransaction("add node");
+                  var newnode = d.FindNodeForData(newdata);
+                  d.Select(newnode);
+                  d.CommandHandler.EditTextBlock();
+                  d.CommandHandler.ScrollToPart(newnode);
+                },
+                Background = "white",
+                Margin = new Margin(10, 4, 4, 4)
+              }
+              .Add(
+                new Panel("Auto")
+                  .Add(
+                    new Shape("Rectangle") { StrokeWidth = 0, Stroke = null, Fill = "#6FB583" },
+                    new Shape("PlusLine") { Margin = 6, StrokeWidth = 2, Width = 12, Height = 12, Stroke = "white", Background = "#6FB583" }
+                  ),
+                new TextBlock("New item") { Font = new Font("Segoe UI", 10), Margin = 6 }
+              )
           )
         );
 

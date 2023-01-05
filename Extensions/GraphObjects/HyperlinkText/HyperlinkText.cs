@@ -1,5 +1,5 @@
 ﻿/*
-*  Copyright (C) 1998-2022 by Northwoods Software Corporation. All Rights Reserved.
+*  Copyright (C) 1998-2023 by Northwoods Software Corporation. All Rights Reserved.
 */
 
 /*
@@ -99,6 +99,7 @@ namespace Northwoods.Go.Extensions {
               if (u != null && obj is TextBlock) (obj as TextBlock).IsUnderline = true;
             },
             MouseLeave = (e, obj, targObj) => { if (obj is TextBlock) (obj as TextBlock).IsUnderline = false; },
+            IsActionable = true,
             Click = Click,  // defined in platform-specific code
             ToolTip = tooltip // shared by all HyperlinkText textblocks
           };
@@ -140,6 +141,7 @@ namespace Northwoods.Go.Extensions {
               var tb = findTextBlock(panel);
               if (tb != null) tb.IsUnderline = false;
             },
+            IsActionable = true,
             Click = Click,  // defined in platform-specific code
             ToolTip = tooltip  // shared by all HyperlinkText panels
           }.Add(visualTree);

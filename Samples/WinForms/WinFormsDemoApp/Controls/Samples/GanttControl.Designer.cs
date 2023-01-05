@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 namespace Demo.Samples.Gantt {
   partial class Gantt {
@@ -43,7 +43,7 @@ namespace Demo.Samples.Gantt {
             //
             this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tasksControl, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ganttControl, 1, 0);
@@ -66,7 +66,7 @@ namespace Demo.Samples.Gantt {
             this.tasksControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tasksControl.Location = new System.Drawing.Point(3, 3);
             this.tasksControl.Name = "tasksControl";
-            this.tasksControl.Size = new System.Drawing.Size(200, 494);
+            this.tasksControl.Size = new System.Drawing.Size(150, 494);
             this.tasksControl.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tasksControl.TabIndex = 0;
             this.tasksControl.Text = "tasksControl";

@@ -1,4 +1,4 @@
-﻿/* Copyright 1998-2022 by Northwoods Software Corporation. */
+﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
 using System;
 using System.Collections.Generic;
@@ -20,23 +20,6 @@ namespace Demo.Samples.TreeView {
     }
 
     private void Setup() {
-      // use a V figure instead of MinusLine in the TreeExpanderButton
-      Shape.DefineFigureGenerator("ExpandedLine", (shape, w, h) => {
-        return new Geometry()
-          .Add(new PathFigure(0, 0.25 * h, false)
-            .Add(new PathSegment(SegmentType.Line, .5 * w, 0.75 * h))
-            .Add(new PathSegment(SegmentType.Line, w, 0.25 * h)));
-      });
-
-      // use a sideways V figure instead of PlusLine in the TreeExpanderButton
-      Shape.DefineFigureGenerator("CollapsedLine", (shape, w, h) => {
-        return new Geometry()
-          .Add(new PathFigure(0.25 * w, 0, false)
-            .Add(new PathSegment(SegmentType.Line, 0.75 * w, .5 * h))
-            .Add(new PathSegment(SegmentType.Line, 0.25 * w, h)));
-      });
-
-
       _Diagram.AllowMove = false;
       _Diagram.AllowCopy = false;
       _Diagram.AllowDelete = false;
@@ -90,8 +73,8 @@ namespace Demo.Samples.TreeView {
       }.Add(
         Builder.Make<Panel>("TreeExpanderButton")
           .Set(new {
-            _TreeExpandedFigure = "ExpandedLine",
-            _TreeCollapsedFigure = "CollapsedLine",
+            _TreeExpandedFigure = "LineDown",
+            _TreeCollapsedFigure = "LineRight",
             ButtonBorder_Fill = "whitesmoke",
             ButtonBorder_Stroke = (Brush)null,
             _ButtonFillOver = "rgba(0, 128, 255, .25)",
