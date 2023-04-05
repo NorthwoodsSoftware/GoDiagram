@@ -1,5 +1,7 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.VisualTree;
 
 namespace Demo {
   public partial class DialogView : Window {
@@ -20,10 +22,11 @@ namespace Demo {
       Close();
     }
 
-    public static void Show(IControl caller, string text) {
+    public static void Show(Control caller, string text) {
       var msgbox = new DialogView(text);
+      var root = caller.GetVisualRoot();
 
-      if (caller != null) msgbox.ShowDialog((Window)caller.VisualRoot);
+      if (root != null) msgbox.ShowDialog((Window)root);
       else msgbox.Show();
     }
 

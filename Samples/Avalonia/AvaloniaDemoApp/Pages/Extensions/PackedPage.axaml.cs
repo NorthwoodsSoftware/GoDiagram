@@ -18,10 +18,10 @@ namespace Demo.Extensions.Packed {
 
     private void _InitControls() {
       // ComboBoxes
-      packShape.Items = Enum.GetNames(typeof(PackShape));
-      packMode.Items = Enum.GetNames(typeof(PackMode));
-      sortOrder.Items = Enum.GetNames(typeof(SortOrder));
-      sortMode.Items = Enum.GetNames(typeof(SortMode));
+      packShape.ItemsSource = Enum.GetNames(typeof(PackShape));
+      packMode.ItemsSource = Enum.GetNames(typeof(PackMode));
+      sortOrder.ItemsSource = Enum.GetNames(typeof(SortOrder));
+      sortMode.ItemsSource = Enum.GetNames(typeof(SortMode));
 
       packShape.SelectedItem = "Elliptical";
       packMode.SelectedItem = "AspectOnly";
@@ -40,8 +40,7 @@ namespace Demo.Extensions.Packed {
       spacing.ValueChanged += (s, e) => _Layout();
 
       // CheckBoxes
-      hasCircularNodes.Checked += (s, e) => _RebuildGraph();
-      hasCircularNodes.Unchecked += (s, e) => _RebuildGraph();
+      hasCircularNodes.IsCheckedChanged += (s, e) => _RebuildGraph();
     }
 
     private void _DisableInputs() {

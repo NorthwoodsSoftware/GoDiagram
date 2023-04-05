@@ -9,24 +9,24 @@ namespace Demo.Samples.Navigation {
     // See the SharedSamples project for sample implementation.
 
     private void _InitRadioButtons() {
-      unhighlightAllRb.Checked += _RadioChanged;
-      linksIntoRb.Checked += _RadioChanged;
-      linksOutOfRb.Checked += _RadioChanged;
-      linksConnectedRb.Checked += _RadioChanged;
-      nodesIntoRb.Checked += _RadioChanged;
-      nodesOutOfRb.Checked += _RadioChanged;
-      nodesConnectedRb.Checked += _RadioChanged;
-      nodesReachableRb.Checked += _RadioChanged;
-      containingGroupParentRb.Checked += _RadioChanged;
-      containingGroupsAllRb.Checked += _RadioChanged;
-      memberNodesChildrenRb.Checked += _RadioChanged;
-      memberNodesAllRb.Checked += _RadioChanged;
-      memberLinksChildrenRb.Checked += _RadioChanged;
-      memberLinksAllRb.Checked += _RadioChanged;
+      unhighlightAllRb.IsCheckedChanged += _RadioChanged;
+      linksIntoRb.IsCheckedChanged += _RadioChanged;
+      linksOutOfRb.IsCheckedChanged += _RadioChanged;
+      linksConnectedRb.IsCheckedChanged += _RadioChanged;
+      nodesIntoRb.IsCheckedChanged += _RadioChanged;
+      nodesOutOfRb.IsCheckedChanged += _RadioChanged;
+      nodesConnectedRb.IsCheckedChanged += _RadioChanged;
+      nodesReachableRb.IsCheckedChanged += _RadioChanged;
+      containingGroupParentRb.IsCheckedChanged += _RadioChanged;
+      containingGroupsAllRb.IsCheckedChanged += _RadioChanged;
+      memberNodesChildrenRb.IsCheckedChanged += _RadioChanged;
+      memberNodesAllRb.IsCheckedChanged += _RadioChanged;
+      memberLinksChildrenRb.IsCheckedChanged += _RadioChanged;
+      memberLinksAllRb.IsCheckedChanged += _RadioChanged;
     }
 
     private void _RadioChanged(object sender, EventArgs e) {
-      if (sender is RadioButton rb) {
+      if (sender is RadioButton rb && rb.IsChecked == true) {
         _SelectedRb = rb.Name;
         _UpdateHighlights(_SelectedRb);
       }

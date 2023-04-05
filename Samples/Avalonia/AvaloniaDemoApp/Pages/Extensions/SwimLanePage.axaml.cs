@@ -6,8 +6,8 @@ namespace Demo.Extensions.SwimLane {
     // See the SharedSamples project for sample implementation.
 
     private void _InitRadioButtons() {
-      conferencesRb.Checked += (s, e) => _PartitionBy('c');
-      divisionsRb.Checked += (s, e) => _PartitionBy('d');
+      conferencesRb.IsCheckedChanged += (s, e) => { if ((bool)conferencesRb.IsChecked) _PartitionBy('c'); };
+      divisionsRb.IsCheckedChanged += (s, e) => { if ((bool)divisionsRb.IsChecked) _PartitionBy('d'); };
     }
   }
 }

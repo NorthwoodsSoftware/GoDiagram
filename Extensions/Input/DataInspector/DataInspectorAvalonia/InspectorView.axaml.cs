@@ -139,7 +139,7 @@ namespace Northwoods.Go.Extensions {
       if (row.Options?.Type == "select") {
         var comboBox = new ComboBox {
           IsEnabled = inspector.CanEditProperty(row.PropertyName, row.Options, inspector.InspectedObject),
-          Items = row.Options.Choices,
+          ItemsSource = row.Options.Choices,
           SelectedItem = row.PropertyValue,
           Width = 160
         };
@@ -156,7 +156,7 @@ namespace Northwoods.Go.Extensions {
           IsEnabled = inspector.CanEditProperty(row.PropertyName, row.Options, inspector.InspectedObject),
           IsChecked = (bool)row.PropertyValue
         };
-        checkBox.Checked += (e, obj) => {
+        checkBox.IsCheckedChanged += (e, obj) => {
           row.PropertyValue = checkBox.IsChecked;
           UpdatePropertiesFromInput(inspector);
         };

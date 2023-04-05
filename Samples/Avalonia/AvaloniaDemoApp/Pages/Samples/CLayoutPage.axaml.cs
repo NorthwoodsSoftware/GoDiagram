@@ -21,9 +21,9 @@ namespace Demo.Samples.CLayout {
       spacing.LostFocus += (s, e) => _Layout();
 
       // ComboBoxes
-      arrangement.Items = Enum.GetNames(typeof(CircularArrangement));
-      direction.Items = Enum.GetNames(typeof(CircularDirection));
-      sorting.Items = Enum.GetNames(typeof(CircularSorting));
+      arrangement.ItemsSource = Enum.GetNames(typeof(CircularArrangement));
+      direction.ItemsSource = Enum.GetNames(typeof(CircularDirection));
+      sorting.ItemsSource = Enum.GetNames(typeof(CircularSorting));
 
       arrangement.SelectedItem = "ConstantSpacing";
       direction.SelectedItem = "Clockwise";
@@ -34,11 +34,12 @@ namespace Demo.Samples.CLayout {
       sorting.SelectionChanged += (s, e) => _Layout();
 
       // RadioButtons
-      pythagorean.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      circular.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      pythagorean.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      circular.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
     }
 
     private void _RadioChanged(Avalonia.Controls.RadioButton rb) {
+      if (rb.IsChecked != true) return;
       if (rb.GroupName == "diamFormula") {  // diamFormula radio changed
         switch (rb.Name) {
           case "pythagorean": _DiamFormula = CircularNodeDiameterFormula.Pythagorean; break;

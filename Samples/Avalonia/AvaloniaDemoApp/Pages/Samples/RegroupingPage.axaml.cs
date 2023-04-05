@@ -1,7 +1,6 @@
 /* Copyright 1998-2023 by Northwoods Software Corporation. */
 
-using System;
-using Avalonia;
+using Avalonia.Controls;
 
 namespace Demo.Samples.Regrouping {
   public partial class Regrouping : DemoControl {
@@ -9,7 +8,9 @@ namespace Demo.Samples.Regrouping {
     // See the SharedSamples project for sample implementation.
 
     private void _InitSlider() {
-      levelSlider.GetPropertyChangedObservable(Avalonia.Controls.Slider.ValueProperty).Subscribe(o => Reexpand());
+      levelSlider.PropertyChanged += (s, e) => {
+        if (e.Property == Slider.ValueProperty) Reexpand();
+      };
     }
   }
 }

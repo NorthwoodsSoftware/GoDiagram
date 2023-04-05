@@ -8,8 +8,12 @@ namespace Demo.Extensions.OrthogonalLinkReshaping {
     // See the SharedSamples project for sample implementation.
 
     private void _InitRadioButtons() {
-      orthogonalRb.Checked += (s, e) => _UpdateRouting(LinkRouting.Orthogonal);
-      avoidsNodesRb.Checked += (s, e) => _UpdateRouting(LinkRouting.AvoidsNodes);
+      orthogonalRb.IsCheckedChanged += (s, e) => {
+        if ((bool)orthogonalRb.IsChecked) _UpdateRouting(LinkRouting.Orthogonal);
+      };
+      avoidsNodesRb.IsCheckedChanged += (s, e) => {
+        if ((bool)avoidsNodesRb.IsChecked) _UpdateRouting(LinkRouting.AvoidsNodes);
+      };
     }
   }
 }

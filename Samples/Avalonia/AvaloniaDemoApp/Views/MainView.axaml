@@ -24,7 +24,7 @@
         <TabItem.Header>
           <TextBlock Text="Samples" FontSize="15"></TextBlock>
         </TabItem.Header>
-        <ListBox Name="SidebarSamples" Items="{DynamicResource Samples}" SelectionChanged="ListBox_SelectionChanged">
+        <ListBox Name="SidebarSamples" ItemsSource="{DynamicResource Samples}" SelectionChanged="ListBox_SelectionChanged">
           <ListBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Value.Name}"/>
@@ -36,7 +36,7 @@
         <TabItem.Header>
           <TextBlock Text="Extensions" FontSize="15"></TextBlock>
         </TabItem.Header>
-        <ListBox Name="SidebarExtensions" Items="{DynamicResource Extensions}" SelectionChanged="ListBox_SelectionChanged">
+        <ListBox Name="SidebarExtensions" ItemsSource="{DynamicResource Extensions}" SelectionChanged="ListBox_SelectionChanged">
           <ListBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Value.Name}"/>

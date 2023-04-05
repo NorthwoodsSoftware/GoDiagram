@@ -18,34 +18,31 @@ namespace Demo.Samples.LDLayout {
       columnSpacing.LostFocus += (s, e) => _Layout();
 
       // RadioButtons
-      right.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      down.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      left.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      up.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      depthFirst.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      greedy.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      optimalLinkLength.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      longestPathSource.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      longestPathSink.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      depthFirstOut.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      depthFirstIn.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      naive.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      none.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      less.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      more.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      right.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      down.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      left.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      up.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      depthFirst.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      greedy.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      optimalLinkLength.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      longestPathSource.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      longestPathSink.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      depthFirstOut.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      depthFirstIn.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      naive.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      none.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      less.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      more.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
 
       // CheckBoxes
-      median.Checked += (s, e) => _Layout();
-      median.Unchecked += (s, e) => _Layout();
-      straighten.Checked += (s, e) => _Layout();
-      straighten.Unchecked += (s, e) => _Layout();
-      expand.Checked += (s, e) => _Layout();
-      expand.Unchecked += (s, e) => _Layout();
-      setsPortSpots.Checked += (s, e) => _Layout();
-      setsPortSpots.Unchecked += (s, e) => _Layout();
+      median.IsCheckedChanged += (s, e) => _Layout();
+      straighten.IsCheckedChanged += (s, e) => _Layout();
+      expand.IsCheckedChanged += (s, e) => _Layout();
+      setsPortSpots.IsCheckedChanged += (s, e) => _Layout();
     }
 
     private void _RadioChanged(Avalonia.Controls.RadioButton rb) {
+      if (rb.IsChecked != true) return;
       if (rb.GroupName == "direction") {  // direction radio changed
         switch (rb.Name) {
           case "right": _Direction = 0; break;

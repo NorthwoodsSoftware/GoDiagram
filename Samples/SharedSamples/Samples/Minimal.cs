@@ -23,8 +23,6 @@ namespace Demo.Samples.Minimal {
       // define a simple Node template
       _Diagram.NodeTemplate =
         new Node("Auto")  // the Shape will go around the TextBlock
-          { IsShadowed = true }
-          .Bind("Scale")
           .Add(
             new Shape("RoundedRectangle") {
                 StrokeWidth = 0,  // no border
@@ -46,7 +44,7 @@ namespace Demo.Samples.Minimal {
       // create the model data that will be represented by Nodes and Links
       _Diagram.Model = new Model {
         NodeDataSource = new List<NodeData> {
-          new NodeData { Key = "Alpha", Color = "lightblue", Scale = .25 },
+          new NodeData { Key = "Alpha", Color = "lightblue" },
           new NodeData { Key = "Beta", Color = "orange" },
           new NodeData { Key = "Gamma", Color = "lightgreen" },
           new NodeData { Key = "Delta", Color = "pink" }

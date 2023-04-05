@@ -8,10 +8,18 @@ namespace Demo.Extensions.DrawCommandHandler {
     // See the SharedSamples project for sample implementation.
 
     private void _InitRadioButtons() {
-      moveRb.Checked += (s, e) => _SetArrowMode(ArrowBehavior.Move);
-      scrollRb.Checked += (s, e) => _SetArrowMode(ArrowBehavior.Scroll);
-      selectRb.Checked += (s, e) => _SetArrowMode(ArrowBehavior.Select);
-      treeRb.Checked += (s, e) => _SetArrowMode(ArrowBehavior.Tree);
+      moveRb.IsCheckedChanged += (s, e) => {
+        if ((bool)moveRb.IsChecked) _SetArrowMode(ArrowBehavior.Move);
+      };
+      scrollRb.IsCheckedChanged += (s, e) => {
+        if ((bool)scrollRb.IsChecked) _SetArrowMode(ArrowBehavior.Scroll);
+      };
+      selectRb.IsCheckedChanged += (s, e) => {
+        if ((bool)selectRb.IsChecked) _SetArrowMode(ArrowBehavior.Select);
+      };
+      treeRb.IsCheckedChanged += (s, e) => {
+        if ((bool)treeRb.IsChecked) _SetArrowMode(ArrowBehavior.Tree);
+      };
     }
   }
 }

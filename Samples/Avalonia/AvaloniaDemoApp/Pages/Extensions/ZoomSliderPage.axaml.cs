@@ -1,7 +1,6 @@
 /* Copyright 1998-2023 by Northwoods Software Corporation. */
 
-using System;
-using Avalonia;
+using Avalonia.Controls;
 
 namespace Demo.Extensions.ZoomSlider {
   public partial class ZoomSlider : DemoControl {
@@ -9,7 +8,9 @@ namespace Demo.Extensions.ZoomSlider {
     // See the SharedSamples project for sample implementation.
 
     private void _InitSlider() {
-      slider.GetPropertyChangedObservable(Avalonia.Controls.Slider.ValueProperty).Subscribe(o => Rescale());
+      slider.PropertyChanged += (s, e) => {
+        if (e.Property == Slider.ValueProperty) Rescale();
+      };
     }
 
     private void _SetSlider(double value) {

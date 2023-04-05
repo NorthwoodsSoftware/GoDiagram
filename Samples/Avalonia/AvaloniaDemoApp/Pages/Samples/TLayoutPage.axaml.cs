@@ -18,12 +18,12 @@ namespace Demo.Samples.TLayout {
 
     private void _InitControls() {
       // ComboBoxes
-      style.Items = Enum.GetNames(typeof(TreeStyle));
-      layerStyle.Items = Enum.GetNames(typeof(TreeLayerStyle));
-      align.Items = Enum.GetNames(typeof(TreeAlignment));
-      sorting.Items = Enum.GetNames(typeof(TreeSorting));
-      altAlign.Items = Enum.GetNames(typeof(TreeAlignment));
-      altSorting.Items = Enum.GetNames(typeof(TreeSorting));
+      style.ItemsSource = Enum.GetNames(typeof(TreeStyle));
+      layerStyle.ItemsSource = Enum.GetNames(typeof(TreeLayerStyle));
+      align.ItemsSource = Enum.GetNames(typeof(TreeAlignment));
+      sorting.ItemsSource = Enum.GetNames(typeof(TreeSorting));
+      altAlign.ItemsSource = Enum.GetNames(typeof(TreeAlignment));
+      altSorting.ItemsSource = Enum.GetNames(typeof(TreeSorting));
 
       style.SelectedItem = "Layered";
       layerStyle.SelectedItem = "Individual";
@@ -58,27 +58,28 @@ namespace Demo.Samples.TLayout {
       altRowIndent.ValueChanged += (s, e) => _Layout();
 
       // CheckBoxes
-      setsPortSpot.Checked += (s, e) => _Layout();
-      setsChildPortSpot.Checked += (s, e) => _Layout();
-      altSetsPortSpot.Checked += (s, e) => _Layout();
-      altSetsChildPortSpot.Checked += (s, e) => _Layout();
+      setsPortSpot.IsCheckedChanged += (s, e) => _Layout();
+      setsChildPortSpot.IsCheckedChanged += (s, e) => _Layout();
+      altSetsPortSpot.IsCheckedChanged += (s, e) => _Layout();
+      altSetsChildPortSpot.IsCheckedChanged += (s, e) => _Layout();
 
       // RadioButtons
-      right.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      down.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      left.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      up.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      block.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      none.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altRight.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altDown.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altLeft.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altUp.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altBlock.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
-      altNone.Checked += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      right.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      down.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      left.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      up.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      block.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      none.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altRight.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altDown.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altLeft.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altUp.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altBlock.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
+      altNone.IsCheckedChanged += (s, e) => _RadioChanged((Avalonia.Controls.RadioButton)s);
     }
 
     private void _RadioChanged(Avalonia.Controls.RadioButton rb) {
+      if (rb.IsChecked != true) return;
       if (rb.GroupName == "angle") {  // angle radio changed
         switch (rb.Name) {
           case "right": _Angle = 0; break;

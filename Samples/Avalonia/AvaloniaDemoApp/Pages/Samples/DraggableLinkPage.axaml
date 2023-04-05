@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="using:AvaloniaDemoApp.Views"
              xmlns:go="using:Northwoods.Go.Avalonia"
-             xmlns:md="clr-namespace:Markdown.Avalonia;assembly=Markdown.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Demo.Samples.DraggableLink.DraggableLink">
   <ScrollViewer Classes="paddedSv">

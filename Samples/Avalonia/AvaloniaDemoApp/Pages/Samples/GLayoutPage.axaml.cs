@@ -18,12 +18,12 @@ namespace Demo.Samples.GLayout {
       cellSizeTb.LostFocus += (s, e) => _Layout();
       spacingTb.LostFocus += (s, e) => _Layout();
 
-      alignPosRb.Checked += (s, e) => _Layout();
-      alignLocRb.Checked += (s, e) => _Layout();
-      arrangeLTRRb.Checked += (s, e) => _Layout();
-      arrangeRTLRb.Checked += (s, e) => _Layout();
+      alignPosRb.IsCheckedChanged += (s, e) => _Layout();
+      alignLocRb.IsCheckedChanged += (s, e) => _Layout();
+      arrangeLTRRb.IsCheckedChanged += (s, e) => _Layout();
+      arrangeRTLRb.IsCheckedChanged += (s, e) => _Layout();
 
-      sortingCb.Items = Enum.GetNames(typeof(GridSorting));
+      sortingCb.ItemsSource = Enum.GetNames(typeof(GridSorting));
       sortingCb.SelectedItem = "Forwards";
       sortingCb.SelectionChanged += (s, e) => _Layout();
     }

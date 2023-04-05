@@ -8,16 +8,16 @@ namespace Demo.Samples.ContentAlign {
     // See the SharedSamples project for sample implementation.
 
     private void _InitRadioButtons() {
-      alignNoneRb.Checked += (s, e) => ChangeContentAlign(Spot.None);
-      alignCenterRb.Checked += (s, e) => ChangeContentAlign(Spot.Center);
-      alignLeftRb.Checked += (s, e) => ChangeContentAlign(Spot.Left);
-      alignRightRb.Checked += (s, e) => ChangeContentAlign(Spot.Right);
-      alignTopRb.Checked += (s, e) => ChangeContentAlign(Spot.Top);
-      alignBottomRb.Checked += (s, e) => ChangeContentAlign(Spot.Bottom);
+      alignNoneRb.IsCheckedChanged += (s, e) => { if ((bool)alignNoneRb.IsChecked) ChangeContentAlign(Spot.None); };
+      alignCenterRb.IsCheckedChanged += (s, e) => { if ((bool)alignCenterRb.IsChecked) ChangeContentAlign(Spot.Center); };
+      alignLeftRb.IsCheckedChanged += (s, e) => { if ((bool)alignLeftRb.IsChecked) ChangeContentAlign(Spot.Left); };
+      alignRightRb.IsCheckedChanged += (s, e) => { if ((bool)alignRightRb.IsChecked) ChangeContentAlign(Spot.Right); };
+      alignTopRb.IsCheckedChanged += (s, e) => { if ((bool)alignTopRb.IsChecked) ChangeContentAlign(Spot.Top); };
+      alignBottomRb.IsCheckedChanged += (s, e) => { if ((bool)alignBottomRb.IsChecked) ChangeContentAlign(Spot.Bottom); };
 
-      autoScaleNoneRb.Checked += (s, e) => ChangeAutoScale(AutoScale.None);
-      autoScaleUniformRb.Checked += (s, e) => ChangeAutoScale(AutoScale.Uniform);
-      autoScaleUniformToFillRb.Checked += (s, e) => ChangeAutoScale(AutoScale.UniformToFill);
+      autoScaleNoneRb.IsCheckedChanged += (s, e) => { if ((bool)autoScaleNoneRb.IsChecked) ChangeAutoScale(AutoScale.None); };
+      autoScaleUniformRb.IsCheckedChanged += (s, e) => { if ((bool)autoScaleUniformRb.IsChecked) ChangeAutoScale(AutoScale.Uniform); };
+      autoScaleUniformToFillRb.IsCheckedChanged += (s, e) => { if ((bool)autoScaleUniformToFillRb.IsChecked) ChangeAutoScale(AutoScale.UniformToFill); };
     }
 
     private void _UpdateUI(object sender, DiagramEvent e) {

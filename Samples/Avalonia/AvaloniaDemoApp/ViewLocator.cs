@@ -5,7 +5,7 @@ using System;
 
 namespace AvaloniaDemoApp {
   public class ViewLocator : IDataTemplate {
-    public IControl Build(object data) {
+    public Control Build(object data) {
       if (data is null)
         return null;
 

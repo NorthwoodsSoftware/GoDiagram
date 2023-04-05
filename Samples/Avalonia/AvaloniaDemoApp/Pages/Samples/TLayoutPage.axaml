@@ -84,7 +84,7 @@
           <StackPanel Orientation="Horizontal">
             <TextBlock>Compaction:</TextBlock>
             <RadioButton Name="block" GroupName="compaction" IsChecked="True">Block</RadioButton>
-            <RadioButton Name="none" GroupName="angle">None</RadioButton>
+            <RadioButton Name="none" GroupName="compaction">None</RadioButton>
           </StackPanel>
           <StackPanel Orientation="Horizontal">
             <TextBlock>BreadthLimit:</TextBlock>

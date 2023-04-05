@@ -51,11 +51,11 @@ namespace AvaloniaDemoApp.Views {
 
       // process [abc](learn/xyz) links
       rx = new Regex(@"\[(.*)\]\(learn/(.*)\)", RegexOptions.Multiline);
-      mdText = rx.Replace(mdText, @"[$1](https://godiagram.com/winforms/latest/learn/$2)");
+      mdText = rx.Replace(mdText, @"[$1](https://godiagram.com/avalonia/latest/learn/$2)");
 
       // process [abc](intro/xyz) links
       rx = new Regex(@"\[(.*)\]\(intro/(.*)\)", RegexOptions.Multiline);
-      mdText = rx.Replace(mdText, @"[$1](https://godiagram.com/winforms/latest/intro/$2)");
+      mdText = rx.Replace(mdText, @"[$1](https://godiagram.com/avalonia/latest/intro/$2)");
 
       // leave [abc](demo/xyz) links alone
 
@@ -70,7 +70,7 @@ namespace AvaloniaDemoApp.Views {
     private static string _ReplaceApiLinks(Match m) {
       var str = m.Groups[1].Value;
       if (_ApiMap != null && _ApiMap.TryGetValue(str, out var url))
-        return $"[{str}](https://godiagram.com/winforms/latest/{url})";  // NYI change to avalonia
+        return $"[{str}](https://godiagram.com/avalonia/latest/{url})";
       return m.Value;
     }
 
@@ -89,7 +89,7 @@ namespace AvaloniaDemoApp.Views {
     /// </summary>
     /// <returns></returns>
     static async Task<Dictionary<string, string>> GetApiMap() {
-      var url = "https://godiagram.com/winforms/latest/api/apiMap.js";
+      var url = "https://godiagram.com/avalonia/latest/api/apiMap.js";
       using var response = await _HttpClient.GetAsync(url);
       if (response.IsSuccessStatusCode) {
         using var stream = await response.Content.ReadAsStreamAsync();

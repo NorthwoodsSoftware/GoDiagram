@@ -22,7 +22,7 @@
         Grid.Row="0" />
       <Button Name="randomNodesBtn" Grid.Row="1">Choose another two nodes at random</Button>
       <views:DescriptionView Name="desc1" Grid.Row="2" />
-      <ListBox Name="listBox1" Items="{Binding $parent[2].Paths}" Grid.Row="3" />
+      <ListBox Name="listBox1" ItemsSource="{Binding $parent[2].Paths}" Grid.Row="3" />
     </Grid>
   </ScrollViewer>
 </UserControl>

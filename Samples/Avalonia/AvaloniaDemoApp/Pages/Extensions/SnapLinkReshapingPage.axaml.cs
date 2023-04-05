@@ -8,8 +8,7 @@ namespace Demo.Extensions.SnapLinkReshaping {
     // See the SharedSamples project for sample implementation.
 
     private void _InitCheckBoxes() {
-      avoidsNodesCb.Checked += (e, obj) => (_Diagram.ToolManager.LinkReshapingTool as SnapLinkReshapingTool).AvoidsNodes = true;
-      avoidsNodesCb.Unchecked += (e, obj) => (_Diagram.ToolManager.LinkReshapingTool as SnapLinkReshapingTool).AvoidsNodes = false;
+      avoidsNodesCb.IsCheckedChanged += (e, obj) => (_Diagram.ToolManager.LinkReshapingTool as SnapLinkReshapingTool).AvoidsNodes = avoidsNodesCb.IsChecked ?? false;
     }
   }
 }

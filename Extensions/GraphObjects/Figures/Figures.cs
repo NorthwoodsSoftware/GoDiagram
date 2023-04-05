@@ -136,29 +136,34 @@ namespace Northwoods.Go.Extensions {
     private static Point GetIntersection(double p1x, double p1y, double p2x, double p2y, double q1x, double q1y, double q2x, double q2y, out Point result) {
       var dx1 = p1x - p2x;
       var dx2 = q1x - q2x;
-      double x;
-      double y;
-
-      if (dx1 == 0 || dx2 == 0) {
-        if (dx1 == 0) {
+      var x = double.NaN;
+      var y = double.NaN;
+      if (dx1 == 0) {
+        if (dx2 == 0) {
+          if (p1x == p2x) {
+            x = p1x;
+            y = p1y;
+          }
+        } else {
           var m2 = (q1y - q2y) / dx2;
           var b2 = q1y - m2 * q1x;
           x = p1x;
           y = m2 * x + b2;
-        } else {
+        }
+      } else {
+        if (dx2 == 0) {
           var m1 = (p1y - p2y) / dx1;
           var b1 = p1y - m1 * p1x;
           x = q1x;
           y = m1 * x + b1;
+        } else {
+          var m1 = (p1y - p2y) / dx1;
+          var m2 = (q1y - q2y) / dx2;
+          var b1 = p1y - m1 * p1x;
+          var b2 = q1y - m2 * q1x;
+          x = (b2 - b1) / (m1 - m2);
+          y = m1 * x + b1;
         }
-      } else {
-        var m1 = (p1y - p2y) / dx1;
-        var m2 = (q1y - q2y) / dx2;
-        var b1 = p1y - m1 * p1x;
-        var b2 = q1y - m2 * q1x;
-
-        x = (b2 - b1) / (m1 - m2);
-        y = m1 * x + b1;
       }
 
       result = new Point(x, y);
