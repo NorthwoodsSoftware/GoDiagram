@@ -25,7 +25,7 @@
         <ListBox Name="modelLog" ItemsSource="{Binding $parent[3].Log}" Height="250"></ListBox>
       </StackPanel>
       <go:DiagramControl Name="diagramControl2"
-                         BorderBrush="Blue" BorderThickness="1"
+                         BorderBrush="Green" BorderThickness="1"
                          Grid.Column="0" Grid.Row="1"/>
       <StackPanel Spacing="3" Grid.Row="1" Grid.Column="1">
         <StackPanel Orientation="Horizontal" Spacing="3">

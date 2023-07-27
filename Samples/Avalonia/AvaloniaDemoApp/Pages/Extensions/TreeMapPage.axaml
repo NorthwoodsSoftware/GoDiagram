@@ -22,7 +22,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-      <StackPanel Background="AliceBlue" Grid.Row="0">
+      <StackPanel Grid.Row="0">
         <TextBlock FontWeight="Bold">New Tree</TextBlock>
         <StackPanel Orientation="Horizontal">
           <TextBlock>MinNodes:</TextBlock>

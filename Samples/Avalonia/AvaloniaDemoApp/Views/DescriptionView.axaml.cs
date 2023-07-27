@@ -8,20 +8,15 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace AvaloniaDemoApp.Views {
   public partial class DescriptionView : UserControl {
-    private static HttpClient _HttpClient = new();
+    private static readonly HttpClient _HttpClient = new();
     private static Dictionary<string, string> _ApiMap = null;
-    private static MatchEvaluator _DocsMatchEvaluator = new(_ReplaceApiLinks);
+    private static readonly MatchEvaluator _DocsMatchEvaluator = new(_ReplaceApiLinks);
 
     public DescriptionView() {
       InitializeComponent();
-    }
-
-    private void InitializeComponent() {
-      AvaloniaXamlLoader.Load(this);
     }
 
     public static readonly StyledProperty<string> MdTextProperty =
@@ -78,7 +73,7 @@ namespace AvaloniaDemoApp.Views {
     /// Initialize the API map if it hasn't been already.
     /// </summary>
     /// <returns></returns>
-    public static async Task _InitApiMap() {
+    internal static async Task _InitApiMap() {
       if (_ApiMap == null) {
         _ApiMap = await GetApiMap();
       }
@@ -110,7 +105,7 @@ namespace AvaloniaDemoApp.Views {
     public void Execute(object parameter) {
       var urlTxt = (string)parameter;
       if (urlTxt.StartsWith("demo/")) {
-        MainView._SelectDemo(MainView.ProcessInput(urlTxt.Substring(5)));
+        MainView.SelectDemo(MainView.ProcessInput(urlTxt.Substring(5)));
       } else {
         Markdown.Avalonia.Utils.DefaultHyperlinkCommand.GoTo(urlTxt);
       }

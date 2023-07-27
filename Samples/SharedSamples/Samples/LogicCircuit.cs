@@ -1,5 +1,6 @@
 ﻿/* Copyright 1998-2023 by Northwoods Software Corporation. */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -292,11 +293,10 @@ namespace Demo.Samples.LogicCircuit {
       };
     }
 
-    private void Loop() {
-      Task.Delay(250).ContinueWith((t) => {
-        UpdateStates();
-        Loop();
-      });
+    private async void Loop() {
+      await Task.Delay(250);
+      UpdateStates();
+      Loop();
     }
 
     private void UpdateStates() {
@@ -327,7 +327,8 @@ namespace Demo.Samples.LogicCircuit {
 
     // helper predicate
     private bool LinkIsTrue(Link link) { // assume link has a shape named "SHAPE"
-      return (link.FindElement("SHAPE") as Shape).Stroke == "green";
+      var shape = link.FindElement("SHAPE") as Shape;
+      return shape.Stroke == "green";
     }
 
     // helper function for propagating results

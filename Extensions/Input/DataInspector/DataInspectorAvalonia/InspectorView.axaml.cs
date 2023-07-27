@@ -17,7 +17,6 @@ using System.Reflection;
 using Ava = Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
-using Avalonia.Markup.Xaml;
 
 namespace Northwoods.Go.Extensions {
   /// <summary>
@@ -31,10 +30,6 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     public InspectorView() {
       InitializeComponent();
-    }
-
-    private void InitializeComponent() {
-      AvaloniaXamlLoader.Load(this);
     }
 
     /// <summary>

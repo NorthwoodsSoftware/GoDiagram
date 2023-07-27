@@ -31,7 +31,7 @@ namespace AvaloniaDemoApp.Views {
       return (DemoType.Sample, DemoIndex.Samples.First());  // unknown input argument? use first sample
     }
 
-    public static void _SelectDemo((DemoType, KeyValuePair<string, NavItem>) openTo) {
+    public static void SelectDemo((DemoType, KeyValuePair<string, NavItem>) openTo) {
       var (type, demo) = openTo;
       switch (type) {
         case DemoType.Sample:

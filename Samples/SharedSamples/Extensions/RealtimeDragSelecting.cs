@@ -44,7 +44,7 @@ namespace Demo.Extensions.RealtimeDragSelecting {
       // node template
       _Diagram.NodeTemplate =
         new Node(PanelType.Spot) {
-          Width = 70, Height = 20
+          Width = 70, Height = 25
         }.Add(
           new Shape {
             Figure = "Rectangle"

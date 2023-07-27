@@ -13,7 +13,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-      <StackPanel Spacing="5" Background="AliceBlue" Grid.Row="0">
+      <StackPanel Spacing="5" Grid.Row="0">
         <TextBlock FontWeight="Bold">GridLayout Properties</TextBlock>
         <StackPanel Orientation="Horizontal" Spacing="5">
           <TextBlock>Wrapping Column:</TextBlock>

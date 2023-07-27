@@ -68,22 +68,20 @@ namespace Demo.Samples.BlockEditor {
       };
       _Diagram.CommandHandler = new DrawCommandHandler();  // support offset copy-and-paste
       _Diagram.ToolManager.ClickCreatingTool.ArchetypeNodeData = new NodeData { Text = "NEW NODE" };  // create a new node by double-clicking in background
-      _Diagram.PartCreated += (s, e) => {
+      _Diagram.PartCreated += async (s, e) => {
         var node = e.Subject as Node;  // the newly inserted Node -- now need to snap its location to the grid
         node.Location = node.Location.SnapToGrid(e.Diagram.Grid.GridOrigin, e.Diagram.Grid.GridCellSize);
-        Task.Delay(20).ContinueWith((t) => {  // and have the user start editing its text
-          e.Diagram.CommandHandler.EditTextBlock();
-        });
+        await Task.Delay(20);
+        e.Diagram.CommandHandler.EditTextBlock();  // and have the user start editing its text
       };
       _Diagram.CommandHandler.ArchetypeGroupData = new NodeData {
         IsGroup = true,
         Text = "NEW GROUP"
       };
-      _Diagram.SelectionGrouped += (s, e) => {
+      _Diagram.SelectionGrouped += async (s, e) => {
         var group = e.Subject;
-        Task.Delay(20).ContinueWith((t) => {  // and have the user start editing its text
-          e.Diagram.CommandHandler.EditTextBlock();
-        });
+        await Task.Delay(20);
+        e.Diagram.CommandHandler.EditTextBlock();  // and have the user start editing its text
       };
       _Diagram.LinkRelinked += (s, e) => {
         // re-spread the connections of other links connected with both old and new nodes
@@ -156,7 +154,7 @@ namespace Demo.Samples.BlockEditor {
       Shape MakeArrowButton(Spot spot, string fig) {
         void maker(InputEvent e, GraphObject shape) {
           e.Handled = true;
-          e.Diagram.Model.Commit((m) => {
+          e.Diagram.Model.Commit(async (m) => {
             var model = m as Model;
             var selnode = (shape.Part as Adornment).AdornedPart;
             // create a new node in the direction of the spot
@@ -178,9 +176,8 @@ namespace Demo.Samples.BlockEditor {
             var newnode = e.Diagram.FindNodeForData(nodedata);
             newnode.Location = p;
             e.Diagram.Select(newnode);
-            Task.Delay(20).ContinueWith((t) => {
-              e.Diagram.CommandHandler.EditTextBlock();
-            });
+            await Task.Delay(20);
+            e.Diagram.CommandHandler.EditTextBlock();  // and have the user start editing its text
           });
         }
         return new Shape {

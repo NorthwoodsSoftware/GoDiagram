@@ -1,6 +1,4 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
 
 namespace Demo {
@@ -12,10 +10,6 @@ namespace Demo {
     public DialogView(string text) {
       Text = text;
       InitializeComponent();
-    }
-
-    private void InitializeComponent() {
-      AvaloniaXamlLoader.Load(this);
     }
 
     private void OnOkClick(object sender, Avalonia.Interactivity.RoutedEventArgs e) {

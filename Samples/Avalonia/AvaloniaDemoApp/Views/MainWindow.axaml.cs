@@ -10,7 +10,7 @@ namespace AvaloniaDemoApp.Views {
     public MainWindow((DemoType, KeyValuePair<string, NavItem>) opento) {
       InitializeComponent();
 
-      MainView._SelectDemo(opento);
+      MainView.SelectDemo(opento);
     }
   }
 }

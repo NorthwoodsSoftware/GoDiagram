@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:pages="clr-namespace:AvaloniaDemoApp.Pages">
   <UserControl.Styles>
-    <Style Selector="ScrollViewer.paddedSv">
-      <Setter Property="Padding" Value="3,3,20,3" />
+    <Style Selector="ScrollViewer.paddedSv > Grid">
+      <Setter Property="Margin" Value="3,3,20,3" />
     </Style>
     <Style Selector="StackPanel">
       <Setter Property="Spacing" Value="5" />

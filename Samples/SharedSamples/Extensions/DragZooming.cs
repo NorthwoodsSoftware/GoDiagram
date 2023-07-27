@@ -29,7 +29,7 @@ namespace Demo.Extensions.DragZooming {
       _Diagram.NodeTemplate =
         new Node(PanelType.Spot) {
           Width = 70,
-          Height = 20
+          Height = 25
         }.Add(
           new Shape {
             Figure = "Rectangle"

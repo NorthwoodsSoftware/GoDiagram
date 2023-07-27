@@ -13,7 +13,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-      <WrapPanel Background="AliceBlue">
+      <WrapPanel>
         <StackPanel Margin="3">
           <TextBlock FontWeight="Bold">General Properties</TextBlock>
           <StackPanel Orientation="Horizontal">

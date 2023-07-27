@@ -210,7 +210,7 @@ namespace Demo.Extensions.VirtualizedPacked {
     }
 
     // As the user scrolls or zooms, make sure the Parts (Nodes and Links) exist in the viewport.
-    private void _OnViewportChanged(object s, DiagramEvent e) {
+    private async void _OnViewportChanged(object s, DiagramEvent e) {
       var diagram = e.Diagram;
       // make sure there are Nodes for each node data that is in the viewport
       // or that is connected to such a Node
@@ -258,7 +258,8 @@ namespace Demo.Extensions.VirtualizedPacked {
       }
 
       diagram.SkipsUndoManager = oldskips;
-      Task.Delay(3000).ContinueWith((t) => _RemoveOffscreen(diagram));
+      await Task.Delay(3000);
+      _RemoveOffscreen(diagram);
 
       _UpdateCounts();
     }

@@ -1,16 +1,11 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace AvaloniaDemoApp.Views {
   public partial class ModelJsonView : UserControl {
     public ModelJsonView() {
       InitializeComponent();
-    }
-
-    private void InitializeComponent() {
-      AvaloniaXamlLoader.Load(this);
     }
 
     public static readonly StyledProperty<bool> CanSaveLoadProperty =

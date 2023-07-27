@@ -95,8 +95,8 @@ namespace Demo.Samples.Grouping {
               )
           );
 
-      // generate the initial model
-      _RandomGroup();
+      // generate the initial model (and consider the random groups part of initialization)
+      _Diagram.DelayInitialization((_Diagram) => _RandomGroup());
     }
 
     // Generate a random number of nodes, including groups.

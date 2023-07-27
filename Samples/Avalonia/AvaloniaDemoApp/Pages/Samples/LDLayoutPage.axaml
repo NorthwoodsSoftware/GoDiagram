@@ -13,7 +13,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-      <StackPanel Orientation="Horizontal" Background="AliceBlue" Grid.Row="0">
+      <StackPanel Orientation="Horizontal" Grid.Row="0">
         <StackPanel>
           <TextBlock FontWeight="Bold">New Graph</TextBlock>
           <StackPanel Orientation="Horizontal">

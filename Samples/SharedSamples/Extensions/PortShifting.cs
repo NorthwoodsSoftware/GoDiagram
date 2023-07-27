@@ -107,11 +107,10 @@ namespace Demo.Extensions.PortShifting {
       };
     }
 
-    private static void Loop(Diagram d) {
-      Task.Delay(250).ContinueWith((t) => {
-        UpdateStates(d);
-        Loop(d);
-      });
+    private static async void Loop(Diagram d) {
+      await Task.Delay(250);
+      UpdateStates(d);
+      Loop(d);
     }
 
     private static void UpdateStates(Diagram d) {

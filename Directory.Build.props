@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
     <NoWarn>NU1701</NoWarn> <!-- OpenTK.GLControl restored using .NET Framework 4.6.1 -->
-    <AvaloniaVersion>11.0.0-preview6</AvaloniaVersion>
+    <AvaloniaVersion>[11,12)</AvaloniaVersion>
   </PropertyGroup>
 </Project>
