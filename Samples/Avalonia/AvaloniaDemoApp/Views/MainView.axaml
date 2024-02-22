@@ -1,7 +1,6 @@
 <UserControl x:Class="AvaloniaDemoApp.Views.MainView"
              xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:pages="clr-namespace:AvaloniaDemoApp.Pages">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <UserControl.Styles>
     <Style Selector="ScrollViewer.paddedSv > Grid">
       <Setter Property="Margin" Value="3,3,20,3" />

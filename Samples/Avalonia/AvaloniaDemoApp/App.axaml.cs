@@ -3,7 +3,6 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using AvaloniaDemoApp.ViewModels;
 using AvaloniaDemoApp.Views;
 
 namespace AvaloniaDemoApp {
@@ -20,10 +19,8 @@ namespace AvaloniaDemoApp {
         if (args != null && args.Length > 0) {
           openTo = MainView.ProcessInput(args[0]);
         }
-        
-        desktop.MainWindow = new MainWindow(openTo) {
-          DataContext = new MainViewModel()
-        };
+
+        desktop.MainWindow = new MainWindow(openTo);
       }
 
       base.OnFrameworkInitializationCompleted();
