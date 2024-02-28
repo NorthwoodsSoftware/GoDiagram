@@ -82,9 +82,10 @@ Graphs are constructed by creating one or more templates, with desired propertie
   ...
 ```
 
+
 The above diagram and model code creates the following graph.
 
-![diagram](https://camo.githubusercontent.com/6b156093255a909563a2726c34f8f7a7b1b38c333098ab0a54618d7386c2fba1/68747470733a2f2f676f6469616772616d2e636f6d2f6173736574732f696d616765732f73637265656e73686f74732f6d696e696d616c2e706e67)
+![minimal](https://github.com/NorthwoodsSoftware/GoDiagram/assets/1202288/6182994a-15e7-4075-822f-15b561e6ad58)
 
 
 ## License
