@@ -18,8 +18,8 @@ namespace Demo.Samples.OrgChartStatic {
       myDiagram = diagramControl1.Diagram;
       myOverview = overviewControl1.Diagram as Overview;
 
-      Setup();
       SetupOverview();
+      Setup();
 
       searchBtn.Click += (sender, e) => SearchDiagram();
       desc1.MdText = DescriptionReader.Read("Samples.OrgChartStatic.md");
