@@ -10,7 +10,7 @@
   <Import Project="..\BalloonLink.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.0.9" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.0.10" />
   </ItemGroup>
 
 </Project>

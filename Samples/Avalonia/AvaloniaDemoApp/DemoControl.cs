@@ -1,7 +1,11 @@
 ﻿/* Copyright 1998-2024 by Northwoods Software Corporation. */
 
 using System;
+using System.Linq;
+using Avalonia.Interactivity;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
+using Northwoods.Go.Avalonia;
 
 namespace Demo {
   // Simple derived class to improve commonization of code
@@ -12,6 +16,15 @@ namespace Demo {
       // Input priority ensures all children have finished loading,
       // since it is lower priority than Loaded.
       Dispatcher.UIThread.Post(loadFunc, DispatcherPriority.Input);
+    }
+
+    protected override void OnUnloaded(RoutedEventArgs e) {
+      base.OnUnloaded(e);
+
+      // clean up controls on unload since we always recreate them
+      foreach (var diaCtrl in this.GetVisualDescendants().OfType<DiagramControl>()) {
+        diaCtrl.Cleanup();
+      }
     }
 
     public void ShowDialog(string text) {
