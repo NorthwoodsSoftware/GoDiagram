@@ -86,6 +86,6 @@ The above diagram and model code creates the following graph.
 
 ## License
 
-The GoDiagram [software license](https://godiagram.com/license.html).
+See [nwoods.com](https://nwoods.com/licenses) for our licenses.
 
 Copyright (c) 2024 Northwoods Software Corporation
