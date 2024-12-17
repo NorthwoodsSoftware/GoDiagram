@@ -69,7 +69,7 @@ shall:
 - maintain the Source Code in confidence;
 - not disclose, distribute, sell, sublicense, or otherwise provide the Source Code
   to any third party;
-- only include minified Source Code in any Application;
+- only include minified or compiled Source Code in any Application;
 - defend, indemnify, and hold harmless Northwoods and its affiliates, and each of
   their respective officers, directors, employees and representatives from and
   against any claims, damages, losses, liabilities, judgements, costs, and
