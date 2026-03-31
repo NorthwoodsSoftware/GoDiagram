@@ -9,7 +9,6 @@ using Northwoods.Go.Models;
 namespace Demo.Samples.ProcessFlow {
   public partial class ProcessFlow : DemoControl {
     private Diagram _Diagram;
-    private Animation _Animation;
 
     public ProcessFlow() {
       InitializeComponent();
@@ -61,10 +60,6 @@ namespace Demo.Samples.ProcessFlow {
       _Diagram.ToolManager.RotatingTool.SnapAngleMultiple = 90;
       _Diagram.ToolManager.RotatingTool.SnapAngleEpsilon = 45;
       _Diagram.UndoManager.IsEnabled = true;
-      _Diagram.ModelChanged += (s, e) => {
-        if (e.IsTransactionFinished) updateAnimation();
-      };
-
 
       // node templatemap "Process"
       _Diagram.NodeTemplateMap.Add("Process",
@@ -143,19 +138,6 @@ namespace Demo.Samples.ProcessFlow {
           );
 
       LoadModel();
-
-      void updateAnimation() {
-        if (_Animation != null) _Animation.Stop();
-        _Animation = new Animation {
-          Easing = Animation.EaseLinear
-        };
-        foreach (var l in _Diagram.Links) {
-          _Animation.Add((l.FindElement("PIPE") as Shape), "StrokeDashOffset", 20f, 0f);
-        }
-        // Run indefinitely
-        _Animation.RunCount = int.MaxValue;
-        _Animation.Start();
-      }
     }
 
     private void SaveModel() {
@@ -176,7 +158,7 @@ namespace Demo.Samples.ProcessFlow {
   public class NodeData : Model.NodeData {
     public string Pos { get; set; }
     public string Size { get; set; }
-    public float Angle { get; set; }
+    public double Angle { get; set; }
   }
 
   public class LinkData : Model.LinkData {

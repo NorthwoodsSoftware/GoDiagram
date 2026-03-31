@@ -313,7 +313,7 @@ namespace Demo.Samples.BlockEditor {
         return Builder.Make<Panel>("ContextMenuButton")
           .Add(
             new Panel("Horizontal")
-              .Add(DashButton(null), DashButton(new float[] { 2, 4 }), DashButton(new float[] { 4, 4 }))
+              .Add(DashButton([0]), DashButton([2, 4]), DashButton([4, 4]))
           );
       }
 
