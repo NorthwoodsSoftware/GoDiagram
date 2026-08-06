@@ -9,7 +9,7 @@
   <Import Project="..\CurvedLinkReshaping.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="10.1.1" />
+    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="10.1.2" />
   </ItemGroup>
 
 </Project>

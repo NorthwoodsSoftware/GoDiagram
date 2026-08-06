@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.1.1" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.1.2" />
   </ItemGroup>
 
   <Import Project="..\DataInspector.projitems" Label="Shared" />
