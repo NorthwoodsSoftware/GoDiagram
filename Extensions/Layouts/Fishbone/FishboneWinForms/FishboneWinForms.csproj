@@ -3,7 +3,7 @@
   <PropertyGroup>
     <!-- Use C# latest to enable new .NET features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net8.0-windows7.0;net462</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows10.0.19041;net462</TargetFrameworks>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
@@ -12,7 +12,7 @@
 
   <ItemGroup>
     
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.1.2" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a1" />
   </ItemGroup>
 
 </Project>

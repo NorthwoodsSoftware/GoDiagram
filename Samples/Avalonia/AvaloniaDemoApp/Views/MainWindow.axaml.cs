@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Avalonia.Controls;
 
 namespace AvaloniaDemoApp.Views {
@@ -7,7 +6,7 @@ namespace AvaloniaDemoApp.Views {
       InitializeComponent();
     }
 
-    public MainWindow((DemoType, KeyValuePair<string, NavItem>) opento) {
+    public MainWindow((DemoType, NavItem) opento) {
       InitializeComponent();
 
       MainView.SelectDemo(opento);

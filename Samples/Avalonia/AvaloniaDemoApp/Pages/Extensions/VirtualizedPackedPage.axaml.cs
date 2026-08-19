@@ -9,8 +9,8 @@ namespace Demo.Extensions.VirtualizedPacked {
 
     private bool _MaybeInvoke(Diagram diagram) {
       var control = diagramControl1;
-      if (control != null && !control.CheckAccess()) {
-        Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(
+      if (control != null && !control.Dispatcher.CheckAccess()) {
+        control.Dispatcher.InvokeAsync(
           () => _RemoveOffscreen(diagram),
           Avalonia.Threading.DispatcherPriority.Background);
         return true;

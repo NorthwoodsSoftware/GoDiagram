@@ -12,7 +12,7 @@
   </UserControl.Resources>
   
   <md:MarkdownScrollViewer
-    Markdown="{Binding Path=Parent.MdText, RelativeSource={RelativeSource Self}}">
+    Markdown="{Binding Path=MdText, RelativeSource={RelativeSource AncestorType=views:DescriptionView}}">
     <md:MarkdownScrollViewer.Engine>
       <md:Markdown HyperlinkCommand="{StaticResource customLinkCommand}" />
     </md:MarkdownScrollViewer.Engine>

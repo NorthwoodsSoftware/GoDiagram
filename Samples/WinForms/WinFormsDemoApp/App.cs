@@ -25,6 +25,8 @@ namespace WinFormsDemoApp {
       extensionList.SelectedValueChanged += ExtensionList_SelectedValueChanged;
       extensionList.ClearSelected();
 
+      Northwoods.Go.WinForms.DiagramControl.UseHardwareRendering = true;  // use hardware rendering for better performance, if available
+
       _SelectDemo(opento);
     }
 

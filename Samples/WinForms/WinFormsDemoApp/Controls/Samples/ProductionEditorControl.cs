@@ -76,10 +76,6 @@ namespace Demo.Samples.ProductionEditor {
       SetupPalette();
     }
 
-    // vars for animations
-    private double opacity = 1;
-    private bool down = true;
-
     // dictionaries for bindings
     // colors
     Dictionary<string, string> colors = new Dictionary<string, string> {
@@ -258,9 +254,10 @@ namespace Demo.Samples.ProductionEditor {
           }
         );
 
-      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
+      // Start the pipe-flow animation only after the first layout
+      myDiagram.InitialLayoutCompleted += (s, e) => StartPipeAnimation();
 
-      Loop();
+      myDiagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
     }
 
     private void SetupPalette() {
@@ -307,26 +304,18 @@ namespace Demo.Samples.ProductionEditor {
       return points;
     }
 
-    private void Loop() {
-      var diagram = myDiagram;
-      Task.Delay(60).ContinueWith((t) => {
-        var oldskips = diagram.SkipsUndoManager;
-        diagram.SkipsUndoManager = true;
-        foreach (var link in diagram.Links) {
-          var shape = link.FindElement("PIPE") as Shape;
-          var off = shape.StrokeDashOffset - 3;
-          // animate (move) the stroke dash
-          shape.StrokeDashOffset = (off <= 0) ? 60 : off;
-          // animte (strobe) the opacity:
-          if (down) opacity -= 0.01;
-          else opacity += 0.003;
-          if (opacity <= 0) { down = !down; opacity = 0; }
-          if (opacity > 1) { down = !down; opacity = 1; }
-          shape.Opacity = opacity;
+    // Marching-ants flow (and a gentle strobe) along the pipes
+    private void StartPipeAnimation() {
+      var flow = new Animation { RunCount = int.MaxValue };
+      var strobe = new Animation { RunCount = int.MaxValue, Reversible = true };
+      foreach (var link in myDiagram.Links) {
+        if (link.FindElement("PIPE") is Shape pipe) {
+          flow.Add(pipe, "StrokeDashOffset", 60, 0);  // dash array is [20,40], so 60 == one seamless period
+          strobe.Add(pipe, "Opacity", 1.0, 0.4);
         }
-        diagram.SkipsUndoManager = oldskips;
-        Loop();
-      });
+      }
+      flow.Start();
+      strobe.Start();
     }
 
     private void OnSelectionChanged(object _, DiagramEvent e) {

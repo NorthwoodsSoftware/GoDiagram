@@ -1,6 +1,5 @@
 /* Copyright (c) Northwoods Software Corporation. */
 
-using System;
 using Northwoods.Go.Layouts;
 
 namespace Demo.Samples.LDLayout {

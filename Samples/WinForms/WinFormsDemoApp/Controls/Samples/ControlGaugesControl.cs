@@ -625,7 +625,7 @@ namespace Demo.Samples.ControlGauges {
       Loop();
 
       void Loop() {
-        Task.Delay(500).ContinueWith((t) => {
+        Util.SetTimeout(() => {
           myDiagram.Commit((_) => {
             foreach (var l in myDiagram.Links) {
               if (rand.NextDouble() < 0.2) return;
@@ -640,7 +640,7 @@ namespace Demo.Samples.ControlGauges {
             }
           });
           Loop();
-        });
+        }, 500, myDiagram);
       }
     }
 

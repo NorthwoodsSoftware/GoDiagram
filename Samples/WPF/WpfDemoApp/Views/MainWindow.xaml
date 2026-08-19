@@ -1,0 +1,17 @@
+<Window
+  x:Class="WpfDemoApp.Views.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:WpfDemoApp.Views"
+  Title="GoDiagram for WPF Samples"
+  Width="1600"
+  Height="875"
+  MinWidth="625"
+  MinHeight="350"
+  mc:Ignorable="d">
+  <Grid>
+    <local:MainView />
+  </Grid>
+</Window>

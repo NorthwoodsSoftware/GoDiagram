@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:AvaloniaDemoApp.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaDemoApp.Views.ModelJsonView">
   <Grid>
@@ -18,13 +19,13 @@
             Content="Save"
             Grid.Column="0" Grid.Row="0"
             Margin="3"
-            IsVisible="{Binding Path=Parent.Parent.CanSaveLoad, RelativeSource={RelativeSource Self}}"
+            IsVisible="{Binding Path=CanSaveLoad, RelativeSource={RelativeSource AncestorType=views:ModelJsonView}}"
             Click="saveBtn_Click" />
     <Button Name="loadBtn"
             Content="Load"
             Grid.Column="1" Grid.Row="0"
             Margin="3"
-            IsVisible="{Binding Path=Parent.Parent.CanSaveLoad, RelativeSource={RelativeSource Self}}"
+            IsVisible="{Binding Path=CanSaveLoad, RelativeSource={RelativeSource AncestorType=views:ModelJsonView}}"
             Click="loadBtn_Click" />
     <TextBlock Name="label"
                Text="Diagram Model in JSON format:"
@@ -36,7 +37,7 @@
              ScrollViewer.VerticalScrollBarVisibility="Auto"
              Grid.Column="0" Grid.Row="1"
              Grid.ColumnSpan="3"
-             Text="{Binding Path=Parent.Parent.JsonText, RelativeSource={RelativeSource Self}}"
-             IsReadOnly="{Binding Path=!Parent.Parent.CanSaveLoad, RelativeSource={RelativeSource Self}}" />
+             Text="{Binding Path=JsonText, RelativeSource={RelativeSource AncestorType=views:ModelJsonView}}"
+             IsReadOnly="{Binding Path=!CanSaveLoad, RelativeSource={RelativeSource AncestorType=views:ModelJsonView}}" />
   </Grid>
 </UserControl>

@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
 
-namespace Demo.Samples.LinksToLinks {
-  public partial class LinksToLinks : DemoControl {
-    private Diagram _Diagram;
+namespace Demo.Samples.LinksToLinks; 
+public partial class LinksToLinks : DemoControl {
+  private Diagram _Diagram;
 
-    public LinksToLinks() {
-      InitializeComponent();
-      _Diagram = diagramControl1.Diagram;
+  public LinksToLinks() {
+    InitializeComponent();
+    _Diagram = diagramControl1.Diagram;
 
-      modelJson1.SaveClick = SaveModel;
-      modelJson1.LoadClick = LoadModel;
+    modelJson1.SaveClick = SaveModel;
+    modelJson1.LoadClick = LoadModel;
 
-      modelJson1.JsonText = @"{
+    modelJson1.JsonText = @"{
   ""LinkLabelKeysProperty"": ""LabelKeys"",
   ""NodeDataSource"": [
 { ""Key"": ""Alpha"", ""Color"": ""lightblue"", ""Loc"": ""29 14"" },
@@ -36,109 +36,108 @@ namespace Demo.Samples.LinksToLinks {
 { ""From"": ""A-B"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-B-G-D"" ], ""Category"": ""linkToLink"" }
  ]}";
 
-      desc1.MdText = DescriptionReader.Read("Samples.LinksToLinks.md");
+    desc1.MdText = DescriptionReader.Read("Samples.LinksToLinks.md");
 
-      Setup();
-    }
+    Setup();
+  }
 
-    private void Setup() {
-      _Diagram.LinkDrawn += MaybeChangeLinkCategory;
-      _Diagram.LinkRelinked += MaybeChangeLinkCategory;
-      _Diagram.UndoManager.IsEnabled = true;
+  private void Setup() {
+    _Diagram.LinkDrawn += MaybeChangeLinkCategory;
+    _Diagram.LinkRelinked += MaybeChangeLinkCategory;
+    _Diagram.UndoManager.IsEnabled = true;
 
-      // the regular node template
-      _Diagram.NodeTemplate =
-        new Node(PanelType.Auto) {
-          LocationSpot = Spot.Center,
-          LayerName = "Background"  // always have regular nodes behing links
-        }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
-        .Add(
-          new Shape {
-            Figure = "RoundedRectangle",
-            Fill = "white", Stroke = (Brush)null,
-            PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
-          }.Bind(
-            new Binding("Fill", "Color")
-          ),
-          new TextBlock {
-            Margin = 8 // make some extra space for the space around the text
-          }.Bind(
-            new Binding("Text", "Key") // the label shows the node data's key
-          )
-        );
-
-      // this is the template for a label node on a link: just an Ellipse
-      // this node supports user-drawn links to and from the label node
-      if (_Diagram.NodeTemplateMap.ContainsKey("LinkLabel")) {
-        _Diagram.NodeTemplateMap.Remove("LinkLabel");
-      }
-      _Diagram.NodeTemplateMap.Add("LinkLabel",
-        new Node {
-          Selectable = false, Avoidable = false,
-          LayerName = "Foreground"
-        }.Add(
-          new Shape {
-            Figure = "Ellipse",
-            Width = 5, Height = 5, Stroke = (Brush)null,
-            PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
-          }
+    // the regular node template
+    _Diagram.NodeTemplate =
+      new Node(PanelType.Auto) {
+        LocationSpot = Spot.Center,
+        LayerName = "Background"  // always have regular nodes behing links
+      }.BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+      .Add(
+        new Shape {
+          Figure = "RoundedRectangle",
+          Fill = "white", Stroke = (Brush)null,
+          PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
+        }.Bind(
+          new Binding("Fill", "Color")
+        ),
+        new TextBlock {
+          Margin = 8 // make some extra space for the space around the text
+        }.Bind(
+          new Binding("Text", "Key") // the label shows the node data's key
         )
       );
 
-      // the regular link template, a straight blue arrow
-      _Diagram.LinkTemplate =
-        new Link {
-          RelinkableFrom = true,
-          RelinkableTo = true,
-          ToShortLength = 2
-        }.Add(
-          new Shape {
-            Stroke = "#2E68CC", StrokeWidth = 2
-          },
-          new Shape {
-            Fill = "#2E68CC", Stroke = (Brush)null, ToArrow = "Standard"
-          }
-        );
+    // this is the template for a label node on a link: just an Ellipse
+    // this node supports user-drawn links to and from the label node
+    if (_Diagram.NodeTemplateMap.ContainsKey("LinkLabel")) {
+      _Diagram.NodeTemplateMap.Remove("LinkLabel");
+    }
+    _Diagram.NodeTemplateMap.Add("LinkLabel",
+      new Node {
+        Selectable = false, Avoidable = false,
+        LayerName = "Foreground"
+      }.Add(
+        new Shape {
+          Figure = "Ellipse",
+          Width = 5, Height = 5, Stroke = (Brush)null,
+          PortId = "", FromLinkable = true, ToLinkable = true, Cursor = "pointer"
+        }
+      )
+    );
 
-      _Diagram.LinkTemplateMap.Add("linkToLink",
-        new Link {
-          RelinkableFrom = true, RelinkableTo = true
-        }.Add(
-          new Shape {
-            Stroke = "#2D9945", StrokeWidth = 2
-          }
-        )
+    // the regular link template, a straight blue arrow
+    _Diagram.LinkTemplate =
+      new Link {
+        RelinkableFrom = true,
+        RelinkableTo = true,
+        ToShortLength = 2
+      }.Add(
+        new Shape {
+          Stroke = "#2E68CC", StrokeWidth = 2
+        },
+        new Shape {
+          Fill = "#2E68CC", Stroke = (Brush)null, ToArrow = "Standard"
+        }
       );
 
-      LoadModel();
+    _Diagram.LinkTemplateMap.Add("linkToLink",
+      new Link {
+        RelinkableFrom = true, RelinkableTo = true
+      }.Add(
+        new Shape {
+          Stroke = "#2D9945", StrokeWidth = 2
+        }
+      )
+    );
 
-      void MaybeChangeLinkCategory(object s, DiagramEvent e) {
-        var link = e.Subject as Link;
-        var linktolink = (link.FromNode.IsLinkLabel || link.ToNode.IsLinkLabel);
-        (e.Diagram.Model as Model).SetCategoryForLinkData(link.Data as LinkData, (linktolink ? "linkToLink" : ""));
-      }
-    }
+    LoadModel();
 
-    private void LoadModel() {
-      if (_Diagram == null) return;
-      _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
-      _Diagram.Model.UndoManager.IsEnabled = true;
-    }
-
-    private void SaveModel() {
-      if (_Diagram == null) return;
-      modelJson1.JsonText = _Diagram.Model.ToJson();
+    void MaybeChangeLinkCategory(object s, DiagramEvent e) {
+      var link = e.Subject as Link;
+      var linktolink = (link.FromNode.IsLinkLabel || link.ToNode.IsLinkLabel);
+      (e.Diagram.Model as Model).SetCategoryForLinkData(link.Data as LinkData, (linktolink ? "linkToLink" : ""));
     }
   }
 
-  // define the model data
-  public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
-  public class NodeData : Model.NodeData {
-    public string Color { get; set; }
-    public string Loc { get; set; }
+  private void LoadModel() {
+    if (_Diagram == null) return;
+    _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
+    _Diagram.Model.UndoManager.IsEnabled = true;
   }
 
-  public class LinkData : Model.LinkData {
-    public List<string> LabelKeys { get; set; }
+  private void SaveModel() {
+    if (_Diagram == null) return;
+    modelJson1.JsonText = _Diagram.Model.ToJson();
   }
+}
+
+// define the model data
+public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
+public class NodeData : Model.NodeData {
+  public string Color { get; set; }
+  public string Loc { get; set; }
+}
+
+public class LinkData : Model.LinkData {
+  public List<string> LabelKeys { get; set; }
 }

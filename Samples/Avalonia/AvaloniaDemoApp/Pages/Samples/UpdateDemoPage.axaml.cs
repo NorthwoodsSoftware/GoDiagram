@@ -1,6 +1,5 @@
 /* Copyright (c) Northwoods Software Corporation. */
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia;
 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <!-- Use C# latest to enable new .NET features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net8.0-windows7.0;net462</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows10.0.19041;net462</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 

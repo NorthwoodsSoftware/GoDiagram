@@ -1,8 +1,5 @@
 /* Copyright (c) Northwoods Software Corporation. */
 
-using System;
-using Northwoods.Go.Layouts;
-
 namespace Demo.Samples.FDLayout {
   public partial class FDLayout : DemoControl {
     // This is a stub for the designer.

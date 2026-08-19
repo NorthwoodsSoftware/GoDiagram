@@ -4,6 +4,5 @@
              RequestedThemeVariant="Default">
   <Application.Styles>
     <FluentTheme />
-    <StyleInclude Source="avares://Northwoods.GoDiagram.Avalonia/DiagramControl.axaml" />
   </Application.Styles>
 </Application>

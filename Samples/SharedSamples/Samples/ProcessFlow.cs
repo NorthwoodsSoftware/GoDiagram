@@ -6,20 +6,22 @@ using Northwoods.Go;
 using Northwoods.Go.Extensions;
 using Northwoods.Go.Models;
 
-namespace Demo.Samples.ProcessFlow {
-  public partial class ProcessFlow : DemoControl {
-    private Diagram _Diagram;
+namespace Demo.Samples.ProcessFlow; 
+public partial class ProcessFlow : DemoControl {
+  private Diagram _Diagram;
+  private Animation _Animation;
+  private int _AnimatedPipeCount = -1;
 
-    public ProcessFlow() {
-      InitializeComponent();
-      _Diagram = diagramControl1.Diagram;
+  public ProcessFlow() {
+    InitializeComponent();
+    _Diagram = diagramControl1.Diagram;
 
-      modelJson1.SaveClick = SaveModel;
-      modelJson1.LoadClick = LoadModel;
+    modelJson1.SaveClick = SaveModel;
+    modelJson1.LoadClick = LoadModel;
 
-      desc1.MdText = DescriptionReader.Read("Samples.ProcessFlow.md");
+    desc1.MdText = DescriptionReader.Read("Samples.ProcessFlow.md");
 
-      modelJson1.JsonText = @"{
+    modelJson1.JsonText = @"{
   ""NodeDataSource"": [
     { ""Key"": ""P1"", ""Category"": ""Process"", ""Pos"": ""150 120"", ""Text"": ""Process"" },
     { ""Key"": ""P2"", ""Category"": ""Process"", ""Pos"": ""330 320"", ""Text"": ""Tank"" },
@@ -45,123 +47,147 @@ namespace Demo.Samples.ProcessFlow {
   ]
 }";
 
-      Setup();
-    }
+    Setup();
+  }
 
 
-    private void Setup() {
-      // add figures
-      Figures.DefineExtraFigures();
+  private void Setup() {
+    // add figures
+    Figures.DefineExtraFigures();
 
-      _Diagram.Grid.Visible = true;
-      _Diagram.Grid.GridCellSize = new Size(30, 20);
-      _Diagram.ToolManager.DraggingTool.IsGridSnapEnabled = true;
-      _Diagram.ToolManager.ResizingTool.IsGridSnapEnabled = true;
-      _Diagram.ToolManager.RotatingTool.SnapAngleMultiple = 90;
-      _Diagram.ToolManager.RotatingTool.SnapAngleEpsilon = 45;
-      _Diagram.UndoManager.IsEnabled = true;
+    _Diagram.Grid.Visible = true;
+    _Diagram.Grid.GridCellSize = new Size(30, 20);
+    _Diagram.ToolManager.DraggingTool.IsGridSnapEnabled = true;
+    _Diagram.ToolManager.ResizingTool.IsGridSnapEnabled = true;
+    _Diagram.ToolManager.RotatingTool.SnapAngleMultiple = 90;
+    _Diagram.ToolManager.RotatingTool.SnapAngleEpsilon = 45;
+    _Diagram.UndoManager.IsEnabled = true;
 
-      // node templatemap "Process"
-      _Diagram.NodeTemplateMap.Add("Process",
-        new Node(PanelType.Auto) {
-            LocationSpot = new Spot(0.5, 0.5), LocationElementName = "SHAPE",
-            Resizable = true, ResizeElementName = "SHAPE"
-          }
-          .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
-          .Add(
-            new Shape("Cylinder1") {
-                StrokeWidth = 2,
-                Fill = new Brush(new LinearGradientPaint(
-                      new Dictionary<float, string> { { 0, "gray" }, { .5f, "white" }, { 1, "gray" } },
-                      Spot.Left, Spot.Right
-                    )
-                  ),
-                MinSize = new Size(50, 50),
-                PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
-              }
-              .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
-            new TextBlock {
-                Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5,
-                Editable = true
-              }
-              .BindTwoWay("Text")
-          )
-        );
-
-      // note template map "Valve"
-      _Diagram.NodeTemplateMap.Add("Valve",
-        new Node(PanelType.Vertical) {
-            LocationSpot = new Spot(0.5, 1, 0, -21),
-            LocationElementName = "SHAPE",
-            SelectionElementName = "SHAPE",
-            Rotatable = true
-          }
-          .BindTwoWay("Angle")
-          .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
-          .Add(
-            new TextBlock {
-                Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5, Editable = true
-              }
-              .BindTwoWay("Text")
-              // keep text upright when the node is upside down
-              .BindElement("Angle", "Angle", (a, obj) => {
-                  var b = Convert.ToInt32(a as double? ?? -1d);
-                  return (b == 180 ? 180 : 0);
-                }
-              ),
-            new Shape {
-              Name = "SHAPE",
-              GeometryString = "F1 M0 0 L40 20 40 0 0 20z M20 10 L20 30 M12 30 L28 30",
+    // node templatemap "Process"
+    _Diagram.NodeTemplateMap.Add("Process",
+      new Node(PanelType.Auto) {
+          LocationSpot = new Spot(0.5, 0.5), LocationElementName = "SHAPE",
+          Resizable = true, ResizeElementName = "SHAPE"
+        }
+        .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
+        .Add(
+          new Shape("Cylinder1") {
               StrokeWidth = 2,
-              Fill = new Brush(new LinearGradientPaint(new Dictionary<float, string> { { 0, "gray" }, { .35f, "white" }, { .7f, "gray" } })),
-              PortId = "", FromSpot = new Spot(1, 0.35), ToSpot = new Spot(0, 0.35)
+              Fill = new Brush(new LinearGradientPaint(
+                    new Dictionary<float, string> { { 0, "gray" }, { .5f, "white" }, { 1, "gray" } },
+                    Spot.Left, Spot.Right
+                  )
+                ),
+              MinSize = new Size(50, 50),
+              PortId = "", FromSpot = Spot.AllSides, ToSpot = Spot.AllSides
             }
-          )
+            .BindTwoWay("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+          new TextBlock {
+              Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5,
+              Editable = true
+            }
+            .BindTwoWay("Text")
+        )
+      );
+
+    // note template map "Valve"
+    _Diagram.NodeTemplateMap.Add("Valve",
+      new Node(PanelType.Vertical) {
+          LocationSpot = new Spot(0.5, 1, 0, -21),
+          LocationElementName = "SHAPE",
+          SelectionElementName = "SHAPE",
+          Rotatable = true
+        }
+        .BindTwoWay("Angle")
+        .BindTwoWay("Location", "Pos", Point.Parse, Point.Stringify)
+        .Add(
+          new TextBlock {
+              Alignment = Spot.Center, TextAlign = TextAlign.Center, Margin = 5, Editable = true
+            }
+            .BindTwoWay("Text")
+            // keep text upright when the node is upside down
+            .BindElement("Angle", "Angle", (a, obj) => {
+                var b = Convert.ToInt32(a as double? ?? -1d);
+                return (b == 180 ? 180 : 0);
+              }
+            ),
+          new Shape {
+            Name = "SHAPE",
+            GeometryString = "F1 M0 0 L40 20 40 0 0 20z M20 10 L20 30 M12 30 L28 30",
+            StrokeWidth = 2,
+            Fill = new Brush(new LinearGradientPaint(new Dictionary<float, string> { { 0, "gray" }, { .35f, "white" }, { .7f, "gray" } })),
+            PortId = "", FromSpot = new Spot(1, 0.35), ToSpot = new Spot(0, 0.35)
+          }
+        )
+      );
+
+    // link template
+    _Diagram.LinkTemplate =
+      new Link {
+          Routing = LinkRouting.AvoidsNodes,
+          Curve = LinkCurve.JumpGap,
+          Corner = 10,
+          Reshapable = true,
+          ToShortLength = 7
+        }
+        .BindTwoWay("Points")
+        .Add(
+          // mark each Shape to get the link geometry with IsPanelMain = true
+          new Shape { IsPanelMain = true, Stroke = "black", StrokeWidth = 7 },
+          new Shape { IsPanelMain = true, Stroke = "gray", StrokeWidth = 5 },
+          new Shape { IsPanelMain = true, Stroke = "white", StrokeWidth = 3, Name = "PIPE", StrokeDashArray = new float[] { 10, 10 } },
+          new Shape { ToArrow = "Triangle", Scale = 1.3, Fill = "gray", Stroke = null }
         );
 
-      // link template
-      _Diagram.LinkTemplate =
-        new Link {
-            Routing = LinkRouting.AvoidsNodes,
-            Curve = LinkCurve.JumpGap,
-            Corner = 10,
-            Reshapable = true,
-            ToShortLength = 7
-          }
-          .BindTwoWay("Points")
-          .Add(
-            // mark each Shape to get the link geometry with IsPanelMain = true
-            new Shape { IsPanelMain = true, Stroke = "black", StrokeWidth = 7 },
-            new Shape { IsPanelMain = true, Stroke = "gray", StrokeWidth = 5 },
-            new Shape { IsPanelMain = true, Stroke = "white", StrokeWidth = 3, Name = "PIPE", StrokeDashArray = new float[] { 10, 10 } },
-            new Shape { ToArrow = "Triangle", Scale = 1.3, Fill = "gray", Stroke = null }
-          );
+    LoadModel();
 
-      LoadModel();
-    }
-
-    private void SaveModel() {
-      if (_Diagram == null) return;
-      modelJson1.JsonText = _Diagram.Model.ToJson();
-    }
-
-    private void LoadModel() {
-      if (_Diagram == null) return;
-      _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
-      _Diagram.Model.UndoManager.IsEnabled = true;
-    }
+    // Animate the flow along the pipes
+    _Diagram.InitialLayoutCompleted += (s, e) => {
+      UpdateFlowAnimation();
+      _Diagram.ModelChanged += (s2, e2) => {
+        if (e2.IsTransactionFinished) UpdateFlowAnimation();
+      };
+    };
   }
 
-  // define the model data
-  public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
+  // Indefinite "marching ants" animation over the current pipes
+  private void UpdateFlowAnimation() {
+    var count = 0;
+    foreach (var link in _Diagram.Links) {
+      if (link.FindElement("PIPE") is Shape) count++;
+    }
+    if (count == _AnimatedPipeCount) return;  // no pipes added or removed; keep the current animation running
+    _AnimatedPipeCount = count;
 
-  public class NodeData : Model.NodeData {
-    public string Pos { get; set; }
-    public string Size { get; set; }
-    public double Angle { get; set; }
+    _Animation?.Stop();
+    _Animation = new Animation { Easing = Animation.EaseLinear, RunCount = int.MaxValue };
+    foreach (var link in _Diagram.Links) {
+      if (link.FindElement("PIPE") is Shape pipe) _Animation.Add(pipe, "StrokeDashOffset", 20f, 0f);
+    }
+    _Animation.Start();  // no-op if there are no pipes to animate
   }
 
-  public class LinkData : Model.LinkData {
-    public List<Point> Points { get; set; }
+  private void SaveModel() {
+    if (_Diagram == null) return;
+    modelJson1.JsonText = _Diagram.Model.ToJson();
   }
+
+  private void LoadModel() {
+    if (_Diagram == null) return;
+    _Diagram.Model = Model.FromJson<Model>(modelJson1.JsonText);
+    _Diagram.Model.UndoManager.IsEnabled = true;
+  }
+}
+
+// define the model data
+public class Model : GraphLinksModel<NodeData, string, object, LinkData, string, string> { }
+
+public class NodeData : Model.NodeData {
+  public string Pos { get; set; }
+  public string Size { get; set; }
+  public double Angle { get; set; }
+}
+
+public class LinkData : Model.LinkData {
+  public List<Point> Points { get; set; }
 }

@@ -31,6 +31,8 @@ namespace WinFormsDemoApp {
       var userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GoWinForms";
       var env = await CoreWebView2Environment.CreateAsync(null, userDataFolder);
       await EnsureCoreWebView2Async(env);
+      // force a light color scheme so content doesn't render with a black background under system dark mode
+      CoreWebView2.Profile.PreferredColorScheme = CoreWebView2PreferredColorScheme.Light;
       _Initialized = true;
       if (_Html != null) NavigateToString(_Html);
     }

@@ -18,7 +18,7 @@ namespace Demo {
 
     public static void Show(Control caller, string text) {
       var msgbox = new DialogView(text);
-      var root = caller.GetVisualRoot();
+      var root = GetTopLevel(caller);
 
       if (root != null) msgbox.ShowDialog((Window)root);
       else msgbox.Show();

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
@@ -74,7 +74,7 @@
     
     
     
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="10.1.2" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a1" />
   </ItemGroup>
 
   <ItemGroup>

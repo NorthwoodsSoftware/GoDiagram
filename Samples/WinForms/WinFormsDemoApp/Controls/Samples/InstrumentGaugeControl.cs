@@ -145,7 +145,7 @@ namespace Demo.Samples.InstrumentGauge {
       var rand = new Random();
       void Loop() {
         // change each gauge's value several times a second
-        Task.Delay((1000 / 6)).ContinueWith((t) => {
+        Util.SetTimeout(() => {
           myDiagram.StartTransaction();
           foreach (var node in myDiagram.Nodes) {
             var scale = node.FindElement("SCALE") as Panel;
@@ -161,7 +161,7 @@ namespace Demo.Samples.InstrumentGauge {
           }
           myDiagram.CommitTransaction("modified Graduated Panel");
           Loop();
-        });
+        }, 1000 / 6, myDiagram);
       }
       // start the sim
       Loop();

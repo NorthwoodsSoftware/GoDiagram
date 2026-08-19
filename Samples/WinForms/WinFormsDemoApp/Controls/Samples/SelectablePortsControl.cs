@@ -184,7 +184,6 @@ namespace Demo.Samples.SelectablePorts {
         }
       };
 
-      // load the model in blazor
       ShowModel();
     }
 

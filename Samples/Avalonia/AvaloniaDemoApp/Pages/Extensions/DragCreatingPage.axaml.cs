@@ -1,7 +1,5 @@
 /* Copyright (c) Northwoods Software Corporation. */
 
-using Avalonia.Controls;
-
 namespace Demo.Extensions.DragCreating {
   public partial class DragCreating : DemoControl {
     // This is a stub for the designer.

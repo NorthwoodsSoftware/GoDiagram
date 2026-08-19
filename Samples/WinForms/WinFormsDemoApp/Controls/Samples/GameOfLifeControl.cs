@@ -279,9 +279,7 @@ namespace Demo.Samples.GameOfLife {
         if (liveCellCount == 0) { // stop the simulation if there are no more live cells
           ToggleSimulation();
         } else { // queue another step if the simuation is still enabled
-          Task.Delay(interval).ContinueWith((t) => {
-            GoLStep();
-          });
+          Util.SetTimeout(() => GoLStep(), interval, myDiagram);
         }
       }
     }

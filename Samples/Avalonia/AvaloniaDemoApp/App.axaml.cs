@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -14,7 +13,7 @@ namespace AvaloniaDemoApp {
 
     public override void OnFrameworkInitializationCompleted() {
       if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-        var openTo = (DemoType.Sample, DemoIndex.Samples.First());  // open to Org Chart Static by default
+        var openTo = (DemoType.Sample, DemoIndex.Samples.Values.First());  // open to Org Chart Static by default
         var args = desktop.Args;
         if (args != null && args.Length > 0) {
           openTo = MainView.ProcessInput(args[0]);

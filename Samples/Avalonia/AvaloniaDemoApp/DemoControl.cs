@@ -15,7 +15,7 @@ namespace Demo {
       // Don't call setup until we know the diagrams have their bounds.
       // Input priority ensures all children have finished loading,
       // since it is lower priority than Loaded.
-      Dispatcher.UIThread.Post(loadFunc, DispatcherPriority.Input);
+      this.Dispatcher.Post(loadFunc, DispatcherPriority.Input);
     }
 
     protected override void OnUnloaded(RoutedEventArgs e) {

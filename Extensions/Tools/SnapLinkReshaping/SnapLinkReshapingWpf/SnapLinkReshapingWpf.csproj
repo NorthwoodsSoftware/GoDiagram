@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Import Project="..\SnapLinkReshaping.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a1" />
+  </ItemGroup>
+
+</Project>

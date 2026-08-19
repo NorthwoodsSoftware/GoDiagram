@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <DefineConstants>WPF</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MdXaml" Version="1.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Extensions\GraphObjects\BalloonLink\BalloonLinkWpf\BalloonLinkWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\GraphObjects\DimensioningLink\DimensioningLinkWpf\DimensioningLinkWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\GraphObjects\Figures\FiguresWpf\FiguresWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\GraphObjects\HyperlinkText\HyperlinkTextWpf\HyperlinkTextWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\GraphObjects\ParallelRouteLink\ParallelRouteLinkWpf\ParallelRouteLinkWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Input\DataInspector\DataInspectorWpf\DataInspectorWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Input\DrawCommandHandler\DrawCommandHandlerWpf\DrawCommandHandlerWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Input\Robot\RobotWpf\RobotWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Input\ZoomSlider\ZoomSliderWpf\ZoomSliderWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Arranging\ArrangingWpf\ArrangingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\DoubleTree\DoubleTreeWpf\DoubleTreeWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Fishbone\FishboneWpf\FishboneWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Packed\PackedWpf\PackedWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Parallel\ParallelWpf\ParallelWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Radial\RadialWpf\RadialWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Serpentine\SerpentineWpf\SerpentineWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Spiral\SpiralWpf\SpiralWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\SwimLane\SwimLaneWpf\SwimLaneWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\Table\TableWpf\TableWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\TreeMap\TreeMapWpf\TreeMapWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Layouts\VirtualizedPacked\VirtualizedPackedWpf\VirtualizedPackedWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\ColumnResizing\ColumnResizingWpf\ColumnResizingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\CurvedLinkReshaping\CurvedLinkReshapingWpf\CurvedLinkReshapingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\DragCreating\DragCreatingWpf\DragCreatingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\DragZooming\DragZoomingWpf\DragZoomingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\FreehandDrawing\FreehandDrawingWpf\FreehandDrawingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\GeometryReshaping\GeometryReshapingWpf\GeometryReshapingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\GuidedDragging\GuidedDraggingWpf\GuidedDraggingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\LinkLabelDragging\LinkLabelDraggingWpf\LinkLabelDraggingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\LinkLabelOnPathDragging\LinkLabelOnPathDraggingWpf\LinkLabelOnPathDraggingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\LinkShifting\LinkShiftingWpf\LinkShiftingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\NodeLabelDragging\NodeLabelDraggingWpf\NodeLabelDraggingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\NonRealtimeDragging\NonRealtimeDraggingWpf\NonRealtimeDraggingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\OrthogonalLinkReshaping\OrthogonalLinkReshapingWpf\OrthogonalLinkReshapingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\OverviewResizing\OverviewResizingWpf\OverviewResizingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\PolygonDrawing\PolygonDrawingWpf\PolygonDrawingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\PolylineLinking\PolylineLinkingWpf\PolylineLinkingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\PortShifting\PortShiftingWpf\PortShiftingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\RealtimeDragSelecting\RealtimeDragSelectingWpf\RealtimeDragSelectingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\Rescaling\RescalingWpf\RescalingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\ResizeMultiple\ResizeMultipleWpf\ResizeMultipleWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\RotateMultiple\RotateMultipleWpf\RotateMultipleWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\RowResizing\RowResizingWpf\RowResizingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\SectorReshaping\SectorReshapingWpf\SectorReshapingWpf.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingWpf\SnapLinkReshapingWpf.csproj" />
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a1" />
+    
+    
+    
+    
+  </ItemGroup>
+
+  <Import Project="..\..\SharedSamples\SharedSamples.projitems" Label="Shared" />
+
+</Project>

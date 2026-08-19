@@ -1,0 +1,67 @@
+<UserControl
+  x:Class="WpfDemoApp.Views.ModelJsonView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  x:Name="root"
+  d:DesignHeight="450"
+  d:DesignWidth="800"
+  mc:Ignorable="d">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Button
+      Name="saveBtn"
+      Grid.Row="0"
+      Grid.Column="0"
+      Margin="3"
+      Click="saveBtn_Click"
+      Content="Save"
+      Visibility="{Binding Path=CanSaveLoad, ElementName=root, Converter={StaticResource BooleanToVisibilityConverter}}" />
+    <Button
+      Name="loadBtn"
+      Grid.Row="0"
+      Grid.Column="1"
+      Margin="3"
+      Click="loadBtn_Click"
+      Content="Load"
+      Visibility="{Binding Path=CanSaveLoad, ElementName=root, Converter={StaticResource BooleanToVisibilityConverter}}" />
+    <TextBlock
+      Name="label"
+      Grid.Row="0"
+      Grid.Column="2"
+      Margin="3"
+      VerticalAlignment="Center"
+      Text="Diagram Model in JSON format:" />
+    <TextBox
+      Name="textBox"
+      Grid.Row="1"
+      Grid.Column="0"
+      Grid.ColumnSpan="3"
+      MaxHeight="300"
+      ScrollViewer.VerticalScrollBarVisibility="Auto"
+      Text="{Binding Path=JsonText, ElementName=root}">
+      <TextBox.Style>
+        <Style TargetType="TextBox">
+          <Setter Property="IsReadOnly" Value="True" />
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=CanSaveLoad, ElementName=root}" Value="True">
+              <Setter Property="IsReadOnly" Value="False" />
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </TextBox.Style>
+    </TextBox>
+  </Grid>
+</UserControl>

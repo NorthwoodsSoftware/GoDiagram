@@ -4,21 +4,21 @@ using Northwoods.Go;
 using Northwoods.Go.Models;
 using Northwoods.Go.Tools.Extensions;
 
-namespace Demo.Extensions.FreehandDrawing {
-  public partial class FreehandDrawing : DemoControl {
-    private Diagram _Diagram;
+namespace Demo.Extensions.FreehandDrawing; 
+public partial class FreehandDrawing : DemoControl {
+  private Diagram _Diagram;
 
-    public FreehandDrawing() {
-      InitializeComponent();
-      _Diagram = diagramControl1.Diagram;
+  public FreehandDrawing() {
+    InitializeComponent();
+    _Diagram = diagramControl1.Diagram;
 
-      selectBtn.Click += (e, obj) => _SetMode(false);
-      drawBtn.Click += (e, obj) => _SetMode(true);
-      _InitCheckBoxes();
+    selectBtn.Click += (e, obj) => _SetMode(false);
+    drawBtn.Click += (e, obj) => _SetMode(true);
+    _InitCheckBoxes();
 
-      modelJson1.SaveClick = SaveModel;
-      modelJson1.LoadClick = LoadModel;
-      modelJson1.JsonText = @"{
+    modelJson1.SaveClick = SaveModel;
+    modelJson1.LoadClick = LoadModel;
+    modelJson1.JsonText = @"{
         ""NodeDataSource"": [
           {
             ""Key"":""-1"",
@@ -31,115 +31,114 @@ namespace Demo.Extensions.FreehandDrawing {
         ""SharedData"": { ""Position"":""0 0"" }
 }";
 
-      Setup();
+    Setup();
 
-      desc1.MdText = DescriptionReader.Read("Extensions.FreehandDrawing.md");
-    }
+    desc1.MdText = DescriptionReader.Read("Extensions.FreehandDrawing.md");
+  }
 
-    private void Setup() {
-      _Diagram.ToolManager.MouseDownTools.Insert(3, new GeometryReshapingTool());
+  private void Setup() {
+    _Diagram.ToolManager.MouseDownTools.Insert(3, new GeometryReshapingTool());
 
-      _Diagram.NodeTemplate =
-        new Part {
-            LocationSpot = Spot.Center, IsLayoutPositioned = false,
-            Resizable = true, ResizeElementName = "SHAPE",
-            Rotatable = true, RotateElementName = "SHAPE",
-            Reshapable = true, // GeometryReshapingTool assumes nonexistent Part.ReshapeElementName would be "SHAPE"
-            SelectionAdorned = true, SelectionElementName = "SHAPE",
-            SelectionAdornmentTemplate = // custom selection adornment: blue rectangle
-              new Adornment("Auto")
-                .Add(
-                  new Shape { Stroke = "dodgerblue", Fill = null },
-                  new Placeholder { Margin = -1 }
-                )
-          }
-          .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
-          .Add(
-            new Shape { Name = "SHAPE", Fill = null, StrokeWidth = 1.5 }
-              .Bind(
-                new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
-                new Binding("Angle").MakeTwoWay(),
-                new Binding("GeometryString", "Geo").MakeTwoWay(),
-                new Binding("Fill"),
-                new Binding("Stroke"),
-                new Binding("StrokeWidth")
+    _Diagram.NodeTemplate =
+      new Part {
+          LocationSpot = Spot.Center, IsLayoutPositioned = false,
+          Resizable = true, ResizeElementName = "SHAPE",
+          Rotatable = true, RotateElementName = "SHAPE",
+          Reshapable = true, // GeometryReshapingTool assumes nonexistent Part.ReshapeElementName would be "SHAPE"
+          SelectionAdorned = true, SelectionElementName = "SHAPE",
+          SelectionAdornmentTemplate = // custom selection adornment: blue rectangle
+            new Adornment("Auto")
+              .Add(
+                new Shape { Stroke = "dodgerblue", Fill = null },
+                new Placeholder { Margin = -1 }
               )
-          );
+        }
+        .BindTwoWay("Location", "Loc", Point.Parse, Point.Stringify)
+        .Add(
+          new Shape { Name = "SHAPE", Fill = null, StrokeWidth = 1.5 }
+            .Bind(
+              new Binding("DesiredSize", "Size", Northwoods.Go.Size.Parse, Northwoods.Go.Size.Stringify),
+              new Binding("Angle").MakeTwoWay(),
+              new Binding("GeometryString", "Geo").MakeTwoWay(),
+              new Binding("Fill"),
+              new Binding("Stroke"),
+              new Binding("StrokeWidth")
+            )
+        );
 
-      // create drawing tool, defined in FreehandDrawingTool.cs
-      var tool = new FreehandDrawingTool {
-        // provide default node data
-        ArchetypePartData = new NodeData {
-          Stroke = "green",
-          StrokeWidth = 3,
-          Category = "FreehandDrawing"
-        },
-        // allow the tool to start on top of an existing part
-        IsBackgroundOnly = false
-      };
-      // install as first mouse-move tool
-      _Diagram.ToolManager.MouseMoveTools.Insert(0, tool);
+    // create drawing tool, defined in FreehandDrawingTool.cs
+    var tool = new FreehandDrawingTool {
+      // provide default node data
+      ArchetypePartData = new NodeData {
+        Stroke = "green",
+        StrokeWidth = 3,
+        Category = "FreehandDrawing"
+      },
+      // allow the tool to start on top of an existing part
+      IsBackgroundOnly = false
+    };
+    // install as first mouse-move tool
+    _Diagram.ToolManager.MouseMoveTools.Insert(0, tool);
 
-      LoadModel();  // load a simple diagram from the modelJson
-    }
+    LoadModel();  // load a simple diagram from the modelJson
+  }
 
-    // called after checkboxes change Diagram.Allow...
-    private void UpdateAllAdornments() {
-      foreach (var p in _Diagram.Selection) {
-        p.UpdateAdornments();
-      }
-    }
-
-    private void SaveModel() {
-      if (_Diagram == null) return;
-      (_Diagram.Model.SharedData as SharedData).Position = Point.Stringify(_Diagram.Position);
-      modelJson1.JsonText = _Diagram.Model.ToJson();
-    }
-
-    private void LoadModel() {
-      if (_Diagram == null) return;
-      var model = Model.FromJson<Model>(modelJson1.JsonText);
-      var pos = model.SharedData.Position;
-      _Diagram.InitialPosition = Point.Parse(pos);
-      _Diagram.Model = model;
-      _Diagram.Model.UndoManager.IsEnabled = true;
-    }
-
-    private void _SetMode(bool isDraw) {
-      var tool = _Diagram.ToolManager.FindTool("FreehandDrawing");
-      if (tool != null) {
-        tool.IsEnabled = isDraw;
-      }
-    }
-
-    private void _ToggleResizing() {
-      _Diagram.AllowResize = !_Diagram.AllowResize;
-      UpdateAllAdornments();
-    }
-
-    private void _ToggleReshaping() {
-      _Diagram.AllowReshape = !_Diagram.AllowReshape;
-      UpdateAllAdornments();
-    }
-
-    private void _ToggleRotating() {
-      _Diagram.AllowRotate = !_Diagram.AllowRotate;
-      UpdateAllAdornments();
+  // called after checkboxes change Diagram.Allow...
+  private void UpdateAllAdornments() {
+    foreach (var p in _Diagram.Selection) {
+      p.UpdateAdornments();
     }
   }
 
-  // define the model data
-  public class Model : Model<NodeData, string, SharedData> { }
-  public class NodeData : Model.NodeData {
-    public string Loc { get; set; }
-    public string Size { get; set; }
-    public double? Angle { get; set; }
-    public string Geo { get; set; }
-    public string Fill { get; set; }
-    public string Stroke { get; set; }
-    public double StrokeWidth { get; set; }
+  private void SaveModel() {
+    if (_Diagram == null) return;
+    (_Diagram.Model.SharedData as SharedData).Position = Point.Stringify(_Diagram.Position);
+    modelJson1.JsonText = _Diagram.Model.ToJson();
   }
-  public class SharedData {
-    public string Position { get; set; }
+
+  private void LoadModel() {
+    if (_Diagram == null) return;
+    var model = Model.FromJson<Model>(modelJson1.JsonText);
+    var pos = model.SharedData.Position;
+    _Diagram.InitialPosition = Point.Parse(pos);
+    _Diagram.Model = model;
+    _Diagram.Model.UndoManager.IsEnabled = true;
   }
+
+  private void _SetMode(bool isDraw) {
+    var tool = _Diagram.ToolManager.FindTool("FreehandDrawing");
+    if (tool != null) {
+      tool.IsEnabled = isDraw;
+    }
+  }
+
+  private void _ToggleResizing() {
+    _Diagram.AllowResize = !_Diagram.AllowResize;
+    UpdateAllAdornments();
+  }
+
+  private void _ToggleReshaping() {
+    _Diagram.AllowReshape = !_Diagram.AllowReshape;
+    UpdateAllAdornments();
+  }
+
+  private void _ToggleRotating() {
+    _Diagram.AllowRotate = !_Diagram.AllowRotate;
+    UpdateAllAdornments();
+  }
+}
+
+// define the model data
+public class Model : Model<NodeData, string, SharedData> { }
+public class NodeData : Model.NodeData {
+  public string Loc { get; set; }
+  public string Size { get; set; }
+  public double? Angle { get; set; }
+  public string Geo { get; set; }
+  public string Fill { get; set; }
+  public string Stroke { get; set; }
+  public double StrokeWidth { get; set; }
+}
+public class SharedData {
+  public string Position { get; set; }
 }

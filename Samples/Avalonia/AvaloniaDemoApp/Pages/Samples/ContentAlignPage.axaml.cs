@@ -22,8 +22,8 @@ namespace Demo.Samples.ContentAlign {
 
     private void _UpdateUI(object sender, DiagramEvent e) {
       var control = diagramControl1;
-      if (control != null && !control.CheckAccess()) {
-        Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(
+      if (control != null && !control.Dispatcher.CheckAccess()) {
+        control.Dispatcher.InvokeAsync(
           () => _UpdateUI(sender, e),
           Avalonia.Threading.DispatcherPriority.Send);
         return;
