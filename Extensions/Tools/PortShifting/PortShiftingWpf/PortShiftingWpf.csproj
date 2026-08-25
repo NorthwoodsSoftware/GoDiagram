@@ -9,7 +9,7 @@
   <Import Project="..\PortShifting.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a1" />
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a2" />
   </ItemGroup>
 
 </Project>

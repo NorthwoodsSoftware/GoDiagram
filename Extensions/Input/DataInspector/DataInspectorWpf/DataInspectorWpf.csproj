@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a1" />
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a2" />
   </ItemGroup>
 
   <Import Project="..\DataInspector.projitems" Label="Shared" />

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a1" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a2" />
   </ItemGroup>
 
   <Import Project="..\HyperlinkText.projitems" Label="Shared" />

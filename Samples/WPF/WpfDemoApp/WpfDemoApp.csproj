@@ -58,7 +58,7 @@
     <ProjectReference Include="..\..\..\Extensions\Tools\RowResizing\RowResizingWpf\RowResizingWpf.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Tools\SectorReshaping\SectorReshapingWpf\SectorReshapingWpf.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingWpf\SnapLinkReshapingWpf.csproj" />
-    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a1" />
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a2" />
     
     
     

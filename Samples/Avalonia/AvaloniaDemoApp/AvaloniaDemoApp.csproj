@@ -63,7 +63,7 @@
     <ProjectReference Include="..\..\..\Extensions\Tools\RowResizing\RowResizingAvalonia\RowResizingAvalonia.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Tools\SectorReshaping\SectorReshapingAvalonia\SectorReshapingAvalonia.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Tools\SnapLinkReshaping\SnapLinkReshapingAvalonia\SnapLinkReshapingAvalonia.csproj" />
-    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-a1" />
+    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-a2" />
     
     
     
