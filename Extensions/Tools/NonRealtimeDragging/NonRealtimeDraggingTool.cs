@@ -10,6 +10,7 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
 using System.Collections.Generic;
 
 namespace Northwoods.Go.Tools.Extensions {
@@ -20,7 +21,7 @@ namespace Northwoods.Go.Tools.Extensions {
   /// </summary>
   /// @category Tool Extension
   public class NonRealtimeDraggingTool : DraggingTool {
-    private int _Duration;  // duration of movement animation; <= 0 to disable
+    private TimeSpan _Duration;  // duration of movement animation; <= 0 to disable
     private Part _ImagePart;  // a Part holding a translucent image of what would be dragged
     private IDictionary<Part, DraggingInfo> _GhostDraggedParts;  // a Map of the _ImagePart and its dragging information
     private IDictionary<Part, DraggingInfo> _OriginalDraggedParts;  // the saved normal value of DraggingTool.DraggedParts
@@ -31,7 +32,7 @@ namespace Northwoods.Go.Tools.Extensions {
     /// <remarks>
     /// The default value is zero -- there is no animation of the movement.
     /// </remarks>
-    public int Duration {
+    public TimeSpan Duration {
       get { return _Duration; }
       set { _Duration = value; }
     }
@@ -98,7 +99,7 @@ namespace Northwoods.Go.Tools.Extensions {
         DraggedParts = partsmap;
       }
       base.DoMouseUp();
-      if (partsmap != null && Duration > 0) {
+      if (partsmap != null && Duration > TimeSpan.Zero) {
         var anim = new Animation { Duration = Duration };
         foreach (var kvp in partsmap) {
           var part = kvp.Key;

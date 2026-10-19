@@ -244,9 +244,7 @@ namespace Demo.Samples.TreeMapper {
           if (stylename != ROUTINGSTYLE) {
             myDiagram.Commit(diag => {
               ROUTINGSTYLE = stylename;
-              var git = diag.FindTopLevelGroups();
-              while (git.MoveNext()) {
-                var g = git.Current;
+              foreach (var g in diag.FindTopLevelGroups()) {
                 _UpdateNodeWidths(g, double.NaN);
               }
               diag.LayoutDiagram(true);  // force layouts to happen again

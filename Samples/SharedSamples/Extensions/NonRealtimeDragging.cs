@@ -1,5 +1,6 @@
 ﻿/* Copyright (c) Northwoods Software Corporation. */
 
+using System;
 using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Models;
@@ -19,7 +20,7 @@ public partial class NonRealtimeDragging : DemoControl {
   }
 
   private void Setup() {
-    _Diagram.ToolManager.DraggingTool = new NonRealtimeDraggingTool { Duration = 600 };
+    _Diagram.ToolManager.DraggingTool = new NonRealtimeDraggingTool { Duration = TimeSpan.FromMilliseconds(600) };
     _Diagram.UndoManager.IsEnabled = true;
 
     // node template

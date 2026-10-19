@@ -126,7 +126,7 @@ public partial class EntityRelationship : DemoControl {
           Stroke = "#1967B3",
           SegmentIndex = 0,
           SegmentOffset = new Point(double.NaN, double.NaN),
-          SegmentOrientation = Orientation.Upright
+          SegmentOrientation = SegmentOrientation.Upright
         }.Bind(
           new Binding("Text", "Text")),
         new TextBlock  // the "to" label
@@ -136,7 +136,7 @@ public partial class EntityRelationship : DemoControl {
           Stroke = "#1967B3",
           SegmentIndex = -1,
           SegmentOffset = new Point(double.NaN, double.NaN),
-          SegmentOrientation = Orientation.Upright
+          SegmentOrientation = SegmentOrientation.Upright
         }.Bind(
           new Binding("Text", "ToText"))
       );

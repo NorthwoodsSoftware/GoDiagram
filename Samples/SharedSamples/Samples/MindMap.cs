@@ -21,27 +21,27 @@ public partial class MindMap : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.MindMap.md");
 
     modelJson1.JsonText = @"{
-       ""NodeDataSource"": [
-        {""Key"":-1, ""Text"":""Mind Map"", ""Loc"":""0 0""},
-        {""Key"":1, ""Parent"":-1, ""Text"":""Getting more time"", ""Brush"":""skyblue"", ""Dir"":""right"", ""Loc"":""77 -22""},
-        {""Key"":11, ""Parent"":1, ""Text"":""Wake up early"", ""Brush"":""skyblue"", ""Dir"":""right"", ""Loc"":""200 -48""},
-        {""Key"":12, ""Parent"":1, ""Text"":""Delegate"", ""Brush"":""skyblue"", ""Dir"":""right"", ""Loc"":""200 -22""},
-        {""Key"":13, ""Parent"":1, ""Text"":""Simplify"", ""Brush"":""skyblue"", ""Dir"":""right"", ""Loc"":""200 4""},
-        {""Key"":2, ""Parent"":-1, ""Text"":""More effective use"", ""Brush"":""darkseagreen"", ""Dir"":""right"", ""Loc"":""77 43""},
-        {""Key"":21, ""Parent"":2, ""Text"":""Planning"", ""Brush"":""darkseagreen"", ""Dir"":""right"", ""Loc"":""203 30""},
-        {""Key"":211, ""Parent"":21, ""Text"":""Priorities"", ""Brush"":""darkseagreen"", ""Dir"":""right"", ""Loc"":""274 17""},
-        {""Key"":212, ""Parent"":21, ""Text"":""Ways to focus"", ""Brush"":""darkseagreen"", ""Dir"":""right"", ""Loc"":""274 43""},
-        {""Key"":22, ""Parent"":2, ""Text"":""Goals"", ""Brush"":""darkseagreen"", ""Dir"":""right"", ""Loc"":""203 56""},
-        {""Key"":3, ""Parent"":-1, ""Text"":""Time wasting"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-20 -31.75""},
-        {""Key"":31, ""Parent"":3, ""Text"":""Too many meetings"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-117 -64.25""},
-        {""Key"":32, ""Parent"":3, ""Text"":""Too much time spent on details"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-117 -25.25""},
-        {""Key"":33, ""Parent"":3, ""Text"":""Message fatigue"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-117 0.75""},
-        {""Key"":331, ""Parent"":31, ""Text"":""Check messages less"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-251 -77.25""},
-        {""Key"":332, ""Parent"":31, ""Text"":""Message filters"", ""Brush"":""palevioletred"", ""Dir"":""left"", ""Loc"":""-251 -51.25""},
-        {""Key"":4, ""Parent"":-1, ""Text"":""Key issues"", ""Brush"":""coral"", ""Dir"":""left"", ""Loc"":""-20 52.75""},
-        {""Key"":41, ""Parent"":4, ""Text"":""Methods"", ""Brush"":""coral"", ""Dir"":""left"", ""Loc"":""-103 26.75""},
-        {""Key"":42, ""Parent"":4, ""Text"":""Deadlines"", ""Brush"":""coral"", ""Dir"":""left"", ""Loc"":""-103 52.75""},
-        {""Key"":43, ""Parent"":4, ""Text"":""Checkpoints"", ""Brush"":""coral"", ""Dir"":""left"", ""Loc"":""-103 78.75""}
+       ""nodeDataSource"": [
+        {""key"":-1, ""text"":""Mind Map"", ""loc"":""0 0""},
+        {""key"":1, ""parent"":-1, ""text"":""Getting more time"", ""brush"":""skyblue"", ""dir"":""right"", ""loc"":""77 -22""},
+        {""key"":11, ""parent"":1, ""text"":""Wake up early"", ""brush"":""skyblue"", ""dir"":""right"", ""loc"":""200 -48""},
+        {""key"":12, ""parent"":1, ""text"":""Delegate"", ""brush"":""skyblue"", ""dir"":""right"", ""loc"":""200 -22""},
+        {""key"":13, ""parent"":1, ""text"":""Simplify"", ""brush"":""skyblue"", ""dir"":""right"", ""loc"":""200 4""},
+        {""key"":2, ""parent"":-1, ""text"":""More effective use"", ""brush"":""darkseagreen"", ""dir"":""right"", ""loc"":""77 43""},
+        {""key"":21, ""parent"":2, ""text"":""Planning"", ""brush"":""darkseagreen"", ""dir"":""right"", ""loc"":""203 30""},
+        {""key"":211, ""parent"":21, ""text"":""Priorities"", ""brush"":""darkseagreen"", ""dir"":""right"", ""loc"":""274 17""},
+        {""key"":212, ""parent"":21, ""text"":""Ways to focus"", ""brush"":""darkseagreen"", ""dir"":""right"", ""loc"":""274 43""},
+        {""key"":22, ""parent"":2, ""text"":""Goals"", ""brush"":""darkseagreen"", ""dir"":""right"", ""loc"":""203 56""},
+        {""key"":3, ""parent"":-1, ""text"":""Time wasting"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-20 -31.75""},
+        {""key"":31, ""parent"":3, ""text"":""Too many meetings"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-117 -64.25""},
+        {""key"":32, ""parent"":3, ""text"":""Too much time spent on details"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-117 -25.25""},
+        {""key"":33, ""parent"":3, ""text"":""Message fatigue"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-117 0.75""},
+        {""key"":331, ""parent"":31, ""text"":""Check messages less"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-251 -77.25""},
+        {""key"":332, ""parent"":31, ""text"":""Message filters"", ""brush"":""palevioletred"", ""dir"":""left"", ""loc"":""-251 -51.25""},
+        {""key"":4, ""parent"":-1, ""text"":""Key issues"", ""brush"":""coral"", ""dir"":""left"", ""loc"":""-20 52.75""},
+        {""key"":41, ""parent"":4, ""text"":""Methods"", ""brush"":""coral"", ""dir"":""left"", ""loc"":""-103 26.75""},
+        {""key"":42, ""parent"":4, ""text"":""Deadlines"", ""brush"":""coral"", ""dir"":""left"", ""loc"":""-103 52.75""},
+        {""key"":43, ""parent"":4, ""text"":""Checkpoints"", ""brush"":""coral"", ""dir"":""left"", ""loc"":""-103 78.75""}
       ]
     }";
 

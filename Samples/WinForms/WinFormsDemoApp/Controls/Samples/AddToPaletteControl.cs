@@ -52,12 +52,12 @@ namespace Demo.Samples.AddToPalette {
       modelJson1.JsonText = "";
 
       modelJson2.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"": 1, ""Text"":""Hello"", ""Figure"":""Circle"", ""Color"":""Green"", ""Loc"":""0 0"" },
-    { ""Key"": 2, ""Text"":""World"", ""Figure"":""Rectangle"", ""Color"":""Red"", ""Loc"":""100 0"" }
+  ""nodeDataSource"": [
+    { ""key"": 1, ""text"":""Hello"", ""figure"":""Circle"", ""color"":""Green"", ""loc"":""0 0"" },
+    { ""key"": 2, ""text"":""World"", ""figure"":""Rectangle"", ""color"":""Red"", ""loc"":""100 0"" }
   ],
-  ""LinkDataSource"": [
-    { ""From"":1, ""To"":2 }
+  ""linkDataSource"": [
+    { ""from"":1, ""to"":2 }
   ]
 }";
 

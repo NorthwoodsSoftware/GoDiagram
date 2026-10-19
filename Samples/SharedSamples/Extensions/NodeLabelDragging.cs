@@ -19,26 +19,26 @@ public partial class NodeLabelDragging : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-  ""NodeKeyProperty"": ""Id"",
-  ""NodeDataSource"": [
-    { ""Id"": ""0"", ""Loc"": ""120 120"", ""Text"": ""Initial"" },
-    { ""Id"": ""1"", ""Loc"": ""330 120"", ""Text"": ""First down"" },
-    { ""Id"": ""2"", ""Loc"": ""226 376"", ""Text"": ""First up"" },
-    { ""Id"": ""3"", ""Loc"": ""60 276"", ""Text"": ""Second down"" },
-    { ""Id"": ""4"", ""Loc"": ""226 226"", ""Text"": ""Wait"" }
+  ""nodeKeyProperty"": ""Id"",
+  ""nodeDataSource"": [
+    { ""id"": ""0"", ""loc"": ""120 120"", ""text"": ""Initial"" },
+    { ""id"": ""1"", ""loc"": ""330 120"", ""text"": ""First down"" },
+    { ""id"": ""2"", ""loc"": ""226 376"", ""text"": ""First up"" },
+    { ""id"": ""3"", ""loc"": ""60 276"", ""text"": ""Second down"" },
+    { ""id"": ""4"", ""loc"": ""226 226"", ""text"": ""Wait"" }
   ],
-  ""LinkDataSource"": [
-    { ""From"": ""0"", ""To"": ""0"", ""Text"": ""up or timer"", ""Curviness"": -20 },
-    { ""From"": ""0"", ""To"": ""1"", ""Text"": ""down"", ""Curviness"": 20 },
-    { ""From"": ""1"", ""To"": ""1"", ""Text"": ""down"", ""Curviness"": -20 },
-    { ""From"": ""1"", ""To"": ""2"", ""Text"": ""up (no move)"" },
-    { ""From"": ""1"", ""To"": ""4"", ""Text"": ""timer"" },
-    { ""From"": ""2"", ""To"": ""0"", ""Text"": ""timer\nPOST"" },
-    { ""From"": ""2"", ""To"": ""3"", ""Text"": ""down"" },
-    { ""From"": ""3"", ""To"": ""0"", ""Text"": ""up\nPOST\n(dblclick\nif no move)"" },
-    { ""From"": ""3"", ""To"": ""3"", ""Text"": ""down or timer"", ""Curviness"": 20 },
-    { ""From"": ""4"", ""To"": ""0"", ""Text"": ""up\nPOST"" },
-    { ""From"": ""4"", ""To"": ""4"", ""Text"": ""down"" }
+  ""linkDataSource"": [
+    { ""from"": ""0"", ""to"": ""0"", ""text"": ""up or timer"", ""curviness"": -20 },
+    { ""from"": ""0"", ""to"": ""1"", ""text"": ""down"", ""curviness"": 20 },
+    { ""from"": ""1"", ""to"": ""1"", ""text"": ""down"", ""curviness"": -20 },
+    { ""from"": ""1"", ""to"": ""2"", ""text"": ""up (no move)"" },
+    { ""from"": ""1"", ""to"": ""4"", ""text"": ""timer"" },
+    { ""from"": ""2"", ""to"": ""0"", ""text"": ""timer\nPOST"" },
+    { ""from"": ""2"", ""to"": ""3"", ""text"": ""down"" },
+    { ""from"": ""3"", ""to"": ""0"", ""text"": ""up\nPOST\n(dblclick\nif no move)"" },
+    { ""from"": ""3"", ""to"": ""3"", ""text"": ""down or timer"", ""curviness"": 20 },
+    { ""from"": ""4"", ""to"": ""0"", ""text"": ""up\nPOST"" },
+    { ""from"": ""4"", ""to"": ""4"", ""text"": ""down"" }
   ]
 }";
 

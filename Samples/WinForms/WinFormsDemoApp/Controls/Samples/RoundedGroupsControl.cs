@@ -23,8 +23,7 @@ namespace Demo.Samples.RoundedGroups {
       with a rounded header and a rounded footer.
         </p>
         <p>
-      The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are defined in
-      <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> in the extensions directory.
+      The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are predefined.
       See also the <a href=""demo/TwoHalves"">Two Halves</a> sample and
       the <a href=""demo/Parallel"">Parallel Layout</a> sample.
         </p>

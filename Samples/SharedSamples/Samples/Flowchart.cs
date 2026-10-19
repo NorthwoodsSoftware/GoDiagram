@@ -17,35 +17,35 @@ public partial class Flowchart : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.Flowchart.md");
 
     modelJson1.JsonText = @"{
-  ""LinkFromPortIdProperty"": ""FromPort"",
-  ""LinkToPortIdProperty"": ""ToPort"",
-  ""NodeDataSource"": [
-    {""Category"":""Comment"", ""Loc"":""360 -10"", ""Text"":""Kookie Brittle"", ""Key"":-13},
-    {""Key"":-1, ""Category"":""Start"", ""Loc"":""175 0"", ""Text"":""Start""},
-    {""Key"":10, ""Loc"":""-5 75"", ""Text"":""Preheat oven to 375 F""},
-    {""Key"":1, ""Loc"":""175 100"", ""Text"":""In a bowl, blend: 1 cup margarine, 1.5 teaspoon vanilla, 1 teaspoon salt""},
-    {""Key"":2, ""Loc"":""175 200"", ""Text"":""Gradually beat in 1 cup sugar and 2 cups sifted flour""},
-    {""Key"":3, ""Loc"":""175 290"", ""Text"":""Mix in 6 oz (1 cup) Nestle's Semi-Sweet Chocolate Morsels""},
-    {""Key"":4, ""Loc"":""175 380"", ""Text"":""Press evenly into ungreased 15x10x1 pan""},
-    {""Key"":5, ""Loc"":""355 85"", ""Text"":""Finely chop 1/2 cup of your choice of nuts""},
-    {""Key"":6, ""Loc"":""175 450"", ""Text"":""Sprinkle nuts on top""},
-    {""Key"":7, ""Loc"":""175 515"", ""Text"":""Bake for 25 minutes and let cool""},
-    {""Key"":8, ""Loc"":""175 585"", ""Text"":""Cut into rectangular grid""},
-    {""Key"":-2, ""Category"":""End"", ""Loc"":""175 660"", ""Text"":""Enjoy!""}
+  ""linkFromPortIdProperty"": ""FromPort"",
+  ""linkToPortIdProperty"": ""ToPort"",
+  ""nodeDataSource"": [
+    {""category"":""Comment"", ""loc"":""360 -10"", ""text"":""Kookie Brittle"", ""key"":-13},
+    {""key"":-1, ""category"":""Start"", ""loc"":""175 0"", ""text"":""Start""},
+    {""key"":10, ""loc"":""-5 75"", ""text"":""Preheat oven to 375 F""},
+    {""key"":1, ""loc"":""175 100"", ""text"":""In a bowl, blend: 1 cup margarine, 1.5 teaspoon vanilla, 1 teaspoon salt""},
+    {""key"":2, ""loc"":""175 200"", ""text"":""Gradually beat in 1 cup sugar and 2 cups sifted flour""},
+    {""key"":3, ""loc"":""175 290"", ""text"":""Mix in 6 oz (1 cup) Nestle's Semi-Sweet Chocolate Morsels""},
+    {""key"":4, ""loc"":""175 380"", ""text"":""Press evenly into ungreased 15x10x1 pan""},
+    {""key"":5, ""loc"":""355 85"", ""text"":""Finely chop 1/2 cup of your choice of nuts""},
+    {""key"":6, ""loc"":""175 450"", ""text"":""Sprinkle nuts on top""},
+    {""key"":7, ""loc"":""175 515"", ""text"":""Bake for 25 minutes and let cool""},
+    {""key"":8, ""loc"":""175 585"", ""text"":""Cut into rectangular grid""},
+    {""key"":-2, ""category"":""End"", ""loc"":""175 660"", ""text"":""Enjoy!""}
   ],
-  ""LinkDataSource"": [
-    {""From"":1, ""To"":2, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":2, ""To"":3, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":3, ""To"":4, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":4, ""To"":6, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":6, ""To"":7, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":7, ""To"":8, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":8, ""To"":-2, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":-1, ""To"":10, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":-1, ""To"":1, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":-1, ""To"":5, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":5, ""To"":4, ""FromPort"":""B"", ""ToPort"":""T""},
-    {""From"":10, ""To"":4, ""FromPort"":""B"", ""ToPort"":""T""}
+  ""linkDataSource"": [
+    {""from"":1, ""to"":2, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":2, ""to"":3, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":3, ""to"":4, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":4, ""to"":6, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":6, ""to"":7, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":7, ""to"":8, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":8, ""to"":-2, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":-1, ""to"":10, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":-1, ""to"":1, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":-1, ""to"":5, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":5, ""to"":4, ""fromPort"":""B"", ""toPort"":""T""},
+    {""from"":10, ""to"":4, ""fromPort"":""B"", ""toPort"":""T""}
   ]
 }";
     modelJson1.SaveClick = SaveModel;
@@ -119,7 +119,7 @@ public partial class Flowchart : DemoControl {
             new TextBlock {
               Margin = 8,
               MaxSize = new Size(160, double.NaN),
-              Wrap = Wrap.Fit,
+              Wrap = TextWrap.Fit,
               Editable = true
             }.Set(textStyle).BindTwoWay("Text")
           ),
@@ -143,7 +143,7 @@ public partial class Flowchart : DemoControl {
             new TextBlock {
               Margin = 8,
               MaxSize = new Size(160, double.NaN),
-              Wrap = Wrap.Fit,
+              Wrap = TextWrap.Fit,
               Editable = true
             }.Set(textStyle).BindTwoWay("Text")
           ),
@@ -208,7 +208,7 @@ public partial class Flowchart : DemoControl {
           new TextBlock {
             Margin = 5,
             MaxSize = new Size(200, double.NaN),
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             TextAlign = TextAlign.Center,
             Editable = true
           }.Set(textStyle).BindTwoWay("Text")

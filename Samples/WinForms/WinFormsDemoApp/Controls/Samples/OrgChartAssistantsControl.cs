@@ -38,25 +38,25 @@ namespace Demo.Samples.OrgChartAssistants {
 ";
 
       modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    {""Key"":1, ""Name"":""Stella Payne Diaz"", ""Title"":""CEO"", ""Pic"": ""1.jpg"" },
-    {""Key"":2, ""Name"":""Luke Warm"", ""Title"":""VP Marketing/Sales"", ""Pic"": ""2.jpg"", ""Parent"":1},
-    {""Key"":3, ""Name"":""Meg Meehan Hoffa"", ""Title"":""Sales"", ""Pic"": ""3.jpg"", ""Parent"":2},
-    {""Key"":4, ""Name"":""Peggy Flaming"", ""Title"":""VP Engineering"", ""Pic"": ""4.jpg"", ""Parent"":1},
-    {""Key"":5, ""Name"":""Saul Wellingood"", ""Title"":""Manufacturing"", ""Pic"": ""5.jpg"", ""Parent"":4},
-    {""Key"":6, ""Name"":""Al Ligori"", ""Title"":""Marketing"", ""Pic"": ""6.jpg"", ""Parent"":2},
-    {""Key"":7, ""Name"":""Dot Stubadd"", ""Title"":""Sales Rep"", ""Pic"": ""7.jpg"", ""Parent"":3},
-    {""Key"":8, ""Name"":""Les Ismore"", ""Title"":""Project Mgr"", ""Pic"": ""8.jpg"", ""Parent"":5},
-    {""Key"":9, ""Name"":""April Lynn Parris"", ""Title"":""Events Mgr"", ""Pic"": ""9.jpg"", ""Parent"":6},
-    {""Key"":10, ""Name"":""Xavier Breath"", ""Title"":""Engineering"", ""Pic"": ""10.jpg"", ""Parent"":4},
-    {""Key"":11, ""Name"":""Anita Hammer"", ""Title"":""Process"", ""Pic"": ""11.jpg"", ""Parent"":5},
-    {""Key"":12, ""Name"":""Billy Aiken"", ""Title"":""Software"", ""Pic"": ""12.jpg"", ""Parent"":10},
-    {""Key"":13, ""Name"":""Stan Wellback"", ""Title"":""Testing"", ""Pic"": ""13.jpg"", ""Parent"":10},
-    {""Key"":14, ""Name"":""Marge Innovera"", ""Title"":""Hardware"", ""Pic"": ""14.jpg"", ""Parent"":10},
-    {""Key"":15, ""Name"":""Evan Elpus"", ""Title"":""Quality"", ""Pic"": ""15.jpg"", ""Parent"":5},
-    {""Key"":16, ""Name"":""Lotta B. Essen"", ""Title"":""Sales Rep"", ""Pic"": ""16.jpg"", ""Parent"":3},
-    {""Key"":17, ""Name"":""Joaquin Closet"", ""Title"":""Wardrobe Assistant"", ""IsAssistant"":true, ""Parent"":1},
-    {""Key"":18, ""Name"":""Hannah Twomey"", ""Title"":""Engineering Assistant"", ""Parent"":10, ""IsAssistant"":true}
+  ""nodeDataSource"": [
+    {""key"":1, ""name"":""Stella Payne Diaz"", ""title"":""CEO"", ""pic"": ""1.jpg"" },
+    {""key"":2, ""name"":""Luke Warm"", ""title"":""VP Marketing/Sales"", ""pic"": ""2.jpg"", ""parent"":1},
+    {""key"":3, ""name"":""Meg Meehan Hoffa"", ""title"":""Sales"", ""pic"": ""3.jpg"", ""parent"":2},
+    {""key"":4, ""name"":""Peggy Flaming"", ""title"":""VP Engineering"", ""pic"": ""4.jpg"", ""parent"":1},
+    {""key"":5, ""name"":""Saul Wellingood"", ""title"":""Manufacturing"", ""pic"": ""5.jpg"", ""parent"":4},
+    {""key"":6, ""name"":""Al Ligori"", ""title"":""Marketing"", ""pic"": ""6.jpg"", ""parent"":2},
+    {""key"":7, ""name"":""Dot Stubadd"", ""title"":""Sales Rep"", ""pic"": ""7.jpg"", ""parent"":3},
+    {""key"":8, ""name"":""Les Ismore"", ""title"":""Project Mgr"", ""pic"": ""8.jpg"", ""parent"":5},
+    {""key"":9, ""name"":""April Lynn Parris"", ""title"":""Events Mgr"", ""pic"": ""9.jpg"", ""parent"":6},
+    {""key"":10, ""name"":""Xavier Breath"", ""title"":""Engineering"", ""pic"": ""10.jpg"", ""parent"":4},
+    {""key"":11, ""name"":""Anita Hammer"", ""title"":""Process"", ""pic"": ""11.jpg"", ""parent"":5},
+    {""key"":12, ""name"":""Billy Aiken"", ""title"":""Software"", ""pic"": ""12.jpg"", ""parent"":10},
+    {""key"":13, ""name"":""Stan Wellback"", ""title"":""Testing"", ""pic"": ""13.jpg"", ""parent"":10},
+    {""key"":14, ""name"":""Marge Innovera"", ""title"":""Hardware"", ""pic"": ""14.jpg"", ""parent"":10},
+    {""key"":15, ""name"":""Evan Elpus"", ""title"":""Quality"", ""pic"": ""15.jpg"", ""parent"":5},
+    {""key"":16, ""name"":""Lotta B. Essen"", ""title"":""Sales Rep"", ""pic"": ""16.jpg"", ""parent"":3},
+    {""key"":17, ""name"":""Joaquin Closet"", ""title"":""Wardrobe Assistant"", ""isAssistant"":true, ""parent"":1},
+    {""key"":18, ""name"":""Hannah Twomey"", ""title"":""Engineering Assistant"", ""parent"":10, ""isAssistant"":true}
   ]
 }";
 
@@ -197,7 +197,7 @@ namespace Demo.Samples.OrgChartAssistants {
                 Row = 3, Column = 0, ColumnSpan = 5,
                 Stroke = "white",
                 Font = new Font("Segoe UI", 9, Northwoods.Go.FontStyle.Italic, FontUnit.Point),
-                Wrap = Wrap.Fit,
+                Wrap = TextWrap.Fit,
                 Editable = true,  // by default newlines are allowed
                 MinSize = new Size(10, 14),
               }.BindTwoWay("Text", "Comments")

@@ -56,7 +56,7 @@ public partial class SwimBands : DemoControl {
             new TextBlock {
               Angle = 0,
               TextAlign = TextAlign.Center,
-              Wrap = Wrap.None,
+              Wrap = TextWrap.None,
               Font = new Font("Segoe UI", 15, Northwoods.Go.FontWeight.Bold),
               Background = "aqua"
             }.Bind("Text").Bind("Width", "Bounds", (r) => ((Rect)r).Width),

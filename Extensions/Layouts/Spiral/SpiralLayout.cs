@@ -24,6 +24,11 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// </remarks>
   /// @category Layout Extension
   public class SpiralLayout : NetworkLayout<SpiralNetwork, SpiralVertex, SpiralEdge, SpiralLayout> {
+    // double.IsFinite, which .NET Framework lacks
+    private static bool IsFinite(double d) {
+      return !double.IsNaN(d) && !double.IsInfinity(d);
+    }
+
     private double _Radius = double.NaN;
     private double _Spacing = 100;
     private bool _Clockwise = true;
@@ -136,7 +141,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       var cw = _Clockwise ? 1 : -1;
       var rad = _Radius;
 
-      if (rad <= 0 || !Util.IsFinite(rad))
+      if (rad <= 0 || !IsFinite(rad))
         rad = Diameter(root) / 4;
 
       // treat the root specially: it goes in the center

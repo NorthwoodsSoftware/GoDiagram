@@ -53,7 +53,7 @@ public partial class Dimensioning : DemoControl {
         new TextBlock {
           SegmentIndex = 2,
           SegmentFraction = 0.5,
-          SegmentOrientation = Orientation.Upright,
+          SegmentOrientation = SegmentOrientation.Upright,
           AlignmentFocus = Spot.Bottom,
           Stroke = "gray",
           Font = new Font("Microsoft Sans Serif", 10)

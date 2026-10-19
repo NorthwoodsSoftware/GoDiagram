@@ -104,7 +104,7 @@ namespace Demo.Samples.FamilyTreeJP {
         Builder.Make<Adornment>("ToolTip").Add(
           new TextBlock {
             Font = new Font("Segoe UI", 8, FontWeight.Bold),
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             Margin = 5
           }.Bind(
             new Binding("Text", "", TooltipTextConverter)

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-a2" />
+    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-a3" />
   </ItemGroup>
 
   <Import Project="..\DataInspector.projitems" Label="Shared" />

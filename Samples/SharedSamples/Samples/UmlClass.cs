@@ -56,8 +56,8 @@ public partial class UmlClass : DemoControl {
           IsMultiline = false,
           Editable = true
         }.BindTwoWay("Text", "Name"),
-        // property type, if known
-        new TextBlock().Bind(
+        // property type, if known; keep the space after the colon
+        new TextBlock { Formatting = TextFormat.None }.Bind(
           new Binding("Text", "Type", (t) => { return (t as string != null ? ": " : ""); })),
         new TextBlock {
           IsMultiline = false,
@@ -105,7 +105,8 @@ public partial class UmlClass : DemoControl {
         ),
         // method return type, if any
         new TextBlock {
-          Text = ""
+          Text = "",
+          Formatting = TextFormat.None
         }.Bind("Text", "Type", (t) => {
             return (t as string != null ? ": " : "");
           }

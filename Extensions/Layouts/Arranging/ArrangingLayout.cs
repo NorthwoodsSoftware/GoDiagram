@@ -131,7 +131,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       set {
         if (!(value.IsSide() || value.Equals(Spot.Top) || value.Equals(Spot.Right) || value.Equals(Spot.Bottom) || value.Equals(Spot.Left))) {
-          throw new Exception("new value for ArrangingLayout.Side must be a side or middle-side Spot, not: " + value);
+          throw new ArgumentException("new value for ArrangingLayout.Side must be a side or middle-side Spot, not: " + value, nameof(value));
         }
         if (_Side != value) {
           _Side = value;
@@ -171,7 +171,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       set {
         if (value is not Layout layout) {
-          throw new Exception("layout does not inherit from Layout: " + value);
+          throw new ArgumentNullException(nameof(value));
         }
         _PrimaryLayout = value;
         InvalidateLayout();
@@ -192,7 +192,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       set {
         if (value is not Layout layout) { // extra condition here before
-          throw new Exception("layout does not inherit from Layout: " + value);
+          throw new ArgumentNullException(nameof(value));
         }
         _ArrangeLayout = value;
         InvalidateLayout();
@@ -212,7 +212,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
       set {
         if (value is not Layout layout) {
-          throw new Exception("layout does not inherit from Layout: " + value);
+          throw new ArgumentNullException(nameof(value));
         }
         _SideLayout = value;
         InvalidateLayout();
@@ -258,7 +258,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       var diagram = Diagram;
       if (Diagram == null) diagram = allparts.FirstOrDefault()?.Diagram;
-      if (Diagram == null) throw new Exception("No Diagram for this Layout");
+      if (Diagram == null) throw new InvalidOperationException("No Diagram for this Layout");
 
       // implementations of doLayout that do not make use of a LayoutNetwork
       // need to perform their own transactions
@@ -267,18 +267,16 @@ namespace Northwoods.Go.Layouts.Extensions {
       var sidecoll = new HashSet<Part>();
       SplitParts(allparts, maincoll, sidecoll);
       ArrangingNetwork mainnet = null;
-      IEnumerator<ArrangingNetwork> subnets = null;
+      IReadOnlyList<ArrangingNetwork> subnets = null;
       if (ArrangeLayout != null) {
         ArrangeLayout.Diagram = diagram;
         mainnet = MakeNetwork(maincoll);
         subnets = mainnet.SplitIntoSubNetworks<ArrangingNetwork>();
       }
       var bounds = new Rect();
-      if (ArrangeLayout != null && mainnet != null && subnets != null && subnets.MoveNext()) {
+      if (ArrangeLayout != null && mainnet != null && subnets != null && subnets.Count > 0) {
         var groups = new Dictionary<Part, (IEnumerable<Part> Parts, Rect Bounds)>();
-        subnets.Reset();
-        while (subnets.MoveNext()) {
-          var net = subnets.Current;
+        foreach (var net in subnets) {
           var subcoll = net.FindAllParts();
           PrimaryLayout.Diagram = diagram;
           PreparePrimaryLayout(PrimaryLayout, subcoll);
@@ -312,6 +310,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         bounds = new Rect(0, 0, 0, 0);
       PrepareSideLayout(SideLayout, sidecoll, bounds);
       if (sidecoll.Count > 0) {
+        SideLayout.Diagram = diagram;
         SideLayout.DoLayout(sidecoll);
         var sidebounds = Diagram.ComputePartsBounds(sidecoll);
         if (!sidebounds.IsReal())

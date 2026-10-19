@@ -61,7 +61,7 @@ namespace Northwoods.Go.Extensions {
         if (double.IsNaN(value) || value == 0 || value == 90 || value == 180 || value == 270) {
           _Direction = value;
         } else {
-          throw new Exception("DimensioningLink: invalid new direction: " + value);
+          throw new ArgumentOutOfRangeException(nameof(value), value, "DimensioningLink: invalid new direction: " + value);
         }
       }
     }
@@ -101,7 +101,7 @@ namespace Northwoods.Go.Extensions {
           if (value >= 0) {
             _Inset = value;
           } else {
-            throw new Exception("DimensioningLink: invalid new inset: " + value);
+            throw new ArgumentOutOfRangeException(nameof(value), value, "DimensioningLink: invalid new inset: " + value);
           }
         }
       }
@@ -122,7 +122,7 @@ namespace Northwoods.Go.Extensions {
           if (value >= 0) {
             _Gap = value;
           } else {
-            throw new Exception("DimensioningLink: invalid new gap: " + value);
+            throw new ArgumentOutOfRangeException(nameof(value), value, "DimensioningLink: invalid new gap: " + value);
           }
         }
       }

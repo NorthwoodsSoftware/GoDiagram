@@ -40,25 +40,25 @@ namespace Demo.Samples.SharedStates {
 
       modelJson1.JsonText = @"
       {
-        ""NodeDataSource"": [
-          { ""Key"": -1, ""Text"": ""Operating"", ""Category"": ""Super"" },
-          { ""Key"": -2, ""Text"": ""Drying"", ""Category"": ""Super"", ""Supers"": [-1]},
-          { ""Key"": -3, ""Text"": ""Non Drying"", ""Category"": ""Super"" },
-          { ""Key"": 1, ""Loc"": ""100 100"", ""Text"": ""Starting.End"", ""Supers"": [-2] },
-          { ""Key"": 2, ""Loc"": ""250 100"", ""Text"": ""Running"", ""Supers"": [-2] },
-          { ""Key"": 3, ""Loc"": ""100 200"", ""Text"": ""Starting.Init"", ""Supers"": [-1, -3] },
-          { ""Key"": 4, ""Loc"": ""250 200"", ""Text"": ""Washing"", ""Supers"": [-1, -3] },
-          { ""Key"": 5, ""Loc"": ""100 300"", ""Text"": ""Stopped"", ""Supers"": [-3] },
-          { ""Key"": 6, ""Loc"": ""250 300"", ""Text"": ""Stopping"", ""Supers"": [-3] }
+        ""nodeDataSource"": [
+          { ""key"": -1, ""text"": ""Operating"", ""category"": ""Super"" },
+          { ""key"": -2, ""text"": ""Drying"", ""category"": ""Super"", ""supers"": [-1]},
+          { ""key"": -3, ""text"": ""Non Drying"", ""category"": ""Super"" },
+          { ""key"": 1, ""loc"": ""100 100"", ""text"": ""Starting.End"", ""supers"": [-2] },
+          { ""key"": 2, ""loc"": ""250 100"", ""text"": ""Running"", ""supers"": [-2] },
+          { ""key"": 3, ""loc"": ""100 200"", ""text"": ""Starting.Init"", ""supers"": [-1, -3] },
+          { ""key"": 4, ""loc"": ""250 200"", ""text"": ""Washing"", ""supers"": [-1, -3] },
+          { ""key"": 5, ""loc"": ""100 300"", ""text"": ""Stopped"", ""supers"": [-3] },
+          { ""key"": 6, ""loc"": ""250 300"", ""text"": ""Stopping"", ""supers"": [-3] }
         ],
-        ""LinkDataSource"": [
-          { ""From"":  1, ""To"": 2 },
-          { ""From"":  3, ""To"": 1 },
-          { ""From"":  4, ""To"": 2 },
-          { ""From"": -2, ""To"": 4 },
-          { ""From"":  5, ""To"": 3 },
-          { ""From"":  6, ""To"": 5 },
-          { ""From"": -1, ""To"": 5 }
+        ""linkDataSource"": [
+          { ""from"":  1, ""to"": 2 },
+          { ""from"":  3, ""to"": 1 },
+          { ""from"":  4, ""to"": 2 },
+          { ""from"": -2, ""to"": 4 },
+          { ""from"":  5, ""to"": 3 },
+          { ""from"":  6, ""to"": 5 },
+          { ""from"": -1, ""to"": 5 }
         ]
        }";
 

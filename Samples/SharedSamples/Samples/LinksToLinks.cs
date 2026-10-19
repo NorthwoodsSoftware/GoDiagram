@@ -16,24 +16,24 @@ public partial class LinksToLinks : DemoControl {
     modelJson1.LoadClick = LoadModel;
 
     modelJson1.JsonText = @"{
-  ""LinkLabelKeysProperty"": ""LabelKeys"",
-  ""NodeDataSource"": [
-{ ""Key"": ""Alpha"", ""Color"": ""lightblue"", ""Loc"": ""29 14"" },
-{ ""Key"": ""Beta"", ""Color"": ""orange"", ""Loc"": ""129 14"" },
-{ ""Key"": ""Gamma"", ""Color"": ""lightgreen"", ""Loc"": ""29 106"" },
-{ ""Key"": ""Delta"", ""Color"": ""pink"", ""Loc"": ""129 106"" },
-{ ""Key"": ""A-B"", ""Category"": ""LinkLabel"" },
-{ ""Key"": ""G-D"", ""Category"": ""LinkLabel"" },
-{ ""Key"": ""A-G"", ""Category"": ""LinkLabel"" },
-{ ""Key"": ""A-G-D"", ""Category"": ""LinkLabel"" },
-{ ""Key"": ""A-B-G-D"", ""Category"": ""LinkLabel"" }
+  ""linkLabelKeysProperty"": ""LabelKeys"",
+  ""nodeDataSource"": [
+{ ""key"": ""Alpha"", ""color"": ""lightblue"", ""loc"": ""29 14"" },
+{ ""key"": ""Beta"", ""color"": ""orange"", ""loc"": ""129 14"" },
+{ ""key"": ""Gamma"", ""color"": ""lightgreen"", ""loc"": ""29 106"" },
+{ ""key"": ""Delta"", ""color"": ""pink"", ""loc"": ""129 106"" },
+{ ""key"": ""A-B"", ""category"": ""LinkLabel"" },
+{ ""key"": ""G-D"", ""category"": ""LinkLabel"" },
+{ ""key"": ""A-G"", ""category"": ""LinkLabel"" },
+{ ""key"": ""A-G-D"", ""category"": ""LinkLabel"" },
+{ ""key"": ""A-B-G-D"", ""category"": ""LinkLabel"" }
  ],
-  ""LinkDataSource"": [
-{ ""From"": ""Alpha"", ""To"": ""Beta"", ""LabelKeys"": [ ""A-B"" ] },
-{ ""From"": ""Gamma"", ""To"": ""Delta"", ""LabelKeys"": [ ""G-D"" ] },
-{ ""From"": ""Alpha"", ""To"": ""Gamma"", ""LabelKeys"": [ ""A-G"" ] },
-{ ""From"": ""Alpha"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-G-D"" ], ""Category"": ""linkToLink"" },
-{ ""From"": ""A-B"", ""To"": ""G-D"", ""LabelKeys"": [ ""A-B-G-D"" ], ""Category"": ""linkToLink"" }
+  ""linkDataSource"": [
+{ ""from"": ""Alpha"", ""to"": ""Beta"", ""labelKeys"": [ ""A-B"" ] },
+{ ""from"": ""Gamma"", ""to"": ""Delta"", ""labelKeys"": [ ""G-D"" ] },
+{ ""from"": ""Alpha"", ""to"": ""Gamma"", ""labelKeys"": [ ""A-G"" ] },
+{ ""from"": ""Alpha"", ""to"": ""G-D"", ""labelKeys"": [ ""A-G-D"" ], ""category"": ""linkToLink"" },
+{ ""from"": ""A-B"", ""to"": ""G-D"", ""labelKeys"": [ ""A-B-G-D"" ], ""category"": ""linkToLink"" }
  ]}";
 
     desc1.MdText = DescriptionReader.Read("Samples.LinksToLinks.md");

@@ -14,7 +14,8 @@ public partial class MainView : UserControl {
     InitializeComponent();
 
     _MainView = this;
-    Northwoods.Go.Wpf.DiagramControl.UseHardwareRendering = true;  // use hardware rendering for better performance, if available
+    // render on the GPU for better performance; controls fall back to software rendering if OpenGL is unavailable
+    Northwoods.Go.Wpf.DiagramControl.DefaultRenderMode = Northwoods.Go.Wpf.RenderMode.Hardware;
   }
 
   public static (DemoType, KeyValuePair<string, NavItem>) ProcessInput(string s) {

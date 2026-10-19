@@ -24,67 +24,67 @@ public partial class PageFlow : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.PageFlow.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"": -1, ""Category"": ""Source"", ""Text"": ""Search"" },
-    { ""Key"": -2, ""Category"": ""Source"", ""Text"": ""Referral"" },
-    { ""Key"": -3, ""Category"": ""Source"", ""Text"": ""Advertising"" },
+  ""nodeDataSource"": [
+    { ""key"": -1, ""category"": ""Source"", ""text"": ""Search"" },
+    { ""key"": -2, ""category"": ""Source"", ""text"": ""Referral"" },
+    { ""key"": -3, ""category"": ""Source"", ""text"": ""Advertising"" },
 
-    { ""Key"": 1, ""Text"": ""Homepage"" },
-    { ""Key"": 2, ""Text"": ""Products"" },
-    { ""Key"": 3, ""Text"": ""Buy"" },
-    { ""Key"": 4, ""Text"": ""Samples"" },
-    { ""Key"": 5, ""Text"": ""Documentation"" },
-    { ""Key"": 6, ""Text"": ""Download"" },
+    { ""key"": 1, ""text"": ""Homepage"" },
+    { ""key"": 2, ""text"": ""Products"" },
+    { ""key"": 3, ""text"": ""Buy"" },
+    { ""key"": 4, ""text"": ""Samples"" },
+    { ""key"": 5, ""text"": ""Documentation"" },
+    { ""key"": 6, ""text"": ""Download"" },
 
-    { ""Key"": 101, ""Category"": ""DesiredEvent"", ""Text"": ""Ordered!"" },
-    { ""Key"": 102, ""Category"": ""DesiredEvent"", ""Text"": ""Downloaded!"" },
+    { ""key"": 101, ""category"": ""DesiredEvent"", ""text"": ""Ordered!"" },
+    { ""key"": 102, ""category"": ""DesiredEvent"", ""text"": ""Downloaded!"" },
 
     {
-      ""Key"": 201, ""Category"": ""UndesiredEvent"",
-      ""ReasonsList"": [
-        { ""Text"":""Needs redesign?""},
-        { ""Text"":""Wrong Product?""}
+      ""key"": 201, ""category"": ""UndesiredEvent"",
+      ""reasonsList"": [
+        { ""text"":""Needs redesign?""},
+        { ""text"":""Wrong Product?""}
       ]
     },
     {
-      ""Key"": 202, ""Category"": ""UndesiredEvent"",
-      ""ReasonsList"": [
-        { ""Text"":""Need better samples?""},
-        { ""Text"":""Bad landing page for Advertising?""}
+      ""key"": 202, ""category"": ""UndesiredEvent"",
+      ""reasonsList"": [
+        { ""text"":""Need better samples?""},
+        { ""text"":""Bad landing page for Advertising?""}
       ]
     },
     {
-      ""Key"": 203, ""Category"": ""UndesiredEvent"",
-      ""ReasonsList"": [
-        { ""Text"":""Reconsider Pricing?""},
-        { ""Text"":""Confusing Cart?""}
+      ""key"": 203, ""category"": ""UndesiredEvent"",
+      ""reasonsList"": [
+        { ""text"":""Reconsider Pricing?""},
+        { ""text"":""Confusing Cart?""}
       ]
     },
 
-    { ""Category"": ""Comment"", ""Text"": ""Add notes with general comments for the next team meeting"" }
+    { ""category"": ""Comment"", ""text"": ""Add notes with general comments for the next team meeting"" }
 
   ],
-  ""LinkDataSource"": [
-    { ""From"": -1, ""To"": 1 },
-    { ""From"": -2, ""To"": 1 },
-    { ""From"": -2, ""To"": 4 },
-    { ""From"": -3, ""To"": 4 },
-    { ""From"":  1, ""To"": 2 },
-    { ""From"":  2, ""To"": 3 },
-    { ""From"":  2, ""To"": 4 },
-    { ""From"":  1, ""To"": 5 },
-    { ""From"":  5, ""To"": 4 },
-    { ""From"":  4, ""To"": 3 },
+  ""linkDataSource"": [
+    { ""from"": -1, ""to"": 1 },
+    { ""from"": -2, ""to"": 1 },
+    { ""from"": -2, ""to"": 4 },
+    { ""from"": -3, ""to"": 4 },
+    { ""from"":  1, ""to"": 2 },
+    { ""from"":  2, ""to"": 3 },
+    { ""from"":  2, ""to"": 4 },
+    { ""from"":  1, ""to"": 5 },
+    { ""from"":  5, ""to"": 4 },
+    { ""from"":  4, ""to"": 3 },
 
 
-    { ""From"":  4, ""To"": 6 },
+    { ""from"":  4, ""to"": 6 },
 
-    { ""From"":  3, ""To"": 101 },
-    { ""From"":  6, ""To"": 102 },
+    { ""from"":  3, ""to"": 101 },
+    { ""from"":  6, ""to"": 102 },
 
-    { ""From"":  1, ""To"": 201 },
-    { ""From"":  4, ""To"": 202 },
-    { ""From"":  3, ""To"": 203 }
+    { ""from"":  1, ""to"": 201 },
+    { ""from"":  4, ""to"": 202 },
+    { ""from"":  3, ""to"": 203 }
   ]
 }";
 
@@ -122,7 +122,7 @@ public partial class PageFlow : DemoControl {
 
     var textStyle = new {
       Margin = 6,
-      Wrap = Wrap.Fit,
+      Wrap = TextWrap.Fit,
       TextAlign = TextAlign.Center,
       Editable = true,
       Font = bigFont
@@ -166,7 +166,7 @@ public partial class PageFlow : DemoControl {
           new TextBlock("Reason") {
             Margin = new Margin(4, 0, 0, 0),
             MaxSize = new Size(200, double.NaN),
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             Stroke = "whitesmoke",
             Editable = true,
             Font = smallFont
@@ -256,7 +256,7 @@ public partial class PageFlow : DemoControl {
             new TextBlock("A comment") {
                 Margin = 9,
                 MaxSize = new Size(200, double.NaN),
-                Wrap = Wrap.Fit,
+                Wrap = TextWrap.Fit,
                 Editable = true,
                 Font = smallFont
               }

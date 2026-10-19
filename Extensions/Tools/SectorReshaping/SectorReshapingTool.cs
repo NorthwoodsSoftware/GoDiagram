@@ -161,7 +161,7 @@ namespace Northwoods.Go.Tools.Extensions {
         } else {
           ad.Location = part.Position;
           var ns = part.NaturalBounds;
-          if (ad.Placeholder != null) ad.Placeholder.DesiredSize = new Size((ns.Width) * part.Scale, (ns.Height) * part.Scale);
+          if (ad.HasPlaceholder()) ad.Placeholder.DesiredSize = new Size((ns.Width) * part.Scale, (ns.Height) * part.Scale);
           ad.UpdateTargetBindings();
         }
       } else {

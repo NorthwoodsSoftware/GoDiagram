@@ -10,6 +10,7 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -95,7 +96,7 @@ namespace Northwoods.Go.Extensions {
           try {
             oldval = pi.GetValue(data, null);
           } catch {
-            Trace.Error($"property get error: failed to get property \"{pi.Name}\"");
+            throw new InvalidOperationException($"property get error: failed to get property \"{pi.Name}\"");
           }
         }
 

@@ -24,24 +24,24 @@ public partial class PortShifting : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-        ""LinkFromPortIdProperty"": ""FromPort"",
-        ""LinkToPortIdProperty"": ""ToPort"",
-        ""NodeDataSource"": [
-          {""Category"":""Input"", ""Key"":""Input1"", ""Loc"":""-150 -80"" },
-          {""Category"":""Or"", ""Key"":""Or1"", ""Loc"":""-70 0"" },
-          { ""Category"":""Not"", ""Key"":""Not1"", ""Loc"":""10 0"" },
-          { ""Category"":""Xor"", ""Key"":""Xor1"", ""Loc"":""100 0"" },
-          { ""Category"":""Or"", ""Key"":""Or2"", ""Loc"":""200 0"" },
-          { ""Category"":""Output"", ""Key"":""Output1"", ""Loc"":""200 -100"" }
+        ""linkFromPortIdProperty"": ""FromPort"",
+        ""linkToPortIdProperty"": ""ToPort"",
+        ""nodeDataSource"": [
+          {""category"":""Input"", ""key"":""Input1"", ""loc"":""-150 -80"" },
+          {""category"":""Or"", ""key"":""Or1"", ""loc"":""-70 0"" },
+          { ""category"":""Not"", ""key"":""Not1"", ""loc"":""10 0"" },
+          { ""category"":""Xor"", ""key"":""Xor1"", ""loc"":""100 0"" },
+          { ""category"":""Or"", ""key"":""Or2"", ""loc"":""200 0"" },
+          { ""category"":""Output"", ""key"":""Output1"", ""loc"":""200 -100"" }
         ],
-        ""LinkDataSource"": [
-          {""From"":""Input1"", ""FromPort"":""out"", ""To"":""Or1"", ""ToPort"":""in1""},
-          { ""From"":""Or1"", ""FromPort"":""out"", ""To"":""Not1"", ""ToPort"":""in""},
-          { ""From"":""Not1"", ""FromPort"":""out"", ""To"":""Or1"", ""ToPort"":""in2""},
-          { ""From"":""Not1"", ""FromPort"":""out"", ""To"":""Xor1"", ""ToPort"":""in1""},
-          { ""From"":""Xor1"", ""FromPort"":""out"", ""To"":""Or2"", ""ToPort"":""in1""},
-          { ""From"":""Or2"", ""FromPort"":""out"", ""To"":""Xor1"", ""ToPort"":""in2""},
-          { ""From"":""Xor1"", ""FromPort"":""out"", ""To"":""Output1"", ""ToPort"":""""}
+        ""linkDataSource"": [
+          {""from"":""Input1"", ""fromPort"":""out"", ""to"":""Or1"", ""toPort"":""in1""},
+          { ""from"":""Or1"", ""fromPort"":""out"", ""to"":""Not1"", ""toPort"":""in""},
+          { ""from"":""Not1"", ""fromPort"":""out"", ""to"":""Or1"", ""toPort"":""in2""},
+          { ""from"":""Not1"", ""fromPort"":""out"", ""to"":""Xor1"", ""toPort"":""in1""},
+          { ""from"":""Xor1"", ""fromPort"":""out"", ""to"":""Or2"", ""toPort"":""in1""},
+          { ""from"":""Or2"", ""fromPort"":""out"", ""to"":""Xor1"", ""toPort"":""in2""},
+          { ""from"":""Xor1"", ""fromPort"":""out"", ""to"":""Output1"", ""toPort"":""""}
         ]
 }";
 

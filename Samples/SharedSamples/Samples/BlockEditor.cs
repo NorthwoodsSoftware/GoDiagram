@@ -21,26 +21,26 @@ public partial class BlockEditor : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.BlockEditor.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-{ ""Key"": 1, ""Loc"": ""0 0"", ""Text"": ""Alpha"", ""Details"": ""some information about Alpha and its importance"" },
-{ ""Key"": 2, ""Loc"": ""170 0"", ""Text"": ""Beta"", ""Color"": ""blue"", ""Thickness"": 2, ""Figure"": ""Procedure"" },
-{ ""Key"": 3, ""Loc"": ""0 100"", ""Text"": ""Gamma"", ""Color"": ""green"", ""Figure"": ""Cylinder1"" },
-{ ""Key"": 4, ""Loc"": ""80 180"", ""Text"": ""Delta"", ""Color"": ""red"", ""Figure"": ""Terminator"", ""size"":""80 40"" },
-{ ""Key"": 5, ""Loc"": ""350 -50"", ""Text"": ""Zeta"", ""Group"": 7, ""Color"": ""blue"", ""Figure"": ""CreateRequest"" },
-{ ""Key"": 6, ""Loc"": ""350 50"", ""Text"": ""Eta"", ""Group"": 7, ""Figure"": ""Document"", ""Fill"": ""lightyellow"" },
-{ ""Key"": 7, ""IsGroup"": true, ""Text"": ""Theta"", ""Color"": ""green"", ""Fill"": ""lightgreen"" },
-{ ""Key"": 8, ""Loc"": ""520 50"", ""Text"": ""Iota"", ""Fill"": ""pink""}
+  ""nodeDataSource"": [
+{ ""key"": 1, ""loc"": ""0 0"", ""text"": ""Alpha"", ""details"": ""some information about Alpha and its importance"" },
+{ ""key"": 2, ""loc"": ""170 0"", ""text"": ""Beta"", ""color"": ""blue"", ""thickness"": 2, ""figure"": ""Procedure"" },
+{ ""key"": 3, ""loc"": ""0 100"", ""text"": ""Gamma"", ""color"": ""green"", ""figure"": ""Cylinder1"" },
+{ ""key"": 4, ""loc"": ""80 180"", ""text"": ""Delta"", ""color"": ""red"", ""figure"": ""Terminator"", ""size"":""80 40"" },
+{ ""key"": 5, ""loc"": ""350 -50"", ""text"": ""Zeta"", ""group"": 7, ""color"": ""blue"", ""figure"": ""CreateRequest"" },
+{ ""key"": 6, ""loc"": ""350 50"", ""text"": ""Eta"", ""group"": 7, ""figure"": ""Document"", ""fill"": ""lightyellow"" },
+{ ""key"": 7, ""isGroup"": true, ""text"": ""Theta"", ""color"": ""green"", ""fill"": ""lightgreen"" },
+{ ""key"": 8, ""loc"": ""520 50"", ""text"": ""Iota"", ""fill"": ""pink""}
  ],
-  ""LinkDataSource"": [
-{ ""From"": 1, ""To"": 2, ""Dash"": [ 6,3 ], ""Thickness"": 4 },
-{ ""From"": 1, ""To"": 3, ""Dash"": [ 2,4 ], ""Color"": ""green"", ""Text"": ""label"" },
-{ ""From"": 3, ""To"": 4, ""Color"": ""red"", ""Text"": ""a red label"", ""FromSpot"": ""RightSide"" },
-{ ""From"": 2, ""To"": 1 },
-{ ""From"": 5, ""To"": 6, ""Text"": ""in a group"" },
-{ ""From"": 2, ""To"": 7 },
-{ ""From"": 6, ""To"": 8, ""Dir"": 0 },
-{ ""From"": 6, ""To"": 8, ""Dir"": 1 },
-{ ""From"": 6, ""To"": 8, ""Dir"": 2 }
+  ""linkDataSource"": [
+{ ""from"": 1, ""to"": 2, ""dash"": [ 6,3 ], ""thickness"": 4 },
+{ ""from"": 1, ""to"": 3, ""dash"": [ 2,4 ], ""color"": ""green"", ""text"": ""label"" },
+{ ""from"": 3, ""to"": 4, ""color"": ""red"", ""text"": ""a red label"", ""fromSpot"": ""RightSide"" },
+{ ""from"": 2, ""to"": 1 },
+{ ""from"": 5, ""to"": 6, ""text"": ""in a group"" },
+{ ""from"": 2, ""to"": 7 },
+{ ""from"": 6, ""to"": 8, ""dir"": 0 },
+{ ""from"": 6, ""to"": 8, ""dir"": 1 },
+{ ""from"": 6, ""to"": 8, ""dir"": 2 }
  ]
 }";
 
@@ -124,7 +124,7 @@ public partial class BlockEditor : DemoControl {
             ),
           // this Shape prevents mouse events from reaching the middle of the port
           new Shape { Width = 100, Height = 40, StrokeWidth = 0, Fill = "transparent" },
-          new TextBlock { Margin = 1, TextAlign = TextAlign.Center, Overflow = Overflow.Ellipsis, Editable = true }
+          new TextBlock { Margin = 1, TextAlign = TextAlign.Center, Overflow = TextOverflow.Ellipsis, Editable = true }
             .Bind(
               // this binding is TwoWay due to the user editing the text with the textEditingTool
               new Binding("Text").MakeTwoWay(),

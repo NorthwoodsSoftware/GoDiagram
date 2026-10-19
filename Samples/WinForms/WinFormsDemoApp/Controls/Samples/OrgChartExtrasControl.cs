@@ -22,32 +22,32 @@ namespace Demo.Samples.OrgChartExtras {
       modelJson1.SaveClick = SaveModel;
       modelJson1.LoadClick = LoadModel;
       modelJson1.JsonText = @"{
-        ""NodeDataSource"": [
-          {""Key"":""1"", ""Name"":""Corrado 'Junior' Soprano"", ""Title"":""The Boss""},
-          {""Key"":""2"", ""Name"":""Tony Soprano"", ""Title"":""Underboss""},
-          {""Key"":""3"", ""Name"":""Herman 'Hesh' Rabkin"", ""Title"":""Advisor""},
-          {""Key"":""4"", ""Name"":""Paulie Walnuts"", ""Title"":""Capo""},
-          {""Key"":""5"", ""Name"":""Ralph Cifaretto"", ""Title"":""Capo MIA""},
-          {""Key"":""6"", ""Name"":""Silvio Dante"", ""Title"":""Consigliere""},
-          {""Key"":""7"", ""Name"":""Bobby Baccilien"", ""Title"":""Capo""},
-          {""Key"":""8"", ""Name"":""Sal Bonpensiero"", ""Title"":""MIA""},
-          {""Key"":""9"", ""Name"":""Christopher Moltisanti"", ""Title"":""Made Man""},
-          {""Key"":""10"", ""Name"":""Furio Giunta"", ""Title"":""Muscle""},
-          {""Key"":""11"", ""Name"":""Patsy Parisi"", ""Title"":""Accountant""}
+        ""nodeDataSource"": [
+          {""key"":""1"", ""name"":""Corrado 'Junior' Soprano"", ""title"":""The Boss""},
+          {""key"":""2"", ""name"":""Tony Soprano"", ""title"":""Underboss""},
+          {""key"":""3"", ""name"":""Herman 'Hesh' Rabkin"", ""title"":""Advisor""},
+          {""key"":""4"", ""name"":""Paulie Walnuts"", ""title"":""Capo""},
+          {""key"":""5"", ""name"":""Ralph Cifaretto"", ""title"":""Capo MIA""},
+          {""key"":""6"", ""name"":""Silvio Dante"", ""title"":""Consigliere""},
+          {""key"":""7"", ""name"":""Bobby Baccilien"", ""title"":""Capo""},
+          {""key"":""8"", ""name"":""Sal Bonpensiero"", ""title"":""MIA""},
+          {""key"":""9"", ""name"":""Christopher Moltisanti"", ""title"":""Made Man""},
+          {""key"":""10"", ""name"":""Furio Giunta"", ""title"":""Muscle""},
+          {""key"":""11"", ""name"":""Patsy Parisi"", ""title"":""Accountant""}
         ],
-        ""LinkDataSource"": [
-          {""From"":""1"", ""To"":""2""},
-          {""From"":""1"", ""To"":""3""},
-          {""From"":""2"", ""To"":""4""},
-          {""From"":""2"", ""To"":""5""},
-          {""From"":""2"", ""To"":""6""},
-          {""From"":""2"", ""To"":""7""},
-          {""From"":""4"", ""To"":""8""},
-          {""From"":""4"", ""To"":""9""},
-          {""From"":""4"", ""To"":""10""},
-          {""From"":""4"", ""To"":""11""},
-          {""From"":""11"", ""To"":""6"", ""Category"":""Support"", ""Text"":""50% support""},
-          {""From"":""9"", ""To"":""7"", ""Category"":""Motion"", ""Text"":""Will change here in 2 months""}
+        ""linkDataSource"": [
+          {""from"":""1"", ""to"":""2""},
+          {""from"":""1"", ""to"":""3""},
+          {""from"":""2"", ""to"":""4""},
+          {""from"":""2"", ""to"":""5""},
+          {""from"":""2"", ""to"":""6""},
+          {""from"":""2"", ""to"":""7""},
+          {""from"":""4"", ""to"":""8""},
+          {""from"":""4"", ""to"":""9""},
+          {""from"":""4"", ""to"":""10""},
+          {""from"":""4"", ""to"":""11""},
+          {""from"":""11"", ""to"":""6"", ""category"":""Support"", ""text"":""50% support""},
+          {""from"":""9"", ""to"":""7"", ""category"":""Motion"", ""text"":""Will change here in 2 months""}
         ]
       }";
 
@@ -262,7 +262,7 @@ namespace Demo.Samples.OrgChartExtras {
               Column = 0,
               ColumnSpan = 5,
               Font = new Font("Segoe UI", 9, FontWeight.Bold),
-              Wrap = Wrap.Fit,
+              Wrap = TextWrap.Fit,
               Editable = true,  // by default newlines are allowed
               Stroke = "white",
               MinSize = new Size(10, 14),

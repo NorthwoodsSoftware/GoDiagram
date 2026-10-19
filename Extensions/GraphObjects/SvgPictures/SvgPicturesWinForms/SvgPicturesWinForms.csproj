@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Use C# latest to enable new .NET features -->
+    <LangVersion>latest</LangVersion>
+    <TargetFrameworks>net10.0-windows10.0.19041;net472</TargetFrameworks>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Import Project="..\SvgPictures.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Svg.Skia" Version="5.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a3" />
+  </ItemGroup>
+
+</Project>

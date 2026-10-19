@@ -17,7 +17,8 @@ namespace WinFormsDemoApp {
     }
 
     [
-      Description("Whether user can save/load JSON text")
+      Description("Whether user can save/load JSON text"),
+      DefaultValue(true)
     ]
     public bool CanSaveLoad {
       get { return _CanSaveLoad; }

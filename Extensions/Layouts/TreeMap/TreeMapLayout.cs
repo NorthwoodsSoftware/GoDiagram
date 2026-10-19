@@ -64,10 +64,10 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// </summary>
     public override void DoLayout(IEnumerable<Part> coll = null) {
       var diagram = Diagram;
-      if (diagram == null) throw new Exception("TreeMapLayout only works as the Diagram.Layout");
+      if (diagram == null) throw new InvalidOperationException("TreeMapLayout only works as the Diagram.Layout");
       foreach (var n in diagram.Nodes) {
         if (n is Node && !(n.Data is ITreeMapData)) {
-          throw new Exception("All node data objects in a TreeMapLayout must implement TreeMapLayout.ITreeMapData.");
+          throw new InvalidOperationException("All node data objects in a TreeMapLayout must implement TreeMapLayout.ITreeMapData.");
         }
       }
 

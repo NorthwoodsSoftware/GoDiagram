@@ -130,7 +130,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       var rootvert = Network.FindVertex(_Root);
-      if (rootvert == null) throw new Exception("RadialLayout.root must be a Node in the LayoutNetwork that the RadialLayout is opearting on");
+      if (rootvert == null) throw new InvalidOperationException("RadialLayout.root must be a Node in the LayoutNetwork that the RadialLayout is opearting on");
 
       ArrangementOrigin = InitialOrigin(ArrangementOrigin);
       _FindDistances(rootvert);

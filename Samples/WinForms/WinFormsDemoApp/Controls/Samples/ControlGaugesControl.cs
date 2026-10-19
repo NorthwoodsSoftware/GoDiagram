@@ -363,7 +363,7 @@ namespace Demo.Samples.ControlGauges {
               ).Add(
                 new Shape { Name = "PATH", GeometryString = "M0 0 A120 120 0 0 1 200 0", Stroke = "white" },
                 new Shape { GeometryString = "M0 0 V10", Stroke = "white" },
-                new TextBlock { SegmentOffset = new Point(0, 12), SegmentOrientation = Orientation.Along, Stroke = "white" }
+                new TextBlock { SegmentOffset = new Point(0, 12), SegmentOrientation = SegmentOrientation.Along, Stroke = "white" }
               ),
               new Shape {
                 Stroke = "red",
@@ -624,11 +624,13 @@ namespace Demo.Samples.ControlGauges {
       // start a simple simulation
       Loop();
 
-      void Loop() {
-        Util.SetTimeout(() => {
+      async void Loop() {
+        while (true) {
+          await Task.Delay(500);
+          if (IsDisposed) return;
           myDiagram.Commit((_) => {
             foreach (var l in myDiagram.Links) {
-              if (rand.NextDouble() < 0.2) return;
+              if (rand.NextDouble() < 0.2) continue;
               var fromData = (l.FromNode.Data as NodeData);
               var toData = (l.ToNode.Data as NodeData);
               var prev = fromData.Value;
@@ -639,8 +641,7 @@ namespace Demo.Samples.ControlGauges {
               }
             }
           });
-          Loop();
-        }, 500, myDiagram);
+        }
       }
     }
 

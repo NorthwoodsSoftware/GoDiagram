@@ -47,40 +47,40 @@ namespace Demo.Samples.Flowgrammer {
       ";
 
       modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"":1, ""Text"":""S"", ""Category"":""Start""},
-    { ""Key"":-1, ""IsGroup"":true, ""Cat"":""For""},
-    { ""Key"":2, ""Text"":""For Each"", ""Category"":""For"", ""Group"":-1},
-    { ""Key"":3, ""Text"":""Action 1"", ""Group"":-1},
-    { ""Key"":-2, ""IsGroup"":true, ""Cat"":""If"", ""Group"":-1},
-    { ""Key"":4, ""Text"":""If"", ""Category"":""If"", ""Group"":-2},
-    { ""Key"":5, ""Text"":""Action 2"", ""Group"":-2},
-    { ""Key"":6, ""Text"":""Action 3"", ""Group"":-2},
-    { ""Key"":-3, ""IsGroup"":true, ""Cat"":""For"", ""Group"":-2},
-    { ""Key"":7, ""Text"":""For Each\n(nested)"", ""Category"":""For"", ""Group"":-3},
-    { ""Key"":8, ""Text"":""Action 4"", ""Group"":-3},
-    { ""Key"":9, ""Text"":"""", ""Category"":""EndFor"", ""Group"":-3},
-    { ""Key"":10, ""Text"":"""", ""Category"":""EndIf"", ""Group"":-2},
-    { ""Key"":11, ""Text"":""Action 5"", ""Group"":-1},
-    { ""Key"":12, ""Text"":"""", ""Category"":""EndFor"", ""Group"":-1},
-    { ""Key"":13, ""Text"":""E"", ""Category"":""End""}
+  ""nodeDataSource"": [
+    { ""key"":1, ""text"":""S"", ""category"":""Start""},
+    { ""key"":-1, ""isGroup"":true, ""cat"":""For""},
+    { ""key"":2, ""text"":""For Each"", ""category"":""For"", ""group"":-1},
+    { ""key"":3, ""text"":""Action 1"", ""group"":-1},
+    { ""key"":-2, ""isGroup"":true, ""cat"":""If"", ""group"":-1},
+    { ""key"":4, ""text"":""If"", ""category"":""If"", ""group"":-2},
+    { ""key"":5, ""text"":""Action 2"", ""group"":-2},
+    { ""key"":6, ""text"":""Action 3"", ""group"":-2},
+    { ""key"":-3, ""isGroup"":true, ""cat"":""For"", ""group"":-2},
+    { ""key"":7, ""text"":""For Each\n(nested)"", ""category"":""For"", ""group"":-3},
+    { ""key"":8, ""text"":""Action 4"", ""group"":-3},
+    { ""key"":9, ""text"":"""", ""category"":""EndFor"", ""group"":-3},
+    { ""key"":10, ""text"":"""", ""category"":""EndIf"", ""group"":-2},
+    { ""key"":11, ""text"":""Action 5"", ""group"":-1},
+    { ""key"":12, ""text"":"""", ""category"":""EndFor"", ""group"":-1},
+    { ""key"":13, ""text"":""E"", ""category"":""End""}
   ],
-  ""LinkDataSource"": [
-    {""From"":1, ""To"":2},
-    { ""From"":2, ""To"":3},
-    { ""From"":3, ""To"":4},
-    { ""From"":4, ""To"":5, ""Text"":""true""},
-    { ""From"":4, ""To"":6, ""Text"":""false""},
-    { ""From"":6, ""To"":7},
-    { ""From"":7, ""To"":8},
-    { ""From"":8, ""To"":9},
-    { ""From"":5, ""To"":10},
-    { ""From"":9, ""To"":10},
-    { ""From"":9, ""To"":7},
-    { ""From"":10, ""To"":11},
-    { ""From"":11, ""To"":12},
-    { ""From"":12, ""To"":2},
-    { ""From"":12, ""To"":13}
+  ""linkDataSource"": [
+    {""from"":1, ""to"":2},
+    { ""from"":2, ""to"":3},
+    { ""from"":3, ""to"":4},
+    { ""from"":4, ""to"":5, ""text"":""true""},
+    { ""from"":4, ""to"":6, ""text"":""false""},
+    { ""from"":6, ""to"":7},
+    { ""from"":7, ""to"":8},
+    { ""from"":8, ""to"":9},
+    { ""from"":5, ""to"":10},
+    { ""from"":9, ""to"":10},
+    { ""from"":9, ""to"":7},
+    { ""from"":10, ""to"":11},
+    { ""from"":11, ""to"":12},
+    { ""from"":12, ""to"":2},
+    { ""from"":12, ""to"":13}
   ]
 }";
 

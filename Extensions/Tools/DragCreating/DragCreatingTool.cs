@@ -234,7 +234,7 @@ namespace Northwoods.Go.Tools.Extensions {
       if (arch == null) return null;
       Part part = null;
 
-      diagram.RaiseChangingSelection(diagram.Selection);
+      diagram.RaiseDiagramEvent(DiagramEventName.ChangingSelection, diagram.Selection);
       StartTransaction(Name);
       if (arch != null) {
         var data = diagram.Model.CopyNodeData(arch);
@@ -255,7 +255,7 @@ namespace Northwoods.Go.Tools.Extensions {
       // set the TransactionResult before raising event, in case it changes the result or cancels the tool
       TransactionResult = Name;
       StopTransaction();
-      diagram.RaiseChangedSelection(diagram.Selection);
+      diagram.RaiseDiagramEvent(DiagramEventName.ChangedSelection, diagram.Selection);
       return part;
     }
   }

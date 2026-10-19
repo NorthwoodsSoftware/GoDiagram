@@ -10,6 +10,7 @@
 * See the Extensions intro page (https://godiagram.com/intro/extensions.html) for more information.
 */
 
+using System;
 using System.Collections.Generic;
 
 
@@ -116,15 +117,15 @@ namespace Northwoods.Go.Layouts.Extensions {
       foreach (var v in vertexes) {
         if (v.Node == null) continue;
         if (IsSplit(v.Node)) {
-          if (split != null) Trace.Error("Split node already exists in " + this + " -- existing: " + split + " new: " + v.Node);
+          if (split != null) throw new InvalidOperationException("Split node already exists in " + this + " -- existing: " + split + " new: " + v.Node);
           split = v.Node;
         } else if (IsMerge(v.Node)) {
-          if (merge != null) Trace.Error("Merge node already exists in " + this + " -- existing: " + merge + " new: " + v.Node);
+          if (merge != null) throw new InvalidOperationException("Merge node already exists in " + this + " -- existing: " + merge + " new: " + v.Node);
           merge = v.Node;
         }
       }
-      if (split == null) Trace.Error("Missing Split node in " + this);
-      if (merge == null) Trace.Error("Missing Merge node in " + this);
+      if (split == null) throw new InvalidOperationException("Missing Split node in " + this);
+      if (merge == null) throw new InvalidOperationException("Missing Merge node in " + this);
       SplitNode = split;
       MergeNode = merge;
     }
@@ -139,7 +140,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       // Groups might be unbalanced -- position them so that the Split node is centered under the parent node.
       foreach (var v in net.Vertexes) {
         var node = v.Node;
-        if (node is Group g && g.IsSubGraphExpanded && g.Placeholder != null && g.Layout is ParallelLayout pl) {
+        if (node is Group g && g.HasPlaceholder() && g.Layout is ParallelLayout pl) {
           var split = pl.SplitNode;
           if (split != null) {
             if (Angle == 0) {
@@ -241,11 +242,11 @@ namespace Northwoods.Go.Layouts.Extensions {
             var pts = new List<Point>(link.Points);
             var p2 = pts[pts.Count - 4];
             var p3 = pts[pts.Count - 3];
-            if (Angle == 0 && p2.X == p3.X) {
+            if (Angle == 0 && p2.X == p3.X && p2.Y != p3.Y) {  // not when the segment is straight
               var x = MergeNode.Position.X - LayerSpacing / 2;
               pts[pts.Count - 4] = new Point(x, p2.Y);
               pts[pts.Count - 3] = new Point(x, p3.Y);
-            } else if (Angle == 90 && p2.Y == p3.Y) {
+            } else if (Angle == 90 && p2.Y == p3.Y && p2.X != p3.X) {
               var y = MergeNode.Position.Y - LayerSpacing / 2;
               pts[pts.Count - 4] = new Point(p2.X, y);
               pts[pts.Count - 3] = new Point(p3.X, y);

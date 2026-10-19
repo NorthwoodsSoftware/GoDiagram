@@ -1,7 +1,6 @@
 ﻿/* Copyright (c) Northwoods Software Corporation. */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -67,7 +66,7 @@ namespace Demo.Samples.CustomAnimations {
         var animation = new Animation {
           IsViewportUnconstrained = true,
           Easing = Animation.EaseOutExpo,  // Looks better for a fade in animation
-          Duration = 900
+          Duration = TimeSpan.FromMilliseconds(900)
         };
         animation.Add(diagram, "Position", diagram.Position.Offset(0, diagram is Palette ? 200 : -200), diagram.Position);
         animation.Add(diagram, "Opacity", 0, 1);
@@ -146,7 +145,7 @@ namespace Demo.Samples.CustomAnimations {
           var initPoints = startValue as List<Point>;
           var tempPoints = endValue as List<Point>;
           var animationState = animation.GetTemporaryState(link);
-          if (!animationState.Contains("Initial")) {
+          if (!animationState.ContainsKey("Initial")) {
             // On the first animaiton tick, save the initial points
             animationState["Initial"] = true;
             var pts = new List<Point>(link.Points);
@@ -195,7 +194,7 @@ namespace Demo.Samples.CustomAnimations {
           link.Curve = LinkCurve.Bezier;
           animation.Easing = ElasticEase;
           animation.Add(link, "Curviness", 0, link.Curviness);
-          animation.Duration = 500;
+          animation.Duration = TimeSpan.FromMilliseconds(500);
         } else if (linkChoice == "orthogonal") {
           // The orthogonal animation is two animations, chained together. One to modify the points,
           // and then another to modify the link.Corner value.
@@ -207,7 +206,7 @@ namespace Demo.Samples.CustomAnimations {
           // Store the original points to this list
           var tempPoints = new List<Point>();
           animation.Add(link, "OrthogonalLinkAnim", link.Points, tempPoints);
-          animation.Duration = 300;
+          animation.Duration = TimeSpan.FromMilliseconds(300);
           // Chain animation after first one is completed
           animation.Finished = (a) => {
             // Set points back to what they were before the animation
@@ -217,7 +216,7 @@ namespace Demo.Samples.CustomAnimations {
             // Need to make a new animation object
             var animation2 = new Animation();
             animation2.Add(link, "Corner", 0, initCorner);
-            animation2.Duration = 250;
+            animation2.Duration = TimeSpan.FromMilliseconds(250);
             animation2.Start();
           };
           animation.Start();
@@ -232,7 +231,7 @@ namespace Demo.Samples.CustomAnimations {
         (obj, startValue, endValue, easing, currentTime, duration, animation) => {
           var part = obj as Part;
           var animationState = animation.GetTemporaryState(part);
-          if (!animationState.Contains("Initial")) {
+          if (!animationState.ContainsKey("Initial")) {
             // Set the initial positions as part of the animationState data
             animationState["YPos"] = part.Location.Y;
             animationState["XPos"] = part.Location.X;
@@ -247,7 +246,7 @@ namespace Demo.Samples.CustomAnimations {
       );
 
       // Get the point the object should be at based upon the time and original point
-      static Point getPointBounceDelete(double currentTime, Part part, Hashtable animationState, Diagram diagram) {
+      static Point getPointBounceDelete(double currentTime, Part part, Dictionary<string, object> animationState, Diagram diagram) {
         var yPos = (double)animationState["YPos"];
         var xPos = (double)animationState["XPos"];
         var yVelo = (double)animationState["YVelo"];
@@ -313,7 +312,7 @@ namespace Demo.Samples.CustomAnimations {
             case "bounceOut":
               animation.Add(part, "BounceDelete", part.Location, null); // does't need an end value, bounceDelete determines one
               animation.Add(part, "Scale", part.Scale, 0.01);
-              animation.Duration = 1500;
+              animation.Duration = TimeSpan.FromMilliseconds(1500);
               animation.IsViewportUnconstrained = true;
               break;
             default:

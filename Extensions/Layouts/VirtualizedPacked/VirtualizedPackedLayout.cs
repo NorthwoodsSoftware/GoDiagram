@@ -137,6 +137,11 @@ namespace Northwoods.Go.Layouts.Extensions {
   [Undocumented]
 #pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
   public class VirtualizedPackedLayout : Layout {
+    // double.IsFinite, which .NET Framework lacks
+    private static bool IsFinite(double d) {
+      return !double.IsNaN(d) && !double.IsInfinity(d);
+    }
+
     /// <summary>
     /// Copies properties to a cloned Layout.
     /// </summary>
@@ -208,7 +213,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _PackMode;
       }
       set {
-        if (value == VPackMode.AspectOnly || value == VPackMode.Fit || value == VPackMode.ExpandToFit) {
+        if (_PackMode != value && (value == VPackMode.AspectOnly || value == VPackMode.Fit || value == VPackMode.ExpandToFit)) {
           _PackMode = value;
           InvalidateLayout();
         }
@@ -246,7 +251,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _SortOrder;
       }
       set {
-        if (value == VSortOrder.Descending || value == VSortOrder.Ascending) {
+        if (_SortOrder != value && (value == VSortOrder.Descending || value == VSortOrder.Ascending)) {
           _SortOrder = value;
           InvalidateLayout();
         }
@@ -280,7 +285,10 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Comparer;
       }
       set {
-        _Comparer = value;
+        if (_Comparer != value && value != null) {
+          _Comparer = value;
+          InvalidateLayout();
+        }
       }
     }
 
@@ -301,7 +309,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _AspectRatio;
       }
       set {
-        if (Util.IsFinite(value) && value > 0) {
+        if (_AspectRatio != value && IsFinite(value) && value > 0) {
           _AspectRatio = value;
           InvalidateLayout();
         }
@@ -333,8 +341,8 @@ namespace Northwoods.Go.Layouts.Extensions {
           _Size = value;
           _FillViewport = true;
           InvalidateLayout();
-        } else if (Util.IsFinite(value.Width) && value.Width >= 0 &&
-                   Util.IsFinite(value.Height) && value.Height >= 0) {
+        } else if (IsFinite(value.Width) && value.Width >= 0 &&
+                   IsFinite(value.Height) && value.Height >= 0) {
           _Size = value;
           InvalidateLayout();
         }
@@ -361,7 +369,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Spacing;
       }
       set {
-        if (Util.IsFinite(value)) {
+        if (_Spacing != value && IsFinite(value)) {
           _Spacing = value;
           InvalidateLayout();
         }
@@ -561,10 +569,11 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       if (SortMode != VSortMode.None) {
-        if (Comparer == null) {
+        var comp = Comparer;
+        if (comp == null) {  // the default comparer isn't stored, so that later SortMode/SortOrder changes take effect
           var sortOrder = SortOrder;
           var sortMode = SortMode;
-          Comparer = (a, b) => {
+          comp = (a, b) => {
             var sortVal = sortOrder == VSortOrder.Ascending ? 1 : -1;
             if (sortMode == VSortMode.MaxSide) {
               var aMax = Math.Max(a.Bounds.Width, a.Bounds.Height);
@@ -588,7 +597,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             return 0;
           };
         }
-        nodes.Sort(Comparer);
+        nodes.Sort(comp);
       }
 
       var targetWidth = Size.Width != 0 ? Size.Width : 1;
@@ -745,14 +754,14 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       if (nodes.Count == 0) return fits;
 
-      if (nodes[0].Bounds == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+      if (nodes[0].Bounds == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
       var r1 = nodes[0].Bounds.Inflate(sideSpacing, sideSpacing);
       r1 = new Rect(0, 0, r1.Width == 0 ? 0.1 : r1.Width, r1.Height == 0 ? 0.1 : r1.Height);
       fits.Add(r1);
       _Bounds = _Bounds.Union(r1);
       if (nodes.Count < 2) return fits;
 
-      if (nodes[1].Bounds == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+      if (nodes[1].Bounds == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
       var r2 = nodes[1].Bounds.Inflate(sideSpacing, sideSpacing);
       r2 = new Rect(0, 0, r2.Width == 0 ? 0.1 : r2.Width, r2.Height == 0 ? 0.1 : r2.Height);
       r2 = new Rect(-r2.Width, r1.CenterY - r2.Width / 2, r2.Width, r2.Height);
@@ -760,7 +769,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       _Bounds = _Bounds.Union(r2);
       if (nodes.Count < 3) return fits;
 
-      if (nodes[2].Bounds == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+      if (nodes[2].Bounds == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
       var r3 = nodes[2].Bounds.Inflate(sideSpacing, sideSpacing);
       r3 = new Rect(0, 0, r3.Width == 0 ? 0.1 : r3.Width, r3.Height == 0 ? 0.1 : r3.Height);
       r3 = place(r2, r1, r3);
@@ -772,7 +781,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       var n1 = frontChain.Push(r1);
 
       for (var i = 3; i < nodes.Count; i++) {
-        if (nodes[i].Bounds == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+        if (nodes[i].Bounds == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
         r3 = nodes[i].Bounds.Inflate(sideSpacing, sideSpacing);
         r3 = new Rect(0, 0, r3.Width == 0 ? 0.1 : r3.Width, r3.Height == 0 ? 0.1 : r3.Height);
         r3 = place(n1.Data, n2.Data, r3);
@@ -877,7 +886,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       // place first node at 0, 0
       var bounds0 = nodes[0].Bounds;
-      if (bounds0 == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+      if (bounds0 == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
       fits.Add(new Rect(sideSpacing, sideSpacing, bounds0.Width, bounds0.Height));
       fits[0] = fits[0].Inflate(sideSpacing, sideSpacing);
       fits[0] = new Rect(0, 0, fits[0].X == 0 ? 0.1 : fits[0].X, fits[0].Y == 0 ? 0.1 : fits[0].Y);
@@ -897,7 +906,7 @@ namespace Northwoods.Go.Layouts.Extensions {
 
       for (var i = 1; i < nodes.Count; i++) {
         var node = nodes[i];
-        if (node.Bounds == default) Trace.Warn("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
+        if (node.Bounds == default) System.Diagnostics.Trace.TraceWarning("warning: a node in VirtualizedPackedLayout was specified without explicit bounds.");
         var bounds = node.Bounds.Inflate(sideSpacing, sideSpacing);
         bounds.X = 0;
         bounds.Y = 0;
@@ -1056,7 +1065,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             exceededSecondaryDimension = usePreviousSegment ? fit.S1.Data.X1 + fit.Bounds.Width <= lastSegment.Data.X1 : fit.S1.Data.X2 - fit.Bounds.Width >= lastSegment.Data.X1;
             break;
           default:
-            throw new Exception("Unknown orientation " + orientation);
+            throw new InvalidOperationException("Unknown orientation " + orientation);
         }
 
         if (!exceededPrimaryDimension && !exceededSecondaryDimension && validCornerPlacement && validLastOrientation) {
@@ -1692,7 +1701,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       /// <returns>the node for the last value inserted (a list of values is inserted sequentially)</returns>
       public ListNode<T> Push(params T[] vals) {
         if (vals.Length == 0) {
-          throw new Exception("You must push at least one element!");
+          throw new ArgumentException("You must push at least one element!", nameof(vals));
         }
         var sp = Start?.Prev;
         var last = InsertAfter(vals[0], sp);
@@ -1838,7 +1847,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (e != null) {
         return CircleToRect(e);
       } else { // this will never happen, but needs to be here for strict TypeScript compilation
-        throw new Exception("Assertion error");
+        throw new InvalidOperationException("Assertion error");
       }
     }
 
@@ -1874,7 +1883,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       // If we get here then something is very wrong.
-      throw new Exception("Assertion error");
+      throw new InvalidOperationException("Assertion error");
     }
 
     private static bool EnclosesNot(Circle a, Circle b) {

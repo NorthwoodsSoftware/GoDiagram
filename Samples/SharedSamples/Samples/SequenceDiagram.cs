@@ -21,25 +21,25 @@ public partial class SequenceDiagram : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.SequenceDiagram.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    {""Key"":""Fred"", ""Text"":""Fred: Patron"", ""IsGroup"":true, ""Loc"":""0 0"", ""Duration"":9},
-    {""Key"":""Bob"", ""Text"":""Bob: Waiter"", ""IsGroup"":true, ""Loc"":""100 0"", ""Duration"":9},
-    {""Key"":""Hank"", ""Text"":""Hank: Cook"", ""IsGroup"":true, ""Loc"":""200 0"", ""Duration"":9},
-    {""Key"":""Renee"", ""Text"":""Renee: Cashier"", ""IsGroup"":true, ""Loc"":""300 0"", ""Duration"":9},
-    {""Group"":""Bob"", ""Start"":1, ""Duration"":2},
-    {""Group"":""Hank"", ""Start"":2, ""Duration"":3},
-    {""Group"":""Fred"", ""Start"":3, ""Duration"":1},
-    {""Group"":""Bob"", ""Start"":5, ""Duration"":1},
-    {""Group"":""Fred"", ""Start"":6, ""Duration"":2},
-    {""Group"":""Renee"", ""Start"":8, ""Duration"":1}
+  ""nodeDataSource"": [
+    {""key"":""Fred"", ""text"":""Fred: Patron"", ""isGroup"":true, ""loc"":""0 0"", ""duration"":9},
+    {""key"":""Bob"", ""text"":""Bob: Waiter"", ""isGroup"":true, ""loc"":""100 0"", ""duration"":9},
+    {""key"":""Hank"", ""text"":""Hank: Cook"", ""isGroup"":true, ""loc"":""200 0"", ""duration"":9},
+    {""key"":""Renee"", ""text"":""Renee: Cashier"", ""isGroup"":true, ""loc"":""300 0"", ""duration"":9},
+    {""group"":""Bob"", ""start"":1, ""duration"":2},
+    {""group"":""Hank"", ""start"":2, ""duration"":3},
+    {""group"":""Fred"", ""start"":3, ""duration"":1},
+    {""group"":""Bob"", ""start"":5, ""duration"":1},
+    {""group"":""Fred"", ""start"":6, ""duration"":2},
+    {""group"":""Renee"", ""start"":8, ""duration"":1}
   ],
-  ""LinkDataSource"": [
-    {""From"":""Fred"", ""To"":""Bob"", ""Text"":""order"", ""Time"":1},
-    {""From"":""Bob"", ""To"":""Hank"", ""Text"":""order food"", ""Time"":2},
-    {""From"":""Bob"", ""To"":""Fred"", ""Text"":""serve drinks"", ""Time"":3},
-    {""From"":""Hank"", ""To"":""Bob"", ""Text"":""finish cooking"", ""Time"":5},
-    {""From"":""Bob"", ""To"":""Fred"", ""Text"":""serve food"", ""Time"":6},
-    {""From"":""Fred"", ""To"":""Renee"", ""Text"":""pay"", ""Time"":8}
+  ""linkDataSource"": [
+    {""from"":""Fred"", ""to"":""Bob"", ""text"":""order"", ""time"":1},
+    {""from"":""Bob"", ""to"":""Hank"", ""text"":""order food"", ""time"":2},
+    {""from"":""Bob"", ""to"":""Fred"", ""text"":""serve drinks"", ""time"":3},
+    {""from"":""Hank"", ""to"":""Bob"", ""text"":""finish cooking"", ""time"":5},
+    {""from"":""Bob"", ""to"":""Fred"", ""text"":""serve food"", ""time"":6},
+    {""from"":""Fred"", ""to"":""Renee"", ""text"":""pay"", ""time"":8}
   ]
 }";
 

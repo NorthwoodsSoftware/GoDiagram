@@ -19,42 +19,42 @@ public partial class DataFlow : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.DataFlow.md");
 
     modelJson1.JsonText = @"{
-  ""NodeCategoryProperty"": ""Type"",
-  ""LinkFromPortIdProperty"": ""Frompid"",
-  ""LinkToPortIdProperty"": ""Topid"",
-  ""NodeDataSource"": [
-    { ""Key"": 1, ""Type"": ""Table"", ""Name"": ""Product"" },
-    { ""Key"": 2, ""Type"": ""Table"", ""Name"": ""Sales"" },
-    { ""Key"": 3, ""Type"": ""Table"", ""Name"": ""Period"" },
-    { ""Key"": 4, ""Type"": ""Table"", ""Name"": ""Store"" },
-    { ""Key"": 11, ""Type"": ""Join"", ""Name"": ""Product, Class"" },
-    { ""Key"": 12, ""Type"": ""Join"", ""Name"": ""Period"" },
-    { ""Key"": 13, ""Type"": ""Join"", ""Name"": ""Store"" },
-    { ""Key"": 21, ""Type"": ""Project"", ""Name"": ""Product, Class"" },
-    { ""Key"": 31, ""Type"": ""Filter"", ""Name"": ""Boston, Jan2014"" },
-    { ""Key"": 32, ""Type"": ""Filter"", ""Name"": ""Boston, 2014"" },
-    { ""Key"": 41, ""Type"": ""Group"", ""Name"": ""Sales"" },
-    { ""Key"": 42, ""Type"": ""Group"", ""Name"": ""Total Sales"" },
-    { ""Key"": 51, ""Type"": ""Join"", ""Name"": ""Product Name"" },
-    { ""Key"": 61, ""Type"": ""Sort"", ""Name"": ""Product Name"" },
-    { ""Key"": 71, ""Type"": ""Export"", ""Name"": ""File"" }
+  ""nodeCategoryProperty"": ""Type"",
+  ""linkFromPortIdProperty"": ""Frompid"",
+  ""linkToPortIdProperty"": ""Topid"",
+  ""nodeDataSource"": [
+    { ""key"": 1, ""type"": ""Table"", ""name"": ""Product"" },
+    { ""key"": 2, ""type"": ""Table"", ""name"": ""Sales"" },
+    { ""key"": 3, ""type"": ""Table"", ""name"": ""Period"" },
+    { ""key"": 4, ""type"": ""Table"", ""name"": ""Store"" },
+    { ""key"": 11, ""type"": ""Join"", ""name"": ""Product, Class"" },
+    { ""key"": 12, ""type"": ""Join"", ""name"": ""Period"" },
+    { ""key"": 13, ""type"": ""Join"", ""name"": ""Store"" },
+    { ""key"": 21, ""type"": ""Project"", ""name"": ""Product, Class"" },
+    { ""key"": 31, ""type"": ""Filter"", ""name"": ""Boston, Jan2014"" },
+    { ""key"": 32, ""type"": ""Filter"", ""name"": ""Boston, 2014"" },
+    { ""key"": 41, ""type"": ""Group"", ""name"": ""Sales"" },
+    { ""key"": 42, ""type"": ""Group"", ""name"": ""Total Sales"" },
+    { ""key"": 51, ""type"": ""Join"", ""name"": ""Product Name"" },
+    { ""key"": 61, ""type"": ""Sort"", ""name"": ""Product Name"" },
+    { ""key"": 71, ""type"": ""Export"", ""name"": ""File"" }
   ],
-  ""LinkDataSource"": [
-    { ""From"": 1, ""Frompid"": ""OUT"", ""To"": 11, ""Topid"": ""L"" },
-    { ""From"": 2, ""Frompid"": ""OUT"", ""To"": 11, ""Topid"": ""R"" },
-    { ""From"": 3, ""Frompid"": ""OUT"", ""To"": 12, ""Topid"": ""R"" },
-    { ""From"": 4, ""Frompid"": ""OUT"", ""To"": 13, ""Topid"": ""R"" },
-    { ""From"": 11, ""Frompid"": ""M"", ""To"": 12, ""Topid"": ""L"" },
-    { ""From"": 12, ""Frompid"": ""M"", ""To"": 13, ""Topid"": ""L"" },
-    { ""From"": 13, ""Frompid"": ""M"", ""To"": 21 },
-    { ""From"": 21, ""Frompid"": ""OUT"", ""To"": 31 },
-    { ""From"": 21, ""Frompid"": ""OUT"", ""To"": 32 },
-    { ""From"": 31, ""Frompid"": ""OUT"", ""To"": 41 },
-    { ""From"": 32, ""Frompid"": ""OUT"", ""To"": 42 },
-    { ""From"": 41, ""Frompid"": ""OUT"", ""To"": 51, ""Topid"": ""L"" },
-    { ""From"": 42, ""Frompid"": ""OUT"", ""To"": 51, ""Topid"": ""R"" },
-    { ""From"": 51, ""Frompid"": ""OUT"", ""To"": 61 },
-    { ""From"": 61, ""Frompid"": ""OUT"", ""To"": 71 }
+  ""linkDataSource"": [
+    { ""from"": 1, ""frompid"": ""OUT"", ""to"": 11, ""topid"": ""L"" },
+    { ""from"": 2, ""frompid"": ""OUT"", ""to"": 11, ""topid"": ""R"" },
+    { ""from"": 3, ""frompid"": ""OUT"", ""to"": 12, ""topid"": ""R"" },
+    { ""from"": 4, ""frompid"": ""OUT"", ""to"": 13, ""topid"": ""R"" },
+    { ""from"": 11, ""frompid"": ""M"", ""to"": 12, ""topid"": ""L"" },
+    { ""from"": 12, ""frompid"": ""M"", ""to"": 13, ""topid"": ""L"" },
+    { ""from"": 13, ""frompid"": ""M"", ""to"": 21 },
+    { ""from"": 21, ""frompid"": ""OUT"", ""to"": 31 },
+    { ""from"": 21, ""frompid"": ""OUT"", ""to"": 32 },
+    { ""from"": 31, ""frompid"": ""OUT"", ""to"": 41 },
+    { ""from"": 32, ""frompid"": ""OUT"", ""to"": 42 },
+    { ""from"": 41, ""frompid"": ""OUT"", ""to"": 51, ""topid"": ""L"" },
+    { ""from"": 42, ""frompid"": ""OUT"", ""to"": 51, ""topid"": ""R"" },
+    { ""from"": 51, ""frompid"": ""OUT"", ""to"": 61 },
+    { ""from"": 61, ""frompid"": ""OUT"", ""to"": 71 }
   ]
 }";
 

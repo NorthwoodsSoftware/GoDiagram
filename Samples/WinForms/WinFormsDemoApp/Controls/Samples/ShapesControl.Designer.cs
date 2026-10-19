@@ -55,7 +55,7 @@ namespace Demo.Samples.Shapes {
             this.diagramControl1.AllowDrop = true;
             this.diagramControl1.Location = new System.Drawing.Point(3, 3);
             this.diagramControl1.Name = "diagramControl1";
-            this.diagramControl1.Size = new System.Drawing.Size(800, 594);
+            this.diagramControl1.Size = new System.Drawing.Size(820, 594);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
             //

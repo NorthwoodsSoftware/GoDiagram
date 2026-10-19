@@ -455,7 +455,7 @@ namespace Northwoods.Go.Tools.Extensions {
       RemoveLastPoint();
       var lastInput = diagram.LastInput;
       // if lastInput.Event is mouse event
-      if (lastInput.EventType == "mousedown" || lastInput.EventType == "mouseup" || lastInput.EventType == "pointerdown" || lastInput.EventType == "pointerup") MoveLastPoint(lastInput.DocumentPoint);
+      if (lastInput.EventType == InputEventType.PointerDown || lastInput.EventType == InputEventType.PointerUp) MoveLastPoint(lastInput.DocumentPoint);
     }
   }
 }

@@ -18,29 +18,29 @@ public partial class SequentialFunction : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.SequentialFunction.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"": ""S1"", ""Category"": ""step"", ""Text"": ""Step 1"" },
-    { ""Key"": ""TR1"", ""Category"": ""transition"", ""Text"": ""Transition 1"" },
-    { ""Key"": ""S2"", ""Category"": ""step"", ""Text"": ""Step 2"" },
-    { ""Key"": ""TR2"", ""Category"": ""transition"", ""Text"": ""Transition 2"" },
-    { ""Key"": ""BAR1"", ""Category"": ""parallel"" },
-    { ""Key"": ""S3"", ""Category"": ""step"", ""Text"": ""Step 3"" },
-    { ""Key"": ""S4"", ""Category"": ""step"", ""Text"": ""Step 4"" },
-    { ""Key"": ""BAR2"", ""Category"": ""parallel"" },
-    { ""Key"": ""TR3"", ""Category"": ""transition"", ""Text"": ""Transition 3"" },
-    { ""Key"": ""S5"", ""Category"": ""step"", ""Text"": ""Step 5"" }
+  ""nodeDataSource"": [
+    { ""key"": ""S1"", ""category"": ""step"", ""text"": ""Step 1"" },
+    { ""key"": ""TR1"", ""category"": ""transition"", ""text"": ""Transition 1"" },
+    { ""key"": ""S2"", ""category"": ""step"", ""text"": ""Step 2"" },
+    { ""key"": ""TR2"", ""category"": ""transition"", ""text"": ""Transition 2"" },
+    { ""key"": ""BAR1"", ""category"": ""parallel"" },
+    { ""key"": ""S3"", ""category"": ""step"", ""text"": ""Step 3"" },
+    { ""key"": ""S4"", ""category"": ""step"", ""text"": ""Step 4"" },
+    { ""key"": ""BAR2"", ""category"": ""parallel"" },
+    { ""key"": ""TR3"", ""category"": ""transition"", ""text"": ""Transition 3"" },
+    { ""key"": ""S5"", ""category"": ""step"", ""text"": ""Step 5"" }
   ],
-  ""LinkDataSource"": [
-    { ""From"": ""S1"", ""To"": ""TR1"" },
-    { ""From"": ""TR1"", ""To"": ""S2"" },
-    { ""From"": ""S2"", ""To"": ""TR2"" },
-    { ""From"": ""TR2"", ""To"": ""BAR1"" },
-    { ""From"": ""BAR1"", ""To"": ""S3"" },
-    { ""From"": ""BAR1"", ""To"": ""S4"" },
-    { ""From"": ""S3"", ""To"": ""BAR2"" },
-    { ""From"": ""S4"", ""To"": ""BAR2"" },
-    { ""From"": ""BAR2"", ""To"": ""TR3"" },
-    { ""From"": ""TR3"", ""To"": ""S5"" }
+  ""linkDataSource"": [
+    { ""from"": ""S1"", ""to"": ""TR1"" },
+    { ""from"": ""TR1"", ""to"": ""S2"" },
+    { ""from"": ""S2"", ""to"": ""TR2"" },
+    { ""from"": ""TR2"", ""to"": ""BAR1"" },
+    { ""from"": ""BAR1"", ""to"": ""S3"" },
+    { ""from"": ""BAR1"", ""to"": ""S4"" },
+    { ""from"": ""S3"", ""to"": ""BAR2"" },
+    { ""from"": ""S4"", ""to"": ""BAR2"" },
+    { ""from"": ""BAR2"", ""to"": ""TR3"" },
+    { ""from"": ""TR3"", ""to"": ""S5"" }
   ]
 }";
 
@@ -77,7 +77,7 @@ public partial class SequentialFunction : DemoControl {
           new TextBlock {
             Font = new Font("Segoe UI", 16, Northwoods.Go.FontWeight.Bold),
             Alignment = Spot.Center,
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             Editable = true
           }
             .BindTwoWay("Text")

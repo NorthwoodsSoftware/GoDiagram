@@ -130,7 +130,7 @@ namespace Demo.Samples.Absolute {
           }.Bind(   // avoid extra thickness from the stroke
             new Binding("Fill", "Color")),
           new TextBlock() {
-            Wrap = Wrap.None, }.Bind(
+            Wrap = TextWrap.None, }.Bind(
             new Binding("Text", "Color"))
         );
 

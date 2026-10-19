@@ -29,23 +29,23 @@ namespace Demo.Samples.Network {
 
       modelJson1.JsonText = @"
     {
-      ""NodeDataSource"": [
-        { ""Key"":1, ""Text"":""Gen1"", ""Category"":""Generator"", ""Loc"":""300 0""},
-        { ""Key"":2, ""Text"":""Bar1"", ""Category"":""HBar"", ""Loc"":""100 100"", ""Size"":""500 4"", ""Fill"":""green""},
-        { ""Key"":4, ""Text"":""Cons1"", ""Category"":""Consumer"", ""Loc"":""53 234""},
-        { ""Key"":3, ""Text"":""Bar2"", ""Category"":""HBar"", ""Loc"":""0 300"", ""Size"":""600 4"", ""Fill"":""orange""},
-        { ""Key"":5, ""Text"":""Conn1"", ""Category"":""Connector"", ""Loc"":""232.5 207.75""},
-        { ""Key"":6, ""Text"":""Cons3"", ""Category"":""Consumer"", ""Loc"":""357.5 230.75""},
-        { ""Key"":7, ""Text"":""Cons2"", ""Category"":""Consumer"", ""Loc"":""484.5 164.75""}
+      ""nodeDataSource"": [
+        { ""key"":1, ""text"":""Gen1"", ""category"":""Generator"", ""loc"":""300 0""},
+        { ""key"":2, ""text"":""Bar1"", ""category"":""HBar"", ""loc"":""100 100"", ""size"":""500 4"", ""fill"":""green""},
+        { ""key"":4, ""text"":""Cons1"", ""category"":""Consumer"", ""loc"":""53 234""},
+        { ""key"":3, ""text"":""Bar2"", ""category"":""HBar"", ""loc"":""0 300"", ""size"":""600 4"", ""fill"":""orange""},
+        { ""key"":5, ""text"":""Conn1"", ""category"":""Connector"", ""loc"":""232.5 207.75""},
+        { ""key"":6, ""text"":""Cons3"", ""category"":""Consumer"", ""loc"":""357.5 230.75""},
+        { ""key"":7, ""text"":""Cons2"", ""category"":""Consumer"", ""loc"":""484.5 164.75""}
      ],
-      ""LinkDataSource"": [
-        { ""From"":1, ""To"":2},
-        { ""From"":1, ""To"":3},
-        { ""From"":4, ""To"":3},
-        { ""From"":5, ""To"":2},
-        { ""From"":5, ""To"":3},
-        { ""From"":6, ""To"":3},
-        { ""From"":7, ""To"":2}
+      ""linkDataSource"": [
+        { ""from"":1, ""to"":2},
+        { ""from"":1, ""to"":3},
+        { ""from"":4, ""to"":3},
+        { ""from"":5, ""to"":2},
+        { ""from"":5, ""to"":3},
+        { ""from"":6, ""to"":3},
+        { ""from"":7, ""to"":2}
      ]}
     ";
 

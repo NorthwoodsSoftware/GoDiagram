@@ -1,5 +1,6 @@
 ﻿/* Copyright (c) Northwoods Software Corporation. */
 
+using System;
 using System.Collections.Generic;
 using Northwoods.Go;
 using Northwoods.Go.Layouts;
@@ -24,7 +25,7 @@ public partial class FamilyTree : DemoControl {
     myDiagram = diagramControl1.Diagram;
 
     myDiagram.AnimationManager.IsEnabled = true;
-    myDiagram.ToolManager.HoverDelay = 100; // 100 ms instead of the default 850
+    myDiagram.ToolManager.HoverDelay = TimeSpan.FromMilliseconds(100); // 100 ms instead of the default 850
     myDiagram.AllowCopy = false;
     myDiagram.Layout = new TreeLayout {
       Angle = 90,
@@ -80,7 +81,7 @@ public partial class FamilyTree : DemoControl {
     var tooltipTemplate = Builder.Make<Adornment>("ToolTip").Add(
       new TextBlock {
         Font = new Font("Arial", 8, Northwoods.Go.FontWeight.Bold, FontUnit.Point),
-        Wrap = Wrap.Fit,
+        Wrap = TextWrap.Fit,
         Margin = 5
       }.Bind("Text", "", tooltipTextConverter)
     );

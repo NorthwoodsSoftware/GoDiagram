@@ -72,6 +72,7 @@ namespace Demo.Samples.GameOfLife {
     }
 
     // accessors for razor bindings
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string SamplePatterns {
       get {
         return samplePatterns;
@@ -279,9 +280,15 @@ namespace Demo.Samples.GameOfLife {
         if (liveCellCount == 0) { // stop the simulation if there are no more live cells
           ToggleSimulation();
         } else { // queue another step if the simuation is still enabled
-          Util.SetTimeout(() => GoLStep(), interval, myDiagram);
+          StepLater();
         }
       }
+    }
+
+    // take the next step after the interval, unless this control has gone away
+    async void StepLater() {
+      await Task.Delay(interval);
+      if (!IsDisposed) GoLStep();
     }
 
     // clear the board of all live cells, stopping the simulation if it's currently enabled

@@ -38,12 +38,10 @@ namespace Northwoods.Go.Extensions {
       Builder.DefineBuilder("Button", (args) => {
         // default colors for 'Button' shape
         var buttonFillNormal = "#f5f5f5";
-        var buttonStrokeNormal = "#bdbdbd";
-        var buttonFillOver = "#e0e0e0";
-        var buttonStrokeOver = "#9e9e9e";
-        var buttonFillPressed = "#bdbdbd";  // set to null for no button pressed effects
-        var buttonStrokePressed = "#9e9e9e";
-        var buttonFillDisabled = "#e5e5e5";
+        var buttonStrokeNormal = "#737373";
+        var buttonFillOver = "#d4d4d4";
+        var buttonStrokeOver = "#737373";
+        var buttonFillDisabled = "#a3a3a3";
 
         // padding inside the ButtonBorder to match sizing from previous versions
         var paddingHorizontal = 2.76142374915397;
@@ -54,21 +52,33 @@ namespace Northwoods.Go.Extensions {
             IsActionable = true,
             EnabledChanged = new Action<GraphObject, bool>((btn, enabled) => {
               if (btn is Panel bpan) {
-                var shape = bpan.FindElement("ButtonBorder") as Shape;
-                if (shape != null) {
-                  shape.Fill = (enabled ? bpan["_ButtonFillNormal"] : bpan["_ButtonFillDisabled"]) as string;
+                if (bpan.FindElement("ButtonBorder") is Shape shape) {
+                  saveNormal(bpan, shape);
+                  if (enabled) {
+                    // if the mouse is over the button, show the "over" fill
+                    GraphObject fnd = null;
+                    var diagram = bpan.Diagram;
+                    if (bpan.Layer != null && diagram != null && bpan.IsVisibleElement() && diagram.LastInput.DocumentPoint.IsReal()) {
+                      fnd = bpan.Layer.FindElementAt<GraphObject>(diagram.LastInput.DocumentPoint);
+                    }
+                    if (fnd != null && (fnd == bpan || fnd.IsContainedBy(bpan))) {
+                      shape.Fill = asBrush(bpan["_ButtonFillOver"]);
+                    } else {
+                      shape.Fill = asBrush(bpan["_ButtonFillNormal"]);
+                    }
+                  } else {
+                    shape.Fill = asBrush(bpan["_ButtonFillDisabled"]);
+                  }
                 }
               }
             }),
             Cursor = "Pointer"
           }.Set(new {
-            // save these values for the MouseEnter and MouseLeave event handlers
-            _ButtonFillNormal = buttonFillNormal,
-            _ButtonStrokeNormal = buttonStrokeNormal,
+            // save these values for the MouseEnter and MouseLeave event handlers;
+            // _ButtonFillNormal and _ButtonStrokeNormal are taken from the ButtonBorder when first needed,
+            // so that any customization of the ButtonBorder's Fill and Stroke is respected
             _ButtonFillOver = buttonFillOver,
             _ButtonStrokeOver = buttonStrokeOver,
-            _ButtonFillPressed = buttonFillPressed,
-            _ButtonStrokePressed = buttonStrokePressed,
             _ButtonFillDisabled = buttonFillDisabled
           }).Add(
             new Shape("RoundedRectangle") {
@@ -76,30 +86,30 @@ namespace Northwoods.Go.Extensions {
               Spot1 = new Spot(0, 0, paddingHorizontal, paddingVertical),
               Spot2 = new Spot(1, 1, -paddingHorizontal, -paddingVertical),
               Parameter1 = 2,
-              Parameter2 = 2,
               Fill = buttonFillNormal,
               Stroke = buttonStrokeNormal
             }
           );
 
+        // remember the normal Fill and Stroke of the ButtonBorder, unless already known
+        void saveNormal(Panel btn, Shape bb) {
+          if (btn["_ButtonFillNormal"] == null) btn["_ButtonFillNormal"] = bb.Fill;
+          if (btn["_ButtonStrokeNormal"] == null) btn["_ButtonStrokeNormal"] = bb.Stroke;
+        }
+
+        Brush asBrush(object b) {
+          if (b is Brush br) return br;
+          if (b is string s) return s;
+          return default;
+        }
+
         button.MouseEnter = (e, obj, prev) => {
           if (!obj.IsEnabledElement()) return;
           if (!(obj is Panel btn)) return;
           if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-            var bfo = btn["_ButtonFillOver"];
-            if (bfo is Brush || bfo is string || bfo == null) {
-              btn["_ButtonFillNormal"] = bb.Fill;
-              if (bfo is Brush fb) bb.Fill = fb;
-              else if (bfo is string fs) bb.Fill = fs;
-              else bb.Fill = null;
-            }
-            var bso = btn["_ButtonStrokeOver"];
-            if (bso is Brush || bso is string || bso == null) {
-              btn["_ButtonStrokeNormal"] = bb.Stroke;
-              if (bso is Brush sb) bb.Stroke = sb;
-              else if (bso is string ss) bb.Stroke = ss;
-              else bb.Stroke = null;
-            }
+            saveNormal(btn, bb);
+            bb.Fill = asBrush(btn["_ButtonFillOver"]);
+            bb.Stroke = asBrush(btn["_ButtonStrokeOver"]);
           }
         };
 
@@ -107,139 +117,11 @@ namespace Northwoods.Go.Extensions {
           if (!obj.IsEnabledElement()) return;
           if (!(obj is Panel btn)) return;
           if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-            // update fill to prior normal value
-            if (btn["_ButtonFillNormal"] is Brush fb) bb.Fill = fb;
-            else if (btn["_ButtonFillNormal"] is string fs) bb.Fill = fs;
-            // update stroke to prior normal value
-            if (btn["_ButtonStrokeNormal"] is Brush sb) bb.Stroke = sb;
-            else if (btn["_ButtonStrokeNormal"] is string ss) bb.Stroke = ss;
+            // restore the normal fill and stroke
+            if (btn["_ButtonFillNormal"] != null) bb.Fill = asBrush(btn["_ButtonFillNormal"]);
+            if (btn["_ButtonStrokeNormal"] != null) bb.Stroke = asBrush(btn["_ButtonStrokeNormal"]);
           }
         };
-
-        button.ActionDown = (e, obj) => {
-          if (!obj.IsEnabledElement()) return;
-          if (!(obj is Panel btn)) return;
-          if (btn["_ButtonFillPressed"] == null) return;
-          if (e.Button != 0) return;
-          if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-            var diagram = e.Diagram;
-            var oldskip = diagram.SkipsUndoManager;
-            diagram.SkipsUndoManager = true;
-            var bfp = btn["_ButtonFillPressed"];
-            if (bfp is Brush || bfp is string || bfp == null) {
-              btn["_ButtonFillOver"] = bb.Fill;
-              if (bfp is Brush fb) bb.Fill = fb;
-              else if (bfp is string fs) bb.Fill = fs;
-              else bb.Fill = null;
-            }
-            var bsp = btn["_ButtonStrokePressed"];
-            if (bsp is Brush || bsp is string || bsp == null) {
-              btn["_ButtonStrokeOver"] = bb.Stroke;
-              if (bsp is Brush sb) bb.Stroke = sb;
-              else if (bsp is string ss) bb.Stroke = ss;
-              else bb.Stroke = null;
-            }
-            diagram.SkipsUndoManager = oldskip;
-          }
-        };
-
-        button.ActionUp = (e, obj) => {
-          if (!obj.IsEnabledElement()) return;
-          if (!(obj is Panel btn)) return;
-          if (btn["_ButtonFillPressed"] == null) return;
-          if (e.Button != 0) return;
-          if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-            var diagram = e.Diagram;
-            var oldskip = diagram.SkipsUndoManager;
-            diagram.SkipsUndoManager = true;
-            if (overButton(e, btn)) {
-              // update fill to prior over value
-              if (btn["_ButtonFillOver"] is Brush fb) bb.Fill = fb;
-              else if (btn["_ButtonFillOver"] is string fs) bb.Fill = fs;
-              // update stroke to prior over value
-              if (btn["_ButtonStrokeOver"] is Brush sb) bb.Stroke = sb;
-              else if (btn["_ButtonStrokeOver"] is string ss) bb.Stroke = ss;
-            } else {
-              // update fill to prior normal value
-              if (btn["_ButtonFillNormal"] is Brush fb) bb.Fill = fb;
-              else if (btn["_ButtonFillNormal"] is string fs) bb.Fill = fs;
-              // update stroke to prior normal value
-              if (btn["_ButtonStrokeNormal"] is Brush sb) bb.Stroke = sb;
-              else if (btn["_ButtonStrokeNormal"] is string ss) bb.Stroke = ss;
-            }
-            diagram.SkipsUndoManager = oldskip;
-          }
-        };
-
-        button.ActionCancel = (e, obj) => {
-          if (!obj.IsEnabledElement()) return;
-          if (!(obj is Panel btn)) return;
-          if (btn["_ButtonFillPressed"] == null) return;
-          if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-            var diagram = e.Diagram;
-            var oldskip = diagram.SkipsUndoManager;
-            diagram.SkipsUndoManager = true;
-            if (overButton(e, btn)) {
-              // update fill to prior over value
-              if (btn["_ButtonFillOver"] is Brush fb) bb.Fill = fb;
-              else if (btn["_ButtonFillOver"] is string fs) bb.Fill = fs;
-              // update stroke to prior over value
-              if (btn["_ButtonStrokeOver"] is Brush sb) bb.Stroke = sb;
-              else if (btn["_ButtonStrokeOver"] is string ss) bb.Stroke = ss;
-            } else {
-              // update fill to prior normal value
-              if (btn["_ButtonFillNormal"] is Brush fb) bb.Fill = fb;
-              else if (btn["_ButtonFillNormal"] is string fs) bb.Fill = fs;
-              // update stroke to prior normal value
-              if (btn["_ButtonStrokeNormal"] is Brush sb) bb.Stroke = sb;
-              else if (btn["_ButtonStrokeNormal"] is string ss) bb.Stroke = ss;
-            }
-            diagram.SkipsUndoManager = oldskip;
-          }
-        };
-
-        button.ActionMove = (e, obj) => {
-          if (!obj.IsEnabledElement()) return;
-          if (!(obj is Panel btn)) return;
-          if (btn["_ButtonFillPressed"] == null) return;
-          var diagram = e.Diagram;
-          if (diagram.FirstInput.Button != 0) return;
-          diagram.CurrentTool.StandardMouseOver();
-          if (overButton(e, btn)) {
-            if (btn.FindElement("ButtonBorder") is Shape bb) {  // the border Shape
-              var oldskip = diagram.SkipsUndoManager;
-              diagram.SkipsUndoManager = true;
-              var bfp = btn["_ButtonFillPressed"];
-              if (bfp is Brush || bfp is string || bfp == null) {
-                if (bfp is Brush fb && bb.Fill != fb) bb.Fill = fb;
-                else if (bfp is string fs && bb.Fill != fs) bb.Fill = fs;
-                else if (bfp == null && bb.Fill != null) bb.Fill = null;
-              }
-              var bsp = btn["_ButtonStrokePressed"];
-              if (bsp is Brush || bsp is string || bsp == null) {
-                if (bsp is Brush sb && bb.Stroke != sb) bb.Stroke = sb;
-                else if (bsp is string ss && bb.Stroke != ss) bb.Stroke = ss;
-                else if (bsp == null && bb.Stroke != null) bb.Stroke = null;
-              }
-              diagram.SkipsUndoManager = oldskip;
-            }
-          }
-        };
-
-        bool overButton(InputEvent e, Panel obj) {
-          var over = e.Diagram.FindElementAt(
-            e.DocumentPoint,
-            (x) => {
-              while (x.Panel != null) {
-                if (x.IsActionable) return x;
-                x = x.Panel;
-              }
-              return x;
-            },
-            (x) => x == obj
-          );
-          return over != null;
-        }
 
         return button;
       });
@@ -259,7 +141,7 @@ namespace Northwoods.Go.Extensions {
         }).Add(
           new Shape("MinusLine") {  // default value for IsTreeExpanded is true
             Name = "ButtonIcon",
-            Stroke = "#424242",
+            Stroke = "#0a0a0a",
             StrokeWidth = 2,
             DesiredSize = new Size(8, 8)
           }
@@ -309,7 +191,7 @@ namespace Northwoods.Go.Extensions {
         }).Add(
           new Shape("MinusLine") {  // default value for IsSubGraphExpanded is true
             Name = "ButtonIcon",
-            Stroke = "#424242",
+            Stroke = "#0a0a0a",
             StrokeWidth = 2,
             DesiredSize = new Size(8, 8)
           }
@@ -355,15 +237,18 @@ namespace Northwoods.Go.Extensions {
         var ad = new Adornment(PanelLayoutAuto.Instance) {
           IsShadowed = true,
           ShadowColor = "rgba(0, 0, 0, .4)",
-          ShadowOffset = new Point(0, 3),
-          ShadowBlur = 0
+          ShadowOffset = new Point(0, 2),
+          // keep the tooltip showing while the mouse is over it
+          MouseOver = (e, obj) => {
+            var mgr = e.Diagram.ToolManager;
+            mgr.ExtendToolTip(mgr.ToolTipDuration);
+          }
         }.Add(
           new Shape("RoundedRectangle") {
             Name = "Border",
             Parameter1 = 1,
-            Parameter2 = 1,
             Fill = "#f5f5f5",
-            Stroke = "#f0f0f0",
+            StrokeWidth = 0,
             Spot1 = new Spot(0, 0, 4, 6),
             Spot2 = new Spot(1, 1, -4, -4)
           }
@@ -388,16 +273,15 @@ namespace Northwoods.Go.Extensions {
           Background = "#f5f5f5",
           IsShadowed = true,
           ShadowColor = "rgba(0, 0, 0, .4)",
-          ShadowOffset = new Point(0, 3),
-          ShadowBlur = 0
+          ShadowOffset = new Point(0, 2)
         }
         // don't set the background if the ContextMenu is adorning something and there's a Placeholder
-        .Bind("Background", "", (obj, data) => {
+        .Bind(new Binding("Background", "", (obj, _) => {
           if (!(obj is Adornment adorn)) return null;
           var part = adorn.AdornedPart;
-          if (part != null && adorn.Placeholder != null) return null;
+          if (part != null && adorn.HasPlaceholder()) return null;
           return "#f5f5f5";
-        });
+        }).OfElement());
         return ad;
       });
 
@@ -420,8 +304,8 @@ namespace Northwoods.Go.Extensions {
         if (border is Shape shp) {
           shp.Figure = "Rectangle";
           shp.StrokeWidth = 0;
-          shp.Spot1 = new Spot(0, 0, 2, 3);
-          shp.Spot2 = new Spot(1, 1, -2, -2);
+          shp.Spot1 = new Spot(0, 0, 4, 6);
+          shp.Spot2 = new Spot(1, 1, -4, -4);
         }
 
         return button;
@@ -451,8 +335,6 @@ namespace Northwoods.Go.Extensions {
           _ButtonStrokeNormal = (Brush)null,
           _ButtonFillOver = "rgba(0, 0, 0, .2)",
           _ButtonStrokeOver = (Brush)null,
-          _ButtonFillPressed = "rgba(0, 0, 0, .4)",
-          _ButtonStrokePressed = (Brush)null
         }).Add(
           new Shape() {
             Name = "ButtonIcon",
@@ -477,7 +359,7 @@ namespace Northwoods.Go.Extensions {
           var elt = btn.FindBindingPanel();
           if (elt == null) elt = btn.Part;
           if (elt != null) {
-            if (elt.FindElement(eltname) is Panel pan) {
+            if (elt.FindElement(eltname) is GraphObject pan) {
               e.Handled = true;
               diagram.StartTransaction("Collapse/Expand Panel");
               pan.Visible = !pan.Visible;
@@ -521,6 +403,11 @@ namespace Northwoods.Go.Extensions {
           .Bind(propname != "" ? new Binding("Visible", propname).MakeTwoWay() : null)
         );
 
+        if (button.FindElement("ButtonBorder") is Shape cbborder) {  // a smaller inset, so the check mark is bigger
+          cbborder.Spot1 = new Spot(0, 0, 1, 1);
+          cbborder.Spot2 = new Spot(1, 1, -1, -1);
+        }
+
         button.Click = (e, obj) => {
           if (!(obj is Panel btn)) return;
           var diagram = e.Diagram;
@@ -529,7 +416,7 @@ namespace Northwoods.Go.Extensions {
           e.Handled = true;
           var shape = btn.FindElement("ButtonIcon");
           diagram.StartTransaction("checkbox");
-          shape.Visible = !shape.Visible;  // this toggles data.checked due to TwoWay Binding
+          if (shape != null) shape.Visible = !shape.Visible;  // this toggles data.checked due to TwoWay Binding
           // support extra side-effects without clobbering the click event handler:
           if (btn["_DoClick"] is Action<InputEvent, GraphObject> fn) fn(e, btn);
           diagram.CommitTransaction("checkbox");
@@ -571,10 +458,6 @@ namespace Northwoods.Go.Extensions {
           Margin = 1,
           MouseEnter = button.MouseEnter,
           MouseLeave = button.MouseLeave,
-          ActionDown = button.ActionDown,
-          ActionUp = button.ActionUp,
-          ActionCancel = button.ActionCancel,
-          ActionMove = button.ActionMove,
           Click = button.Click
         }.Set(new {
           // transfer CheckBoxButton properties over to this new CheckBox panel
@@ -582,8 +465,6 @@ namespace Northwoods.Go.Extensions {
           _ButtonStrokeNormal = button["_ButtonStrokeNormal"],
           _ButtonFillOver = button["_ButtonFillOver"],
           _ButtonStrokeOver = button["_ButtonStrokeOver"],
-          _ButtonFillPressed = button["_ButtonFillPressed"],
-          _ButtonStrokePressed = button["_ButtonStrokePressed"],
           _ButtonFillDisabled = button["_ButtonFillDisabled"],
           // also save original Button behavior, for potential use in a Panel.Click event handler
           _ButtonClick = button.Click
@@ -592,10 +473,6 @@ namespace Northwoods.Go.Extensions {
         // avoid potentially conflicting event handlers on the "CheckBoxButton"
         button.MouseEnter = null;
         button.MouseLeave = null;
-        button.ActionDown = null;
-        button.ActionUp = null;
-        button.ActionCancel = null;
-        button.ActionMove = null;
         button.Click = null;
 
         return box;

@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="150" d:DesignHeight="100"
         x:Class="Demo.DialogView"
+        x:Name="dialog"
         MinWidth="300"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterOwner"
@@ -28,7 +29,7 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
     
-    <TextBlock Text="{Binding $parent[1].Text}" HorizontalAlignment="Center" Grid.Row="0" />
+    <TextBlock Text="{Binding #dialog.Text}" HorizontalAlignment="Center" Grid.Row="0" />
 
     <Button HorizontalAlignment="Right" Click="OnOkClick" Grid.Row="2">OK</Button>
   </Grid>

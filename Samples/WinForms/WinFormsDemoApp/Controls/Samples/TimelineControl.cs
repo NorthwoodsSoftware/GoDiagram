@@ -62,7 +62,7 @@ namespace Demo.Samples.Timeline {
                     new TextBlock {
                         Row = 0,
                         Stroke = "#CCCCCC",
-                        Wrap = Wrap.Fit,
+                        Wrap = TextWrap.Fit,
                         Font = new Font("Segoe UI", 12, FontWeight.Bold),
                         TextAlign = TextAlign.Center, Margin = 4
                       }
@@ -107,7 +107,7 @@ namespace Demo.Samples.Timeline {
                 Stroke = "#CCCCCC",
                 Interval = 14,
                 AlignmentFocus = Spot.Right,
-                SegmentOrientation = Orientation.Minus90,
+                SegmentOrientation = SegmentOrientation.Minus90,
                 SegmentOffset = new Point(0, 12),
                 GraduatedFunction = ValueToDate
               }

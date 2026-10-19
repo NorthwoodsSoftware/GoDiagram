@@ -22,8 +22,7 @@ namespace Demo.Samples.TwoHalves {
     However the size of each node is fixed, so if the text is too long, it will be clipped.
       </p>
       <p>
-    The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are defined in
-    <a href=""https://github.com/NorthwoodsSoftware/GoDiagram/blob/main/Extensions/GraphObjects/Figures/Figures.cs"">Figures.cs</a> in the extensions directory.
+    The ""RoundedTopRectangle"" and ""RoundedBottomRectangle"" figures are predefined.
     See also the <a href=""demo/RoundedGroups"">Rounded Groups</a> sample.
       </p>
 ";
@@ -32,12 +31,12 @@ namespace Demo.Samples.TwoHalves {
 
     private string myModelData =
 @"{
-  ""NodeDataSource"": [
-    { ""Key"":""Alpha"", ""TopText"":""A"", ""TopColor"":""Lightgray"", ""BottomText"":""B"", ""BottomColor"":""Green"" },
-    { ""Key"":""Beta"", ""TopText"":""C"", ""BottomText"":""D"", ""BottomColor"":""Red"", ""Star"": true }
+  ""nodeDataSource"": [
+    { ""key"":""Alpha"", ""topText"":""A"", ""topColor"":""Lightgray"", ""bottomText"":""B"", ""bottomColor"":""Green"" },
+    { ""key"":""Beta"", ""topText"":""C"", ""bottomText"":""D"", ""bottomColor"":""Red"", ""star"": true }
   ],
-  ""LinkDataSource"": [
-    { ""From"":""Alpha"", ""To"":""Beta"" }
+  ""linkDataSource"": [
+    { ""from"":""Alpha"", ""to"":""Beta"" }
   ]
 }";
 

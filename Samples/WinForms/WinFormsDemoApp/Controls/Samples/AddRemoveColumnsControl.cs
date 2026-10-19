@@ -77,7 +77,7 @@ namespace Demo.Samples.AddRemoveColumns {
                     new TextBlock {
                       Editable = true,
                       Margin = new Margin(2, 2, 0, 2),
-                      Wrap = Wrap.None
+                      Wrap = TextWrap.None
                     }.BindTwoWay("Text")
                   )
               }.Bind(

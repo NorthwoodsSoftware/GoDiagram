@@ -16,11 +16,11 @@ public partial class PolylineLinking : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-        ""NodeDataSource"": [
-          {""Key"":1,""Text"":""Node 1"",""Fill"":""blueviolet"",""Loc"":""100 100""},
-          {""Key"":2,""Text"":""Node 2"",""Fill"":""orange"",""Loc"":""400 100""}
+        ""nodeDataSource"": [
+          {""key"":1,""text"":""Node 1"",""fill"":""blueviolet"",""loc"":""100 100""},
+          {""key"":2,""text"":""Node 2"",""fill"":""orange"",""loc"":""400 100""}
         ],
-        ""LinkDataSource"": []
+        ""linkDataSource"": []
 }";
 
     Setup();

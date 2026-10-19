@@ -24,8 +24,8 @@ public partial class PolygonDrawing : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-        ""NodeDataSource"": [ { ""Loc"":""183 148"", ""Geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""Key"":""-1"", ""Stroke"": ""black"", ""StrokeWidth"": 1} ],
-        ""SharedData"": { ""Position"":""0 0"" }
+        ""nodeDataSource"": [ { ""loc"":""183 148"", ""geo"":""F M0 145 L75 2 L131 87 L195 0 L249 143z"", ""key"":""-1"", ""stroke"": ""black"", ""strokeWidth"": 1} ],
+        ""sharedData"": { ""position"":""0 0"" }
 }";
 
     Setup();
@@ -126,7 +126,7 @@ public partial class PolygonDrawing : DemoControl {
     if (!(_Diagram.CurrentTool is PolygonDrawingTool tool)) return;
     if (commit && tool != null) {
       var lastInput = _Diagram.LastInput;
-      if (lastInput.EventType == "mousedown" || lastInput.EventType == "mouseup" || lastInput.EventType == "pointerdown" || lastInput.EventType == "pointerup") {
+      if (lastInput.EventType == InputEventType.PointerDown || lastInput.EventType == InputEventType.PointerUp) {
         tool.RemoveLastPoint();
       }
       tool.FinishShape();
@@ -139,7 +139,7 @@ public partial class PolygonDrawing : DemoControl {
   private void _Undo() {
     if (_Diagram.CurrentTool is PolygonDrawingTool tool) {
       var lastInput = _Diagram.LastInput;
-      if (lastInput.EventType == "mousedown" || lastInput.EventType == "mouseup" || lastInput.EventType == "pointerdown" || lastInput.EventType == "pointerup") {
+      if (lastInput.EventType == InputEventType.PointerDown || lastInput.EventType == InputEventType.PointerUp) {
         tool.RemoveLastPoint();
       }
       tool.Undo();

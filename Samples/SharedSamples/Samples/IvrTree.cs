@@ -192,7 +192,7 @@ public partial class IvrTree : DemoControl {
         Background = "white",
         Visible = false, // unless the binding sets it to true for a non-empty string
         SegmentIndex = -2,
-        SegmentOrientation = Orientation.None
+        SegmentOrientation = SegmentOrientation.None
       }.Bind(
         new Binding("Text", "Answer", (a, _) => a.ToString()),
         new Binding("Visible", "Answer", (a, _) => (int)a != 0)

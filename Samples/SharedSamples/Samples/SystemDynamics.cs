@@ -31,36 +31,36 @@ public partial class SystemDynamics : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.SystemDynamics.md");
 
     modelJson1.JsonText = @"{
-  ""LinkLabelKeysProperty"": ""LabelKeys"",
-  ""NodeDataSource"": [
-    { ""Key"": ""grass"", ""Category"": ""stock"", ""Label"": ""Grass"", ""Loc"": ""30 220"", ""LabelOffset"": ""0.5 0.5 0 30"" },
-    { ""Key"": ""cloud1"", ""Category"": ""cloud"", ""Loc"": ""200 220"" },
-    { ""Key"": ""sheep"", ""Category"": ""stock"", ""Label"": ""Sheep"", ""Loc"": ""30 20"", ""LabelOffset"": ""0.5 0.5 0 -30"" },
-    { ""Key"": ""cloud2"", ""Category"": ""cloud"", ""Loc"": ""200 20"" },
-    { ""Key"": ""cloud3"", ""Category"": ""cloud"", ""Loc"": ""-150 220"" },
-    { ""Key"": ""grass_loss"", ""Category"": ""valve"", ""Label"": ""grass_loss"", ""LabelOffset"": ""0.5 0.5 0 20""  },
-    { ""Key"": ""grazing"", ""Category"": ""valve"", ""Label"": ""grazing"", ""LabelOffset"": ""0.5 0.5 45 0""  },
-    { ""Key"": ""growth"", ""Category"": ""valve"", ""Label"": ""growth"", ""LabelOffset"": ""0.5 0.5 0 20""  },
-    { ""Key"": ""sheep_loss"", ""Category"": ""valve"", ""Label"": ""sheep_loss"", ""LabelOffset"": ""0.5 0.5 0 20""  },
-    { ""Key"": ""k1"", ""Category"": ""variable"", ""Label"": ""good weather"", ""Loc"": ""-80 100"" },
-    { ""Key"": ""k2"", ""Category"": ""variable"", ""Label"": ""bad weather"", ""Loc"": ""100 150"" },
-    { ""Key"": ""k3"", ""Category"": ""variable"", ""Label"": ""wolves"", ""Loc"": ""150 -40"" }
+  ""linkLabelKeysProperty"": ""LabelKeys"",
+  ""nodeDataSource"": [
+    { ""key"": ""grass"", ""category"": ""stock"", ""label"": ""Grass"", ""loc"": ""30 220"", ""labelOffset"": ""0.5 0.5 0 30"" },
+    { ""key"": ""cloud1"", ""category"": ""cloud"", ""loc"": ""200 220"" },
+    { ""key"": ""sheep"", ""category"": ""stock"", ""label"": ""Sheep"", ""loc"": ""30 20"", ""labelOffset"": ""0.5 0.5 0 -30"" },
+    { ""key"": ""cloud2"", ""category"": ""cloud"", ""loc"": ""200 20"" },
+    { ""key"": ""cloud3"", ""category"": ""cloud"", ""loc"": ""-150 220"" },
+    { ""key"": ""grass_loss"", ""category"": ""valve"", ""label"": ""grass_loss"", ""labelOffset"": ""0.5 0.5 0 20""  },
+    { ""key"": ""grazing"", ""category"": ""valve"", ""label"": ""grazing"", ""labelOffset"": ""0.5 0.5 45 0""  },
+    { ""key"": ""growth"", ""category"": ""valve"", ""label"": ""growth"", ""labelOffset"": ""0.5 0.5 0 20""  },
+    { ""key"": ""sheep_loss"", ""category"": ""valve"", ""label"": ""sheep_loss"", ""labelOffset"": ""0.5 0.5 0 20""  },
+    { ""key"": ""k1"", ""category"": ""variable"", ""label"": ""good weather"", ""loc"": ""-80 100"" },
+    { ""key"": ""k2"", ""category"": ""variable"", ""label"": ""bad weather"", ""loc"": ""100 150"" },
+    { ""key"": ""k3"", ""category"": ""variable"", ""label"": ""wolves"", ""loc"": ""150 -40"" }
 
   ],
-  ""LinkDataSource"": [
-    { ""From"": ""grass"", ""To"": ""cloud1"", ""Category"": ""flow"", ""LabelKeys"": [ ""grass_loss"" ]},
-    { ""From"": ""sheep"", ""To"": ""cloud2"", ""Category"": ""flow"", ""LabelKeys"": [ ""sheep_loss"" ]},
-    { ""From"": ""grass"", ""To"": ""sheep"", ""Category"": ""flow"", ""LabelKeys"": [ ""grazing"" ]},
-    { ""From"": ""cloud3"", ""To"": ""grass"", ""Category"": ""flow"", ""LabelKeys"": [ ""growth"" ]},
-    { ""From"": ""grass"", ""To"": ""grass_loss"", ""Category"": ""influence""},
-    { ""From"": ""sheep"", ""To"": ""sheep_loss"", ""Category"": ""influence""},
-    { ""From"": ""grass"", ""To"": ""growth"", ""Category"": ""influence""},
-    { ""From"": ""grass"", ""To"": ""grazing"", ""Category"": ""influence""},
-    { ""From"": ""sheep"", ""To"": ""grazing"", ""Category"": ""influence""},
-    { ""From"": ""k1"", ""To"": ""growth"", ""Category"": ""influence""},
-    { ""From"": ""k1"", ""To"": ""grazing"", ""Category"": ""influence""},
-    { ""From"": ""k2"", ""To"": ""grass_loss"", ""Category"": ""influence""},
-    { ""From"": ""k3"", ""To"": ""sheep_loss"", ""Category"": ""influence""}
+  ""linkDataSource"": [
+    { ""from"": ""grass"", ""to"": ""cloud1"", ""category"": ""flow"", ""labelKeys"": [ ""grass_loss"" ]},
+    { ""from"": ""sheep"", ""to"": ""cloud2"", ""category"": ""flow"", ""labelKeys"": [ ""sheep_loss"" ]},
+    { ""from"": ""grass"", ""to"": ""sheep"", ""category"": ""flow"", ""labelKeys"": [ ""grazing"" ]},
+    { ""from"": ""cloud3"", ""to"": ""grass"", ""category"": ""flow"", ""labelKeys"": [ ""growth"" ]},
+    { ""from"": ""grass"", ""to"": ""grass_loss"", ""category"": ""influence""},
+    { ""from"": ""sheep"", ""to"": ""sheep_loss"", ""category"": ""influence""},
+    { ""from"": ""grass"", ""to"": ""growth"", ""category"": ""influence""},
+    { ""from"": ""grass"", ""to"": ""grazing"", ""category"": ""influence""},
+    { ""from"": ""sheep"", ""to"": ""grazing"", ""category"": ""influence""},
+    { ""from"": ""k1"", ""to"": ""growth"", ""category"": ""influence""},
+    { ""from"": ""k1"", ""to"": ""grazing"", ""category"": ""influence""},
+    { ""from"": ""k2"", ""to"": ""grass_loss"", ""category"": ""influence""},
+    { ""from"": ""k3"", ""to"": ""sheep_loss"", ""category"": ""influence""}
   ]
 }";
 

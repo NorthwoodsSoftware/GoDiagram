@@ -143,13 +143,15 @@ namespace Demo.Samples.InstrumentGauge {
 
       // capture RNG so we don't keep re-seeding
       var rand = new Random();
-      void Loop() {
+      async void Loop() {
         // change each gauge's value several times a second
-        Util.SetTimeout(() => {
+        while (true) {
+          await Task.Delay(1000 / 6);
+          if (IsDisposed) return;
           myDiagram.StartTransaction();
           foreach (var node in myDiagram.Nodes) {
             var scale = node.FindElement("SCALE") as Panel;
-            if (scale == null || scale.Type != PanelLayoutGraduated.Instance) return;
+            if (scale == null || scale.Type != PanelLayoutGraduated.Instance) continue;
             // keep the new value within the range of the graduated panel
             var min = scale.GraduatedMin;
             var max = scale.GraduatedMax;
@@ -160,8 +162,7 @@ namespace Demo.Samples.InstrumentGauge {
             myDiagram.Model.Set(node.Data, "Value", v);
           }
           myDiagram.CommitTransaction("modified Graduated Panel");
-          Loop();
-        }, 1000 / 6, myDiagram);
+        }
       }
       // start the sim
       Loop();

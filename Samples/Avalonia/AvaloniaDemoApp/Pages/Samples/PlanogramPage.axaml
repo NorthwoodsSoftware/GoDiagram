@@ -9,7 +9,7 @@
   <ScrollViewer Classes="paddedSv">
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="145" />
+        <ColumnDefinition Width="160" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
       <Grid.RowDefinitions>
@@ -21,6 +21,11 @@
         Orientation="Vertical"
         Grid.Column="0" Grid.Row="0"
         Margin="0,0,2,0">
+        <StackPanel.Styles>
+          <Style Selector="Expander">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+          </Style>
+        </StackPanel.Styles>
         <StackPanel.Resources>
           <Thickness x:Key="ExpanderHeaderPadding">8,16</Thickness>
           <Thickness x:Key="ExpanderContentPadding">0</Thickness>
@@ -28,22 +33,22 @@
         <Expander Name="smallExpander" Header="Small items" IsExpanded="True" >
           <go:PaletteControl
             Name="paletteControl1"
-            Width="140" Height="340" />
+            Width="155" Height="340" />
         </Expander>
         <Expander Name="tallExpander" Header="Tall items">
           <go:PaletteControl
             Name="paletteControl2"
-            Width="140" Height="340"/>
+            Width="155" Height="340"/>
         </Expander>
         <Expander Name="wideExpander" Header="Wide items">
           <go:PaletteControl
             Name="paletteControl3"
-            Width="140" Height="340"/>
+            Width="155" Height="340"/>
         </Expander>
         <Expander Name="bigExpander" Header="Big items">
           <go:PaletteControl
             Name="paletteControl4"
-            Width="140" Height="340"/>
+            Width="155" Height="340"/>
         </Expander>
       </StackPanel>
       <go:DiagramControl

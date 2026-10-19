@@ -441,7 +441,7 @@ namespace Northwoods.Go.Extensions {
         try {
           val = pi.GetValue(data, null);
         } catch {
-          Trace.Error($"property get error: failed to get property \"{pi.Name}\"");
+          throw new InvalidOperationException($"property get error: failed to get property \"{pi.Name}\"");
         }
       }
       return val;

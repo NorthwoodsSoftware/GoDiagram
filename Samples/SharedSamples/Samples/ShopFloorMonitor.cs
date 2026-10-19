@@ -19,23 +19,23 @@ public partial class ShopFloorMonitor : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    {""Key"":""1"", ""Text"":""Switch 23"", ""Type"":""S2"", ""Loc"":""195 218""},
-    {""Key"":""2"", ""Text"":""Machine 17"", ""Type"":""M4"", ""Loc"":""195 94""},
-    {""Key"":""3"", ""Text"":""Panel 7"", ""Type"":""P2"", ""Loc"":""75 218""},
-    {""Key"":""4"", ""Text"":""Switch 24"", ""Type"":""S3"", ""Loc"":""306 218""},
-    {""Key"":""5"", ""Text"":""Machine 18"", ""Type"":""M5"", ""Loc"":""306 95""},
-    {""Key"":""6"", ""Text"":""Panel 9"", ""Type"":""P1"", ""Loc"":""426 218""},
-    {""Key"":""7"", ""Text"":""Instr 3"", ""Type"":""I1"", ""Loc"":""-50 218""}
+  ""nodeDataSource"": [
+    {""key"":""1"", ""text"":""Switch 23"", ""type"":""S2"", ""loc"":""195 218""},
+    {""key"":""2"", ""text"":""Machine 17"", ""type"":""M4"", ""loc"":""195 94""},
+    {""key"":""3"", ""text"":""Panel 7"", ""type"":""P2"", ""loc"":""75 218""},
+    {""key"":""4"", ""text"":""Switch 24"", ""type"":""S3"", ""loc"":""306 218""},
+    {""key"":""5"", ""text"":""Machine 18"", ""type"":""M5"", ""loc"":""306 95""},
+    {""key"":""6"", ""text"":""Panel 9"", ""type"":""P1"", ""loc"":""426 218""},
+    {""key"":""7"", ""text"":""Instr 3"", ""type"":""I1"", ""loc"":""-50 218""}
   ],
-  ""LinkDataSource"": [
-    {""From"":""1"", ""To"":""2""},
-    {""From"":""1"", ""To"":""3""},
-    {""From"":""1"", ""To"":""4""},
-    {""From"":""4"", ""To"":""5""},
-    {""From"":""4"", ""To"":""6""},
-    {""From"":""7"", ""To"":""2""},
-    {""From"":""7"", ""To"":""3""}
+  ""linkDataSource"": [
+    {""from"":""1"", ""to"":""2""},
+    {""from"":""1"", ""to"":""3""},
+    {""from"":""1"", ""to"":""4""},
+    {""from"":""4"", ""to"":""5""},
+    {""from"":""4"", ""to"":""6""},
+    {""from"":""7"", ""to"":""2""},
+    {""from"":""7"", ""to"":""3""}
   ]
 }";
 

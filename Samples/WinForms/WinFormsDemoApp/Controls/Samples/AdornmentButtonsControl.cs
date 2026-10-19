@@ -113,7 +113,7 @@ namespace Demo.Samples.AdornmentButtons {
             // use the following property if you want users to interactively start
             // editing the text by clicking on it or by F2 if the node is selected:
             //editable = true,
-            Overflow = Overflow.Ellipsis,
+            Overflow = TextOverflow.Ellipsis,
             MaxLines = 5
           }.BindTwoWay("Text")
         );

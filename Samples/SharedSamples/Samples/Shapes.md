@@ -9,7 +9,8 @@ You can load this file or simply load only those figures that you want to use by
 
 A number of very common figures are predefined in GoDiagram: `"Rectangle", "Square", "RoundedRectangle", "Border", "Ellipse", "Circle",
 "TriangleRight", "TriangleDown", "TriangleLeft", "TriangleUp", "Triangle", "Diamond", "LineH", "LineV", "BarH", "BarV",
-"MinusLine", "PlusLine", "XLine", "LineRight", "LineDown", "LineLeft", "LineUp"`.
+"MinusLine", "PlusLine", "XLine", "LineRight", "LineDown", "LineLeft", "LineUp", "RoundedTopRectangle", "RoundedBottomRectangle",
+"RoundedLeftRectangle", "RoundedRightRectangle", "Capsule", "Borders"`.
 These figures are filled green above, instead of pink.
 
 With GoDiagram you can also define your own custom shapes with SVG-like path syntax, see the [SVG Icons](demo/Icons)

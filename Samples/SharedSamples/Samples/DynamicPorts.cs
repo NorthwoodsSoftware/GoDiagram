@@ -24,46 +24,46 @@ public partial class DynamicPorts : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.DynamicPorts.md");
 
     modelJson1.JsonText = @"{
-  ""LinkFromPortIdProperty"": ""FromPort"",
-  ""LinkToPortIdProperty"": ""ToPort"",
-  ""NodeDataSource"": [
+  ""linkFromPortIdProperty"": ""FromPort"",
+  ""linkToPortIdProperty"": ""ToPort"",
+  ""nodeDataSource"": [
     {
-      ""Key"": 1, ""Name"": ""Unit One"", ""Loc"": ""101 204"",
-      ""LeftList"": [ { ""PortColor"": ""#fae3d7"", ""PortId"": ""Left0"" } ],
-      ""TopList"": [ { ""PortColor"": ""#d6effc"", ""PortId"": ""Top0"" } ],
-      ""BottomList"": [ { ""PortColor"": ""#ebe3fc"", ""PortId"": ""Bottom0"" } ],
-      ""RightList"": [ { ""PortColor"": ""#eaeef8"", ""PortId"": ""Right0"" }, { ""PortColor"": ""#fadfe5"", ""PortId"": ""Right1"" } ]
+      ""key"": 1, ""name"": ""Unit One"", ""loc"": ""101 204"",
+      ""leftList"": [ { ""portColor"": ""#fae3d7"", ""portId"": ""Left0"" } ],
+      ""topList"": [ { ""portColor"": ""#d6effc"", ""portId"": ""Top0"" } ],
+      ""bottomList"": [ { ""portColor"": ""#ebe3fc"", ""portId"": ""Bottom0"" } ],
+      ""rightList"": [ { ""portColor"": ""#eaeef8"", ""portId"": ""Right0"" }, { ""portColor"": ""#fadfe5"", ""portId"": ""Right1"" } ]
     },
     {
-      ""Key"": 2, ""Name"": ""Unit Two"", ""Loc"": ""320 152"",
-      ""LeftList"": [ { ""PortColor"": ""#6cafdb"", ""PortId"": ""Left0"" }, { ""PortColor"": ""#66d6d1"", ""PortId"": ""Left1"" }, { ""PortColor"": ""#fae3d7"", ""PortId"": ""Left2"" } ],
-      ""TopList"": [ { ""PortColor"": ""#d6effc"", ""PortId"": ""Top0"" } ],
-      ""BottomList"": [ { ""PortColor"": ""#eaeef8"", ""PortId"": ""Bottom0"" }, { ""PortColor"": ""#eaeef8"", ""PortId"": ""Bottom1"" }, { ""PortColor"": ""#6cafdb"", ""PortId"": ""Bottom2"" } ],
-      ""RightList"": [ ]
+      ""key"": 2, ""name"": ""Unit Two"", ""loc"": ""320 152"",
+      ""leftList"": [ { ""portColor"": ""#6cafdb"", ""portId"": ""Left0"" }, { ""portColor"": ""#66d6d1"", ""portId"": ""Left1"" }, { ""portColor"": ""#fae3d7"", ""portId"": ""Left2"" } ],
+      ""topList"": [ { ""portColor"": ""#d6effc"", ""portId"": ""Top0"" } ],
+      ""bottomList"": [ { ""portColor"": ""#eaeef8"", ""portId"": ""Bottom0"" }, { ""portColor"": ""#eaeef8"", ""portId"": ""Bottom1"" }, { ""portColor"": ""#6cafdb"", ""portId"": ""Bottom2"" } ],
+      ""rightList"": [ ]
     },
     {
-      ""Key"": 3, ""Name"": ""Unit Three"", ""Loc"": ""384 319"",
-      ""LeftList"": [ { ""PortColor"": ""#66d6d1"", ""PortId"": ""Left0"" }, { ""PortColor"": ""#fadfe5"", ""PortId"": ""Left1"" }, { ""PortColor"": ""#6cafdb"", ""PortId"": ""Left2"" } ],
-      ""TopList"": [ { ""PortColor"": ""#66d6d1"", ""PortId"": ""Top0"" } ],
-      ""BottomList"": [ { ""PortColor"": ""#6cafdb"", ""PortId"": ""Bottom0"" } ],
-      ""RightList"": [ ]
+      ""key"": 3, ""name"": ""Unit Three"", ""loc"": ""384 319"",
+      ""leftList"": [ { ""portColor"": ""#66d6d1"", ""portId"": ""Left0"" }, { ""portColor"": ""#fadfe5"", ""portId"": ""Left1"" }, { ""portColor"": ""#6cafdb"", ""portId"": ""Left2"" } ],
+      ""topList"": [ { ""portColor"": ""#66d6d1"", ""portId"": ""Top0"" } ],
+      ""bottomList"": [ { ""portColor"": ""#6cafdb"", ""portId"": ""Bottom0"" } ],
+      ""rightList"": [ ]
     },
     {
-      ""Key"": 4, ""Name"": ""Unit Four"", ""Loc"": ""138 351"",
-      ""LeftList"": [ { ""PortColor"": ""#fae3d7"", ""PortId"": ""Left0"" } ],
-      ""TopList"": [ { ""PortColor"": ""#6cafdb"", ""PortId"": ""Top0"" } ],
-      ""BottomList"": [ { ""PortColor"": ""#6cafdb"", ""PortId"": ""Bottom0"" } ],
-      ""RightList"": [ { ""PortColor"": ""#6cafdb"", ""PortId"": ""Right0"" }, { ""PortColor"": ""#66d6d1"", ""PortId"": ""Right1"" } ]
+      ""key"": 4, ""name"": ""Unit Four"", ""loc"": ""138 351"",
+      ""leftList"": [ { ""portColor"": ""#fae3d7"", ""portId"": ""Left0"" } ],
+      ""topList"": [ { ""portColor"": ""#6cafdb"", ""portId"": ""Top0"" } ],
+      ""bottomList"": [ { ""portColor"": ""#6cafdb"", ""portId"": ""Bottom0"" } ],
+      ""rightList"": [ { ""portColor"": ""#6cafdb"", ""portId"": ""Right0"" }, { ""portColor"": ""#66d6d1"", ""portId"": ""Right1"" } ]
     }
   ],
-  ""LinkDataSource"": [
-    { ""From"": 4, ""To"": 2, ""FromPort"": ""Top0"", ""ToPort"": ""Bottom0"" },
-    { ""From"": 4, ""To"": 2, ""FromPort"": ""Top0"", ""ToPort"": ""Bottom0"" },
-    { ""From"": 3, ""To"": 2, ""FromPort"": ""Top0"", ""ToPort"": ""Bottom1"" },
-    { ""From"": 4, ""To"": 3, ""FromPort"": ""Right0"", ""ToPort"": ""Left0"" },
-    { ""From"": 4, ""To"": 3, ""FromPort"": ""Right1"", ""ToPort"": ""Left2"" },
-    { ""From"": 1, ""To"": 2, ""FromPort"": ""Right0"", ""ToPort"": ""Left1"" },
-    { ""From"": 1, ""To"": 2, ""FromPort"": ""Right1"", ""ToPort"": ""Left2"" }
+  ""linkDataSource"": [
+    { ""from"": 4, ""to"": 2, ""fromPort"": ""Top0"", ""toPort"": ""Bottom0"" },
+    { ""from"": 4, ""to"": 2, ""fromPort"": ""Top0"", ""toPort"": ""Bottom0"" },
+    { ""from"": 3, ""to"": 2, ""fromPort"": ""Top0"", ""toPort"": ""Bottom1"" },
+    { ""from"": 4, ""to"": 3, ""fromPort"": ""Right0"", ""toPort"": ""Left0"" },
+    { ""from"": 4, ""to"": 3, ""fromPort"": ""Right1"", ""toPort"": ""Left2"" },
+    { ""from"": 1, ""to"": 2, ""fromPort"": ""Right0"", ""toPort"": ""Left1"" },
+    { ""from"": 1, ""to"": 2, ""fromPort"": ""Right1"", ""toPort"": ""Left2"" }
   ]
 }";
 

@@ -82,7 +82,7 @@ public partial class DecisionTree : DemoControl {
       Builder.Make<Adornment>("ToolTip").Add(
         new TextBlock {
           Font = new Font("Segoe UI", 8),
-          Wrap = Wrap.Fit,
+          Wrap = TextWrap.Fit,
           DesiredSize = new Size(200, double.NaN),
           Alignment = Spot.Center,
           Margin = 6
@@ -160,7 +160,7 @@ public partial class DecisionTree : DemoControl {
         new Shape("Rectangle") { Fill = "whitesmoke", Stroke = "lightgray" },
         new TextBlock {
           Font = new Font("Segoe UI", 13, Northwoods.Go.FontWeight.Bold),
-          Wrap = Wrap.Fit,
+          Wrap = TextWrap.Fit,
           DesiredSize = new Size(200, double.NaN),
           Margin = 5
         }.Bind(

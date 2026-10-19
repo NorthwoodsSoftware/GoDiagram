@@ -49,7 +49,7 @@ namespace Northwoods.Go.Tools.Extensions {
         Cursor = "pointer",
         SegmentIndex = 0,
         SegmentFraction = 1,
-        SegmentOrientation = Orientation.Along
+        SegmentOrientation = SegmentOrientation.Along
       };
       var g = new Shape {
         GeometryString = "F1 M0 0L 8 0 M8 4 L0 4",
@@ -59,7 +59,7 @@ namespace Northwoods.Go.Tools.Extensions {
         Cursor = "pointer",
         SegmentIndex = -1,
         SegmentFraction = 1,
-        SegmentOrientation = Orientation.Along
+        SegmentOrientation = SegmentOrientation.Along
       };
 
       _FromHandleArchetype = h;

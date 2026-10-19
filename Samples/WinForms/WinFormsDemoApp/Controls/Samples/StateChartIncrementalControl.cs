@@ -35,28 +35,28 @@ namespace Demo.Samples.StateChartIncremental {
 ";
 
       modelJson1.JsonText = @"{
-  ""NodeKeyProperty"": ""Id"",
-  ""LinkKeyProperty"": ""Id"",
-  ""NodeDataSource"": [
-    { ""Id"": 1, ""Loc"":""120 120"", ""Text"":""Initial"" },
-    { ""Id"": 3, ""Loc"":""330 120"", ""Text"":""First down"" },
-    { ""Id"": 5, ""Loc"":""226 376"", ""Text"":""First up"" },
-    { ""Id"": 7, ""Loc"":""60 276"", ""Text"":""Second down"" },
-    { ""Id"": 9, ""Loc"":""226 226"", ""Text"":""Wait"" }
+  ""nodeKeyProperty"": ""Id"",
+  ""linkKeyProperty"": ""Id"",
+  ""nodeDataSource"": [
+    { ""id"": 1, ""loc"":""120 120"", ""text"":""Initial"" },
+    { ""id"": 3, ""loc"":""330 120"", ""text"":""First down"" },
+    { ""id"": 5, ""loc"":""226 376"", ""text"":""First up"" },
+    { ""id"": 7, ""loc"":""60 276"", ""text"":""Second down"" },
+    { ""id"": 9, ""loc"":""226 226"", ""text"":""Wait"" }
   ],
-  ""LinkDataSource"": [
-    { ""Id"": 2, ""From"": 1, ""To"": 1, ""Text"":""Up or timer"", ""Curviness"": -20 },
-    { ""Id"": 4, ""From"": 1, ""To"": 3, ""Text"":""Down"", ""Curviness"": 20 },
-    { ""Id"": 6, ""From"": 3, ""To"": 1, ""Text"":""Up(moved)\nPOST"", ""Curviness"": 20 },
-    { ""Id"": 8, ""From"": 3, ""To"": 3, ""Text"":""Down"", ""Curviness"": -20 },
-    { ""Id"": 10, ""From"": 3, ""To"": 5, ""Text"":""Up(no move)"" },
-    { ""Id"": 12, ""From"": 3, ""To"": 9, ""Text"":""Timer"" },
-    { ""Id"": 14, ""From"": 5, ""To"": 1, ""Text"":""Timer\nPOST"" },
-    { ""Id"": 16, ""From"": 5, ""To"": 7, ""Text"":""Down"" },
-    { ""Id"": 18, ""From"": 7, ""To"": 1, ""Text"":""Up\nPOST\n(dblclick\nif no move)"" },
-    { ""Id"": 20, ""From"": 7, ""To"": 7, ""Text"":""Down or timer"", ""Curviness"": 20 },
-    { ""Id"": 22, ""From"": 9, ""To"": 1, ""Text"":""Up\nPOST"" },
-    { ""Id"": 24, ""From"": 9, ""To"": 9, ""Text"":""Down"" }
+  ""linkDataSource"": [
+    { ""id"": 2, ""from"": 1, ""to"": 1, ""text"":""Up or timer"", ""curviness"": -20 },
+    { ""id"": 4, ""from"": 1, ""to"": 3, ""text"":""Down"", ""curviness"": 20 },
+    { ""id"": 6, ""from"": 3, ""to"": 1, ""text"":""Up(moved)\nPOST"", ""curviness"": 20 },
+    { ""id"": 8, ""from"": 3, ""to"": 3, ""text"":""Down"", ""curviness"": -20 },
+    { ""id"": 10, ""from"": 3, ""to"": 5, ""text"":""Up(no move)"" },
+    { ""id"": 12, ""from"": 3, ""to"": 9, ""text"":""Timer"" },
+    { ""id"": 14, ""from"": 5, ""to"": 1, ""text"":""Timer\nPOST"" },
+    { ""id"": 16, ""from"": 5, ""to"": 7, ""text"":""Down"" },
+    { ""id"": 18, ""from"": 7, ""to"": 1, ""text"":""Up\nPOST\n(dblclick\nif no move)"" },
+    { ""id"": 20, ""from"": 7, ""to"": 7, ""text"":""Down or timer"", ""curviness"": 20 },
+    { ""id"": 22, ""from"": 9, ""to"": 1, ""text"":""Up\nPOST"" },
+    { ""id"": 24, ""from"": 9, ""to"": 9, ""text"":""Down"" }
   ]
 }";
 

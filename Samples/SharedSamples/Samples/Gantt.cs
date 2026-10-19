@@ -39,9 +39,7 @@ public partial class Gantt : DemoControl {
     }
 
     private void _AssignTimes(Diagram diagram, List<Node> bars) {
-      var roots = diagram.FindTreeRoots();
-      while (roots.MoveNext()) {
-        var root = roots.Current;
+      foreach (var root in diagram.FindTreeRoots()) {
         _WalkTree(root, 0, bars);
       }
     }
@@ -246,8 +244,9 @@ public partial class Gantt : DemoControl {
 
     // the right side of the page, holding both the timeline and all of the task bars
     _Gantt.InitialPosition = new Point(-10, -100);  // show labels
-    // make room on top for _Timeline and a bit of spacing; on bottom for whole task row and a bit more
-    _Gantt.Padding = new Margin(TimelineHeight + 4, GridCellWidth * 7, 0, 0);  // needs to be the same vertically as for _Tasks
+    // make room on top for _Timeline and a bit of spacing; on bottom for whole task row and a bit more;
+    // on the right for a week beyond the last task bar, which the grid and the timeline also cover
+    _Gantt.Padding = new Margin(TimelineHeight + 4, GridCellWidth * 7, GridCellHeight, 0);  // needs to be the same vertically as for _Tasks
     _Gantt.ScrollMargin = new Margin(0, GridCellWidth * 7, GridCellHeight, 0);  // and allow scrolling to a week beyond that
     _Gantt.AllowCopy = false;
     _Gantt.CommandHandler.DeletesTree = true;
@@ -265,13 +264,16 @@ public partial class Gantt : DemoControl {
     _Gantt.DocumentBoundsChanged += (s, e) => {
       // the grid extends to only the area needed
       var b = e.Diagram.DocumentBounds;
+      // the Padding already includes a week beyond the last task bar, so just widen that to whole weeks,
+      // letting the grid and the timeline end at the same place
+      var week = GridCellWidth * 7;
+      var width = Math.Ceiling(b.Width / week) * week;
       var gridpart = e.Diagram.Parts.FirstOrDefault();
       if (gridpart != null && gridpart.Type == PanelLayoutGrid.Instance) {
-        gridpart.DesiredSize = new Size(b.Width + GridCellWidth * 7, b.Bottom);
+        gridpart.DesiredSize = new Size(width, b.Bottom);
       }
       // the timeline, which is not in the DocumentBounds, only covers the needed area
-      // widen to cover whole weeks
-      _Timeline.GraduatedMax = Math.Ceiling(b.Width / (GridCellWidth * 7)) * (GridCellWidth * 7);
+      _Timeline.GraduatedMax = width;
       _Timeline.FindElement("MAIN").Width = _Timeline.GraduatedMax;
       _Timeline.FindElement("TICKS").Height = Math.Max(e.Diagram.DocumentBounds.Height, e.Diagram.ViewportBounds.Height);
     };
@@ -502,7 +504,7 @@ public partial class Gantt : DemoControl {
     if (_Tasks == null || _Gantt == null || _Timeline == null) return;
     _Gantt.Commit(diag => {
       GridCellWidth = val;
-      diag.ScrollMargin = new Margin(0, GridCellWidth * 7, 0, 0);
+      diag.ScrollMargin = new Margin(0, GridCellWidth * 7, GridCellHeight, 0);
       diag.ToolManager.DraggingTool.GridSnapCellSize = new Size(GridCellWidth, GridCellHeight);
       diag.ToolManager.ResizingTool.CellSize = new Size(GridCellWidth, GridCellHeight);
       diag.ToolManager.ResizingTool.MinSize = new Size(GridCellWidth, GridCellHeight);

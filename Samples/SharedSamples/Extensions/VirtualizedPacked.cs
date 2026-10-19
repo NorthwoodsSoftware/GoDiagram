@@ -215,6 +215,7 @@ public partial class VirtualizedPacked : DemoControl {
     // make sure there are Nodes for each node data that is in the viewport
     // or that is connected to such a Node
     var viewb = diagram.ViewportBounds;  // the new viewport bounds
+    var scale = diagram.Scale;
     var model = diagram.Model as Model;
 
     var oldskips = diagram.SkipsUndoManager;
@@ -224,7 +225,7 @@ public partial class VirtualizedPacked : DemoControl {
     var ndata = _WholeModel.NodeDataSource;
     foreach (var n in ndata) {
       if (n.Bounds == default) continue;
-      if (n.Bounds.Intersects(viewb)) {
+      if (n.Bounds.Intersects(viewb) && !_IsTooSmall(n.Bounds, scale)) {
         model.AddNodeData(n);
       }
     }
@@ -239,6 +240,9 @@ public partial class VirtualizedPacked : DemoControl {
       var to = _WholeModel.FindNodeDataForKey(tokey);
       if (to == null || to.Bounds == default) continue;
 
+      // a Link needs both of its Nodes, so skip it if either is too small to see
+      if (_IsTooSmall(from.Bounds, scale) || _IsTooSmall(to.Bounds, scale)) continue;
+
       b = from.Bounds;
       b = b.Union(to.Bounds);
       if (b.Intersects(viewb)) {
@@ -246,6 +250,8 @@ public partial class VirtualizedPacked : DemoControl {
         // so that link routing is authentic
         model.AddNodeData(from);
         model.AddNodeData(to);
+        // nodes don't move, so a Link that is already present is already routed
+        if (model.ContainsLinkData(l)) continue;
         model.AddLinkData(l);
         var link = diagram.FindLinkForData(l);
         if (link != null) {
@@ -258,26 +264,53 @@ public partial class VirtualizedPacked : DemoControl {
     }
 
     diagram.SkipsUndoManager = oldskips;
-    await Task.Delay(3000);
-    _RemoveOffscreen(diagram);
 
-    _UpdateCounts();
+    _UpdateCounts();  // only for this sample
+
+    // only remove offscreen nodes after a delay,
+    // and only schedule one removal no matter how many times the viewport changes
+    if (_RemovePending) return;
+    _RemovePending = true;
+    await Task.Delay(3000);
+    _RemovePending = false;
+    _RemoveOffscreen(diagram);
+  }
+
+  private bool _RemovePending = false;
+
+  // Nodes smaller than this many pixels on screen are not worth creating;
+  // this matters a lot when zoomed far out, where most nodes are sub-pixel.
+  private const double _MinPixelSize = 3;
+
+  private static bool _IsTooSmall(Rect b, double scale) {
+    return Math.Max(b.Width, b.Height) * scale < _MinPixelSize;
+  }
+
+  // Use the same test as _OnViewportChanged for whether a link should be present,
+  // so that links aren't repeatedly removed and then added back again.
+  private static bool _IsLinkWanted(Link l, Rect viewb, double scale) {
+    if (l.FromNode?.Data is not NodeData from || l.ToNode?.Data is not NodeData to) return l.ActualBounds.Intersects(viewb);
+    if (_IsTooSmall(from.Bounds, scale) || _IsTooSmall(to.Bounds, scale)) return false;
+    return from.Bounds.Union(to.Bounds).Intersects(viewb);
   }
 
   private void _RemoveOffscreen(Diagram diagram) {
     if (_MaybeInvoke(diagram)) return; // ensure we're on the correct thread
 
     var viewb = diagram.ViewportBounds;
+    var scale = diagram.Scale;
     var model = diagram.Model as Model;
     var remove = new List<NodeData>();  // collect for later removal
     var removeLinks = new HashSet<Link>();  // links connected to a node data to remove
     var it = diagram.Nodes;
     foreach (var n in it) {
       if (n.Data is not NodeData d) continue;
-      if (!n.ActualBounds.Intersects(viewb) && !n.IsSelected) {
+      var tooSmall = _IsTooSmall(d.Bounds, scale);
+      if ((tooSmall || !n.ActualBounds.Intersects(viewb)) && !n.IsSelected) {
         // even if the node is out of the viewport, keep it if it is selected or
-        // if any link connecting with the node is still in the viewport
-        if (!n.LinksConnected.Any(l => { return l.ActualBounds.Intersects(viewb); })) {
+        // if any link connecting with the node is still in the viewport,
+        // but never keep it if it's too small to see
+        if (tooSmall || !n.LinksConnected.Any(l => { return _IsLinkWanted(l, viewb, scale); })) {
           remove.Add(d);
           if (model is Model) {
             removeLinks.UnionWith(n.LinksConnected);

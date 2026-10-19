@@ -16,7 +16,8 @@ public partial class SwimLanes : DemoControl {
     InitializeComponent();
     _Diagram = diagramControl1.Diagram;
 
-    Setup();
+    // Setup lays out the lanes immediately, so wait until the Diagram has its size
+    AfterLoad(Setup);
 
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
@@ -42,9 +43,7 @@ public partial class SwimLanes : DemoControl {
   // this is called after nodes have been moved or lanes resized, to layout all of the Pool Groups again
   public static void RelayoutDiagram(Diagram diagram) {
     diagram.Layout.InvalidateLayout();
-    var itr = diagram.FindTopLevelGroups();
-    while (itr.MoveNext()) {
-      var g = itr.Current;
+    foreach (var g in diagram.FindTopLevelGroups()) {
       if (g.Category == "Pool") g.Layout.InvalidateLayout();
     }
     diagram.LayoutDiagram();

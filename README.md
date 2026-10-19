@@ -5,7 +5,7 @@
 [![open issues](https://img.shields.io/github/issues-raw/NorthwoodsSoftware/GoDiagram.svg)](https://github.com/NorthwoodsSoftware/GoDiagram/issues)
 [![Twitter Follow](https://img.shields.io/twitter/follow/NorthwoodsGo.svg?style=social&label=Follow)](https://twitter.com/NorthwoodsGo)
 
-[Get Started with GoDiagram](https://godiagram.com/winforms/learn)
+Get started with GoDiagram for [WinForms](https://godiagram.com/winforms/learn), [WPF](https://godiagram.com/wpf/learn) or [Avalonia](https://godiagram.com/avalonia/learn).
 
 GoDiagram is a flexible library that can be used to create a number of different kinds of interactive diagrams, including data visualizations, drawing tools, and graph editors. GoDiagram includes a number of built in layouts including tree layout, force directed, radial, and layered digraph layout, and a number of custom layout examples.
 
@@ -17,6 +17,7 @@ You can use the GitHub repository to quickly [search through the sample sources]
 In your project, we recommend referencing the library via NuGet as it will more reliably add toolbox items and necessary references:
 
 - [WinForms](https://www.nuget.org/packages/Northwoods.GoDiagram.WinForms)
+- [WPF](https://www.nuget.org/packages/Northwoods.GoDiagram.Wpf)
 - [Avalonia](https://www.nuget.org/packages/Northwoods.GoDiagram.Avalonia)
 
 ## Minimal Sample

@@ -121,6 +121,11 @@ namespace Northwoods.Go.Layouts.Extensions {
   /// </remarks>
   /// @category Layout Extension
   public class PackedLayout : Layout {
+    // double.IsFinite, which .NET Framework lacks
+    private static bool IsFinite(double d) {
+      return !double.IsNaN(d) && !double.IsInfinity(d);
+    }
+
     /// <summary>
     /// Constructs a new PackedLayout.
     /// </summary>
@@ -197,7 +202,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _PackMode;
       }
       set {
-        if (value == PackMode.AspectOnly || value == PackMode.Fit || value == PackMode.ExpandToFit) {
+        if ((value == PackMode.AspectOnly || value == PackMode.Fit || value == PackMode.ExpandToFit) && _PackMode != value) {
           _PackMode = value;
           InvalidateLayout();
         }
@@ -216,7 +221,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _SortMode;
       }
       set {
-        if (value == SortMode.None || value == SortMode.MaxSide || value == SortMode.Area) {
+        if ((value == SortMode.None || value == SortMode.MaxSide || value == SortMode.Area) && _SortMode != value) {
           _SortMode = value;
           InvalidateLayout();
         }
@@ -235,7 +240,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _SortOrder;
       }
       set {
-        if (value == SortOrder.Descending || value == SortOrder.Ascending) {
+        if ((value == SortOrder.Descending || value == SortOrder.Ascending) && _SortOrder != value) {
           _SortOrder = value;
           InvalidateLayout();
         }
@@ -269,7 +274,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Comparer;
       }
       set {
-        if (value != null) {
+        if (value != null && _Comparer != value) {
           _Comparer = value;
         }
       }
@@ -292,7 +297,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _AspectRatio;
       }
       set {
-        if (Util.IsFinite(value) && value > 0) {
+        if (IsFinite(value) && value > 0 && _AspectRatio != value) {
           _AspectRatio = value;
           InvalidateLayout();
         }
@@ -324,8 +329,8 @@ namespace Northwoods.Go.Layouts.Extensions {
           _Size = value;
           _FillViewport = true;
           InvalidateLayout();
-        } else if (Util.IsFinite(value.Width) && value.Width >= 0 &&
-                   Util.IsFinite(value.Height) && value.Height >= 0) {
+        } else if (IsFinite(value.Width) && value.Width >= 0 &&
+                   IsFinite(value.Height) && value.Height >= 0) {
           _Size = value;
           InvalidateLayout();
         }
@@ -352,7 +357,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         return _Spacing;
       }
       set {
-        if (Util.IsFinite(value)) {
+        if (IsFinite(value) && _Spacing != value) {
           _Spacing = value;
           InvalidateLayout();
         }
@@ -564,10 +569,11 @@ namespace Northwoods.Go.Layouts.Extensions {
       ArrangementOrigin = InitialOrigin(ArrangementOrigin);
 
       if (SortMode != SortMode.None) {
-        if (Comparer == null) {
+        var comp = Comparer;
+        if (comp == null) {  // the default comparer isn't stored, so that later SortMode/SortOrder changes take effect
           var sortOrder = SortOrder;
           var sortMode = SortMode;
-          Comparer = (a, b) => {
+          comp = (a, b) => {
             var sortVal = sortOrder == SortOrder.Ascending ? 1 : -1;
             if (sortMode == SortMode.MaxSide) {
               var aMax = Math.Max(a.ActualBounds.Width, a.ActualBounds.Height);
@@ -591,7 +597,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             return 0;
           };
         }
-        nodes.Sort(Comparer);
+        nodes.Sort(comp);
       }
 
       var targetWidth = Size.Width != 0 ? Size.Width : 1;
@@ -1044,7 +1050,7 @@ namespace Northwoods.Go.Layouts.Extensions {
             exceededSecondaryDimension = usePreviousSegment ? fit.S1.Data.X1 + fit.Bounds.Width <= lastSegment.Data.X1 : fit.S1.Data.X2 - fit.Bounds.Width >= lastSegment.Data.X1;
             break;
           default:
-            throw new Exception("Unknown orientation " + orientation);
+            throw new InvalidOperationException("Unknown orientation " + orientation);
         }
 
         if (!exceededPrimaryDimension && !exceededSecondaryDimension && validCornerPlacement && validLastOrientation) {
@@ -1695,7 +1701,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       /// <returns>the node for the last value inserted (a list of values is inserted sequentially)</returns>
       public ListNode<T> Push(params T[] vals) {
         if (vals.Length == 0) {
-          throw new Exception("You must push at least one element!");
+          throw new ArgumentException("You must push at least one element!", nameof(vals));
         }
         var sp = Start?.Prev;
         var last = InsertAfter(vals[0], sp);
@@ -1837,7 +1843,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (e != null) {
         return CircleToRect(e);
       } else { // this will never happen, but needs to be here for strict TypeScript compilation
-        throw new Exception("Assertion error");
+        throw new InvalidOperationException("Assertion error");
       }
     }
 
@@ -1873,7 +1879,7 @@ namespace Northwoods.Go.Layouts.Extensions {
       }
 
       // If we get here then something is very wrong.
-      throw new Exception("Assertion error");
+      throw new InvalidOperationException("Assertion error");
     }
 
     private static bool EnclosesNot(Circle a, Circle b) {

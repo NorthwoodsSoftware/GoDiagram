@@ -148,7 +148,7 @@ namespace Demo.Samples.DynamicPieChart {
               Font = new Font("Segoe UI", 10),
               TextAlign = TextAlign.Right,
               Margin = 2,
-              Wrap = Wrap.None,
+              Wrap = TextWrap.None,
               Width = 40,
               Editable = true,
               IsMultiline = false,

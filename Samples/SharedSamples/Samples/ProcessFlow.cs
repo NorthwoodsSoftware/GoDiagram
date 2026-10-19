@@ -22,28 +22,28 @@ public partial class ProcessFlow : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.ProcessFlow.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"": ""P1"", ""Category"": ""Process"", ""Pos"": ""150 120"", ""Text"": ""Process"" },
-    { ""Key"": ""P2"", ""Category"": ""Process"", ""Pos"": ""330 320"", ""Text"": ""Tank"" },
-    { ""Key"": ""V1"", ""Category"": ""Valve"", ""Pos"": ""270 120"", ""Text"": ""V1"" },
-    { ""Key"": ""P3"", ""Category"": ""Process"", ""Pos"": ""150 420"", ""Text"": ""Pump"" },
-    { ""Key"": ""V2"", ""Category"": ""Valve"", ""Pos"": ""150 280"", ""Text"": ""VM"", ""Angle"": 270 },
-    { ""Key"": ""V3"", ""Category"": ""Valve"", ""Pos"": ""270 420"", ""Text"": ""V2"", ""Angle"": 180 },
-    { ""Key"": ""P4"", ""Category"": ""Process"", ""Pos"": ""450 140"", ""Text"": ""Reserve Tank"" },
-    { ""Key"": ""V4"", ""Category"": ""Valve"", ""Pos"": ""390 60"", ""Text"": ""VA"" },
-    { ""Key"": ""V5"", ""Category"": ""Process"", ""Pos"": ""450 260"", ""Text"": ""VB"", ""Angle"": 90  }
+  ""nodeDataSource"": [
+    { ""key"": ""P1"", ""category"": ""Process"", ""pos"": ""150 120"", ""text"": ""Process"" },
+    { ""key"": ""P2"", ""category"": ""Process"", ""pos"": ""330 320"", ""text"": ""Tank"" },
+    { ""key"": ""V1"", ""category"": ""Valve"", ""pos"": ""270 120"", ""text"": ""V1"" },
+    { ""key"": ""P3"", ""category"": ""Process"", ""pos"": ""150 420"", ""text"": ""Pump"" },
+    { ""key"": ""V2"", ""category"": ""Valve"", ""pos"": ""150 280"", ""text"": ""VM"", ""angle"": 270 },
+    { ""key"": ""V3"", ""category"": ""Valve"", ""pos"": ""270 420"", ""text"": ""V2"", ""angle"": 180 },
+    { ""key"": ""P4"", ""category"": ""Process"", ""pos"": ""450 140"", ""text"": ""Reserve Tank"" },
+    { ""key"": ""V4"", ""category"": ""Valve"", ""pos"": ""390 60"", ""text"": ""VA"" },
+    { ""key"": ""V5"", ""category"": ""Process"", ""pos"": ""450 260"", ""text"": ""VB"", ""angle"": 90  }
   ],
-  ""LinkDataSource"": [
-    { ""From"": ""P1"", ""To"": ""V1"" },
-    { ""From"": ""P3"", ""To"": ""V2"" },
-    { ""From"": ""V2"", ""To"": ""P1"" },
-    { ""From"": ""P2"", ""To"": ""V3"" },
-    { ""From"": ""V3"", ""To"": ""P3"" },
-    { ""From"": ""V1"", ""To"": ""V4"" },
-    { ""From"": ""V4"", ""To"": ""P4"" },
-    { ""From"": ""V1"", ""To"": ""P2"" },
-    { ""From"": ""P4"", ""To"": ""V5"" },
-    { ""From"": ""V5"", ""To"": ""P2"" }
+  ""linkDataSource"": [
+    { ""from"": ""P1"", ""to"": ""V1"" },
+    { ""from"": ""P3"", ""to"": ""V2"" },
+    { ""from"": ""V2"", ""to"": ""P1"" },
+    { ""from"": ""P2"", ""to"": ""V3"" },
+    { ""from"": ""V3"", ""to"": ""P3"" },
+    { ""from"": ""V1"", ""to"": ""V4"" },
+    { ""from"": ""V4"", ""to"": ""P4"" },
+    { ""from"": ""V1"", ""to"": ""P2"" },
+    { ""from"": ""P4"", ""to"": ""V5"" },
+    { ""from"": ""V5"", ""to"": ""P2"" }
   ]
 }";
 

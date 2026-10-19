@@ -173,6 +173,9 @@ namespace Northwoods.Go.Layouts.Extensions {
       layout2.Angle = Vertical ? 90 : 0;
       layout2.Arrangement = TreeArrangement.FixedRoots;
 
+      // the sub-layouts need the Diagram, for example for Diagram.IsTreePathToChildren
+      layout1.Diagram = Diagram;
+      layout2.Diagram = Diagram;
       layout1.DoLayout(leftParts);
       layout2.DoLayout(rightParts);
 
@@ -270,7 +273,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     /// <returns>true if it grows towards right or towards bottom; false otherwise</returns>
     protected bool IsPositiveDirection(Node child) {
       if (DirectionFunction == null) {
-        throw new Exception("No DoubleTreeLayout.DirectionFunction supplied on the layout");
+        throw new InvalidOperationException("No DoubleTreeLayout.DirectionFunction supplied on the layout");
       }
       return DirectionFunction(child);
     }

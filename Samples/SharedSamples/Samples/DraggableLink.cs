@@ -21,10 +21,10 @@ public partial class DraggableLink : DemoControl {
     modelJson1.LoadClick = LoadModel;
 
     modelJson1.JsonText = @"{
-  ""LinkFromPortIdProperty"": ""FromPort"",
-  ""LinkToPortIdProperty"": ""ToPort"",
-  ""NodeDataSource"": [ ],
-  ""LinkDataSource"": [ ]
+  ""linkFromPortIdProperty"": ""FromPort"",
+  ""linkToPortIdProperty"": ""ToPort"",
+  ""nodeDataSource"": [ ],
+  ""linkDataSource"": [ ]
 }";
 
     desc1.MdText = DescriptionReader.Read("Samples.DraggableLink.md");
@@ -196,7 +196,7 @@ public partial class DraggableLink : DemoControl {
             Font = new Font("Segoe UI", 11, Northwoods.Go.FontWeight.Bold),
             Margin = 8,
             MaxSize = new Size(160, double.NaN),
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             Editable = true
           }.BindTwoWay("Text")
         ),
@@ -231,10 +231,8 @@ public partial class DraggableLink : DemoControl {
     myDiagram.ToolManager.RelinkingTool.IsUnconnectedLinkValid = true;
     myDiagram.ToolManager.RelinkingTool.PortGravity = 20;
     myDiagram.ToolManager.RelinkingTool.FromHandleArchetype =
-      new Adornment().Add(
-        new Shape { Figure = "Diamond", SegmentIndex = 0, Cursor = "pointer", DesiredSize = new Size(8, 8), Fill = "tomato", Stroke = "darkred" }
-      );
-    myDiagram.ToolManager.RelinkingTool.FromHandleArchetype =
+      new Shape { Figure = "Diamond", SegmentIndex = 0, Cursor = "pointer", DesiredSize = new Size(8, 8), Fill = "tomato", Stroke = "darkred" };
+    myDiagram.ToolManager.RelinkingTool.ToHandleArchetype =
       new Shape { Figure = "Diamond", SegmentIndex = -1, Cursor = "pointer", DesiredSize = new Size(8, 8), Fill = "darkred", Stroke = "tomato" };
     myDiagram.ToolManager.LinkReshapingTool.HandleArchetype =
       new Shape { Figure = "Diamond", DesiredSize = new Size(7, 7), Fill = "lightblue", Stroke = "deepskyblue" };

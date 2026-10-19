@@ -43,17 +43,17 @@ namespace Demo.Samples.FaultTree {
 
       modelJson1.JsonText = @"
        {
-        ""NodeDataSource"": [
-        {""Key"":1, ""Text"":""No flow to receiver"", ""Figure"":""None""},
-        {""Key"":2, ""Text"":""No flow from Component B"", ""Parent"":1, ""Figure"":""OrGate"", ""Choice"":""G02""},
-        {""Key"":3, ""Text"":""No flow into Component B"", ""Parent"":2, ""Figure"":""AndGate"", ""Choice"":""G03""},
-        {""Key"":4, ""Text"":""Component B blocks flow"", ""Parent"":2, ""Figure"":""Circle"", ""Choice"":""B01""},
-        {""Key"":5, ""Text"":""No flow from Component A1"", ""Parent"":3, ""Figure"":""OrGate"", ""Choice"":""G04""},
-        {""Key"":6, ""Text"":""No flow from Component A2"", ""Parent"":3, ""Figure"":""OrGate"", ""Choice"":""G05""},
-        {""Key"":7, ""Text"":""No flow from source1"", ""Parent"":5, ""Figure"":""Triangle"", ""Choice"":""T01""},
-        {""Key"":8, ""Text"":""Component A1 blocks flow"", ""Parent"":5, ""Figure"":""Circle"", ""fill"":""green"", ""Choice"":""B02""},
-        {""Key"":9, ""Text"":""No flow from source2"", ""Parent"":6, ""Figure"":""Triangle"", ""Choice"":""T02""},
-        {""Key"":10, ""Text"":""Component A2 blocks flow"", ""Parent"":6, ""Figure"":""Circle"", ""Choice"":""B03""}
+        ""nodeDataSource"": [
+        {""key"":1, ""text"":""No flow to receiver"", ""figure"":""None""},
+        {""key"":2, ""text"":""No flow from Component B"", ""parent"":1, ""figure"":""OrGate"", ""choice"":""G02""},
+        {""key"":3, ""text"":""No flow into Component B"", ""parent"":2, ""figure"":""AndGate"", ""choice"":""G03""},
+        {""key"":4, ""text"":""Component B blocks flow"", ""parent"":2, ""figure"":""Circle"", ""choice"":""B01""},
+        {""key"":5, ""text"":""No flow from Component A1"", ""parent"":3, ""figure"":""OrGate"", ""choice"":""G04""},
+        {""key"":6, ""text"":""No flow from Component A2"", ""parent"":3, ""figure"":""OrGate"", ""choice"":""G05""},
+        {""key"":7, ""text"":""No flow from source1"", ""parent"":5, ""figure"":""Triangle"", ""choice"":""T01""},
+        {""key"":8, ""text"":""Component A1 blocks flow"", ""parent"":5, ""figure"":""Circle"", ""fill"":""green"", ""choice"":""B02""},
+        {""key"":9, ""text"":""No flow from source2"", ""parent"":6, ""figure"":""Triangle"", ""choice"":""T02""},
+        {""key"":10, ""text"":""Component A2 blocks flow"", ""parent"":6, ""figure"":""Circle"", ""choice"":""B03""}
         ]}";
 
       Setup();

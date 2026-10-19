@@ -114,7 +114,7 @@ public partial class Table : DemoControl {
               new Shape { Fill = "transparent", StrokeWidth = 0 },
               new TextBlock {
                   Font = new Font("Arial", 10, Northwoods.Go.FontWeight.Bold, FontUnit.Point), IsMultiline = false,
-                  Wrap = Wrap.None, Overflow = Overflow.Ellipsis
+                  Wrap = TextWrap.None, Overflow = TextOverflow.Ellipsis
                 }
                 .Bind("Text")
             )
@@ -154,7 +154,7 @@ public partial class Table : DemoControl {
               new Shape { Fill = "transparent", StrokeWidth = 0 },
               new TextBlock {
                   Font = new Font("Arial", 10, Northwoods.Go.FontWeight.Bold, FontUnit.Point), IsMultiline = false,
-                  Wrap = Wrap.None, Overflow = Overflow.Ellipsis
+                  Wrap = TextWrap.None, Overflow = TextOverflow.Ellipsis
                 }
                 .Bind("Text")
             )
@@ -272,9 +272,7 @@ public class LaneResizingTool : ResizingTool {
     var margin = Diagram.NodeTemplate.Margin;
     var bounds = new Rect();
 
-    var groups = Diagram.FindTopLevelGroups();
-    while (groups.MoveNext()) {
-      var g = groups.Current;
+    foreach (var g in Diagram.FindTopLevelGroups()) {
 
       if (horiz ? (g.Column == lane.Column) : (g.Row == lane.Row)) {
         var b = Diagram.ComputePartsBounds(g.MemberParts);

@@ -22,32 +22,32 @@ public partial class Kanban : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.Kanban.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-    { ""Key"":""Problems"", ""Text"":""Problems"", ""IsGroup"":true, ""Loc"":""0 23.52284749830794"" },
-    { ""Key"":""Reproduced"", ""Text"":""Reproduced"", ""IsGroup"":true, ""Color"":0, ""Loc"":""109 23.52284749830794"" },
-    { ""Key"":""Identified"", ""Text"":""Identified"", ""IsGroup"":true, ""Color"":0, ""Loc"":""235 23.52284749830794"" },
-    { ""Key"":""Fixing"", ""Text"":""Fixing"", ""IsGroup"":true, ""Color"":0, ""Loc"":""343 23.52284749830794"" },
-    { ""Key"":""Reviewing"", ""Text"":""Reviewing"", ""IsGroup"":true, ""Color"":0, ""Loc"":""451 23.52284749830794"" },
-    { ""Key"":""Testing"", ""Text"":""Testing"", ""IsGroup"":true, ""Color"":0, ""Loc"":""562 23.52284749830794"" },
-    { ""Key"":""Customer"", ""Text"":""Customer"", ""IsGroup"":true, ""Color"":0, ""Loc"":""671 23.52284749830794"" },
-    { ""Key"":""1"", ""Text"":""text for oneA"", ""Group"":""Problems"", ""Color"":0, ""Loc"":""12 35.52284749830794"" },
-    { ""Key"":""2"", ""Text"":""text for oneB"", ""Group"":""Problems"", ""Color"":1, ""Loc"":""12 65.52284749830794"" },
-    { ""Key"":""3"", ""Text"":""text for oneC"", ""Group"":""Problems"", ""Color"":0, ""Loc"":""12 95.52284749830794"" },
-    { ""Key"":""4"", ""Text"":""text for oneD"", ""Group"":""Problems"", ""Color"":1, ""Loc"":""12 125.52284749830794"" },
-    { ""Key"":""5"", ""Text"":""text for twoA"", ""Group"":""Reproduced"", ""Color"":1, ""Loc"":""121 35.52284749830794"" },
-    { ""Key"":""6"", ""Text"":""text for twoB"", ""Group"":""Reproduced"", ""Color"":1, ""Loc"":""121 65.52284749830794"" },
-    { ""Key"":""7"", ""Text"":""text for twoC"", ""Group"":""Identified"", ""Color"":0, ""Loc"":""247 35.52284749830794"" },
-    { ""Key"":""8"", ""Text"":""text for twoD"", ""Group"":""Fixing"", ""Color"":0, ""Loc"":""355 35.52284749830794"" },
-    { ""Key"":""9"", ""Text"":""text for twoE"", ""Group"":""Reviewing"", ""Color"":0, ""Loc"":""463 35.52284749830794"" },
-    { ""Key"":""10"", ""Text"":""text for twoF"", ""Group"":""Reviewing"", ""Color"":1, ""Loc"":""463 65.52284749830794"" },
-    { ""Key"":""11"", ""Text"":""text for twoG"", ""Group"":""Testing"", ""Color"":0, ""Loc"":""574 35.52284749830794"" },
-    { ""Key"":""12"", ""Text"":""text for fourA"", ""Group"":""Customer"", ""Color"":1, ""Loc"":""683 35.52284749830794"" },
-    { ""Key"":""13"", ""Text"":""text for fourB"", ""Group"":""Customer"", ""Color"":1, ""Loc"":""683 65.52284749830794"" },
-    { ""Key"":""14"", ""Text"":""text for fourC"", ""Group"":""Customer"", ""Color"":1, ""Loc"":""683 95.52284749830794"" },
-    { ""Key"":""15"", ""Text"":""text for fourD"", ""Group"":""Customer"", ""Color"":0, ""Loc"":""683 125.52284749830794"" },
-    { ""Key"":""16"", ""Text"":""text for fiveA"", ""Group"":""Customer"", ""Color"":0, ""Loc"":""683 155.52284749830795"" }
+  ""nodeDataSource"": [
+    { ""key"":""Problems"", ""text"":""Problems"", ""isGroup"":true, ""loc"":""0 23.52284749830794"" },
+    { ""key"":""Reproduced"", ""text"":""Reproduced"", ""isGroup"":true, ""color"":0, ""loc"":""109 23.52284749830794"" },
+    { ""key"":""Identified"", ""text"":""Identified"", ""isGroup"":true, ""color"":0, ""loc"":""235 23.52284749830794"" },
+    { ""key"":""Fixing"", ""text"":""Fixing"", ""isGroup"":true, ""color"":0, ""loc"":""343 23.52284749830794"" },
+    { ""key"":""Reviewing"", ""text"":""Reviewing"", ""isGroup"":true, ""color"":0, ""loc"":""451 23.52284749830794"" },
+    { ""key"":""Testing"", ""text"":""Testing"", ""isGroup"":true, ""color"":0, ""loc"":""562 23.52284749830794"" },
+    { ""key"":""Customer"", ""text"":""Customer"", ""isGroup"":true, ""color"":0, ""loc"":""671 23.52284749830794"" },
+    { ""key"":""1"", ""text"":""text for oneA"", ""group"":""Problems"", ""color"":0, ""loc"":""12 35.52284749830794"" },
+    { ""key"":""2"", ""text"":""text for oneB"", ""group"":""Problems"", ""color"":1, ""loc"":""12 65.52284749830794"" },
+    { ""key"":""3"", ""text"":""text for oneC"", ""group"":""Problems"", ""color"":0, ""loc"":""12 95.52284749830794"" },
+    { ""key"":""4"", ""text"":""text for oneD"", ""group"":""Problems"", ""color"":1, ""loc"":""12 125.52284749830794"" },
+    { ""key"":""5"", ""text"":""text for twoA"", ""group"":""Reproduced"", ""color"":1, ""loc"":""121 35.52284749830794"" },
+    { ""key"":""6"", ""text"":""text for twoB"", ""group"":""Reproduced"", ""color"":1, ""loc"":""121 65.52284749830794"" },
+    { ""key"":""7"", ""text"":""text for twoC"", ""group"":""Identified"", ""color"":0, ""loc"":""247 35.52284749830794"" },
+    { ""key"":""8"", ""text"":""text for twoD"", ""group"":""Fixing"", ""color"":0, ""loc"":""355 35.52284749830794"" },
+    { ""key"":""9"", ""text"":""text for twoE"", ""group"":""Reviewing"", ""color"":0, ""loc"":""463 35.52284749830794"" },
+    { ""key"":""10"", ""text"":""text for twoF"", ""group"":""Reviewing"", ""color"":1, ""loc"":""463 65.52284749830794"" },
+    { ""key"":""11"", ""text"":""text for twoG"", ""group"":""Testing"", ""color"":0, ""loc"":""574 35.52284749830794"" },
+    { ""key"":""12"", ""text"":""text for fourA"", ""group"":""Customer"", ""color"":1, ""loc"":""683 35.52284749830794"" },
+    { ""key"":""13"", ""text"":""text for fourB"", ""group"":""Customer"", ""color"":1, ""loc"":""683 65.52284749830794"" },
+    { ""key"":""14"", ""text"":""text for fourC"", ""group"":""Customer"", ""color"":1, ""loc"":""683 95.52284749830794"" },
+    { ""key"":""15"", ""text"":""text for fourD"", ""group"":""Customer"", ""color"":0, ""loc"":""683 125.52284749830794"" },
+    { ""key"":""16"", ""text"":""text for fiveA"", ""group"":""Customer"", ""color"":0, ""loc"":""683 155.52284749830795"" }
   ],
-  ""LinkDataSource"": []
+  ""linkDataSource"": []
 }";
 
     Setup();
@@ -240,10 +240,7 @@ public partial class Kanban : DemoControl {
                 var d = e.Diagram;
                 d.StartTransaction("add node");
                 var sel = d.Selection.FirstOrDefault();
-                if (sel == null) {
-                  var it = d.FindTopLevelGroups();
-                  if (it.MoveNext()) sel = it.Current;
-                }
+                if (sel == null) sel = d.FindTopLevelGroups().FirstOrDefault();
                 if (sel != null && sel is not Group) sel = sel.ContainingGroup;
                 if (sel == null) return;
                 var newdata = new NodeData { Group = (string)sel.Key, Loc = "0 9999", Text = "New item " + ((Group)sel).MemberParts.Count, Color = 0 };
@@ -302,9 +299,7 @@ public partial class Kanban : DemoControl {
       Diagram.StartTransaction("PoolLayout");
       // make sure all of the group shapes are big enough
       var minlen = _ComputeMinPoolLength();
-      var it = Diagram.FindTopLevelGroups();
-      while (it.MoveNext()) {
-        var lane = it.Current;
+      foreach (var lane in Diagram.FindTopLevelGroups()) {
         var shape = lane.SelectionElement;
         if (shape != null) { // change the desired size to be big enough in both direction
           var sz = _ComputeLaneSize(lane);
@@ -326,9 +321,7 @@ public partial class Kanban : DemoControl {
     // compute the minimum length of the whole diagram needed to hold all of the lane Groups
     private double _ComputeMinPoolLength() {
       double len = MINLENGTH;
-      var it = Diagram.FindTopLevelGroups();
-      while (it.MoveNext()) {
-        var lane = it.Current;
+      foreach (var lane in Diagram.FindTopLevelGroups()) {
         var holder = lane.Placeholder;
         if (holder != null) {
           var sz = holder.ActualBounds;

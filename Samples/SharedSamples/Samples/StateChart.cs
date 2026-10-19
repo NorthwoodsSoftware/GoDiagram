@@ -20,34 +20,34 @@ public partial class StateChart : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.StateChart.md");
 
     modelJson1.JsonText = @"{
-  ""NodeKeyProperty"": ""Id"",
-  ""NodeDataSource"": [
-    { ""Id"": ""-1"", ""Loc"": ""155 -138"", ""Category"": ""Start"" },
-    { ""Id"": ""0"", ""Loc"": ""190 15"", ""Text"": ""Shopping"" },
-    { ""Id"": ""1"", ""Loc"": ""353 32"", ""Text"": ""Browse Items"" },
-    { ""Id"": ""2"", ""Loc"": ""353 166"", ""Text"": ""Search Items"" },
-    { ""Id"": ""3"", ""Loc"": ""512 12"", ""Text"": ""View Item"" },
-    { ""Id"": ""4"", ""Loc"": ""661 17"", ""Text"": ""View Cart"" },
-    { ""Id"": ""5"", ""Loc"": ""644 171"", ""Text"": ""Update Cart"" },
-    { ""Id"": ""6"", ""Loc"": ""800 96"", ""Text"": ""Checkout"" },
-    { ""Id"": ""-2"", ""Loc"": ""757 229"", ""Category"": ""End"" }
+  ""nodeKeyProperty"": ""Id"",
+  ""nodeDataSource"": [
+    { ""id"": ""-1"", ""loc"": ""155 -138"", ""category"": ""Start"" },
+    { ""id"": ""0"", ""loc"": ""190 15"", ""text"": ""Shopping"" },
+    { ""id"": ""1"", ""loc"": ""353 32"", ""text"": ""Browse Items"" },
+    { ""id"": ""2"", ""loc"": ""353 166"", ""text"": ""Search Items"" },
+    { ""id"": ""3"", ""loc"": ""512 12"", ""text"": ""View Item"" },
+    { ""id"": ""4"", ""loc"": ""661 17"", ""text"": ""View Cart"" },
+    { ""id"": ""5"", ""loc"": ""644 171"", ""text"": ""Update Cart"" },
+    { ""id"": ""6"", ""loc"": ""800 96"", ""text"": ""Checkout"" },
+    { ""id"": ""-2"", ""loc"": ""757 229"", ""category"": ""End"" }
   ],
-  ""LinkDataSource"": [
-    { ""From"": ""-1"", ""To"": ""0"", ""Text"": ""Visit online store"" },
-    { ""From"": ""0"", ""To"": ""1"", ""Progress"": true, ""Text"": ""Browse"" },
-    { ""From"": ""0"", ""To"": ""2"", ""Progress"": true, ""Text"": ""Use search bar"" },
-    { ""From"": ""1"", ""To"": ""2"", ""Progress"": true, ""Text"": ""Use search bar"" },
-    { ""From"": ""2"", ""To"": ""3"", ""Progress"": true, ""Text"": ""Click item"" },
-    { ""From"": ""2"", ""To"": ""2"", ""Text"": ""Another search"", ""Curviness"": 20 },
-    { ""From"": ""1"", ""To"": ""3"", ""Progress"": true, ""Text"": ""Click item"" },
-    { ""From"": ""3"", ""To"": ""0"", ""Text"": ""Not interested"", ""Curviness"": -100 },
-    { ""From"": ""3"", ""To"": ""4"", ""Progress"": true, ""Text"": ""Add to cart"" },
-    { ""From"": ""4"", ""To"": ""0"", ""Text"": ""More shopping"", ""Curviness"": -150 },
-    { ""From"": ""4"", ""To"": ""5"", ""Text"": ""Update needed"", ""Curviness"": -50 },
-    { ""From"": ""5"", ""To"": ""4"", ""Text"": ""Update made"" },
-    { ""From"": ""4"", ""To"": ""6"", ""Progress"": true, ""Text"": ""Proceed"" },
-    { ""From"": ""6"", ""To"": ""5"", ""Text"": ""Update needed"" },
-    { ""From"": ""6"", ""To"": ""-2"", ""Progress"": true, ""Text"": ""Purchase made"" }
+  ""linkDataSource"": [
+    { ""from"": ""-1"", ""to"": ""0"", ""text"": ""Visit online store"" },
+    { ""from"": ""0"", ""to"": ""1"", ""progress"": true, ""text"": ""Browse"" },
+    { ""from"": ""0"", ""to"": ""2"", ""progress"": true, ""text"": ""Use search bar"" },
+    { ""from"": ""1"", ""to"": ""2"", ""progress"": true, ""text"": ""Use search bar"" },
+    { ""from"": ""2"", ""to"": ""3"", ""progress"": true, ""text"": ""Click item"" },
+    { ""from"": ""2"", ""to"": ""2"", ""text"": ""Another search"", ""curviness"": 20 },
+    { ""from"": ""1"", ""to"": ""3"", ""progress"": true, ""text"": ""Click item"" },
+    { ""from"": ""3"", ""to"": ""0"", ""text"": ""Not interested"", ""curviness"": -100 },
+    { ""from"": ""3"", ""to"": ""4"", ""progress"": true, ""text"": ""Add to cart"" },
+    { ""from"": ""4"", ""to"": ""0"", ""text"": ""More shopping"", ""curviness"": -150 },
+    { ""from"": ""4"", ""to"": ""5"", ""text"": ""Update needed"", ""curviness"": -50 },
+    { ""from"": ""5"", ""to"": ""4"", ""text"": ""Update made"" },
+    { ""from"": ""4"", ""to"": ""6"", ""progress"": true, ""text"": ""Proceed"" },
+    { ""from"": ""6"", ""to"": ""5"", ""text"": ""Update needed"" },
+    { ""from"": ""6"", ""to"": ""-2"", ""progress"": true, ""text"": ""Purchase made"" }
   ]
 }";
 
@@ -65,7 +65,7 @@ public partial class StateChart : DemoControl {
     _Diagram.InitialAnimationStarting += (s, e) => {
       var animation = (e.Subject as AnimationManager).DefaultAnimation;
       animation.Easing = Animation.EaseOutExpo;
-      animation.Duration = 900;
+      animation.Duration = TimeSpan.FromMilliseconds(900);
       animation.Add(e.Diagram, "Scale", 0.1, 1);
       animation.Add(e.Diagram, "Opacity", 0, 1);
     };

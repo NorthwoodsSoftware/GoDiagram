@@ -42,7 +42,7 @@ namespace Demo.Samples.HoverButtons {
       myDiagram = diagramControl1.Diagram;
 
       // diagram properties
-      myDiagram.ToolManager.HoverDelay = 200; // controls how long to wait motionless (msec) before showing Adornment
+      myDiagram.ToolManager.HoverDelay = TimeSpan.FromMilliseconds(200); // controls how long to wait motionless (msec) before showing Adornment
       myDiagram.UndoManager.IsEnabled = true;
 
       // this is shown by the mouseHover event handler

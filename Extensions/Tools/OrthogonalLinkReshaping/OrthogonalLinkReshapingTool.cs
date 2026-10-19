@@ -137,7 +137,7 @@ namespace Northwoods.Go.Tools.Extensions {
       var h = new Shape {
         StrokeWidth = 6,
         Opacity = 0,
-        SegmentOrientation = Orientation.Along,
+        SegmentOrientation = SegmentOrientation.Along,
         SegmentIndex = index,
         SegmentFraction = 0.5,
         ToMaxLinks = 999 // set this unsused property to easily identify that we have a segment dragging handle

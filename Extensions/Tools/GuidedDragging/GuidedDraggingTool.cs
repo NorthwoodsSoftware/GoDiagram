@@ -86,7 +86,7 @@ namespace Northwoods.Go.Tools.Extensions {
         return _GuidelineSnapDistance;
       }
       set {
-        if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuidedDraggingTool.GuidelineSnapDistance must be a non-negative number");
+        if (double.IsNaN(value) || value < 0) throw new ArgumentOutOfRangeException(nameof(value), value, "new value for GuidedDraggingTool.GuidelineSnapDistance must be a non-negative number");
         _GuidelineSnapDistance = value;
       }
     }
@@ -174,7 +174,7 @@ namespace Northwoods.Go.Tools.Extensions {
         return _GuidelineWidth;
       }
       set {
-        if (double.IsNaN(value) || value < 0) throw new Exception("new value for GuidedDraggingTool.GuidelineWidth must be a non-negative number.");
+        if (double.IsNaN(value) || value < 0) throw new ArgumentOutOfRangeException(nameof(value), value, "new value for GuidedDraggingTool.GuidelineWidth must be a non-negative number.");
         if (_GuidelineWidth != value) {
           _GuidelineWidth = value;
           (_GuidelineVcenter.Elements.First() as Shape).StrokeWidth = value;
@@ -199,7 +199,7 @@ namespace Northwoods.Go.Tools.Extensions {
         return _SearchDistance;
       }
       set {
-        if (double.IsNaN(value) || value <= 0) throw new Exception("new value for GuidedDraggingTool.SearchDistance must be a positive number.");
+        if (double.IsNaN(value) || value <= 0) throw new ArgumentOutOfRangeException(nameof(value), value, "new value for GuidedDraggingTool.SearchDistance must be a positive number.");
         _SearchDistance = value;
       }
     }

@@ -381,7 +381,7 @@ namespace Northwoods.Go.Extensions {
     /// </summary>
     public static string ToString(object val) {
       var v = val;
-      if (!Util.IsSimpleType(val)) {
+      if (!IsSimpleType(val)) {
         v = SafePropertyValue(val, "Text", ErrorMode.Off);
         if (v == null) v = SafePropertyValue(val, "Name", ErrorMode.Off);
         if (v == null) v = SafePropertyValue(val, "Key", ErrorMode.Off);
@@ -390,6 +390,20 @@ namespace Northwoods.Go.Extensions {
       }
       if (v == null) return "null";
       return v.ToString();
+    }
+
+    // true for null, primitives, enums, strings and other simple value types (including nullables of them)
+    private static bool IsSimpleType(object o) {
+      if (o == null) return true;
+      return IsSimpleType(o.GetType());
+    }
+
+    private static bool IsSimpleType(Type type) {
+      return type.IsPrimitive || type.IsEnum ||
+          type == typeof(decimal) || type == typeof(string) ||
+          type == typeof(DateTime) || type == typeof(DateTimeOffset) ||
+          type == typeof(TimeSpan) || type == typeof(Guid) ||
+          type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsSimpleType(type.GetGenericArguments()[0]);
     }
 
     /// <summary>

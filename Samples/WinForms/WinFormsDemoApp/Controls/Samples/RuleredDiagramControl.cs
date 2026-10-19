@@ -130,7 +130,7 @@ namespace Demo.Samples.RuleredDiagram {
             new Shape { GeometryString = "M0 0 V15", Interval = 5, AlignmentFocus = Spot.Bottom },
             new TextBlock {
                 Font = new Font("Segoe UI", 10),
-                SegmentOrientation = Orientation.Opposite,
+                SegmentOrientation = SegmentOrientation.Opposite,
                 Interval = 5,
                 AlignmentFocus = Spot.BottomLeft,
                 SegmentOffset = new Point(0, -7)

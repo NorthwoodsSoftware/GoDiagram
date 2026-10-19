@@ -26,21 +26,21 @@ namespace Demo.Samples.FlowBuilder {
 
       modelJson1.JsonText = @"
     {
-      ""NodeDataSource"": [
-        { ""Key"":1, ""Text"":""Loading Screen"", ""Category"":""Loading"" },
-        { ""Key"":2, ""Text"":""Beginning"" },
-        { ""Key"":3, ""Text"":""Segment 1"" },
-        { ""Key"":4, ""Text"":""Segment 2"" },
-        { ""Key"":5, ""Text"":""Segment 3""},
-        { ""Key"":6, ""Text"":""End Screen"", ""Category"":""End"" },
-        { ""Key"":-2, ""Category"":""Recycle"" }
+      ""nodeDataSource"": [
+        { ""key"":1, ""text"":""Loading Screen"", ""category"":""Loading"" },
+        { ""key"":2, ""text"":""Beginning"" },
+        { ""key"":3, ""text"":""Segment 1"" },
+        { ""key"":4, ""text"":""Segment 2"" },
+        { ""key"":5, ""text"":""Segment 3""},
+        { ""key"":6, ""text"":""End Screen"", ""category"":""End"" },
+        { ""key"":-2, ""category"":""Recycle"" }
       ],
-      ""LinkDataSource"": [
-        { ""From"":1, ""To"":2 },
-        { ""From"":2, ""To"":3 },
-        { ""From"":2, ""To"":5 },
-        { ""From"":3, ""To"":4 },
-        { ""From"":4, ""To"":6 }
+      ""linkDataSource"": [
+        { ""from"":1, ""to"":2 },
+        { ""from"":2, ""to"":3 },
+        { ""from"":2, ""to"":5 },
+        { ""from"":3, ""to"":4 },
+        { ""from"":4, ""to"":6 }
       ]
     }";
 

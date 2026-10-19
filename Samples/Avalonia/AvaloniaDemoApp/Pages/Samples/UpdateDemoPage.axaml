@@ -5,6 +5,7 @@
              xmlns:views="using:AvaloniaDemoApp.Views"
              xmlns:go="using:Northwoods.Go.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Name="page"
              x:Class="Demo.Samples.UpdateDemo.UpdateDemo">
   <ScrollViewer Classes="paddedSv">
     <Grid>
@@ -22,7 +23,7 @@
                          Grid.Row="0" Grid.Column="0" />
       <StackPanel Spacing="3" Grid.Row="0" Grid.Column="1">
         <Button Name="clearModelLogBtn">Clear Model Log</Button>
-        <ListBox Name="modelLog" ItemsSource="{Binding $parent[3].Log}" Height="250"></ListBox>
+        <ListBox Name="modelLog" ItemsSource="{Binding #page.Log}" Height="250"></ListBox>
       </StackPanel>
       <go:DiagramControl Name="diagramControl2"
                          BorderBrush="Green" BorderThickness="1"

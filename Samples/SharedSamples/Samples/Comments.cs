@@ -16,22 +16,22 @@ public partial class Comments : DemoControl {
     desc1.MdText = DescriptionReader.Read("Samples.Comments.md");
 
     modelJson1.JsonText = @"{
-  ""NodeDataSource"": [
-{ ""Key"": ""Alpha"", ""Color"": ""orange"" },
-{ ""Key"": ""Beta"", ""Color"": ""lightgreen"" },
-{ ""Key"": ""Gamma"", ""Color"": ""lightgreen"" },
-{ ""Key"": ""Delta"", ""Color"": ""pink"" },
-{ ""Key"": ""A comment"", ""Text"": ""comment\nabout Alpha"", ""Category"": ""Comment"" },
-{ ""Key"": ""B comment"", ""Text"": ""comment\nabout Beta"", ""Category"": ""Comment"" },
-{ ""Key"": ""G comment"", ""Text"": ""comment about Gamma"", ""Category"": ""Comment"" }
+  ""nodeDataSource"": [
+{ ""key"": ""Alpha"", ""color"": ""orange"" },
+{ ""key"": ""Beta"", ""color"": ""lightgreen"" },
+{ ""key"": ""Gamma"", ""color"": ""lightgreen"" },
+{ ""key"": ""Delta"", ""color"": ""pink"" },
+{ ""key"": ""A comment"", ""text"": ""comment\nabout Alpha"", ""category"": ""Comment"" },
+{ ""key"": ""B comment"", ""text"": ""comment\nabout Beta"", ""category"": ""Comment"" },
+{ ""key"": ""G comment"", ""text"": ""comment about Gamma"", ""category"": ""Comment"" }
 ],
-  ""LinkDataSource"": [
-{ ""From"": ""Alpha"", ""To"": ""Beta"" },
-{ ""From"": ""Alpha"", ""To"": ""Gamma"" },
-{ ""From"": ""Alpha"", ""To"": ""Delta"" },
-{ ""From"": ""A comment"", ""To"": ""Alpha"", ""Category"": ""Comment"" },
-{ ""From"": ""B comment"", ""To"": ""Beta"", ""Category"": ""Comment"" },
-{ ""From"": ""G comment"", ""To"": ""Gamma"", ""Category"": ""Comment"" }
+  ""linkDataSource"": [
+{ ""from"": ""Alpha"", ""to"": ""Beta"" },
+{ ""from"": ""Alpha"", ""to"": ""Gamma"" },
+{ ""from"": ""Alpha"", ""to"": ""Delta"" },
+{ ""from"": ""A comment"", ""to"": ""Alpha"", ""category"": ""Comment"" },
+{ ""from"": ""B comment"", ""to"": ""Beta"", ""category"": ""Comment"" },
+{ ""from"": ""G comment"", ""to"": ""Gamma"", ""category"": ""Comment"" }
 ]}";
 
     Setup();

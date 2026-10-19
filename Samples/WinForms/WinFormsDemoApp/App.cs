@@ -25,7 +25,8 @@ namespace WinFormsDemoApp {
       extensionList.SelectedValueChanged += ExtensionList_SelectedValueChanged;
       extensionList.ClearSelected();
 
-      Northwoods.Go.WinForms.DiagramControl.UseHardwareRendering = true;  // use hardware rendering for better performance, if available
+      // render on the GPU for better performance; controls fall back to software rendering if OpenGL is unavailable
+      Northwoods.Go.WinForms.DiagramControl.DefaultRenderMode = Northwoods.Go.WinForms.RenderMode.Hardware;
 
       _SelectDemo(opento);
     }

@@ -34,7 +34,7 @@ namespace Demo.Samples.ConstantSize {
 
       myDiagram.InitialContentAlignment = Spot.TopLeft;
       myDiagram.IsReadOnly = true; // allow selection but not moving or copying or deleting
-      myDiagram.ToolManager.HoverDelay = 100; // how quickly tooltips are shown
+      myDiagram.ToolManager.HoverDelay = TimeSpan.FromMilliseconds(100); // how quickly tooltips are shown
       myDiagram.ToolManager.MouseWheelBehavior = WheelMode.Zoom;
 
       // the background image, a floor plan
@@ -72,7 +72,7 @@ namespace Demo.Samples.ConstantSize {
               .Bind("Stroke", "Color", MakeStroke)  // also specified by data
           )
           // don't animate if INTERVAL is <= 20 milliseconds
-          .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", (INTERVAL, null, Animation.EaseLinear)) : null);
+          .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", new AnimationSettings { Duration = TimeSpan.FromMilliseconds(INTERVAL), Easing = Animation.EaseLinear }) : null);
 
       // pretend there are four kittens
       myDiagram.Model = new Model {

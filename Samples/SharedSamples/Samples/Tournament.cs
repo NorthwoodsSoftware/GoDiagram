@@ -45,25 +45,25 @@ public partial class Tournament : DemoControl {
       .Add(
         new TextBlock {
           Row = 0,
-          Wrap = Wrap.None, Margin = 5, Width = 90,
+          Wrap = TextWrap.None, Margin = 5, Width = 90,
           IsMultiline = false, TextAlign = TextAlign.Left,
           Font = new Font("Segoe UI", 10, Northwoods.Go.FontWeight.Bold), Stroke = "white"
         }.BindTwoWay("Text", "Player1"),
         new TextBlock {
           Row = 1,
-          Wrap = Wrap.None, Margin = 5, Width = 90,
+          Wrap = TextWrap.None, Margin = 5, Width = 90,
           IsMultiline = false, TextAlign = TextAlign.Left,
           Font = new Font("Segoe UI", 10, Northwoods.Go.FontWeight.Bold), Stroke = "white"
         }.BindTwoWay("Text", "Player2"),
         new TextBlock {
           Column = 1, Row = 0,
-          Wrap = Wrap.None, Margin = 2, Width = 25,
+          Wrap = TextWrap.None, Margin = 2, Width = 25,
           IsMultiline = false, Editable = true, TextAlign = TextAlign.Center,
           Font = new Font("Segoe UI", 10, Northwoods.Go.FontWeight.Bold), Stroke = "black"
         }.BindTwoWay("Text", "Score1"),
         new TextBlock {
           Column = 1, Row = 1,
-          Wrap = Wrap.None, Margin = 2, Width = 25,
+          Wrap = TextWrap.None, Margin = 2, Width = 25,
           IsMultiline = false, Editable = true, TextAlign = TextAlign.Center,
           Font = new Font("Segoe UI", 10, Northwoods.Go.FontWeight.Bold), Stroke = "black"
         }.BindTwoWay("Text", "Score2")

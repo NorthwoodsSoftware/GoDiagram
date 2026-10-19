@@ -32,7 +32,7 @@ public partial class KittenMonitor : DemoControl {
       if (sc < 1) sc = 1;  // but disallow zero or negative!
       return sc / 10;
     };
-    _Diagram.ToolManager.HoverDelay = 100; // how quickly tooltips are shown
+    _Diagram.ToolManager.HoverDelay = TimeSpan.FromMilliseconds(100); // how quickly tooltips are shown
 
     // the background image, a floor plan
     _Diagram.Add(
@@ -69,7 +69,7 @@ public partial class KittenMonitor : DemoControl {
             .Bind("Stroke", "Color", MakeStroke)  // also specified by data
         )
         // don't animate if INTERVAL is <= 20 milliseconds
-        .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", (INTERVAL, null, Animation.EaseLinear)) : null);
+        .Trigger(INTERVAL > 20 ? new AnimationTrigger("Position", new AnimationSettings { Duration = TimeSpan.FromMilliseconds(INTERVAL), Easing = Animation.EaseLinear }) : null);
 
     _Diagram.Model = new Model {
       NodeDataSource = new List<NodeData> {

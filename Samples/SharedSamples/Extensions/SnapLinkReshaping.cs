@@ -25,23 +25,23 @@ public partial class SnapLinkReshaping : DemoControl {
     modelJson1.SaveClick = SaveModel;
     modelJson1.LoadClick = LoadModel;
     modelJson1.JsonText = @"{
-  ""LinkFromPortIdProperty"": ""FromPort"",
-  ""LinkToPortIdProperty"": ""ToPort"",
-  ""NodeDataSource"": [
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-3, ""Loc"":""184 176""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-2, ""Loc"":""248 248""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-4, ""Loc"":""424 192""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-5, ""Loc"":""320 152""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-6, ""Loc"":""424 320""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-7, ""Loc"":""352 256""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-8, ""Loc"":""176 296""},
-    { ""Text"":""DB"", ""Figure"":""Database"", ""Fill"":""lightgray"", ""Key"":-9, ""Loc"":""288 344""},
-    { ""Text"":""Step"", ""Key"":-10, ""Loc"":""96 240""},
-    { ""Text"":""Step"", ""Key"":-11, ""Loc"":""536 280""}
+  ""linkFromPortIdProperty"": ""FromPort"",
+  ""linkToPortIdProperty"": ""ToPort"",
+  ""nodeDataSource"": [
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-3, ""loc"":""184 176""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-2, ""loc"":""248 248""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-4, ""loc"":""424 192""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-5, ""loc"":""320 152""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-6, ""loc"":""424 320""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-7, ""loc"":""352 256""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-8, ""loc"":""176 296""},
+    { ""text"":""DB"", ""figure"":""Database"", ""fill"":""lightgray"", ""key"":-9, ""loc"":""288 344""},
+    { ""text"":""Step"", ""key"":-10, ""loc"":""96 240""},
+    { ""text"":""Step"", ""key"":-11, ""loc"":""536 280""}
   ],
-  ""LinkDataSource"": [
-    { ""From"":-10, ""To"":-11, ""FromPort"":""R"", ""ToPort"":""L"", ""Routing"": 2,
-      ""Points"": [
+  ""linkDataSource"": [
+    { ""from"":-10, ""to"":-11, ""fromPort"":""R"", ""toPort"":""L"", ""routing"": ""Orthogonal"",
+      ""points"": [
         ""118.60896682739258 240"",
         ""128.60896682739258 240"",
         ""132 240"",
@@ -137,7 +137,7 @@ public partial class SnapLinkReshaping : DemoControl {
             new TextBlock {
               Margin = 8,
               MaxSize = new Size(160, double.NaN),
-              Wrap = Wrap.Fit,
+              Wrap = TextWrap.Fit,
               Editable = true
             }.Set(textStyle).BindTwoWay("Text")
           ),
@@ -161,7 +161,7 @@ public partial class SnapLinkReshaping : DemoControl {
             new TextBlock {
               Margin = 8,
               MaxSize = new Size(160, double.NaN),
-              Wrap = Wrap.Fit,
+              Wrap = TextWrap.Fit,
               Editable = true
             }.Set(textStyle).BindTwoWay("Text")
           ),
@@ -226,7 +226,7 @@ public partial class SnapLinkReshaping : DemoControl {
           new TextBlock {
             Margin = 5,
             MaxSize = new Size(200, double.NaN),
-            Wrap = Wrap.Fit,
+            Wrap = TextWrap.Fit,
             TextAlign = TextAlign.Center,
             Editable = true
           }.Set(textStyle).BindTwoWay("Text")
@@ -295,7 +295,7 @@ public partial class SnapLinkReshaping : DemoControl {
         Font = new Font("Arial", 11, Northwoods.Go.FontWeight.Bold),
         Margin = 8,
         MaxSize = new Size(160, double.NaN),
-        Wrap = Wrap.Fit,
+        Wrap = TextWrap.Fit,
         Editable = true
       }.BindTwoWay("Text")),
       MakePort("T", Spot.Top, false, true),

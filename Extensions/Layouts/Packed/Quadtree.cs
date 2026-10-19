@@ -307,7 +307,7 @@ namespace Northwoods.Go.Layouts.Extensions {
         double.IsNaN(bounds.Y) || bounds.Y == double.PositiveInfinity ||
         double.IsNaN(bounds.Width) || bounds.Width == double.PositiveInfinity ||
         double.IsNaN(bounds.Height) || bounds.Height == double.PositiveInfinity) {
-        throw new Exception("Invalid rectangle, contains NaN or double.PositiveInfinity properties");
+        throw new ArgumentException("Invalid rectangle, contains NaN or double.PositiveInfinity properties", nameof(bounds));
       }
 
       _HasZeroWidthObject = _HasZeroWidthObject || bounds.Width == 0;

@@ -83,9 +83,7 @@ namespace Demo.Samples.SwimLanesVertical {
     // this is called after nodes have been moved or lanes resized, to layout all of the Pool Groups again
     public void RelayoutDiagram(Diagram diagram) {
       diagram.Layout.InvalidateLayout();
-      var itr = diagram.FindTopLevelGroups();
-      while (itr.MoveNext()) {
-        var g = itr.Current;
+      foreach (var g in diagram.FindTopLevelGroups()) {
         if (g.Category == "Pool") g.Layout.InvalidateLayout();
       }
       diagram.LayoutDiagram();

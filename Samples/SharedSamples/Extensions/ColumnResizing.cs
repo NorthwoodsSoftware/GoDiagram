@@ -49,8 +49,8 @@ public partial class ColumnResizing : DemoControl {
               Margin = new Margin(0, 2),
               Stretch = Stretch.Horizontal,
               Font = new Font("Segoe UI", 13, Northwoods.Go.FontWeight.Bold),
-              Wrap = Wrap.None,
-              Overflow = Overflow.Ellipsis,
+              Wrap = TextWrap.None,
+              Overflow = TextOverflow.Ellipsis,
               // and disallow drawing links from or to this text:
               FromLinkable = false, ToLinkable = false
             }
@@ -61,7 +61,7 @@ public partial class ColumnResizing : DemoControl {
               Stretch = Stretch.Horizontal,
               Font = new Font("Segoe UI", 13),
               MaxLines = 3,
-              Overflow = Overflow.Ellipsis,
+              Overflow = TextOverflow.Ellipsis,
               Editable = true
             }
             .BindTwoWay("Text", "Info")

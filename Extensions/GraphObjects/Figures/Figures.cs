@@ -52,7 +52,7 @@ namespace Northwoods.Go.Extensions {
         return _Name;
       }
       set {
-        if (value == null || value == "") throw new ArgumentException("Shape name must be a valid string.");
+        if (value == null || value == "") throw new ArgumentException("Shape name must be a valid string.", nameof(value));
         _Name = value;
       }
     }
@@ -65,7 +65,7 @@ namespace Northwoods.Go.Extensions {
         return _DefaultValue;
       }
       set {
-        if (double.IsNaN(value)) throw new ArgumentException("The default value must be a real number, not: " + value);
+        if (double.IsNaN(value)) throw new ArgumentOutOfRangeException(nameof(value), value, "The default value must be a real number, not: " + value);
         _DefaultValue = value;
       }
     }
@@ -78,7 +78,7 @@ namespace Northwoods.Go.Extensions {
         return _Minimum;
       }
       set {
-        if (double.IsNaN(value)) throw new ArgumentException("Minimum must be a real number, not: " + value);
+        if (double.IsNaN(value)) throw new ArgumentOutOfRangeException(nameof(value), value, "Minimum must be a real number, not: " + value);
         _Minimum = value;
       }
     }
@@ -91,7 +91,7 @@ namespace Northwoods.Go.Extensions {
         return _Maximum;
       }
       set {
-        if (double.IsNaN(value)) throw new Exception("Maximum must be a real number, not: " + value);
+        if (double.IsNaN(value)) throw new ArgumentOutOfRangeException(nameof(value), value, "Maximum must be a real number, not: " + value);
         _Maximum = value;
       }
     }
@@ -114,9 +114,9 @@ namespace Northwoods.Go.Extensions {
     /// <param name="index">currently must be either 0 or 1</param>
     /// <param name="figparam"></param>
     public static void SetFigureParameter(string figurename, int index, FigureParameter figparam) {
-      if (figparam == null) throw new Exception("Third argument to FigureParameter.SetFigureParameter is not FigureParameter: " + figparam);
+      if (figparam == null) throw new ArgumentNullException(nameof(figparam));
       if (figparam.DefaultValue < figparam.Minimum || figparam.DefaultValue > figparam.Maximum) {
-        throw new Exception("DefaultValue must be between minimum and maximum, not: " + figparam.DefaultValue);
+        throw new ArgumentException("DefaultValue must be between minimum and maximum, not: " + figparam.DefaultValue, nameof(figparam));
       }
       List<FigureParameter> arr;
       if (DefinedParameters.ContainsKey(figurename)) {
@@ -870,99 +870,9 @@ namespace Northwoods.Go.Extensions {
         return geo;
       });
 
-      Shape.DefineFigureGenerator("RoundedTopRectangle", (shape, w, h) => {
-        // this figure takes one parameter, the size of the corner
-        var p1 = 5.0;  // default corner size
-        if (shape != null) {
-          var param1 = shape.Parameter1;
-          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
-        }
-        p1 = Math.Min(p1, w / 3);  // limit by width & height
-        p1 = Math.Min(p1, h);
-        var geo = new Geometry();
-        // a single figure consisting of straight lines and quarter-circle arcs
-        geo.Add(new PathFigure(0, p1)
-          .Add(new PathSegment(SegmentType.Arc, 180, 90, p1, p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, w - p1, 0))
-          .Add(new PathSegment(SegmentType.Arc, 270, 90, w - p1, p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, w, h))
-          .Add(new PathSegment(SegmentType.Line, 0, h).Close()));
-        // don't intersect with two top corners when used in an "Auto" Panel
-        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0.3 * p1);
-        geo.Spot2 = new Spot(1, 1, -0.3 * p1, 0);
-        return geo;
-      });
+      // RoundedTopRectangle, RoundedBottomRectangle, RoundedLeftRectangle, RoundedRightRectangle, Capsule and Borders
+      // are predefined figures in GoDiagram, as in GoJS 3.0
 
-      Shape.DefineFigureGenerator("RoundedBottomRectangle", (shape, w, h) => {
-        // this figure takes one parameter, the size of the corner
-        var p1 = 5.0;  // default corner size
-        if (shape != null) {
-          var param1 = shape.Parameter1;
-          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
-        }
-        p1 = Math.Min(p1, w / 3);  // limit by width & height
-        p1 = Math.Min(p1, h);
-        var geo = new Geometry();
-        // a single figure consisting of straight lines and quarter-circle arcs
-        geo.Add(new PathFigure(0, 0)
-          .Add(new PathSegment(SegmentType.Line, w, 0))
-          .Add(new PathSegment(SegmentType.Line, w, h - p1))
-          .Add(new PathSegment(SegmentType.Arc, 0, 90, w - p1, h - p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, p1, h))
-          .Add(new PathSegment(SegmentType.Arc, 90, 90, p1, h - p1, p1, p1).Close()));
-        // don't intersect with two bottom corners when used in an "Auto" Panel
-        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0);
-        geo.Spot2 = new Spot(1, 1, -0.3 * p1, -0.3 * p1);
-        return geo;
-      });
-
-      Shape.DefineFigureGenerator("RoundedLeftRectangle", (shape, w, h) => {
-        // this figure takes one parameter, the size of the corner
-        var p1 = 5.0;  // default corner size
-        if (shape != null) {
-          var param1 = shape.Parameter1;
-          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
-        }
-        p1 = Math.Min(p1, w);  // limit by width & height
-        p1 = Math.Min(p1, h / 3);
-        var geo = new Geometry();
-        // a single figure consisting of straight lines and quarter-circle arcs
-        geo.Add(new PathFigure(w, 0)
-          .Add(new PathSegment(SegmentType.Line, w, h))
-          .Add(new PathSegment(SegmentType.Line, p1, h))
-          .Add(new PathSegment(SegmentType.Arc, 90, 90, p1, h - p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, 0, p1))
-          .Add(new PathSegment(SegmentType.Arc, 180, 90, p1, p1, p1, p1).Close()));
-        // don't intersect with two top corners when used in an "Auto" Panel
-        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0.3 * p1);
-        geo.Spot2 = new Spot(1, 1, -0.3 * p1, 0);
-        return geo;
-      });
-
-      Shape.DefineFigureGenerator("RoundedRightRectangle", (shape, w, h) => {
-        // this figure takes one parameter, the size of the corner
-        var p1 = 5.0;  // default corner size
-        if (shape != null) {
-          var param1 = shape.Parameter1;
-          if (!double.IsNaN(param1) && param1 >= 0) p1 = param1;  // can't be negative or double.NaN
-        }
-        p1 = Math.Min(p1, w);  // limit by width & height
-        p1 = Math.Min(p1, h / 3);
-        var geo = new Geometry();
-        // a single figure consisting of straight lines and quarter-circle arcs
-        geo.Add(new PathFigure(0, 0)
-          .Add(new PathSegment(SegmentType.Line, w - p1, 0))
-          .Add(new PathSegment(SegmentType.Arc, 270, 90, w - p1, p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, w, h - p1))
-          .Add(new PathSegment(SegmentType.Arc, 0, 90, w - p1, h - p1, p1, p1))
-          .Add(new PathSegment(SegmentType.Line, 0, h).Close()));
-        // don't intersect with two bottom corners when used in an "Auto" Panel
-        geo.Spot1 = new Spot(0, 0, 0.3 * p1, 0);
-        geo.Spot2 = new Spot(1, 1, -0.3 * p1, -0.3 * p1);
-        return geo;
-      });
-
-      // these two figures have rounded ends
       Shape.DefineFigureGenerator("CapsuleH", (shape, w, h) => {
         var geo = new Geometry();
         if (w < h) {
@@ -982,7 +892,6 @@ namespace Northwoods.Go.Extensions {
           return geo;
         }
       });
-      Shape.DefineFigureGenerator("Capsule", "CapsuleH"); // synonym
 
       Shape.DefineFigureGenerator("CapsuleV", (shape, w, h) => {
         var geo = new Geometry();

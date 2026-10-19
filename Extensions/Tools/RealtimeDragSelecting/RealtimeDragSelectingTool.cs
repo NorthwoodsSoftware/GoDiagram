@@ -40,14 +40,14 @@ namespace Northwoods.Go.Tools.Extensions {
       _OriginalSelection = new HashSet<Part>(Diagram.Selection);
       // these Part.IsSelected may have been temporarily modified
       _TemporarySelection.Clear();
-      Diagram.RaiseChangingSelection();
+      Diagram.RaiseDiagramEvent(DiagramEventName.ChangingSelection);
     }
 
     /// <summary>
     /// Release any references to selected Parts.
     /// </summary>
     public override void DoDeactivate() {
-      Diagram.RaiseChangedSelection();
+      Diagram.RaiseDiagramEvent(DiagramEventName.ChangedSelection);
       _OriginalSelection.Clear();
       _TemporarySelection.Clear();
       base.DoDeactivate();

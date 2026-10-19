@@ -47,6 +47,7 @@ namespace Northwoods.Go.Layouts.Extensions {
     // internal state
     private readonly List<List<LayeredDigraphVertex>> _Layers = new();
     private List<double> _NeededSpaces = new();
+    private Dictionary<string, int> _LaneIndexes = new();  // lane names --> index when sorted
 
     /// <summary>
     /// Constructs a SwimLaneLayout.
@@ -357,11 +358,12 @@ namespace Northwoods.Go.Layouts.Extensions {
         }
       }
 
-      // sort laneNames and initialize laneIndexes
+      // sort laneNames and initialize laneIndexes with sorted indexes
       if (LaneComparer != null) LaneNames.Sort(LaneComparer);
       for (var i = 0; i < LaneNames.Count; i++) {
         laneIndexes[LaneNames[i]] = i;
       }
+      _LaneIndexes = laneIndexes;
       // now OK to call findLane
 
       // sort vertexes so that vertexes are grouped by lane
@@ -382,15 +384,15 @@ namespace Northwoods.Go.Layouts.Extensions {
       var layers = _Layers;
       var red = Reducer;
       if (red != null) {
-        for (var i = 0; i < layers.Count - 1; i++) {
-          red.ReduceCrossings(layers[i], layers[i + 1]);
+        for (var i = 1; i < layers.Count; i++) {
+          red.ReduceCrossings(layers[i], layers[i - 1]);
           for (var j = 0; j < layers[i].Count; j++) {
             var v = layers[i][j];
             v.Index = j;
           }
         }
-        for (var i = layers.Count - 1; i > 0; i--) {
-          red.ReduceCrossings(layers[i], layers[i - 1]);
+        for (var i = layers.Count - 2; i >= 0; i--) {
+          red.ReduceCrossings(layers[i], layers[i + 1]);
           for (var j = 0; j < layers[i].Count; j++) {
             var v = layers[i][j];
             v.Index = j;
@@ -567,8 +569,14 @@ namespace Northwoods.Go.Layouts.Extensions {
       if (laneV == null) laneV = "";
       var laneW = FindLane(w);
       if (laneW == null) laneW = "";
-      var ret =  laneV.CompareTo(laneW);
-      if (ret != 0) return ret;
+      // order by the lanes' sorted order (LaneNames and LaneComparer), not by their names
+      _LaneIndexes.TryGetValue(laneV, out var idxV);
+      _LaneIndexes.TryGetValue(laneW, out var idxW);
+      if (idxV < idxW) return -1;
+      if (idxV > idxW) return 1;
+      // sort dummy vertexes before vertexes representing real nodes
+      if (v.Node == null && w.Node != null) return -1;
+      if (v.Node != null && w.Node == null) return 1;
       return v.Column.CompareTo(w.Column);
     }
   }
