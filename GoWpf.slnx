@@ -1,0 +1,204 @@
+<Solution>
+  <Folder Name="/Extensions/" />
+  <Folder Name="/Extensions/GraphObjects/" />
+  <Folder Name="/Extensions/Input/" />
+  <Folder Name="/Extensions/Layouts/" />
+  <Folder Name="/Extensions/Tools/" />
+  <Folder Name="/Extensions/GraphObjects/Arrowheads/">
+    <Project Path="Extensions/GraphObjects/Arrowheads/Arrowheads.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/BalloonLink/">
+    <Project Path="Extensions/GraphObjects/BalloonLink/BalloonLink.shproj" />
+    <Project Path="Extensions/GraphObjects/BalloonLink/BalloonLinkWpf/BalloonLinkWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Buttons/">
+    <Project Path="Extensions/GraphObjects/Buttons/Buttons.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/DimensioningLink/">
+    <Project Path="Extensions/GraphObjects/DimensioningLink/DimensioningLink.shproj" />
+    <Project Path="Extensions/GraphObjects/DimensioningLink/DimensioningLinkWpf/DimensioningLinkWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Figures/">
+    <Project Path="Extensions/GraphObjects/Figures/Figures.shproj" />
+    <Project Path="Extensions/GraphObjects/Figures/FiguresWpf/FiguresWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/HyperlinkText/">
+    <Project Path="Extensions/GraphObjects/HyperlinkText/HyperlinkText.shproj" />
+    <Project Path="Extensions/GraphObjects/HyperlinkText/HyperlinkTextWpf/HyperlinkTextWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/ParallelRouteLink/">
+    <Project Path="Extensions/GraphObjects/ParallelRouteLink/ParallelRouteLink.shproj" />
+    <Project Path="Extensions/GraphObjects/ParallelRouteLink/ParallelRouteLinkWpf/ParallelRouteLinkWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/SvgPictures/">
+    <Project Path="Extensions/GraphObjects/SvgPictures/SvgPictures.shproj" />
+    <Project Path="Extensions/GraphObjects/SvgPictures/SvgPicturesWpf/SvgPicturesWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Templates/">
+    <Project Path="Extensions/GraphObjects/Templates/Templates.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/DataInspector/">
+    <Project Path="Extensions/Input/DataInspector/DataInspector.shproj" />
+    <Project Path="Extensions/Input/DataInspector/DataInspectorWpf/DataInspectorWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/DrawCommandHandler/">
+    <Project Path="Extensions/Input/DrawCommandHandler/DrawCommandHandler.shproj" />
+    <Project Path="Extensions/Input/DrawCommandHandler/DrawCommandHandlerWpf/DrawCommandHandlerWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/Robot/">
+    <Project Path="Extensions/Input/Robot/Robot.shproj" />
+    <Project Path="Extensions/Input/Robot/RobotWpf/RobotWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/ZoomSlider/">
+    <Project Path="Extensions/Input/ZoomSlider/ZoomSlider.shproj" />
+    <Project Path="Extensions/Input/ZoomSlider/ZoomSliderWpf/ZoomSliderWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Arranging/">
+    <Project Path="Extensions/Layouts/Arranging/Arranging.shproj" />
+    <Project Path="Extensions/Layouts/Arranging/ArrangingWpf/ArrangingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/DoubleTree/">
+    <Project Path="Extensions/Layouts/DoubleTree/DoubleTree.shproj" />
+    <Project Path="Extensions/Layouts/DoubleTree/DoubleTreeWpf/DoubleTreeWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Fishbone/">
+    <Project Path="Extensions/Layouts/Fishbone/Fishbone.shproj" />
+    <Project Path="Extensions/Layouts/Fishbone/FishboneWpf/FishboneWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Packed/">
+    <Project Path="Extensions/Layouts/Packed/Packed.shproj" />
+    <Project Path="Extensions/Layouts/Packed/PackedWpf/PackedWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Parallel/">
+    <Project Path="Extensions/Layouts/Parallel/Parallel.shproj" />
+    <Project Path="Extensions/Layouts/Parallel/ParallelWpf/ParallelWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Radial/">
+    <Project Path="Extensions/Layouts/Radial/Radial.shproj" />
+    <Project Path="Extensions/Layouts/Radial/RadialWpf/RadialWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Serpentine/">
+    <Project Path="Extensions/Layouts/Serpentine/Serpentine.shproj" />
+    <Project Path="Extensions/Layouts/Serpentine/SerpentineWpf/SerpentineWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Spiral/">
+    <Project Path="Extensions/Layouts/Spiral/Spiral.shproj" />
+    <Project Path="Extensions/Layouts/Spiral/SpiralWpf/SpiralWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/SwimLane/">
+    <Project Path="Extensions/Layouts/SwimLane/SwimLane.shproj" />
+    <Project Path="Extensions/Layouts/SwimLane/SwimLaneWpf/SwimLaneWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Table/">
+    <Project Path="Extensions/Layouts/Table/Table.shproj" />
+    <Project Path="Extensions/Layouts/Table/TableWpf/TableWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/TreeMap/">
+    <Project Path="Extensions/Layouts/TreeMap/TreeMap.shproj" />
+    <Project Path="Extensions/Layouts/TreeMap/TreeMapWpf/TreeMapWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/VirtualizedPacked/">
+    <Project Path="Extensions/Layouts/VirtualizedPacked/VirtualizedPacked.shproj" />
+    <Project Path="Extensions/Layouts/VirtualizedPacked/VirtualizedPackedWpf/VirtualizedPackedWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/ColumnResizing/">
+    <Project Path="Extensions/Tools/ColumnResizing/ColumnResizing.shproj" />
+    <Project Path="Extensions/Tools/ColumnResizing/ColumnResizingWpf/ColumnResizingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/CurvedLinkReshaping/">
+    <Project Path="Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshapingWpf/CurvedLinkReshapingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/DragCreating/">
+    <Project Path="Extensions/Tools/DragCreating/DragCreating.shproj" />
+    <Project Path="Extensions/Tools/DragCreating/DragCreatingWpf/DragCreatingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/DragZooming/">
+    <Project Path="Extensions/Tools/DragZooming/DragZooming.shproj" />
+    <Project Path="Extensions/Tools/DragZooming/DragZoomingWpf/DragZoomingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/FreehandDrawing/">
+    <Project Path="Extensions/Tools/FreehandDrawing/FreehandDrawing.shproj" />
+    <Project Path="Extensions/Tools/FreehandDrawing/FreehandDrawingWpf/FreehandDrawingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/GeometryReshaping/">
+    <Project Path="Extensions/Tools/GeometryReshaping/GeometryReshaping.shproj" />
+    <Project Path="Extensions/Tools/GeometryReshaping/GeometryReshapingWpf/GeometryReshapingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/GuidedDragging/">
+    <Project Path="Extensions/Tools/GuidedDragging/GuidedDragging.shproj" />
+    <Project Path="Extensions/Tools/GuidedDragging/GuidedDraggingWpf/GuidedDraggingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkLabelDragging/">
+    <Project Path="Extensions/Tools/LinkLabelDragging/LinkLabelDragging.shproj" />
+    <Project Path="Extensions/Tools/LinkLabelDragging/LinkLabelDraggingWpf/LinkLabelDraggingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkLabelOnPathDragging/">
+    <Project Path="Extensions/Tools/LinkLabelOnPathDragging/LinkLabelOnPathDragging.shproj" />
+    <Project Path="Extensions/Tools/LinkLabelOnPathDragging/LinkLabelOnPathDraggingWpf/LinkLabelOnPathDraggingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkShifting/">
+    <Project Path="Extensions/Tools/LinkShifting/LinkShifting.shproj" />
+    <Project Path="Extensions/Tools/LinkShifting/LinkShiftingWpf/LinkShiftingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/NodeLabelDragging/">
+    <Project Path="Extensions/Tools/NodeLabelDragging/NodeLabelDragging.shproj" />
+    <Project Path="Extensions/Tools/NodeLabelDragging/NodeLabelDraggingWpf/NodeLabelDraggingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/NonRealtimeDragging/">
+    <Project Path="Extensions/Tools/NonRealtimeDragging/NonRealtimeDragging.shproj" />
+    <Project Path="Extensions/Tools/NonRealtimeDragging/NonRealtimeDraggingWpf/NonRealtimeDraggingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/OrthogonalLinkReshaping/">
+    <Project Path="Extensions/Tools/OrthogonalLinkReshaping/OrthogonalLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/OrthogonalLinkReshaping/OrthogonalLinkReshapingWpf/OrthogonalLinkReshapingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/OverviewResizing/">
+    <Project Path="Extensions/Tools/OverviewResizing/OverviewResizing.shproj" />
+    <Project Path="Extensions/Tools/OverviewResizing/OverviewResizingWpf/OverviewResizingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PolygonDrawing/">
+    <Project Path="Extensions/Tools/PolygonDrawing/PolygonDrawing.shproj" />
+    <Project Path="Extensions/Tools/PolygonDrawing/PolygonDrawingWpf/PolygonDrawingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PolylineLinking/">
+    <Project Path="Extensions/Tools/PolylineLinking/PolylineLinking.shproj" />
+    <Project Path="Extensions/Tools/PolylineLinking/PolylineLinkingWpf/PolylineLinkingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PortShifting/">
+    <Project Path="Extensions/Tools/PortShifting/PortShifting.shproj" />
+    <Project Path="Extensions/Tools/PortShifting/PortShiftingWpf/PortShiftingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RealtimeDragSelecting/">
+    <Project Path="Extensions/Tools/RealtimeDragSelecting/RealtimeDragSelecting.shproj" />
+    <Project Path="Extensions/Tools/RealtimeDragSelecting/RealtimeDragSelectingWpf/RealtimeDragSelectingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/Rescaling/">
+    <Project Path="Extensions/Tools/Rescaling/Rescaling.shproj" />
+    <Project Path="Extensions/Tools/Rescaling/RescalingWpf/RescalingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/ResizeMultiple/">
+    <Project Path="Extensions/Tools/ResizeMultiple/ResizeMultiple.shproj" />
+    <Project Path="Extensions/Tools/ResizeMultiple/ResizeMultipleWpf/ResizeMultipleWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RotateMultiple/">
+    <Project Path="Extensions/Tools/RotateMultiple/RotateMultiple.shproj" />
+    <Project Path="Extensions/Tools/RotateMultiple/RotateMultipleWpf/RotateMultipleWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RowResizing/">
+    <Project Path="Extensions/Tools/RowResizing/RowResizing.shproj" />
+    <Project Path="Extensions/Tools/RowResizing/RowResizingWpf/RowResizingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/SectorReshaping/">
+    <Project Path="Extensions/Tools/SectorReshaping/SectorReshaping.shproj" />
+    <Project Path="Extensions/Tools/SectorReshaping/SectorReshapingWpf/SectorReshapingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/SnapLinkReshaping/">
+    <Project Path="Extensions/Tools/SnapLinkReshaping/SnapLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/SnapLinkReshaping/SnapLinkReshapingWpf/SnapLinkReshapingWpf.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/SharedSamples/SharedSamples.shproj" />
+    <Project Path="Samples/WPF/WpfDemoApp/WpfDemoApp.csproj" />
+  </Folder>
+</Solution>

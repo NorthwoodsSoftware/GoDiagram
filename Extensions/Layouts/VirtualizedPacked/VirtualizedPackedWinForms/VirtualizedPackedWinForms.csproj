@@ -3,7 +3,7 @@
   <PropertyGroup>
     <!-- Use C# latest to enable new .NET features -->
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net10.0-windows10.0.19041;net472</TargetFrameworks>
+    <TargetFrameworks>net10.0-windows;net472</TargetFrameworks>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
@@ -12,7 +12,7 @@
   <Import Project="..\VirtualizedPacked.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-a3" />
+    <PackageReference Include="Northwoods.GoDiagram.WinForms" Version="11.0.0-rc1" />
   </ItemGroup>
 
 </Project>

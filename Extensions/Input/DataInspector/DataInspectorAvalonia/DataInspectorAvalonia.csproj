@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-a3" />
+    <PackageReference Include="Northwoods.GoDiagram.Avalonia" Version="11.0.0-rc1" />
   </ItemGroup>
 
   <Import Project="..\DataInspector.projitems" Label="Shared" />

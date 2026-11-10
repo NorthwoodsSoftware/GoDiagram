@@ -1,0 +1,207 @@
+<Solution>
+  <Folder Name="/Build/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Extensions/" />
+  <Folder Name="/Extensions/GraphObjects/" />
+  <Folder Name="/Extensions/GraphObjects/Arrowheads/">
+    <Project Path="Extensions/GraphObjects/Arrowheads/Arrowheads.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/BalloonLink/">
+    <Project Path="Extensions/GraphObjects/BalloonLink/BalloonLink.shproj" />
+    <Project Path="Extensions/GraphObjects/BalloonLink/BalloonLinkAvalonia/BalloonLinkAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Buttons/">
+    <Project Path="Extensions/GraphObjects/Buttons/Buttons.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/DimensioningLink/">
+    <Project Path="Extensions/GraphObjects/DimensioningLink/DimensioningLink.shproj" />
+    <Project Path="Extensions/GraphObjects/DimensioningLink/DimensioningLinkAvalonia/DimensioningLinkAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Figures/">
+    <Project Path="Extensions/GraphObjects/Figures/Figures.shproj" />
+    <Project Path="Extensions/GraphObjects/Figures/FiguresAvalonia/FiguresAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/HyperlinkText/">
+    <Project Path="Extensions/GraphObjects/HyperlinkText/HyperlinkText.shproj" />
+    <Project Path="Extensions/GraphObjects/HyperlinkText/HyperlinkTextAvalonia/HyperlinkTextAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/ParallelRouteLink/">
+    <Project Path="Extensions/GraphObjects/ParallelRouteLink/ParallelRouteLink.shproj" />
+    <Project Path="Extensions/GraphObjects/ParallelRouteLink/ParallelRouteLinkAvalonia/ParallelRouteLinkAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/SvgPictures/">
+    <Project Path="Extensions/GraphObjects/SvgPictures/SvgPictures.shproj" />
+    <Project Path="Extensions/GraphObjects/SvgPictures/SvgPicturesAvalonia/SvgPicturesAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/GraphObjects/Templates/">
+    <Project Path="Extensions/GraphObjects/Templates/Templates.shproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/" />
+  <Folder Name="/Extensions/Input/DataInspector/">
+    <Project Path="Extensions/Input/DataInspector/DataInspector.shproj" />
+    <Project Path="Extensions/Input/DataInspector/DataInspectorAvalonia/DataInspectorAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/DrawCommandHandler/">
+    <Project Path="Extensions/Input/DrawCommandHandler/DrawCommandHandler.shproj" />
+    <Project Path="Extensions/Input/DrawCommandHandler/DrawCommandHandlerAvalonia/DrawCommandHandlerAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/Robot/">
+    <Project Path="Extensions/Input/Robot/Robot.shproj" />
+    <Project Path="Extensions/Input/Robot/RobotAvalonia/RobotAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Input/ZoomSlider/">
+    <Project Path="Extensions/Input/ZoomSlider/ZoomSlider.shproj" />
+    <Project Path="Extensions/Input/ZoomSlider/ZoomSliderAvalonia/ZoomSliderAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/" />
+  <Folder Name="/Extensions/Layouts/Arranging/">
+    <Project Path="Extensions/Layouts/Arranging/Arranging.shproj" />
+    <Project Path="Extensions/Layouts/Arranging/ArrangingAvalonia/ArrangingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/DoubleTree/">
+    <Project Path="Extensions/Layouts/DoubleTree/DoubleTree.shproj" />
+    <Project Path="Extensions/Layouts/DoubleTree/DoubleTreeAvalonia/DoubleTreeAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Fishbone/">
+    <Project Path="Extensions/Layouts/Fishbone/Fishbone.shproj" />
+    <Project Path="Extensions/Layouts/Fishbone/FishboneAvalonia/FishboneAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Packed/">
+    <Project Path="Extensions/Layouts/Packed/Packed.shproj" />
+    <Project Path="Extensions/Layouts/Packed/PackedAvalonia/PackedAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Parallel/">
+    <Project Path="Extensions/Layouts/Parallel/Parallel.shproj" />
+    <Project Path="Extensions/Layouts/Parallel/ParallelAvalonia/ParallelAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Radial/">
+    <Project Path="Extensions/Layouts/Radial/Radial.shproj" />
+    <Project Path="Extensions/Layouts/Radial/RadialAvalonia/RadialAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Serpentine/">
+    <Project Path="Extensions/Layouts/Serpentine/Serpentine.shproj" />
+    <Project Path="Extensions/Layouts/Serpentine/SerpentineAvalonia/SerpentineAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Spiral/">
+    <Project Path="Extensions/Layouts/Spiral/Spiral.shproj" />
+    <Project Path="Extensions/Layouts/Spiral/SpiralAvalonia/SpiralAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/SwimLane/">
+    <Project Path="Extensions/Layouts/SwimLane/SwimLane.shproj" />
+    <Project Path="Extensions/Layouts/SwimLane/SwimLaneAvalonia/SwimLaneAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/Table/">
+    <Project Path="Extensions/Layouts/Table/Table.shproj" />
+    <Project Path="Extensions/Layouts/Table/TableAvalonia/TableAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/TreeMap/">
+    <Project Path="Extensions/Layouts/TreeMap/TreeMap.shproj" />
+    <Project Path="Extensions/Layouts/TreeMap/TreeMapAvalonia/TreeMapAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Layouts/VirtualizedPacked/">
+    <Project Path="Extensions/Layouts/VirtualizedPacked/VirtualizedPacked.shproj" />
+    <Project Path="Extensions/Layouts/VirtualizedPacked/VirtualizedPackedAvalonia/VirtualizedPackedAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/" />
+  <Folder Name="/Extensions/Tools/ColumnResizing/">
+    <Project Path="Extensions/Tools/ColumnResizing/ColumnResizing.shproj" />
+    <Project Path="Extensions/Tools/ColumnResizing/ColumnResizingAvalonia/ColumnResizingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/CurvedLinkReshaping/">
+    <Project Path="Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/CurvedLinkReshaping/CurvedLinkReshapingAvalonia/CurvedLinkReshapingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/DragCreating/">
+    <Project Path="Extensions/Tools/DragCreating/DragCreating.shproj" />
+    <Project Path="Extensions/Tools/DragCreating/DragCreatingAvalonia/DragCreatingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/DragZooming/">
+    <Project Path="Extensions/Tools/DragZooming/DragZooming.shproj" />
+    <Project Path="Extensions/Tools/DragZooming/DragZoomingAvalonia/DragZoomingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/FreehandDrawing/">
+    <Project Path="Extensions/Tools/FreehandDrawing/FreehandDrawing.shproj" />
+    <Project Path="Extensions/Tools/FreehandDrawing/FreehandDrawingAvalonia/FreehandDrawingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/GeometryReshaping/">
+    <Project Path="Extensions/Tools/GeometryReshaping/GeometryReshaping.shproj" />
+    <Project Path="Extensions/Tools/GeometryReshaping/GeometryReshapingAvalonia/GeometryReshapingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/GuidedDragging/">
+    <Project Path="Extensions/Tools/GuidedDragging/GuidedDragging.shproj" />
+    <Project Path="Extensions/Tools/GuidedDragging/GuidedDraggingAvalonia/GuidedDraggingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkLabelDragging/">
+    <Project Path="Extensions/Tools/LinkLabelDragging/LinkLabelDragging.shproj" />
+    <Project Path="Extensions/Tools/LinkLabelDragging/LinkLabelDraggingAvalonia/LinkLabelDraggingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkLabelOnPathDragging/">
+    <Project Path="Extensions/Tools/LinkLabelOnPathDragging/LinkLabelOnPathDragging.shproj" />
+    <Project Path="Extensions/Tools/LinkLabelOnPathDragging/LinkLabelOnPathDraggingAvalonia/LinkLabelOnPathDraggingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/LinkShifting/">
+    <Project Path="Extensions/Tools/LinkShifting/LinkShifting.shproj" />
+    <Project Path="Extensions/Tools/LinkShifting/LinkShiftingAvalonia/LinkShiftingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/NodeLabelDragging/">
+    <Project Path="Extensions/Tools/NodeLabelDragging/NodeLabelDragging.shproj" />
+    <Project Path="Extensions/Tools/NodeLabelDragging/NodeLabelDraggingAvalonia/NodeLabelDraggingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/NonRealtimeDragging/">
+    <Project Path="Extensions/Tools/NonRealtimeDragging/NonRealtimeDragging.shproj" />
+    <Project Path="Extensions/Tools/NonRealtimeDragging/NonRealtimeDraggingAvalonia/NonRealtimeDraggingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/OrthogonalLinkReshaping/">
+    <Project Path="Extensions/Tools/OrthogonalLinkReshaping/OrthogonalLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/OrthogonalLinkReshaping/OrthogonalLinkReshapingAvalonia/OrthogonalLinkReshapingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/OverviewResizing/">
+    <Project Path="Extensions/Tools/OverviewResizing/OverviewResizing.shproj" />
+    <Project Path="Extensions/Tools/OverviewResizing/OverviewResizingAvalonia/OverviewResizingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PolygonDrawing/">
+    <Project Path="Extensions/Tools/PolygonDrawing/PolygonDrawing.shproj" />
+    <Project Path="Extensions/Tools/PolygonDrawing/PolygonDrawingAvalonia/PolygonDrawingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PolylineLinking/">
+    <Project Path="Extensions/Tools/PolylineLinking/PolylineLinking.shproj" />
+    <Project Path="Extensions/Tools/PolylineLinking/PolylineLinkingAvalonia/PolylineLinkingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/PortShifting/">
+    <Project Path="Extensions/Tools/PortShifting/PortShifting.shproj" />
+    <Project Path="Extensions/Tools/PortShifting/PortShiftingAvalonia/PortShiftingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RealtimeDragSelecting/">
+    <Project Path="Extensions/Tools/RealtimeDragSelecting/RealtimeDragSelecting.shproj" />
+    <Project Path="Extensions/Tools/RealtimeDragSelecting/RealtimeDragSelectingAvalonia/RealtimeDragSelectingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/Rescaling/">
+    <Project Path="Extensions/Tools/Rescaling/Rescaling.shproj" />
+    <Project Path="Extensions/Tools/Rescaling/RescalingAvalonia/RescalingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/ResizeMultiple/">
+    <Project Path="Extensions/Tools/ResizeMultiple/ResizeMultiple.shproj" />
+    <Project Path="Extensions/Tools/ResizeMultiple/ResizeMultipleAvalonia/ResizeMultipleAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RotateMultiple/">
+    <Project Path="Extensions/Tools/RotateMultiple/RotateMultiple.shproj" />
+    <Project Path="Extensions/Tools/RotateMultiple/RotateMultipleAvalonia/RotateMultipleAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/RowResizing/">
+    <Project Path="Extensions/Tools/RowResizing/RowResizing.shproj" />
+    <Project Path="Extensions/Tools/RowResizing/RowResizingAvalonia/RowResizingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/SectorReshaping/">
+    <Project Path="Extensions/Tools/SectorReshaping/SectorReshaping.shproj" />
+    <Project Path="Extensions/Tools/SectorReshaping/SectorReshapingAvalonia/SectorReshapingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Extensions/Tools/SnapLinkReshaping/">
+    <Project Path="Extensions/Tools/SnapLinkReshaping/SnapLinkReshaping.shproj" />
+    <Project Path="Extensions/Tools/SnapLinkReshaping/SnapLinkReshapingAvalonia/SnapLinkReshapingAvalonia.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/Avalonia/AvaloniaDemoApp/AvaloniaDemoApp.csproj" />
+    <Project Path="Samples/SharedSamples/SharedSamples.shproj" />
+  </Folder>
+</Solution>

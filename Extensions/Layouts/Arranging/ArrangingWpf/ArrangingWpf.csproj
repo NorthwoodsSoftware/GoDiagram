@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
@@ -9,7 +9,7 @@
   <Import Project="..\Arranging.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-a3" />
+    <PackageReference Include="Northwoods.GoDiagram.Wpf" Version="11.0.0-rc1" />
   </ItemGroup>
 
 </Project>
